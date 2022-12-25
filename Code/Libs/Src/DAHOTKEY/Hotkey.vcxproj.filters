@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{3a0f0200-346e-4adc-b76e-fd99e4450934}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{462c2453-2e8b-461a-9b97-a90129a89985}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;fi;fd</Extensions>
+    </Filter>
+    <Filter Include="Shared Headers">
+      <UniqueIdentifier>{521690b5-6d66-4e4d-8973-8da6c931619b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="EventSys.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HKEvent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HkeyRec.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Hotkey.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Include\HkeyRec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Hotkey.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Dacom.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\eventmgr.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\EventSys.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Filesys.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\HeapObj.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\HKEvent.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\IConnection.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Results.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\System.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\TComponent.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\TConnContainer.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\TConnPoint.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Typedefs.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

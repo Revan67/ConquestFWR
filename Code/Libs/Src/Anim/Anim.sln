@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Anim", "Anim.vcxproj", "{1F789DE4-1E77-4149-8302-8F040BC7DFEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		MSHeap Debug|x86 = MSHeap Debug|x86
+		MSHeap Release|x86 = MSHeap Release|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F789DE4-1E77-4149-8302-8F040BC7DFEC}.Debug|x86.ActiveCfg = Debug|Win32
+		{1F789DE4-1E77-4149-8302-8F040BC7DFEC}.Debug|x86.Build.0 = Debug|Win32
+		{1F789DE4-1E77-4149-8302-8F040BC7DFEC}.MSHeap Debug|x86.ActiveCfg = MSHeap Debug|Win32
+		{1F789DE4-1E77-4149-8302-8F040BC7DFEC}.MSHeap Debug|x86.Build.0 = MSHeap Debug|Win32
+		{1F789DE4-1E77-4149-8302-8F040BC7DFEC}.MSHeap Release|x86.ActiveCfg = MSHeap Release|Win32
+		{1F789DE4-1E77-4149-8302-8F040BC7DFEC}.MSHeap Release|x86.Build.0 = MSHeap Release|Win32
+		{1F789DE4-1E77-4149-8302-8F040BC7DFEC}.Release|x86.ActiveCfg = Release|Win32
+		{1F789DE4-1E77-4149-8302-8F040BC7DFEC}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2CB5EDBD-6910-4420-A737-FDCD1AB3E096}
+	EndGlobalSection
+EndGlobal

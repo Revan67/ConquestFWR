@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugInternal|Win32">
+      <Configuration>DebugInternal</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{E8198B88-77D8-42CE-B744-2FA79E1A4E4D}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugInternal|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugInternal|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>17.0.33205.214</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugInternal|Win32'">
+    <OutDir>.\EffectEd___Win32_DebugInternal\</OutDir>
+    <IntDir>.\EffectEd___Win32_DebugInternal\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugInternal|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\EffectEd___Win32_DebugInternal/EffectEd.tlb</TypeLibraryName>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\shared\dinclude\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_INTERNAL_PATHS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\EffectEd___Win32_DebugInternal/EffectEd.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\EffectEd___Win32_DebugInternal/</AssemblerListingLocation>
+      <ObjectFileName>.\EffectEd___Win32_DebugInternal/</ObjectFileName>
+      <ProgramDataBaseFileName>.\EffectEd___Win32_DebugInternal/</ProgramDataBaseFileName>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;Comctl32.lib;DACOM.lib;COMHeap.lib;MathLib.lib;d3dx9dt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>DebugInternal/EffectEd.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>DebugInternal/EffectEd.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Debug/EffectEd.tlb</TypeLibraryName>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\App\DInclude;..\..\Libs\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Debug/EffectEd.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
+      <ObjectFileName>.\Debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug/</ProgramDataBaseFileName>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;Comctl32.lib;DACOM.lib;COMHeap.lib;MathLib.lib;d3dx9d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\Debug/EffectEd.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\Libs\Static\$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\Debug/EffectEd.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release/EffectEd.tlb</TypeLibraryName>
+    </Midl>
+    <ClCompile>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Release/EffectEd.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;Comctl32.lib;DACOM.lib;COMHeap.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\Release/EffectEd.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ProgramDatabaseFile>.\Release/EffectEd.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ArchList.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="EffectAction.cpp" />
+    <ClCompile Include="EffectActionAnim.cpp" />
+    <ClCompile Include="EffectActionGameEvent.cpp" />
+    <ClCompile Include="EffectActionHideTarget.cpp" />
+    <ClCompile Include="EffectActionJointTrack.cpp" />
+    <ClCompile Include="EffectActionListen.cpp" />
+    <ClCompile Include="EffectActionParticle.cpp" />
+    <ClCompile Include="EffectActionSound.cpp" />
+    <ClCompile Include="EffectActionSwitch.cpp" />
+    <ClCompile Include="EffectEd.cpp" />
+    <ClCompile Include="EffectEvent.cpp" />
+    <ClCompile Include="EffectFile.cpp" />
+    <ClCompile Include="EffectParam.cpp" />
+    <ClCompile Include="EffectTarget.cpp" />
+    <ClCompile Include="EventGraph.cpp" />
+    <ClCompile Include="InfoArea.cpp" />
+    <ClCompile Include="MathLayoutWin.cpp" />
+    <ClCompile Include="ParticleView.cpp" />
+    <ClCompile Include="PreviewWin.cpp" />
+    <ClCompile Include="SplitterWnd.cpp" />
+    <ClCompile Include="Startup.cpp" />
+    <ClCompile Include="StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugInternal|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="SuperTrans.cpp" />
+    <ClCompile Include="TargetAnim.cpp" />
+    <ClCompile Include="TargetCue.cpp" />
+    <ClCompile Include="TargetHp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Search.asm">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugInternal|Win32'">ml /Zi /c /Cx /coff /nologo /Fo$(IntDir)%(Filename).obj %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugInternal|Win32'">$(IntDir)%(Filename).obj;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ml /Zi /c /Cx /coff /nologo /Fo$(IntDir)%(Filename).obj %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename).obj;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ArchList.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="EventGraph.h" />
+    <ClInclude Include="globals.h" />
+    <ClInclude Include="GridVector.h" />
+    <ClInclude Include="IEffectAction.h" />
+    <ClInclude Include="IEffectEvent.h" />
+    <ClInclude Include="IEffectFile.h" />
+    <ClInclude Include="IEffectParam.h" />
+    <ClInclude Include="IEffectTarget.h" />
+    <ClInclude Include="InfoArea.h" />
+    <ClInclude Include="ITargetAnim.h" />
+    <ClInclude Include="ITargetCue.h" />
+    <ClInclude Include="ITargetHp.h" />
+    <ClInclude Include="MathLayoutWin.h" />
+    <ClInclude Include="MyVertex.h" />
+    <ClInclude Include="ParticleView.h" />
+    <ClInclude Include="PreviewWin.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="SplitterWnd.h" />
+    <ClInclude Include="Startup.h" />
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="SuperTrans.h" />
+    <ClInclude Include="SysManager.H" />
+    <ClInclude Include="TimeBar.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="bitmap1.bmp" />
+    <Image Include="bmp00001.bmp" />
+    <Image Include="bmp00002.bmp" />
+    <Image Include="bmp00003.bmp" />
+    <Image Include="bmp00004.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Script1.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libs\Src\Anim\Anim.vcxproj">
+      <Project>{1f789de4-1e77-4149-8302-8f040bc7dfec}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\Channel\Channel.vcxproj">
+      <Project>{64d00300-90a3-4970-90b0-7ea4994c61d0}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\COMHeap\COMHeap.vcxproj">
+      <Project>{53af5f2f-fa04-4e82-9594-dc83c12f60bd}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\DACOM\DACOM.vcxproj">
+      <Project>{95e512b5-5025-445d-8fb2-458f2ef1c936}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\DOSFile\DOSFile.vcxproj">
+      <Project>{4ab7d2a5-86a2-475a-8cda-da61643c1803}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\EngComps\Hardpoint\HardPoint.vcxproj">
+      <Project>{d7c2f90b-08c7-444c-8ef2-9089212ede01}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\EngComps\RenderMgr\RenderMgr.vcxproj">
+      <Project>{b510382f-b46b-4018-ba67-4de2ae1f200b}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\Engine\Engine.vcxproj">
+      <Project>{4d6f3353-2b1c-4bd1-b6a8-3087acb96b47}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\LightManager\LightManager.vcxproj">
+      <Project>{59facdf7-15d9-45f8-86ff-0300c61f8a69}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\MaterialManager\MaterialManager.vcxproj">
+      <Project>{b12b9d80-2386-4478-ab50-9af9abba3fa7}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\MeshManager\MeshManager.vcxproj">
+      <Project>{30081709-821a-4fd1-9577-02a626ed1477}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\ParticleEffect\ParticleEffect.vcxproj">
+      <Project>{23cb7d10-4e99-441c-a214-ad3b6e543e5b}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\RendComp\Optics\Optics.vcxproj">
+      <Project>{7890827c-8935-444d-9bfd-35f09d13a214}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\RendComp\PolyMesh\PolyMesh.vcxproj">
+      <Project>{6a2bbee9-e343-400b-b2dc-0e4b41fa34f4}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\RenderPipeline\D3DRenderPipe.vcxproj">
+      <Project>{01cc9fde-f235-4429-9f20-79d93cb3d386}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\RenderPipeline\RPUL\RPUL.vcxproj">
+      <Project>{ebbfc781-5b1c-4b5e-8dc4-83baeea7e9ec}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\SceneGraph\SceneGraph.vcxproj">
+      <Project>{65aa5412-6f06-4196-8f0a-84978877d9b2}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\Shading\TextureLibrary\TextureLibrary.vcxproj">
+      <Project>{23a04f13-23ff-4c80-8a58-7ac9700ee5a3}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\Streamer\streamer.vcxproj">
+      <Project>{40acef6b-12a0-44b1-8d4d-1bd91902fc77}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\System\System.vcxproj">
+      <Project>{e94c9a85-fbd8-4f53-bb17-285d2148bad0}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\TextureManager\TextureManager.vcxproj">
+      <Project>{7bc249a8-0e54-4d3f-8965-4f49f8c2c4e4}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\VertexBufferManager\VertexBufferManager.vcxproj">
+      <Project>{5247a48d-afde-4b3c-8314-e1c97259a9d2}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\VideoSystem\VideoSystem.vcxproj">
+      <Project>{afe7005d-97e8-48c0-9e29-0720e165c75c}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\x86Math\MathLib.vcxproj">
+      <Project>{03c8aaa8-bcdc-4522-a75d-d9036929fc4b}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\Src\x86Math\x86math.vcxproj">
+      <Project>{9e7b7bb2-8e91-47a2-b8f9-94b5ac634e17}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

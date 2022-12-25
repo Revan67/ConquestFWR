@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{01f89675-1066-44fa-89b4-e607e9c8adf6}</UniqueIdentifier>
+      <Extensions>*.ico, *.cur, *.fnt</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\Monochrome">
+      <UniqueIdentifier>{70629e5d-8b70-4a22-9054-a7a02b67bab3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\Arrow_l.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\attack.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\ban.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Bleftscroll.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Brightscroll.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Btmscroll.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\build.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\capture.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\cur00001.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\cur00002.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\cur00003.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\cur00004.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\cursor1.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\cursor_a.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\default.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\default.fnt">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Escort.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\H_arrow.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Harvest.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\intermediate.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\jump.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Leftscroll.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\mimic.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Minidefault.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Minimove.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\MiniRally.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Move.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\MoveAdmiral.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\patrol.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Rally.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Ram.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Repair.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Resupply.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Rightscroll.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Sell.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\specattk.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Tleftscroll.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Topscroll.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Trightscroll.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Res\Bw\Arrow_l.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\attack.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\ban.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\Bleftscroll.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\Brightscroll.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\Btmscroll.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\build.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\capture.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\cur00001.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\cur00003.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\cur00004.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\cursor1.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\cursor_a.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\default.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\escort.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\H_arrow.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\Harvest.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\intermediate.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\jump.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\Leftscroll.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\mimic.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\Minidefault.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\Minimove.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\MiniRally.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\Move.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\MoveAdmiral.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\patrol.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\Rally.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\Ram.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\Repair.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\Resupply.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\Rightscroll.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\Sell.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\specattk.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\Tleftscroll.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\Topscroll.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Res\Bw\Trightscroll.cur">
+      <Filter>Resource Files\Monochrome</Filter>
+    </None>
+    <None Include="Conquest.ini" />
+    <None Include="data.i" />
+    <None Include="DBHotkeys.utf" />
+    <None Include="Hotkeys.utf" />
+    <None Include="RuseKeys.utf" />
+    <None Include="Sfxdata.dat" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Globals.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DBHotkeys.h" />
+    <ClInclude Include="Include\Globals.h" />
+    <ClInclude Include="Hotkeys.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="RuseKeys.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Globals.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Data.cpp" />
+    <CustomBuild Include="sfxdata.xmf" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DEMO Debug|Win32">
+      <Configuration>DEMO Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DEMO Final|Win32">
+      <Configuration>DEMO Final</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Final|Win32">
+      <Configuration>Final</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{3B96EDB7-16E2-4A39-8684-05DA76845304}</ProjectGuid>
+    <RootNamespace>Globals</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Final|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Final|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>17.0.33205.214</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'">
+    <OutDir>.\DemoDebug\</OutDir>
+    <IntDir>.\DemoDebug\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">
+    <OutDir>.\DemoFinal\</OutDir>
+    <IntDir>.\DemoFinal\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">
+    <OutDir>.\Final\</OutDir>
+    <IntDir>.\Final\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\DemoDebug/Globals.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>include;..\DInclude;..\..\Libs\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BUILD_DLL;BUILD_GLOBALS;DA_ERROR_LEVEL=7;WIN32;_DEBUG;_WINDOWS;_DEMO_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeaderOutputFile>.\DemoDebug/Globals.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\DemoDebug/</AssemblerListingLocation>
+      <ObjectFileName>.\DemoDebug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\DemoDebug/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <PreLinkEvent>
+      <Message>Precompiling Data definitions</Message>
+      <Command>cl /P /EP /nologo /I..\dinclude /D_ADB ..\dinclude\data.h
+rc /l 0x409 /fo DemoDebug\Globals.res /d_DEBUG /d_DEMO_ Globals.rc
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <OutputFile>.\DemoDebug/Globals.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ProgramDatabaseFile>.\DemoDebug/Globals.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <HeapReserveSize>100</HeapReserveSize>
+      <EntryPointSymbol>DllMain</EntryPointSymbol>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <ImportLibrary>.\DemoDebug/Globals.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\DemoDebug/Globals.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release/Globals.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>include;..\DInclude;..\..\Libs\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BUILD_GLOBALS;BUILD_DLL;DA_ERROR_LEVEL=7;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeaderOutputFile>.\Release/Globals.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <PreLinkEvent>
+      <Message>Precompiling Data definitions</Message>
+      <Command>cl /P /EP /nologo /I..\dinclude /D_ADB ..\dinclude\data.h
+rc /l 0x409 /fo Release\Globals.res /dNDEBUG Globals.rc
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <OutputFile>.\Release/Globals.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ProgramDatabaseFile>.\Release/Globals.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <HeapReserveSize>100</HeapReserveSize>
+      <EntryPointSymbol />
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <ImportLibrary>.\Release/Globals.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release/Globals.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\DemoFinal/Globals.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>include;..\DInclude;..\..\Libs\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BUILD_GLOBALS;BUILD_DLL;DA_ERROR_LEVEL=7;WIN32;NDEBUG;_WINDOWS;FINAL_RELEASE;_DEMO_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeaderOutputFile>.\DemoFinal/Globals.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\DemoFinal/</AssemblerListingLocation>
+      <ObjectFileName>.\DemoFinal/</ObjectFileName>
+      <ProgramDataBaseFileName>.\DemoFinal/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <PreLinkEvent>
+      <Message>Precompiling Data definitions</Message>
+      <Command>cl /P /EP /nologo /I..\dinclude /D_ADB ..\dinclude\data.h
+rc /l 0x409 /fo DemoFinal\Globals.res /dNDEBUG /d_DEMO_ Globals.rc
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <OutputFile>.\DemoFinal/Globals.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ProgramDatabaseFile>.\DemoFinal/Globals.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <HeapReserveSize>100</HeapReserveSize>
+      <EntryPointSymbol>DllMain</EntryPointSymbol>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <ImportLibrary>.\DemoFinal/Globals.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\DemoFinal/Globals.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Debug/Globals.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>include;..\DInclude;..\..\Libs\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BUILD_DLL;BUILD_GLOBALS;DA_ERROR_LEVEL=7;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeaderOutputFile>.\Debug/Globals.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
+      <ObjectFileName>.\Debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <PreLinkEvent>
+      <Message>Precompiling Data definitions</Message>
+      <Command>cl /P /EP /nologo /I..\dinclude /D_ADB ..\dinclude\data.h
+rc /l 0x409 /fo Debug\Globals.res /d_DEBUG Globals.rc
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <OutputFile>.\Debug/Globals.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ProgramDatabaseFile>.\Debug/Globals.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <HeapReserveSize>100</HeapReserveSize>
+      <EntryPointSymbol />
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <ImportLibrary>.\Debug/Globals.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug/Globals.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Final/Globals.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>include;..\DInclude;..\..\Libs\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BUILD_GLOBALS;BUILD_DLL;DA_ERROR_LEVEL=7;WIN32;NDEBUG;_WINDOWS;FINAL_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeaderOutputFile>.\Final/Globals.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Final/</AssemblerListingLocation>
+      <ObjectFileName>.\Final/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Final/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <PreLinkEvent>
+      <Message>Precompiling Data definitions</Message>
+      <Command>cl /P /EP /nologo /I..\dinclude /D_ADB ..\dinclude\data.h
+rc /l 0x409 /fo Final\Globals.res /dNDEBUG Globals.rc
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <OutputFile>.\Final/Globals.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ProgramDatabaseFile>.\Final/Globals.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <HeapReserveSize>100</HeapReserveSize>
+      <EntryPointSymbol>DllMain</EntryPointSymbol>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <ImportLibrary>.\Final/Globals.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Final/Globals.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="Conquest.ini" />
+    <None Include="data.i" />
+    <None Include="DBHotkeys.utf" />
+    <None Include="Hotkeys.utf" />
+    <None Include="Res\Arrow_l.cur" />
+    <None Include="Res\attack.cur" />
+    <None Include="Res\ban.cur" />
+    <None Include="Res\Bleftscroll.cur" />
+    <None Include="Res\Brightscroll.cur" />
+    <None Include="Res\Btmscroll.cur" />
+    <None Include="Res\build.cur" />
+    <None Include="Res\Bw\Arrow_l.cur" />
+    <None Include="Res\Bw\attack.cur" />
+    <None Include="Res\Bw\ban.cur" />
+    <None Include="Res\Bw\Bleftscroll.cur" />
+    <None Include="Res\Bw\Brightscroll.cur" />
+    <None Include="Res\Bw\Btmscroll.cur" />
+    <None Include="Res\Bw\build.cur" />
+    <None Include="Res\Bw\capture.cur" />
+    <None Include="Res\Bw\cur00001.cur" />
+    <None Include="Res\Bw\cur00003.cur" />
+    <None Include="Res\Bw\cur00004.cur" />
+    <None Include="Res\Bw\cursor1.cur" />
+    <None Include="Res\Bw\cursor_a.cur" />
+    <None Include="Res\Bw\default.cur" />
+    <None Include="Res\Bw\escort.cur" />
+    <None Include="Res\Bw\Harvest.cur" />
+    <None Include="Res\Bw\H_arrow.cur" />
+    <None Include="Res\Bw\intermediate.cur" />
+    <None Include="Res\Bw\jump.cur" />
+    <None Include="Res\Bw\Leftscroll.cur" />
+    <None Include="Res\Bw\mimic.cur" />
+    <None Include="Res\Bw\Minidefault.cur" />
+    <None Include="Res\Bw\Minimove.cur" />
+    <None Include="Res\Bw\MiniRally.cur" />
+    <None Include="Res\Bw\Move.cur" />
+    <None Include="Res\Bw\MoveAdmiral.cur" />
+    <None Include="Res\Bw\patrol.cur" />
+    <None Include="Res\Bw\Rally.cur" />
+    <None Include="Res\Bw\Ram.cur" />
+    <None Include="Res\Bw\Repair.cur" />
+    <None Include="Res\Bw\Resupply.cur" />
+    <None Include="Res\Bw\Rightscroll.cur" />
+    <None Include="Res\Bw\Sell.cur" />
+    <None Include="Res\Bw\specattk.cur" />
+    <None Include="Res\Bw\Tleftscroll.cur" />
+    <None Include="Res\Bw\Topscroll.cur" />
+    <None Include="Res\Bw\Trightscroll.cur" />
+    <None Include="Res\capture.cur" />
+    <None Include="Res\cur00001.cur" />
+    <None Include="Res\cur00002.cur" />
+    <None Include="Res\cur00003.cur" />
+    <None Include="Res\cur00004.cur" />
+    <None Include="Res\cursor1.cur" />
+    <None Include="Res\cursor_a.cur" />
+    <None Include="Res\default.cur" />
+    <None Include="Res\default.fnt" />
+    <None Include="Res\Escort.cur" />
+    <None Include="Res\Harvest.cur" />
+    <None Include="Res\H_arrow.cur" />
+    <None Include="Res\intermediate.cur" />
+    <None Include="Res\jump.cur" />
+    <None Include="Res\Leftscroll.cur" />
+    <None Include="Res\mimic.cur" />
+    <None Include="Res\Minidefault.cur" />
+    <None Include="Res\Minimove.cur" />
+    <None Include="Res\MiniRally.cur" />
+    <None Include="Res\Move.cur" />
+    <None Include="Res\MoveAdmiral.cur" />
+    <None Include="Res\patrol.cur" />
+    <None Include="Res\Rally.cur" />
+    <None Include="Res\Ram.cur" />
+    <None Include="Res\Repair.cur" />
+    <None Include="Res\Resupply.cur" />
+    <None Include="Res\Rightscroll.cur" />
+    <None Include="Res\Sell.cur" />
+    <None Include="Res\specattk.cur" />
+    <None Include="Res\Tleftscroll.cur" />
+    <None Include="Res\Topscroll.cur" />
+    <None Include="Res\Trightscroll.cur" />
+    <None Include="RuseKeys.utf" />
+    <None Include="Sfxdata.dat" />
+    <CustomBuild Include="sfxdata.xmf">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'">xmiff -i ..\DInclude %(FullPath) %(Filename).dat
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'">..\DInclude\sfxid.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'">%(Filename).dat;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">xmiff -i ..\DInclude %(FullPath) %(Filename).dat
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">..\DInclude\sfxid.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">%(Filename).dat;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\Libs\Bin\xmiff -i ..\DInclude %(FullPath) %(Filename).dat
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\DInclude\sfxid.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename).dat;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">xmiff -i ..\DInclude %(FullPath) %(Filename).dat
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">..\DInclude\sfxid.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">%(Filename).dat;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">xmiff -i ..\DInclude %(FullPath) %(Filename).dat
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\DInclude\sfxid.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).dat;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Data.cpp">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'">cl /P /EP /nologo /I..\dinclude /D_ADB data.cpp
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'">data.i;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">cl /P /EP /nologo /I..\dinclude /D_ADB data.cpp
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">data.i;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cl /P /EP /nologo /I..\dinclude /D_ADB data.cpp
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">data.i;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">cl /P /EP /nologo /I..\dinclude /D_ADB data.cpp
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">data.i;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cl /P /EP /nologo /I..\dinclude /D_ADB data.cpp
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">data.i;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClCompile Include="Globals.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DBHotkeys.h" />
+    <ClInclude Include="Hotkeys.h" />
+    <ClInclude Include="Include\Globals.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="RuseKeys.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Globals.rc">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'">_DEMO_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">_DEMO_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

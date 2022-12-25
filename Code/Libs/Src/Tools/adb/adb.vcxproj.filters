@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{c9a8249c-963d-42fb-a106-3a854f7f4f45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{9dbd12a1-9505-4d28-bd04-7192b21a3f0f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="HIBIGBOY.wav">
+      <Filter>Resource</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="database.RC">
+      <Filter>Resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="devil.bmp">
+      <Filter>Resource</Filter>
+    </Image>
+    <Image Include="icon1.ico">
+      <Filter>Resource</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Include\DACOM.H">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\DAVariant.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Document.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\EventSys.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\FDump.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Filesys.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\HKEvent.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\HeapObj.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\IConnection.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\IDispatch.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\IDocClient.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\IStringSet.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IStructEnumerator.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\MemFile.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjClass.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Pch.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\ProcessHeaders.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RawData.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Results.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\STDDAT.H">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Viewer\Docuview\Symtable.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\TComponent.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TDocClient.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\TSmartPointer.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\TYPEDEFS.H">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Userdefaults.H">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\ViewCnst.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Viewer.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\DXSDK\Include\basetsd.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="dbexport.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="dbimport.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="dbkeys.H">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="dbstuff.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="dbsymbols.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="dbtreeview.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="export_mdb.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ADBFileImport.cpp" />
+    <ClCompile Include="DbImport.cpp" />
+    <ClCompile Include="MicrosoftDatabaseExport.cpp" />
+    <ClCompile Include="PathExport.cpp" />
+    <ClCompile Include="Pch.cpp" />
+    <ClCompile Include="Printheap.cpp" />
+    <ClCompile Include="..\..\Common\ProcessHeaders.cpp" />
+    <ClCompile Include="RawData.cpp" />
+    <ClCompile Include="Userdefaults.CPP" />
+    <ClCompile Include="database.CPP" />
+    <ClCompile Include="dbexport.cpp" />
+    <ClCompile Include="dbstuff.cpp" />
+    <ClCompile Include="dbsymbols.cpp" />
+    <ClCompile Include="dbtreeview.cpp" />
+    <ClCompile Include="export_mdb.cpp" />
+  </ItemGroup>
+</Project>

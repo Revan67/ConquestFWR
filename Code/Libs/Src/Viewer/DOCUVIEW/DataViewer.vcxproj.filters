@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{bb66b567-28c3-466d-87bc-f810c7111b68}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{8eddc14c-530e-4044-955a-8be77400c86c}</UniqueIdentifier>
+      <Extensions>cpp</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DataView.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ferror.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\IStringSet.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="IStructEnumerator.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lxtables.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Parserrs.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Prttoken.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Symtable.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tokendef.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\ViewCnst.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Viewer.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="treeview.h">
+      <Filter>Source files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DataParser.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="DataView.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Document.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="FERROR.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="FILESTRM.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="LXTABLES.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="NUMBER.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="PARS1.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="PRTTOKEN.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="SCANNER.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="StringSet.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="SYMTABLE.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="treeview.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewCnst.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="bitmap1.bmp" />
+    <Image Include="icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DataView.rc" />
+  </ItemGroup>
+</Project>

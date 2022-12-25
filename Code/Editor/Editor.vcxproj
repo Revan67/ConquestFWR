@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <SccProjectName>Editor</SccProjectName>
+    <SccAuxPath />
+    <SccLocalPath>.</SccLocalPath>
+    <SccProvider>MSSCCI:NXN alienbrain</SccProvider>
+    <Keyword>MFCProj</Keyword>
+    <ProjectGuid>{755A9866-2853-405D-9833-BB8D37CB3255}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>17.0.33205.214</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\Libs\Inclue;..\App\Src\Include;..\App\Src;..\App\DInclude;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Release/Editor.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
+      <OutputFile>.\Release/Editor.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ProgramDatabaseFile>.\Release/Editor.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release/Editor.tlb</TypeLibraryName>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\treelist;Z:\CQ2\Code\App\DInclude;..\Libs\Inclue;..\App\Src\Include;..\App\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;EDITOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Debug/Editor.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
+      <ObjectFileName>.\Debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug/</ProgramDataBaseFileName>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>Vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\Debug/Editor.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <IgnoreSpecificDefaultLibraries>LIBC;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\Debug/Editor.pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapExports>false</MapExports>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>NotSet</TargetMachine>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>Z:\CQ2\Code\App\DInclude;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Debug/Editor.tlb</TypeLibraryName>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\App\Src\SuperTrans.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="About.cpp" />
+    <ClCompile Include="AssetBar.cpp" />
+    <ClCompile Include="BmpRead.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Campaign.cpp" />
+    <ClCompile Include="Cleanup.cpp" />
+    <ClCompile Include="Clipboard.cpp" />
+    <ClCompile Include="CQ2Render.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="cqpipeline.cpp" />
+    <ClCompile Include="Crc32Static.cpp" />
+    <ClCompile Include="DataList.cpp" />
+    <ClCompile Include="DialogProc_ObjectProperties.cpp" />
+    <ClCompile Include="Editor.cpp" />
+    <ClCompile Include="EditorDoc.cpp" />
+    <ClCompile Include="EditorView.cpp" />
+    <ClCompile Include="Editor_DACOM.cpp" />
+    <ClCompile Include="EntityBar.cpp" />
+    <ClCompile Include="ExportImport.cpp" />
+    <ClCompile Include="FieldObject.cpp" />
+    <ClCompile Include="GroupBar.cpp" />
+    <ClCompile Include="Hotkey.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="MainLoop.cpp" />
+    <ClCompile Include="MeshRender.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ModeCampaign.cpp" />
+    <ClCompile Include="ModeScenario.cpp" />
+    <ClCompile Include="ModeSector.cpp" />
+    <ClCompile Include="ModeStart.cpp" />
+    <ClCompile Include="ModeSystem.cpp" />
+    <ClCompile Include="NewCampaignDlg.cpp" />
+    <ClCompile Include="NewGroup.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="ObjectFamily.cpp" />
+    <ClCompile Include="OutputBar.cpp" />
+    <ClCompile Include="Parser.cpp" />
+    <ClCompile Include="RenderSystem.cpp" />
+    <ClCompile Include="scbarcf.cpp" />
+    <ClCompile Include="scbarg.cpp" />
+    <ClCompile Include="Scenario.cpp" />
+    <ClCompile Include="Sector.cpp" />
+    <ClCompile Include="SectorBar.cpp" />
+    <ClCompile Include="SideBar.cpp" />
+    <ClCompile Include="sizecbar.cpp" />
+    <ClCompile Include="SpaceEnv.cpp" />
+    <ClCompile Include="SpaceObject.cpp" />
+    <ClCompile Include="Splash.cpp" />
+    <ClCompile Include="SplitWnd.cpp" />
+    <ClCompile Include="StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="StringEditor.cpp" />
+    <ClCompile Include="SysContainer.cpp" />
+    <ClCompile Include="System.cpp" />
+    <ClCompile Include="SystemBar.cpp" />
+    <ClCompile Include="SystemProps.cpp" />
+    <ClCompile Include="TerrainMap.cpp" />
+    <ClCompile Include="Tgaread.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="tinyxml\tinystr.cpp" />
+    <ClCompile Include="tinyxml\tinyxml.cpp" />
+    <ClCompile Include="tinyxml\tinyxmlerror.cpp" />
+    <ClCompile Include="tinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="TManager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Trace.cpp" />
+    <ClCompile Include="treelist\MltiTree.cpp" />
+    <ClCompile Include="TriggerObject.cpp" />
+    <ClCompile Include="VfxRead.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="WormholeObject.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\App\DInclude\DAdmiralBar.h" />
+    <ClInclude Include="..\App\DInclude\DAirDefense.h" />
+    <ClInclude Include="..\App\DInclude\DAnimate.h" />
+    <ClInclude Include="..\App\DInclude\DArtileryLauncher.h" />
+    <ClInclude Include="..\App\DInclude\Data.h" />
+    <ClInclude Include="..\App\DInclude\DBarrageLauncher.h" />
+    <ClInclude Include="..\App\DInclude\DBaseData.h" />
+    <ClInclude Include="..\App\DInclude\DBlackHole.h" />
+    <ClInclude Include="..\App\DInclude\DBuffLauncher.h" />
+    <ClInclude Include="..\App\DInclude\DBuildObj.h" />
+    <ClInclude Include="..\App\DInclude\DBuildPlat.h" />
+    <ClInclude Include="..\App\DInclude\DBuildSave.h" />
+    <ClInclude Include="..\App\DInclude\DBuildSupPlat.h" />
+    <ClInclude Include="..\App\DInclude\DButton.h" />
+    <ClInclude Include="..\App\DInclude\DCamera.h" />
+    <ClInclude Include="..\App\DInclude\DChatMenu.h" />
+    <ClInclude Include="..\App\DInclude\DCloakLauncher.h" />
+    <ClInclude Include="..\App\DInclude\DCombobox.h" />
+    <ClInclude Include="..\App\DInclude\DConfirm.h" />
+    <ClInclude Include="..\App\DInclude\DCQGame.h" />
+    <ClInclude Include="..\App\DInclude\DDiplomacyButton.h" />
+    <ClInclude Include="..\App\DInclude\DDropDown.h" />
+    <ClInclude Include="..\App\DInclude\DEdit.h" />
+    <ClInclude Include="..\App\DInclude\DEffect.h" />
+    <ClInclude Include="..\App\DInclude\DEffectOpts.h" />
+    <ClInclude Include="..\App\DInclude\DEndGame.h" />
+    <ClInclude Include="..\App\DInclude\DEngineTrail.h" />
+    <ClInclude Include="..\App\DInclude\DExplosion.h" />
+    <ClInclude Include="..\App\DInclude\DExtension.h" />
+    <ClInclude Include="..\App\DInclude\DFabricator.h" />
+    <ClInclude Include="..\App\DInclude\DFabSave.h" />
+    <ClInclude Include="..\App\DInclude\DFancyLaunch.h" />
+    <ClInclude Include="..\App\DInclude\DField.h" />
+    <ClInclude Include="..\App\DInclude\DFighter.h" />
+    <ClInclude Include="..\App\DInclude\DFighterWing.h" />
+    <ClInclude Include="..\App\DInclude\DFlagship.h" />
+    <ClInclude Include="..\App\DInclude\DFog.h" />
+    <ClInclude Include="..\App\DInclude\DFonts.h" />
+    <ClInclude Include="..\App\DInclude\DGasHarvester.h" />
+    <ClInclude Include="..\App\DInclude\DGeneralPlat.h" />
+    <ClInclude Include="..\App\DInclude\DGlobalData.h" />
+    <ClInclude Include="..\App\DInclude\DGroup.h" />
+    <ClInclude Include="..\App\DInclude\DGunPlat.h" />
+    <ClInclude Include="..\App\DInclude\DHotButton.h" />
+    <ClInclude Include="..\App\DInclude\DHotButtonText.h" />
+    <ClInclude Include="..\App\DInclude\DHotStatic.h" />
+    <ClInclude Include="..\App\DInclude\DIcon.h" />
+    <ClInclude Include="..\App\DInclude\Digoptions.h" />
+    <ClInclude Include="..\App\DInclude\DInstance.h" />
+    <ClInclude Include="..\App\DInclude\DJumpGate.h" />
+    <ClInclude Include="..\App\DInclude\DJumpLauncher.h" />
+    <ClInclude Include="..\App\DInclude\DJumpPlat.h" />
+    <ClInclude Include="..\App\DInclude\DJumpSave.h" />
+    <ClInclude Include="..\App\DInclude\DLauncher.h" />
+    <ClInclude Include="..\App\DInclude\DLight.h" />
+    <ClInclude Include="..\App\DInclude\DListBox.h" />
+    <ClInclude Include="..\App\DInclude\DLoadSave.h" />
+    <ClInclude Include="..\App\DInclude\DMapGen.h" />
+    <ClInclude Include="..\App\DInclude\DMBaseData.h" />
+    <ClInclude Include="..\App\DInclude\DMenu1.h" />
+    <ClInclude Include="..\App\DInclude\DMenuBriefing.h" />
+    <ClInclude Include="..\App\DInclude\DMenuObjectives.h" />
+    <ClInclude Include="..\App\DInclude\DMenu_Credits.h" />
+    <ClInclude Include="..\App\DInclude\DMinefield.h" />
+    <ClInclude Include="..\App\DInclude\DMissionEnum.h" />
+    <ClInclude Include="..\App\DInclude\DMovieCamera.h" />
+    <ClInclude Include="..\App\DInclude\DMovieScreen.h" />
+    <ClInclude Include="..\App\DInclude\DMTechNode.h" />
+    <ClInclude Include="..\App\DInclude\DMultiCloakLauncher.h" />
+    <ClInclude Include="..\App\DInclude\DMusic.h" />
+    <ClInclude Include="..\App\DInclude\DNebula.h" />
+    <ClInclude Include="..\App\DInclude\DNewPlayer.h" />
+    <ClInclude Include="..\App\DInclude\DNugget.h" />
+    <ClInclude Include="..\App\DInclude\DObjectGenerator.h" />
+    <ClInclude Include="..\App\DInclude\DObjNames.h" />
+    <ClInclude Include="..\App\DInclude\DPause.h" />
+    <ClInclude Include="..\App\DInclude\DPingLauncher.h" />
+    <ClInclude Include="..\App\DInclude\DPlanet.h" />
+    <ClInclude Include="..\App\DInclude\DPlatform.h" />
+    <ClInclude Include="..\App\DInclude\DPlatSave.h" />
+    <ClInclude Include="..\App\DInclude\DPlayerBomb.h" />
+    <ClInclude Include="..\App\DInclude\DPlayerMenu.h" />
+    <ClInclude Include="..\App\DInclude\DProgressStatic.h" />
+    <ClInclude Include="..\App\DInclude\DQueueControl.h" />
+    <ClInclude Include="..\App\DInclude\DQuickSave.h" />
+    <ClInclude Include="..\App\DInclude\DReconLaunch.h" />
+    <ClInclude Include="..\App\DInclude\DRecoveryShip.h" />
+    <ClInclude Include="..\App\DInclude\DRecoveryShipSave.h" />
+    <ClInclude Include="..\App\DInclude\DRefinePlat.h" />
+    <ClInclude Include="..\App\DInclude\DRepairPlat.h" />
+    <ClInclude Include="..\App\DInclude\DRepairSave.h" />
+    <ClInclude Include="..\App\DInclude\DResearch.h" />
+    <ClInclude Include="..\App\DInclude\DScriptObject.h" />
+    <ClInclude Include="..\App\DInclude\DScrollBar.h" />
+    <ClInclude Include="..\App\DInclude\DSector.h" />
+    <ClInclude Include="..\App\DInclude\DSellPlat.h" />
+    <ClInclude Include="..\App\DInclude\DShipLaunch.h" />
+    <ClInclude Include="..\App\DInclude\DShipSave.h" />
+    <ClInclude Include="..\App\DInclude\DShipSilButton.h" />
+    <ClInclude Include="..\App\DInclude\DSilhouette.h" />
+    <ClInclude Include="..\App\DInclude\DSlider.h" />
+    <ClInclude Include="..\App\DInclude\DSounds.h" />
+    <ClInclude Include="..\App\DInclude\DSpaceship.h" />
+    <ClInclude Include="..\App\DInclude\DSpecial.h" />
+    <ClInclude Include="..\App\DInclude\DSpecialData.h" />
+    <ClInclude Include="..\App\DInclude\DStatic.h" />
+    <ClInclude Include="..\App\DInclude\DStringPack.h" />
+    <ClInclude Include="..\App\DInclude\DSupplyPlat.h" />
+    <ClInclude Include="..\App\DInclude\DSupplyShip.h" />
+    <ClInclude Include="..\App\DInclude\DSupplyShipSave.h" />
+    <ClInclude Include="..\App\DInclude\DSysKitSaveLoad.h" />
+    <ClInclude Include="..\App\DInclude\DSysmap.h" />
+    <ClInclude Include="..\App\DInclude\DTabControl.h" />
+    <ClInclude Include="..\App\DInclude\DTalorianLauncher.h" />
+    <ClInclude Include="..\App\DInclude\DToolbar.h" />
+    <ClInclude Include="..\App\DInclude\DTractorWaveLauncher.h" />
+    <ClInclude Include="..\App\DInclude\DTrail.h" />
+    <ClInclude Include="..\App\DInclude\DTrigger.h" />
+    <ClInclude Include="..\App\DInclude\DTroopship.h" />
+    <ClInclude Include="..\App\DInclude\DTurret.h" />
+    <ClInclude Include="..\App\DInclude\DTypes.h" />
+    <ClInclude Include="..\App\DInclude\DUnitSounds.h" />
+    <ClInclude Include="..\App\DInclude\DVLaunch.h" />
+    <ClInclude Include="..\App\DInclude\DWaypoint.h" />
+    <ClInclude Include="..\App\DInclude\DWeapon.h" />
+    <ClInclude Include="..\App\DInclude\DWormholeLauncher.h" />
+    <ClInclude Include="..\App\DInclude\GameTypes.h" />
+    <ClInclude Include="..\App\DInclude\ObjClass.h" />
+    <ClInclude Include="..\App\DInclude\TYPEDEFS.H" />
+    <ClInclude Include="..\App\Src\CQImage.h" />
+    <ClInclude Include="..\App\Src\GridVector.h" />
+    <ClInclude Include="..\App\Src\Include\CQTrace.h" />
+    <ClInclude Include="..\App\Src\Include\pch.h" />
+    <ClInclude Include="..\App\Src\Include\VFX.H" />
+    <ClInclude Include="..\App\Src\IResource.h" />
+    <ClInclude Include="..\App\Src\MyVertex.h" />
+    <ClInclude Include="..\App\Src\Startup.h" />
+    <ClInclude Include="..\App\Src\SuperTrans.h" />
+    <ClInclude Include="..\Libs\Include\3dmath.h" />
+    <ClInclude Include="..\Libs\Include\AnimTypes.h" />
+    <ClInclude Include="..\Libs\Include\BASECAM.H" />
+    <ClInclude Include="..\Libs\Include\DACOM.H" />
+    <ClInclude Include="..\Libs\Include\DAVariant.h" />
+    <ClInclude Include="..\Libs\Include\da_d3dtypes.h" />
+    <ClInclude Include="..\Libs\Include\da_heap_utility.h" />
+    <ClInclude Include="..\Libs\Include\Document.h" />
+    <ClInclude Include="..\Libs\Include\ENGINE.H" />
+    <ClInclude Include="..\Libs\Include\EventIterator.h" />
+    <ClInclude Include="..\Libs\Include\EventSys.h" />
+    <ClInclude Include="..\Libs\Include\FDump.h" />
+    <ClInclude Include="..\Libs\Include\Filesys.h" />
+    <ClInclude Include="..\Libs\Include\FVF.h" />
+    <ClInclude Include="..\Libs\Include\gamesys.H" />
+    <ClInclude Include="..\Libs\Include\HeapObj.h" />
+    <ClInclude Include="..\Libs\Include\HKEvent.h" />
+    <ClInclude Include="..\Libs\Include\IAnim.h" />
+    <ClInclude Include="..\Libs\Include\ICamera.h" />
+    <ClInclude Include="..\Libs\Include\ichannel.h" />
+    <ClInclude Include="..\Libs\Include\IConnection.h" />
+    <ClInclude Include="..\Libs\Include\IDispatch.h" />
+    <ClInclude Include="..\Libs\Include\IDocClient.h" />
+    <ClInclude Include="..\Libs\Include\IHardPoint.h" />
+    <ClInclude Include="..\Libs\Include\IProfileParser.h" />
+    <ClInclude Include="..\Libs\Include\IRenderPrimitive.h" />
+    <ClInclude Include="..\Libs\Include\ITextureLibrary.h" />
+    <ClInclude Include="..\Libs\Include\IVertexBufferManager.h" />
+    <ClInclude Include="..\Libs\Include\JointInfo.h" />
+    <ClInclude Include="..\Libs\Include\lightman.h" />
+    <ClInclude Include="..\Libs\Include\matrix.h" />
+    <ClInclude Include="..\Libs\Include\matrix4.h" />
+    <ClInclude Include="..\Libs\Include\MemFile.h" />
+    <ClInclude Include="..\Libs\Include\PersistMath.h" />
+    <ClInclude Include="..\Libs\Include\pixel.h" />
+    <ClInclude Include="..\Libs\Include\quat.h" />
+    <ClInclude Include="..\Libs\Include\renderer.h" />
+    <ClInclude Include="..\Libs\Include\RenderProp.h" />
+    <ClInclude Include="..\Libs\Include\rendpipeline.h" />
+    <ClInclude Include="..\Libs\Include\Results.h" />
+    <ClInclude Include="..\Libs\Include\RPUL\PrimitiveBuilder.h" />
+    <ClInclude Include="..\Libs\Include\RPVertex1.h" />
+    <ClInclude Include="..\Libs\Include\Streamer.h" />
+    <ClInclude Include="..\Libs\Include\SYSTEM.H" />
+    <ClInclude Include="..\Libs\Include\TComponent.h" />
+    <ClInclude Include="..\Libs\Include\TempStr.h" />
+    <ClInclude Include="..\Libs\Include\TSmartPointer.h" />
+    <ClInclude Include="..\Libs\Include\TYPEDEFS.H" />
+    <ClInclude Include="..\Libs\Include\vector.h" />
+    <ClInclude Include="..\Libs\Include\vector4.h" />
+    <ClInclude Include="..\Libs\Include\VertexBufferDesc.h" />
+    <ClInclude Include="..\Libs\Include\View2d.h" />
+    <ClInclude Include="..\Libs\Include\ViewCnst.h" />
+    <ClInclude Include="..\Libs\Include\Viewer.h" />
+    <ClInclude Include="..\Libs\Include\WindowManager.h" />
+    <ClInclude Include="..\Libs\Include\xform.h" />
+    <ClInclude Include="AssetBar.h" />
+    <ClInclude Include="C:\DX90SDK\Include\basetsd.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Campaign.h" />
+    <ClInclude Include="Clipboard.h" />
+    <ClInclude Include="CQ2Render.h" />
+    <ClInclude Include="Crc32Static.h" />
+    <ClInclude Include="DataList.h" />
+    <ClInclude Include="Editor.h" />
+    <ClInclude Include="EditorDoc.h" />
+    <ClInclude Include="EditorView.h" />
+    <ClInclude Include="EntityBar.h" />
+    <ClInclude Include="ExportImport.h" />
+    <ClInclude Include="FieldManager.h" />
+    <ClInclude Include="globals.h" />
+    <ClInclude Include="GroupBar.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="Mode.h" />
+    <ClInclude Include="NewCampaignDlg.h" />
+    <ClInclude Include="NewGroup.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="ObjectFamily.h" />
+    <ClInclude Include="OutputBar.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="SaveLoad.h" />
+    <ClInclude Include="scbarg.h" />
+    <ClInclude Include="Scenario.h" />
+    <ClInclude Include="SectorBar.h" />
+    <ClInclude Include="SideBar.h" />
+    <ClInclude Include="sizecbar.h" />
+    <ClInclude Include="SpaceEnv.h" />
+    <ClInclude Include="Splash.h" />
+    <ClInclude Include="SplitWnd.h" />
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="StringEditor.h" />
+    <ClInclude Include="SystemBar.h" />
+    <ClInclude Include="SystemProps.h" />
+    <ClInclude Include="SystemStructs.h" />
+    <ClInclude Include="TerrainMap.h" />
+    <ClInclude Include="tinyxml\tinystr.h" />
+    <ClInclude Include="tinyxml\tinyxml.h" />
+    <ClInclude Include="TManager.h" />
+    <ClInclude Include="TRect.h" />
+    <ClInclude Include="treelist\MltiTree.h" />
+    <ClInclude Include="undo.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\App\Src\Search.asm">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ml /Zi /c /Cx /coff /nologo /Fo$(IntDir)%(Filename).obj %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename).obj;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ml /Zi /c /Cx /coff /nologo /Fo$(IntDir)%(Filename).obj %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename).obj;%(Outputs)</Outputs>
+    </CustomBuild>
+    <None Include="res\Editor.rc2" />
+    <None Include="res\Graphics\Icons\Misc\cursor1.cur" />
+    <CustomBuild Include="Winvfx16.asm">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ml /c /Cx /coff /nologo /Fo$(IntDir)%(Filename).obj %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename).obj;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Editor.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\bitmap1.bmp" />
+    <Image Include="res\bitmap2.bmp" />
+    <Image Include="res\bmp00001.bmp" />
+    <Image Include="res\Editor.ico" />
+    <Image Include="res\EditorDoc.ico" />
+    <Image Include="res\Graphics\Icons\Elements\CLOUD.ICO" />
+    <Image Include="res\Graphics\Icons\Elements\EARTH.ICO" />
+    <Image Include="res\Graphics\Icons\Elements\FIRE.ICO" />
+    <Image Include="res\Graphics\Icons\Elements\LITENING.ICO" />
+    <Image Include="res\Graphics\Icons\Elements\MOON01.ICO" />
+    <Image Include="res\Graphics\Icons\Elements\MOON02.ICO" />
+    <Image Include="res\Graphics\Icons\Elements\MOON03.ICO" />
+    <Image Include="res\Graphics\Icons\Elements\MOON04.ICO" />
+    <Image Include="res\Graphics\Icons\Elements\MOON05.ICO" />
+    <Image Include="res\Graphics\Icons\Elements\MOON06.ICO" />
+    <Image Include="res\Graphics\Icons\Elements\MOON07.ICO" />
+    <Image Include="res\Graphics\Icons\Elements\MOON08.ICO" />
+    <Image Include="res\Graphics\Icons\Elements\RAIN.ICO" />
+    <Image Include="res\Graphics\Icons\Elements\SNOW.ICO" />
+    <Image Include="res\Graphics\Icons\Elements\SUN.ICO" />
+    <Image Include="res\Graphics\Icons\Elements\WATER.ICO" />
+    <Image Include="res\Graphics\Icons\Industry\ROCKET.ICO" />
+    <Image Include="res\Graphics\Icons\Misc\EXCLEM.ICO" />
+    <Image Include="res\Graphics\Icons\Misc\FACE01.ICO" />
+    <Image Include="res\Graphics\Icons\Misc\FACE02.ICO" />
+    <Image Include="res\Graphics\Icons\Misc\FACE03.ICO" />
+    <Image Include="res\Graphics\Icons\Misc\FACE05.ICO" />
+    <Image Include="res\Graphics\Icons\Office\FOLDER03.ICO" />
+    <Image Include="res\Graphics\Icons\Win95\CLSDFOLD.ICO" />
+    <Image Include="res\Icons\campaign_mode.ico" />
+    <Image Include="res\Icons\scenario_mode.ico" />
+    <Image Include="res\Icons\sector_mode.ico" />
+    <Image Include="res\Icons\system_mode.ico" />
+    <Image Include="res\Icons\trigger_playerstart.ico" />
+    <Image Include="res\title-splash.bmp" />
+    <Image Include="res\Toolbar.bmp" />
+    <Image Include="res\toolbar1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\Libs\Static\DACOM.lib" />
+    <Library Include="..\Libs\Static\MathLib.lib" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

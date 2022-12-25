@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{cde1d590-e0ea-4889-9d1a-1da0a6843561}</UniqueIdentifier>
+      <Extensions>cpp</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{d09d50f4-80b2-4ed2-ab85-2bfe9d62c454}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Shared Headers">
+      <UniqueIdentifier>{f630b550-c02b-4b68-948b-a9c85e39f890}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Anim.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimComponent.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="channel.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="mstack.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Anim.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="animver.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="channel.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

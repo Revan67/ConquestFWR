@@ -1,0 +1,634 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2e4041eb-19b5-487e-a9b2-be5d079a5102}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8908dd3b-dfb0-42c9-b2de-d24359ed20f8}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;fi;fd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{c96f0188-448e-4d69-90b5-8537182cbab7}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Extern Headers">
+      <UniqueIdentifier>{0dd080b0-476e-4072-a73a-6fcb7e669178}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Common\3db.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\CMESH.CPP">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\CMP.CPP">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\CYLINDER.CPP">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\DA_MESH.CPP">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\MISC.CPP">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\RayPolygon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\SORTQ.CPP">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\UTF.CPP">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="asciiexp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\eigen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="export.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\extents.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\imagefilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\matrix4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\minbox3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\minsphr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\mtl_txt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\rgbutils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\volint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="asciiexp.def">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Common\3DB.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ASCIITOK.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\CHANNEL.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\CMESH.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\CMP.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\CYLINDER.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\EXTENTS.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\SGI_UTF.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\VOLINT.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="asciiexp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\da_mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\eigen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\imagefilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lod.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\minsphr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\misc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\mtl_txt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\names.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\rgbutils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\cssdk\include\BIPEXP.H">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Include\CONT_LOD.H">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Include\ChannelEventTypes.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\DefaultActions.H">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Include\FaceProp.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\ILayerProperties.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\INodeGIProperties.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\INodeLayerProperties.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\MNNormalSpec.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Include\PERSISTCOMPOUND.H">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Include\PERSISTHARDPOINT.H">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Include\PersistChannel.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Include\PersistMath.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Include\PersistMisc.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\cssdk\include\Phyexp.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Include\TYPEDEFS.H">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Include\TextureCoord.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\acolor.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\actiontable.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\animtbl.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\appio.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\assert1.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\baseinterface.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\DX90SDK\Include\basetsd.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\bitarray.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\bitmap.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\bmmlib.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\box2.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\box3.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\buildnumber.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\buildver.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\captypes.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\channels.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\cmdmode.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\color.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\coreexp.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\custcont.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\daprop.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\dbgprint.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\decomp.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\dpoint3.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\euler.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\evuser.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\excllist.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\export.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\gbuf.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\gencam.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\genhier.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\genlight.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\genshape.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\geom.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\geomlib.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\gfloat.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\gfx.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\gfxlib.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\gutil.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\hitdata.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\hold.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\iRenderPresets.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\iTargetedIO.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\icolorman.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\ifnpub.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\impapi.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\impexp.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\impexpintf.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\imtl.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\inode.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\interpik.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\interval.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\ioapi.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\iparamb.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\iparamb2.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\iparamm.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\ipipelineclient.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\ipoint2.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\ipoint3.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\istdplug.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\itreevw.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Include\libver.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\linklist.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\lockid.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\log.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Include\matrix.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\matrix2.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\matrix3.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Include\matrix4.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\max.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\maxapi.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\maxcom.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\maxtess.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\maxtypes.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\maxversion.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\mesh.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\meshlib.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\minbox3.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\mnbigmat.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\mncommon.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\mnmath.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\mnmesh.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\modstack.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\mouseman.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\mtl.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\namesel.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\nametab.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\notetrck.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\object.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\objmode.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\palutil.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\paramtype.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\patch.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\patchlib.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\patchobj.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Include\persistanim.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\plugapi.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\plugin.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\point2.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\point3.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\point4.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\polyobj.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\polyshp.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\ptrvec.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\quat.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\random.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\ref.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\render.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\renderelements.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\rtclick.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\sbmtlapi.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\sceneapi.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\sfx.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\shape.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\shphier.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\shpsels.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\snap.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\soundobj.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\spline3d.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\stack.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\stack3.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\stdmat.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\strbasic.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\strclass.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\surf_api.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\svcore.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\systemutilities.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\tab.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\templt.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\trig.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\trimeshlod.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\triobj.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\udmia64.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\units.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\utilexp.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\utilintf.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\utillib.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Include\vector.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Include\vector4.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\vedge.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\winutil.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Include\xform.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\xtcobject.h">
+      <Filter>Extern Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="asciiexp.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

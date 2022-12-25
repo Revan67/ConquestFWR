@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DOSFile", "DOSFile.vcxproj", "{4AB7D2A5-86A2-475A-8CDA-DA61643C1803}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug Thread Safe|x86 = Debug Thread Safe|x86
+		Debug|x86 = Debug|x86
+		MSHeap Debug|x86 = MSHeap Debug|x86
+		MSHeap Release|x86 = MSHeap Release|x86
+		Release Thread Safe|x86 = Release Thread Safe|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AB7D2A5-86A2-475A-8CDA-DA61643C1803}.Debug Thread Safe|x86.ActiveCfg = Debug Thread Safe|Win32
+		{4AB7D2A5-86A2-475A-8CDA-DA61643C1803}.Debug Thread Safe|x86.Build.0 = Debug Thread Safe|Win32
+		{4AB7D2A5-86A2-475A-8CDA-DA61643C1803}.Debug|x86.ActiveCfg = Debug|Win32
+		{4AB7D2A5-86A2-475A-8CDA-DA61643C1803}.Debug|x86.Build.0 = Debug|Win32
+		{4AB7D2A5-86A2-475A-8CDA-DA61643C1803}.MSHeap Debug|x86.ActiveCfg = MSHeap Debug|Win32
+		{4AB7D2A5-86A2-475A-8CDA-DA61643C1803}.MSHeap Debug|x86.Build.0 = MSHeap Debug|Win32
+		{4AB7D2A5-86A2-475A-8CDA-DA61643C1803}.MSHeap Release|x86.ActiveCfg = MSHeap Release|Win32
+		{4AB7D2A5-86A2-475A-8CDA-DA61643C1803}.MSHeap Release|x86.Build.0 = MSHeap Release|Win32
+		{4AB7D2A5-86A2-475A-8CDA-DA61643C1803}.Release Thread Safe|x86.ActiveCfg = Release Thread Safe|Win32
+		{4AB7D2A5-86A2-475A-8CDA-DA61643C1803}.Release Thread Safe|x86.Build.0 = Release Thread Safe|Win32
+		{4AB7D2A5-86A2-475A-8CDA-DA61643C1803}.Release|x86.ActiveCfg = Release|Win32
+		{4AB7D2A5-86A2-475A-8CDA-DA61643C1803}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {93B850D6-CA3D-4724-A134-9E4B1BA32B95}
+	EndGlobalSection
+EndGlobal

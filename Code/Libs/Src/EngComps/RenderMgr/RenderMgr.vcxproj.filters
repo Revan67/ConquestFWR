@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{bc77b621-aad7-43a4-a5e3-99580fb726db}</UniqueIdentifier>
+      <Extensions>cpp</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{8ae9ffd3-8a63-4e0d-a28c-df54bb926486}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Shared Headers">
+      <UniqueIdentifier>{c4b6dce8-8219-48d4-95aa-5bd50aa1e889}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="chull.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderMgr.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="chull.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderArchetype.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\3dmath.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Basecam.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Dacom.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\DAVariant.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\display.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\engcomp.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Engine.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\FDump.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Filesys.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\HeapObj.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\ICamera.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\IDispatch.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\IDumpText.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\IRenderComponent.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\matrix.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\model.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\pblist.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\PersistMath.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\polybatch.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\quat.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\renderer.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Results.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Stddat.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\SysConsumerDesc.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\TComponent.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\TDispatch.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\TSmartPointer.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Typedefs.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\vector.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Vfx.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\xform.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

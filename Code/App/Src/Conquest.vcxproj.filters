@@ -1,0 +1,1017 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{73e5ce1c-afa6-4105-8e29-dad0fe87553d}</UniqueIdentifier>
+      <Extensions>cur;ico;bmp</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{bc769d6a-ce23-4184-946e-862d7b25334f}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
+    <Filter Include="Data Definition Files">
+      <UniqueIdentifier>{74d8ee7e-6797-4370-9d1d-f30a777915cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{e72eebee-e2a6-466d-a6d0-965dfa561a56}</UniqueIdentifier>
+      <Extensions>.h</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Conquest.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Res\Icon1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource2.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DAirDefense.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DArtileryLauncher.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\Data.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DBarrageLauncher.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DBaseData.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DBlackHole.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DBuffLauncher.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DBuildObj.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DBuildPlat.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DBuildSave.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DBuildSupPlat.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DCamera.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DCloakLauncher.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DEffect.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DEffectOpts.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DEngineTrail.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DExplosion.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DExtension.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DFabricator.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DFabSave.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DFancyLaunch.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dinclude\DField.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DFighter.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DFighterWing.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DFlagship.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DFog.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DGeneralPlat.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DGroup.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DGunPlat.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DInstance.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DJumpGate.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DJumpLauncher.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DJumpPlat.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DJumpSave.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DLauncher.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DLight.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DMBaseData.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dinclude\DMinefield.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DMissionEnum.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DMovieCamera.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DMTechNode.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DMultiCloakLauncher.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DMusic.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DNebula.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DNugget.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DObjectGenerator.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DObjNames.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DPingLauncher.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DPlanet.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dinclude\DPlatform.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DPlatSave.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DPlayerBomb.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DQuickSave.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DReconLaunch.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DRefinePlat.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DRepairPlat.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DRepairSave.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DResearch.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DScriptObject.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DSector.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DSellPlat.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DShipLaunch.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DShipSave.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DSounds.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DSpaceship.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DSpecial.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DSpecialData.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DStarfield.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DSupplyPlat.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DSupplyShip.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DSupplyShipSave.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DSysmap.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DTalorianLauncher.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DTractorWaveLauncher.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DTrail.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DTrigger.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DTroopship.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DTurret.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DTypes.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DUnitSounds.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DVLaunch.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DWaypoint.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DWeapon.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DWormholeLauncher.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\GameTypes.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\ObjClass.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\Sfxid.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="anim2d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiMatter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchHolder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BBMesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CloakLauncher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommTrack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="corners.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CQExtent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CQLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Damage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EventScheduler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FancyLaunch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Field.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FighterWing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FogOfWar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Globals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Hotkeys.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IAdmiral.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IAttack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IBlast.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IBlinkers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IBuild.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IBuildShip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ICloak.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IDust.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IEngineTrail.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IExplosion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ifabricator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IFighter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IGotoPos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IGroup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IHarvest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IJumpGate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IJumpPlat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ILauncher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IMineField.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IMineLayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IMissionActor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IMorphMesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IMovieCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="INugget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IObjectGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IPlanet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IRecon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IRecoverShip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IRepairee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IRepairPlatform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IScriptObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IShipDamage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IShipMove.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ISpaceWave.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ISupplier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ITalorianEffect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ITrigger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ITroopship.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IUnbornMeshList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IUpgrade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IVertexBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IWeapon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IWormholeBlast.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshExplode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshRender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MineField.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MPart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiCloakLauncher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyVertex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NetVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMapIterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PingLauncher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomGen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RangeFinder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ReconLaunch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleMesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Startup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SuperTrans.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SysMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TFabricator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="THashList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TObjBuild.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TObjCloak.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TObjControl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TObjDamage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TObjExtension.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TObjExtent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TObjFControl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TObjFrame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TObjGlow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TObjMission.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TObjMove.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TObjPhys.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TObjRender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TObjRepair.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TObjSelect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TObjTeam.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TObjTrans.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TObjWarp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TPlatform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\TriggerFlags.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TSpaceShip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VLaunch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Aegis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AirDefense.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="anim2d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimObj.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnmBolt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AntiMatter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="arc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AreaEffectBolt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArtileryLauncher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AutoCannon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BarrageLauncher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="beam.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackhole.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blast.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Blinkers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BuffLauncher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BuildPlat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BuildShip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BuildSupPlat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CloakEffect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CloakLauncher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cloud.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CommTrack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Conquest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CQExtent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Damage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debris.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Destabilizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DumbReconProbe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Dust.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineTrail.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EventScheduler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="explosion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Fabricator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FancyLaunch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Fighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FighterWing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FireBall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FlagShip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FogOfWar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GattlingBeam.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneralPlat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GroupObj.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gunboat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GunPlat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HarvestShip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InterfaceManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="jumpgate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JumpLauncher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JumpPlat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KamikazeWing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="light.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Macrohelp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MantisBuild.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MassDisruptor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshExplode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshObj.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshRender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mimic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MineField.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MineLayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MorphMesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MovieCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiCloakLauncher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Nugget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjComm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjGen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMapIterator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMove.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Overdrive.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleObj.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PingLauncher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlanetKillerBolt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Planetoid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlasmaBolt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerBomb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomGen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ReconLaunch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ReconProbe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RefinePlat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RepairPlat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RepellentCloud.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Repulsor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RepulsorWave.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SellPlat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleMesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SolarianBuild.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpaceShip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpaceWave.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpecialBolt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpiderDrone.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Splash.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StacticInit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StatisBolt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Streak.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SuperTrans.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SupplyShip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Swapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Synthesis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SysMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TalorianEffect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TalorianLauncher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TerrainMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TerranBuild.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TerranDrone.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Testbed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tractor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TractorWaveLauncher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Trail.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Trigger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TroopPod.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Troopship.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Turret.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UIAnim.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UnbornMeshList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VLaunch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Waypoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WormholeBlast.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WormholeLauncher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Zealot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Search.asm">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

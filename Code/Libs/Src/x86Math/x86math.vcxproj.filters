@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{49067754-b372-41aa-92ef-3da7a948788f}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90</Extensions>
+    </Filter>
+    <Filter Include="Shared Headers">
+      <UniqueIdentifier>{6edaf1f4-f914-4236-8575-282349ac1ab8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="x86math.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Include\3dmath.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Dacom.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\HeapObj.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\matrix.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\PersistMath.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\quat.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Results.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\TComponent.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Typedefs.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\vector.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\xform.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

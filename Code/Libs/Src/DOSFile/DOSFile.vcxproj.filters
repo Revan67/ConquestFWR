@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2de64595-a529-44d8-afda-2ae6a10d1113}</UniqueIdentifier>
+      <Extensions>cpp; c</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{e37691b9-899e-45df-b0af-f602e55d1025}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Shared Headers">
+      <UniqueIdentifier>{1e4062e8-c6fd-4f2b-bfa2-a63bf6454baa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BaseUTF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Dosfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IFF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MemFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SearchPath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UTF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UTFDMan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UTFShare.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseUTF.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DosFileVer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UTFDMan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Dacom.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\FDump.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Filesys.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\HeapObj.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\IUTFWriter.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libver.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\MemFile.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Results.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\SearchPath.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\TComponent.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\TSmartPointer.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Typedefs.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

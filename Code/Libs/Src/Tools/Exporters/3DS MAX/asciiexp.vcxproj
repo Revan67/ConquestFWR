@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Hybrid25|Win32">
+      <Configuration>Hybrid25</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Hybrid_DAMESH|Win32">
+      <Configuration>Hybrid_DAMESH</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Hybrid|Win32">
+      <Configuration>Hybrid</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release25|Win32">
+      <Configuration>Release25</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_DAMESH|Win32">
+      <Configuration>Release_DAMESH</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <SccProjectName>"$/Tools/Exporters/MAX", BFLAAAAA</SccProjectName>
+    <SccAuxPath />
+    <SccLocalPath>.</SccLocalPath>
+    <SccProvider>MSSCCI:NXN alienbrain</SccProvider>
+    <ProjectGuid>{4E121D51-F7F8-4417-A096-D871C5EE7C67}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Hybrid25|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_DAMESH|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release25|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Hybrid_DAMESH|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Hybrid|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Hybrid25|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_DAMESH|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release25|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Hybrid_DAMESH|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Hybrid|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>17.0.33205.214</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Hybrid|Win32'">
+    <OutDir>.\Hybrid\</OutDir>
+    <IntDir>.\Hybrid\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Hybrid_DAMESH|Win32'">
+    <OutDir>.\asciiexp___Win32_Hybrid_DAMESH\</OutDir>
+    <IntDir>.\asciiexp___Win32_Hybrid_DAMESH\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release25|Win32'">
+    <OutDir>.\Release25\</OutDir>
+    <IntDir>.\Release25\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_DAMESH|Win32'">
+    <OutDir>.\asciiexp___Win32_Release_DAMESH0\</OutDir>
+    <IntDir>.\asciiexp___Win32_Release_DAMESH0\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Hybrid25|Win32'">
+    <OutDir>.\Hybrid25\</OutDir>
+    <IntDir>.\Hybrid25\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Hybrid|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>Z:\CQ2\Code\Libs\Src\Include;C:\3dsmax6\maxsdk\include;..\common;C:\3dsmax6\maxsdk\cssdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;MAX2;WIN32;_WINDOWS;EXPORT_3DB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\Hybrid/asciiexp.pch</PrecompiledHeaderOutputFile>
+      <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
+      <AssemblerListingLocation>.\Hybrid/</AssemblerListingLocation>
+      <ObjectFileName>.\Hybrid/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Hybrid/</ProgramDataBaseFileName>
+      <BrowseInformation>true</BrowseInformation>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>MSVCRTD.LIB;MAXUTIL.LIB;EDMODEL.LIB;CORE.LIB;BMM.LIB;MESH.LIB;MNMATH.LIB;GEOM.LIB;KERNEL32.LIB;USER32.LIB;GDI32.LIB;WINSPOOL.LIB;COMDLG32.LIB;ADVAPI32.LIB;SHELL32.LIB;OLE32.LIB;OLEAUT32.LIB;UUID.LIB;ODBC32.LIB;ODBCCP32.LIB;COMCTL32.LIB;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>C:\3dsmax6\plugins\3dbexp.DLE</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>C:\3dsmax6\maxsdk\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <ModuleDefinitionFile>.\asciiexp.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\Hybrid/3dbexp.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <BaseAddress>0X02C60000</BaseAddress>
+      <ImportLibrary>.\Hybrid/3dbexp.lib</ImportLibrary>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Hybrid/asciiexp.tlb</TypeLibraryName>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\include;..\common;c:\3dsmax6\maxsdk\include;e:\3dsmax6\maxsdk\include;c:\3dsmax6\maxsdk\cssdk\include;e:\3dsmax6\maxsdk\cssdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;EXPORT_3DB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\Debug/asciiexp.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
+      <ObjectFileName>.\Debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>MAXUTIL.LIB;EDMODEL.LIB;CORE.LIB;BMM.LIB;MESH.LIB;MNMATH.LIB;GEOM.LIB;KERNEL32.LIB;USER32.LIB;GDI32.LIB;WINSPOOL.LIB;COMDLG32.LIB;ADVAPI32.LIB;SHELL32.LIB;OLE32.LIB;OLEAUT32.LIB;UUID.LIB;ODBC32.LIB;ODBCCP32.LIB;COMCTL32.LIB;CQ2Material.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>C:\3dsmax6\plugins\3dbexp.DLE</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>C:\3dsmax6\maxsdk\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>.\asciiexp.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>C:\3dsmax6\plugins\3dbexp.pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>.\Debug/3dbexp.map</MapFileName>
+      <SubSystem>Windows</SubSystem>
+      <BaseAddress>0X02C60000</BaseAddress>
+      <ImportLibrary>.\Debug/3dbexp.lib</ImportLibrary>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Debug/asciiexp.tlb</TypeLibraryName>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Hybrid_DAMESH|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>Z:\CQ2\Code\Libs\Src\Include;C:\3dsmax6\maxsdk\include;..\common;C:\3dsmax6\maxsdk\cssdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;MAX2;WIN32;_WINDOWS;EXPORT_3DB;USE_DA_MESH=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\asciiexp___Win32_Hybrid_DAMESH/asciiexp.pch</PrecompiledHeaderOutputFile>
+      <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
+      <AssemblerListingLocation>.\asciiexp___Win32_Hybrid_DAMESH/</AssemblerListingLocation>
+      <ObjectFileName>.\asciiexp___Win32_Hybrid_DAMESH/</ObjectFileName>
+      <ProgramDataBaseFileName>.\asciiexp___Win32_Hybrid_DAMESH/</ProgramDataBaseFileName>
+      <BrowseInformation>true</BrowseInformation>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>MSVCRTD.LIB;MAXUTIL.LIB;EDMODEL.LIB;CORE.LIB;BMM.LIB;MESH.LIB;MNMATH.LIB;GEOM.LIB;KERNEL32.LIB;USER32.LIB;GDI32.LIB;WINSPOOL.LIB;COMDLG32.LIB;ADVAPI32.LIB;SHELL32.LIB;OLE32.LIB;OLEAUT32.LIB;UUID.LIB;ODBC32.LIB;ODBCCP32.LIB;COMCTL32.LIB;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>C:\3dsmax6\plugins\3dbexp_new.DLE</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>C:\3dsmax6\maxsdk\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <ModuleDefinitionFile>.\asciiexp.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\asciiexp___Win32_Hybrid_DAMESH/3dbexp_new.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <BaseAddress>0X02C60000</BaseAddress>
+      <ImportLibrary>.\asciiexp___Win32_Hybrid_DAMESH/3dbexp_new.lib</ImportLibrary>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\asciiexp___Win32_Hybrid_DAMESH/asciiexp.tlb</TypeLibraryName>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;USE_DA_MESH=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release25|Win32'">
+    <ClCompile>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\..\..\include;f:\3dsmax2.5\maxsdk\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;MAX2;WIN32;_WINDOWS;EXPORT_3DB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\Release25/asciiexp.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release25/</AssemblerListingLocation>
+      <ObjectFileName>.\Release25/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release25/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/MACHINE:I386 /FIXED:NO %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>UTIL.LIB;EDMODEL.LIB;CORE.LIB;BMM.LIB;MESH.LIB;MNMATH.LIB;GEOM.LIB;KERNEL32.LIB;USER32.LIB;GDI32.LIB;WINSPOOL.LIB;COMDLG32.LIB;ADVAPI32.LIB;SHELL32.LIB;OLE32.LIB;OLEAUT32.LIB;UUID.LIB;ODBC32.LIB;ODBCCP32.LIB;COMCTL32.LIB;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>f:\3dsmax2.5\plugins\3dbexp25.DLE</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>f:\3dsmax2.5\maxsdk\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>.\asciiexp.def</ModuleDefinitionFile>
+      <SubSystem>Windows</SubSystem>
+      <BaseAddress>0X02C60000</BaseAddress>
+      <ImportLibrary>.\Release25/3dbexp25.lib</ImportLibrary>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release25/asciiexp.tlb</TypeLibraryName>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\..\..\include;..\common;c:\3dsmax6\maxsdk\include;c:\3dsmax6\maxsdk\cssdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;MAX2;WIN32;_WINDOWS;EXPORT_3DB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\Release/asciiexp.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/MACHINE:I386 /FIXED:NO %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>MAXUTIL.LIB;EDMODEL.LIB;CORE.LIB;BMM.LIB;MESH.LIB;MNMATH.LIB;GEOM.LIB;KERNEL32.LIB;USER32.LIB;GDI32.LIB;WINSPOOL.LIB;COMDLG32.LIB;ADVAPI32.LIB;SHELL32.LIB;OLE32.LIB;OLEAUT32.LIB;UUID.LIB;ODBC32.LIB;ODBCCP32.LIB;COMCTL32.LIB;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>C:\3dsmax6\plugins\3dbexp.DLE</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>c:\3dsmax6\maxsdk\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>.\asciiexp.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>.\Release/3dbexp.map</MapFileName>
+      <SubSystem>Windows</SubSystem>
+      <BaseAddress>0X02C60000</BaseAddress>
+      <ImportLibrary>.\Release/3dbexp.lib</ImportLibrary>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release/asciiexp.tlb</TypeLibraryName>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_DAMESH|Win32'">
+    <ClCompile>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\..\..\include;f:\3dsmax3_1\maxsdk\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;MAX2;WIN32;_WINDOWS;EXPORT_3DB;USE_DA_MESH=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\asciiexp___Win32_Release_DAMESH0/asciiexp.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\asciiexp___Win32_Release_DAMESH0/</AssemblerListingLocation>
+      <ObjectFileName>.\asciiexp___Win32_Release_DAMESH0/</ObjectFileName>
+      <ProgramDataBaseFileName>.\asciiexp___Win32_Release_DAMESH0/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/MACHINE:I386 /FIXED:NO %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>MAXUTIL.LIB;EDMODEL.LIB;CORE.LIB;BMM.LIB;MESH.LIB;MNMATH.LIB;GEOM.LIB;KERNEL32.LIB;USER32.LIB;GDI32.LIB;WINSPOOL.LIB;COMDLG32.LIB;ADVAPI32.LIB;SHELL32.LIB;OLE32.LIB;OLEAUT32.LIB;UUID.LIB;ODBC32.LIB;ODBCCP32.LIB;COMCTL32.LIB;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>f:\3dsmax3_1\plugins\3dbexp_new.DLE</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>f:\3dsmax3_1\maxsdk\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>.\asciiexp.def</ModuleDefinitionFile>
+      <SubSystem>Windows</SubSystem>
+      <BaseAddress>0X02C60000</BaseAddress>
+      <ImportLibrary>.\asciiexp___Win32_Release_DAMESH0/3dbexp_new.lib</ImportLibrary>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\asciiexp___Win32_Release_DAMESH0/asciiexp.tlb</TypeLibraryName>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Hybrid25|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>d:\libs\include;f:\3dsmax2.5\maxsdk\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;MAX2;WIN32;_WINDOWS;EXPORT_3DB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\Hybrid25/asciiexp.pch</PrecompiledHeaderOutputFile>
+      <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
+      <AssemblerListingLocation>.\Hybrid25/</AssemblerListingLocation>
+      <ObjectFileName>.\Hybrid25/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Hybrid25/</ProgramDataBaseFileName>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>MSVCRTD.LIB;UTIL.LIB;EDMODEL.LIB;CORE.LIB;BMM.LIB;MESH.LIB;MNMATH.LIB;GEOM.LIB;KERNEL32.LIB;USER32.LIB;GDI32.LIB;WINSPOOL.LIB;COMDLG32.LIB;ADVAPI32.LIB;SHELL32.LIB;OLE32.LIB;OLEAUT32.LIB;UUID.LIB;ODBC32.LIB;ODBCCP32.LIB;COMCTL32.LIB;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>f:\3dsmax2.5\plugins\3dbexp25.DLE</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>f:\3dsmax2.5\maxsdk\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <ModuleDefinitionFile>.\asciiexp.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\Hybrid25/3dbexp25.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <BaseAddress>0X02C60000</BaseAddress>
+      <ImportLibrary>.\Hybrid25/3dbexp25.lib</ImportLibrary>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Hybrid25/asciiexp.tlb</TypeLibraryName>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Common\3db.cpp" />
+    <ClCompile Include="..\Common\CMESH.CPP" />
+    <ClCompile Include="..\Common\CMP.CPP" />
+    <ClCompile Include="..\Common\CYLINDER.CPP" />
+    <ClCompile Include="..\Common\DA_MESH.CPP" />
+    <ClCompile Include="..\Common\eigen.cpp" />
+    <ClCompile Include="..\Common\extents.cpp" />
+    <ClCompile Include="..\Common\imagefilter.cpp" />
+    <ClCompile Include="..\Common\matrix4.cpp" />
+    <ClCompile Include="..\Common\minbox3.cpp" />
+    <ClCompile Include="..\Common\minsphr.cpp" />
+    <ClCompile Include="..\Common\MISC.CPP" />
+    <ClCompile Include="..\Common\mtl_txt.cpp" />
+    <ClCompile Include="..\Common\RayPolygon.cpp" />
+    <ClCompile Include="..\Common\rgbutils.cpp" />
+    <ClCompile Include="..\Common\SORTQ.CPP" />
+    <ClCompile Include="..\Common\UTF.CPP" />
+    <ClCompile Include="..\Common\volint.cpp" />
+    <ClCompile Include="asciiexp.cpp">
+      <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Hybrid_DAMESH|Win32'">Level3</WarningLevel>
+      <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Hybrid|Win32'">Level3</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="export.cpp">
+      <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Hybrid_DAMESH|Win32'">Level3</WarningLevel>
+      <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Hybrid|Win32'">Level3</WarningLevel>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="asciiexp.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\Include\ChannelEventTypes.h" />
+    <ClInclude Include="..\..\..\..\Include\CONT_LOD.H" />
+    <ClInclude Include="..\..\..\..\Include\FaceProp.h" />
+    <ClInclude Include="..\..\..\..\Include\libver.h" />
+    <ClInclude Include="..\..\..\..\Include\matrix.h" />
+    <ClInclude Include="..\..\..\..\Include\matrix4.h" />
+    <ClInclude Include="..\..\..\..\Include\persistanim.h" />
+    <ClInclude Include="..\..\..\..\Include\PersistChannel.h" />
+    <ClInclude Include="..\..\..\..\Include\PERSISTCOMPOUND.H" />
+    <ClInclude Include="..\..\..\..\Include\PERSISTHARDPOINT.H" />
+    <ClInclude Include="..\..\..\..\Include\PersistMath.h" />
+    <ClInclude Include="..\..\..\..\Include\PersistMisc.h" />
+    <ClInclude Include="..\..\..\..\Include\TextureCoord.h" />
+    <ClInclude Include="..\..\..\..\Include\TYPEDEFS.H" />
+    <ClInclude Include="..\..\..\..\Include\vector.h" />
+    <ClInclude Include="..\..\..\..\Include\vector4.h" />
+    <ClInclude Include="..\..\..\..\Include\xform.h" />
+    <ClInclude Include="..\..\..\Include\trimeshlod.h" />
+    <ClInclude Include="..\Common\3DB.H" />
+    <ClInclude Include="..\Common\CHANNEL.H" />
+    <ClInclude Include="..\Common\CMESH.H" />
+    <ClInclude Include="..\Common\CMP.H" />
+    <ClInclude Include="..\Common\CYLINDER.H" />
+    <ClInclude Include="..\Common\daprop.h" />
+    <ClInclude Include="..\Common\da_mesh.h" />
+    <ClInclude Include="..\Common\eigen.h" />
+    <ClInclude Include="..\Common\EXTENTS.H" />
+    <ClInclude Include="..\Common\imagefilter.h" />
+    <ClInclude Include="..\Common\minbox3.h" />
+    <ClInclude Include="..\Common\minsphr.h" />
+    <ClInclude Include="..\Common\misc.h" />
+    <ClInclude Include="..\Common\mtl_txt.h" />
+    <ClInclude Include="..\Common\names.h" />
+    <ClInclude Include="..\Common\rgbutils.h" />
+    <ClInclude Include="..\Common\SGI_UTF.H" />
+    <ClInclude Include="..\Common\VOLINT.H" />
+    <ClInclude Include="asciiexp.h" />
+    <ClInclude Include="ASCIITOK.H" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\cssdk\include\BIPEXP.H" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\cssdk\include\Phyexp.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\acolor.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\actiontable.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\animtbl.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\appio.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\assert1.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\baseinterface.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\bitarray.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\bitmap.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\bmmlib.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\box2.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\box3.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\buildnumber.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\buildver.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\captypes.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\channels.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\cmdmode.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\color.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\coreexp.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\custcont.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\dbgprint.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\decomp.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\DefaultActions.H" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\dpoint3.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\euler.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\evuser.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\excllist.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\export.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\gbuf.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\gencam.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\genhier.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\genlight.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\genshape.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\geom.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\geomlib.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\gfloat.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\gfx.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\gfxlib.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\gutil.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\hitdata.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\hold.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\icolorman.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\ifnpub.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\ILayerProperties.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\impapi.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\impexp.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\impexpintf.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\imtl.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\inode.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\INodeGIProperties.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\INodeLayerProperties.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\interpik.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\interval.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\ioapi.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\iparamb.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\iparamb2.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\iparamm.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\ipipelineclient.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\ipoint2.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\ipoint3.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\iRenderPresets.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\istdplug.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\iTargetedIO.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\itreevw.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\linklist.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\lockid.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\log.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\matrix2.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\matrix3.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\max.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\maxapi.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\maxcom.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\maxtess.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\maxtypes.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\maxversion.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\mesh.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\meshlib.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\mnbigmat.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\mncommon.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\mnmath.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\mnmesh.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\MNNormalSpec.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\modstack.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\mouseman.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\mtl.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\namesel.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\nametab.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\notetrck.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\object.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\objmode.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\palutil.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\paramtype.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\patch.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\patchlib.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\patchobj.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\plugapi.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\plugin.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\point2.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\point3.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\point4.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\polyobj.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\polyshp.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\ptrvec.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\quat.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\random.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\ref.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\render.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\renderelements.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\rtclick.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\sbmtlapi.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\sceneapi.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\sfx.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\shape.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\shphier.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\shpsels.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\snap.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\soundobj.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\spline3d.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\stack.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\stack3.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\stdmat.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\strbasic.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\strclass.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\surf_api.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\svcore.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\systemutilities.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\tab.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\templt.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\trig.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\triobj.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\udmia64.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\units.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\utilexp.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\utilintf.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\utillib.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\vedge.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\winutil.h" />
+    <ClInclude Include="C:\3dsmax6\maxsdk\include\xtcobject.h" />
+    <ClInclude Include="C:\DX90SDK\Include\basetsd.h" />
+    <ClInclude Include="lod.h" />
+    <ClInclude Include="Resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="asciiexp.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

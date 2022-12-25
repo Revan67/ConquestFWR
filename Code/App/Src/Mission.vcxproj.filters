@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{bcbe5f4c-e27a-4265-a3f8-0b543bdc4335}</UniqueIdentifier>
+      <Extensions>.h</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{ca064838-f832-4625-8353-92bc78eaf43b}</UniqueIdentifier>
+      <Extensions>.cpp</Extensions>
+    </Filter>
+    <Filter Include="Source Files\StrategicAI">
+      <UniqueIdentifier>{9045a3d1-706b-4fc1-af73-ec0e270b2959}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Definition Files">
+      <UniqueIdentifier>{3bb15c8f-8331-455b-bfff-3df166ca247d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommPacket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DMenuObjectives.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Globals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IBanker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ISPlayerAI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapGen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MGlobals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mission.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MPartRef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MScript.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NetVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpAgent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RuseKeys.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RuseMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScrollingText.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SPlayerAI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitComm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DCQGame.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DEndGame.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DGlobalData.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DMapGen.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DInclude\DPlayerMenu.h">
+      <Filter>Data Definition Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Banker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CMenu_BuildInd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CMenu_Fabricator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CMenu_FindButtons.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CMenu_Fleet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CMenu_GenPlat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CMenu_Ind.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CMenu_MulMix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CMenu_None.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CMenu_ResBuild.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CMenu_Research.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CMenu_WarPlat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Macrohelp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MapGen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu_AdmiralBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu_Chat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu_Diplomacy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu_EndGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu_netunloading.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu_Objectives.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu_PlayerChat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MGlobals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mission.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MScript.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMapIterator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpAgent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ruse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RuseMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="scripting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScrollingText.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SuperTrans.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitComm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MCorvetteRush.cpp">
+      <Filter>Source Files\StrategicAI</Filter>
+    </ClCompile>
+    <ClCompile Include="MDeny.cpp">
+      <Filter>Source Files\StrategicAI</Filter>
+    </ClCompile>
+    <ClCompile Include="MDreadnoughts.cpp">
+      <Filter>Source Files\StrategicAI</Filter>
+    </ClCompile>
+    <ClCompile Include="MForgers.cpp">
+      <Filter>Source Files\StrategicAI</Filter>
+    </ClCompile>
+    <ClCompile Include="MFortress.cpp">
+      <Filter>Source Files\StrategicAI</Filter>
+    </ClCompile>
+    <ClCompile Include="MForwardBuild.cpp">
+      <Filter>Source Files\StrategicAI</Filter>
+    </ClCompile>
+    <ClCompile Include="MFrigateRush.cpp">
+      <Filter>Source Files\StrategicAI</Filter>
+    </ClCompile>
+    <ClCompile Include="MStandardMantisAI.cpp">
+      <Filter>Source Files\StrategicAI</Filter>
+    </ClCompile>
+    <ClCompile Include="MStandardSolarianAI.cpp">
+      <Filter>Source Files\StrategicAI</Filter>
+    </ClCompile>
+    <ClCompile Include="MSwarm.cpp">
+      <Filter>Source Files\StrategicAI</Filter>
+    </ClCompile>
+    <ClCompile Include="SPlayerAI.cpp">
+      <Filter>Source Files\StrategicAI</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Search.asm">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

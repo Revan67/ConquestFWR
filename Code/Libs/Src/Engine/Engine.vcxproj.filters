@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{6e260ddb-63b0-4175-bcd6-f584825f5002}</UniqueIdentifier>
+      <Extensions>cpp</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{b7dff63c-ebd5-4d69-ad45-5f4bb4f6f870}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="engine.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EngineArchetype.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineInstance.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalEngineInstance.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

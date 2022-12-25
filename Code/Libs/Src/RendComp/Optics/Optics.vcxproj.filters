@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{201fefdb-f93d-46c1-85c7-604345048284}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{68ca2ed4-a101-46c7-8ecf-f5b8363f1607}</UniqueIdentifier>
+      <Extensions>cpp</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EventDef.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemArchetype.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemInstance.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="render_buffers.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="optics.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemArchetype.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemInstance.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

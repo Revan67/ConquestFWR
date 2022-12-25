@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{9835517b-a07a-41bc-973e-5640b1425b3b}</UniqueIdentifier>
+      <Extensions>c cpp</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{0b01b202-ed9f-4ab2-afe8-6ed07bc51596}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Shared Headers">
+      <UniqueIdentifier>{19f80378-b531-405f-89c7-fa1f6a9c2516}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="channel.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="channelver.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\3dmath.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Program Files\Microsoft Visual Studio\Vc98\Include\Basetsd.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\buildres.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Dacom.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\EventIterator.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\FDump.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Filesys.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\IChannel2.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libver.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\matrix.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\PersistChannel.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\PersistMath.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\quat.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Results.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\TComponent.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Typedefs.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\vector.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\xform.h">
+      <Filter>Shared Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

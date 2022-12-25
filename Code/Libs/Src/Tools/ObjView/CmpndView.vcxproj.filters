@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{b9380862-3f06-4a7d-bfe4-ba21d0400370}</UniqueIdentifier>
+      <Extensions>cpp</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{77c71e92-afe0-4967-a85e-aa6dd31328cf}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{7a9f47dd-791b-431f-a57d-03f317e9c793}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Err.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Extent.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GetProfileInfo.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Hardpoint.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Joint.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Shapes.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\States.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="WinStuff.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="cmpndview.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CmpndView.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ObjView.rc">
+      <Filter>Resource files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

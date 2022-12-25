@@ -1,0 +1,1239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DEMO Debug|Win32">
+      <Configuration>DEMO Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DEMO Final|Win32">
+      <Configuration>DEMO Final</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Final|Win32">
+      <Configuration>Final</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{634473AE-6956-4DE3-BE08-455F03CF3EF1}</ProjectGuid>
+    <RootNamespace>Conquest</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Final|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Final|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>17.0.33205.214</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'">
+    <OutDir>.\DemoDebug\</OutDir>
+    <IntDir>.\DemoDebug\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">
+    <OutDir>.\DemoFinal\</OutDir>
+    <IntDir>.\DemoFinal\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">
+    <OutDir>.\Final\</OutDir>
+    <IntDir>.\Final\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release/Conquest.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>include;..\DInclude;..\..\Libs\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DA_ERROR_LEVEL=7;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Release/Conquest.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>Release\Mission.lib;Release\Globals.lib;Release\Trim.lib;Release\ZBatcher.lib;DXGuid.lib;MathLib.lib;COMCTL32.lib;DACOM.lib;COMHeap.lib;d3dx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\Release/Conquest.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\Libs\Static\$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\Release/Conquest.pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>.\Release/Conquest.map</MapFileName>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release/Conquest.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\DemoDebug/Conquest.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>include;..\DInclude;..\..\Libs\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DA_ERROR_LEVEL=7;WIN32;_DEBUG;_WINDOWS;_DEMO_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\DemoDebug/Conquest.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\DemoDebug/</AssemblerListingLocation>
+      <ObjectFileName>.\DemoDebug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\DemoDebug/</ProgramDataBaseFileName>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>DemoDebug\Mission.lib;DemoDebug\Globals.lib;DemoDebug\Trim.lib;DemoDebug\ZBatcher.lib;DXGuid.lib;MathLib.lib;COMCTL32.lib;DACOM.lib;COMHeap.lib;d3dx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\DemoDebug/Conquest.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\Libs\Static\$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\DemoDebug/Conquest.pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>.\DemoDebug/Conquest.map</MapFileName>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\DemoDebug/Conquest.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Debug/Conquest.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>include;..\DInclude;..\..\Libs\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DA_ERROR_LEVEL=7;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Debug/Conquest.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
+      <ObjectFileName>.\Debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug/</ProgramDataBaseFileName>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>Debug\Mission.lib;Debug\Globals.lib;Debug\Trim.lib;Debug\ZBatcher.lib;DXGuid.lib;MathLib.lib;COMCTL32.lib;DACOM.lib;COMHeap.lib;d3dx9d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\Debug/Conquest.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\Libs\Static\$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\Debug/Conquest.pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>.\Debug/Conquest.map</MapFileName>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug/Conquest.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\DemoFinal/Conquest.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>include;..\DInclude;..\..\Libs\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DA_ERROR_LEVEL=7;WIN32;NDEBUG;_WINDOWS;FINAL_RELEASE;_DEMO_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\DemoFinal/Conquest.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\DemoFinal/</AssemblerListingLocation>
+      <ObjectFileName>.\DemoFinal/</ObjectFileName>
+      <ProgramDataBaseFileName>.\DemoFinal/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>DemoFinal\Mission.lib;DemoFinal\Globals.lib;DemoFinal\Trim.lib;DemoFinal\ZBatcher.lib;DXGuid.lib;MathLib.lib;COMCTL32.lib;DACOM.lib;COMHeap.lib;d3dx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\DemoFinal/Conquest.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\Libs\Static\$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>.\DemoFinal/Conquest.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\DemoFinal/Conquest.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Final/Conquest.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>include;..\DInclude;..\..\Libs\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DA_ERROR_LEVEL=7;WIN32;NDEBUG;_WINDOWS;FINAL_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Final/Conquest.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Final/</AssemblerListingLocation>
+      <ObjectFileName>.\Final/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Final/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>Final\Mission.lib;Final\Globals.lib;Final\Trim.lib;Final\ZBatcher.lib;DXGuid.lib;MathLib.lib;COMCTL32.lib;DACOM.lib;COMHeap.lib;d3dx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\Final/Conquest.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\Libs\Static\$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>.\Final/Conquest.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Final/Conquest.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Conquest.rc">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'">_DEMO_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">_DEMO_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Res\Icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\DInclude\DAirDefense.h" />
+    <ClInclude Include="..\DInclude\DArtileryLauncher.h" />
+    <ClInclude Include="..\DInclude\Data.h" />
+    <ClInclude Include="..\DInclude\DBarrageLauncher.h" />
+    <ClInclude Include="..\DInclude\DBaseData.h" />
+    <ClInclude Include="..\DInclude\DBlackHole.h" />
+    <ClInclude Include="..\DInclude\DBuffLauncher.h" />
+    <ClInclude Include="..\DInclude\DBuildObj.h" />
+    <ClInclude Include="..\DInclude\DBuildPlat.h" />
+    <ClInclude Include="..\DInclude\DBuildSave.h" />
+    <ClInclude Include="..\DInclude\DBuildSupPlat.h" />
+    <ClInclude Include="..\DInclude\DCamera.h" />
+    <ClInclude Include="..\DInclude\DCloakLauncher.h" />
+    <ClInclude Include="..\DInclude\DEffect.h" />
+    <ClInclude Include="..\DInclude\DEffectOpts.h" />
+    <ClInclude Include="..\DInclude\DEngineTrail.h" />
+    <ClInclude Include="..\DInclude\DExplosion.h" />
+    <ClInclude Include="..\DInclude\DExtension.h" />
+    <ClInclude Include="..\DInclude\DFabricator.h" />
+    <ClInclude Include="..\DInclude\DFabSave.h" />
+    <ClInclude Include="..\DInclude\DFancyLaunch.h" />
+    <ClInclude Include="..\dinclude\DField.h" />
+    <ClInclude Include="..\DInclude\DFighter.h" />
+    <ClInclude Include="..\DInclude\DFighterWing.h" />
+    <ClInclude Include="..\DInclude\DFlagship.h" />
+    <ClInclude Include="..\DInclude\DFog.h" />
+    <ClInclude Include="..\DInclude\DGeneralPlat.h" />
+    <ClInclude Include="..\DInclude\DGroup.h" />
+    <ClInclude Include="..\DInclude\DGunPlat.h" />
+    <ClInclude Include="..\DInclude\DInstance.h" />
+    <ClInclude Include="..\DInclude\DJumpGate.h" />
+    <ClInclude Include="..\DInclude\DJumpLauncher.h" />
+    <ClInclude Include="..\DInclude\DJumpPlat.h" />
+    <ClInclude Include="..\DInclude\DJumpSave.h" />
+    <ClInclude Include="..\DInclude\DLauncher.h" />
+    <ClInclude Include="..\DInclude\DLight.h" />
+    <ClInclude Include="..\DInclude\DMBaseData.h" />
+    <ClInclude Include="..\dinclude\DMinefield.h" />
+    <ClInclude Include="..\DInclude\DMissionEnum.h" />
+    <ClInclude Include="..\DInclude\DMovieCamera.h" />
+    <ClInclude Include="..\DInclude\DMTechNode.h" />
+    <ClInclude Include="..\DInclude\DMultiCloakLauncher.h" />
+    <ClInclude Include="..\DInclude\DMusic.h" />
+    <ClInclude Include="..\DInclude\DNebula.h" />
+    <ClInclude Include="..\DInclude\DNugget.h" />
+    <ClInclude Include="..\DInclude\DObjectGenerator.h" />
+    <ClInclude Include="..\DInclude\DObjNames.h" />
+    <ClInclude Include="..\DInclude\DPingLauncher.h" />
+    <ClInclude Include="..\DInclude\DPlanet.h" />
+    <ClInclude Include="..\dinclude\DPlatform.h" />
+    <ClInclude Include="..\DInclude\DPlatSave.h" />
+    <ClInclude Include="..\DInclude\DPlayerBomb.h" />
+    <ClInclude Include="..\DInclude\DQuickSave.h" />
+    <ClInclude Include="..\DInclude\DReconLaunch.h" />
+    <ClInclude Include="..\DInclude\DRefinePlat.h" />
+    <ClInclude Include="..\DInclude\DRepairPlat.h" />
+    <ClInclude Include="..\DInclude\DRepairSave.h" />
+    <ClInclude Include="..\DInclude\DResearch.h" />
+    <ClInclude Include="..\DInclude\DScriptObject.h" />
+    <ClInclude Include="..\DInclude\DSector.h" />
+    <ClInclude Include="..\DInclude\DSellPlat.h" />
+    <ClInclude Include="..\DInclude\DShipLaunch.h" />
+    <ClInclude Include="..\DInclude\DShipSave.h" />
+    <ClInclude Include="..\DInclude\DSounds.h" />
+    <ClInclude Include="..\DInclude\DSpaceship.h" />
+    <ClInclude Include="..\DInclude\DSpecial.h" />
+    <ClInclude Include="..\DInclude\DSpecialData.h" />
+    <ClInclude Include="..\DInclude\DStarfield.h" />
+    <ClInclude Include="..\DInclude\DSupplyPlat.h" />
+    <ClInclude Include="..\DInclude\DSupplyShip.h" />
+    <ClInclude Include="..\DInclude\DSupplyShipSave.h" />
+    <ClInclude Include="..\DInclude\DSysmap.h" />
+    <ClInclude Include="..\DInclude\DTalorianLauncher.h" />
+    <ClInclude Include="..\DInclude\DTractorWaveLauncher.h" />
+    <ClInclude Include="..\DInclude\DTrail.h" />
+    <ClInclude Include="..\DInclude\DTrigger.h" />
+    <ClInclude Include="..\DInclude\DTroopship.h" />
+    <ClInclude Include="..\DInclude\DTurret.h" />
+    <ClInclude Include="..\DInclude\DTypes.h" />
+    <ClInclude Include="..\DInclude\DUnitSounds.h" />
+    <ClInclude Include="..\DInclude\DVLaunch.h" />
+    <ClInclude Include="..\DInclude\DWaypoint.h" />
+    <ClInclude Include="..\DInclude\DWeapon.h" />
+    <ClInclude Include="..\DInclude\DWormholeLauncher.h" />
+    <ClInclude Include="..\DInclude\GameTypes.h" />
+    <ClInclude Include="..\DInclude\ObjClass.h" />
+    <ClInclude Include="..\DInclude\Sfxid.h" />
+    <ClInclude Include="anim2d.h" />
+    <ClInclude Include="AntiMatter.h" />
+    <ClInclude Include="ArchHolder.h" />
+    <ClInclude Include="BBMesh.h" />
+    <ClInclude Include="CloakLauncher.h" />
+    <ClInclude Include="CommTrack.h" />
+    <ClInclude Include="corners.h" />
+    <ClInclude Include="CQExtent.h" />
+    <ClInclude Include="CQLight.h" />
+    <ClInclude Include="Damage.h" />
+    <ClInclude Include="EffectPlayer.h" />
+    <ClInclude Include="EventScheduler.h" />
+    <ClInclude Include="FancyLaunch.h" />
+    <ClInclude Include="Field.h" />
+    <ClInclude Include="FighterWing.h" />
+    <ClInclude Include="FogOfWar.h" />
+    <ClInclude Include="Hotkeys.h" />
+    <ClInclude Include="IAdmiral.h" />
+    <ClInclude Include="IAttack.h" />
+    <ClInclude Include="IBlast.h" />
+    <ClInclude Include="IBlinkers.h" />
+    <ClInclude Include="IBuild.h" />
+    <ClInclude Include="IBuildShip.h" />
+    <ClInclude Include="ICloak.h" />
+    <ClInclude Include="IDust.h" />
+    <ClInclude Include="IEngineTrail.h" />
+    <ClInclude Include="IExplosion.h" />
+    <ClInclude Include="ifabricator.h" />
+    <ClInclude Include="IFighter.h" />
+    <ClInclude Include="IGotoPos.h" />
+    <ClInclude Include="IGroup.h" />
+    <ClInclude Include="IHarvest.h" />
+    <ClInclude Include="IJumpGate.h" />
+    <ClInclude Include="IJumpPlat.h" />
+    <ClInclude Include="ILauncher.h" />
+    <ClInclude Include="IMineField.h" />
+    <ClInclude Include="IMineLayer.h" />
+    <ClInclude Include="IMissionActor.h" />
+    <ClInclude Include="IMorphMesh.h" />
+    <ClInclude Include="IMovieCamera.h" />
+    <ClInclude Include="Include\Globals.h" />
+    <ClInclude Include="Include\TriggerFlags.h" />
+    <ClInclude Include="INugget.h" />
+    <ClInclude Include="IObject.h" />
+    <ClInclude Include="IObjectGenerator.h" />
+    <ClInclude Include="IPlanet.h" />
+    <ClInclude Include="IRecon.h" />
+    <ClInclude Include="IRecoverShip.h" />
+    <ClInclude Include="IRepairee.h" />
+    <ClInclude Include="IRepairPlatform.h" />
+    <ClInclude Include="IScriptObject.h" />
+    <ClInclude Include="IShipDamage.h" />
+    <ClInclude Include="IShipMove.h" />
+    <ClInclude Include="ISpaceWave.h" />
+    <ClInclude Include="ISupplier.h" />
+    <ClInclude Include="ITalorianEffect.h" />
+    <ClInclude Include="ITrigger.h" />
+    <ClInclude Include="ITroopship.h" />
+    <ClInclude Include="IUnbornMeshList.h" />
+    <ClInclude Include="IUpgrade.h" />
+    <ClInclude Include="IVertexBuffer.h" />
+    <ClInclude Include="IWeapon.h" />
+    <ClInclude Include="IWormholeBlast.h" />
+    <ClInclude Include="MeshExplode.h" />
+    <ClInclude Include="MeshRender.h" />
+    <ClInclude Include="MineField.h" />
+    <ClInclude Include="MPart.h" />
+    <ClInclude Include="MultiCloakLauncher.h" />
+    <ClInclude Include="MyVertex.h" />
+    <ClInclude Include="NetVector.h" />
+    <ClInclude Include="ObjList.h" />
+    <ClInclude Include="ObjMap.h" />
+    <ClInclude Include="ObjMapIterator.h" />
+    <ClInclude Include="PingLauncher.h" />
+    <ClInclude Include="RandomGen.h" />
+    <ClInclude Include="RangeFinder.h" />
+    <ClInclude Include="ReconLaunch.h" />
+    <ClInclude Include="resource2.h" />
+    <ClInclude Include="Sector.h" />
+    <ClInclude Include="SimpleMesh.h" />
+    <ClInclude Include="Startup.h" />
+    <ClInclude Include="SuperTrans.h" />
+    <ClInclude Include="SysMap.h" />
+    <ClInclude Include="TerrainMap.h" />
+    <ClInclude Include="TFabricator.h" />
+    <ClInclude Include="THashList.h" />
+    <ClInclude Include="TObjBuild.h" />
+    <ClInclude Include="TObjCloak.h" />
+    <ClInclude Include="TObjControl.h" />
+    <ClInclude Include="TObjDamage.h" />
+    <ClInclude Include="TObject.h" />
+    <ClInclude Include="TObjExtension.h" />
+    <ClInclude Include="TObjExtent.h" />
+    <ClInclude Include="TObjFControl.h" />
+    <ClInclude Include="TObjFrame.h" />
+    <ClInclude Include="TObjGlow.h" />
+    <ClInclude Include="TObjMission.h" />
+    <ClInclude Include="TObjMove.h" />
+    <ClInclude Include="TObjPhys.h" />
+    <ClInclude Include="TObjRender.h" />
+    <ClInclude Include="TObjRepair.h" />
+    <ClInclude Include="TObjSelect.h" />
+    <ClInclude Include="TObjTeam.h" />
+    <ClInclude Include="TObjTrans.h" />
+    <ClInclude Include="TObjWarp.h" />
+    <ClInclude Include="TPlatform.h" />
+    <ClInclude Include="TSpaceShip.h" />
+    <ClInclude Include="VLaunch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Aegis.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="AirDefense.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="anim2d.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="AnimObj.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="AnmBolt.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="AntiMatter.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="arc.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="AreaEffectBolt.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="ArtileryLauncher.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="AutoCannon.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="BarrageLauncher.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="BaseObject.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="beam.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="blackhole.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="blast.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Blinkers.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="BuffLauncher.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="BuildPlat.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="BuildShip.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="BuildSupPlat.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="CloakEffect.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="CloakLauncher.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="cloud.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="CommTrack.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">true</ExcludedFromBuild>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">true</ExcludedFromBuild>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Conquest.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="CQExtent.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Damage.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="debris.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Destabilizer.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="DumbReconProbe.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Dust.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="EffectPlayer.cpp" />
+    <ClCompile Include="EngineTrail.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="EventScheduler.cpp" />
+    <ClCompile Include="explosion.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Fabricator.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="FancyLaunch.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Fighter.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="FighterWing.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="FireBall.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="FlagShip.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="FogOfWar.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="GattlingBeam.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="GeneralPlat.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="GroupObj.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Gunboat.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="GunPlat.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="HarvestShip.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="InterfaceManager.cpp" />
+    <ClCompile Include="jumpgate.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="JumpLauncher.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="JumpPlat.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="KamikazeWing.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="light.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Macrohelp.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="MantisBuild.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="MassDisruptor.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="MeshExplode.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="MeshInfo.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="MeshObj.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="MeshRender.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Mimic.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="MineField.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="MineLayer.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="MorphMesh.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="MovieCamera.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="MultiCloakLauncher.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Nugget.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="ObjComm.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="ObjControl.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="ObjectGenerator.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="ObjGen.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="ObjList.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="ObjMap.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="ObjMapIterator.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="ObjMove.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Overdrive.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="ParticleObj.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'">Create</PrecompiledHeader>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">Create</PrecompiledHeader>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="PingLauncher.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="PlanetKillerBolt.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Planetoid.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="PlasmaBolt.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="PlayerBomb.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="RandomGen.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="ReconLaunch.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="ReconProbe.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="RefinePlat.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="RepairPlat.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="RepellentCloud.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Repulsor.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="RepulsorWave.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="ScriptObject.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Sector.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="SellPlat.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="SimpleMesh.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="SolarianBuild.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="SpaceShip.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="SpaceWave.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="SpecialBolt.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="SpiderDrone.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Splash.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="StacticInit.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="StatisBolt.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Streak.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="SuperTrans.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="SupplyShip.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Swapper.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Synthesis.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="SysMap.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="TalorianEffect.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="TalorianLauncher.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="TerrainMap.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="TerranBuild.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="TerranDrone.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Testbed.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Tractor.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="TractorWaveLauncher.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Trail.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Trigger.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="TroopPod.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Troopship.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Turret.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="UIAnim.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="UnbornMeshList.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="VLaunch.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Waypoint.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="WormholeBlast.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="WormholeLauncher.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="Zealot.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Search.asm">
+      <Command Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'">ml /Zi /c /Cx /coff /nologo /Fo$(IntDir)%(Filename).obj %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'">$(IntDir)%(Filename).obj;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">ml /c /Cx /coff /nologo /Fo$(IntDir)%(Filename).obj %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">$(IntDir)%(Filename).obj;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ml /Zi /c /Cx /coff /nologo /Fo$(IntDir)%(Filename).obj %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename).obj;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">ml /c /Cx /coff /nologo /Fo$(IntDir)%(Filename).obj %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">$(IntDir)%(Filename).obj;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ml /c /Cx /coff /nologo /Fo$(IntDir)%(Filename).obj %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename).obj;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

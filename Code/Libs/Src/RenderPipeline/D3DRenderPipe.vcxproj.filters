@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="External Includes">
+      <UniqueIdentifier>{d1451fa3-27aa-4058-9d26-954c5e231563}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Local Includes">
+      <UniqueIdentifier>{f72c5a69-30a0-484d-b2f7-5da415114f5d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FVF.h">
+      <Filter>External Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectDraw\DirectDraw.h">
+      <Filter>Local Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectDraw\DirectDrawTexture.h">
+      <Filter>Local Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderDebugger.h">
+      <Filter>Local Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="StateCache.h">
+      <Filter>Local Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="StateInfo.h">
+      <Filter>Local Includes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DirectDraw\D3d\Direct3D_pipe.cpp" />
+    <ClCompile Include="DirectDraw\DirectDraw.cpp" />
+    <ClCompile Include="DirectDraw\DirectDrawTexture.cpp" />
+    <ClCompile Include="RenderDebugger.cpp" />
+    <ClCompile Include="DirectDraw\VideoForWindows.cpp" />
+  </ItemGroup>
+</Project>

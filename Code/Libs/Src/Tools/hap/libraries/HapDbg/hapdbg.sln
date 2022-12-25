@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hapdbg", "hapdbg.vcxproj", "{870EA4EF-27CB-4284-8740-F18C8321D334}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{870EA4EF-27CB-4284-8740-F18C8321D334}.Debug|x86.ActiveCfg = Debug|Win32
+		{870EA4EF-27CB-4284-8740-F18C8321D334}.Debug|x86.Build.0 = Debug|Win32
+		{870EA4EF-27CB-4284-8740-F18C8321D334}.Release|x86.ActiveCfg = Release|Win32
+		{870EA4EF-27CB-4284-8740-F18C8321D334}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {004B08A0-A0EA-462A-BAD1-0482C1D07650}
+	EndGlobalSection
+EndGlobal

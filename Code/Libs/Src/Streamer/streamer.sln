@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "streamer", "streamer.vcxproj", "{40ACEF6B-12A0-44B1-8D4D-1BD91902FC77}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Develop|x86 = Develop|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40ACEF6B-12A0-44B1-8D4D-1BD91902FC77}.Debug|x86.ActiveCfg = Debug|Win32
+		{40ACEF6B-12A0-44B1-8D4D-1BD91902FC77}.Debug|x86.Build.0 = Debug|Win32
+		{40ACEF6B-12A0-44B1-8D4D-1BD91902FC77}.Develop|x86.ActiveCfg = Develop|Win32
+		{40ACEF6B-12A0-44B1-8D4D-1BD91902FC77}.Develop|x86.Build.0 = Develop|Win32
+		{40ACEF6B-12A0-44B1-8D4D-1BD91902FC77}.Release|x86.ActiveCfg = Release|Win32
+		{40ACEF6B-12A0-44B1-8D4D-1BD91902FC77}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3997409B-B929-4066-ADEB-EB365F68FD72}
+	EndGlobalSection
+EndGlobal
