@@ -1,0 +1,223 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_FORMVIEW DIALOG DISCARDABLE  0, 0, 311, 295
+STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Select script"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "&Start",IDC_START,197,17,37,16
+    PUSHBUTTON      "&Properties",IDC_PROPERTIES,247,17,37,16
+    EDITTEXT        IDC_EDIT1,259,40,24,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2,259,59,24,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT3,259,78,24,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT4,259,96,24,14,ES_AUTOHSCROLL
+    CONTROL         "&Loop",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    197,121,32,10
+    CONTROL         "&Backward",IDC_BACKWARD,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,197,134,48,10
+    CONTROL         "&Xlat blend",IDC_XLAT_BLEND,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,197,147,47,10
+    CONTROL         "&No xlat offset",IDC_NO_XLAT_OFFSET,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,197,159,57,10
+    CONTROL         "Lo&ck bone",IDC_LOCKBONE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,197,172,70,8
+    CONTROL         "&Overlay",IDC_OVERLAY,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,197,185,40,10
+    COMBOBOX        IDC_BONE_LIST,197,198,94,93,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "&Close",IDCANCEL,222,220,37,16
+    LTEXT           "&Scripts",IDC_STATIC,13,15,22,8
+    LISTBOX         IDC_LIST1,13,26,165,218,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    LTEXT           "&Transition duration:",IDC_STATIC,189,43,66,9
+    LTEXT           "Time &scale:",IDC_STATIC,211,62,38,8
+    LTEXT           "&Weight:",IDC_STATIC,221,82,31,8
+    LTEXT           "Start ti&me:",IDC_STATIC,215,101,38,8
+    GROUPBOX        "",IDC_STATIC,7,7,297,245
+    PUSHBUTTON      "&Attach child",IDC_ATTACH_CHILD,27,260,63,16,
+                    BS_MULTILINE
+    PUSHBUTTON      "&Remove child:",IDC_REMOVE_CHILD,103,260,63,16,
+                    BS_MULTILINE
+    COMBOBOX        IDC_CHILD_COMBO,172,262,116,59,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+END
+
+IDD_SCRIPT_PROPERTIES DIALOG DISCARDABLE  0, 0, 116, 173
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Script properties"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,33,141,50,14
+    LTEXT           "Channels:",IDC_STATIC,7,7,32,8
+    LISTBOX         IDC_LIST1,7,19,102,112,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_BONELIST DIALOG DISCARDABLE  0, 0, 116, 173
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Bones"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Close",IDOK,33,141,50,14
+    LTEXT           "Bones:",IDC_STATIC,7,7,23,8
+    LISTBOX         IDC_LIST1,7,19,102,112,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_BONE_PROPERTIES DIALOG DISCARDABLE  0, 0, 186, 110
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Bone properties"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,24,50,14
+    LTEXT           "Mass:",IDC_STATIC,29,18,20,8
+    LTEXT           "Inertia tensor:",IDC_STATIC,6,38,44,8
+    EDITTEXT        IDC_MASS,57,16,23,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_IXX,57,36,20,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_IXY,79,36,20,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_IXZ,101,36,20,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_IYX,57,51,20,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_IYY,79,51,20,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_IYZ,101,51,20,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_IZX,57,66,20,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_IZY,79,66,20,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_IZZ,101,66,20,14,ES_AUTOHSCROLL
+    LTEXT           "Stiffness:",IDC_STATIC,20,85,30,8
+    EDITTEXT        IDC_STIFFNESS,57,83,25,14,ES_AUTOHSCROLL
+END
+
+IDD_CHOOSE_HP DIALOG DISCARDABLE  0, 0, 234, 82
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Choose hardpoints"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,63,47,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,120,47,50,14
+    COMBOBOX        IDC_CHAR_HP,24,23,87,60,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_CHILD_HP,122,22,87,57,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Character hp:",IDC_STATIC,24,13,44,8
+    LTEXT           "Child object hp:",IDC_STATIC,122,13,50,8
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_FORMVIEW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 304
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 288
+    END
+
+    IDD_SCRIPT_PROPERTIES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 109
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 166
+    END
+
+    IDD_BONELIST, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 109
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 166
+    END
+
+    IDD_BONE_PROPERTIES, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 103
+    END
+
+    IDD_CHOOSE_HP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 227
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 75
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

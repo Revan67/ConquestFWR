@@ -1,0 +1,211 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+#include "hotsetuprc.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "#include ""hotsetuprc.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_LOCALIZE_DONTLOCALIZE "***** Do not localize any string resource below 100 or above 1999 *****"
+	STR_LOCALIZE_LOCINSTR1	  "      313:RPC     |  315:IsDBCS?  |  317:IsOEM?  |  318:Language (currently USA,JPN,GER,FRA,SPA)" 
+	STR_LOCALIZE_LOCINSTR2	  "      355:OEMRPC  |  364:ExtraSystemSpace (for DirectX, etc.)  | 500 Range:Setup script symbols"
+	STR_LOCALIZE_LOCINSTR3	  "      314:EnablePreview?"
+    STR_MANUALREBOOT        "The computer could not be shut down. Please shut down and restart now. The following error message was returned by the system:\n\n%s"
+    STR_REGWIZPROMPT        "Your browser is loading the %APPTITLE registration page:\n\n%s\n\nWhen the registration page appears, follow the directions on the screen. \n\nClick OK to continue."
+    STR_USERSTOPPEDCOPY     "You have stopped the installation of %APPTITLE.\n\nIf you cancel Setup, you will have to run Setup again before you can play %APPTITLE.\n\nAre you sure you want to cancel Setup?"
+    STR_QUIT_MAINTENANCE    "Are you sure you want to exit %SETUPTITLE?"
+    STR_ABORT_MAINTENANCE   "Are you sure you want to exit %SETUPTITLE? All %APPTITLE files will be removed from your hard disk if you exit now. You will have to run Setup again before you can play %APPTITLE."
+    STR_QUIT_SETUP          "Are you sure you want to exit %SETUPTITLE? You will have to run Setup again before you can play the game."
+    STR_ABORT_SETUP         "Are you sure you want to exit %SETUPTITLE? Files that have been installed will be removed and you will have to run Setup again before you can play %APPTITLE."
+    STR_QUERY_END_SESSION   "Windows cannot shut down while %SETUPTITLE is running. Exit this Setup program, and then continue to shut down the computer."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_REGKEY_MSGAMES_REG_ROOT "Software\\Microsoft\\Games"
+    STR_REGKEY_UNINSTALL    "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall"
+    STR_REGKEY_SHAREDDLL    "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\SharedDlls"
+    STR_REGKEY_WIN40_FONTS  "Software\\Microsoft\\Windows\\CurrentVersion\\Fonts"
+    STR_REGKEY_NT_FONTS     "Software\\Microsoft\\Windows NT\\CurrentVersion\\Fonts"
+    STR_REGKEY_VAL_COMMONFILESDIR "CommonFilesDir"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_REGKEY_VAL_PROGRAMFILESDIR "ProgramFilesDir"
+    STR_REGKEY_VAL_LAUNCHED "Launched"
+    STR_REGKEY_VAL_PID      "PID"
+	STR_REGKEY_VAL_PLAYERNAME "PlayerName"
+    STR_REGKEY_VAL_TRIALVERSION "TrialVersion"
+    STR_REGKEY_VAL_VERSIONTYPE "VersionType"
+    STR_REGKEY_VAL_RETAILVERSION "RetailVersion"
+    STR_REGKEY_VAL_GROUP    "InstalledGroup"
+    STR_DIRECTORY_FONTS     "fonts"
+    STR_DIRECTORY_MS_GAMES  "Microsoft Games"
+    STR_PROGMAN_MS_GAMES    "Microsoft Games"
+    STR_TRUETYPE            " (TrueType)"
+    STR_PID_SITECODE        "442"
+    STR_PID_OEM             "OEM"
+    STR_REGKEY_IGZGAMES_REG_ROOT "Software\\Microsoft\\Internet Gaming Zone"
+    STR_DIRECTORY_IGZ_GAMES "Microsoft Internet Gaming Zone"
+    STR_REGKEY_VAL_LANGID   "LangID"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_ERROR_MUSTGETDIR    "You must enter a directory name before installation can continue."
+    STR_ERROR_BADCDKEY      "The CD Key number you entered is invalid. Please enter a valid CD Key."
+    STR_ERROR_CANTSTARTREGWIZ 
+                            "%SETUPTITLE is unable to start your browser for online registration. You may be able to start your browser manually and connect to %s to complete the registration process. Click OK to continue."
+    STR_ERROR_NOTENOUGHMEMORY 
+                            "%APPTITLE requires %ldMB of RAM. Your computer does not appear to have sufficient memory."
+    STR_ERROR_CANTFINDCD    "Setup cannot find %APPTITLE Disc #%d. Make sure the CD is properly inserted in the CD-ROM drive."
+    STR_ERROR_NODESTDIR     "%SETUPTITLE attempted to copy the file %s to a directory that did not exist."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_ERROR_NEEDSYSDISKSPACE 
+                            "There is not enough free space on your hard disk %s.  This program needs %s MB free to install necessary system files. Delete unnecessary files from your hard disk, and then try again."
+    STR_ERROR_CANTLOCKRESOURCE 
+                            "Setup is unable to continue."
+    STR_ERROR_INVALIDCOMMAND 
+                            "Invalid or unrecognized command in Setup script."
+    STR_ERROR_OLEINITFAILED "Setup is unable to continue because OLE initialization failed. Make sure that the OLE libraries are the correct version."
+    STR_ERROR_DIRECTXSETUPFAILED 
+                            "WARNING: DirectX Setup failed. %APPTITLE requires DirectX and may not run properly. Click OK to continue with %SETUPTITLE."
+    STR_ERROR_DXINST        "%s"
+    STR_DXERROR_RETURN      "DirectX does not support the Windows version on this computer."
+    STR_DXERROR_RETURN1     "One of the required source files could not be found."
+    STR_DXERROR_RETURN2     "A file's size could not be verified or was incorrect."
+    STR_DXERROR_RETURN3     "A file's date and time could not be verified or were incorrect."
+    STR_DXERROR_RETURN4     "A file's version could not be verified or was incorrect."
+    STR_DXERROR_RETURN5     "The Setup program ran out of disk space during installation. Delete unnecessary files from your hard disk, and then run Setup again."
+    STR_DXERROR_RETURN6     "A required .inf file could not be found."
+    STR_DXERROR_RETURN7     "The Setup program could not find the working directory."
+    STR_DXERROR_RETURN8     "An internal error occurred."
+    STR_DXERROR_RETURN9     "This version of DirectX on Windows NT has no 3D support."
+    STR_ERROR_DIRECTPLAYSETUPFAILED 
+                            "WARNING: DirectPlay setup failed. %APPTITLE requires DirectPlay and may not run properly. Click OK to continue with %SETUPTITLE."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_ERROR_NEEDDISKSPACE "There is not enough free space on your hard disk %s. This program needs %s MB free to install necessary files. Delete unnecessary files from your hard disk, and then try again."
+    STR_ERROR_BADDIR        "You've entered an invalid directory name. Please enter a valid name."
+    STR_ERROR_BADPATH       "The path:\n\n%s\n\nspecifies an invalid drive or the folder is invalid, incomplete, too long, or write-protected. Enter a full path with the drive letter; for example, %s."
+    STR_ERROR_FILENOTFOUND  "Unable to locate the source file %s to get version information."
+    STR_ERROR_CANTOPENSOURCE 
+                            "Unable to open the source file %s to get version information."
+    STR_ERROR_RESOURCEFAILURE 
+                            "Unable to read Setup script resource. Unable to continue."
+    STR_ERROR_BOGUSTOKEN    "Incorrect keyword (%s) at line %d in ReadFile data file."
+    STR_ERROR_READFILEERROR "Readfile error on line %d."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_UNSETUPSWITCH       "/uninstall"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_DXERROR_RETURN10    "The operating system on your computer is not supported."
+    STR_DXERROR_RETURN11    "The Cancel button was pressed before DirectX was fully installed."
+    STR_DXERROR_RETURN12    "The version of Windows NT on the computer does not contain the current version of DirectX. You may not have DirectX, or you may have an older version of DirectX."
+    STR_ERROR_NEED256COLORS "%SETUPTITLE requires that your computer be set to display at least 256 colors. Use the Windows Control Panel to change your display settings, and then restart your computer if necessary. For more information, see the Windows Help file."
+    STR_ERROR_NOSOUNDCARD   "Setup cannot find a sound card. %APPTITLE will run, but you will not be able to hear audio.\n\nIf you have a sound card, make sure that both the card and any necessary software are installed properly."
+    STR_ERROR_CANTWRITETEMPFILE 
+                            "%SETUPTITLE cannot write to file %s. The file may be read-only, or it may be in use by another program. Quit any open applications, and then click Retry."
+    STR_ERROR_CANTREADDEST  "%SETUPTITLE cannot open file %s. This file is required to run %APPTITLE. Make sure the CD is properly inserted in the CD-ROM drive, and then click Retry."
+    STR_ERROR_MISSINGCD     "%SETUPTITLE cannot open file %s.  Make sure that the CD is properly inserted in the CD-ROM drive, and then click Retry."
+    STR_ERROR_MISSINGCDHALFWAY 
+                            "%SETUPTITLE encountered an error while reading file %s. Make sure that the disc is properly inserted in the CD-ROM drive, and then click Retry."
+    STR_ERROR_NODISKSPACE   "%SETUPTITLE cannot continue because your hard disk is full or write-protected."
+    STR_ERROR_UNKNOWNWRITEPROBLEM 
+                            "%SETUPTITLE encountered a disk error while writing to file %s. Make sure your hard disk is not full, and then restart Setup."
+    STR_ERROR_INITFAILURE   "Cannot start %APPTITLE!"
+    STR_ERROR_NOMEMORY      "There is not enough memory for %SETUPTITLE to continue. Quit any open applications, and then restart Setup."
+    STR_ERROR_PLEASECLOSEFILE 
+                            "%SETUPTITLE needs to modify the file %s, which is currently in use by another application. Quit any open applications, and then restart Setup."
+    STR_ERROR_CANTCREATEDIRECTORY 
+                            "%SETUPTITLE is unable to create the directory: %s"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_AUTORUNSWITCH       "/AUTORUN"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_PROGMAN_IGZ_GAMES   "Internet Gaming Zone"
+    STR_REGKEY_IGZGAMES_REG_ROOTDEFAULT 
+                            "Software\\Microsoft\\Internet Gaming Zone\\Setup"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

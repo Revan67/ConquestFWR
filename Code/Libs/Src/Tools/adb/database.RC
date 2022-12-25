@@ -1,0 +1,417 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG1 DIALOG DISCARDABLE  0, 0, 315, 263
+STYLE DS_ABSALIGN | DS_3DLOOK | DS_CENTER | WS_MINIMIZEBOX | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Database Editor"
+MENU IDR_MENU1
+FONT 10, "MS Sans Serif"
+BEGIN
+    CONTROL         102,IDC_STATIC,"Static",SS_BITMAP,15,24,32,32
+    LISTBOX         IDC_LIST1,54,23,119,190,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_LIST2,180,23,120,190,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Base Types",IDC_STATIC,55,11,38,8
+    LTEXT           "Archetypes",IDC_STATIC,180,12,35,8
+    PUSHBUTTON      "&New Archetype",IDC_NEWARCH,81,216,60,14,NOT WS_TABSTOP
+    PUSHBUTTON      "&Edit Archetype",ID_EDIT,184,216,54,14,NOT WS_TABSTOP
+    PUSHBUTTON      "&Rename",IDC_RENAME,248,240,45,14,NOT WS_TABSTOP
+    PUSHBUTTON      "&Delete",IDC_DELETE,248,216,45,14,NOT WS_TABSTOP
+    LTEXT           "",IDC_RO,14,128,27,20,SS_NOTIFY
+    PUSHBUTTON      "&Clone",IDC_CLONE,184,240,55,14,NOT WS_TABSTOP
+    CONTROL         "BT_",IDC_BT,"Button",BS_AUTORADIOBUTTON,17,82,29,10
+    CONTROL         "MT_",IDC_MT,"Button",BS_AUTORADIOBUTTON,17,95,30,10
+    CONTROL         "GT_",IDC_GT,"Button",BS_AUTORADIOBUTTON,17,108,29,10
+END
+
+IDD_NEW_ARCHETYPE DIALOG DISCARDABLE  0, 0, 187, 105
+STYLE DS_SYSMODAL | DS_MODALFRAME | DS_SETFOREGROUND | DS_CENTER | WS_POPUP | 
+    WS_CAPTION
+CAPTION "New Archetype"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,130,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,130,24,50,14
+    EDITTEXT        IDC_EDIT1,17,73,146,12,ES_AUTOHSCROLL
+    LTEXT           "Static",IDC_INFO,19,19,100,40
+END
+
+IDD_PREFS DIALOG DISCARDABLE  0, 0, 186, 170
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Preferences"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,24,50,14
+    CONTROL         "Disable External Header",IDC_DISABLE_HEADER,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,75,48,95,15
+    EDITTEXT        IDC_DEFAULTH,15,49,47,12,ES_AUTOHSCROLL
+    LTEXT           "Default .h file",IDC_STATIC,15,37,63,8
+    EDITTEXT        IDC_PATH,15,87,156,12,ES_AUTOHSCROLL
+    LTEXT           "Include file directory",IDC_STATIC,15,76,64,8
+    CONTROL         "Auto Load",IDC_AUTOLOAD,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,16,15,58,15
+    EDITTEXT        IDC_PATH_RES,15,120,156,12,ES_AUTOHSCROLL
+    LTEXT           "Resource file name",IDC_STATIC,15,110,62,8
+    EDITTEXT        IDC_PATH_TO_FILES,15,150,156,12,ES_AUTOHSCROLL
+    LTEXT           "Path to network files",IDC_STATIC,15,140,65,8
+END
+
+IDD_CONVERT DIALOG DISCARDABLE  0, 0, 183, 241
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Updating Database"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Yes",IDYES,40,212,50,14
+    PUSHBUTTON      "No",IDNO,101,212,50,14
+    LTEXT           "The following base types have changed:",IDC_STATIC,15,
+                    10,129,8
+    LISTBOX         IDC_LIST1,15,22,150,172,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Accept Changes?",IDC_STATIC,64,200,58,8
+END
+
+IDD_BIGCONVERT DIALOG DISCARDABLE  0, 0, 378, 241
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Updating Database"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Yes",IDYES,133,214,50,14
+    PUSHBUTTON      "No",IDNO,199,214,50,14
+    LTEXT           "The following base types have changed:",IDC_STATIC,15,
+                    10,129,8
+    LISTBOX         IDC_LIST1,15,22,150,172,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_LIST_NEW,191,114,168,79,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_LIST_OLD,191,22,168,79,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Old",IDC_STATIC,191,10,12,8
+    LTEXT           "New",IDC_STATIC,192,103,16,8
+    LTEXT           "Accept Changes?",IDC_STATIC,164,201,58,8
+END
+
+IDD_PROGBAR DIALOG DISCARDABLE  0, 0, 186, 78
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Writing to text file"
+FONT 10, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Cancel",IDCANCEL,68,26,50,14
+    LTEXT           "Static",IDC_STATIC1,7,7,172,12
+    CONTROL         "Progress1",IDC_PROGRESS1,"msctls_progress32",PBS_SMOOTH | 
+                    WS_BORDER,7,47,172,14
+END
+
+IDD_SELECT_TYPES DIALOG DISCARDABLE  0, 0, 401, 234
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Select files to import"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,213,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,344,213,50,14
+    CONTROL         "Select All",IDC_RADIO_SELECT_ALL,"Button",
+                    BS_AUTORADIOBUTTON,7,169,165,10
+    CONTROL         "Overwrite Existing ?",IDC_CHECK_OVERWRITE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,186,115,10
+    CONTROL         "Tree1",IDC_TREE_BTLIST,"SysTreeView32",
+                    TVS_DISABLEDRAGDROP | TVS_NOTOOLTIPS | TVS_CHECKBOXES | 
+                    TVS_FULLROWSELECT | WS_BORDER | WS_TABSTOP,9,17,174,133
+    PUSHBUTTON      "Remove File",IDC_BUTTON_REMOVE,237,156,113,20
+    CONTROL         "Tree1",IDC_TREE_FILELIST,"SysTreeView32",
+                    TVS_DISABLEDRAGDROP | TVS_NOTOOLTIPS | TVS_CHECKBOXES | 
+                    TVS_TRACKSELECT | TVS_FULLROWSELECT | WS_BORDER | 
+                    WS_TABSTOP,219,18,174,133
+    GROUPBOX        "Select files to ignore",IDC_STATIC,214,7,180,148
+    GROUPBOX        "Select types to ignore",IDC_STATIC,7,7,180,148
+END
+
+IDD_AUTOBIN DIALOG DISCARDABLE  0, 0, 186, 95
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Set Bin Class for BT_CLASS"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,74,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,74,50,14
+    LTEXT           "Basic Type name",IDC_STATIC,7,11,107,10
+    EDITTEXT        IDC_EDIT_BTNAME,7,23,172,12,ES_AUTOHSCROLL | WS_DISABLED
+    COMBOBOX        IDC_COMBO_AUTOBIN,7,49,172,224,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Binary Class selection",IDC_STATIC,7,37,107,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        TOPMARGIN, 5
+    END
+
+    IDD_NEW_ARCHETYPE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 98
+    END
+
+    IDD_PREFS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 163
+    END
+
+    IDD_CONVERT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 176
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 234
+    END
+
+    IDD_BIGCONVERT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 371
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 234
+    END
+
+    IDD_PROGBAR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 71
+    END
+
+    IDD_SELECT_TYPES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 394
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 227
+    END
+
+    IDD_AUTOBIN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP  DISCARDABLE     "devil.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// WAVE
+//
+
+WAV_OOH                 WAVE    DISCARDABLE     "hibigboy.wav"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON    DISCARDABLE     "icon1.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New",                        ID_NEW
+        MENUITEM "&Open",                       ID_OPEN
+        MENUITEM "Open &Dir",                   ID_OPEN_DIR
+        MENUITEM "&Save",                       ID_SAVE
+        MENUITEM "Save &As",                    ID_SAVE_AS
+        MENUITEM "&Write Text",                 ID_WRITE_TEXT
+        MENUITEM "E&xit",                       ID_EXIT
+    END
+    MENUITEM "&Preferences",                65535
+    POPUP "Export"
+    BEGIN
+        MENUITEM "Excel Spreadsheet",           ID_EXPORT_EXCEL
+        MENUITEM "Access DB (mdb)",             ID_EXPORT_ACCESS
+        MENUITEM "Dos Export",                  ID_EXPORT_DOS
+    END
+    POPUP "Import"
+    BEGIN
+        MENUITEM "From Microsoft Access",       IDC_IMPORT_MDB, GRAYED
+        MENUITEM "From ADB File",               IDC_IMPORT_ADB
+        MENUITEM "From Change List",            IDC_IMPORT_CHANGELIST
+        , GRAYED
+    END
+    POPUP "Tools"
+    BEGIN
+        MENUITEM "Assign Binary Class",         ID_TOOL_AUTOBIN
+    END
+END
+
+IDR_FILEPOPUP MENU DISCARDABLE 
+BEGIN
+    POPUP ">"
+    BEGIN
+        MENUITEM "Check Out",                   IDM_CHECKOUT
+        MENUITEM "Check In",                    IDM_CHECKIN
+        MENUITEM "Undo Checkout",               IDM_UNDOCHECKOUT
+    END
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,1,2
+ PRODUCTVERSION 1,0,1,2
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "Fever Pitch Studios\0"
+            VALUE "FileDescription", "adb\0"
+            VALUE "FileVersion", "1, 0, 1, 2\0"
+            VALUE "InternalName", "adb\0"
+            VALUE "LegalCopyright", "Copyright © 2003\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "adb.exe\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Fever Pitch Studios adb\0"
+            VALUE "ProductVersion", "1, 0, 1, 2\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_BAD_REGISTRY_VALUE  "Bad registry value found"
+    IDS_DB_FILTER           "Database files (*.db)|*.db|All files (*.*)|*.*|"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EXPORT_DOS           "Export the archetypes to dos directories"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

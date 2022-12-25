@@ -1,0 +1,241 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_PE_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Load",                       IDD_FILE_OPEN
+        MENUITEM "&Save",                       IDD_FILE_SAVE
+        MENUITEM "Save &As",                    IDD_FILE_SAVEAS
+        MENUITEM SEPARATOR
+        MENUITEM "Copy/export",                 IDD_FILE_COPY
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       IDD_FILE_EXIT
+    END
+    POPUP "&Editing"
+    BEGIN
+        POPUP "Mirror extents"
+        BEGIN
+            MENUITEM "X Axis",                      ID_MIRROR_X
+            MENUITEM "Y axis",                      ID_MIRROR_Y
+        END
+        MENUITEM "Rigid data (mass/inertia)",   ID_EDIT_RIGID_DATA
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Solid extents",              ID_VIEW_SOLIDEXTENTS
+        MENUITEM "Collidable only",             ID_VIEW_COLLIDABLE_ONLY
+        MENUITEM "Textures",                    ID_VIEW_TEXTURES
+    END
+    POPUP "&Speed tests"
+    BEGIN
+        MENUITEM "Rays (center-directed)",      ID_CENTER_RAYS
+    END
+    POPUP "Visuali&zation"
+    BEGIN
+        MENUITEM "Ray collisions",              ID_VISUALIZE_RAYS
+    END
+    POPUP "&Generate"
+    BEGIN
+        MENUITEM "Sphere",                      ID_GENERATE_SPHERE
+        MENUITEM "Sphere -> Box",               ID_GENERATE_SPHERE_BOX
+        MENUITEM SEPARATOR
+        MENUITEM "Inertia tensor",              ID_GENERATE_IBODY
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG1 DIALOG DISCARDABLE  0, 0, 175, 319
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Extent Tree",IDC_STATIC,65,7,38,8
+    PUSHBUTTON      "Add Child",IDC_ADD_CHILD,61,141,53,14,NOT WS_TABSTOP
+    PUSHBUTTON      "Delete Node",IDC_DELETE_NODE,61,155,53,14,NOT 
+                    WS_TABSTOP
+    LISTBOX         IDC_EXTENT_LIST,5,209,163,81,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL
+    LTEXT           "Extents (editing)",IDC_STATIC,65,193,51,8
+    PUSHBUTTON      "Create New",IDC_CREATE_FREE,10,293,52,14
+    PUSHBUTTON      "Add Root",IDC_ADD_ROOT,8,141,53,14,NOT WS_TABSTOP
+    PUSHBUTTON      "Pop Node",IDC_POP_NODE,8,155,53,14,WS_DISABLED
+    PUSHBUTTON      "Delete All",IDC_DELETE_ALL,115,155,53,14,NOT WS_TABSTOP
+    PUSHBUTTON      "Delete",IDC_DELETE_FREE,62,293,52,14
+    PUSHBUTTON      "Delete All",IDC_DELETE_ALL_FREE,114,293,52,14
+    PUSHBUTTON      "Name",IDC_NAME_ENTRY,115,141,53,14,NOT WS_TABSTOP
+    CONTROL         "Tree1",IDC_TREE_LIST,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | WS_BORDER | WS_TABSTOP,
+                    6,20,164,116
+END
+
+IDD_EXTENT_TYPE DIALOG DISCARDABLE  0, 0, 102, 119
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Create Extent"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,12,92,40,14
+    PUSHBUTTON      "Cancel",IDCANCEL,53,92,40,14
+    CONTROL         "Sphere",IDC_RADIO_SPHERE,"Button",BS_AUTORADIOBUTTON,17,
+                    13,39,10
+    CONTROL         "Box",IDC_RADIO_BOX,"Button",BS_AUTORADIOBUTTON,17,25,28,
+                    10
+    CONTROL         "Cylinder",IDC_RADIO_CYLINDER,"Button",
+                    BS_AUTORADIOBUTTON | WS_DISABLED,17,49,41,10
+    CONTROL         "Convex mesh",IDC_RADIO_CONVEX,"Button",
+                    BS_AUTORADIOBUTTON,17,61,59,10
+    CONTROL         "General mesh",IDC_RADIO_MESH,"Button",
+                    BS_AUTORADIOBUTTON | WS_DISABLED,17,73,59,10
+    CONTROL         "Tube",IDC_RADIO_TUBE,"Button",BS_AUTORADIOBUTTON | 
+                    WS_DISABLED,17,37,33,10
+END
+
+IDD_NAME_ENTRY DIALOG DISCARDABLE  0, 0, 252, 62
+STYLE DS_MODALFRAME | DS_SETFOREGROUND | DS_CENTER | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION
+CAPTION "Extent name"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Name",IDC_STATIC,19,14,20,8
+    EDITTEXT        IDC_NAME_EDIT,44,12,167,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDC_OK,71,35,50,14
+    PUSHBUTTON      "Cancel",IDC_CANCEL,131,35,50,14
+END
+
+IDD_SET_RIGID_DATA DIALOG DISCARDABLE  0, 0, 146, 186
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Rigid data"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,19,156,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,74,156,50,14
+    EDITTEXT        IDC_MASS_EDIT,49,18,67,14,ES_AUTOHSCROLL
+    LTEXT           "Mass",IDC_STATIC,21,20,18,8
+    LTEXT           "Inertia",IDC_STATIC,21,42,20,8
+    EDITTEXT        IDC_INERTIA_X,43,57,79,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_INERTIA_Y,43,74,80,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_INERTIA_Z,43,91,80,14,ES_AUTOHSCROLL
+    LTEXT           "X",IDC_STATIC,25,60,8,8
+    LTEXT           "Y",IDC_STATIC,26,77,8,8
+    LTEXT           "Z",IDC_STATIC,26,93,8,8
+    PUSHBUTTON      "Recompute from extents",IDC_COMPUTE_IBODY,23,112,96,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 306
+    END
+
+    IDD_EXTENT_TYPE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 95
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 112
+    END
+
+    IDD_NAME_ENTRY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 245
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 54
+    END
+
+    IDD_SET_RIGID_DATA, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 139
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 179
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// TXM
+//
+
+IDR_TXM1                TXM     DISCARDABLE     "font.txm"
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

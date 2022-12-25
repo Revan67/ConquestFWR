@@ -1,0 +1,127 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PARSER
+//
+
+IDR_PARSER_1            PARSER  DISCARDABLE     "DataDef.i"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM13_MISSION_NAME   "Mission 13"
+    IDS_TM13_MISSION_DESC   "Mission 13 description"
+    IDS_TM13_TELETYPE_LOCATION "Earth, 0700 hours GMT."
+    IDS_TM13_OBJECTIVES     "Objectives:\n \n1. Defend Earth from Smirnoff's invasion force.\n2. You must have 3 active HQ's at all times.\n3. Blackwell and Hawkes must survive."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM13_MISSION_SUCCESS "SUCCESSFUL MISSION."
+    IDS_TM13_MISSION_FAILURE 
+                            "MISSION FAILURE.  STAND DOWN PENDING REASSIGNMENT."
+    IDS_TM13_OBJECTIVE1     "Defend Earth from Smirnoff's invasion force."
+    IDS_TM13_OBJECTIVE2     "You must have 3 active HQ's at all times."
+    IDS_TM13_OBJECTIVE3     "Blackwell and Hawkes must survive."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM13_MANTIS         "Mantis"
+    IDS_TM13_TELETYPE_LOCATION2 
+                            "Disputed System, Quasili Prime, Delta Sector, 01.12.2331 0700 hours GMT."
+    IDS_TM13_FAIL_BLACKWELL_LOST "Captain Blackwell has perished."
+    IDS_TM13_FAIL_HAWKES_LOST "Admiral Hawkes has perished."
+    IDS_TM13_SUB_PROLOG13   "Radio:\nReporter: Bob, it's madness, I'm here at the Golden Gate Bridge and I've never seen so many cars, they're lined up for hundreds of miles in BOTH directions. These people know that Earth is under attack, and-- there's nowhere to go. I'll be right here. \n \nBuddy Burns:\nWoo Wee!  Buddy Burns again, where were blowing away prices (Explosion sound) Oh, there goes another one!  Corvettes 2 credits, Fabricators for 10.  We got Lancers as low as 50!  And this weekend only, get ready, Dreadnoughts 75!  It's incredible down here.  Come on out and get yourself something new.  Hey, If we can't find you a ship, I'll eat a Mantis! "
+    IDS_TM13_SUB_M13HA02    "Halsey:\nThe time has come, Commander. Admiral Hawkes and Captain Blackwell tell me you were invaluable in getting them here, to Earth, in time. Now that you're here, I have news: there's nowhere to go. The traitor Smirnoff and his Mantis allies could attack from anywhere, but it's earth that must be your focus."
+    IDS_TM13_SUB_M13BL05    "Blackwell: Where is that traitorous bastard?"
+    IDS_TM13_SUB_M13HW03    "Hawkes: Let them come. Wave after wave, let them come. We'll fight with every ship we can muster. We'll fight if we have to crawl from our ships and chew through their hulls. This is earth. Our home. We'll fight 'til from our bones our flesh be hacked.\n"
+    IDS_TM13_SUB_M13HW04    "Hawkes: Ok, everyone.  Look sharp and keep your eyes peeled."
+    IDS_TM13_SUB_M13SM06    "Smirnoff: Admiral Hawkes. My pompous old friend."
+    IDS_TM13_SUB_M13HW07    "Hawkes: I was wondering when you'd say hello, traitor."
+    IDS_TM13_SUB_M13SM08    "Smirnoff: I had a question. The Mantis and I were just trying to recreate the sounds you made when they tortured you. I can't decide whether you sound like a dying pig... or just a shriveled has-been in his lowest moments."
+    IDS_TM13_SUB_M13BL09    "Blackwell: You little cretin--"
+    IDS_TM13_SUB_M13BL09A   "Blackwell: Smirnoff, you -Bleeping- --- little -Bleeper-. I am gonna put my foot so far up your -Bleep- you'll be able to taste the -Bleep- on my boot. "
+    IDS_TM13_SUB_M13SM10    "Smirnoff: Oh, Blackwell, how amusing, the lapdog speaks. If you listen to your news broadcasts, you can hear the screams of my future subjects. Amusing, da?"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM13_SUB_M13HW11    "Hawkes: Smirnoff. You're a disgrace to the Terran uniform. And worse than that, you're a fool. You'll never see the kingdom you bargained for."
+    IDS_TM13_SUB_M13MA12    "Malkor: Of course will he rule, Admals. Smirnoff on side of right is."
+    IDS_TM13_SUB_M13HW13    "Hawkes: Malkor."
+    IDS_TM13_SUB_M13MA14    "Malkor: Lord General to all Mantis. Pay will you petty intruders in our space. Suffer will your earth, and then ruled by our true friend will earth be. Prepare for quick deaths, as no match for Mantis technology your ships are. The invasion well in hand is, Smirnoff. Other business I have."
+    IDS_TM13_SUB_M13BL15    "Blackwell: I've heard enough of you talking cockroaches. Doesn't take an ""Admal"" to see-- you've come a long way to get stepped on, Malkor."
+    IDS_TM13_SUB_M13HA16    "Halsey: Commander, they're on the run! My God, my God, what a sight!   We, uh-- we have a lot of damage down here. There are a lot of dead in the streets. But there could have been more. It's time to regroup and rebuild our homefront.\n"
+    IDS_TM13_SUB_M13HA17    "Halsey: You're a liability to this defense! Get back! Even with the invasion underway I don't want you here anymore!"
+    IDS_TM13_SUB_M13HW18    "Hawkes: Captain Blackwell was VITAL to this defense, Commander, and you WASTED him. Step down. I won't have you losing the Earth as well."
+    IDS_TM13_SUB_M13HA19    "Halsey: You don't have enough HQ's to stay supplied, Commander. You've already lost. Fall back and let the adults handle this."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,317 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_APPLICATION_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        POPUP "&New"
+        BEGIN
+            MENUITEM "&Scene Window",               ID_FILE_NEW_SCENEWINDOW
+            MENUITEM "&DirectShow Window",          ID_FILE_NEW_DIRECTSHOWWINDOW
+
+            MENUITEM "&Texture Viewer",             ID_FILE_NEW_TEXTUREVIEWER
+
+            MENUITEM "&Other...",                   ID_FILE_NEW_OTHER
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Device...",                  ID_FILE_DEVICE
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&System"
+    BEGIN
+        MENUITEM "&Profile Logging",            ID_SYSTEM_RENDERPIPELINE_PROFILELOGGING
+
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MATERIALDIALOG DIALOGEX 0, 0, 417, 133
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Materials"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "&View...",IDC_VIEW_MATERIAL,117,112,50,14
+    PUSHBUTTON      "&Add...",IDC_ADD_MATERIAL,183,112,50,14
+    PUSHBUTTON      "&Remove",IDC_REMOVE_MATERIAL,249,112,50,14
+    PUSHBUTTON      "Close",IDCANCEL,315,112,50,14
+    CONTROL         "",IDC_DIFFUSE_ENABLE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,95,20,10,8
+    EDITTEXT        IDC_DIFFUSE_CONST_R,145,17,20,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_DIFFUSE_CONST_G,165,17,20,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_DIFFUSE_CONST_B,185,17,20,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_DIFFUSE_CONST_A,205,17,20,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Browse For Map...",IDC_DIFFUSE_MAP,311,17,91,14
+    CONTROL         "",IDC_BUMP_ENABLE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    95,38,10,8
+    EDITTEXT        IDC_DIFFUSE_CONST,253,17,49,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Browse For Map...",IDC_BUMP_MAP,311,34,91,14
+    CONTROL         "",IDC_ALPHA_ENABLE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,95,54,10,8
+    EDITTEXT        IDC_ALPHA_CONST,253,52,49,14,ES_AUTOHSCROLL | ES_NUMBER | 
+                    NOT WS_BORDER,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Browse For Map...",IDC_ALPHA_MAP,311,52,91,14
+    CONTROL         "",IDC_SHINY_ENABLE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,95,70,10,8
+    EDITTEXT        IDC_SHINY_CONST,253,68,49,14,ES_AUTOHSCROLL | ES_NUMBER | 
+                    NOT WS_BORDER,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Browse For Map...",IDC_SHINY_MAP,311,68,91,14
+    CONTROL         "Allow Diffuse Lightmap",IDC_DIFFUSE_LIGHTMAP_ENABLE,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,95,86,103,10
+    GROUPBOX        "Material Properties:",IDC_STATIC,85,7,325,96
+    LTEXT           "Diffuse:",IDC_STATIC,109,20,30,8
+    LTEXT           "Bump:",IDC_STATIC,109,38,30,8
+    LTEXT           "Alpha:",IDC_STATIC,109,54,30,8
+    LTEXT           "Shiny:",IDC_STATIC,109,70,30,8
+    EDITTEXT        IDC_BUMP_CONST,253,34,49,14,ES_AUTOHSCROLL | ES_NUMBER | 
+                    NOT WS_BORDER,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "...",IDC_DIFFUSE_CONST_RGB_PICK,227,17,18,14
+    EDITTEXT        IDC_DIFFUSE_CONST_R2,145,34,20,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_DIFFUSE_CONST_G2,165,34,20,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_DIFFUSE_CONST_B2,185,34,20,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_DIFFUSE_CONST_A2,205,34,20,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "...",IDC_DIFFUSE_CONST_RGB_PICK2,227,34,18,14
+    EDITTEXT        IDC_DIFFUSE_CONST_R3,145,52,20,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_DIFFUSE_CONST_G3,165,52,20,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_DIFFUSE_CONST_B3,185,52,20,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_DIFFUSE_CONST_A3,205,52,20,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "...",IDC_DIFFUSE_CONST_RGB_PICK3,227,52,18,14
+    EDITTEXT        IDC_DIFFUSE_CONST_R4,145,68,20,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_DIFFUSE_CONST_G4,165,68,20,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_DIFFUSE_CONST_B4,185,68,20,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_DIFFUSE_CONST_A4,205,68,20,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "...",IDC_DIFFUSE_CONST_RGB_PICK4,227,68,18,14
+    LISTBOX         IDC_MATERIALLIST,7,7,74,96,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Select",IDC_SELECT_MATERIAL,51,112,50,14
+END
+
+IDD_RPMATDIALOG DIALOGEX 0, 0, 374, 133
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "IRenderPipeline Materials Dialog"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Close",IDCANCEL,264,112,50,14
+    GROUPBOX        "Material Properties:",IDC_STATIC,85,7,282,96
+    PUSHBUTTON      "&View...",IDC_VIEW_RPMATERIAL,63,112,50,14
+    PUSHBUTTON      "&Add",IDC_ADD_RPMATERIAL,129,112,50,14
+    PUSHBUTTON      "&Remove",IDC_REMOVE_RPMATERIAL,195,112,50,14
+    COMBOBOX        IDC_MATMAP_NUMBER_COMBO,145,41,104,58,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Map Number:",IDC_STATIC,91,43,44,8
+    COMBOBOX        IDC_MATMAP_TEXTURE_STATE_COMBO,145,60,104,55,
+                    CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Map State:",IDC_STATIC,91,62,44,8
+    LTEXT           "Map Texture:",IDC_STATIC,91,82,44,8
+    EDITTEXT        IDC_MATMAP_TEXTURE_ID,145,80,104,14,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    COMBOBOX        IDC_MATMAP_TEXTURE_STATE_VALUE_COMBO,256,60,107,56,
+                    CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Browse For Texture...",IDC_MATMAP_TEXTURE_ID_BROWSE,
+                    256,80,107,14
+    LISTBOX         IDC_RPMATLIST,7,7,74,96,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    NOT WS_BORDER | WS_VSCROLL | WS_TABSTOP,WS_EX_CLIENTEDGE
+    LTEXT           "Color Factor:",IDC_STATIC,92,23,46,8
+    EDITTEXT        IDC_FACTOR_R,145,20,20,14,ES_AUTOHSCROLL | ES_NUMBER | 
+                    NOT WS_BORDER,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_FACTOR_G,165,20,20,14,ES_AUTOHSCROLL | ES_NUMBER | 
+                    NOT WS_BORDER,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_FACTOR_B,185,20,20,14,ES_AUTOHSCROLL | ES_NUMBER | 
+                    NOT WS_BORDER,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_FACTOR_A,205,20,20,14,ES_AUTOHSCROLL | ES_NUMBER | 
+                    NOT WS_BORDER,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "...",IDC_FACTOR_PICK,231,20,18,14
+    LTEXT           "NOTES:\nThis material would be completely accelerated on the current hardware.",
+                    IDC_NOTES,256,20,107,35
+END
+
+IDD_TEXTUREDIALOG DIALOGEX 0, 0, 429, 178
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Available Textures"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "&Add...",IDC_ADD_TEXTURE,68,157,50,14
+    PUSHBUTTON      "&Remove",IDC_REMOVE_TEXTURE,126,158,50,13
+    CONTROL         "List1",IDC_TEXTURELIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | 
+                    LVS_AUTOARRANGE | LVS_NOSORTHEADER | WS_TABSTOP,7,7,231,
+                    142,WS_EX_CLIENTEDGE
+    GROUPBOX        "",IDC_TXMWINDOW,244,7,178,142
+    PUSHBUTTON      "|<<",IDC_BUTTON3,244,157,16,14
+    PUSHBUTTON      "<<",IDC_BUTTON4,262,157,16,14
+    PUSHBUTTON      "||",IDC_BUTTON5,280,157,16,14
+    PUSHBUTTON      "[]",IDC_BUTTON6,298,157,16,14
+    PUSHBUTTON      "|>",IDC_BUTTON7,316,157,16,14
+    PUSHBUTTON      ">>",IDC_BUTTON8,334,157,16,14
+    PUSHBUTTON      ">>|",IDC_BUTTON9,352,157,16,14
+    PUSHBUTTON      "-",IDC_BUTTON10,370,157,16,14
+    PUSHBUTTON      "+",IDC_BUTTON11,388,157,16,14
+    PUSHBUTTON      "...",IDC_BUTTON12,406,157,16,14
+END
+
+IDD_NEWWINDOWDIALOG DIALOG DISCARDABLE  0, 0, 226, 61
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "New Window"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Window Type:",IDC_STATIC,7,7,211,8
+    EDITTEXT        IDC_WINDOWTYPE,7,18,212,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,55,40,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,121,40,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_MATERIALDIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 410
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 126
+        HORZGUIDE, 103
+        HORZGUIDE, 107
+    END
+
+    IDD_RPMATDIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 367
+        VERTGUIDE, 92
+        VERTGUIDE, 138
+        VERTGUIDE, 249
+        VERTGUIDE, 256
+        VERTGUIDE, 363
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 126
+        HORZGUIDE, 20
+        HORZGUIDE, 55
+        HORZGUIDE, 103
+    END
+
+    IDD_TEXTUREDIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 422
+        VERTGUIDE, 122
+        VERTGUIDE, 244
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 171
+        HORZGUIDE, 170
+    END
+
+    IDD_NEWWINDOWDIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 219
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 54
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_SWICON              ICON    DISCARDABLE     "icon1.ico"
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

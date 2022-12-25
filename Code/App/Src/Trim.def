@@ -1,0 +1,16 @@
+EXPORTS
+	VFX_shape_draw
+	VFX_shape_draw_unclipped8
+	VFX_shape_palette
+	VFX_shape_colors
+	VFX_shape_bounds 
+	VFX_font_height
+	VFX_character_width
+	VFX_character_draw
+	VFX_string_draw
+	VFX_rectangle_hash
+	VFX_pane_wipe
+	VFX_pane_copy
+	VFX_ellipse_fill
+	VFX_pixel_write
+	VFX_line_draw

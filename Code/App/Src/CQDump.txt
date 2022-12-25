@@ -1,0 +1,128 @@
+.\DumpView.cpp(102) : Build Version 02.00.05.2501
+.\WindowManager.cpp(875) : Window at (0,0), client size = (1024,768)
+
+.\WindowManager.cpp(875) : Window at (125,99), client size = (1024,768)
+
+.\MusicManager.cpp(349) : Attempting to play music file   Main_menu_screen.wav
+.\Streamer.cpp(898) : Source stream underflow detected
+.\Streamer.cpp(898) : Source stream underflow detected
+.\MusicManager.cpp(349) : Attempting to play music file   single_player_menu.wav
+.\Streamer.cpp(898) : Source stream underflow detected
+.\Streamer.cpp(898) : Source stream underflow detected
+.\MusicManager.cpp(349) : Attempting to play music file   Multiplayer_menu.wav
+.\Streamer.cpp(898) : Source stream underflow detected
+.\Streamer.cpp(898) : Source stream underflow detected
+.\MusicManager.cpp(349) : Attempting to play music file   Battle_loading.wav
+MAP GENERATION SEED = -2114623998
+.\Streamer.cpp(898) : Source stream underflow detected
+.\Streamer.cpp(898) : Source stream underflow detected
+MAP GENERATION SEED = -2114623998
+.\engine.cpp(1192) : CQASSERT(arch_index != ((ARCHETYPE_INDEX)-1)).\RenderMgr.cpp(716) : CQASSERT(arch_index != ((ARCHETYPE_INDEX)-1)).\RenderMgr.cpp(716) : CQASSERT(arch_index != ((ARCHETYPE_INDEX)-1)).\HardPoint.cpp(238) : TRACE_1:General:Hardpoint: create_archetype: 'Fixed' has old hardpoint layout. If you see this message, mail pbleisch
+.\MusicManager.cpp(349) : Attempting to play music file   terrangame14.wav
+~BaseObject() "#21#"
+Host Migration completed!
+Dispatching agent: OpID = 2    
+  MOVETO
+  Parent = 0
+  Set has 1 members:
+    0xAA1
+Dispatching agent: OpID = 3    
+  MOVETO
+  Parent = 0
+  Set has 1 members:
+    0xAB1
+Dispatching agent: OpID = 4    
+  MOVETO
+  Parent = 0
+  Set has 1 members:
+    0xAC1
+Sending OBJSYNC for unit 0xAB1, #5->#3 [9 bytes]
+.\Streamer.cpp(898) : Source stream underflow detected
+.\Streamer.cpp(898) : Source stream underflow detected
+Sending OBJSYNC for unit 0xAC1, #6->#4 [9 bytes]
+Sending OBJSYNC for unit 0xAA1, #7->#2 [9 bytes]
+Sending OBJSYNC2 for unit 0xA91, #8->#0 [9 bytes]
+OpCmp for 0xAC1 on #4
+OpCmp for 0xAB1 on #3
+OpCmp for 0xAA1 on #2
+.\RenderMgr.cpp(716) : CQASSERT(arch_index != ((ARCHETYPE_INDEX)-1))-------------------------------------------------
+Recoverable Error: 
+Error: No provider found for 'EL!!TurretTest' [02.00.05.2501]
+Call Stack:
+objlist.cpp, Line 2504, ObjectList::LoadArchetype()
+gunboat.cpp, Line 3172, GunboatFactory::CreateArchetype()
+objlist.cpp, Line 2490, ObjectList::LoadArchetype()
+objlist.cpp, Line 2436, ObjectList::LoadArchetype()
+objlist.cpp, Line 4644, ObjectList::createPart()
+objlist.cpp, Line 3326, ObjectList::loadArchDlgProc()
+objlist.cpp, Line 2999, ObjectList::_loadArchDlgProc()
+.\RenderMgr.cpp(716) : CQASSERT(arch_index != ((ARCHETYPE_INDEX)-1))-------------------------------------------------
+Recoverable Error: 
+Error: No provider found for 'AL!!T_BlockadeRunner' [02.00.05.2501]
+Call Stack:
+objlist.cpp, Line 2504, ObjectList::LoadArchetype()
+gunboat.cpp, Line 3172, GunboatFactory::CreateArchetype()
+objlist.cpp, Line 2490, ObjectList::LoadArchetype()
+objlist.cpp, Line 2436, ObjectList::LoadArchetype()
+objlist.cpp, Line 4644, ObjectList::createPart()
+objlist.cpp, Line 3326, ObjectList::loadArchDlgProc()
+objlist.cpp, Line 2999, ObjectList::_loadArchDlgProc()
+.\RenderMgr.cpp(716) : CQASSERT(arch_index != ((ARCHETYPE_INDEX)-1))-------------------------------------------------
+Recoverable Error: 
+Error: No provider found for 'AL!!T_GenesisDevice' [02.00.05.2501]
+Call Stack:
+objlist.cpp, Line 2504, ObjectList::LoadArchetype()
+gunboat.cpp, Line 3172, GunboatFactory::CreateArchetype()
+objlist.cpp, Line 2490, ObjectList::LoadArchetype()
+objlist.cpp, Line 2436, ObjectList::LoadArchetype()
+objlist.cpp, Line 4644, ObjectList::createPart()
+objlist.cpp, Line 3326, ObjectList::loadArchDlgProc()
+objlist.cpp, Line 2999, ObjectList::_loadArchDlgProc()
+.\RenderMgr.cpp(716) : CQASSERT(arch_index != ((ARCHETYPE_INDEX)-1)).\RenderMgr.cpp(716) : CQASSERT(arch_index != ((ARCHETYPE_INDEX)-1)).\RenderMgr.cpp(716) : CQASSERT(arch_index != ((ARCHETYPE_INDEX)-1))------------OpAgent Trace out --------------------
+Empty list
+
+-------------------------------------------------
+Assertion Failed: 
+Expression: data.meshArch [02.00.05.2501]
+Call Stack:
+planetoid.cpp, Line 2325, createPlanetoid()
+planetoid.cpp, Line 2746, PlanetFactory::CreateInstance()
+objlist.cpp, Line 2573, ObjectList::CreateInstance()
+mglobals.cpp, Line 1251, MGlobals::CreateInstance()
+objgen.cpp, Line 693, ObjGenerator::editorAddObject()
+objgen.cpp, Line 193, ObjGenerator::Notify()
+objlist.cpp, Line 2910, ObjectList::Notify()
+basehotrect.h, Line 182, BaseHotRect::NotifyClients()
+.\RenderMgr.cpp(716) : CQASSERT(arch_index != ((ARCHETYPE_INDEX)-1)).\engine.cpp(2047) : TRACE_1:General:ENGINE::get_instance_child_next() INVALID_INSTANCE_INDEX passed in as parent_inst_index.
+------------OpAgent Trace out --------------------
+Empty list
+
+-------------------------------------------------
+Assertion Failed: 
+Expression: obj->GetObjectIndex() != -1 [02.00.05.2501]
+Call Stack:
+planetoid.cpp, Line 2331, createPlanetoid()
+planetoid.cpp, Line 2746, PlanetFactory::CreateInstance()
+objlist.cpp, Line 2573, ObjectList::CreateInstance()
+mglobals.cpp, Line 1251, MGlobals::CreateInstance()
+objgen.cpp, Line 693, ObjGenerator::editorAddObject()
+objgen.cpp, Line 193, ObjGenerator::Notify()
+objlist.cpp, Line 2910, ObjectList::Notify()
+basehotrect.h, Line 182, BaseHotRect::NotifyClients()
+Sending OBJSYNC2 for unit 0xB81, #16->#0 [9 bytes]
+Sending OBJSYNC2 for unit 0xB31, #17->#0 [9 bytes]
+Sending OBJSYNC2 for unit 0xB21, #18->#0 [9 bytes]
+Sending OBJSYNC2 for unit 0xB01, #19->#0 [9 bytes]
+Sending OBJSYNC2 for unit 0xAE1, #20->#0 [9 bytes]
+Sending OBJSYNC2 for unit 0xAD1, #21->#0 [9 bytes]
+Sending OBJSYNC2 for unit 0xB11, #23->#0 [9 bytes]
+Sending OBJSYNC2 for unit 0xAF1, #25->#0 [9 bytes]
+Sending OBJSYNC2 for unit 0xB11, #27->#0 [7 bytes]
+Sending OBJSYNC2 for unit 0xB21, #28->#0 [7 bytes]
+Sending OBJSYNC2 for unit 0xB01, #29->#0 [7 bytes]
+Sending OBJSYNC2 for unit 0xAE1, #30->#0 [7 bytes]
+Sending OBJSYNC2 for unit 0xAD1, #31->#0 [7 bytes]
+Sending OBJSYNC2 for unit 0xB81, #32->#0 [7 bytes]
+Sending OBJSYNC2 for unit 0xB31, #33->#0 [7 bytes]
+Sending OBJSYNC2 for unit 0xAF1, #34->#0 [7 bytes]
+.\RenderMgr.cpp(716) : CQASSERT(arch_index != ((ARCHETYPE_INDEX)-1)).\WindowManager.cpp(278) : WindowManager: WndProc: WM_ACTIVATEAPP deactivated

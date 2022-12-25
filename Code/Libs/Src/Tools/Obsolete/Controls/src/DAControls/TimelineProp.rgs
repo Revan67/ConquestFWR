@@ -1,0 +1,22 @@
+HKCR
+{
+	TimelineProp.TimelineProp.1 = s 'TimelineProp Class'
+	{
+		CLSID = s '{34B41D35-438B-11D2-89DA-00400521015D}'
+	}
+	TimelineProp.TimelineProp = s 'TimelineProp Class'
+	{
+		CurVer = s 'TimelineProp.TimelineProp.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {34B41D35-438B-11D2-89DA-00400521015D} = s 'TimelineProp Class'
+		{
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

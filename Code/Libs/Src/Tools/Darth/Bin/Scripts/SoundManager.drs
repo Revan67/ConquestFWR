@@ -1,0 +1,134 @@
+-- SoundManager.drs
+--
+-- Long boring test of soundmanager y soundmanager con el streamer
+--
+$debug
+Data = "Data\\";
+
+--// constants for parameters
+
+LOOP = 1;
+DONT_LOOP = 0;
+IS_3D = 1;
+IS_NOT_3D = 0;
+LOCATION = "CENTER";
+SHORT_SOUND = "question.wav";
+MED_SOUND = "behave.wav";
+LONG_SOUND = "music.wav";
+FORCE_USER_INPUT = -1;
+LOOP_FOREVER = 0;
+MAX_CHANNELS = 45;
+
+-- soundManager startup options
+--// app wants/device has 2D hw mixing capabilites
+SM_USE_2D_HARDWARE = 1;
+--// app wants/device has 3D hw capabilites
+SM_USE_3D_HARDWARE = 2;
+--// app wants/device supports EAX
+SM_USE_EAX = 4;
+--// app wants/device supports A3D
+SM_USE_A3D = 8;
+--// app wants DS3D to apply calculations to 3D software buffers - if not enabled, 3D software buffers get pan and volume adjustments to simulate 3D
+SM_USE_3D_SOFTWARE = 16;
+SM_CREATE_ALL_2D_IN_SOFTWARE = 64;
+SM_USE_RIGHT_HANDED_SYSTEM = 32;
+--// disables any hardware help	
+SM_USE_NO_HW = 256;
+SM_DEFAULT_SETTINGS = SM_USE_2D_HARDWARE + SM_USE_3D_HARDWARE + SM_USE_EAX + SM_USE_A3D + SM_USE_RIGHT_HANDED_SYSTEM;
+
+test_3d = {IS_3D, IS_NOT_3D};
+test_looping = {DONT_LOOP, LOOP};
+test_sounds = {SHORT_SOUND, MED_SOUND, LONG_SOUND};
+test_num_instances = {1, 5, 10, 20, 30, 40, 50, 100};
+test_locations = {"CENTER", "LEFT", "RIGHT", "FRONT", "BACK", "UP", "DOWN"};
+
+
+-- SoundManPlaySoundSetAll and SoundManPlaySoundAdd(
+--		archetype file name, 
+--		location, 
+--		3D or Not 3D, 
+--		looping or Not looping, 
+--		number of instances, 
+--		-1 to force user to select pass or fail, 0 to loop a sound forever, > 0 for ms to run before ending automatically (only when looping), 
+--		delay between instance starts, 
+--		max number of simultaneos sounds to play
+--		SoundManager options
+--		name of streamer file to play, "NO_STREAMER" or nil == no streamer
+--	)
+-- These tests play one or more instances of a single archetype.
+-- If a filename is passed for the streamer, an instance of the streamer is created and
+-- the file is streamed. If "" is passed, no streamer is created.
+-- SoundManPlaySoundSetAll submits all sounds at once to SoundManager and removes them
+-- by setting SoundManagers list to NULL.
+-- SoundManPlaySoundAdd adds each instance to SoundManagers list and removes them one at
+-- a time.  There are two tests to excercise both code paths.
+
+-- SoundManPlayMultipleArch(
+--		3D or Not 3D, 
+--		looping or Not looping, 
+--		-1 to force user to select pass or fail, 0 to loop a sound forever, > 0 for ms to run before ending automatically (only when looping), 
+--		delay between instance starts, 
+--		max number of simultaneos sounds to play
+--		SoundManager options
+--		archetype1 file name, 
+--		location of archetype1 instance(s), 
+--		number of instances of archetype1, 
+--		archetype1 file name, 
+--		location of archetype2 instance(s), 
+--		number of instances of archetype2, 
+--		archetype1 file name, 
+--		location of archetype3 instance(s), 
+--		number of instances of archetype3, 
+--	)
+-- This test plays one or more instances of up to three different archetypes.
+-- If "RANDOM" is passed for the location, each instance of the archetype starts in a
+-- different location.
+
+function Main( )
+	SoundManCreate();
+	SoundManCreateArchetype(Data .. SHORT_SOUND);
+
+	SoundManPlaySoundSetAll(Data .. SHORT_SOUND, LOCATION, IS_3D, DONT_LOOP, 1, -1, 50, MAX_CHANNELS, SM_DEFAULT_SETTINGS, Data .. "plastic.wav");
+
+	SoundManPlaySoundSetAll(Data .. SHORT_SOUND, LOCATION, IS_3D, DONT_LOOP, 100, 0, 50, MAX_CHANNELS, SM_DEFAULT_SETTINGS, Data .. "music.wav");
+
+--	// test one NON_3D sound in each location
+	local i,v = next(test_locations, nil)  
+	while i do
+		SoundManPlaySoundSetAll(Data .. SHORT_SOUND, v, IS_NOT_3D);
+		i, v = next(test_locations, i)
+	end
+--	// test one 3D sound in each location
+	i,v = next(test_locations, nil)  
+	while i do
+		SoundManPlaySoundAdd(Data .. SHORT_SOUND, v, IS_3D);
+		i, v = next(test_locations, i)
+	end
+
+	SoundManPlaySoundSetAll(Data .. SHORT_SOUND, LOCATION);
+	SoundManPlaySoundSetAll(Data .. SHORT_SOUND, LOCATION, IS_3D, DONT_LOOP);
+
+	SoundManPlaySoundAdd(Data .. SHORT_SOUND, LOCATION);
+	SoundManPlaySoundAdd(Data .. SHORT_SOUND, LOCATION, IS_3D, DONT_LOOP);
+
+	SoundManPlaySoundSetAll(Data .. SHORT_SOUND, LOCATION, IS_NOT_3D, DONT_LOOP);
+	SoundManPlaySoundSetAll(Data .. SHORT_SOUND, LOCATION, IS_3D, DONT_LOOP, 15, FORCE_USER_INPUT);
+
+	SoundManPlaySoundSetAll(Data .. SHORT_SOUND, LOCATION, IS_NOT_3D, LOOP);
+	SoundManPlaySoundSetAll(Data .. SHORT_SOUND, LOCATION, IS_3D, LOOP);
+
+	SoundManPlaySoundSetAll(Data .. SHORT_SOUND, LOCATION, IS_3D, DONT_LOOP, 50, 0, 100, MAX_CHANNELS);
+	SoundManPlaySoundSetAll(Data .. SHORT_SOUND, LOCATION, IS_3D, DONT_LOOP, 100, 0, 50, MAX_CHANNELS);
+
+	SoundManPlayMultipleArch(IS_3D, DONT_LOOP, 0, 50, MAX_CHANNELS, SM_DEFAULT_SETTINGS, Data .. MED_SOUND, "CENTER", 1, Data .. SHORT_SOUND, "LEFT", 1, Data .. LONG_SOUND, "RIGHT", 1);
+
+--  Play 3 different archetypes in random locations w/ each instance starting 1 sec apart
+	SoundManPlayMultipleArch(IS_3D, DONT_LOOP, 0, 1000, MAX_CHANNELS, SM_DEFAULT_SETTINGS, Data .. MED_SOUND, "RANDOM", 10, Data .. SHORT_SOUND, "RANDOM", 20, Data .. LONG_SOUND, "RANDOM", 10);
+--	play same sounds again w/ no HW help
+	SoundManPlayMultipleArch(IS_3D, DONT_LOOP, 0, 1000, MAX_CHANNELS, SM_DEFAULT_SETTINGS+SM_USE_NO_HW, Data .. MED_SOUND, "RANDOM", 10, Data .. SHORT_SOUND, "RANDOM", 20, Data .. LONG_SOUND, "RANDOM", 10);
+--  play same sounds again w/ no HW help, letting DSOUND do the 3D
+	SoundManPlayMultipleArch(IS_3D, DONT_LOOP, 0, 1000, MAX_CHANNELS, SM_DEFAULT_SETTINGS+SM_USE_NO_HW+SM_USE_3D_SOFTWARE, Data .. MED_SOUND, "RANDOM", 10, Data .. SHORT_SOUND, "RANDOM", 20, Data .. LONG_SOUND, "RANDOM", 10);
+
+	return DARTH_SCRIPT_PASS;
+end
+

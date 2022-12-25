@@ -1,0 +1,785 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDM_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New",                        IDM_NEW, GRAYED
+        MENUITEM "&Open...",                    IDM_LOADSCRIPT
+        MENUITEM "&Close",                      IDM_CLOSE, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "&Save",                       IDM_SAVE, GRAYED
+        MENUITEM "Save &As...",                 IDM_SAVEAS, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "Recent &Files",               IDM_RECENTFILES
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       IDM_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "Cu&t",                        ID_EDIT_CUT, GRAYED
+        MENUITEM "&Copy",                       ID_EDIT_COPY, GRAYED
+        MENUITEM "Paste",                       ID_EDIT_PASTE, GRAYED
+        MENUITEM "Delete",                      ID_POPUP_DELETE, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "Select Al&l",                 ID_EDIT_SELECTALL, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "Command &Properties...",      ID_POPUP_PROPERTIES, GRAYED
+    END
+    POPUP "&Build"
+    BEGIN
+        MENUITEM "&Update File List...",        IDM_UPDATEFILELIST, GRAYED
+        MENUITEM "&Inject Setup...",            IDM_INJECT, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "&Replicate, and Inject. (ISO Compliant)...", IDM_BUILD
+        , GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "Build Trial Version...",      IDM_BUILD_TRIAL, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "&Settings...",                IDM_BUILDSETTINGS, GRAYED
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Regular Commands",           IDM_SHOWREG, CHECKED
+        MENUITEM "&Internal Commands",          IDM_SHOWINT, CHECKED
+        MENUITEM "&Comments",                   IDM_SHOWCOM, CHECKED
+        MENUITEM "Show Internal &Properties",   IDM_SHOWPROPERTY
+        MENUITEM SEPARATOR
+        MENUITEM "Show Items in &Color",        IDM_SHOWCOLOR, CHECKED
+        MENUITEM "Options...",                  ID_VIEW_OPTIONS, GRAYED
+    END
+    POPUP "&Advanced"
+    BEGIN
+        MENUITEM "&Load Strings from Resource DLL", IDM_LOADSTRINGS, GRAYED
+        MENUITEM "&Save Static Strings to 'StaticStrings.rc'", IDM_SAVERC3
+        , GRAYED
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About...",                   IDM_ABOUT
+    END
+END
+
+IDM_COMMAND_ITEM_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "Popup!"
+    BEGIN
+        MENUITEM "Delete",                      ID_POPUP_DELETE, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties...",              ID_POPUP_PROPERTIES
+        MENUITEM "Auto Size Columns [debug feature]", ID_AUTOSIZE, GRAYED
+    END
+END
+
+IDM_EMPTY_RECENTLIST MENU DISCARDABLE 
+BEGIN
+    MENUITEM "Recent File List",            65535, GRAYED
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_PREPSTUB98ICON      ICON    DISCARDABLE     "PrepStub99.ico"
+IDI_COMMAND             ICON    DISCARDABLE     "icon2.ico"
+IDI_FOLDER              ICON    DISCARDABLE     "folder.ico"
+IDI_NOTEBOOK            ICON    DISCARDABLE     "notebook.ico"
+IDI_VERIFY              ICON    DISCARDABLE     "verify.ico"
+IDI_INJECT              ICON    DISCARDABLE     "inject.ico"
+IDI_STRINGS             ICON    DISCARDABLE     "strings.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_EDITCOMMANDDIALOG DIALOG DISCARDABLE  0, 0, 362, 157
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Edit Command Properties"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,118,137,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,184,137,50,14
+    LTEXT           "Groups",IDC_STATIC,279,21,24,8
+    GROUPBOX        "Flags and Install Groups",IDC_STATIC,8,5,346,125
+    LTEXT           "OS's",IDC_STATIC,44,21,17,10
+    LTEXT           "Language",IDC_STATIC,116,21,33,8
+    LTEXT           "Build",IDC_STATIC,196,21,16,8
+    CONTROL         "",IDC_OS,"Static",SS_BLACKFRAME,16,31,73,90
+    CONTROL         "",IDC_LANG,"Static",SS_BLACKFRAME,93,31,73,90
+    CONTROL         "",IDC_LOC,"Static",SS_BLACKFRAME,170,31,73,90
+    CONTROL         "",IDC_GROUPS,"Static",SS_BLACKFRAME,248,31,97,90
+END
+
+IDD_ABOUT DIALOG DISCARDABLE  0, 0, 207, 122
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About PrepStub 99"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,83,101,40,14
+    GROUPBOX        "",IDC_STATIC,7,3,192,94
+    ICON            IDI_PREPSTUB98ICON,IDC_STATIC,171,13,20,20
+    LTEXT           "Prepstub 99",IDC_STATIC,14,13,73,8
+    LTEXT           "Version 1.0",IDC_STATIC,14,24,42,8
+    LTEXT           "Copyright © 1998 Microsoft Corporation",IDC_STATIC,14,
+                    78,125,8
+    LTEXT           "by: Chris N. Haddan (chrishad@microsoft.com)",
+                    IDC_STATIC,14,66,148,8
+    LTEXT           "[  ]",IDC_BUILDNUMBER,14,46,147,8
+END
+
+IDD_VIEWLIST DIALOG DISCARDABLE  0, 0, 610, 322
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "View File List"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,247,301,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,313,301,50,14
+    LISTBOX         IDC_VIEWLIST,7,7,596,292,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+END
+
+IDD_PROGRESS DIALOGEX 0, 0, 271, 185
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Progress..."
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Cancel",IDCANCEL,111,164,49,14
+    CONTROL         "Progress1",IDC_PROGRESS,"msctls_progress32",PBS_SMOOTH | 
+                    WS_BORDER,7,106,257,6,WS_EX_CLIENTEDGE
+    LTEXT           "",IDC_STATUS,7,116,257,43,0,WS_EX_STATICEDGE
+    LISTBOX         IDC_TASKLIST,7,7,257,95,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_VERIFICATION DIALOG DISCARDABLE  0, 0, 285, 162
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "File verification settings"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,84,141,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,150,141,50,14
+    CONTROL         "",IDC_BUILD,"Static",SS_BLACKFRAME,16,20,113,107
+    LTEXT           "By choosing build flags on the left,  Prepstub will require files with that build type to be present during file information gathering.  If a command has no flags, it will always need to be present.",
+                    IDC_STATIC,137,23,128,44
+    GROUPBOX        "Verification:",IDC_STATIC,7,7,271,128
+    LTEXT           "If a command has one or more flags set, and the corresponding flag is not checked here, it will simply be skipped for purposes of file information. All file information will be set to zero.",
+                    IDC_STATIC,137,73,128,49
+END
+
+IDD_STRINGSETTINGS DIALOGEX 0, 0, 288, 111
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Static String Processing Options"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "Use static strings from Setup Script",
+                    IDC_LOADSCRIPTSTRINGS,"Button",BS_AUTORADIOBUTTON,56,23,
+                    125,10
+    CONTROL         "Load and update static strings from Resource DLL",
+                    IDC_LOADDLLSTRINGS,"Button",BS_AUTORADIOBUTTON,56,37,174,
+                    10
+    CONTROL         "Ignore String Tokens",IDC_IGNORESTRINGS,"Button",
+                    BS_AUTORADIOBUTTON,56,66,82,10
+    DEFPUSHBUTTON   "OK",IDOK,86,90,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,152,90,50,14
+    LTEXT           "",IDC_SETUPDLLLOCATION,68,49,195,11,0,WS_EX_CLIENTEDGE
+    GROUPBOX        "String Options:",IDC_STATIC,7,7,274,77
+    ICON            IDI_STRINGS,IDC_STATIC,17,35,20,20
+END
+
+IDD_BUILD DIALOG DISCARDABLE  0, 0, 334, 269
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Build / SaveAs / Inject / Update"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_SOURCEPATH,118,22,185,12,ES_AUTOHSCROLL
+    CONTROL         "Replicate Setup Tree (ISO Compliant)",
+                    IDC_REPLICATEFILETREE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,20,56,134,10
+    EDITTEXT        IDC_DROPPATH,118,68,185,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_REPARENTDIR,118,81,185,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_SETUPLOCATION,118,114,185,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_SETUPDLLLOCATION,118,127,185,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Advanced...",IDC_ADVANCEDINJECTSETTINGS,44,142,50,14
+    PUSHBUTTON      "Settings...",IDC_STRINGSETTINGS,266,178,51,14
+    DEFPUSHBUTTON   "Build",IDBUILD,112,248,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,178,248,50,14
+    PUSHBUTTON      "...",IDC_BTN_SOURCE,304,22,13,12
+    PUSHBUTTON      "...",IDC_BTN_DROP,304,68,13,12
+    PUSHBUTTON      "...",IDC_BTN_SETUP,304,114,13,12
+    PUSHBUTTON      "...",IDC_BTN_SETUPDLL,304,127,13,12
+    GROUPBOX        "File and Path Locations",IDC_STATIC,12,7,315,91
+    LTEXT           "Source path:",IDC_STATIC,44,24,42,8
+    LTEXT           "Drop path:",IDC_DROPPATHTEXT,44,70,34,8
+    LTEXT           "Re-Parent path:",IDC_REPARENTPATHTEXT,44,83,51,8
+    LTEXT           "Setup.exe location:",IDC_SETUPEXETEXT,44,116,62,8
+    GROUPBOX        "Resource and Injection Settings",
+                    IDC_RESOURCEANDINJECTTEXT,12,102,315,59
+    LTEXT           "Setup DLL location:",IDC_DLLLOCATIONTEXT,44,129,64,8
+    ICON            IDI_NOTEBOOK,IDC_NOTEICON,13,117,21,20
+    ICON            IDI_FOLDER,IDC_STATIC,14,18,21,20
+    LTEXT           "Select how string substitutions will be processed.",
+                    IDC_STATICSTRINGTEXT,47,181,168,10
+    GROUPBOX        "Static String Options",IDC_STATICSTRINGOPTIONSTEXT,12,
+                    165,315,37
+    GROUPBOX        "",IDC_STATIC,12,48,315,50
+    ICON            IDI_STRINGS,IDC_STATIC,18,177,21,20
+    CONTROL         "Update File List",IDC_UPDATEFILELIST,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,255,38,65,10
+    PUSHBUTTON      "Settings...",IDC_VERIFYSETTINGS,266,221,51,14
+    GROUPBOX        "File Verification",IDC_VERIFICATIONTEXT,12,207,315,37
+    LTEXT           "Select build flag parameters to verify presence of files during build.",
+                    IDC_BUILDFLAGTEXT,48,223,210,11
+    ICON            IDI_VERIFY,IDC_STATIC,16,218,21,20
+END
+
+IDD_ADVANCEDINJECTSETTINGS DIALOG DISCARDABLE  0, 0, 186, 87
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Advanced Inject Settings..."
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,35,66,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,101,66,50,14
+    CONTROL         "Inject new setup script",IDC_INJECTBINARYBLOB,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,50,20,87,10
+    CONTROL         "Inject Dynamic Strings",IDC_INJECTDYNAMICSTRINGS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,50,31,86,10
+    CONTROL         "Inject Static Strings",IDC_INJECTSTATICSTRINGS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,50,42,77,10
+    ICON            IDI_INJECT,IDC_STATIC,18,26,20,20
+    GROUPBOX        "Inject Options",IDC_STATIC,7,7,172,54
+END
+
+IDD_PROP_GENERAL DIALOG DISCARDABLE  0, 0, 334, 130
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_SOURCEPATH,100,26,203,12,ES_AUTOHSCROLL
+    CONTROL         "Replicate Setup Tree (ISO Compliant)",
+                    IDC_REPLICATEFILETREE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,21,71,134,10
+    EDITTEXT        IDC_DROPPATH,100,88,203,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_REPARENTDIR,100,101,203,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BTN_SOURCE,304,26,13,12
+    PUSHBUTTON      "...",IDC_BTN_DROP,304,88,13,12
+    GROUPBOX        "File and Path Locations:",IDC_STATIC,7,7,320,57
+    LTEXT           "Source path:",IDC_STATIC,44,28,42,8
+    LTEXT           "Drop path:",IDC_DROPPATHTEXT,44,90,34,8
+    LTEXT           "Re-Parent path:",IDC_REPARENTPATHTEXT,44,103,51,8
+    ICON            IDI_FOLDER,IDC_STATIC,16,21,21,20
+    GROUPBOX        "",IDC_STATIC,7,59,320,64
+    CONTROL         "Update File List",IDC_UPDATEFILELIST,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,255,45,65,10
+END
+
+IDD_PROP_VERIFICATION DIALOG DISCARDABLE  0, 0, 334, 143
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "",IDC_BUILD,"Static",SS_BLACKFRAME,16,20,131,106
+    LTEXT           "By choosing build flags on the left,  Prepstub will require files with that build type to be present during file information gathering.  If a command has no flags, it will always need to be present.",
+                    IDC_VERIFYTEXT1,156,21,163,37
+    GROUPBOX        "Verification:",IDC_VERIFYTITLE,7,7,320,130
+    LTEXT           "If a command has one or more flags set, and the corresponding flag is not checked here, it will simply be skipped for purposes of file information. All file information will be set to zero.",
+                    IDC_VERIFYTEXT2,156,80,163,39
+END
+
+IDD_PROP_TRIALVERSION DIALOG DISCARDABLE  0, 0, 334, 98
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Trial Version Executable:",IDC_STATIC,21,32,79,8
+    LTEXT           "MakeCab.Exe location:",IDC_STATIC,21,47,74,8
+    LTEXT           "Uninstall program name:",IDC_STATIC,21,63,76,8
+    EDITTEXT        IDC_TRIALEXE,106,30,212,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_MAKECABEXE,106,45,212,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_UNINSTALLEXE,106,60,212,14,ES_AUTOHSCROLL
+    GROUPBOX        "Trial Version Build Information:",IDC_STATIC,7,7,320,84
+END
+
+IDD_PROP_STRINGSETTINGS DIALOGEX 0, 0, 334, 102
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Use static strings from Setup Script",
+                    IDC_LOADSCRIPTSTRINGS,"Button",BS_AUTORADIOBUTTON,56,23,
+                    125,10
+    CONTROL         "Load and update static strings from Resource DLL",
+                    IDC_LOADDLLSTRINGS,"Button",BS_AUTORADIOBUTTON,56,38,174,
+                    10
+    CONTROL         "Ignore String Tokens",IDC_IGNORESTRINGS,"Button",
+                    BS_AUTORADIOBUTTON,56,68,82,10
+    LTEXT           "",IDC_SETUPDLLLOCATION,68,50,178,11,0,WS_EX_CLIENTEDGE
+    GROUPBOX        "String Options:",IDC_STRINGTEXT,7,7,320,87
+    ICON            IDI_STRINGS,IDC_STATIC,17,35,20,20
+END
+
+IDD_PROP_INJECTSETTINGS DIALOG DISCARDABLE  0, 0, 334, 134
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Inject new setup script",IDC_INJECTBINARYBLOB,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,45,84,87,10
+    CONTROL         "Inject Dynamic Strings",IDC_INJECTDYNAMICSTRINGS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,45,95,86,10
+    CONTROL         "Inject Static Strings",IDC_INJECTSTATICSTRINGS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,45,105,77,10
+    ICON            IDI_INJECT,IDC_STATIC,17,86,20,20
+    GROUPBOX        "Inject Options:",IDC_INJECTTEXT,7,67,320,59
+    EDITTEXT        IDC_SETUPLOCATION,118,24,185,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_SETUPDLLLOCATION,118,37,185,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BTN_SETUP,304,24,13,12
+    PUSHBUTTON      "...",IDC_BTN_SETUPDLL,304,37,13,12
+    LTEXT           "Setup.exe location:",IDC_SETUPEXETEXT,44,26,62,8
+    GROUPBOX        "Resource Settings:",IDC_RESOURCEANDINJECTTEXT,7,7,320,
+                    56
+    LTEXT           "Setup DLL location:",IDC_DLLLOCATIONTEXT,44,39,64,8
+    ICON            IDI_NOTEBOOK,IDC_NOTEICON,13,26,20,20
+END
+
+IDD_PROP_DEFAULTFLAGS DIALOG DISCARDABLE  0, 0, 365, 151
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Groups",IDC_STATIC,286,23,24,8
+    GROUPBOX        "Flags and Install Groups",IDC_STATIC,7,7,351,137
+    LTEXT           "OS's",IDC_STATIC,43,23,17,10
+    LTEXT           "Language",IDC_STATIC,115,23,33,8
+    LTEXT           "Build",IDC_STATIC,195,23,16,8
+    CONTROL         "",IDC_OS,"Static",SS_BLACKFRAME,15,33,73,90
+    CONTROL         "",IDC_LANG,"Static",SS_BLACKFRAME,92,33,73,90
+    CONTROL         "",IDC_LOC,"Static",SS_BLACKFRAME,169,33,73,90
+    CONTROL         "",IDC_GROUPS,"Static",SS_BLACKFRAME,246,33,103,90
+    LTEXT           "These default settings will be applied to file entries when no history or rules apply.",
+                    IDC_STATIC,48,130,254,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_EDITCOMMANDDIALOG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 354
+    END
+
+    IDD_ABOUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 199
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 115
+    END
+
+    IDD_VIEWLIST, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 603
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 315
+    END
+
+    IDD_PROGRESS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 264
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 178
+    END
+
+    IDD_VERIFICATION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 278
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 155
+    END
+
+    IDD_STRINGSETTINGS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 281
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 104
+    END
+
+    IDD_BUILD, DIALOG
+    BEGIN
+        LEFTMARGIN, 12
+        RIGHTMARGIN, 327
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 262
+    END
+
+    IDD_ADVANCEDINJECTSETTINGS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 80
+    END
+
+    IDD_PROP_GENERAL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 327
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 123
+    END
+
+    IDD_PROP_VERIFICATION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 327
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 136
+    END
+
+    IDD_PROP_TRIALVERSION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 327
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 91
+    END
+
+    IDD_PROP_STRINGSETTINGS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 327
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 95
+    END
+
+    IDD_PROP_INJECTSETTINGS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 327
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 127
+    END
+
+    IDD_PROP_DEFAULTFLAGS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 358
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 144
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "AAS Setup Tool\0"
+            VALUE "CompanyName", "Microsoft Corp.\0"
+            VALUE "FileDescription", "PrepStub99 by Chris N. Haddan (chrishad)\0"
+            VALUE "FileVersion", "03.98.11.2400\0"
+            VALUE "InternalName", "PrepStub99\0"
+            VALUE "LegalCopyright", "Copyright © 1998 Microsoft Corporation\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "PrepStub99.exe\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Microsoft PrepStub99\0"
+            VALUE "ProductVersion", "03.98.11.2400\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_SPLITH              CURSOR  DISCARDABLE     "Splitv.cur"
+IDC_SPLITV              CURSOR  DISCARDABLE     "Splith.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_SPLASH              BITMAP  DISCARDABLE     "Splash.bmp"
+IDB_CHECKBOXES          BITMAP  DISCARDABLE     "CHECKBOXES.bmp"
+IDB_OS_ICONS            BITMAP  DISCARDABLE     "OS_ICONS.bmp"
+IDB_OS_ICONS_MASK       BITMAP  DISCARDABLE     "OS_ICONS_MASK.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_ILLEGALTOKEN        "Script Error:\n\nWhile parsing the script file, an unexpected token '%s' was encountered at line %d.\nThis script file does not have the proper syntax and cannot be loaded."
+    STR_NOMEMORY            "Out of memory."
+    STR_APPTITLE            "Prepstub99"
+    STR_FILENOTFOUND        "Could not find file %s."
+    STR_CANTOPENSOURCE      "File %s was found but could not be opened for reading."
+    STR_MUSTHAVEOSFLAG      "Error: command ID %d does not have an operating system specified."
+    STR_CANTCREATEFILE      "Can't open output file %s."
+    STR_OUTPUTHEADER        "//\r\n// DO NOT EDIT!!\r\n//\r\n//    This file was generated automatically by PREPSTUB.EXE\r\n//\r\n\r\n"
+    STR_WIN31_WARNING       "Note!!!  You are running in Windows 3.1 which means all 32-bit version checking will FAIL.  Windows 95 is the operating system of choice.  You have been warned."
+    STR_WINNT_WARNING       "Note!!!  You are running in Windows NT (version 3.5 or less), which is incapable of getting version info from VSHARE.386.  Windows 95 or Windows NT 4.0 are the operating systems of choice.  You have been warned."
+    STR_CANTLOADDLL         "Can't load dll: %s"
+    STR_WINNT_REQUIRED      "Warning: Some features of this program require Windows NT."
+    STR_INVALID_SCRIPT      "Not a valid setup script."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_BUILD_NUMBER        "03.98.11.2400"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    200                     "-------- Common Dialog Filters for File Types --------"
+    STR_FILE_FILTER_RC      "Resource File (*.RC)|*.RC|ALL (*.*)|*.*|+rc"
+    STR_FILE_FILTER_BINARY  "PrepStub 99 Binary File (*.PBF)|*.PBF|ALL (*.*)|*.*|+pbf"
+    STR_FILE_FILTER_SCRIPT  "PrepStub 99 Setup Script (*.PLF)|*.PLF|ALL (*.*)|*.*|+plf"
+    STR_FILE_FILTER_EXE     "Setup Executable (*.EXE)|*.EXE|ALL (*.*)|*.*|+exe"
+    STR_FILE_FILTER_SAVEAS  "PrepStub 99 Setup Script (*.PLF)|*.PLF|PrepStub 99 Binary File (*.PBF)|*.PBF|+PLF"
+    STR_FILE_FILTER_DLL     "Setup Resource DLL (*.DLL)|*.DLL|ALL (*.*)|*.*|+dll"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_TEXTOUTPUTHEADER    "\r\n; This file was generated automatically by PREPSTUB99.EXE\r\n; \r\n; \r\n"
+    STR_SETSOURCEFOLDER     "Select the folder where the source files are located."
+    STR_SETDROPFOLDER       "Select the folder where the drop files should be placed."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_LOADRULES_FAILED    "%s was unable to load the file rules from the setup script."
+    STR_LOADHISTORY_FAILED  "%s was unable to load the file history from the setup script."
+    STR_BADSCRIPT           "%s was not able to load the file:\n'%s'.\n\n\nThis file may contain syntax errors."
+    STR_INITFAILED          "Prepstub99 failed to initialize. (class registration failed)"
+    STR_BINWRITEFAILED      "%s could not write the binary image."
+    STR_RCWRITEFAILED       "%s could not write the resource file."
+    STR_COMMANDWITHNOFLAGS  "One or more of the items in the command list has no flags set.   At least one flag must be set.  You may continue, but the resulting file may be invalid."
+    STR_SETUPUPDATESUCCESS  "%s successfully updated the setup executable."
+    STR_SETUPUPDATEFAILED   "%s was unable to update the setup executable."
+    STR_SAVECHANGES         "Save changes in %s?"
+    STR_NODYNSECTION        "No dynamic file section found.  %s cannot automatically update the filelist. \n\nThis beta doesn't support adding this section automatically.\nTo add manually, edit the script and add these lines:\n\n    [BEGIN_UPDATE_FILELIST] \n    [END_UPDATE_FILELIST]"
+    STR_UPDATELISTFAILED    "%s was unable to update the file list.  Please make sure the source directory is valid."
+    STR_CLEARFILELIST       "%s was unable to clear the internal file list."
+    STR_REPLICATEFAILED     "File replication has failed. "
+    STR_ADDFILESMESSAGE     "Replication of the dynamic file list is complete.  You should ensure that any static files, fonts and DLL's are in the drop directory before File sizes are calculated."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_DROPDIREXISTS       "The drop directory '%s' already exists.   Would you like to continue with the build process?"
+    STR_REPARENTEXISTS      "The reparent directory %s already exists.  You may continue the build process, but it is not recommended as you will likely encounter file copy errors if files already exist.  Do you wish to continue?"
+    STR_CANNOTCOPYFILE      "The file '%s' could not be copied to '%s'. This usually indicates you are trying to build into a directory with existing files.  You should also ensure there is enough disk space and the volume is not read-only.  "
+    STR_CANNOTCREATEDIR     "The directory '%s' could not be created. This may indicate you are trying to build into a directory with existing files and directories. Do you wish to continue?"
+    STR_UNKNOWNRULEACTION   "The action '%s' is not recognized as a valid rule command."
+    STR_LOADSTRINGLIST_FAILED 
+                            "%s was unable to load the string list from the setup script."
+    STR_UPDATESTRINGLISTFAILED "%s was unable to update the string list."
+    STR_DUPLICATESTRING     "A duplicate string was encountered in the setup script.  String ID = %d appears more than once.   Only the first occurrence will be used for string expansion."
+    STR_NODYNSTRINGSECTION  "No dynamic string section found.  %s cannot automatically update the string list. \n\nThis beta doesn't support adding this section automatically.\nTo add manually, edit the script and add these lines:\n\n    [BEGIN_UPDATE_STRINGLIST] \n    [END_UPDATE_STRINGLIST]"
+    STR_CREATEDYNSTRINGSECTIONFAILED 
+                            "Could not create dynamic string section."
+    STR_CANCELREPLICATE     "Are you sure you want to cancel file replication?"
+    STR_STRINGNOTFOUND      "A string with ID %d is referenced in the command list, but no assoicated String ID is defined.  "
+    STR_BADSUBSTSTRING      "An unexpected string substitution token was encountered in a source filename.  The token ""%s"" cannot be expanded.  Please contact your setup developer."
+    STR_CLEARDYNSTRINGLISTFAILED 
+                            "%s was unable to clear the dynamic string list. "
+    STR_GENERICABORT        "Are you sure you want to cancel the current operation?"
+    STR_BADSETUPFILE        "The setup.exe resource file '%s' does not exist.  Continue anyway?"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_RENAME_R_U_SURE     "By nature this feature is quite dangerous.  You should definitely know what your doing before proceeding.  This feature moves files from a source directory to another and renames them to ISO compliant short file names.   You should be extremely careful when sourcing files from your projects network share.  After this command completes, the files are only useful for use with setup, there is no easy way to get them renamed back.    Also you should be careful not to set the ""source directory"" to a root directory on a machine or network drive.  Moving and renaming an entire server would be very bad.   You have been warned!   Are you really really really sure you want to continue?    "
+    STR_LOADSTATICSTRINGSWARNING 
+                            "This feature will load static strings from the setup resource DLL and replace all strings in the static string table section.  If the static string section does not exist, one will be added.   "
+    STR_LOADSTATICSTRINGSFAILED 
+                            "The static strings could not be loaded from the resource DLL."
+    STR_FILENOTWRITABLE     "%s was not able to gain write access to the file %s"
+    STR_CREATEDROPDIRFAILED "The drop directory '%s' could not be created.  Please ensure the volume is writable and no files exist with this name."
+    STR_CREATEREPARENTDIRFAILED 
+                            "The drop directory '%s' could not be created.  Please ensure the volume is writable and no files exist with this name."
+    STR_DROPDIRNOTWRITABLE  "The drop directory '%s' does not have write permissions. The build process cannot continue."
+    STR_BADSETUPDLLFILE     "The dll resource file '%s' does not exist.  Continue anyway?"
+    STR_UNKNOWNBUILDTYPE    "%s cannot determine if your file list was previously replicated (ISO) or updated (LFN), so this command may fail.   Please update or re-replicate your file list to avoid this warning message in the future.    "
+    STR_SWITCHTOISO         "By selecting Replicate, you are chosing to make your file list ISO 9660 compliant.  Previously you used the update command  which place Long File Names in your file list."
+    STR_SWITCHTOLFN         "Warning: By using the Update command, you will be converting your file list to a non ISO 9660 compliant list.  Previously you updated your file list using the replicate command which is ISO 9660 compliant.  Do you wish to continue?"
+    STR_CREATEDISKDIRFAILED "The multidisk directory '%s' could not be created.  Please ensure the volume is writable and no files exist with this name."
+    STR_DISKDIREXISTS       "The multidisk directory '%s' already exists.   Would you like to continue with the build process?"
+    STR_INVALID_DEPARENT_RULE 
+                            "The deparent rule ""%s"" is not valid.  The required format is: RULE  """"""Deparent""""""   """"""""directory*"""""""
+    STR_CANNOTCOPYTOUNINSTALL 
+                            "The setup executable file '%s' could not be copied and renamed to the uninstall executable '%s'. This is an essential part of building a trial setup. The build cannot continue."
+    STR_UNINSTALLEXEEXISTS  "The uninstall executable '%s' already exists.  Continue anyway?"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    1000                    "-------------------------------- Context Sensitive Help Topics ------------------------------- "
+    IDS_HELP_NOHELP         "No help is available for this topic."
+    IDS_HELP_SETUPLOCATION  "SetupEXE location help"
+    IDS_HELP_SETUPDLLLOCATION "SetupDLL location help"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    2000                    "------------------------------ Console Output Strings -------------------------------"
+    STR_CON_PROGRESS        "Progress: %s : %s\n"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_NOMAKECABEXE        "The external program MakeCab.exe location was not defined in Settings->Trial Version property page."
+    STR_CANNOTCOPYTODLL     "The setup DLL  file '%s' could not be copied and renamed to the setup DLL  '%s'. This is an essential part of building a trial setup. The build cannot continue."
+    STR_BADACTIONSYNTAX     "Not enough parameters were specified for the action %s.  Please check the syntax. Skipping action."
+    STR_MAKECABFAILED       "There was a problem creating the cab file.  Would you like to view the output of the makecab program?"
+    STR_CABNOTFOUND         "The cab file '%s' could not be found.   Make sure the MakeCab.Exe program is working properly."
+    STR_CANTCOPYTRIALEXE    "Could not copy the final TrialExe to '%s' "
+    STR_CANTINJECTCAB       "Could not inject the cab file into '%s'"
+    STR_BINOPENFAILED       "Could not open the temporary binary blob file. The inject phase cannot continue. "
+    STR_NO_UPDATE_FILELIST  "%s cannot update the dynamic file list section. There is no %s token identifier specified in the script."
+    STR_SOURCEDIRINVALID    "The source directory '%s' is not valid. %s cannot read the file list."
+    STR_NO_UPDATE_STRINGLIST 
+                            "%s cannot update the dynamic string section. There is no %s token identifier specified in the script."
+    STR_NO_UPDATE_STATICSTRINGLIST 
+                            "%s cannot update the static string section. There is no %s token identifier specified in the script."
+    STR_MULTIDISK_FILE_NOT_UNIQUE 
+                            "While processing a multi-disk directory, a file could not be found that was unique across all disks. \nCannot continue."
+    STR_BAD_COLORDEPTH      "Sorry, this beta version of PrepStub99 will probably look hideous in anything less than 16bit color."
+    STR_BADCABFOLDERORDER   "An InstallList command was found that violated the precopy / regular ordering.   Make sure that all static InstallList commands with the precopy flag are grouped together and appear before the dynamic file list.  "
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    600                     "--------------------- Command line strings -------------------------"
+    STR_CL_HEADER           "AAS Games Setup Tool Family Member.\nCopyright (C) 1998 Microsoft Corporation. All Rights Reserved.\n"
+    STR_CL_BUILD_UPDATEANDINJECT "Build Type: Update and Inject Binary Blob"
+    STR_CL_BUILD_REPLICATE  "Build Type: Replicate file tree and Inject Binary Blob"
+    STR_CL_BUILD_TRIAL      "Build Type: Create Trial Version"
+    STR_CL_USAGE            "Usage: %s -f scriptname -r|u|t|w [-x] [-n] [-b blobname.plb]\n\n\t-r\tReplicate file list and inject (ISO Compliant)\n\t-u\tUpdate file list and inject (Non ISO Compliant)\n\t-t\tCreate Trial Version\n\t-w\tWrite Binary Blob\n\t-b\tBinary Blob output filename (applies only when using -w)\n\t-f\tScript File Name\n\t-x\tIgnore ReParent directory\n\t-n\tCreateDir failure should be treated as non-fatal.\n"
+    STR_CL_PRESSANY         "Press any key to continue..."
+    STR_CL_MISSING_FILENAME "No script filename was specified."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_CL_UNKNOWN_PARAM    "Unknown commandline parameter %s"
+    STR_CL_MISSING_BINARY   "No binary blob output filename was specified."
+    STR_CL_BUILD_SAVEASBINARY "Build Type: Write Binary Blob"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

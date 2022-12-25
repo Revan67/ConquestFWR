@@ -1,0 +1,47 @@
+-- SoundManBasic.drs
+--
+-- 1) Plays a single streamed .wav file
+$debug
+Data = "Data\\";
+
+LOOP = 1;
+DONT_LOOP = 0;
+IS_3D = 1;
+IS_NOT_3D = 0;
+
+SHORT_SOUND = "question.wav";
+
+-- soundManager startup options
+--// app wants/device has 2D hw mixing capabilites
+SM_USE_2D_HARDWARE = 1;
+--// app wants/device has 3D hw capabilites
+SM_USE_3D_HARDWARE = 2;
+--// app wants/device supports EAX
+SM_USE_EAX = 4;
+--// app wants/device supports A3D
+SM_USE_A3D = 8;
+--// app wants DS3D to apply calculations to 3D software buffers - if not enabled, 3D software buffers get pan and volume adjustments to simulate 3D
+SM_USE_3D_SOFTWARE = 16;
+SM_CREATE_ALL_2D_IN_SOFTWARE = 64;
+SM_USE_RIGHT_HANDED_SYSTEM = 32;
+--// disables any hardware help	
+SM_USE_NO_HW = 256;
+SM_DEFAULT_SETTINGS = SM_USE_2D_HARDWARE + SM_USE_3D_HARDWARE + SM_USE_EAX + SM_USE_A3D + SM_USE_RIGHT_HANDED_SYSTEM;
+
+-- SoundManPlaySoundSetAll and SoundManPlaySoundAdd(
+--		archetype file name, 
+--		location, 
+--		3D or Not 3D, 
+--		looping or Not looping, 
+--		number of instances, 
+--		-1 to force user to select pass or fail, 0 to loop a sound forever, > 0 for ms to run before ending automatically (only when looping), 
+--		delay between instance starts, 
+--		max number of simultaneos sounds to play
+--		SoundManager options
+--		name of streamer file to play, "NO_STREAMER" or nil == no streamer
+--	)
+
+function Main( )
+	SoundManPlaySoundSetAll(Data .. SHORT_SOUND, "LEFT", IS_3D, DONT_LOOP, 0, 0, 100, 8, SM_DEFAULT_SETTINGS, Data .. "music.wav" );
+	return DARTH_SCRIPT_PASS;
+end

@@ -1,0 +1,96 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PARSER
+//
+
+IDR_PARSER_1            PARSER                  "DataDef.i"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_Demo_Location       "Charon Sector (2200 hours)"
+    IDS_Demo_TT1            "This alliance with the Celareons has its advantages, Commander.  Our access to their technology allowed us to design a new hybrid ship that might prove useful.  Whoever or WHATever is behind these attacks they're getting bolder by the hour.  I've got reports...  One moment..."
+    IDS_Demo_TT2            "Change of plans, commander.  We just picked up a distress call from a Celareon Magistrate named Procyo.  Rogue Mantis ships are attacking his base is on the far side of Fenris Sector.  We’re allies now, so you need to get out there.  I’m transmitting the coordinates of the wormhole to Fenris.  Form a fleet and navigate the wormhole."
+    IDS_Demo_TT3            "OBJECTIVE:  Form your fleet and relieve the Celareon Outpost on the other side of the Fenris Sector."
+    IDS_Demo_Obj_1          "Relieve the Celareon Outpost"
+    IDS_Demo_Obj_2          "ALERT! ALERT! ALERT! Our base is under attack!"
+    IDS_Demo_Name           "Vyrium Rising"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_Demo_Desc           "A new threat looms..."
+    IDS_Demo_Alert_1        "Our HQ has fallen!  Trigger the Nova Bomb!"
+    IDS_Demo_Alert_2        "Vyrium Basilisks are attacking our outpost.  Hurry!"
+    IDS_Demo_Ad_1           "... Ron Lester for Terran Naval Radio.  This just in from Terran High Command at Centauri Downstation.  Highly placed sources are reporting a temporary alliance with Celareon forces in the Charon sector.  Though unconfirmed, it has been speculated that the alliance might be the result of recent unprovoked attacks by highly advanced warships of unknown origin and design.  More on the situation as it develops."
+    IDS_Demo_Ad_2           "Do you often experience the unsettling phenomenon of Deja Vu?  Have you ever relived the same day again and again?  Do you often experience the unsettling phenomenon of Deja Vu?  If you answered ""yes"" to any of these questions, ask your Medical Officer if Temporalis is right for you.  Temporalis: Because life is long and boring enough as it is."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

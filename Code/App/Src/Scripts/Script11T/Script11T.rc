@@ -1,0 +1,169 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PARSER
+//
+
+IDR_PARSER_1            PARSER  DISCARDABLE     "DataDef.i"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM11_MISSION_NAME   "Mission 11"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM11_MISSION_FAILURE 
+                            "MISSION FAILURE. STAND DOWN PENDING REASSIGNMENT"
+    IDS_TM11_MISSION_SUCCESS "MISSION SUCCESS"
+    IDS_TM11_TELETYPE_LOCATION 
+                            "Celareon System, Natus Prime, Gamma Sector, 1900 Hours GMT."
+    IDS_TM11_OBJECTIVES     "Mission Objectives:\n1. Destroy all mantis in the Celareon Gamma Sector. \n2. Rebuild Jump Gates on all wormholes in the Natus, Tariff, Paseo, and Abell systems.\n3. Build an HQ/Acropolis in Epsilon.\n4. Takei, Steele, and Vivac must survive and reach Epsilon."
+    IDS_TM11_OBJECTIVE1     "Destroy all Mantis in the Celareon Gamma Sector."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM11_OBJECTIVE2     "Rebuild Jump Gates on all wormholes in the Natus, Tariff, Paseo, and Abell systems."
+    IDS_TM11_OBJECTIVE3     "Build an HQ/Acropolis in Epsilon."
+    IDS_TM11_OBJECTIVE4     "Build a Greater Pavillion and Eutromill in Epsilon."
+    IDS_TM11_OBJECTIVE5     "Takei, Steele, and Vivac must survive and reach Epsilon."
+    IDS_TM11_MISSION_DESC   "Help the Solarians, and get your troops to Epsilon."
+    IDS_TM11_OBJECTIVE6     "Get Admiral Hawkes and Captain Blackwell to Corlar."
+    IDS_TM11_OBJECTIVE7     "Look for stragglers."
+    IDS_TM11_OBJECTIVE8     "Hawkes and Blackwell must survive."
+    IDS_TM11_MISSION1_COMPLETE "MISSION OBJECTIVE #1 COMPLETE..."
+    IDS_TM11_MISSION2_COMPLETE "MISSION OBJECTIVE #2 COMPLETE..."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM11_MANTIS         "Mantis (Red)"
+    IDS_TM11_MANTIS6        "Mantis (Orange)"
+    IDS_TM11_FAIL_BLACKWELL_LOST "Captain Blackwell has perished."
+    IDS_TM11_FAIL_HAWKES_LOST "Admiral Hawkes has perished."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM11_FAIL_TAKEI_LOST "Admiral Takei has perished."
+    IDS_TM11_FAIL_STEELE_LOST "Admiral Steele has perished."
+    IDS_TM11_FAIL_VIVAC_LOST "Magistrate Vivac has perished."
+    IDS_TM11_SUB_PROLOG11   "Radio:\nSanta: HO !Ho! HO ! MERRY CHRISTMAS !!! Chris Cringle here, sending you  BIG kids greetings from Tau Ceti Prime, where the elves and I are working on special toys just for you. New weapons are coming online everyday, to help us show those Mantis who's naughty and who's nice. How have you been this year Jill?\n \nJill: Uh, fine thanks Santa !! Soldiers of the Terran Forces hold a somber Christmas vigil tonight while we await news of Admiral Tackwhether Hawkes, now presumed en route to his own court martial.  As for our TNR weather report: negative eighty-five degrees out there, gentlemen, and not a jot of air. What do you expect, it's space. "
+    IDS_TM11_SUB_M11HA18    "Halsey:\nCommander, no sign of Smirnoff, Hawkes or Blackwell. You have work to do. We need you to sweep the gamma sector clean of enemy Mantis. Clear out the Paseo, Tariff, and Abell systems, then get us a foothold in Epsilon with a new HQ."
+    IDS_TM11_SUB_M11HA18A   "Halsey:\nHere's the good news-- you can now build one honking big ship, the Dreadnaught, Also just coming available is the Vampire Arc weapon. Try it. Halsey out."
+    IDS_TM11_SUB_M11SM02    "Smirnoff: Admiral? Is there something wrong with your cell? "
+    IDS_TM11_SUB_M11HW03    "Hawkes: Smirnoff, where are we?"
+    IDS_TM11_SUB_M11SM04    "Smirnoff: Why, we're headed for your trial, Tovarisch."
+    IDS_TM11_SUB_M11HW05    "Hawkes: This is a joke. Why would you brand me a traitor?"
+    IDS_TM11_SUB_M11SM06    "Smirnoff: Well, you were a captive of the Mantis, da? It makes sense you could have turned. I would believe this. Everyone will."
+    IDS_TM11_SUB_M11OF08    "Terran Officer: Admiral Smirnoff, we have a Mantis ship latching onto us! "
+    IDS_TM11_SUB_M11SM09    "Smirnoff: Thank you, Lieutenant. General Malkor, are you listening?"
+    IDS_TM11_SUB_M11MA10    "Malkor: We are here, Admal."
+    IDS_TM11_SUB_M11SM11    "Smirnoff: I am setting this ship for auto-destruct. I would appreciate your evacuating me with the wormhole device."
+    IDS_TM11_SUB_M11MA12    "Malkor: Agreed."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM11_SUB_M11HW13    "Hawkes: Smirnoff, you traitorous maniac."
+    IDS_TM11_SUB_M11SM14    "Smirnoff: Oh, you are still there? I hope you enjoyed your stay, Admiral Hawkes."
+    IDS_TM11_SUB_M11HW15    "Hawkes: You won't get away with this--"
+    IDS_TM11_SUB_M11SM16    "Smirnoff: That's very original, I'll have to remember that. "
+    IDS_TM11_SUB_M11BL17    "Admiral Hawkes, sit tight, I'm gonna get you out of there!"
+    IDS_TM11_SUB_M11ST19    "Steele: Looks like Malkor's been busy.  We need to figure a way to break through this blockade."
+    IDS_TM11_SUB_M11TK20    "Takei: Admiral Steele!  We're receiving an incoming transmission from... Captain Blackwell!"
+    IDS_TM11_SUB_M11ST21    "Steele: On Screen!"
+    IDS_TM11_SUB_M11ST23    "Steele: Captain.  This is Admiral Steele. Where are you?"
+    IDS_TM11_SUB_M11BL24    "Blackwell: I'm... in the Grog system with Admiral Hawkes.  Smirnoff left him to die. And he handed over the wormhole tech to the Mantis."
+    IDS_TM11_SUB_M11ST25    "Steele: Smirnoff!  I should have known Hawkes wouldn't be our traitor. \nCaptain, try and make your way to Corlar.  We have a base there and reserve forces.  And apologize to Admiral Hawkes for our... hasty condemnation. Oh-- I have so many units missing I can't count 'em. Look for stragglers out there and help 'em in.\n"
+    IDS_TM11_SUB_M11BL26    "Blackwell: Will do Admiral!  Blackwell out."
+    IDS_TM11_SUB_M11HW27    "Hawkes: I can forgive, Captain, but I'll never forget! "
+    IDS_TM11_SUB_M11BL28    "Blackwell: Understood, Admiral. I'd feel the same.  Now let's lay down stars."
+    IDS_TM11_SUB_M11RV28A   "Thank you sir-- lead the way! "
+    IDS_TM11_SUB_M11VV29    "This sector is secure.  Now my people can begin the healing process and rebuild our defenses."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM11_SUB_M11ST30    "Steele: And we shall help you re-build.  But first, we need to get to Epsilon and get those bastards Smirnoff and Malkor."
+    IDS_TM11_SUB_M11HW31    "Hawkes: Inhuman. The idea that Smirnoff could sacrifice his own men."
+    IDS_TM11_SUB_M11BL32    "Blackwell: He'll answer for it. Commander, these platforms are damaged, but we could repair them if we can find a live Fabricator somewhere.\n"
+    IDS_TM11_SUB_M11BL33    "Blackwell: There she is, Hawkes.  Man alive, I'm glad to see some friendly ships."
+    IDS_TM11_SUB_M11ST34    "Steele: Now you've done it!  You killed an Admiral.  Prepare to stand down with further orders."
+    IDS_TM11_SUB_M11TK35    "Takei: Now you've done it, Commander!  You killed our only ticket out of here.  Stand down for reassignment. "
+    IDS_TM11_SUB_M11ST36    "Steele: Commander, you've screwed up!  We have lost an important ally, now we're back to square one.  Stand down."
+    IDS_TM11_SUB_M11HA37    "Halsey: Commander, come home for re-assignment. I've seen enough."
+    IDS_TM11_SUB_M11HW38    "Hawkes: You've just wasted a better man than you'll ever know, Commander. You're finished in this man's Navy."
+    IDS_TM11_SUB_M11HA39    "Halsey: Excellent work, Commander!  We have secured the Solarian Gamma sector and  Captain Blackwell and Admiral Hawkes have made it safely to Corlar.  Stand by for debriefing."
+    IDS_TM11_SUB_M11BL22    "Blackwell: This is Captain Blackwell! Any friendlies out there hearing my transmission? "
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

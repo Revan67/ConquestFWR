@@ -1,0 +1,148 @@
+// Author: Shaival Varma
+// --------------------------------------------------------------------------
+// Adapted from the Hewlett-Packard Company implementation.
+// --------------------------------------------------------------------------
+#ifndef da_xmemory_h
+#define da_xmemory_h
+// --------------------------------------------------------------------------
+#include "da_new"
+// --------------------------------------------------------------------------
+namespace da_std
+{
+// --------------------------------------------------------------------------
+// memory functions
+template<class TType> 
+inline TType* _Allocate(int count, TType* dummy)
+{
+	if (count < 0)
+	{
+		count = 0;
+	}
+
+	return ((TType*)operator new((unsigned int)count * sizeof (TType))); 
+}
+
+template<class TTypeToConstruct, class TTypeToCopy> 
+inline void _Construct(TTypeToConstruct* memory_block, const TTypeToCopy& instance_to_copy)
+{
+	new ((void*)memory_block) TTypeToConstruct(instance_to_copy); 
+}
+
+template<class TType> 
+inline void _Destroy(TType* instance)
+{
+	instance->~TType(); 
+}
+
+inline void _Destroy(char* dummy)
+{
+}
+
+inline void _Destroy(wchar_t* dummy)
+{
+}
+// --------------------------------------------------------------------------
+// allocator
+template<class TType>
+class allocator 
+{
+	public:
+		typedef unsigned int size_type;
+		typedef int difference_type;
+		typedef TType* pointer;
+		typedef const TType* const_pointer;
+		typedef TType& reference;
+		typedef const TType& const_reference;
+		typedef TType value_type;
+
+		pointer address(reference instance) const
+		{
+			return (&instance); 
+		}
+
+		const_pointer address(const_reference instance) const
+		{
+			return (&instance); 
+		}
+
+		pointer allocate(size_type count, const void* dummy)
+		{
+			return (_Allocate((difference_type)count, (pointer)0)); 
+		}
+
+		char* _Charalloc(size_type count)
+		{
+			return (_Allocate((difference_type)count, (char _FARQ *)0)); 
+		}
+		
+		void deallocate(void* instance, size_type dummy)
+		{
+			operator delete(instance); 
+		}
+		
+		void construct(pointer memory_block, const TType& instance_to_copy)
+		{
+			_Construct(memory_block, instance_to_copy); 
+		}
+		
+		void destroy(pointer instance)
+		{
+			_Destroy(instance); 
+		}
+		
+		size_type max_size() const
+		{
+			size_type count = (size_type)(-1) / sizeof (TType);
+		
+			return (0 < count ? count : 1); 
+		}
+};
+// --------------------------------------------------------------------------
+// allocator funtions
+template<class TType1, class TType2>
+inline bool operator==(const allocator<TType1>&, const allocator<TType2>&)
+{
+	return (true); 
+}
+
+template<class TType1, class TType2> 
+inline bool operator!=(const allocator<TType1>&, const allocator<TType2>&)
+{
+	return (false); 
+}
+// --------------------------------------------------------------------------
+// allocator<void> instantiation
+template<> class allocator<void> 
+{
+	public:
+		typedef void TType;
+		typedef TType* pointer;
+		typedef const TType* const_pointer;
+		typedef TType value_type;
+};
+// --------------------------------------------------------------------------
+}	// namespace da_std
+// --------------------------------------------------------------------------
+#endif // da_xmemory_h
+// --------------------------------------------------------------------------
+/*
+ * Copyright (c) 1995 by P.J. Plauger.  ALL RIGHTS RESERVED. 
+ * Consult your license regarding permissions and restrictions.
+ */
+
+/*
+ * This file is derived from software bearing the following
+ * restrictions:
+ *
+ * Copyright (c) 1994
+ * Hewlett-Packard Company
+ *
+ * Permission to use, copy, modify, distribute and sell this
+ * software and its documentation for any purpose is hereby
+ * granted without fee, provided that the above copyright notice
+ * appear in all copies and that both that copyright notice and
+ * this permission notice appear in supporting documentation.
+ * Hewlett-Packard Company makes no representations about the
+ * suitability of this software for any purpose. It is provided
+ * "as is" without express or implied warranty.
+ */

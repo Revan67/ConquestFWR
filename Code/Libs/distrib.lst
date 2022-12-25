@@ -1,0 +1,35 @@
+# Distibution list.
+# One entry per line
+# Syntax: <wday> <destDir> <contact>
+# where <wday>    is the day(s) of the week to distribute
+#       <destDir> is the destination directory to put the distribution
+#       <contact> is the user name to notify with the results
+#
+# Days are specified as numbers in the 0 to 6 range, Sunday to Saturday.
+# A '*' indicates every day
+# A comma can be used to specify selected days. e.g. 0,1,4 is Sun,Mon,&Wed.
+# A range of days can be indicated with a '-'. e.g. 1-3 is same as 1,2,3
+#
+# The destDir is where the ExplicitDLL, ImplicitDLL, Static, and Include directories will go.
+# NOTE: The destDir MUST be a UNC filename in order to work properly. So use \\nt\dev\<your path> instead of
+# r:\<your path>.
+#
+# The contact is the email name of someone to receive the results of the
+# distribution. '@digitalanvil.com' is appended to <contact> to create
+# the destination email address
+#
+# NOTE: This distribution list is used after the daily build, which occurs in around 2:00AM each morning. Therefore,
+# if you want the latest build for your use during the day on Monday, get it on Monday, not Sunday.
+#
+
+# Examples.
+# This will copy the distribution built Sunday, Monday, Tuesday and Wednesday
+# into the TestDir of my transfer directory, then mail me the results.
+# The current testdir, if any, is renamed testdir.1.
+#0,1-3 \\nt\dev\transfer\tbratton\testdir tbratton
+
+# This will copy the distribution every day.
+#* \\nt\dev\transfer\tbratton\testdir tbratton
+
+1 \\nt\dev\projects\lancer\currentlibs jcrow
+

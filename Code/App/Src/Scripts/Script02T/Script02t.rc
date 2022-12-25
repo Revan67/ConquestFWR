@@ -1,0 +1,213 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "digital anvil\0"
+            VALUE "FileDescription", "SCRIPT02T\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "SCRIPT02T\0"
+            VALUE "LegalCopyright", "Copyright © 1999\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "SCRIPT02T.dll\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "digital anvil SCRIPT02T\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PARSER
+//
+
+IDR_PARSER_1            PARSER  DISCARDABLE     "DataDef.i"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_MISSION2LINES       "Mission two lines start here"
+    IDS_TM2_MISSION_NAME    "Rescue Captured Crew"
+    IDS_TM2_MISSION_DESC    "Outfit expeditionary force to explore Alkaid system and bring back our boys !"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM2_OBJECTIVES      "Objectives:\n \n1. Build an expeditionary force.\n2. Navigate the wormhole.\n3. Locate the captured crew.\n4. Blackwell must survive."
+    IDS_TM2_TELETYPE_FAILURE 
+                            "MISSION FAILURE. STAND DOWN PENDING REASSIGNMENT."
+    IDS_TM2_TELETYPE_SUCCESS 
+                            "SUCCESSFUL MISSION. STAND DOWN PENDING INTERROGATION OF CAPTURED ALIEN CREW."
+    IDS_TM2_TELETYPE_LOCATION 
+                            "Forward Naval Base, Tau Ceti Prime, 1030 Hours GMT."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM2_OBJECTIVE1      "Construct a Supply Platform and Build Jump Gate"
+    IDS_TM2_OBJECTIVE2      "Build an expeditionary force"
+    IDS_TM2_OBJECTIVE3      "Navigate the wormhole"
+    IDS_TM2_OBJECTIVE4      "Locate the captured crew"
+    IDS_TM2_OBJECTIVE5      "Blackwell must survive"
+    IDS_TM2_OBJECTIVE6      "Construct a Ballistics Lab"
+    IDS_TM2_OBJECTIVE7      "Build at least 3 Missile Cruisers and 6 Corvettes"
+    IDS_TM2_OBJECTIVE8      "Upgrade troopships and take over Mantis base"
+    IDS_TM2_OBJECTIVE9      "Construct a Troopship."
+    IDS_TM2_JUMPGATE_DIED   "DEBUG:  Jumpgate multiple destroy"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM2_FAIL_BLACKWELL_LOST "Captain Blackwell has perished."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM2_MANTIS          "Mantis"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM2_SUB_PROLOG02    "Radio:\nJill Davis of Terran Naval Radio with a reminder from Command that certain holo material is not appropriate for chapel viewing, and that the next little creep who sabotages the chaplain's projector will be reprimanded. Chaplain Downing is shocked and appalled.\n \nQuote:""I'm shocked and appalled."" \n \nSo cut it out, gentlemen. Just because it's empty doesn't mean it's a private theater.  Terran Command also wants you to be aware that the President will be briefing Terra at 1100 GMT. No comments out there! Silence and dignity!"
+    IDS_TM2_SUB_M02HA04     "Halsey:\nGood morning commander. We've decoded the beacon from the Andromeda, and you should hear this. \n"
+    IDS_TM2_SUB_M02HA01B    "Radio: \nShe's closing fast. Mass readings are off the scale...\nShe's going to hit!\nSir! Our shields are at 20% and falling.\nHawkes:\nWe'll never survive a collision with something that big! Activate the emergency broadcast beacon!  This is your captain. All hands abandon ship."
+    IDS_TM2_SUB_M02HA08     "Halsey:\nSo that's it.  Data shows that three life pods launched from Andromeda, one of them an Admiral Pod. \n"
+    IDS_TM2_SUB_M02HA08A    "Halsey: \nThe pods stopped broadcasting an hour later-- probably picked up by another vessel. Maybe destroyed.  If Hawkes-- if any of our boys are alive out there, we're going to get them out. Find those men, Commander. Halsey out."
+    IDS_TM2_SUB_M02BL09     "Blackwell: Nothing better than leading an expeditionary force into uncharted territory.  It's good for the soul. "
+    IDS_TM2_SUB_M02BL80     "Blackwell: Woah, this doesn't look good, we just lost control of the Tau Ceti wormhole. Looks like some kind of jumpgate. Jumpgates are great for keeping enemies out. We need to get rid of it, but before we attack this one we'll need some heavy artillery, and that means missile cruisers. Get a ballistics lab up and running at the base so you can build some."
+    IDS_TM2_SUB_M02BL14     "Blackwell: Hey, that ballistics lab is good for more than missile cruisers: you can upgrade all your ships' weapons with it. If things get a little sticky in Alkaid, we may want to invest some resources into researching some technologies. To do this just click on the corresponding research button in the ballistic labs context window."
+    IDS_TM2_SUB_M02BL15     "Blackwell: All right, now we oughta be able to build missile cruisers at the light shipyard. What are you waiting for, queue up at least three! Just select the light shipyard and click on the build missile cruiser button three times on your holo display. Any expeditionary force should have at least six corvettes and three missiles cruisers."
+    IDS_TM2_SUB_M02BL10     "Blackwell: Well, it's not their system anymore, but it's not ours, either. Protect that wormhole-- we don't want the enemy coming through."
+    IDS_TM2_SUB_M02BL13     "Blackwell: Where YOU goin'? We don't have a big enough expeditionary force yet."
+    IDS_TM2_SUB_M02BL16A    "Blackwell: Okay, we're ready to fold space into Alkaid!"
+    IDS_TM2_SUB_M02BL16C    "Blackwell: I think it is time that we took out that jumpgate."
+    IDS_TM2_SUB_M02BL16B    "Blackwell: Our forces are split-- a Jumpgate would lock down the wormhole to our system and allow us time to explore. Get your fabricator building that Jumpgate!"
+    IDS_TM2_SUB_M02BL17     "Blackwell: Commander, keep those corvettes close to those cruisers for protection against alien fighter attacks! Those twin-mounted auto tracking flak cannons ain't just for show!"
+    IDS_TM2_SUB_M02BL18     "Blackwell: Where there's hornets there's gotta be a nest. It might be a good idea to build a supply platform on a nearby planet and get your supply line into this system up and running. Combat ships are useless unless they are fully supplied. Better scout around with a couple ships-- I'm betting there's a larger alien ship somewhere nearby here."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM2_SUB_M02BL19     "Blackwell: Oooh. Nasty. You gonna just sit there or you gonna put those Missile Cruisers to use? "
+    IDS_TM2_SUB_M02BL20     "Blackwell: Get a Harvester over here-- Scan shows we got a lotta ore in this field.  It might also help to put a Refinery on Alkaid Prime to collect resources and cut down the distance for your \nharvester. "
+    IDS_TM2_SUB_M02BL20A    "Blackwell: This looks like the place for a forward base. I'd start building a supply depot ASAP. After that I'd construct a refinery, followed by a light shipyard."
+    IDS_TM2_SUB_M02BL20B    "Blackwell: Supply and repair depots supply at a greater range than HQs. They also allow you to build supply ships at your HQ. Always useful in a mobile attack force."
+    IDS_TM2_SUB_M02BL21     "Blackwell: I think you may want to see this. We found a base."
+    IDS_TM2_SUB_M02BL22     "Blackwell: If that's not a creepy crawly alien base, I don't know what is. (checking readout) (Sighs)Scanners show... no human life, so Hawkes and his boys are either dead-- or they're somewhere else. I'm counting on the 2nd option. To find out where we need more data. Looks like one of the smaller structures is susceptible to our breaching equipment. We need to hit em hard and fast with Marines, capture a few prioners for the boys at intel. Start building a troopship ASAP. While we're at it let's take out the big platforms and the gun platforms but, be careful, leave the small one for the marines."
+    IDS_TM2_SUB_M02BL22A    "Blackwell: Can't you follow orders? Do not destroy this base."
+    IDS_TM2_SUB_M02BL23     "Blackwell: Don't let 'em get that jump gate, Commander, or our supplies will be cut off!"
+    IDS_TM2_SUB_M02BL24     "Blackwell: Ahggg-- there goes the jump gate. We'll have to go back to Tau Ceti to re-supply unless we build another jump gate or an HQ in this system."
+    IDS_TM2_SUB_M02BL26     "Blackwell: The troopship is the only way to capture an enemy platform or non-military ship, like a fabricator, supply ship or harvester. Once you invade and take it over it is all yours just as if you built it."
+    IDS_TM2_SUB_M02BL27     "Blackwell: Ok, time to bring the fight to them.   Remember: you can upgrade your troopship at the Marine Training Facility, and you may need too depending on the size of your target.  Medium-armored targets require a level 2 troopship, and so on. \nIf we can capture hostages at the alien base, we may be able to force 'em to tell us where Hawkes is.  What are you waiting for, an invitation?  Select troopship then click on a unit to take over! "
+    IDS_TM2_SUB_M02MC28     "Marine: We're in, Captain.  Huh-- looks like a roach motel!"
+    IDS_TM2_SUB_M02BL29     "Blackwell: Don't squish 'em all, boys-- we need a live prisoner to interrogate about Admiral Hawkes."
+    IDS_TM2_SUB_M02MC30     "Marine: Aye Sir!  Strapped and wrapped alien, comin' up. But the smell is-- awful."
+    IDS_TM2_SUB_M02IO31     "Intel Officer: We can take it from here, sir.  Good god, these these things really do stink!"
+    IDS_TM2_SUB_M02HA31A    "Halsey: You really want that medal, don't you?  A few more successful missions, and I might just start believing all the hype! For now, you'll just have to sit tight, and let the Intel boys do their job. I'll have more for you soon."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM2_SUB_M02BL32     "Blackwell: Damn it! We'll never know where Hawkes is now! I don't think Admiral Halsey is going to be pleased."
+    IDS_TM2_SUB_M02HA33     "Halsey: Everybody has their fifteen minutes of fame. Yours are up, commander. I'm reassigning you to a cushy desk job where you can't do any more harm."
+    IDS_TM2_SUB_M02BL34     "Blackwell: Ships breaking up... well, that's just... STATIC "
+    IDS_TM2_SUB_M02HA35     "Halsey: Has it not occurred to you that there are men you NEED, Commander? Fall back until I can find a suitable replacement for you."
+    IDS_TM2_SUB_M01BL16     "Blackwell: Hey! Greenhorn! You even know where that wormhole goes? Get back here."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,241 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 165
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 69
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 172, 76
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,60,55,50,14
+    RTEXT           "Art Exporter\nVersion 1.5b\n\nCopyright 2004, Warthog Texas",
+                    IDC_STATIC_FRAME,10,13,151,36
+    GROUPBOX        "",IDC_STATIC,7,7,158,44
+END
+
+IDD_ASCIIEXPORT_DLG DIALOG DISCARDABLE  0, 0, 342, 273
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "3DB Export"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,283,10,50,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,283,26,50,14,WS_GROUP
+    PUSHBUTTON      "Save Options",IDC_SAVE_OPT,283,43,50,14,WS_GROUP
+    GROUPBOX        "Output Options",IDC_STATIC,5,7,134,237
+    CONTROL         "MIP MAPS",IDC_MIP,"Button",BS_AUTOCHECKBOX | WS_GROUP | 
+                    WS_TABSTOP,15,20,48,10
+    CONTROL         "565 Textures",IDC_565,"Button",BS_AUTOCHECKBOX | 
+                    WS_GROUP | WS_TABSTOP,15,32,54,10
+    CONTROL         "888 Textures",IDC_888,"Button",BS_AUTOCHECKBOX | 
+                    WS_GROUP | WS_TABSTOP,15,44,54,10
+    CONTROL         "Dither",IDC_DITHER,"Button",BS_AUTOCHECKBOX | WS_GROUP | 
+                    WS_TABSTOP,15,56,34,10
+    CONTROL         "White materials",IDC_DEFAULT_MAT,"Button",
+                    BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,15,68,62,10
+    CONTROL         "Old format",IDC_SPLIT,"Button",BS_AUTOCHECKBOX | 
+                    WS_GROUP | WS_TABSTOP,15,80,47,10
+    CONTROL         "Export Lights",IDC_LIGHT,"Button",BS_AUTOCHECKBOX | 
+                    WS_GROUP | WS_TABSTOP,15,93,54,10
+    CONTROL         "Export Cameras",IDC_CAMERA,"Button",BS_AUTOCHECKBOX | 
+                    WS_GROUP | WS_TABSTOP,15,105,64,10
+    CONTROL         "Selected only",IDC_SELECTED,"Button",BS_AUTOCHECKBOX | 
+                    WS_GROUP | WS_TABSTOP,15,117,57,10
+    CONTROL         "Center to mass",IDC_CENTER_MASS,"Button",
+                    BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,15,129,61,10
+    CONTROL         "NO physics",IDC_NO_PHYSICS,"Button",BS_AUTOCHECKBOX | 
+                    WS_GROUP | WS_TABSTOP,15,141,51,10
+    CONTROL         "Don't stop on warnings",IDC_IGNORE_WARNINGS,"Button",
+                    BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,15,153,83,10
+    CONTROL         "Export vertex colors",IDC_VERTEX_COLOR,"Button",
+                    BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,15,164,77,12
+    CONTROL         "Brute Force extents",IDC_IK_EXT,"Button",
+                    BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,15,177,73,10
+    CONTROL         "Preserve smoothing groups",IDC_SM_GRP,"Button",
+                    BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,15,188,99,10
+    CONTROL         "External AVI's",IDC_EX_AVI,"Button",BS_AUTOCHECKBOX | 
+                    WS_GROUP | WS_TABSTOP,15,199,57,10
+    CONTROL         "External textures",IDC_EX_TXT,"Button",BS_AUTOCHECKBOX | 
+                    WS_GROUP | WS_TABSTOP,15,210,65,10
+    CONTROL         "Don't make names unique",IDC_NOT_UNIQUE,"Button",
+                    BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,15,233,94,10
+    CONTROL         "Allow loose joints",IDC_ALLOW_LOSE_J,"Button",
+                    BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,15,221,68,10
+    GROUPBOX        "Deformable options",IDC_CHARACTER,145,7,112,138
+    CONTROL         "Mesh/Skeleton",IDC_MESH,"Button",BS_AUTOCHECKBOX | 
+                    WS_GROUP | WS_TABSTOP,153,16,62,10
+    CONTROL         "Animation",IDC_ANIMATION,"Button",BS_AUTOCHECKBOX | 
+                    WS_GROUP | WS_TABSTOP,153,26,46,10
+    CONTROL         "Selected animations only",IDC_SEL_ANIM_ONLY,"Button",
+                    BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,153,37,91,10
+    CONTROL         "Include root animation",IDC_ROOT_ANIM,"Button",
+                    BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,153,48,81,10
+    CONTROL         "Loose joints",IDC_LOOSE_J,"Button",BS_AUTOCHECKBOX | 
+                    WS_GROUP | WS_TABSTOP,153,59,52,10
+    CONTROL         "Root relative to world",IDC_IN_WORLD,"Button",
+                    BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,153,69,79,10
+    CONTROL         "Align heading",IDC_ALLIGN_HEADING,"Button",
+                    BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,153,80,57,10
+    CONTROL         "Relative animations",IDC_REL_ANIM,"Button",
+                    BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,153,91,75,10
+    RTEXT           "Rotate X",IDC_STATIC,153,109,27,8,NOT WS_GROUP
+    CONTROL         "",IDC_ROTATE_X,"CustEdit",WS_TABSTOP,212,109,25,10
+    CONTROL         "",IDC_ROTATE_X_SPIN,"SpinnerControl",0x0,238,109,7,10
+    RTEXT           "Rotate Y",IDC_STATIC,153,120,27,8,NOT WS_GROUP
+    CONTROL         "",IDC_ROTATE_Y,"CustEdit",WS_TABSTOP,212,120,25,10
+    CONTROL         "",IDC_ROTATE_Y_SPIN,"SpinnerControl",0x0,238,120,7,10
+    RTEXT           "Rotate Z",IDC_STATIC,153,131,27,8,NOT WS_GROUP
+    CONTROL         "",IDC_ROTATE_Z,"CustEdit",WS_TABSTOP,212,131,25,10
+    CONTROL         "",IDC_ROTATE_Z_SPIN,"SpinnerControl",0x0,238,131,7,10
+    CONTROL         "",IDC_SCALE,"CustEdit",WS_TABSTOP,264,110,56,10
+    CONTROL         "",IDC_SCALE_SPIN,"SpinnerControl",0x0,320,110,7,10
+    CONTROL         "",IDC_DENS,"CustEdit",WS_TABSTOP,264,135,56,10
+    CONTROL         "",IDC_DENS_SPIN,"SpinnerControl",0x0,320,135,7,10
+    GROUPBOX        "Continuous LOD",IDC_STATIC,145,149,188,83
+    RTEXT           "Reduce to (%)",IDC_STATIC,154,158,44,8,NOT WS_GROUP
+    CONTROL         "",IDC_LOD_PERCENT,"CustEdit",WS_TABSTOP,260,158,53,10
+    CONTROL         "",IDC_LOD_PERCENT_SPIN,"SpinnerControl",0x0,314,158,7,
+                    10
+    RTEXT           "Closest distance",IDC_STATIC,154,170,51,8,NOT WS_GROUP
+    CONTROL         "",IDC_LOD_CLOSEST,"CustEdit",WS_TABSTOP,260,170,53,10
+    CONTROL         "",IDC_LOD_CLOSEST_SPIN,"SpinnerControl",0x0,314,170,7,
+                    10
+    RTEXT           "Furthest distance",IDC_STATIC,154,182,52,8,NOT WS_GROUP
+    CONTROL         "",IDC_LOD_FURTHEST,"CustEdit",WS_TABSTOP,260,182,53,10
+    CONTROL         "",IDC_LOD_FURTHEST_SPIN,"SpinnerControl",0x0,314,182,7,
+                    10
+    RTEXT           "Material boundary weight",IDC_STATIC,154,206,76,8,NOT 
+                    WS_GROUP
+    CONTROL         "",IDC_MTL_BOUNDARY,"CustEdit",WS_TABSTOP,260,206,53,10
+    CONTROL         "",IDC_MTL_BOUNDARY_SPIN,"SpinnerControl",0x0,314,206,7,
+                    10
+    RTEXT           "UV weight",IDC_STATIC,154,218,31,8,NOT WS_GROUP
+    CONTROL         "",IDC_TXT_WEIGHT,"CustEdit",WS_TABSTOP,260,218,53,10
+    CONTROL         "",IDC_TXT_WEIGHT_SPIN,"SpinnerControl",0x0,314,218,7,10
+    RTEXT           "Drop out distance",IDC_STATIC,154,194,54,8,WS_DISABLED | 
+                    NOT WS_GROUP
+    CONTROL         "",IDC_LOD_DROPOUT,"CustEdit",WS_DISABLED | WS_TABSTOP,
+                    260,194,53,10
+    CONTROL         "",IDC_LOD_DROPOUT_SPIN,"SpinnerControl",WS_DISABLED,314,
+                    194,7,10
+    RTEXT           "Debug:",IDC_STATIC,145,237,23,8,NOT WS_GROUP
+    CONTROL         "",IDC_EDIT,"CustEdit",WS_TABSTOP,171,236,162,10
+    PUSHBUTTON      "Load Options",IDC_LOAD_OPT,283,60,50,14,WS_GROUP
+    CTEXT           "Scale",IDC_STATIC,264,98,53,8,NOT WS_GROUP
+    CTEXT           "Density (Kg/m^3)",IDC_STATIC,264,124,53,8,NOT WS_GROUP
+    PUSHBUTTON      "Batch Export",IDC_BATCH_EXP,283,77,50,14,WS_GROUP
+    CONTROL         "Save options to MAX file",IDC_SAVE_MAX_OPT,"Button",
+                    BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,5,253,88,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ASCIIEXP            "3DBExp"
+    IDS_CATEGORY            "Standard"
+    IDS_EXTENSION1          "3DB"
+    IDS_LONGDESC            "3D Studio MAX 3DB Scene Exporter 1.5"
+    IDS_SHORTDESC           "3DB Export 1.5"
+    IDS_COPYRIGHT           "Copyight (c) 1997 by Digital Anvil"
+    IDS_PROGRESS_MSG        "Exporting file..."
+    IDS_VERSIONSTRING       "3DBExport Version"
+    IDS_LIBDESCRIPTION      "3DB file exporter (Digital Anvil)"
+    IDS_EXTENSION2          "CMP"
+    IDS_EXTENSION3          "ANM"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_EXTENSION4          "DFM"
+    IDS_EXTENSION5          "NRB"
+    IDS_EXTENSION6          "BEZ"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

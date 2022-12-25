@@ -1,0 +1,80 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: DataViewer - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/DataView.res" /d "_DEBUG" "Z:\CQ2\Code\Libs\Src\Viewer\DOCUVIEW\DataView.rc"" 
+Creating temporary file "C:\DOCUME~1\ajackson\LOCALS~1\Temp\RSP5F8.tmp" with contents
+[
+/nologo /G5 /ML /W4 /Zi /Od /Gf /D "_WINDOWS" /D "WIN32" /D "_DEBUG" /D DA_ERROR_LEVEL=8 /Fr"Debug/" /Fp"Debug/DataViewer.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"Z:\CQ2\Code\Libs\Src\Viewer\DOCUVIEW\DataParser.cpp"
+"Z:\CQ2\Code\Libs\Src\Viewer\DOCUVIEW\Document.cpp"
+"Z:\CQ2\Code\Libs\Src\Viewer\DOCUVIEW\FERROR.cpp"
+"Z:\CQ2\Code\Libs\Src\Viewer\DOCUVIEW\FILESTRM.cpp"
+"Z:\CQ2\Code\Libs\Src\Viewer\DOCUVIEW\LXTABLES.cpp"
+"Z:\CQ2\Code\Libs\Src\Viewer\DOCUVIEW\NUMBER.cpp"
+"Z:\CQ2\Code\Libs\Src\Viewer\DOCUVIEW\PARS1.cpp"
+"Z:\CQ2\Code\Libs\Src\Viewer\DOCUVIEW\PRTTOKEN.cpp"
+"Z:\CQ2\Code\Libs\Src\Viewer\DOCUVIEW\SCANNER.cpp"
+"Z:\CQ2\Code\Libs\Src\Viewer\DOCUVIEW\StringSet.cpp"
+"Z:\CQ2\Code\Libs\Src\Viewer\DOCUVIEW\SYMTABLE.cpp"
+"Z:\CQ2\Code\Libs\Src\Viewer\DOCUVIEW\treeview.cpp"
+"Z:\CQ2\Code\Libs\Src\Viewer\DOCUVIEW\ViewCnst.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ajackson\LOCALS~1\Temp\RSP5F8.tmp" 
+Creating temporary file "C:\DOCUME~1\ajackson\LOCALS~1\Temp\RSP5F9.tmp" with contents
+[
+/nologo /G5 /ML /W4 /Zi /Od /Gf /D "_WINDOWS" /D "WIN32" /D "_DEBUG" /D DA_ERROR_LEVEL=8 /FAs /Fa"Debug/" /Fr"Debug/" /Fp"Debug/DataViewer.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"Z:\CQ2\Code\Libs\Src\Viewer\DOCUVIEW\DataView.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ajackson\LOCALS~1\Temp\RSP5F9.tmp" 
+Creating temporary file "C:\DOCUME~1\ajackson\LOCALS~1\Temp\RSP5FA.tmp" with contents
+[
+COMHeap.lib DACOM.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comctl32.lib /nologo /entry:"DllMain" /subsystem:windows /dll /incremental:no /pdb:"../../../ExplicitDLL/DocuView.pdb" /map:"Debug/DocuView.map" /debug /machine:I386 /out:"../../../ExplicitDLL/DocuView.dll" /implib:"Debug/DocuView.lib" /pdbtype:con /SECTION:.text,REW 
+.\Debug\DataParser.obj
+.\Debug\DataView.obj
+.\Debug\Document.obj
+.\Debug\FERROR.obj
+.\Debug\FILESTRM.obj
+.\Debug\LXTABLES.obj
+.\Debug\NUMBER.obj
+.\Debug\PARS1.obj
+.\Debug\PRTTOKEN.obj
+.\Debug\SCANNER.obj
+.\Debug\StringSet.obj
+.\Debug\SYMTABLE.obj
+.\Debug\treeview.obj
+.\Debug\ViewCnst.obj
+.\Debug\DataView.res
+]
+Creating command line "link.exe @C:\DOCUME~1\ajackson\LOCALS~1\Temp\RSP5FA.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+DataParser.cpp
+Document.cpp
+FERROR.cpp
+FILESTRM.cpp
+LXTABLES.cpp
+NUMBER.cpp
+PARS1.cpp
+PRTTOKEN.cpp
+SCANNER.cpp
+StringSet.cpp
+SYMTABLE.cpp
+treeview.cpp
+ViewCnst.cpp
+Compiling...
+DataView.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+DocuView.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

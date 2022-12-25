@@ -1,0 +1,273 @@
+// Author: Shaival Varma
+// --------------------------------------------------------------------------
+// Adapted from the Hewlett-Packard Company implementation.
+// --------------------------------------------------------------------------
+#ifndef da_utility_h
+#define da_utility_h
+// --------------------------------------------------------------------------
+namespace da_std
+{
+// --------------------------------------------------------------------------
+// iterator tags (from DAIterator)
+struct input_iterator_tag
+{
+};
+
+struct output_iterator_tag 
+{
+};
+
+struct forward_iterator_tag: public input_iterator_tag 
+{
+};
+
+struct bidirectional_iterator_tag: public forward_iterator_tag 
+{
+};
+
+struct random_access_iterator_tag: public bidirectional_iterator_tag  
+{
+};
+// --------------------------------------------------------------------------
+// iterators
+template<class TIteratorCategory, class TValue, class TDistance = ptrdiff_t>
+struct iterator 
+{
+	typedef TIteratorCategory iterator_category;
+	typedef TValue value_type;
+	typedef TDistance distance_type;
+};
+
+template<class TValue, class TDistance>
+struct _Bidit: public iterator<bidirectional_iterator_tag, TValue, TDistance> 
+{
+};
+
+template<class TValue, class TDistance>
+struct _Ranit: public iterator<random_access_iterator_tag, TValue, TDistance> 
+{
+};
+// --------------------------------------------------------------------------
+// _Distance functions
+template<class TIterator>
+inline int __cdecl distance(TIterator first, TIterator last)
+{
+	int count = 0;
+	
+	_Distance(first, last, count, _Iter_cat(first));
+
+	return (count); 
+}
+
+template<class TIterator, class TDistance>
+inline void __cdecl _Distance(TIterator first, TIterator last, TDistance& distance)
+{
+	_Distance(first, last, count, _Iter_cat(first)); 
+}
+
+template<class TIterator, class TDistance>
+inline void __cdecl _Distance(TIterator first, TIterator last, TDistance& distance, input_iterator_tag dummy)
+{
+	for (; first != last; ++first)
+	{
+		++distance; 
+	}
+}
+
+template<class TIterator, class TDistance>
+inline void __cdecl _Distance(TIterator first, TIterator last, TDistance& distance, forward_iterator_tag dummy)
+{
+	for (; first != last; ++first)
+	{
+		++distance; 
+	}
+}
+
+template<class TIterator, class TDistance> 
+inline void __cdecl _Distance(TIterator first, TIterator last, TDistance& distance, bidirectional_iterator_tag dummy)
+{
+	for (; first != last; ++first)
+	{
+		++distance; 
+	}
+}
+
+template<class TRandomIterator, class TDistance> 
+inline void __cdecl _Distance(TRandomIterator first, TRandomIterator last, TDistance& distance, random_access_iterator_tag)
+{
+	distance += last - first;
+}
+
+// reverse_iterator
+template<class TIterator, class TValue, class TReference = TValue&, class TPointer = TValue *, class TDistance = ptrdiff_t>
+class reverse_iterator: public _Ranit<TValue, TDistance> 
+{
+	public:
+		typedef reverse_iterator<TIterator, TValue, TReference, TPointer, TDistance> my_type;
+		typedef TIterator iter_type;
+		typedef TReference reference_type;
+		typedef TPointer pointer_type;
+		
+		reverse_iterator()
+		{
+		}
+
+		explicit reverse_iterator(TIterator r_iterator)
+		: mCurrent(r_iterator) 
+		{
+		}
+
+		TIterator base() const
+		{
+			return (mCurrent); 
+		}
+
+		TReference operator*() const
+		{
+			return (*(mCurrent - 1)); 
+		}
+
+		TPointer operator->() const
+		{
+			return (&**this); 
+		}
+
+		my_type& operator++()
+		{
+			--mCurrent;
+
+			return (*this); 
+		}
+
+		my_type operator++(int)
+		{
+			my_type temp = *this;
+
+			--mCurrent;
+			
+			return (temp); 
+		}
+
+		my_type& operator--()
+		{
+			++mCurrent;
+			
+			return (*this); 
+		}
+
+		my_type operator--(int)
+		{
+			my_type temp = *this;
+			
+			++mCurrent;
+			
+			return (temp); 
+		}
+
+		my_type& operator+=(TDistance distance)
+		{
+			mCurrent -= distance;
+			
+			return (*this); 
+		}
+		
+		my_type operator+(TDistance distance) const
+		{
+			return (my_type(mCurrent - distance)); 
+		}
+		
+		my_type& operator-=(TDistance distance)
+		{
+			mCurrent += distance;
+			
+			return (*this); 
+		}
+
+		my_type operator-(TDistance distance) const
+		{
+			return (my_type(mCurrent + distance)); 
+		}
+
+		TReference operator[](TDistance distance) const
+		{
+			return (*(*this + distance)); 
+		}
+
+	protected:
+		TIterator mCurrent;
+};
+
+// reverse iterator operators
+template<class TIterator, class TValue, class TReference, class TPointer, class TDistance> 
+inline bool __cdecl operator==(const reverse_iterator<TIterator, TValue, TReference, TPointer, TDistance>& l_iterator, const reverse_iterator<TIterator, TValue, TReference, TPointer, TDistance>& r_iterator)
+{
+	return (l_iterator.base() == r_iterator.base()); 
+}
+
+template<class TIterator, class TValue, class TReference, class TPointer, class TDistance> 
+inline bool __cdecl operator!=(const reverse_iterator<TIterator, TValue, TReference, TPointer, TDistance>& l_iterator, const reverse_iterator<TIterator, TValue, TReference, TPointer, TDistance>& r_iterator)
+{
+	return (!(l_iterator == r_iterator)); 
+}
+
+template<class TIterator, class TValue, class TReference, class TPointer, class TDistance> 
+inline bool __cdecl operator<(const reverse_iterator<TIterator, TValue, TReference, TPointer, TDistance>& l_iterator, const reverse_iterator<TIterator, TValue, TReference, TPointer, TDistance>& r_iterator)
+{
+	return (r_iterator.base() < l_iterator.base()); 
+}
+
+template<class TIterator, class TValue, class TReference, class TPointer, class TDistance> 
+inline bool __cdecl operator>(const reverse_iterator<TIterator, TValue, TReference, TPointer, TDistance>& l_iterator, const reverse_iterator<TIterator, TValue, TReference, TPointer, TDistance>& r_iterator)
+{
+	return (r_iterator < l_iterator); 
+}
+
+template<class TIterator, class TValue, class TReference, class TPointer, class TDistance> 
+inline bool __cdecl operator<=(const reverse_iterator<TIterator, TValue, TReference, TPointer, TDistance>& l_iterator, const reverse_iterator<TIterator, TValue, TReference, TPointer, TDistance>& r_iterator)
+{
+	return (!(r_iterator < l_iterator)); 
+}
+
+template<class TIterator, class TValue, class TReference, class TPointer, class TDistance> 
+inline bool __cdecl operator>=(const reverse_iterator<TIterator, TValue, TReference, TPointer, TDistance>& l_iterator, const reverse_iterator<TIterator, TValue, TReference, TPointer, TDistance>& r_iterator)
+{
+	return (!(l_iterator < r_iterator)); 
+}
+
+template<class TIterator, class TValue, class TReference, class TPointer, class TDistance> 
+inline TDistance __cdecl operator-(const reverse_iterator<TIterator, TValue, TReference, TPointer, TDistance>& l_iterator, const reverse_iterator<TIterator, TValue, TReference, TPointer, TDistance>& r_iterator)
+{
+	return (r_iterator.base() - l_iterator.base()); 
+}
+
+template<class TIterator, class TValue, class TReference, class TPointer, class TDistance> 
+inline reverse_iterator<TIterator, TValue, TReference, TPointer, TDistance> __cdecl operator+(TDistance distance, const reverse_iterator<TIterator, TValue, TReference, TPointer, TDistance>& r_iterator)
+{
+	return (reverse_iterator<TIterator, TValue, TReference, TPointer, TDistance>(r_iterator.base() - distance)); 
+}
+// --------------------------------------------------------------------------
+}	// namespace da_std
+// --------------------------------------------------------------------------
+#endif	// da_utility_h
+// --------------------------------------------------------------------------
+/*
+ * Copyright (c) 1995 by P.J. Plauger.  ALL RIGHTS RESERVED. 
+ * Consult your license regarding permissions and restrictions.
+ */
+
+/*
+ * This file is derived from software bearing the following
+ * restrictions:
+ *
+ * Copyright (c) 1994
+ * Hewlett-Packard Company
+ *
+ * Permission to use, copy, modify, distribute and sell this
+ * software and its documentation for any purpose is hereby
+ * granted without fee, provided that the above copyright notice
+ * appear in all copies and that both that copyright notice and
+ * this permission notice appear in supporting documentation.
+ * Hewlett-Packard Company makes no representations about the
+ * suitability of this software for any purpose. It is provided
+ * "as is" without express or implied warranty.
+ */

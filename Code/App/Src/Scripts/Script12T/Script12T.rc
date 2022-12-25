@@ -1,0 +1,170 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PARSER
+//
+
+IDR_PARSER_1            PARSER  DISCARDABLE     "DataDef.i"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM12_MISSION_NAME   "Mission 12"
+    IDS_TM12_MISSION_DESC   "Beat the Mantis back to Sol, and protect Epsilon."
+    IDS_TM12_OBJECTIVES     "Mission Objectives:\n1. The Acropolis in Epsilon must survive. \n2. Blackwell and Hawkes must travel from Corlor to Perilon before the Mantis raiding force. \n3. Blackwell and Hawkes must reach Sol.\n4. Takei, Steele, Blackwell, Hawkes, Benson and Vivac must survive."
+    IDS_TM12_OBJECTIVE1     "The Acropolis in Epsilon must survive."
+    IDS_TM12_OBJECTIVE2     "Blackwell and Hawkes must travel from Corlor to Perilon before the Mantis raiding force."
+    IDS_TM12_OBJECTIVE3     "Blackwell and Hawkes must reach Sol."
+    IDS_TM12_OBJECTIVE4     "Takei, Steele, Blackwell, Hawkes, Benson, and Vivac must survive."
+    IDS_TM12_MISSION_FAILURE 
+                            "MISSION FAILURE. STAND DOWN PENDING REASSIGNMENT."
+    IDS_TM12_MISSION_SUCCESS "SUCCESSFUL  MISSION."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM12_INCOMING       "Incoming Transmission. Alpha Priority:  Joining command conference in progress..."
+    IDS_TM12_MANTIS_PLAYER_NAME "Mantis"
+    IDS_TM12_FAIL_HAWKES_LOST "Admiral Hawkes has perished."
+    IDS_TM12_FAIL_BENSON_LOST "Admiral Benson has perished."
+    IDS_TM12_FAIL_TAKEI_LOST "Admiral Takei has perished."
+    IDS_TM12_FAIL_STEELE_LOST "Admiral Steele has perished."
+    IDS_TM12_FAIL_VIVAC_LOST "Magistrate Vivac has perished."
+    IDS_TM12_FAIL_BLACKWELL_LOST "Captain Blackwell has perished."
+    IDS_TM12_SUB_M12HA02    "Halsey:\nCommander, you're going to want to see this--"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM12_SUB_M12BL03    "Blackwell:\nIt's a lie, Admirals! The Fleet Smirnoff led us to was a decoy. They KNEW we'd catch them."
+    IDS_TM12_SUB_M12EL05    "Elan:\nIt is consistent with Mantis behavior to sacrifice many for a higher purpose."
+    IDS_TM12_SUB_M12BL06    "Blackwell:\nNo kidding ! I've been able to track another Fleet. It looks like they're headed for Earth."
+    IDS_TM12_SUB_M12HA09    "Halsey:\nHow long until Earth can see them coming?"
+    IDS_TM12_SUB_M12BL10    "Blackwell:\nNot long enough. It's a sneak attack. Smirnoff showed 'em the way."
+    IDS_TM12_SUB_M12HA11    "Halsey:\nDamnit. Comms, get me Terran Forces."
+    IDS_TM12_SUB_M12CM12    "Communications Officer:\nNo response, sir, our transmissions are jammed."
+    IDS_TM12_SUB_M12HA13    "Halsey:\nI should have known."
+    IDS_TM12_SUB_M12BN14    "Benson:\nAdmiral, we can't withdraw from Epsilon while Terran Colonies are being attacked. There are thousands dying here."
+    IDS_TM12_SUB_M12BL15    "Blackwell:\nThen don't. Admiral Halsey, I'll head for Earth with Admiral Hawkes. We just might be able to beat the invasion."
+    IDS_TM12_SUB_M12HA16    "Halsey:\nAgreed. This isn't a colony or a ship we're talking about, it's earth. It's 9 billion people who don't know what's about to hit them."
+    IDS_TM12_SUB_M12BL17    "Blackwell:\nIt won't, sir. We won't let it."
+    IDS_TM12_SUB_M12HW18    "Hawkes:\nNo. We won't. Or we'll die trying."
+    IDS_TM12_SUB_M12BL19    "Blackwell:\nThat's it, guys, look alive. "
+    IDS_TM12_SUB_M12BN20    "Benson:\nCareful out there, Tom. You've given us enough scares for one war."
+    IDS_TM12_SUB_M12BL21    "Blackwell:\nNot to worry, lady. I have the lives of a cat."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM12_SUB_M12HA22    "Halsey:\nLet's hope you do, too, Commander. You make sure that Blackwell and Hawkes get through."
+    IDS_TM12_SUB_M12SM23    "Smirnoff: Greetings Admirals!  It appears the tide's taken a turn for the worst for you all."
+    IDS_TM12_SUB_M12ST24    "Steele: Hell, I gotta say, I can't believe even you would sink so low."
+    IDS_TM12_SUB_M12SM25    "Smirnoff: You're not paying attention, Steele. I am on the rise. In the end, Earth will lay at my feet."
+    IDS_TM12_SUB_M12ST26    "Steele: Oh, boy, I think it's you who's not paying attention. Gonna wake up and find you sold out your planet for nuthin."
+    IDS_TM12_SUB_M12SM28    "Smirnoff: I'm afraid we're out of time, Admals. It was pleasant sparring with you."
+    IDS_TM12_SUB_M12TK29    "Takei: Did he just activate a wormhole from his SHIP?"
+    IDS_TM12_SUB_M12ST30    "Steele: Sure did."
+    IDS_TM12_SUB_M12TK31    "Takei: That means he could--"
+    IDS_TM12_SUB_M12ST32    "Steele: Means he could already be joining the attack fleet at Earth."
+    IDS_TM12_SUB_M12VV33    "Vivac: Impressive that they were able to take our device and make it work on that level."
+    IDS_TM12_SUB_M12TK34    "Takei: You sound like you admire them, Magistrate Vivac."
+    IDS_TM12_SUB_M12VV35    "Vivac: I admire their ingenuity."
+    IDS_TM12_SUB_M12ST36    "Steele: Yeah, well that's just swell, we need to warn Admiral Hawkes and Captain Blackwell. This is Admiral Steele, come in Blackwell!  Damn it! Communications are still down.\n"
+    IDS_TM12_SUB_M12TK37    "Takei: Let's just hope they make it to SOL in time."
+    IDS_TM12_SUB_M12ST38    "Steele: Okay, one more time.  Captain Blackwell!  This is Admiral Steele, please respond!"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM12_SUB_M12BL39    "Blackwell: Yes, Admiral I hear you!"
+    IDS_TM12_SUB_M12ST40    "Steele: There you are, you sweet muther, Tom, we've got a serious problem on our hands.  Smirnoff has the wormhole device and he's gonna use it to get to SOL.\n"
+    IDS_TM12_SUB_M12BL41    "Blackwell: That can't be right, Admiral, the wormhole device is useless to him or the Mantis, since they have no ability to build forgers. "
+    IDS_TM12_SUB_M12ST42    "Steele: The Mantis must of rigged it to work on the fly.  Now they can jump at will!"
+    IDS_TM12_SUB_M12BL43    "Blackwell: Okay. Hawkes and I will be in SOL within the hour. We're still in advance. Let's pray that we can hold them off."
+    IDS_TM12_SUB_M12HW44    "Hawkes: Commander, we have arrived in the Perilon System."
+    IDS_TM12_SUB_M12BL45    "Blackwell: Just in time to shore up our defenses."
+    IDS_TM12_SUB_M12HW46    "Hawkes: Hear that? That's a news broadcast from Earth. Someone's leaked the news."
+    IDS_TM12_SUB_M12BL47    "Blackwell: 9 billion panicked people are depending on us. Okay. If these guys can jump in at will, then it's gonna be tough."
+    IDS_TM12_SUB_M12HW48    "Hawkes: Then let us be tougher. Let them come. We're ready."
+    IDS_TM12_SUB_M12NP49    "News Cast: We go now to Brad Bradwell reporting from the front. Thanks Mike…There are Terran ships gathering on the edge of the Solar System, it's a wall-- a wall of ships. We'll do our best to keep broadcasting while we wait for news."
+    IDS_TM12_SUB_M12HA50    "Halsey: Excellent work, Commander! You've defended us from the Mantis on two fronts. Be ready, though. There's still an attack coming. Let's see what you do for an encore."
+    IDS_TM12_SUB_M12ST51    "Steele: Well, boy howdy, you let an Admiral get killed.  Prepare to stand down and await further orders."
+    IDS_TM12_SUB_M12TK52    "Takei: That was Steele. We NEEDED that Admiral, Commander. Fall back, I want you out of here."
+    IDS_TM12_SUB_M12ST53    "Steele: Commander, you've screwed up!  We've lost our only ally and now we're back to square one.  Stand down, prepare for incoming transmission."
+    IDS_TM12_SUB_M12HA54    "Halsey: Commander, come home for re-assignment. What a damn waste."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM12_SUB_M12HW55    "Hawkes: I don't imagine you could possibly have wasted a better man, Commander. Fall back. You've become a liability."
+    IDS_TM12_SUB_M12HA56    "Halsey: Commander, the Mantis have reached Perilon and we've lost every base in the Beta system. Now we have to start over from scratch. Thanks a lot."
+    IDS_TM12_SUB_M12BN58    "Benson: We needed a base out here, Commander. I've never seen such gross dereliction of duty. Fall back to be relieved. "
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

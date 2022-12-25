@@ -1,0 +1,474 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "Anim"=..\Anim\Anim.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/Anim", VHFAAAAA
+    ..\anim
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "COMHeap"=..\COMHeap\COMHeap.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/COMHeap", EDAAAAAA
+    ..\comheap
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Channel"=..\Channel\Channel.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/EngComps/Channel", RAFAAAAA
+    ..\channel
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "D3DRenderPipe"=..\RenderPipeline\D3DRenderPipe.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/RenderPipeline", URVAAAAA
+    ..\renderpipeline
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "DACOM"=..\DACOM\DACOM.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Dev/Src/DACOM", ZAAAAAAA
+    ..\dacom
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "DOSFile"=..\DOSFile\DOSFile.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/DOSFile", GBCAAAAA
+    ..\dosfile
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "DataViewer"=..\Viewer\DOCUVIEW\DataViewer.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/DataViewer", UVCAAAAA
+    ..\viewer\docuview
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Engine"=..\Engine\Engine.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/Engine", DGDAAAAA
+    ..\engine
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "HardPoint"=..\EngComps\Hardpoint\HardPoint.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/EngComps/Hardpoint", QDIAAAAA
+    ..\engcomps\hardpoint
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Hotkey"=..\DAHOTKEY\Hotkey.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/Hotkey", JDAAAAAA
+    ..\dahotkey
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "LightManager"=..\LightManager\LightManager.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/RenderPipeline", URVAAAAA
+    ..\lightmanager
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "MathLib"=..\x86Math\MathLib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/x86math/MathLib", BKSAAAAA
+    ..\x86math
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Optics"=..\RendComp\Optics\Optics.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/RendComp/Optics", OKLAAAAA
+    ..\rendcomp\optics
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "PolyMesh"=..\RendComp\PolyMesh\PolyMesh.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/RendComp/PolyMesh", VCGAAAAA
+    ..\rendcomp\polymesh
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "RPUL"=..\RenderPipeline\RPUL\RPUL.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/RenderPipeline/RPUL", VIWAAAAA
+    ..\renderpipeline\rpul
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "RenderMgr"=..\EngComps\RenderMgr\RenderMgr.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/EngComps/RenderMgr", PCGAAAAA
+    ..\engcomps\rendermgr
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "TextureLibrary"=..\Shading\TextureLibrary\TextureLibrary.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/RenderPipeline", URVAAAAA
+    ..\shading\texturelibrary
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "VertexBufferManager"=..\VertexBufferManager\VertexBufferManager.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/RenderPipeline", URVAAAAA
+    ..\vertexbuffermanager
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "_CQ_FullBuild"=.\_CQ_FullBuild.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    _CQ_FullBuild
+    .
+    end source code control
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name _StaticLibs
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name _ImplicitDLL
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name _ExplicitDLL
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "_ExplicitDLL"=.\_ExplicitDLL.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    _ExplicitDLL
+    .
+    end source code control
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name Anim
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Channel
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name D3DRenderPipe
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name DOSFile
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Engine
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name HardPoint
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Hotkey
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name LightManager
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Optics
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name PolyMesh
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name RenderMgr
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name streamer
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name TextureLibrary
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name VertexBufferManager
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name DataViewer
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name proto
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "_ImplicitDLL"=.\_ImplicitDLL.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    _ImplicitDLL
+    .
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "_StaticLibs"=.\_StaticLibs.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    _StaticLibs
+    .\_staticlibs
+    end source code control
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name COMHeap
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name DACOM
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name MathLib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name RPUL
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "proto"=..\x86Math\x86math.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/x86math", VPCAAAAA
+    ..\x86math
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "streamer"=..\Streamer\streamer.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/streamer", TKUAAAAA
+    ..\streamer
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+    begin source code control
+    CQ_FullBuild
+    .
+    end source code control
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

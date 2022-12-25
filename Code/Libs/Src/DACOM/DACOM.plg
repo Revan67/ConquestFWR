@@ -1,0 +1,59 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: DACOM - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSPB240.BAT" with contents
+[
+@echo off
+ml /coff /c /Cx /nologo /Zi /Zd  /Fo.\Release\HeapPass.obj  .\HeapPass.asm
+]
+Creating command line "C:\WINDOWS\TEMP\RSPB240.BAT"
+Creating command line "rc.exe /l 0x409 /fo"Release/DACOM.res" /i "..\\" /d "NDEBUG" "C:\Win32\LIBS\DEV\Src\DACOM\DACOM.rc"" 
+Performing Custom Build Step on .\HeapPass.asm
+ Assembling: .\HeapPass.asm
+Creating temporary file "C:\WINDOWS\TEMP\RSPB261.TMP" with contents
+[
+/nologo /G5 /MD /W4 /Zi /Ox /Ot /Ow /Og /Oi /Oy- /D "DA_HEAP_ENABLED" /D "_WINDOWS" /D "BUILD_DACOM" /D DA_ERROR_LEVEL=1 /D "WIN32" /D "NDEBUG" /D DA_ERROR_LEVEL=3 /FAs /Fa"Release/" /Fp"Release/DACOM.pch" /YX"windows.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Win32\LIBS\DEV\Src\DACOM\BaseHeap.cpp"
+"C:\Win32\LIBS\DEV\Src\DACOM\Dacom.cpp"
+"C:\Win32\LIBS\DEV\Src\DACOM\HeapInst.cpp"
+"C:\Win32\LIBS\DEV\Src\DACOM\MSHeap.cpp"
+"C:\Win32\LIBS\DEV\Src\DACOM\ProfileParser.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPB261.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPB262.TMP" with contents
+[
+version.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/DACOM.pdb" /map:"Release/DACOM.map" /debug /machine:I386 /out:"Release/DACOM.dll" /implib:"Release/DACOM.lib" /pdbtype:con 
+.\Release\BaseHeap.obj
+.\Release\Dacom.obj
+.\Release\HeapInst.obj
+.\Release\MSHeap.obj
+.\Release\ProfileParser.obj
+.\Release\DACOM.res
+.\Release\HeapPass.obj
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPB262.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+BaseHeap.cpp
+Dacom.cpp
+c:\WIN32\LIBS\DEV\INCLUDE\stddat.h(96) : warning C4710: '__cdecl TempStr::TempStr(char *,...)' : function not expanded
+        c:\WIN32\LIBS\DEV\INCLUDE\TempStr.h(45) : see declaration of 'TempStr::TempStr'
+HeapInst.cpp
+MSHeap.cpp
+ProfileParser.cpp
+Linking...
+   Creating library Release/DACOM.lib and object Release/DACOM.exp
+
+
+
+<h3>Results</h3>
+DACOM.dll - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

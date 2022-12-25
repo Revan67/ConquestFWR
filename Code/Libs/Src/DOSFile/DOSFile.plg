@@ -1,0 +1,62 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: DOSFile - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSP12E4.TMP" with contents
+[
+/nologo /G5 /ML /W3 /Zi /Od /Gf /D "DA_HEAP_ENABLED" /D "_DEBUG" /D DA_ERROR_LEVEL=8 /D "WIN32" /D "_WINDOWS" /FR"Debug/" /Fp"Debug/DOSFile.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"C:\Win32\LIBS\DEV\Src\DOSFile\BaseUTF.cpp"
+"C:\Win32\LIBS\DEV\Src\DOSFile\Dosfile.cpp"
+"C:\Win32\LIBS\DEV\Src\DOSFile\MemFile.cpp"
+"C:\Win32\LIBS\DEV\Src\DOSFile\SearchPath.cpp"
+"C:\Win32\LIBS\DEV\Src\DOSFile\UTF.cpp"
+"C:\Win32\LIBS\DEV\Src\DOSFile\UTFDMan.cpp"
+"C:\Win32\LIBS\DEV\Src\DOSFile\UTFShare.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP12E4.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP12E5.TMP" with contents
+[
+DACOM.lib COMHeap.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /entry:"DllMain" /subsystem:windows /dll /incremental:no /pdb:"Debug/DOSFile.pdb" /debug /machine:I386 /out:"Debug/DOSFile.dll" /implib:"Debug/DOSFile.lib" /pdbtype:sept 
+.\Debug\BaseUTF.obj
+.\Debug\Dosfile.obj
+.\Debug\MemFile.obj
+.\Debug\SearchPath.obj
+.\Debug\UTF.obj
+.\Debug\UTFDMan.obj
+.\Debug\UTFShare.obj
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP12E5.TMP"
+<h3>Output Window</h3>
+Compiling...
+BaseUTF.cpp
+C:\Win32\LIBS\DEV\Src\DOSFile\BaseUTF.cpp(9) : fatal error C1034: windows.h: no include path set
+Dosfile.cpp
+C:\Win32\LIBS\DEV\Src\DOSFile\Dosfile.cpp(14) : fatal error C1034: windows.h: no include path set
+MemFile.cpp
+C:\Win32\LIBS\DEV\Src\DOSFile\MemFile.cpp(15) : fatal error C1034: windows.h: no include path set
+SearchPath.cpp
+C:\Win32\LIBS\DEV\Src\DOSFile\SearchPath.cpp(15) : fatal error C1034: windows.h: no include path set
+UTF.cpp
+C:\Win32\LIBS\DEV\Src\DOSFile\UTF.cpp(13) : fatal error C1034: windows.h: no include path set
+UTFDMan.cpp
+C:\Win32\LIBS\DEV\Src\DOSFile\UTFDMan.cpp(13) : fatal error C1034: windows.h: no include path set
+UTFShare.cpp
+C:\Win32\LIBS\DEV\Src\DOSFile\UTFShare.cpp(13) : fatal error C1034: windows.h: no include path set
+Error executing cl.exe.
+Creating command line "bscmake.exe /nologo /o"Debug/DOSFile.bsc"  .\Debug\BaseUTF.sbr .\Debug\Dosfile.sbr .\Debug\MemFile.sbr .\Debug\SearchPath.sbr .\Debug\UTF.sbr .\Debug\UTFDMan.sbr .\Debug\UTFShare.sbr"
+Creating browse info file...
+BSCMAKE: error BK1506 : cannot open file '.\Debug\BaseUTF.sbr': No such file or directory
+Error executing bscmake.exe.
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+DOSFile.dll - 8 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

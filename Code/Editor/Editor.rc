@@ -1,0 +1,886 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\Editor.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\Editor.ico"
+IDR_EDITORTYPE          ICON                    "res\\EditorDoc.ico"
+IDI_ICON_FOLDER         ICON                    "res\\Graphics\\Icons\\Office\\FOLDER03.ICO"
+IDI_ICON_ROCKET         ICON                    "res\\Graphics\\Icons\\Industry\\ROCKET.ICO"
+IDI_ICON_FOLDER2        ICON                    "res\\Graphics\\Icons\\Win95\\CLSDFOLD.ICO"
+IDI_ICON_MSTART         ICON                    "res\\Graphics\\Icons\\Misc\\EXCLEM.ICO"
+IDI_ICON_MCAMPAIGN      ICON                    "res\\Icons\\campaign_mode.ico"
+IDI_ICON_MSCENARIO      ICON                    "res\\Icons\\scenario_mode.ico"
+IDI_ICON_MSECTOR        ICON                    "res\\Icons\\sector_mode.ico"
+IDI_ICON_MSYSTEM        ICON                    "res\\Icons\\system_mode.ico"
+IDR_MAINFRAME1          ICON                    "res\\icons\\trigger_playerstart.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+IDB_BITMAP1             BITMAP                  "res\\bitmap1.bmp"
+IDB_SECTORTB            BITMAP                  "res\\bitmap2.bmp"
+IDB_SPLASH              BITMAP                  "res\\title-splash.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New Campaign\tCtrl+N",       ID_FILE_NEW
+        MENUITEM "&Open Campaign\tCtrl+O",      ID_FILE_OPEN
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "New Scenario",                ID_NEW_SCENARIO
+        MENUITEM "Open Scenario",               ID_SCENARIO_OPEN
+        MENUITEM "Save Senario",                ID_FILE_SAVESENARIO
+        MENUITEM "Save Scenario As Missoin",    ID_FILE_SAVEASMISSION
+        MENUITEM SEPARATOR
+        MENUITEM "Import String Table...",      ID_FILE_IMPORTSTRINGTABLE
+        MENUITEM "Export String Table...",      ID_FILE_EXPORTSTRINGTABLE
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM SEPARATOR
+        MENUITEM "String Table",                ID_STRING_TABLE
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "Mode"
+    BEGIN
+        MENUITEM "Campaign",                    ID_MODE_CAMPAIGN_VIEW
+        MENUITEM "Scenario",                    ID_MODE_SCENARIO_VIEW
+        MENUITEM "Sector",                      ID_MODE_SECTOR_VIEW
+        MENUITEM "System",                      ID_MODE_SYSTEM_VIEW
+    END
+    POPUP "Player"
+    BEGIN
+        MENUITEM "Player One",                  ID_PLAYER_PLAYERONE
+        MENUITEM "Player Two",                  ID_PLAYER_PLAYERTWO
+        MENUITEM "Player Three",                ID_PLAYER_PLAYERTHREE
+        MENUITEM "Player Four",                 ID_PLAYER_PLAYERFOUR
+        MENUITEM "Player Five",                 ID_PLAYER_PLAYERFIVE
+        MENUITEM "Player Six",                  ID_PLAYER_PLAYERSIX
+        MENUITEM "Player Seven",                ID_PLAYER_PLAYERSEVEN
+        MENUITEM "Player Eight",                ID_PLAYER_PLAYEREIGHT
+    END
+    POPUP "Map"
+    BEGIN
+        MENUITEM "Launch",                      ID_MAP_LAUNCH
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About Editor...",            ID_APP_ABOUT
+    END
+END
+
+IDR_STRING_TABLE_MENU MENU 
+BEGIN
+    POPUP "File"
+    BEGIN
+        MENUITEM "Save",                        ID_FILE_SAVE189
+        MENUITEM "Load",                        ID_FILE_LOAD
+        MENUITEM "Exit",                        ID_FILE_EXIT
+    END
+    POPUP "Language"
+    BEGIN
+        MENUITEM "New",                         ID_LANGUAGE_NEW
+        POPUP "Choose"
+        BEGIN
+            MENUITEM "English",                     ID_CHOOSE_ENGLISH
+        END
+    END
+END
+
+IDR_OBJECT_MENU MENU 
+BEGIN
+    POPUP "Object Command"
+    BEGIN
+        MENUITEM "Delete",                      ID_OBJECTCOMMAND_DELETE
+        MENUITEM "Rename",                      ID_OBJECTCOMMAND_RENAME
+        MENUITEM "Clone",                       ID_OBJECTCOMMAND_CLONE
+        MENUITEM "Goto",                        ID_OBJECTCOMMAND_GOTO
+        MENUITEM "Properties",                  ID_OBJECTCOMMAND_PROPERTIES
+    END
+END
+
+IDR_WORMHOLE_MENU MENU 
+BEGIN
+    POPUP "Object Command"
+    BEGIN
+        MENUITEM "Delete",                      ID_OBJECTCOMMAND_DELETE
+        MENUITEM "Rename",                      ID_OBJECTCOMMAND_RENAME
+        MENUITEM "Clone",                       ID_OBJECTCOMMAND_CLONE
+        MENUITEM "Properties",                  ID_OBJECTCOMMAND_PROPERTIES
+        MENUITEM "Warp",                        ID_OBJECTCOMMAND_WARP
+    END
+END
+
+IDR_MENU_GROUPS MENU 
+BEGIN
+    POPUP "Group Menu"
+    BEGIN
+        MENUITEM "Add To Group",                ID_GROUPCOMMAND_ADDTO
+        MENUITEM "Delete",                      ID_OBJECTCOMMAND_DELETE
+        MENUITEM "Clone",                       ID_OBJECTCOMMAND_CLONE
+    END
+END
+
+IDR_MENU_GROUP MENU 
+BEGIN
+    POPUP "Group Menu"
+    BEGIN
+        MENUITEM "Delete",                      ID_OBJECTCOMMAND_DELETE
+        MENUITEM "Rename",                      ID_OBJECTCOMMAND_RENAME
+        MENUITEM "Select",                      ID_OBJECTCOMMAND_PROPERTIES
+        MENUITEM "Properties",                  ID_OBJECTCOMMAND_PROPERTIES
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS 
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_MODE_CAMPAIGN,       VIRTKEY, SHIFT, CONTROL, ALT, 
+                                                    NOINVERT
+    "M",            ID_MODE_START,          VIRTKEY, SHIFT, CONTROL, ALT, 
+                                                    NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_MODE_SCENARIO,       VIRTKEY, SHIFT, CONTROL, ALT, 
+                                                    NOINVERT
+    "T",            ID_MODE_SECTOR,         VIRTKEY, SHIFT, CONTROL, ALT, 
+                                                    NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Y",            ID_EDIT_REDO,           VIRTKEY, CONTROL, NOINVERT
+    "Y",            ID_MODE_SYSTEM,         VIRTKEY, SHIFT, CONTROL, ALT, 
+                                                    NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG  0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About Editor"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "Editor Version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2004",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_SIDEBAR DIALOG  0, 0, 187, 94
+STYLE DS_SETFONT | WS_CHILD | WS_THICKFRAME
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Static",IDC_STATIC,35,35,45,20
+END
+
+IDD_NEW_CAMPAIGN DIALOG  0, 0, 237, 101
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "New Campaign"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,10,80,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,180,80,50,14
+    LTEXT           "Enter Campaign's Name",IDC_STATIC,10,5,210,10
+    EDITTEXT        IDC_EDIT_NAME,10,15,210,12,ES_AUTOHSCROLL
+    LTEXT           "Race",IDC_STATIC,10,35,75,10
+    COMBOBOX        IDC_COMBO_RACE,10,45,80,70,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_ERROR DIALOGEX 0, 0, 186, 95
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Error"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,74,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,74,50,14
+    EDITTEXT        IDC_EDIT_ERR,7,7,172,61,ES_MULTILINE | ES_AUTOHSCROLL
+END
+
+IDD_STRING_TABLE DIALOGEX 0, 0, 606, 289
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | 
+    WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "String Table Editor"
+MENU IDR_STRING_TABLE_MENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,481,268,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,549,268,50,14
+    CONTROL         "",IDC_STRING_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SORTASCENDING | LVS_EDITLABELS | 
+                    LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,592,261
+    PUSHBUTTON      "New",IDC_BUTTON_NEW,7,268,50,14
+    PUSHBUTTON      "Delete",IDC_BUTTON_DELETE,84,268,50,14
+    PUSHBUTTON      "Edit",IDC_BUTTON_EDIT,161,268,50,14
+END
+
+IDD_EDIT_STRING_ENTRY DIALOGEX 0, 0, 234, 138
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Edit String Entry"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,177,7,50,14
+    EDITTEXT        IDC_EDIT_TAG,7,25,220,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_EDIT_VALUE,"RichEdit20A",ES_AUTOHSCROLL | 
+                    WS_BORDER | WS_TABSTOP,7,51,220,80
+END
+
+IDD_OBJPROPS DIALOGEX 0, 0, 241, 247
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Object Properties"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,226,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,184,226,50,14
+    CONTROL         "",IDC_RICHEDIT_NAME,"RichEdit20A",ES_AUTOHSCROLL | 
+                    WS_BORDER | WS_TABSTOP,7,17,208,14
+    LTEXT           "Name",IDC_STATIC,7,7,128,10
+    PUSHBUTTON      "...",IDC_BTN_NEWSTRING,217,17,18,14
+    LTEXT           "Script Handle",IDC_STATIC,7,36,128,10
+    EDITTEXT        IDC_EDIT_SCRIPTHANDLE,7,47,116,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Reset",IDC_RESET,111,226,50,14
+    CONTROL         "",IDC_TABS,"SysTabControl32",0x0,7,67,227,153
+    CONTROL         "Modified",IDC_CHECK_MODIFIED,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,65,228,43,10
+    LTEXT           "Group Name",IDC_STATIC,132,36,80,10
+    COMBOBOX        IDC_COMBO_GROUP,131,47,103,193,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_OP_BASIC DIALOGEX 0, 0, 209, 118
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Hull Points Max",IDC_STATIC,7,7,90,8
+    LTEXT           "Supply Points Max",IDC_STATIC,7,20,90,8
+    LTEXT           "Scrap Value",IDC_STATIC,7,33,90,8
+    LTEXT           "Command Points Value",IDC_STATIC,7,46,90,8
+    LTEXT           "Sensor Radius",IDC_STATIC,7,59,90,8
+    LTEXT           "Cloaked Sensor Radius",IDC_STATIC,7,72,90,8
+    LTEXT           "Max Velocity",IDC_STATIC,7,85,90,8
+    LTEXT           "Base Shield Level",IDC_STATIC,7,98,90,8
+    EDITTEXT        IDC_EDIT_HULLMAX,112,7,90,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_SUPPLYPNTS,112,20,90,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_SCRAPVAL,112,33,90,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_COMMANDPNTS,112,46,90,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_SENSORRAD,112,59,90,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_CLOAKEDRAD,112,72,90,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_MAXVELOCITY,112,85,90,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_BASESHIELD,112,98,90,12,ES_AUTOHSCROLL
+END
+
+IDD_OP_ARMOR DIALOGEX 0, 0, 200, 105
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Ship's Armor Value",IDC_STATIC,7,7,64,8
+    EDITTEXT        IDC_EDIT_DMGVSNONE,129,26,64,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_DMGVSLIGHT,129,45,64,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_DMGVSMEDIUM,129,64,64,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_DMGVSHEAVY,129,83,64,14,ES_AUTOHSCROLL
+    LTEXT           "Ship's Damage Versus No Armor",IDC_STATIC,7,26,110,8
+    LTEXT           "Ship's Damage Versus Heavy Armor",IDC_STATIC,7,83,94,8
+    LTEXT           "Ship's Damage Versus Medium Armor",IDC_STATIC,7,64,120,
+                    8
+    LTEXT           "Ship's Damage Versus Light Armor",IDC_STATIC,7,45,117,8
+    COMBOBOX        IDC_COMBO_ARMOR,129,7,64,93,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_OP_BLACKHOLE DIALOGEX 0, 0, 185, 106
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "System 1",IDC_CHECK_SYS1,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,35,9,45,10
+    CONTROL         "System 2",IDC_CHECK_SYS2,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,35,20,45,10
+    CONTROL         "System 3",IDC_CHECK_SYS3,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,35,31,45,10
+    CONTROL         "System 4",IDC_CHECK_SYS4,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,35,42,45,10
+    CONTROL         "System 5",IDC_CHECK_SYS5,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,35,53,45,10
+    CONTROL         "System 6",IDC_CHECK_SYS6,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,35,64,45,10
+    CONTROL         "System 7",IDC_CHECK_SYS7,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,35,75,45,10
+    CONTROL         "System 8",IDC_CHECK_SYS8,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,35,86,45,10
+    CONTROL         "System 9",IDC_CHECK_SYS9,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,105,9,45,10
+    CONTROL         "System 10",IDC_CHECK_SYS10,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,105,20,49,10
+    CONTROL         "System 11",IDC_CHECK_SYS11,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,105,31,49,10
+    CONTROL         "System 12",IDC_CHECK_SYS12,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,105,42,49,10
+    CONTROL         "System 13",IDC_CHECK_SYS13,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,105,53,49,10
+    CONTROL         "System 14",IDC_CHECK_SYS14,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,105,64,49,10
+    CONTROL         "System 15",IDC_CHECK_SYS15,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,105,75,49,10
+    CONTROL         "System 16",IDC_CHECK_SYS16,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,105,86,49,10
+END
+
+IDD_SYSTEMPROPS DIALOGEX 0, 0, 263, 150
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,129,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,206,129,50,14
+    CTEXT           "System Properties",IDC_STATIC,7,7,249,11,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    CONTROL         "",IDC_NAMESTRING,"RichEdit20A",ES_AUTOHSCROLL | 
+                    WS_BORDER | WS_TABSTOP,7,35,223,14
+    PUSHBUTTON      "...",IDC_BUTTON_NEWSTRING,235,35,21,14
+    COMBOBOX        IDC_COMBO_SYSKIT,7,74,115,109,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Star System Kit",IDC_STATIC,7,60,66,12
+    LTEXT           "System Name",IDC_STATIC,7,24,66,9
+END
+
+IDD_OP_TRIGGER DIALOGEX 0, 0, 185, 106
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "On Ship ID",IDC_FLAG_SHIPID,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,9,50,10
+    CONTROL         "On Object Class",IDC_FLAG_OBJCLASS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,12,20,67,10
+    CONTROL         "On Ship Type",IDC_FLAG_SHIPTYPE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,12,31,59,10
+    CONTROL         "On Player ID",IDC_FLAG_PLAYERID,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,12,42,57,10
+    CONTROL         "Wait Until Ready",IDC_FLAG_READYWAIT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,12,53,69,10
+    EDITTEXT        IDC_EDIT_RANGE,61,68,98,12,ES_AUTOHSCROLL
+    LTEXT           "Range",IDC_STATIC,12,70,49,8
+    CONTROL         "Enabled",IDC_FLAG_ENABLED,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,137,7,41,10
+END
+
+IDD_NEW_GROUP DIALOGEX 0, 0, 237, 101
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "New Group"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,10,80,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,180,80,50,14
+    LTEXT           "Enter Group's Name",IDC_STATIC,10,5,210,10
+    LTEXT           "Race",IDC_STATIC,10,35,75,10
+    COMBOBOX        IDC_COMBO,7,44,80,70,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_RICHEDIT,"RichEdit20A",ES_AUTOHSCROLL | WS_BORDER | 
+                    WS_TABSTOP,7,15,223,15
+END
+
+IDD_CHOOSE_GROUP DIALOGEX 0, 0, 237, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_WINDOWEDGE
+CAPTION "Choose Group"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,10,42,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,180,42,50,14
+    LTEXT           "Group Name",-1,10,3,210,10
+    COMBOBOX        IDC_COMBO,7,15,223,272,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "FileDescription", "Editor MFC Application"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "Editor"
+            VALUE "LegalCopyright", "Copyright (C) 2004"
+            VALUE "OriginalFilename", "Editor.EXE"
+            VALUE "ProductName", "Editor Application"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_SIDEBAR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 87
+    END
+
+    IDD_NEW_CAMPAIGN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 230
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 94
+    END
+
+    IDD_ERROR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+
+    IDD_STRING_TABLE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 599
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 282
+    END
+
+    IDD_EDIT_STRING_ENTRY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 227
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 131
+    END
+
+    IDD_OBJPROPS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 234
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 240
+    END
+
+    IDD_OP_BASIC, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 202
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 111
+    END
+
+    IDD_OP_ARMOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 193
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 98
+    END
+
+    IDD_OP_BLACKHOLE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 178
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 99
+    END
+
+    IDD_SYSTEMPROPS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 256
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 143
+    END
+
+    IDD_OP_TRIGGER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 178
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 99
+    END
+
+    IDD_NEW_GROUP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 230
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 94
+    END
+
+    IDD_CHOOSE_GROUP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 230
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 56
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_CURSOR1             CURSOR                  "res\\graphics\\icons\\misc\\cursor1.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_NEW_CAMPAIGN DLGINIT
+BEGIN
+    IDC_COMBO_RACE, 0x403, 7, 0
+0x614d, 0x746e, 0x7369, "\000" 
+    IDC_COMBO_RACE, 0x403, 6, 0
+0x7548, 0x616d, 0x006e, 
+    IDC_COMBO_RACE, 0x403, 8, 0
+0x6543, 0x616c, 0x6f72, 0x006e, 
+    IDC_COMBO_RACE, 0x403, 8, 0
+0x7956, 0x7272, 0x7569, 0x006d, 
+    0
+END
+
+IDD_NEW_GROUP DLGINIT
+BEGIN
+    IDC_COMBO, 0x403, 7, 0
+0x614d, 0x746e, 0x7369, "\000" 
+    IDC_COMBO, 0x403, 6, 0
+0x7548, 0x616d, 0x006e, 
+    IDC_COMBO, 0x403, 8, 0
+0x6543, 0x616c, 0x6f72, 0x006e, 
+    IDC_COMBO, 0x403, 8, 0
+0x7956, 0x7272, 0x7569, 0x006d, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDR_MAINFRAME           "Editor\n\nEditor\n\n\nEditor.Document\nEditor Document"
+    IDS_CSETTINGS           "Settings"
+    IDS_PLAYER_NUM          "Player Number %d"
+    IDS_ED_STRINGVALUE      "String Value"
+    IDS_ED_STRINGID         "String ID"
+    IDS_STRING_NEW          "String_New"
+    IDS_SYSTEMS             "Systems"
+    IDS_SCRIPTS             "Scripts"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    IDS_SECTORBAR           "Sector Bar"
+    IDS_SYSTEMBAR           "System Bar"
+    IDS_ASSETBAR            "Asset Bar"
+    IDS_ENTITYBAR           "Enity Bar"
+    IDS_GROUPS              "Groups"
+    IDS_OUTPUTBAR           "Output Bar"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "Editor"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\Editor.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "afxprint.rc"       // printing/print preview resources
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

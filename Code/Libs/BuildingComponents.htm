@@ -1,0 +1,37 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>How To Build DA Library Components</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT FACE="Arial" SIZE=4><P>How To Build DA Library Components</P>
+</B></FONT><FONT FACE="Arial" SIZE=2><P>Note: In the discussion below, it is assumed that you have a directory tree on your machine that mirrors the tree in Source Safe. The root of that tree is referred to as &quot;&amp;\&quot;.</P>
+
+<OL>
+
+<LI>Get the source code via Source Safe. The source lives in the $/libs/dev/src tree.</LI>
+<LI>Set the file &amp;\Libs\Dev\Src\BuildRes.h to read-write.</LI>
+<LI>Uncomment the line which defines the OFFICIAL_BUILD macro if this is to be a published build.</LI>
+<LI>Perform a clean build of the component.</LI>
+<LI>Check out the component to make sure the build worked.</LI>
+<LI>If all is well, label the entire $/libs/dev/src tree with the name of the component and its current version (stored in XXXVer.h, where XXX is the name of the component).  Static libraries do not have version header files.</LI>
+<LI>Check out all the related header files in $/libs/published/include.</LI>
+<LI>Copy all the related header files from &amp;\libs\dev\include to &amp;\libs\published\include.</LI>
+<LI>Check in the related header files from $/libs/published/include.</LI>
+<LI>Label all the headers in $/libs/published/include with the name of the component and its current version number.</LI>
+<LI>Check out the component in $/libs/published/{ExplicitDLL,ImplicitDLL,Static}.</LI>
+<LI>Copy the new component from its compiled directory to &amp;\libs\published\{ExplicitDLL,ImplicitDLL,Static}.</LI>
+<LI>Check in the component in $/libs/published/{ExplicitDLL,ImplicitDLL,Static}.</LI>
+<LI>Label the component in $/libs/published/{ExplicitDLL,ImplicitDLL,Static} with the component name and current version number.</LI>
+<LI>Check out the component version header file.</LI>
+<LI>Increment the version minor number.  NOTE: This is done <B>after</B> the component is published so that subsequent compilations will have an advanced version number.</LI>
+<LI>Check in the component version header file.</LI>
+<LI>Re-get $/libs/dev/src/BuildRes.h from Source Safe, ensuring that subsequent builds are not accidentally marked as official.</LI></OL>
+
+
+<P>&nbsp;</P>
+<P>Due to the large number of steps in the process, most of which must be repeated for each component, this process is a prime candidate for automation.</P>
+</FONT></BODY>
+</HTML>

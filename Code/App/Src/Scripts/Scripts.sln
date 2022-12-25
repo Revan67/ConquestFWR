@@ -1,0 +1,215 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DemoScript", "DemoScript\DemoScript.vcproj", "{418B03FE-3E88-4601-A218-4739C50B75EE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mantis_T", "Mantis_T\Mantis_T.vcproj", "{2170EC6D-6FE0-46BF-8CF0-56BE277AC556}"
+EndProject
+Project("{059D6162-CD51-11D0-AE1F-00A0C90FFFC3}") = "SCRIPT01T", "Script01T\SCRIPT01T.dsp", "{FCE40256-2113-49AB-A36C-24F248BCD1DE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SCRIPT02t", "Script02T\SCRIPT02T.vcproj", "{A8EAA4BF-0F4F-4DF3-8260-27143732120B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SCRIPT03T", "Script03T\SCRIPT03T.vcproj", "{7C8947FE-1781-4C6A-8B37-905B6D494899}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Script04T", "Script04T\Script04T.vcproj", "{110201DF-7BB5-418A-BF70-9F4A7F3EFBB5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Script05t", "Script05t\Script05t.vcproj", "{1C8EC7CB-D837-4CD5-8954-AFA3E8E85895}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Script07T", "Script07T\Script07T.vcproj", "{3749D8B2-150F-4042-8E6B-B6BB637EBD93}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Script08T", "Script08T\Script08T.vcproj", "{DA0AFF43-F1F8-4B48-9E18-9DA5FB52A692}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Script09T", "script09t\Script09T.vcproj", "{1CAB690E-2A52-4A14-8DB2-96C6595EBE83}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Script10T", "Script10T\Script10T.vcproj", "{FA98DF48-FF04-4CA5-A7D5-2519D9A47014}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Script11T", "Script11T\Script11T.vcproj", "{E8C08D7B-507E-4BB2-A1F3-577B13513206}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Script12T", "Script12T\Script12T.vcproj", "{94EFEE32-0184-450F-897D-BFFE42C3F963}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Script13T", "Script13T\Script13T.vcproj", "{722ACC4C-BE15-49CF-93B1-68B0E9265B8E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Script14T", "Script14T\Script14T.vcproj", "{ADE4CC4A-167F-4618-A9FF-AEDCBEC29629}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Script15T", "Script15T\Script15T.vcproj", "{D11DCF7A-6F38-4ACD-871E-2EC13B2BE57A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Script16T", "Script16T\Script16T.vcproj", "{5F78B9DB-5888-446C-A73D-913D024035F4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sol_T", "Sol_T\Sol_T.vcproj", "{406851D5-5BA7-471B-AB90-4C2B4DDC0F6D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "script06t", "Script06T\Script06T.vcproj", "{CF3F0C39-193F-4377-9F9A-3D930A49D320}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Demo2", "Demo2\Demo2.vcproj", "{C74CAE6A-57F5-4AD9-9B10-CEB16634DD9E}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 20
+		SccProjectUniqueName0 = DemoScript\\DemoScript.vcproj
+		SccProjectName0 = DemoScript
+		SccLocalPath0 = DemoScript
+		CanCheckoutShared = true
+		SccProjectUniqueName1 = Mantis_T\\Mantis_T.vcproj
+		SccProjectName1 = \u0022$/Conquest/App/Src/Scripts/Mantis_T\u0022,\u0020EIDAAAAA
+		SccLocalPath1 = Mantis_T
+		CanCheckoutShared = true
+		SccProjectUniqueName2 = Script02T\\SCRIPT02T.vcproj
+		SccProjectName2 = \u0022$/Conquest/App/Src/Scripts/Script02t\u0022,\u0020LPBAAAAA
+		SccLocalPath2 = Script02T
+		CanCheckoutShared = true
+		SccProjectUniqueName3 = Script03T\\SCRIPT03T.vcproj
+		SccProjectName3 = \u0022$/Conquest/App/Src/Scripts/SCRIPT03T\u0022,\u0020LPBAAAAA
+		SccLocalPath3 = Script03T
+		CanCheckoutShared = true
+		SccProjectUniqueName4 = Script04T\\Script04T.vcproj
+		SccProjectName4 = \u0022$/Conquest/App/Src/Scripts/Script04T\u0022,\u0020FXCAAAAA
+		SccLocalPath4 = Script04T
+		CanCheckoutShared = true
+		SccProjectUniqueName5 = Script05t\\Script05t.vcproj
+		SccProjectName5 = \u0022$/Conquest/App/Src/Scripts/Script05T/Script05t\u0022,\u0020OWCAAAAA
+		SccLocalPath5 = Script05t
+		CanCheckoutShared = true
+		SccProjectUniqueName6 = Script07T\\Script07T.vcproj
+		SccProjectName6 = \u0022$/Conquest/App/Src/Scripts/Script07T\u0022,\u0020UADAAAAA
+		SccLocalPath6 = Script07T
+		CanCheckoutShared = true
+		SccProjectUniqueName7 = Script08T\\Script08T.vcproj
+		SccProjectName7 = \u0022$/Conquest/App/Src/Scripts/Script08T\u0022,\u0020UDDAAAAA
+		SccLocalPath7 = Script08T
+		CanCheckoutShared = true
+		SccProjectUniqueName8 = script09t\\Script09T.vcproj
+		SccProjectName8 = \u0022$/Conquest/App/Src/Scripts/Script09T\u0022,\u0020ACDAAAAA
+		SccLocalPath8 = script09t
+		CanCheckoutShared = true
+		SccProjectUniqueName9 = Script10T\\Script10T.vcproj
+		SccProjectName9 = \u0022$/Conquest/App/Src/Scripts/Script10T\u0022,\u0020SEDAAAAA
+		SccLocalPath9 = Script10T
+		CanCheckoutShared = true
+		SccProjectUniqueName10 = Script11T\\Script11T.vcproj
+		SccProjectName10 = \u0022$/Conquest/App/Src/Scripts/Script11T\u0022,\u0020CFDAAAAA
+		SccLocalPath10 = Script11T
+		CanCheckoutShared = true
+		SccProjectUniqueName11 = Script12T\\Script12T.vcproj
+		SccProjectName11 = \u0022$/Conquest/App/Src/Scripts/Script12T\u0022,\u0020ZFDAAAAA
+		SccLocalPath11 = Script12T
+		CanCheckoutShared = true
+		SccProjectUniqueName12 = Script13T\\Script13T.vcproj
+		SccProjectName12 = \u0022$/Conquest/App/Src/Scripts/Script13T\u0022,\u0020QFDAAAAA
+		SccLocalPath12 = Script13T
+		CanCheckoutShared = true
+		SccProjectUniqueName13 = Script14T\\Script14T.vcproj
+		SccProjectName13 = \u0022$/Conquest/App/Src/Scripts/Script14T\u0022,\u0020QGDAAAAA
+		SccLocalPath13 = Script14T
+		CanCheckoutShared = true
+		SccProjectUniqueName14 = Script15T\\Script15T.vcproj
+		SccProjectName14 = \u0022$/Conquest/App/Src/Scripts/Script15T\u0022,\u0020CHDAAAAA
+		SccLocalPath14 = Script15T
+		CanCheckoutShared = true
+		SccProjectUniqueName15 = Script16T\\Script16T.vcproj
+		SccProjectName15 = \u0022$/Conquest/App/Src/Scripts/Script16T\u0022,\u0020RHDAAAAA
+		SccLocalPath15 = Script16T
+		CanCheckoutShared = true
+		SccProjectUniqueName16 = Sol_T\\Sol_T.vcproj
+		SccProjectName16 = \u0022$/Conquest/App/Src/Scripts/Sol_T\u0022,\u0020LIDAAAAA
+		SccLocalPath16 = Sol_T
+		CanCheckoutShared = true
+		SccProjectUniqueName17 = Script06T\\Script06T.vcproj
+		SccProjectName17 = \u0022$/Conquest/App/Src/Scripts/Script06T\u0022,\u0020ICDAAAAA
+		SccLocalPath17 = Script06T
+		CanCheckoutShared = true
+		SccProjectUniqueName18 = Demo2\\Demo2.vcproj
+		SccProjectName18 = Demo2
+		SccLocalPath18 = Demo2
+		CanCheckoutShared = true
+		SccProjectName19 = Scripts
+		SccLocalPath19 = .
+		SccProvider19 = MSSCCI:NXN\u0020alienbrain
+		CanCheckoutShared = true
+		SolutionUniqueID = {B0AB7B66-FC9B-479F-85C9-0B62D8B77F87}
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{418B03FE-3E88-4601-A218-4739C50B75EE}.Debug.ActiveCfg = Debug|Win32
+		{418B03FE-3E88-4601-A218-4739C50B75EE}.Debug.Build.0 = Debug|Win32
+		{418B03FE-3E88-4601-A218-4739C50B75EE}.Release.ActiveCfg = Release|Win32
+		{418B03FE-3E88-4601-A218-4739C50B75EE}.Release.Build.0 = Release|Win32
+		{2170EC6D-6FE0-46BF-8CF0-56BE277AC556}.Debug.ActiveCfg = Debug|Win32
+		{2170EC6D-6FE0-46BF-8CF0-56BE277AC556}.Debug.Build.0 = Debug|Win32
+		{2170EC6D-6FE0-46BF-8CF0-56BE277AC556}.Release.ActiveCfg = Release|Win32
+		{2170EC6D-6FE0-46BF-8CF0-56BE277AC556}.Release.Build.0 = Release|Win32
+		{A8EAA4BF-0F4F-4DF3-8260-27143732120B}.Debug.ActiveCfg = Debug|Win32
+		{A8EAA4BF-0F4F-4DF3-8260-27143732120B}.Debug.Build.0 = Debug|Win32
+		{A8EAA4BF-0F4F-4DF3-8260-27143732120B}.Release.ActiveCfg = Release|Win32
+		{A8EAA4BF-0F4F-4DF3-8260-27143732120B}.Release.Build.0 = Release|Win32
+		{7C8947FE-1781-4C6A-8B37-905B6D494899}.Debug.ActiveCfg = Debug|Win32
+		{7C8947FE-1781-4C6A-8B37-905B6D494899}.Debug.Build.0 = Debug|Win32
+		{7C8947FE-1781-4C6A-8B37-905B6D494899}.Release.ActiveCfg = Release|Win32
+		{7C8947FE-1781-4C6A-8B37-905B6D494899}.Release.Build.0 = Release|Win32
+		{110201DF-7BB5-418A-BF70-9F4A7F3EFBB5}.Debug.ActiveCfg = Debug|Win32
+		{110201DF-7BB5-418A-BF70-9F4A7F3EFBB5}.Debug.Build.0 = Debug|Win32
+		{110201DF-7BB5-418A-BF70-9F4A7F3EFBB5}.Release.ActiveCfg = Release|Win32
+		{110201DF-7BB5-418A-BF70-9F4A7F3EFBB5}.Release.Build.0 = Release|Win32
+		{1C8EC7CB-D837-4CD5-8954-AFA3E8E85895}.Debug.ActiveCfg = Debug|Win32
+		{1C8EC7CB-D837-4CD5-8954-AFA3E8E85895}.Debug.Build.0 = Debug|Win32
+		{1C8EC7CB-D837-4CD5-8954-AFA3E8E85895}.Release.ActiveCfg = Release|Win32
+		{1C8EC7CB-D837-4CD5-8954-AFA3E8E85895}.Release.Build.0 = Release|Win32
+		{3749D8B2-150F-4042-8E6B-B6BB637EBD93}.Debug.ActiveCfg = Debug|Win32
+		{3749D8B2-150F-4042-8E6B-B6BB637EBD93}.Debug.Build.0 = Debug|Win32
+		{3749D8B2-150F-4042-8E6B-B6BB637EBD93}.Release.ActiveCfg = Release|Win32
+		{3749D8B2-150F-4042-8E6B-B6BB637EBD93}.Release.Build.0 = Release|Win32
+		{DA0AFF43-F1F8-4B48-9E18-9DA5FB52A692}.Debug.ActiveCfg = Debug|Win32
+		{DA0AFF43-F1F8-4B48-9E18-9DA5FB52A692}.Debug.Build.0 = Debug|Win32
+		{DA0AFF43-F1F8-4B48-9E18-9DA5FB52A692}.Release.ActiveCfg = Release|Win32
+		{DA0AFF43-F1F8-4B48-9E18-9DA5FB52A692}.Release.Build.0 = Release|Win32
+		{1CAB690E-2A52-4A14-8DB2-96C6595EBE83}.Debug.ActiveCfg = Debug|Win32
+		{1CAB690E-2A52-4A14-8DB2-96C6595EBE83}.Debug.Build.0 = Debug|Win32
+		{1CAB690E-2A52-4A14-8DB2-96C6595EBE83}.Release.ActiveCfg = Release|Win32
+		{1CAB690E-2A52-4A14-8DB2-96C6595EBE83}.Release.Build.0 = Release|Win32
+		{FA98DF48-FF04-4CA5-A7D5-2519D9A47014}.Debug.ActiveCfg = Debug|Win32
+		{FA98DF48-FF04-4CA5-A7D5-2519D9A47014}.Debug.Build.0 = Debug|Win32
+		{FA98DF48-FF04-4CA5-A7D5-2519D9A47014}.Release.ActiveCfg = Release|Win32
+		{FA98DF48-FF04-4CA5-A7D5-2519D9A47014}.Release.Build.0 = Release|Win32
+		{E8C08D7B-507E-4BB2-A1F3-577B13513206}.Debug.ActiveCfg = Debug|Win32
+		{E8C08D7B-507E-4BB2-A1F3-577B13513206}.Debug.Build.0 = Debug|Win32
+		{E8C08D7B-507E-4BB2-A1F3-577B13513206}.Release.ActiveCfg = Release|Win32
+		{E8C08D7B-507E-4BB2-A1F3-577B13513206}.Release.Build.0 = Release|Win32
+		{94EFEE32-0184-450F-897D-BFFE42C3F963}.Debug.ActiveCfg = Debug|Win32
+		{94EFEE32-0184-450F-897D-BFFE42C3F963}.Debug.Build.0 = Debug|Win32
+		{94EFEE32-0184-450F-897D-BFFE42C3F963}.Release.ActiveCfg = Release|Win32
+		{94EFEE32-0184-450F-897D-BFFE42C3F963}.Release.Build.0 = Release|Win32
+		{722ACC4C-BE15-49CF-93B1-68B0E9265B8E}.Debug.ActiveCfg = Debug|Win32
+		{722ACC4C-BE15-49CF-93B1-68B0E9265B8E}.Debug.Build.0 = Debug|Win32
+		{722ACC4C-BE15-49CF-93B1-68B0E9265B8E}.Release.ActiveCfg = Release|Win32
+		{722ACC4C-BE15-49CF-93B1-68B0E9265B8E}.Release.Build.0 = Release|Win32
+		{ADE4CC4A-167F-4618-A9FF-AEDCBEC29629}.Debug.ActiveCfg = Debug|Win32
+		{ADE4CC4A-167F-4618-A9FF-AEDCBEC29629}.Debug.Build.0 = Debug|Win32
+		{ADE4CC4A-167F-4618-A9FF-AEDCBEC29629}.Release.ActiveCfg = Release|Win32
+		{ADE4CC4A-167F-4618-A9FF-AEDCBEC29629}.Release.Build.0 = Release|Win32
+		{D11DCF7A-6F38-4ACD-871E-2EC13B2BE57A}.Debug.ActiveCfg = Debug|Win32
+		{D11DCF7A-6F38-4ACD-871E-2EC13B2BE57A}.Debug.Build.0 = Debug|Win32
+		{D11DCF7A-6F38-4ACD-871E-2EC13B2BE57A}.Release.ActiveCfg = Release|Win32
+		{D11DCF7A-6F38-4ACD-871E-2EC13B2BE57A}.Release.Build.0 = Release|Win32
+		{5F78B9DB-5888-446C-A73D-913D024035F4}.Debug.ActiveCfg = Debug|Win32
+		{5F78B9DB-5888-446C-A73D-913D024035F4}.Debug.Build.0 = Debug|Win32
+		{5F78B9DB-5888-446C-A73D-913D024035F4}.Release.ActiveCfg = Release|Win32
+		{5F78B9DB-5888-446C-A73D-913D024035F4}.Release.Build.0 = Release|Win32
+		{406851D5-5BA7-471B-AB90-4C2B4DDC0F6D}.Debug.ActiveCfg = Debug|Win32
+		{406851D5-5BA7-471B-AB90-4C2B4DDC0F6D}.Debug.Build.0 = Debug|Win32
+		{406851D5-5BA7-471B-AB90-4C2B4DDC0F6D}.Release.ActiveCfg = Release|Win32
+		{406851D5-5BA7-471B-AB90-4C2B4DDC0F6D}.Release.Build.0 = Release|Win32
+		{CF3F0C39-193F-4377-9F9A-3D930A49D320}.Debug.ActiveCfg = Debug|Win32
+		{CF3F0C39-193F-4377-9F9A-3D930A49D320}.Debug.Build.0 = Debug|Win32
+		{CF3F0C39-193F-4377-9F9A-3D930A49D320}.Release.ActiveCfg = Release|Win32
+		{CF3F0C39-193F-4377-9F9A-3D930A49D320}.Release.Build.0 = Release|Win32
+		{C74CAE6A-57F5-4AD9-9B10-CEB16634DD9E}.Debug.ActiveCfg = Debug|Win32
+		{C74CAE6A-57F5-4AD9-9B10-CEB16634DD9E}.Debug.Build.0 = Debug|Win32
+		{C74CAE6A-57F5-4AD9-9B10-CEB16634DD9E}.Release.ActiveCfg = Release|Win32
+		{C74CAE6A-57F5-4AD9-9B10-CEB16634DD9E}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,185 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "digital anvil\0"
+            VALUE "FileDescription", "SCRIPT03T\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "SCRIPT03T\0"
+            VALUE "LegalCopyright", "Copyright © 1999\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "SCRIPT03T.dll\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "digital anvil SCRIPT03T\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PARSER
+//
+
+IDR_PARSER_1            PARSER  DISCARDABLE     "DataDef.i"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM3_TELETYPE_LOC    "Naval Headquarters, Tau Ceti Prime, Tau Ceti Sector, 0600 hours."
+    IDS_TM3_OBJECTIVES      "Objectives:\n \n1. Find a navigable path to the far side of Antimatter ribbon.\n2. Locate and rescue Admiral Hawkes with a troopship.\n3. Blackwell must survive."
+    IDS_TM3_MISSION_FAILURE "MISSION FAILURE.  STAND DOWN PENDING REASSIGNMENT."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM3_VICTORY_TELETYPE 
+                            "SUCCESSFUL MISSION.  STAND DOWN PENDING SAFE RETURN OF ADMIRAL HAWKES BACK TO BASE."
+    IDS_TM3_OBJECTIVE1      "Find a navigable path to the far side of Antimatter ribbon."
+    IDS_TM3_OBJECTIVE2      "Locate and rescue Admiral Hawkes with a troopship."
+    IDS_TM3_OBJECTIVE3      "Blackwell must survive."
+    IDS_TM3_OBJECTIVE4      "Fend off Mantis attack on forward supply base."
+    IDS_TM3_OBJECTIVE5      "Secure Alkaid sector."
+    IDS_TM3_OBJECTIVE6      "Build at least 2 Laser Turrets in Alkaid around the jump-point into Danan ."
+    IDS_TM3_OBJECTIVE7      "Build a light shipyard in Alkaid."
+    IDS_TM3_OBJECTIVE8      "Build a supply platform in Alkaid."
+    IDS_TM3_INCOMING        "INCOMING TERRAN NAVAL COMMAND UPLINK.  ALPHA PRIORITY.  YOUR EYES ONLY."
+    IDS_TM3_OBJECTIVE9      "Eliminate Mantis Jump Gate."
+    IDS_TM3_NAME            "Mission 3 Name"
+    IDS_TM3_DESCRIPTION     "Mission 3 Description"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM3_OBJECTIVE10     "Troopship Hawkes' prison."
+    IDS_TM3_OBJECTIVE11     "Build a marine training facility."
+    IDS_TM3_OBJECTIVE12     "Construct a troopship."
+    IDS_TM3_OBJECTIVE13     "Upgrade troopships at marine training facility."
+    IDS_TM3_MANTIS_PLAYER_NAME "Mantis"
+    IDS_TM3_FAIL_BLACKWELL_LOST "Captain Blackwell has perished."
+    IDS_TM3_SUB_PROLOG03    "Radio:\nTNR! Keepin' you close to home!\n \nHost: We're talking to Navy spokesperson Lara Grice and Military Watchdog Matt Thorpe.\nMatt: I KNOW we have prisoners-- Aliens from beyond that wormhole, and they're not letting the press near them! \nLara: I can neither confirm nor deny that. There's a war going on and you need to cut us some slack, Matt.\nMatt: You're torturing them, aren't you?\nLara: Who-- who are your sources? \nHost: Torture, is that legal? \nLara: Tell us your source!\n -Static-"
+    IDS_TM3_SUB_M03HA01     "Halsey:\nCommander? I'll be brief."
+    IDS_TM3_SUB_M03HA02     "Halsey:\nThis is our prisoner -- the only one who lived. These creatures-- or as the techs in Bio have dubbed them, ""Mantis""-- know we've got one of theirs, and they've been distracting us with skirmishes all day. But we've been working on the prisoner nonstop and we've got a pretty good idea of where Admiral Hawkes is being held. Intel is almost certain that it is somewhere on the other side of the large energy ribbon in Alkaid Prime."
+    IDS_TM3_SUB_M03HA02A    "Halsey:\nOf course we DON'T know how much of this info we can trust. But if Hawkes is alive, we have only one choice. There must be a way to navigate over to the far side of that ribbon. Find it, and rescue Hawkes. "
+    IDS_TM3_SUB_M03BL01     "Blackwell: Our forward supply base is under attack!"
+    IDS_TM3_SUB_M03BL02     "Blackwell: Bogeys 12 O' clock!  Move move move! "
+    IDS_TM3_SUB_M03BL03     "Blackwell: Okay, it looks like those ""Mantis"" aren't gonna lay off. Get some L-SAT defenses around that jump point, and re-establish our forward base in Alkaid. Get that light industrial back up and running quickly. We'll need a pretty big fleet to rescue admiral Hawkes. "
+    IDS_TM3_SUB_M03BL04     "Blackwell: Get us around that energy ribbon, Commander! We don't have all day to make it to Mantis space! "
+    IDS_TM3_SUB_M03BL05     "Blackwell: Missile cruisers aren't equipped for this kind of attack-- we need Corvettes for air defense. And if we're gonna find those alien carriers, I'd build some infiltrators to scout deeper and stealthier. "
+    IDS_TM3_SUB_M03BL06     "Blackwell: Well. A Mantis jump gate. I'm betting the locked door is the one we wanna go through. "
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM3_SUB_M03BL07     "Blackwell: Uh, that's like bangin' your head against the door, Commander. You gotta destroy the jumpgate FIRST before you can use that wormhole."
+    IDS_TM3_SUB_M03BL08     "Blackwell: Shipyard. Mantis. Lose it."
+    IDS_TM3_SUB_M03BL09     "Blackwell: They're dug in like ticks on a street hound, Commander. You know what we do with ticks? Burn 'em off. "
+    IDS_TM3_SUB_M03BL10     "Blackwell: Hello, this seems to be a COMMAND CENTER, so the bugs have a bug BRAIN?! Destroy it and keep moving! "
+    IDS_TM3_SUB_M03BL11     "Blackwell: Ok boys, find those carriers and take them out! We're burnin' daylight. "
+    IDS_TM3_SUB_M03BL12     "Blackwell: Finally. That must be the wormhole to the other side of the Alkaid energy ribbon! Let's get moving! "
+    IDS_TM3_SUB_M03BL13     "Blackwell: Okay, Commander. That base matches the one our Mantis prisoner described. That means Hawkes is in there. (Beat) You know the drill! Take that thing over."
+    IDS_TM3_SUB_M03BL14     "Blackwell: Hold fire! Hold fire! Hawkes may be in there, for cryin' out loud! "
+    IDS_TM3_SUB_M03BL16     "Blackwell: Wait-- that Mantis building is pretty heavily armored-- you'll need some more qualified marines, Commander. Use the upgrade button at the Marine Training Facility. Then go get your troopship at the light shipyard and let's do this thing! "
+    IDS_TM3_SUB_M03BL19     "Blackwell: Oh, great, great, you MORON!  You just TORPEDOED A TERRAN ADMIRAL. Stand down and fall back, Commander. The rest of us have a mess to clean up. "
+    IDS_TM3_SUB_M03HA03     "Halsey:\nCommander? I think the best you can hope for now is a cushy desk job, where you can't do any more harm. That is if you keep your commission. Report to Terra for Court Martial proceedings. Halsey out."
+    IDS_TM3_SUB_M03BL20     "Blackwell: Come and get me, insect bastards!"
+    IDS_TM3_SUB_M03HA04     "Halsey:\nYou just wasted the finest officer you'll ever meet. You're through here. Report to Terra for Court Martial proceedings, Commander. Your Hell is just beginning."
+    IDS_TM3_SUB_M03BL81     "Blackwell: It's always good to have a troopship in your fleet ready for a quick extraction of admiral Hawkes. "
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

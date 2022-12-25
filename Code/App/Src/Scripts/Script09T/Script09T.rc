@@ -1,0 +1,133 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PARSER
+//
+
+IDR_PARSER_1            PARSER  DISCARDABLE     "DataDef.i"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM9_MISSION_NAME    "Mission 9"
+    IDS_TM9_MISSION_DESC    "Mission 9 description"
+    IDS_TM9_MISSION_FAILURE "MISSION FAILURE.  STAND DOWN PENDING REASSIGNMENT."
+    IDS_TM9_MISSION_SUCCESS "SUCCESSFUL MISSION."
+    IDS_TM9_OBJECTIVES      "Objectives:\n \n1. Escort Blackwell, Halsey, Ker Tak, and Elan to Celareon space through wormhole to Abell. \n2. Blackwell, Halsey, Ker Tak, and Elan must survive."
+    IDS_TM9_TELETYPE_LOCATION 
+                            "Mantis space, Talos System, Delta Sector, 0600 hours GMT"
+    IDS_TM9_MANTIS          "Mantis"
+    IDS_TM9_REBELS          "Mantis rebels"
+    IDS_TM9_SOLARIANS       "Celareons"
+    IDS_TM9_TELETYPE_LOCATION2 
+                            "Terran System, Varn, Kappa Sector, 11.27.2330 0600 hours GMT"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM9_OBJECTIVE1      "Escort Blackwell, Halsey, Ker Tak, and Elan to Celareon space through wormhole to Abell."
+    IDS_TM9_OBJECTIVE2      "Blackwell, Halsey, Ker Tak, and Elan must survive."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM9_FAIL_HALSEY_LOST "Admiral Halsey has perished."
+    IDS_TM9_FAIL_KERTAK_LOST "Warlord Ker'Tak has perished."
+    IDS_TM9_FAIL_BLACKWELL_LOST "Captain Blackwell has perished."
+    IDS_TM9_FAIL_ELAN_LOST  "Magistrate Elan has perished."
+    IDS_TM9_SUB_PROLOG09    "Radio:\nJill Davis: Jill Davis, TNR, with absolutely stunning news trickling in from the distant Sendlor system. Captain Tom Blackwell, thought lost in a Black Hole, is back.\n \nBlackwell: Woo-ahh! \n \nJill Davis: So far we haven't been able to identify those strange ships that accompanied Captain Blackwell, but all I can say is, come on up to the station when you have some time, Captain. \n \nSingers: T-N-R! Far from the nearest black hole! \n \nJill Davis: Who the Hell is in charge of these damn jingles?\n"
+    IDS_TM9_SUB_M09HA04     "Halsey:\nCommander, this is just astounding. Impressive enough that you managed to rescue Admiral Benson-- but Captain Blackwell's return from a black hole is... miraculous. Apparently he has someone for us to meet. Care to explain your return from the dead, Captain? "
+    IDS_TM9_SUB_M09BL05     "Blackwell:\nI ...  look, it was a black hole. I've seen ships go in and it isn't pretty. You get smashed down to nothing. But something caught us and protected us. Gentlemen, allow me to introduce... Magistrate Elan, of a race called the Celereons."
+    IDS_TM9_SUB_M09EL06     "Elan:\nChoicest greetings, Terran friends. "
+    IDS_TM9_SUB_M09HA07     "Halsey:\nMagistrate, I'm confused, why did you... return our Captain to us? "
+    IDS_TM9_SUB_M09EL08     "Elan:\nIt appears we share an enemy, Noble Admiral. "
+    IDS_TM9_SUB_M09HA09     "Halsey:\nThe translator's working great on these guys."
+    IDS_TM9_SUB_M09BL10     "Blackwell:\nThat's no translator, Admiral. They're just that good. "
+    IDS_TM9_SUB_M09EL11     "Elan:\nTime is of essence, friends. You have raised the attention of the Mantis while they struggle with their own civil war. This is a pleasant time for us to move against them. Perhaps you would discuss it with our council, in Celereon space. "
+    IDS_TM9_SUB_M09HA14     "Halsey:\nI think that was clear. Commander, you will escort myself and Captain Blackwell to Celareon space where we can continue our dialogue. Looks like it's time to go over the rainbow. "
+    IDS_TM9_SUB_M09BL15     "Blackwell: Ok, everyone, stay close!  We want to give the best protection we can for the Admiral and the Magistrate. "
+    IDS_TM9_SUB_M09HA16     "Halsey: When you showed up during Benson's rescue, you opened a wormhole in space. Couldn't we just use that technology now? "
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM9_SUB_M09EL17     "Elan: Noble Admiral, the wormhole technology is not yet perfected.  We tested it in the rescue of Captain Blackwell -- it is still unstable and dangerous. "
+    IDS_TM9_SUB_M09BL18     "Blackwell: So they'd prefer not. Apparently this hasn't stopped Mantis general Malkor from trying to steal it. "
+    IDS_TM9_SUB_M09HA19     "Halsey: Very well, then. Let's move."
+    IDS_TM9_SUB_M09KR20     "Ker'Tak: Two jump points leading out, both they Epsilon lead. Choice you to make Commander. "
+    IDS_TM9_SUB_M09BL21     "Blackwell: Now you've done it!  You killed Admiral Halsey.  Prepare to stand down with further orders."
+    IDS_TM9_SUB_M09BL22     "Blackwell: Commander, you've screwed up!  We've lost our only ally and now we're back to square one.  Stand down, prepare for incoming transmission."
+    IDS_TM9_SUB_M09HA23     "Halsey: Commander, come home for re-assignment. You're a disgrace to the uniform. "
+    IDS_TM9_SUB_M09BL24     "Blackwell: That's great! You have no idea what you've destroyed. Prepare for dismissal. "
+    IDS_TM9_SUB_M09HA25     "Halsey: Commander, This is just the way we didn't want to greet our new friends. With the Magistrate killed, you have single-handedly doomed this war for us! "
+    IDS_TM9_SUB_M09HA26     "Halsey: You just destroyed a man who returned from death to bring us new allies. Your time disgracing this Navy has ended."
+    IDS_TM9_SUB_M09HA27     "Halsey: Excellent work, Commander!  We have safely arrived at the jump point.  Captain Blackwell will take it from here.  See you in Solar, Commander.  Halsey out. "
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

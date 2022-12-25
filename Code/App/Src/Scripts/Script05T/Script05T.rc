@@ -1,0 +1,191 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "digital anvil\0"
+            VALUE "FileDescription", "SCRIPT01T\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "SCRIPT01T\0"
+            VALUE "LegalCopyright", "Copyright © 1999\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "SCRIPT01T.dll\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "digital anvil SCRIPT01T\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PARSER
+//
+
+IDR_PARSER_1            PARSER  DISCARDABLE     "DataDef.i"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM5_TELETYPE_FAILURE 
+                            "MISSION FAILURE. STAND DOWN PENDING REASSIGNMENT"
+    IDS_TM5_TELETYPE_SUCCESS "SUCCESSFUL MISSION."
+    IDS_TM5_OBJECTIVES      "Objectives:\n \n1. Take back control of the Perilon system.\n2. Drive the Mantis out of the Luxor and Bekka systems.\n3. Hawkes and Blackwell must survive.\n"
+    IDS_TM5_TELETYPE_LOCATION 
+                            "Terran HQ, Perilon Prime, Perilon Sector, 1600 Hours GMT."
+    IDS_TM5_MISSION_NAME    "Terrans strike back"
+    IDS_TM5_MISSION_DESC    "Reclaim the Perilon system, and clear out Bekka and Luxor"
+    IDS_TM5_OBJECTIVE1      "Take back control of the Perilon system"
+    IDS_TM5_OBJECTIVE2      "Drive the Mantis out of the Luxor and Bekka"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM5_OBJECTIVE3      "Try and locate Ker'Tak and the rebel forces"
+    IDS_TM5_OBJECTIVE4      "Hawkes and Blackwell must survive"
+    IDS_TM5_OBJECTIVE5      "Investigate distress call in Ghelen 3"
+    IDS_TM5_MANTIS          "Mantis"
+    IDS_TM5_OBJECTIVE6      "Destroy the Mantis base(s) in Luxor and Bekka."
+    IDS_TM5_FAIL_BLACKWELL_LOST "Captain Blackwell has perished."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM5_FAIL_HAWKS_LOST "Admiral Hawkes has perished."
+    IDS_TM5_FAIL_KERTAK_LOST "Warlord Ker'Tak has perished."
+    IDS_TM5_SUB_PROLOG05    "Radio:\nLittle Kid: Hey, kids! Bored because Mom and Dad are far away fighting the Mantis? Join TNR host Jill Davis on the Lunar Outpost as we release thousands of grasshoppers and STOMP THEM. Then we'll make Mantis necklaces from their crisp, green carcasses! Whaddaya think, Jill?\n \nJill: We'll have a... stompin' good time..."
+    IDS_TM5_SUB_M05HA02     "Halsey: \nCommander, You're going back to Mantis Space.\nWe didn't want this war, and it's not going well-- we may have already lost our only allies. You should know that we've come up with some new countermeasures against the carrier-heavy Mantis. Hawkes wants to stick with you out there, so he and Captain Blackwell will keep you up to date. I want progress, Commander.  Halsey out."
+    IDS_TM5_SUB_M05HW05     "Hawkes: Looks like time for round two, eh, Captain? "
+    IDS_TM5_SUB_M05BL06     "Blackwell: Ready, Admiral. Bring 'em on. "
+    IDS_TM5_SUB_M05HW07     "Hawkes: Right. Ah-- heads up, gentlemen. I'm getting stats now for something new... marvelous! We've been supplied with the plans for the new Fleet Carriers. "
+    IDS_TM5_SUB_M05BL08     "Blackwell: About damn time it seems the Mantis have carriers out the insectoid wazoo."
+    IDS_TM5_SUB_M05HW08A    "Hawkes: Stow that attitude, Captain. Now all we need is a hangar."
+    IDS_TM5_SUB_M05BL08B    "Blackwell: Laser turrets might not be enough for our defense here-- you might want to set up a space station, Commander. "
+    IDS_TM5_SUB_M05HW08C    "Hawkes: Looks like the Mantis are building a new base. Let's bring them back to the drawing board, shall we? "
+    IDS_TM5_SUB_M05HW10     "Hawkes: Now that we've cleared out the Perilon system, it's time to begin an offensive into Bekka and Luxor.  I leave the decision of how to attack the systems up to you, Commander."
+    IDS_TM5_SUB_M05BL11     "Blackwell: Admiral, we're picking up a distress signal from the Ghelen system just beyond Luxor. "
+    IDS_TM5_SUB_M05HW12     "Hawkes: Mm. Send someone to check it out."
+    IDS_TM5_SUB_M05BL12A    "Blackwell: You gotta be careful where you send your Admirals."
+    IDS_TM5_SUB_M05BL13     "Blackwell: Blackwell to TALLY HO, report in on your condition... I've lost contact. This smells fishy. Let me check this out."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM5_SUB_M05BL14     "Blackwell: Commander, those men are as much my responsibility as they are yours, let me look into this!"
+    IDS_TM5_SUB_M05BL15     "Blackwell: Hang on Commander, I'm on my way. "
+    IDS_TM5_SUB_M05BL20     "Blackwell: Okay, here goes nothin'. "
+    IDS_TM5_SUB_M05BL21     "Blackwell: We're crossing the event... horiza... ALL HANDS BRACE, NAVIGATION, FULL REVERSE, PULL OUT... It's a trap! It's not a wormhole, It's a BLACK HOLE.\n \nMaydayyyyy.\n \n\nMANTIS!\n \nMantisssss... aveeeennge... me..."
+    IDS_TM5_SUB_M05HW22     "Hawkes: BLACKWELL!  Come in, Captain Blackwell!"
+    IDS_TM5_SUB_M05KR23     "Ker'Tak: Many Greets Admal Hookes.  You I thinks have looking me for.  "
+    IDS_TM5_SUB_M05HW24     "Hawkes: So our rebel ally lives yet. Ker'Tak, ally or no, if you had anything to do with this..."
+    IDS_TM5_SUB_M05KR25     "Ker'Tak: Not I sending ships to death through wormhole."
+    IDS_TM5_SUB_M05HW26     "Hawkes: Where are my men! "
+    IDS_TM5_SUB_M05KR27     "Ker'Tak: Nowhere you can reach. It be trick old way. Wormhole leads black hole other side.  You warriors perish. Good jump gate there to Ghelen 3, but see only you can if jamming transmitters destroyed.  Wait here I will, you Terrans destroy base, then can leave."
+    IDS_TM5_SUB_M05HW28     "Hawkes: Blast. Captain Blackwell will be avenged. There's a real wormhole around here, Commander.  Destroy those transmitters and we can find it."
+    IDS_TM5_SUB_M05KR29     "Ker'Tak: Excellent Admal! Access we to good wormhole. Go back base, talk we can, here not safe."
+    IDS_TM5_SUB_M05HW29A    "Hawkes: Commander, I don't think command is the best place for you!  It's time to stand down and report to Admiral Halsey for re-assignment !"
+    IDS_TM5_SUB_M05HA30     "Halsey: Oh, that's just great. We just got that man back, Commander. Get out of my sight. Get out of my Navy. "
+    IDS_TM5_SUB_M05HW31     "Hawkes: Commander! How do you expect us to ally with the aliens if you waste their representatives? Fall back. "
+    IDS_TM5_SUB_M05HA32     "Halsey: Commander, I've seen enough. I'm re-assigning you."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM5_SUB_M05HA33     "Halsey: Good work Commander. I'm sorry we lost Captain Blackwell. But the rebel leader Ker'tak is alive, and you found him. Or her."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

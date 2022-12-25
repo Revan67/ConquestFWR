@@ -1,0 +1,134 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PARSER
+//
+
+IDR_PARSER_1            PARSER  DISCARDABLE     "DataDef.i"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM16_MISSION_NAME   "Mission 16"
+    IDS_TM16_MISSION_DESC   "Fight through to Voraak and destroy the super weapon."
+    IDS_TM16_OBJECTIVES     "Mission Objectives:\n1. Destroy Mantis super weapon. \n2. Blackwell, Hawkes, Benson, Takei, Steele, Halsey, and Vivac must survive."
+    IDS_TM16_OBJECTIVE1     "Find and destroy the Mantis super weapon."
+    IDS_TM16_OBJECTIVE2     "Kill Malkor."
+    IDS_TM16_OBJECTIVE4     "Build an Ion cannon and destroy the super ship."
+    IDS_TM16_OBJECTIVE3     "Blackwell, Hawkes, Benson, Takei, Steele, Halsey, and Vivac must survive."
+    IDS_TM16_MISSION_FAILURE 
+                            "MISSION FAILURE. STAND DOWN PENDING REASSIGNMENT."
+    IDS_TM16_MISSION_SUCCESS "SUCCESSFUL  MISSION."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM16_TELETYPE_LOCATION 
+                            "Alto System, Alto Prime, Omega Sector, 1600 Hours GMT."
+    IDS_TM16_NEWMO          "Build an Ion Cannon and use it on the super ship before Malkor escapes."
+    IDS_TM16_MANTIS         "Mantis"
+    IDS_TM16_FAIL_BLACKWELL_LOST "Captain Blackwell has perished."
+    IDS_TM16_FAIL_HAWKES_LOST "Admiral Hawkes has perished."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM16_FAIL_HALSEY_LOST "Admiral Halsey has perished."
+    IDS_TM16_FAIL_TAKEI_LOST "Admiral Takei has perished."
+    IDS_TM16_FAIL_BENSON_LOST "Admiral Benson has perished."
+    IDS_TM16_FAIL_STEELE_LOST "Admiral Steele has perished."
+    IDS_TM16_FAIL_VIVAC_LOST "Magistrate Vivac has perished."
+    IDS_TM16_SUB_PROLOG16   "Radio:\nTNR- Keepin' you close to home-- WARWATCH!\n \nJill Davis: There's a strange hush across the planet... I've never heard it so... quiet. We've beaten back the enemy and we should be celebrating and we're... tired. And our heroes, the Terran Forces-- where are they? Why are they not home to celebrate with us? This is Jill Davis, back from the brink of Hell, wishing all of you good luck."
+    IDS_TM16_SUB_M16HA05    "Halsey:\nThe ships are moving out. We're charging up and bracing. The young recruits are sick as dogs. And the Mantis know we're coming. Hit them hard, Commander. Carry this sword home and plunge it into their very heart. They dared invade our home. They ignore our pleas for peace. They have awakened giants, and I will not rest until the Mantis are crushed beneath Terran Feet! Go! Now! Go!"
+    IDS_TM16_SUB_M16HA06    "Halsey: Look alive, Commander, Malkor's building his super weapon somewhere in Voraak, and I don't feel like letting him finish it."
+    IDS_TM16_SUB_M16HA07    "Halsey: You still in this war, Commander? Contain this system until we've found that weapon!"
+    IDS_TM16_SUB_M16HW08    "Hawkes: Good Lord, what on earth is that?"
+    IDS_TM16_SUB_M16BL09    "Blackwell: Ain't nothing' on earth. That's a ship of some kind."
+    IDS_TM16_SUB_M16HW10    "Hawkes: Not for long."
+    IDS_TM16_SUB_M16MA11    "Malkor: Mistaken you are, Terrans. Last stages of completion are we, as speaking.  Civilization yours will soon control or destroy."
+    IDS_TM16_SUB_M16HA12    "Halsey: Don't count your larvae before they hatch, General.  Admirals, commence attack!"
+    IDS_TM16_SUB_M16ST13    "Steele: Commander, our weapons are useless against this new ship.  There's gotta be another way!"
+    IDS_TM16_SUB_M16VV14    "Vivac: There might be one chance to stop this Super ship of Malkor's. Our engineers have been working on an attack cannon for you, using our Ion technology to increase the power of the L-Sat Defense satellites.  If we can build one in time..."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM16_SUB_M16BN15    "Benson: We get it, Vivac. Commander, build that ion cannon!"
+    IDS_TM16_SUB_M16VV16    "Vivac: Remember-- the ion cannon can strike any target inside an entire system"
+    IDS_TM16_SUB_M16HA17    "Halsey: Okay, people, hold 'em off while our friend works miracles!"
+    IDS_TM16_SUB_M16MA18    "Malkor: Yield will not I to kiss the ground before Ker'Tak's FEET! Lay on--"
+    IDS_TM16_SUB_M16ST19    "Steele: Well, that was spectacular."
+    IDS_TM16_SUB_M16BN20    "Benson: And to think we owe it all to legacy hardware."
+    IDS_TM16_SUB_M16HA22    "Halsey: Commander, how many of my Admirals do you intend to WASTE? Prepare to stand down and await further orders."
+    IDS_TM16_SUB_M16ST23    "Steele: Aw, that's just fine, Commander!  You killed our only ticket outta here.  Better stand down for reassignment."
+    IDS_TM16_SUB_M16HA24    "Halsey: Commander, you've screwed up one too many times!  We have lost our most important ally! Stand down, prepare for reassignment."
+    IDS_TM16_SUB_M16HA25    "Halsey: Commander, go home for re-assignment. You let that thing get away and now the adults have to figure out what to do."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

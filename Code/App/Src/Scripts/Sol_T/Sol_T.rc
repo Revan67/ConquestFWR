@@ -1,0 +1,168 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PARSER
+//
+
+IDR_PARSER_1            PARSER  DISCARDABLE     "DataDef.i"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_SOLTRAIN_MISSION_SUCCESS "MISSION SUCCESS!"
+    IDS_SOLTRAIN_MISSION_FAILURE 
+                            "MISSION FAILURE...STAND DOWN PENDING REASSIGNMENT"
+    IDS_SOLTRAIN_OBJECTIVES "1. Prepare for your Celareon Training."
+    IDS_SOLTRAIN_OBJECTIVE1 "Select Forger."
+    IDS_SOLTRAIN_OBJECTIVE2 "Right-click in an open area on the screen to move it."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_SOLTRAIN_OBJECTIVE3 "Select all three ships."
+    IDS_SOLTRAIN_OBJECTIVE4 "Use Taos' to uncover any dark areas on your system map."
+    IDS_SOLTRAIN_OBJECTIVE5 "Use the Forger to build a Oxidator."
+    IDS_SOLTRAIN_OBJECTIVE6 "Build a Galiot."
+    IDS_SOLTRAIN_OBJECTIVE7 "Build a Bunker on an Earth or Swamp Planet."
+    IDS_SOLTRAIN_OBJECTIVE8 "Build a Sentinel Tower."
+    IDS_SOLTRAIN_OBJECTIVE9 "Build a Pavilion."
+    IDS_SOLTRAIN_OBJECTIVE10 "Build a Helion Veil for shield upgrades."
+    IDS_SOLTRAIN_OBJECTIVE11 "Build ESP coil."
+    IDS_SOLTRAIN_OBJECTIVE12 
+                            "Build 6 Polaris Cruisers from your Pavilion for enemy space incursion."
+    IDS_SOLTRAIN_OBJECTIVE13 "Build a Eutromil."
+    IDS_SOLTRAIN_OBJECTIVE14 "Build a Jump Gate."
+    IDS_SOLTRAIN_OBJECTIVE15 "Use wormhole to jump into Kasse."
+    IDS_SOLTRAIN_OBJECTIVE16 "Build a Citadel on an Earth or Swamp Planet."
+    IDS_SOLTRAIN_OBJECTIVE17 
+                            "Build a Munitions Annex for weapon and Proteus Missile upgrades."
+    IDS_SOLTRAIN_OBJECTIVE18 "Build a Greater Pavilion."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_SOLTRAIN_OBJECTIVE20 "Build a Talorean Matrix."
+    IDS_SOLTRAIN_OBJECTIVE21 "Eliminate the Mantis Enemy."
+    IDS_SOLTRAIN_OBJECTIVE22 "Build a Anvil for hull upgrades."
+    IDS_SOLTRAIN_OBJECTIVE23 "Build a Turbine Dock for engine upgrades."
+    IDS_SOLTRAIN_OBJECTIVE24 
+                            "Build a Xeno Chamber for special weapons on your gunboats."
+    IDS_SOL_SUB_PROLOGSOL   "Radio:\nGreetings, Celereon friends. Are you tired of thinking as part of the group? If you could stop your fellow Celereons from enjoying your thoughts at their deepest levels, would you? Of course not. But some would, and now you can research these desires by purchasing Terran Industries ""New You"" personality camouflage and brain blocking chip. \nNot an officially licensed Celereon device, all products from terran industries are not sanctioned or CONDONED by either the terran or Celereon governments, and terra industries holds no RESPONSIBILITY for breach of the Celereon-terran peace accord. buyer pays all license fees, shipping, and installation costs. For research purposes only."
+    IDS_SOL_SUB_STMG02      "Elan:\nGreetings Commander, I'm Celereon Magistrate Elan.I'll be linking your mind into our collective knowledge base for training purposes.  Soon you will be quite comfortable with the necessary decision-making procedures of all appointed Celereon AMBASSADORS. You will learn to deal with allies such as the Terrans. Unfortunately the Mantis do not recognize the distinction between training and war, so you may find yourself at odds with the beastly fellows. We are sorry for the inconvenience."
+    IDS_SOL_SUB_STMG03      "Elan: Let's begin, Ambassador.  You will notice that you have before you 3 ships and an Acropolis.  We will begin with the larger ship-- the Forger.  Use your digital selection device-- or mouse-- and select the Forger."
+    IDS_SOL_SUB_STMG04      "Elan: Now that you have selected the Forger, right-click in an open area on the screen to move it."
+    IDS_SOL_SUB_STMG05      "Elan: It appears our collective thoughts are working.  Now we will test multiple ship commands.  Select the Forger and the two Taos Scout Ships near it. Once you've selected all three ships, hold down the control key and select one of the number keys.  This creates a control group.  Now you can move multiple ships with one single command."
+    IDS_SOL_SUB_STMG06      "Elan: Our collective linkup is excellent.  Since you will be exploring multiple systems during battle, it is good to scout the area to uncover places you have not been.  Select your Taos scout ships and right click a destination anywhere on the screen that still appears dark."
+    IDS_SOL_SUB_STMG07      "Elan: As your ships fly into unexplored territory, the darkened areas are revealed. Now let's learn to build up your collective society.  Select your Forger. Remember: the Forger is the creator, without one, you won't be able to build the necessary platforms to create the Society you need for full- scale war.  Use the Acropolis to build more Forgers as necessary.  Now. Click on the build Oxidator button, then place the Oxidator around one of the planets nearby."
+    IDS_SOL_SUB_STMG08      "Elan: The Oxidators are vital to building a society-- they have the ability to harvest Ore and Gas from a planet's surface, enabling you to purchase new weapons and ships."
+    IDS_SOL_SUB_STMG09      "Elan: Lets increase the amount of resources you gather, by building a Galiot.  You will find them located inside your Oxidators."
+    IDS_SOL_SUB_STMG10      "Elan: Unlike the Oxidator, Galiots can gather resources from nearby terrain, like ore and debris from asteroid fields and Gas nuggets from Nebulas."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_SOLTRAIN_TELETYPE_LOCATION "Solar System, 0945 hours"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_SOL_SUB_STMG11      "Elan: Notice the information at the top of your view screen.  Here you can keep track of resources, crew, and command points.  You need crew to run ships, so to recruit crew, you'll need to either build a bunker, or Citadel, and place it on a Habitable Earthlike planet.  Select your Forger and click the ""bunker,"" then place it on an Earth planet."
+    IDS_SOL_SUB_STMG12      "Elan: Bunkers act as recruitment centers and can collect crew off planets that have life.  Once you have created a bunker, Citadels become available.  Citadels collect even more crew than Bunkers and give you the ability to assign new magistrates to lead your fleets into battle."
+    IDS_SOL_SUB_STMG13      "Elan: Lastly regarding the resource information at the top, Command points limit the amount of ships and defensive satellites you can have at any one given time.  To increase them, you can either build another Acropolis, or-- more cost effectively-- build Sentinel Towers.  Select your Forger and create a Sentinel Tower around one of the planets."
+    IDS_SOL_SUB_STMG14      "Elan: Sentinel Towers yield extra command points and have a high sensor range, in addition, you can upgrade your sensor tower to help detect cloaked units."
+    IDS_SOL_SUB_STMG15      "Elan: Now would be a good time to build a Pavilion.  Select your forger and click on Pavilion, then place it around a planet."
+    IDS_SOL_SUB_STMG16      "Elan: The Pavilion is where your first level of attack ships are built.  Here you can build the Taos scout, Oracles, the Aurora, the Polaris cruiser, and the Legionnaire.  Once you have a Pavilion, you gain access to the Greater Pavilions, which allows you to build larger attack ships and Atlas mine layers."
+    IDS_SOL_SUB_STMG17      "Elan: With access to ships, you'll need to upgrade and re-supply them.  First lets learn about upgrades.  In a Celereon society, we have the Helion Veil which upgrades shields, the Munitions annex which upgrades weapons, the Anvil which upgrades ships hulls, and the Turbine dock which upgrades a ships speed.  You can build a Helion Veil once you have built a Sentinel Tower.  The other three upgrade facilities can only be built once you have a Greater Pavilion.  Let's build a Helion Veil to upgrade our shields."
+    IDS_SOL_SUB_STMG19      "Elan: It appears we are under attack.  Perhaps you should increase your defenses around your Acropolis and Galiot resource route.  I recommend the ESP coil, which you can place anywhere in space. Build one with your Forger and place it just outside your Acropolis for defense."
+    IDS_SOL_SUB_STMG20      "Elan: We are not an aggressive people, and defense platforms are a specialty of ours. Along with the ESP coil, you can also build the Proteus missile launcher, the Hydrofoil, and the Starburst.  Each one has its own unique attack feature, try them all out and discover which one you think is best for each situation."
+    IDS_SOL_SUB_STMG30      "Elan: Likewise, Ambassador, we really should build a citadel. Citadels allow for the recruiting of Magistrates-- highly intelligent fleet leaders for your ships."
+    IDS_SOL_SUB_STMG31      "Elan: The Citadel also allows you to upgrade your fleet. Once you have recruited a Magistrate, select them and then right click on the specific group you want your Magistrate to control.  Magistrates increase the statistics of all ships under their command, as well as attack, retreat, and re-supply without having to be told to do so."
+    IDS_SOL_SUB_STMG32      "Elan: Ambassador. I believe I advised you to build a Greater Pavilion for heavy support."
+    IDS_SOL_SUB_STMG33      "Elan: Ambassador, one of the benefits of being Celereon is that we are more intelligent then our enemies.  This being the case, we possess highly advanced devices to augment our already superior ship technology.  The Xeno Chamber is a Science facility that develops the latest of technologies.  If you have a Citadel, you can build a Xeno Chamber.  \nThe special upgrades are the Synthesis for the Taos scout, the Mass Disruptor for the Polaris cruiser, the Destabilizer torpedo for the Trireme, Cloaking other ships for the Aurora,  and create wormholes for the Forger.  To research these special upgrades, build a Xeno chamber, then click on the upgrade button for each different ship.  Once you have the upgrade, you can click on the special weapon button on the specific ship to give the ship that weapon."
+    IDS_SOL_SUB_STMG21      "Elan: We should build a few attack ships and explore the next system of Kasse.  If there are Mantis attacking from there, it would be good to discover their base location.  Build six Polaris cruisers from your Pavilion then I will instruct you further."
+    IDS_SOL_SUB_STMG22      "Elan: Excellent, Ambassador. Since we are about to explore a new system, I will need to explain how supplies and supply lines work.  Have your Forger build a Eutromill around a nearby planet."
+    IDS_SOL_SUB_STMG23      "Elan: The Eutromill is your only platform that both repairs and supplies your ships.  The Eutromill also grants you the ability to build supply ships at your Acropolis. The Supply ship allows for mobile re-supply of your ships."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_SOL_SUB_STMG24      "Elan: Now have your forger seal up that wormhole to Kasse by building a jumpgate on it.  Select your Forger, click on jumpgate then place it over the wormhole."
+    IDS_SOL_SUB_STMG25      "Elan: Jumpgates allow only friendly units to access the wormhole. They also act as conductors for connecting supply lines to other adjoining systems. A proper supply line involves at least one Acropolis in a system and a Eutromill platform in the connecting system.  A system can only be in supply so long as there is a jumpgated wormhole connecting that system to a system with an Acropolis."
+    IDS_SOL_SUB_STMG26      "Elan: With our system secured by the jumpgate, we now can send in our attack force in Kasse to determine the enemy resistance.  Let's jump to Kasse with your force."
+    IDS_SOL_SUB_STMG27      "Elan: Ambassador, the first thing we need to do is establish a defensive perimeter around the jumpgate to Solar.  You should have your Forger construct some defensive platforms around the jumpgate to protect it from enemy attacks.  In the mean time, since there appears to be the planet Kasse Prime nearby, it would be wise to construct another Eutromill on it to complete the supply line process."
+    IDS_SOL_SUB_STMG29      "Elan: More firepower would be highly advisable. I recommend you build 4 Trireme cruisers and 2 Monoliths at the Greater Pavilion."
+    IDS_SOL_SUB_STMG34      "Elan: As it has become necessary to go forth and attack the enemy, we should build one last defensive platform to leave behind.  I recommend the planet-bound Talorean Matrix, which creates a defensive perimeter around an entire planet. To build one requires space around a planet a xeno chamber, and the munitions annex."
+    IDS_SOL_SUB_STMG35      "Elan: The Talorean Matrix creates an energy force field that increases the shield level around all buildings on a planet."
+    IDS_SOL_SUB_STMG37      "Elan: We appear to have located an enemy base.  If you would, Ambassador-- Exterminate them."
+    IDS_SOL_SUB_STMG38      "Elan: Excellent, Commander. The collective smiles on you!"
+    IDS_SOL_SUB_STMG39      "Elan: I must admit I am less than impressed. Perhaps you are malfunctioning."
+    IDS_SOL_SUB_STMG36      "Elan: Now, unto the breach.  Make a fleet with your ships. We may be pacifists, but we are not fools."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

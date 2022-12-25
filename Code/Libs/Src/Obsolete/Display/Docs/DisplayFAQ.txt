@@ -1,0 +1,436 @@
+            -------------------------------------------------
+                  IDISPLAY Frequently Asked Questions
+                           November 1997
+            -------------------------------------------------
+                       (c) Digital Anvil, 1997
+
+-----------------------------------------------------------------------------------
+Questions and Answers
+
+ 1) What is this DISPLAY stuff?
+ 2) Is IDisplay an ENGINE component?
+ 3) What DLL's are used by IDisplay?
+ 4) What DLL's are no longer necessary?
+ 5) What dependencies does DISPLAY have?
+ 6) How OpenGL compatible is IDisplay?
+ 7) How do I setup IDisplay as a stand-alone App?
+ 8) What do I need in my DACOM.INI?
+ 9) I'm not getting an "IDisplay" provider?
+10) Some calls to IDisplay functions are printing errors from wrong commands?
+11) Why is GL->CreateContext() failing?
+12) What does a typical DISPLAY main loop look like?
+13) How can I draw 2D shapes with screen coordinates?
+14) I don't see anything being drawn?
+15) The frame-rate is choppy and slow?
+16) How do I set the FOV with DISPLAY commands?
+17) How can I make ALT-ENTER toggle fullscreen mode?
+18) How do I setup a model view matrix?
+19) Why does RestoreDisplayMode fail on some cards?
+20) How can drawing 1000 polygons be slow?
+21) ?
+
+Send NEW questions to Paul Isaac or Bill Baldwin.
+
+-----------------------------------------------------------------------------------
+
+1) What is this DISPLAY stuff?
+
+	IDisplay is a DA component that provides a 2D/3D rendering interface.
+	The interface is modelled after Open GL.
+
+
+2) Is IDisplay an ENGINE component?
+
+	No, IDisplay is a normal IDAComponent.
+	It also supports aggregation so that it can be used with ISystemContainer.
+
+
+3) What DLL's are used by IDisplay?
+
+	DisplaySW.dll = software wire-frame version
+	DisplayD3D.dll = Direct 3D version
+
+	PolyMesh.dll = used by ENGINE to talk to IDisplay
+
+
+4) What DLL's are no longer necessary?
+
+	SWPOLY.dll
+	SWZBUFF.dll
+	D3DPOLY.dll
+
+
+5) What dependencies does DISPLAY have?
+
+	IDisplay requires DACOM, nothing else.
+	Specific implementations may have their own dependencies...
+	for instance DisplayD3D requires a DirectDraw provider.
+
+
+6) How OpenGL compatible is IDisplay?
+
+	IDisplay implements a sub-set of the OpenGL 1.2 interface.
+	Every effort has been made to be GL compatible vs inventing new functions.
+	But a few liberties have been taken for Window's
+	The biggest difference is the linkage style... since IDisplay is an IDAComponent
+	all functions are called through a virtual pointer mechanism.
+
+	glVertex3f(1,2,3);
+
+	IDisplay *GL;
+	GL->Vertex3f(1,2,3);
+
+	Some hybrid-commands have been added to simplify parameter passing.
+
+	Ex. GL->Vertex(float x,y,z, w=0) vs. GL->Vertex4f()
+	the most common functions have version with non-mangled names
+
+	As a rule of thumb: if you see an IDisplay function X there is very likely
+	an OpenGL function glX perhaps with some parameter tacked on.
+
+	Several GLUT or GL-extensions functions have also been implemented
+	to simplify setup code.
+
+	Ex. GL->Perspective() and GL->ColorTable()
+
+	The full OpenGL specification is a huge interface and many features
+	like stencil buffers have been omitted.  There are also some commands
+	that only accept a few common parameters or are optimized for some
+	common cases.
+
+	NOTE: If you encounter any areas where GL-compatibility is insufficient
+	or wrong please contact the Library group.  100% compatibility is a goal
+	and less common features can be implemented on an as-needed basis.
+
+
+7) How do I setup IDisplay as a stand-alone App?
+
+// STARTUP
+
+	HWND hWnd;	// window
+	HDC hDC;	// device context
+	HGLRC hRC;	// render context
+
+	DACOM = DACOM_Acquire();
+	assert(DACOM);
+
+	DACOM->SetINIFile(dacom_ini);
+
+	GL = (IDisplay *)CreateSysComponent("IDisplay");
+	assert(GL);
+
+	hWnd = CreateMainWindow(hInstance,640,480);
+	assert(hWnd);
+	hDC = GetDC(hWnd);
+	assert(hDC);
+
+	if (fullscreen)
+	{
+		if (!GL->SetDisplayMode(hDC,640,480,16))
+			assert(1);
+	}
+
+	PIXELFORMAT pf =
+	{
+		sizeof(PIXELFORMAT),
+		0,	// pixel_type (1 = indexed)
+		16,	// bits_per_pixel
+		16,	// depth_bits
+		2,	// num_buffers
+		0,0,	// red_bits,red_mask
+		0,0,	// green_bits,green_mask
+		0,0,	// blue_bits,blue_mask
+		0,0	// alpha_bits,alpha_mask
+	};
+
+	int pix = GL->ChoosePixelFormat(hDC,&pf);
+	GL->SetPixelFormat(hDC,pix,&pf);
+
+	hRC = GL->CreateContext(hDC);
+	assert(hRC);
+
+	GL->MakeCurrent(hDC,hglrc);
+
+// SHUTDOWN
+
+	GL->MakeCurrent(0,0);
+	GL->DeleteContext(hRC);
+	hRC = 0;
+	GL->RestoreDisplayMode(hDC);
+	GL->Release();
+	GL = 0;
+	ReleaseDC(hWnd,hDC);
+	hDC = 0;
+	// destroy window
+	hWnd = 0;
+
+
+8) What do I need in my DACOM.INI?
+
+	The very minimum you need:
+
+	[Libraries]
+	DisplaySW.dll
+	;DisplayD3D.dll
+
+	[System]
+	IDisplay
+
+	If you want to use the WindowManager:
+
+	[Libraries]
+	System.dll
+	DisplaySW.dll
+	;DisplayD3D.dll
+
+	[System]
+	IWindowManager
+	IDisplay
+
+	If you want to use the ENGINE:
+
+	[Libraries]
+	System.dll
+	Engine.dll
+	TxmLib.dll
+	RenderMgr.dll
+	Polymesh.dll
+	DisplaySW.dll
+	;DisplayD3D.dll
+
+	[System]
+	IWindowManager
+	IDisplay
+
+engine.dll
+polymesh.dll
+txmlib.dll
+
+9) I'm not getting an "IDisplay" provider?
+
+	Verify the right DLL's are listed in your DACOM.INI?
+
+	If you are manually creating IDisplay, be sure to use an AGGDESC.
+
+	AGGDESC desc = "IDisplay";
+	IDAComponent *ref = 0;
+	if (DACOM->CreateInstance(&desc, (void**)&ref) == GR_OK)
+	{
+	  if (ref->QueryInterface("IDisplay",(void**)&GL) != GR_OK )
+	  {
+	  // ERROR!
+	  }
+	  ref->Release();
+	}
+
+
+10) Some calls to IDisplay functions are printing errors from wrong commands?
+
+	There are at two common causes:
+
+	a) You are compiling with a different "DISPLAY.H" than the header that
+	was used to compile your DLL's. Rebuild your App or ALL the libraries
+	with the latest header.
+
+	b) You may not have gotten the right interface pointer.
+	If you are using CreateInstance to make "IDisplay" be sure to call
+	QueryInterface("IDisplay") on the IDAComponent 
+
+	ref->QueryInterface("IDisplay",(void**)&GL);
+
+
+11) Why is GL->CreateContext() failing?
+
+	you must first call SetPixelFormat()
+	you must pass a valid HDC (not a HWND)
+
+
+12) What does a typical DISPLAY main loop look like?
+
+	GL->ClearColor(0,0,0);
+	GL->Clear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+
+	... draw commands ...
+
+	GL->SwapBuffers();
+
+
+13) How can I draw 2D shapes with screen coordinates?
+
+	The following sets up an orthogonal projection matrix:
+
+	GL->MatrixMode(GL_PROJECTION);
+	GL->LoadIdentity();
+	GL->Ortho(0,640,480,0, 0,1000);
+	GL->MatrixMode(GL_MODELVIEW);
+	GL->LoadIdentity();
+
+	GL->Color(255,0,0); // RED
+	GL->Begin(GL_TRIANGLES);
+	GL->Vertex(  0,  0, 0);
+	GL->Vertex(639,200, 0);
+	GL->Vertex(320,479, 0);
+	GL->End();
+
+
+14) I don't see anything being drawn?
+
+	Are you getting an error message in the Output window?
+	Make sure you are calling GL->SwapBuffers();
+	Is your draw color the same as your background?
+	Is the polygon backfacing, try GL->Disable(GL_CULL_FACE);
+	Is the polygon in view, +Z is behind the eye!
+
+
+15) The frame-rate is choppy and slow?
+
+	See if you are error messages are being printed to the Output window.
+	
+
+16) How do I set the FOV with DISPLAY commands?
+
+	IDisplay::Perspective (float fovy, float aspect, float znear, float zfar)
+
+	fovy	One half of the vertical field of view angle.
+		Put another way, the angle from the view-space negative Z axis
+		to the top view frustum plane.
+
+	aspect	The ratio of the view (near) plane's width to its height (in world units).
+		If you're in a square-pixel video mode, and you want no warping or fisheye
+		effects, you can safely use your viewport width over its height. Keep in
+		mind, though, that there's really no connection between the view plane
+		aspect and the viewport aspect, and any view plane can be scaled to any
+		viewport. Use IDisplay::Viewport() to set viewport parameters.
+
+	znear	The distance from the eye to the view (near) plane. Although IDisplay
+		supports arbitrary view plane distances, the engine currently assumes
+		a distance of 1 unit. This can be changed if necessary.
+
+	zfar	The distance from the eye to the far plane.
+
+	Ex. GL->Perspective(45, 4.0/3, 1,1E6);
+
+
+17) How can I make ALT-ENTER toggle fullscreen mode?
+
+	Handle the key-code in your WndProc
+
+	bool Fullscreen = 0; // GLOBAL
+
+	case WM_SYSKEYDOWN:
+	{
+		if (wParam == VK_RETURN)
+		{
+			HDC dc = GetDC(hWindow);
+			if (Fullscreen)
+			{
+				GL->RestoreDisplayMode(dc);
+				WIN->ShowWindow(640, 480, 0);
+				Fullscreen = false;
+			}
+			else
+			{
+				WIN->ShowWindow(640, 480, WMF_FULL_SCREEN);
+				GL->SetDisplayMode(dc, 640, 480, 16);
+				Fullscreen = true;
+			}
+			ReleaseDC(hWindow, dc);
+			return 0;
+		}
+		break;
+	}
+
+
+18) How do I setup a model view matrix?
+
+	Vector obj_pos = ENG->get_position(object);
+	Transform object_to_world = ENG->get_transform(object);
+	Transform world_to_view = ENG->get_transform(camera).get_inverse();
+	Vector view_pos = world_to_view.rotate_translate(obj_pos);
+	Transform object_to_view = world_to_view.multiply(object_to_world);
+
+	float m[4*4];
+	Transform_to_4x4(m,object_to_view);
+	GL->MatrixMode(GL_MODELVIEW);
+	GL->LoadMatrix(m);
+
+
+	void Transform_to_4x4 (float m[16], const Transform &t)
+	// copy a Transform struct to an OpenGL array of floats
+	{
+		m[ 0] = t.element[0][0];
+		m[ 1] = t.element[1][0];
+		m[ 2] = t.element[2][0];
+		m[ 3] = 0;
+
+		m[ 4] = t.element[0][1];
+		m[ 5] = t.element[1][1];
+		m[ 6] = t.element[2][1];
+		m[ 7] = 0;
+
+		m[ 8] = t.element[0][2];
+		m[ 9] = t.element[1][2];
+		m[10] = t.element[2][2];
+		m[11] = 0;
+
+		m[12] = t.element[0][3];
+		m[13] = t.element[1][3];
+		m[14] = t.element[2][3];
+		m[15] = 1;
+	}
+
+
+19) Why does RestoreDisplayMode fail on some cards?
+
+        Some 3D-only cards do not support rendering into a window.
+        If you still have an active render context and try to switch
+	back to windowed mode... the context will fail to allocate its
+	surfaces. Ignoring this error and continuing to draw is likely
+	to cause internal exceptions.
+
+	Here is the proper way to restore without problems:
+
+        GL->MakeCurrent(0,0);
+        GL->DeleteContext(hRC);
+        hRC = 0;
+        GL->RestoreDisplayMode(hDC);
+
+
+20) How can drawing 1000 polygons be slow?
+
+	The fastest frame-rate can be achieved by evenly distributing the
+	workload between the CPU and the 3D card.  Ideally the 3D card
+	will be drawing polygons while the CPU updating the scene.
+
+	Consequently using the CPU to set up one big list of polygons to
+	send to the 3D accelerator is the worst thing to do.  The CPU will
+	ultimately have to wait for the 3D card to render those polygons.
+	It is much better to give the 3D card smaller blocks of work.  The
+	ideal block size is of course totally hardware dependant... but blocks
+	of about 50-100 polygons seem to work well.
+
+	Example:
+
+	// THIS IS SLOW!
+	GL->Begin(GL_TRIANGLES);
+	for (int i=0; i<1000; i++)
+	{
+		GL->Vertex(); GL->Vertex(); GL->Vertex();
+	}
+	GL->End();
+
+	// THIS IS FAST!
+	for (int n=0; n<20; n++)
+	{
+		GL->Begin(GL_TRIANGLES);
+		for (int i=0; i<50; i++)
+		{
+			GL->Vertex(); GL->Vertex(); GL->Vertex();
+		}
+		GL->End();
+	}
+
+
+-----------------------------------------------------------------------------------
+
+E-MAIL = pisaac@DigitalAnvil.com

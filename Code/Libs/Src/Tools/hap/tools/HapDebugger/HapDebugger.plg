@@ -1,0 +1,393 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: DbgNetLib - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP79.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\\" /I "..\..\..\hap\libraries" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /FR"debug/" /Fp"debug/DbgNetLib.pch" /Yu"stdafx.h" /Fo"debug/" /Fd"debug/" /FD /GZ /c 
+"C:\work\hap\libraries\DbgNetLib\HeDbgMsg.cpp"
+"C:\work\hap\libraries\DbgNetLib\HeDbgSocket.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP79.tmp" 
+Creating temporary file "C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP7A.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\\" /I "..\..\..\hap\libraries" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /FR"debug/" /Fp"debug/DbgNetLib.pch" /Yc"stdafx.h" /Fo"debug/" /Fd"debug/" /FD /GZ /c 
+"C:\work\hap\libraries\DbgNetLib\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP7A.tmp" 
+Creating command line "link.exe -lib /nologo /out:"..\..\bin\dbgnetlib_d.lib"  .\debug\HeDbgMsg.obj .\debug\HeDbgSocket.obj .\debug\StdAfx.obj "
+<h3>Output Window</h3>
+Compiling...
+StdAfx.cpp
+ ---- OSS_RELEASE defined - Building Open Source Version ----
+Compiling...
+HeDbgMsg.cpp
+HeDbgSocket.cpp
+Generating Code...
+Creating library...
+<h3>
+--------------------Configuration: expat - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP7B.tmp" with contents
+[
+/nologo /MTd /W3 /GX- /ZI /Od /I "..\..\..\hap\libraries" /D "_DEBUG" /D "COMPILED_FROM_DSP" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "EXPAT_EXPORTS" /FR"debug/" /Fo"debug/" /Fd"debug/" /FD /GZ /c 
+"C:\work\hap\libraries\expat\xmlparse.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP7B.tmp" 
+Creating temporary file "C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP7C.tmp" with contents
+[
+/nologo /MTd /W3 /GX /ZI /Od /I "..\..\..\hap\libraries" /D "_DEBUG" /D "COMPILED_FROM_DSP" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "EXPAT_EXPORTS" /FR"debug/" /Fo"debug/" /Fd"debug/" /FD /GZ /c 
+"C:\work\hap\libraries\expat\xmlrole.c"
+"C:\work\hap\libraries\expat\xmltok.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP7C.tmp" 
+Creating temporary file "C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP7D.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:yes /pdb:"../../bin/expat_d.pdb" /debug /machine:I386 /out:"../../bin/expat_d.dll" /implib:"../../bin/expat_d.lib" /pdbtype:sept 
+.\debug\xmlparse.obj
+.\debug\xmlrole.obj
+.\debug\xmltok.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP7D.tmp"
+<h3>Output Window</h3>
+Compiling...
+xmlparse.c
+Compiling...
+xmlrole.c
+xmltok.c
+Generating Code...
+Linking...
+   Creating library ../../bin/expat_d.lib and object ../../bin/expat_d.exp
+<h3>
+--------------------Configuration: scintilla - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"debug/ScintRes.res" /d "_DEBUG" "C:\work\hap\LIBRARIES\scintilla\ScintRes.rc"" 
+Creating temporary file "C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP81.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "SCINTILLA_EXPORTS" /D "SCI_LEXER" /Fp"debug/scintilla.pch" /YX /Fo"debug/" /Fd"debug/" /FD /GZ /c 
+"C:\work\hap\LIBRARIES\scintilla\AutoComplete.cxx"
+"C:\work\hap\LIBRARIES\scintilla\CallTip.cxx"
+"C:\work\hap\LIBRARIES\scintilla\CellBuffer.cxx"
+"C:\work\hap\LIBRARIES\scintilla\ContractionState.cxx"
+"C:\work\hap\LIBRARIES\scintilla\Document.cxx"
+"C:\work\hap\LIBRARIES\scintilla\DocumentAccessor.cxx"
+"C:\work\hap\LIBRARIES\scintilla\Editor.cxx"
+"C:\work\hap\LIBRARIES\scintilla\ExternalLexer.cxx"
+"C:\work\hap\LIBRARIES\scintilla\Indicator.cxx"
+"C:\work\hap\LIBRARIES\scintilla\KeyMap.cxx"
+"C:\work\hap\LIBRARIES\scintilla\KeyWords.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexAda.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexAsm.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexAVE.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexBaan.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexBullant.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexConf.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexCPP.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexCrontab.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexEiffel.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexFortran.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexHTML.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexLisp.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexLua.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexMatlab.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexOthers.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexPascal.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexPerl.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexPython.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexRuby.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexSQL.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LexVB.cxx"
+"C:\work\hap\LIBRARIES\scintilla\LineMarker.cxx"
+"C:\work\hap\LIBRARIES\scintilla\PlatWin.cxx"
+"C:\work\hap\LIBRARIES\scintilla\PropSet.cxx"
+"C:\work\hap\LIBRARIES\scintilla\RESearch.cxx"
+"C:\work\hap\LIBRARIES\scintilla\ScintillaBase.cxx"
+"C:\work\hap\LIBRARIES\scintilla\ScintillaWin.cxx"
+"C:\work\hap\LIBRARIES\scintilla\Style.cxx"
+"C:\work\hap\LIBRARIES\scintilla\StyleContext.cxx"
+"C:\work\hap\LIBRARIES\scintilla\UniConversion.cxx"
+"C:\work\hap\LIBRARIES\scintilla\ViewStyle.cxx"
+"C:\work\hap\LIBRARIES\scintilla\WindowAccessor.cxx"
+]
+Creating command line "cl.exe @C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP81.tmp" 
+Creating temporary file "C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP82.tmp" with contents
+[
+imm32.lib gdi32.lib shell32.lib kernel32.lib user32.lib ole32.lib /nologo /dll /incremental:yes /pdb:"../../bin/scintilla_d.pdb" /debug /machine:I386 /out:"../../bin/scintilla_d.dll" /implib:"../../bin/scintilla_d.lib" /pdbtype:sept 
+.\debug\AutoComplete.obj
+.\debug\CallTip.obj
+.\debug\CellBuffer.obj
+.\debug\ContractionState.obj
+.\debug\Document.obj
+.\debug\DocumentAccessor.obj
+.\debug\Editor.obj
+.\debug\ExternalLexer.obj
+.\debug\Indicator.obj
+.\debug\KeyMap.obj
+.\debug\KeyWords.obj
+.\debug\LexAda.obj
+.\debug\LexAsm.obj
+.\debug\LexAVE.obj
+.\debug\LexBaan.obj
+.\debug\LexBullant.obj
+.\debug\LexConf.obj
+.\debug\LexCPP.obj
+.\debug\LexCrontab.obj
+.\debug\LexEiffel.obj
+.\debug\LexFortran.obj
+.\debug\LexHTML.obj
+.\debug\LexLisp.obj
+.\debug\LexLua.obj
+.\debug\LexMatlab.obj
+.\debug\LexOthers.obj
+.\debug\LexPascal.obj
+.\debug\LexPerl.obj
+.\debug\LexPython.obj
+.\debug\LexRuby.obj
+.\debug\LexSQL.obj
+.\debug\LexVB.obj
+.\debug\LineMarker.obj
+.\debug\PlatWin.obj
+.\debug\PropSet.obj
+.\debug\RESearch.obj
+.\debug\ScintillaBase.obj
+.\debug\ScintillaWin.obj
+.\debug\Style.obj
+.\debug\StyleContext.obj
+.\debug\UniConversion.obj
+.\debug\ViewStyle.obj
+.\debug\WindowAccessor.obj
+.\debug\ScintRes.res
+]
+Creating command line "link.exe @C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP82.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+AutoComplete.cxx
+CallTip.cxx
+CellBuffer.cxx
+ContractionState.cxx
+Document.cxx
+DocumentAccessor.cxx
+Editor.cxx
+ExternalLexer.cxx
+Indicator.cxx
+KeyMap.cxx
+KeyWords.cxx
+LexAda.cxx
+LexAsm.cxx
+LexAVE.cxx
+LexBaan.cxx
+LexBullant.cxx
+LexConf.cxx
+LexCPP.cxx
+LexCrontab.cxx
+LexEiffel.cxx
+LexFortran.cxx
+LexHTML.cxx
+LexLisp.cxx
+LexLua.cxx
+LexMatlab.cxx
+LexOthers.cxx
+LexPascal.cxx
+LexPerl.cxx
+LexPython.cxx
+LexRuby.cxx
+LexSQL.cxx
+LexVB.cxx
+LineMarker.cxx
+PlatWin.cxx
+PropSet.cxx
+RESearch.cxx
+ScintillaBase.cxx
+ScintillaWin.cxx
+Style.cxx
+StyleContext.cxx
+UniConversion.cxx
+ViewStyle.cxx
+WindowAccessor.cxx
+Linking...
+   Creating library ../../bin/scintilla_d.lib and object ../../bin/scintilla_d.exp
+<h3>
+--------------------Configuration: HapDebugger - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"debug/DbgRemote.res" /d "_DEBUG" /d "_AFXDLL" "C:\work\hap\tools\HapDebugger\DbgRemote.rc"" 
+Creating temporary file "C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP86.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\..\..\hap\libraries" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"debug/" /Fp"debug/HapDebugger.pch" /Yu"stdafx.h" /Fo"debug/" /Fd"debug/" /FD /GZ /c 
+"C:\work\hap\tools\HapDebugger\AboutDlg.cpp"
+"C:\work\hap\tools\HapDebugger\AppOptionsMainPg.cpp"
+"C:\work\hap\tools\HapDebugger\BreakpointDlg.cpp"
+"C:\work\hap\tools\HapDebugger\BrowseSelDlg.cpp"
+"C:\work\hap\tools\HapDebugger\ChildFrm.cpp"
+"C:\work\hap\tools\HapDebugger\ConnectSettingsDlg.cpp"
+"C:\work\hap\tools\HapDebugger\ConnectStatusBar.cpp"
+"C:\work\hap\tools\HapDebugger\DataDisplayDlg.cpp"
+"C:\work\hap\tools\HapDebugger\DbgRemote.cpp"
+"C:\work\hap\tools\HapDebugger\DbgRemoteDoc.cpp"
+"C:\work\hap\tools\HapDebugger\DbgRemoteView.cpp"
+"C:\work\hap\tools\HapDebugger\DebugOptionsPage.cpp"
+"C:\work\hap\tools\HapDebugger\DocSelectDlg.cpp"
+"C:\work\hap\tools\HapDebugger\EditorOptsPg.cpp"
+"C:\work\hap\tools\HapDebugger\ExceptionHandlerHook.cpp"
+"C:\work\hap\tools\HapDebugger\FileFindDlg.cpp"
+"C:\work\hap\tools\HapDebugger\FileGroup.cpp"
+"C:\work\hap\tools\HapDebugger\FileModifiedDlg.cpp"
+"C:\work\hap\tools\HapDebugger\FilePropDlg.cpp"
+"C:\work\hap\tools\HapDebugger\FindInProjectDlg.cpp"
+"C:\work\hap\tools\HapDebugger\GotoLineDlg.cpp"
+"C:\work\hap\tools\HapDebugger\GroupPropertiesDlg.cpp"
+"C:\work\hap\tools\HapDebugger\HapRedirect.cpp"
+"C:\work\hap\tools\HapDebugger\MainFrm.cpp"
+"C:\work\hap\tools\HapDebugger\OptionsDlg.cpp"
+"C:\work\hap\tools\HapDebugger\PdpManager.cpp"
+"C:\work\hap\tools\HapDebugger\ProjectSettingsDlg.cpp"
+"C:\work\hap\tools\HapDebugger\ProjectViewBar.cpp"
+"C:\work\hap\tools\HapDebugger\Redirect.cpp"
+"C:\work\hap\tools\HapDebugger\RegistryOptionsPg.cpp"
+"C:\work\hap\tools\HapDebugger\RunOptionsDlg.cpp"
+"C:\work\hap\tools\HapDebugger\scbarg.cpp"
+"C:\work\hap\tools\HapDebugger\sizecbar.cpp"
+"C:\work\hap\tools\HapDebugger\SourceControlInterface.cpp"
+"C:\work\hap\tools\HapDebugger\StackViewBar.cpp"
+"C:\work\hap\tools\HapDebugger\Tags.cpp"
+"C:\work\hap\tools\HapDebugger\TextFindDlg.cpp"
+"C:\work\hap\tools\HapDebugger\TextReplaceDlg.cpp"
+"C:\work\hap\tools\HapDebugger\ToolConfigDlg.cpp"
+"C:\work\hap\tools\HapDebugger\TraceViewBar.cpp"
+"C:\work\hap\tools\HapDebugger\UserCfg.cpp"
+"C:\work\hap\tools\HapDebugger\VariableViewBar.cpp"
+"C:\work\hap\tools\HapDebugger\VarListCtrl.cpp"
+"C:\work\hap\tools\HapDebugger\WatchBar.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP86.tmp" 
+Creating temporary file "C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP87.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\..\..\hap\libraries" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"debug/" /Fp"debug/HapDebugger.pch" /Yc"stdafx.h" /Fo"debug/" /Fd"debug/" /FD /GZ /c 
+"C:\work\hap\tools\HapDebugger\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP87.tmp" 
+Creating temporary file "C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP88.tmp" with contents
+[
+kernel32.lib user32.lib shell32.lib advapi32.lib Shlwapi.lib /nologo /subsystem:windows /incremental:yes /pdb:"../../bin/HapDebugger_d.pdb" /debug /machine:I386 /out:"../../bin/HapDebugger_d.exe" /pdbtype:sept 
+.\debug\AboutDlg.obj
+.\debug\AppOptionsMainPg.obj
+.\debug\BreakpointDlg.obj
+.\debug\BrowseSelDlg.obj
+.\debug\ChildFrm.obj
+.\debug\ConnectSettingsDlg.obj
+.\debug\ConnectStatusBar.obj
+.\debug\DataDisplayDlg.obj
+.\debug\DbgRemote.obj
+.\debug\DbgRemoteDoc.obj
+.\debug\DbgRemoteView.obj
+.\debug\DebugOptionsPage.obj
+.\debug\DocSelectDlg.obj
+.\debug\EditorOptsPg.obj
+.\debug\ExceptionHandlerHook.obj
+.\debug\FileFindDlg.obj
+.\debug\FileGroup.obj
+.\debug\FileModifiedDlg.obj
+.\debug\FilePropDlg.obj
+.\debug\FindInProjectDlg.obj
+.\debug\GotoLineDlg.obj
+.\debug\GroupPropertiesDlg.obj
+.\debug\HapRedirect.obj
+.\debug\MainFrm.obj
+.\debug\OptionsDlg.obj
+.\debug\PdpManager.obj
+.\debug\ProjectSettingsDlg.obj
+.\debug\ProjectViewBar.obj
+.\debug\Redirect.obj
+.\debug\RegistryOptionsPg.obj
+.\debug\RunOptionsDlg.obj
+.\debug\scbarg.obj
+.\debug\sizecbar.obj
+.\debug\SourceControlInterface.obj
+.\debug\StackViewBar.obj
+.\debug\StdAfx.obj
+.\debug\Tags.obj
+.\debug\TextFindDlg.obj
+.\debug\TextReplaceDlg.obj
+.\debug\ToolConfigDlg.obj
+.\debug\TraceViewBar.obj
+.\debug\UserCfg.obj
+.\debug\VariableViewBar.obj
+.\debug\VarListCtrl.obj
+.\debug\WatchBar.obj
+.\debug\DbgRemote.res
+\work\hap\bin\dbgnetlib_d.lib
+\work\hap\bin\expat_d.lib
+\work\hap\bin\scintilla_d.lib
+]
+Creating command line "link.exe @C:\DOCUME~1\NEALWO~1\LOCALS~1\Temp\RSP88.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+ ---- OSS_RELEASE defined - Building Open Source Version ----
+Compiling...
+AboutDlg.cpp
+AppOptionsMainPg.cpp
+BreakpointDlg.cpp
+BrowseSelDlg.cpp
+ChildFrm.cpp
+ConnectSettingsDlg.cpp
+ConnectStatusBar.cpp
+DataDisplayDlg.cpp
+DbgRemote.cpp
+DbgRemoteDoc.cpp
+DbgRemoteView.cpp
+DebugOptionsPage.cpp
+DocSelectDlg.cpp
+EditorOptsPg.cpp
+ExceptionHandlerHook.cpp
+FileFindDlg.cpp
+FileGroup.cpp
+FileModifiedDlg.cpp
+FilePropDlg.cpp
+FindInProjectDlg.cpp
+Generating Code...
+Compiling...
+GotoLineDlg.cpp
+GroupPropertiesDlg.cpp
+HapRedirect.cpp
+MainFrm.cpp
+OptionsDlg.cpp
+PdpManager.cpp
+ProjectSettingsDlg.cpp
+ProjectViewBar.cpp
+Redirect.cpp
+RegistryOptionsPg.cpp
+RunOptionsDlg.cpp
+scbarg.cpp
+sizecbar.cpp
+SourceControlInterface.cpp
+StackViewBar.cpp
+Tags.cpp
+TextFindDlg.cpp
+TextReplaceDlg.cpp
+ToolConfigDlg.cpp
+TraceViewBar.cpp
+Generating Code...
+Compiling...
+UserCfg.cpp
+VariableViewBar.cpp
+VarListCtrl.cpp
+WatchBar.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+HapDebugger_d.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

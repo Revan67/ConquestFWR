@@ -1,0 +1,21 @@
+Create simple test shader.
+Comment standardized constants.
+Design render target system to support shaders
+  Phase 1: Render base maps
+      render maps: DiffuseRGB, Normal, SpecularRGBP, EmmisiveRGB, Depth
+  Phase 2: Lighting + DiffuseRGB, Normal, SpecularRGBP, EmmisiveRGB, Depth
+      render maps: LitRGB
+  Phase 3: Alpha render : use Depth
+      render to : LitRGB , Distortion
+  Phase 4: Render distortion, LitRGB + Distortion + ?Depth
+      render to : Final RGB
+  Phase 5: UI
+      render to : Final RGB
+
+  I think the idea here is to support rendering modes that use different techniques from the shaders.
+Create Screne graph system.
+
+Create New simpler Light manager
+    point lights
+    directional lights
+    ambient lights

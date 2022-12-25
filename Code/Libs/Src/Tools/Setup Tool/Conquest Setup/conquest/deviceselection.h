@@ -1,0 +1,45 @@
+#ifndef DEVICESELECTION_H
+#define DEVICESELECTION_H
+
+#include "dacom.h"
+
+typedef enum {
+	DS_VALIDATE_RESOLUTION,
+	DS_VALIDATE_SELECTION
+} DS_VALIDATE_CALLBACK_TYPES;
+
+typedef enum {
+	V_RES_FIRST_RES = 1,
+	V_RES_320	= V_RES_FIRST_RES,	
+	V_RES_640		,	
+	V_RES_512		,	
+	V_RES_800		,
+	V_RES_1024		,
+	V_RES_1152		,
+	V_RES_1280		,
+	V_RES_1600		,
+
+	V_RES_LAST_RES
+
+} VIDEO_DEVICE_RESOLUTIONS;
+
+const char * const ds_video_resolutions[V_RES_LAST_RES] = 
+{
+	"",
+	"320x240",
+	"512x384",
+	"640x480",
+	"800x600",
+	"1024x768",
+	"1152x864",
+	"1280x1024",
+	"1600x1200"
+};
+
+const WORD ds_resolution_X[V_RES_LAST_RES] = {0,320,512,640,800,1024,1168,1280,1600};
+const WORD ds_resolution_Y[V_RES_LAST_RES] = {0,240,384,480,600,768,864,1024,1200};
+
+typedef BOOL (CALLBACK *DS_VALIDATIONCALLBACK) (IDAComponent *Win, HWND hWnd, UINT resolution, DS_VALIDATE_CALLBACK_TYPES validationType);
+typedef BOOL (CALLBACK *DS_CONTROLCALLBACK)(HWND hWnd, UINT wID);
+
+#endif

@@ -1,0 +1,478 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+// Generated Help ID header file
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "resource.hm"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+#include <richedit.h>
+#include "version.h"
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "#include <richedit.h>\r\n"
+    "#include ""version.h""\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""hotsetup.rc""\r\n"
+    "#include ""hotsetuprc.h""\r\n"
+    "#include ""app.rc2""\r\n"
+    "#include ""script.h""\r\n"
+    "SETUPDATA               SETUPBINARY DISCARDABLE ""blob.PBF"" // blob version\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+GETROOTDLG DIALOG DISCARDABLE  0, 0, 258, 119
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "%APPTITLE"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "&Folder",IDC_STATIC,17,46,168,43
+    EDITTEXT        ID_DLGEDITCONTROL,22,63,159,15,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "&OK",IDOK,51,98,50,14
+    PUSHBUTTON      "E&xit Setup",IDCANCEL,150,98,50,14
+    LTEXT           "Setup will install %APPTITLE in the following folder.\rIf you would like to install to a different folder, type it in the space below.",
+                    IDC_STATIC1,13,15,217,26
+    PUSHBUTTON      "&Browse...",ID_BROWSE,191,63,54,14,WS_GROUP
+END
+
+GETGRPDLG DIALOG DISCARDABLE  0, 0, 319, 157
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "%APPTITLE"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "&OK",IDOK,40,134,72,16
+    PUSHBUTTON      "&Back",ID_BACK,120,134,72,16
+    PUSHBUTTON      "E&xit Setup",IDCANCEL,200,134,72,16
+    GROUPBOX        "Install To",IDC_STATIC,13,7,292,67
+    LTEXT           "%SETUPTITLE will Install %APPTITLE's Components into the Following Folder.",
+                    IDC_STATIC1,23,18,272,10
+    LTEXT           "GameInstallPath",ID_DLGEDITCONTROL,29,40,264,10
+    LTEXT           "To Install to a Different Folder, Click the Back Button.",
+                    IDC_STATIC,21,58,272,10
+    GROUPBOX        "Disk Space Requirements",IDC_STATIC,13,76,292,50
+    LTEXT           "System:  ",ID_SYSTEMTEXT,20,103,30,8
+    LTEXT           "Game:  ",IDC_STATIC,20,95,26,8
+    LTEXT           "Total:",ID_TOTALTEXT,20,111,26,8
+    LTEXT           "Available",IDC_STATIC,220,86,30,8
+    RTEXT           "9999999 MB",ID_GAMEAVAIL,212,95,42,8
+    RTEXT           "9999999 MB",ID_SYSTEMAVAIL,212,103,42,8
+    RTEXT           "9999999 MB",ID_TOTALAVAIL,212,111,42,8
+    LTEXT           "Required",IDC_STATIC,129,86,30,8
+    RTEXT           "9999999 MB",ID_GAMEREQ,121,95,42,8
+    RTEXT           "9999999 MB",ID_SYSTEMREQ,121,103,42,8
+    RTEXT           "9999999 MB",ID_TOTALREQUIRED,121,111,42,8
+END
+
+PROGRESS DIALOG DISCARDABLE  1000, 1000, 246, 95
+STYLE DS_LOCALEDIT | DS_MODALFRAME | DS_NOIDLEMSG | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "File Copy"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "&Cancel",IDCANCEL,99,78,50,14
+    LTEXT           "File:",IDC_STATIC,89,5,23,14
+    LTEXT           "",ID_STATUS2,106,5,132,21
+    CONTROL         "",ID_BAR,"PRO",WS_TABSTOP,19,64,210,10
+    CONTROL         184,IDC_STATIC,"Static",SS_BITMAP,5,1,76,60
+END
+
+GETPIDDLG1 DIALOG DISCARDABLE  0, 0, 257, 191
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "%APPTITLE"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "&OK",IDOK,59,164,50,14
+    PUSHBUTTON      "&Exit Setup",IDCANCEL,145,164,50,14
+    LTEXT           "Product ID:",IDC_STATIC,19,25,46,10
+    LTEXT           "",ID_DLGSTATICCONTROL,63,25,143,8
+    LTEXT           "This is your Microsoft Product ID number.  If you need to call Microsoft for technical support, you will be asked for this number.",
+                    IDC_STATIC,13,62,230,27
+    LTEXT           "For your records, please write this number in the designated portion of your registration card.  After the software has been installed, you can also access the number from the About command on the main %APPTITLE screen.",
+                    IDC_STATIC1,13,109,231,39
+    GROUPBOX        "",IDC_STATIC,15,13,216,30
+END
+
+GETOEMPIDDLG1 DIALOG DISCARDABLE  0, 0, 257, 191
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "%APPTITLE"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "&OK",IDOK,54,164,50,14
+    PUSHBUTTON      "&Exit Setup",IDCANCEL,151,164,50,14
+    LTEXT           "Product ID:",IDC_STATIC,19,25,46,10
+    LTEXT           "",ID_DLGSTATICCONTROL,63,25,143,8
+    LTEXT           "This is your Product ID number.  If you need to call your equipment manufacturer for technical support, you will be asked for this number.",
+                    IDC_STATIC,13,62,230,27
+    LTEXT           "For your records, please write this number in the designated portion of your registration card.  After the software has been installed, you can also access the number from the About command on the main %APPTITLE screen.",
+                    IDC_STATIC1,13,109,231,39
+    GROUPBOX        "",IDC_STATIC,15,13,216,30
+END
+
+IDD_EULA DIALOGEX 0, 0, 292, 269
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "End User License Agreement"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "",EULA_EDIT,"RICHEDIT",ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_READONLY | NOT WS_VISIBLE | WS_VSCROLL,18,60,259,108,
+                    WS_EX_CLIENTEDGE
+    PUSHBUTTON      "&Accept",IDOK,34,250,50,14
+    DEFPUSHBUTTON   "&Reject",IDCANCEL,90,250,50,14
+    PUSHBUTTON      "&Print License",ID_PRINT,213,250,50,14
+    LTEXT           "Be sure to carefully read and understand all of the rights and restrictions described in the End User License Agreement (""EULA"").  You will be asked to review and either accept or not accept the terms of the EULA.",
+                    IDC_STATIC,18,8,256,25
+    LTEXT           "This product will not set up on your computer unless or until you accept the terms of the EULA.",
+                    IDC_STATIC,18,37,256,17
+    LTEXT           "Your click of the ""Accept"" button is a symbol of your signature that you accept the terms of the EULA.",
+                    IDC_STATIC,18,169,256,17
+    LTEXT           "For your future reference, you may print the text of the EULA from this page now, or refer to the copy of the EULA that can be found in the EULA.RTF file in the folder in which you install this product.",
+                    IDC_STATIC,18,191,256,25
+    LTEXT           "You may also receive a copy of this EULA by contacting the Microsoft subsidiary serving your country, or write:  Microsoft Sales Information Center/One Microsoft Way/Redmond, WA 98052-6399.",
+                    IDC_STATIC,18,219,256,27
+END
+
+IDD_ADVANCED_VIDEO_DIALOG DIALOGEX 0, 0, 228, 87
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_CONTEXTHELP
+CAPTION "Advanced Video Properties"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "&OK",IDOK,28,66,50,14,0,0,HIDOK
+    PUSHBUTTON      "&Cancel",IDCANCEL,150,66,50,14,0,0,HIDCANCEL
+    CONTROL         "Frame Locking",IDC_LOCKING,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,15,15,102,11,WS_EX_STATICEDGE,HIDC_LOCKING
+    CONTROL         "D3D Texture Coordinates",IDC_D3DTEXTURE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,15,32,102,11,
+                    WS_EX_STATICEDGE,HIDC_D3DTEXTURE
+    CONTROL         "Enable GDI",IDC_GDI,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,128,15,84,11,WS_EX_STATICEDGE,HIDC_GDI
+    CONTROL         "Use Hardware Cursor",IDC_HW_CURSOR,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,128,32,84,11,
+                    WS_EX_STATICEDGE,HIDC_HW_CURSOR
+    PUSHBUTTON      "&Default",IDC_RESET,89,66,50,14
+END
+
+IDD_AUDIO_DEVICE DIALOG DISCARDABLE  0, 0, 278, 146
+STYLE DS_CENTER | WS_CHILD | WS_DISABLED | WS_CAPTION | WS_SYSMENU
+CAPTION "Audio Device Options"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_AUDIO_COMBO,22,15,235,52,CBS_DROPDOWNLIST | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Audio Playback Device",IDC_STATIC,4,3,270,34
+    COMBOBOX        IDC_AUDIO_CAPTURE_COMBO,22,52,235,52,CBS_DROPDOWNLIST | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Audio Capture Device",IDC_STATIC,4,40,270,34
+END
+
+IDD_VIDEO_DEVICE DIALOGEX 0, 0, 278, 146
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION | WS_SYSMENU
+CAPTION "Video Device Options"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    COMBOBOX        IDC_VIDEO_COMBO,10,15,260,52,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP,0,HIDC_VIDEO_COMBO
+    GROUPBOX        "Video Device",IDC_STATIC,4,3,270,34
+    GROUPBOX        "Video Device Options",IDC_STATIC,4,39,270,100
+    COMBOBOX        IDC_RESOLUTION_COMBO,147,57,115,55,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP,0,HIDC_RESOLUTION_COMBO
+    GROUPBOX        "Resolution",IDC_STATIC,143,48,123,27
+    GROUPBOX        "Info",IDC_STATIC,143,77,124,34
+    CONTROL         112,IDC_STATIC,"Static",SS_BITMAP | SS_SUNKEN,29,57,101,
+                    72
+    GROUPBOX        "Preview",IDC_STATIC,23,48,113,85
+    PUSHBUTTON      "&Advanced ...",IDC_ADVANCED_VIDEO,190,116,77,17,0,0,
+                    HIDC_ADVANCED_VIDEO
+END
+
+BATCHDX DIALOGEX 0, 0, 312, 178
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "%APPTITLE"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,69,157,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,185,157,50,14
+    CONTROL         "List1",ID_CHECKLIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_EDITLABELS | WS_BORDER | WS_GROUP | 
+                    WS_TABSTOP,14,60,283,92,WS_EX_CLIENTEDGE
+    LTEXT           "Static",IDC_DX_STATIC,7,7,297,50
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    GETROOTDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 251
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 112
+    END
+
+    GETGRPDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 312
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 150
+    END
+
+    PROGRESS, DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 241
+        VERTGUIDE, 124
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 92
+    END
+
+    "GETPIDDLG1", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 250
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 184
+    END
+
+    "GETOEMPIDDLG1", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 250
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 184
+    END
+
+    IDD_EULA, DIALOG
+    BEGIN
+        VERTGUIDE, 205
+        VERTGUIDE, 272
+    END
+
+    IDD_AUDIO_DEVICE, DIALOG
+    BEGIN
+        RIGHTMARGIN, 274
+    END
+
+    "BATCHDX", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 304
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 171
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_CHECK               BITMAP  DISCARDABLE     "resources\chk.bmp"
+IDB_BITMAP2             BITMAP  DISCARDABLE     "resources\bb2.bmp"
+IDB_BITMAP3             BITMAP  DISCARDABLE     "resources\bb3.BMP"
+IDB_BITMAP1             BITMAP  DISCARDABLE     "resources\bb1.BMP"
+BG_BMP                  BITMAP  DISCARDABLE     "resources\splash.BMP"
+IDB_SM_LOGO             BITMAP  DISCARDABLE     "resources\smgames.BMP"
+IDB_DUMMY               BITMAP  DISCARDABLE     "resources\dummy.bmp"
+IDB_HW                  BITMAP  DISCARDABLE     "resources\hw.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+ACCEL ACCELERATORS DISCARDABLE 
+BEGIN
+    "E",            EXIT,                   VIRTKEY, ALT, NOINVERT
+    "I",            INSTALL,                VIRTKEY, ALT, NOINVERT
+    "P",            PLAY,                   VIRTKEY, ALT, NOINVERT
+    "R",            REINSTALL,              VIRTKEY, ALT, NOINVERT
+    "U",            UNINSTALL,              VIRTKEY, ALT, NOINVERT
+    "W",            WEBLINK,                VIRTKEY, ALT, NOINVERT
+    "C",            CONFIGURE,              VIRTKEY, ALT, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// WAVE
+//
+
+IDCLICK                 WAVE    DISCARDABLE     "resources\click.wav"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_REGKEY_PLAYERNAME   "Software\\Microsoft\\MS Setup (ACME)\\User Info"
+    STR_REGKEY_DEFNAME      "DefName"
+    STR_PROMPTUNINSTALL     "Are you sure you want to remove %APPTITLE?"
+    STR_NTDIR_LOCALFILES    "\\Program Files"
+    STR_LOCALDIRNAME        "%APPTITLE"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_RETAILINSTALLED     "The Retail Version of%APPTITLE is already installed on this system. Installing or playing the Trial Version will disable the Retail Version.  Is this what you really want to do?"
+    STR_BADCHARINNAME       "The player name you have entered contains an invalid character (""\\"").  Please reenter the name without the invalid  character."
+    STR_CLOSEGAME           "Please close %APPTITLE before running this program."
+    STR_TRIALVERSIONHERE    "%SETUPTITLE has detected an installation of the Trial Version of %APPTITLE.  To continue %SETUPTITLE, you must remove the Trial Version.  Do you wish to continue?"
+    STR_REG_GAMEVALUE       "GamePath"
+    STR_WINNTOR95           "%APPTITLE can only run on Microsoft Windows 95 or later."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    INSTALL                 "&Install"
+    UNINSTALL               "&Uninstall"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    REINSTALL               "&Reinstall"
+    EXIT                    "&Exit"
+    WEBLINK                 "Link To &Web"
+    HELP                    "&Help"
+    PLAY                    "&Play"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    CONFIGURE               "&Configure"
+    README                  "Release &Notes"
+    STR_RESTART             "%SETUPTITLE must now restart Windows.  Do you wish to restart, failure to do so may result in %APPTITLE not functioning correctly. "
+    STR_NONT                "%APPTITLE is not currently supported on Windows NT."
+    STR_DIRECTXNOTINSTALLED "Warning: You have chosen to not install DirectX 6.1, %APPTITLE can not be played without DirectX 6.1 or later."
+    STR_NODIRECTX           "%SETUPTITLE has detected that DirectX 6.0 is not installed on your system.  You must have DirectX 6.0 or later to play %APPTITLE."
+    STR_LAUNCHURL           "http://www.digitalanvil.com"
+    STR_NEEDBROWSER         "%APPTITLE requires an Internet Browser to play.  Please install a compatible Browser before attempting to install %APPTITLE."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_SERVICEPACK3        "%APPTITLE requires Windows NT Service Pack 3 to run."
+    IDS_NOT_ENUF_DISK_SPACE "Not enough disk space on drive %s.\n  %d MB more needed."
+    IDS_NOT_ENUF_APP_SPACE  "Not enough game disk space on drive %s.\n  %d MB more needed."
+    IDS_NOT_ENUF_SYS_SPACE  "Not enough system disk space on drive %s.\n  %d MB more needed."
+    STR_CREATEDIR           "The destination folder\n\n%s\n\ndoes not exist. Do you want %SETUPTITLE to create it?"
+    IDS_CONFIG_DIALOG_TITLE "%APPTITLE - Device Selection and Configuration"
+    STR_REAL_EXENAME        "game\\_app.exe"
+    STR_CONFIG_EXE_NAME     "config.exe"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_DIRECTX_INSTALL_OLDER 
+                            "%SETUPTITLE has detected that an older version of DirectX is installed on your system. \nYou must have DirectX 6.1 or later to play %APPTITLE.  \n\nDirect X 6.1 will now be installed."
+    STR_DIRECTX_CHECK       "%APPTITLE requires DirectX 6.1 or later to run. \n%SETUPTITLE will now check your system for DirectX."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_DX_PROMPTING        "1"
+    STR_NODIRECTXCD         "%SETUPTITLE has detected that DirectX 6.0 is not installed on your system.  You must have DirectX 6.0 or later to play %APPTITLE.  Direct X can be installed from the CD's ""DirectX"" Folder by running ""dxsetup.exe""."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_COPYRIGHT_NOTICE    "©1999 Digital Anvil. All rights reserved."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_DIRECTX_RECOMMENDATION "Recommendation"
+    STR_DIRECTX_DRIVERACTION "Current Driver"
+    STR_DIRECTX_RECOMMENDED "Replace Driver"
+    STR_DIRECTX_NOTRECOMMENDED "Keep Driver"
+    STR_DIRECTX_AUTOMATIC   "Automatic"
+    STR_DIRECTX_REPLACE     "Replace"
+    STR_DIRECTX_KEEP        "Keep"
+    STR_DIRECTX_DONTINSTALLTEXT "&Don't Install"
+    STR_DIRECTX_INSTALLTEXT "&Install"
+    STR_DIRECTX_DRIVERNAME  "Existing Driver Info"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    STR_DIRECTX_INSTALL_NONE 
+                            "%SETUPTITLE has detected that there is no version of DirectX installed on your system.  \nYou must have DirectX 6.1 or later to play %APPTITLE.  \n\nDirect X 6.1 will now be installed."
+    STR_DIRECTX_OK          "%SETUPTITLE has detected that your system has the required version of DirectX already installed."
+    STR_DIRECTX_INSTALLED   "DirectX 6.1 has been succesfully installed."
+    STR_DIRECTX_INSTALLED2  "DirectX 6.1 has been succesfully installed."
+    STR_APP_WINDOW_CLASS    "Conquest: Frontier Wars"
+    STR_DELETE_SAVED_GAMES  "Do you want to remove all missions and saved games?"
+    STR_INI_FILE_NAME       "conquest.ini"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#include "hotsetup.rc"
+#include "hotsetuprc.h"
+#include "app.rc2"
+#include "script.h"
+SETUPDATA               SETUPBINARY DISCARDABLE "resources\blob.PBF" // blob version
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

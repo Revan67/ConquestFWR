@@ -1,0 +1,325 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "DemoScript"=.\DemoScript\DemoScript.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    DemoScript
+    .\demoscript
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Mantis_T"=.\Mantis_T\Mantis_T.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Conquest/App/Src/Scripts/Mantis_T", EIDAAAAA
+    .\mantis_t
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "SCRIPT01T"=.\Script01T\SCRIPT01T.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Conquest/App/Src/Scripts/Script01T", LPBAAAAA
+    .\script01t
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "SCRIPT02t"=.\Script02T\SCRIPT02T.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Conquest/App/Src/Scripts/Script02t", TICAAAAA
+    .\script02t
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "SCRIPT03T"=.\Script03T\SCRIPT03T.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Conquest/App/Src/Scripts/SCRIPT03T", LPBAAAAA
+    .\script03t
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Script04T"=.\Script04T\Script04T.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Conquest/App/Src/Scripts/Script04T", FXCAAAAA
+    .\script04t
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Script05t"=.\Script05t\Script05t.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Conquest/App/Src/Scripts/Script05t", NWCAAAAA
+    .\script05t
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Script07T"=.\Script07T\Script07T.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Conquest/App/Src/Scripts/Script07T", UADAAAAA
+    .\script07t
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Script08T"=.\Script08T\Script08T.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Conquest/App/Src/Scripts/Script08T", UDDAAAAA
+    .\script08t
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Script09T"=.\script09t\Script09T.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Conquest/App/Src/Scripts/Script09T", ACDAAAAA
+    .\script09t
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Script10T"=.\Script10T\Script10T.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Conquest/App/Src/Scripts/Script10T", SEDAAAAA
+    .\script10t
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Script11T"=.\Script11T\Script11T.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Conquest/App/Src/Scripts/Script11T", CFDAAAAA
+    .\script11t
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Script12T"=.\Script12T\Script12T.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Conquest/App/Src/Scripts/Script12T", ZFDAAAAA
+    .\script12t
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Script13T"=.\Script13T\Script13T.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Conquest/App/Src/Scripts/Script13T", QFDAAAAA
+    .\script13t
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Script14T"=.\Script14T\Script14T.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Conquest/App/Src/Scripts/Script14T", QGDAAAAA
+    .\script14t
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Script15T"=.\Script15T\Script15T.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Conquest/App/Src/Scripts/Script15T", CHDAAAAA
+    .\script15t
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Script16T"=.\Script16T\Script16T.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Conquest/App/Src/Scripts/Script16T", RHDAAAAA
+    .\script16t
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Sol_T"=.\Sol_T\Sol_T.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Conquest/App/Src/Scripts/Sol_T", LIDAAAAA
+    .\sol_t
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "script06t"=.\Script06T\Script06T.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Conquest/App/Src/Scripts/Script06T", ICDAAAAA
+    .\script06t
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Conquest/App/Src/Scripts", KPBAAAAA
+    .
+    end source code control
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

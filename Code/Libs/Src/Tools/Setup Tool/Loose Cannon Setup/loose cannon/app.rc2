@@ -1,0 +1,62 @@
+// Resources file included into app.rc, which contains strings used by
+// hotsetup engine, but are local to the product specific UI
+
+STRINGTABLE DISCARDABLE
+BEGIN
+    STR_REGKEY_APP_REG_ROOT		    "Conquest\\1.00"
+END
+
+
+STRINGTABLE DISCARDABLE
+BEGIN
+    STR_PRODUCTRPC	    "52280"
+    STR_PRODUCTOEMRPC	    "38477"
+	STR_DEFPLAYERNAME	"Player"
+    STR_SETUP_APPTITLE	    "Conquest"
+    STR_OVERWRITELANGUAGE   "%SETUPTITLE has detected system files in a different language.  Do you want to replace the %s system files with %s?"
+    STR_SETUP_SETUPTITLE    "Setup"
+    STR_DIRECTORY_APP_ROOT  "%APPTITLE"
+END
+
+STRINGTABLE DISCARDABLE
+BEGIN
+    STR_REGKEY_UNINSTALL_DISPLAY_NAME "%APPTITLE"
+    STR_LAUNCHEXE           "Conquest.exe"
+    STR_LAUNCHEXEWINNAME    "%APPTITLE"
+    STR_UNINSTALLED         "%APPTITLE has been successfully removed."
+    STR_ERROR_BADPROCESSOR  "%APPTITLE requires a Pentium or higher processor; Setup has detected a non-Pentium processor, however, you may continue the installation."
+    STR_GETPIDDLGTITLE      "%APPTITLE Product ID"
+    STR_MUSTRESTART         "You MUST restart Windows before you can play %APPTITLE!"
+    STR_CDTESTRESULTS		"Your CD-ROM drive's performance is sufficient to play %APPTITLE smoothly.  Your transfer rate is %d KB/sec, while the CPU usage is %4.1f%% during data transfers."
+    STR_CDTESTOKRESULTS		"Your CD-ROM drive's performance is sufficient to play %APPTITLE smoothly.  Your transfer rate is %d KB/sec, while the CPU usage is less than 5%% during data transfers."
+    STR_INSTALLDESKTOP      "Would you like setup to install a Desktop Icon for %APPTITLE?"
+    STR_CANCELCOPY          "Are you sure you wish to cancel installation of %APPTITLE"
+	STR_ERROR_NEEDHIGHERRES	"%APPTITLE requires that your system be set to display at least \n\n800 X 600 resolution or better and High Color (65536 colors) or better.\n\nUse the Windows Control Panel to change your display settings and then restart your computer if necessary.  For more information, see your Windows documentation."
+//    STR_INSTALLDPONNT       "Setup has detected that DirectPlay 5.0 or newer is not installed on your system.  Do you wish to install DirectPlay 5.0?"
+	STR_ISDBCS				"0"
+	STR_ISOEM				"0"
+    STR_REGKEY_VAL_APPPATH  "Conquest"
+    STR_REGKEY_VAL_DEFAULTPATH "Conquest"
+    STR_EXTRASYSTEMSPACE    "4096000"
+	STR_EXTRAAPPSPACE		"0"
+    STR_UNSETUPEXENAME      "UNINSTAL.EXE"
+	STR_LANGUAGE			"USA"	
+	STR_EULANOTFOUND		"Please read the end user license agreement located on the %APPTITLE CDROM. After reading it, click ""ACCEPT"" if you agree to the terms, otherwise click ""DECLINE."""
+	STR_COMMANDLINE			"-f"
+END
+
+// Below is the string block for ALL default "Program Files" directories
+// with localized names, starting at STR_DEFAULTPATH, with the LangID
+// for each country added.
+
+STRINGTABLE DISCARDABLE
+BEGIN
+    SYMBOL_TABLE        "Digital Anvil"
+    SYMBOL_TABLE+1      "Conquest"
+    SYMBOL_TABLE+2      "Microsoft\\Internet Gaming Zone\\Asheron's Call\\1.00"
+    SYMBOL_TABLE+3      "Uninstall Conquest"
+	SYMBOL_TABLE+4      "http://www.zone.com/asp/script/default.asp?game=ashe"
+    SYMBOL_TABLE+5      "View Readme"
+    SYMBOL_TABLE+6      "Help"
+	SYMBOL_TABLE+7		"View End User's Liscense Agreement"
+END

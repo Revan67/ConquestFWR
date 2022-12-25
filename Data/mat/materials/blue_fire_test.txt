@@ -1,0 +1,13 @@
+1
+Vertex Color with Texture
+FLOAT 2 1.000000 127 "Opacity"
+FLOAT 2 1.000000 122 "TexScaleX"
+FLOAT 2 1.000000 123 "TexScaleY"
+COLOR 2 7 92 92 124 "ColorMod"
+TEXTURE 0 "fire_test1.tga" "Diffuse + Opacity"
+STATE 2 19 "SrcBlend"
+STATE 2 20 "DstBlend"
+STATE 1 14 "ZWrite"
+STATE 0 7 "ZTest"
+ANIMUV 120 2 15 15.000000 "AnimateUV"
+END

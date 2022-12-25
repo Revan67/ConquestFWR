@@ -1,0 +1,23 @@
+HKCR
+{
+	DAControls.TrackObject.1 = s 'TrackObject Class'
+	{
+		CLSID = s '{94B5A6D3-52FA-11D2-85B3-0000F4A24553}'
+	}
+	DAControls.TrackObject = s 'TrackObject Class'
+	{
+		CLSID = s '{94B5A6D3-52FA-11D2-85B3-0000F4A24553}'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {94B5A6D3-52FA-11D2-85B3-0000F4A24553} = s 'TrackObject Class'
+		{
+			ProgID = s 'DAControls.TrackObject.1'
+			VersionIndependentProgID = s 'DAControls.TrackObject'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'both'
+			}
+		}
+	}
+}

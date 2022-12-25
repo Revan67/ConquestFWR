@@ -1,0 +1,37 @@
+axmmake.exe
+-----------
+animated texture creator;
+creates utf style files for use with the DACOM ITxmLib interface.
+
+command line options:
+
+<-tga/-pix/-bmp> <input tex size> <frame size> <num frames> <tex name> [-flip] [-nomip]
+
+"input tex size" is the square size of the textures(s) the animation comes from;
+
+"frame size" is the square size of each frame within a texture 
+(must be less than or equal to tex size)
+
+"num frames" is the total number of frames of animation
+
+"tex name" is the base texture name
+
+the texture name(s) used must all share a common base name,
+followed by an underscore,
+and then the texture's order number.
+
+uvs for animation frames are default generated left to right, BOTTOM to top;
+if -flip is specified they are generated left to right, top to bottom.
+
+-
+
+example:
+axmmake.exe -bmp 64 32 5 test
+
+will take two 64x64 textures: test_0.bmp and test_1.bmp
+and use them to create 5 32x32 frames of animation.
+
+the animation will be refered to in the output file: test.txm; as "test"
+
+the textures themselves (test_0 and test_1) can be
+used through itxmlib in the standard ways.

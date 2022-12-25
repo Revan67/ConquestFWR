@@ -1,0 +1,58 @@
+//
+// myassert.cpp
+//
+//		Implementation of the ASSERT macro
+//
+// History:
+//
+//		11/16/94	KenSh		Moved code here from MFC source.
+//
+
+#include "stubpch.h"
+#include "hardcodedstrings.h"
+#include "hotsetup.h"
+
+#include "util.h"
+
+#ifdef _DEBUG
+
+void AssertFailedLine( LPCSTR lpszFileName, int nLine )
+{
+	char sz[255];
+	static char szTitle[] = STR_HARDCODE_ASSERTFAILED;
+	static char szMessage[] = STR_HARDCODE_FILEANDLINE;
+	static char szUnknown[] = STR_HARDCODE_EBUSETUP;
+
+	wsprintf(sz, (LPCSTR)szMessage,
+		(LPCSTR)szUnknown,
+		lpszFileName,
+		nLine);
+
+	// assume the debugger or auxiliary port
+	TRACE(sz);
+	TRACE(", ");
+	TRACE(szTitle);
+	TRACE("\n\r");
+	
+	HWND hwndParent = GetDesktopWindow();
+
+	int nCode = MessageBox(hwndParent, sz, szTitle,
+					MB_SYSTEMMODAL | MB_ICONHAND | MB_ABORTRETRYIGNORE);
+
+	if (nCode == IDIGNORE)
+	{
+		return;     // ignore
+	}
+	else if (nCode == IDRETRY)
+	{
+		// break into the debugger (or Dr Watson log)
+#ifndef _PORTABLE
+		_asm { int 3 };
+#endif
+		return; // ignore and continue in debugger to diagnose problem
+	}
+
+	abort();
+}
+
+#endif //_DEBUG

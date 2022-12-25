@@ -1,0 +1,107 @@
+// Author: Shaival Varma
+// --------------------------------------------------------------------------
+// Adapted from the Hewlett-Packard Company implementation.
+// --------------------------------------------------------------------------
+#ifndef da_xutility_h
+#define da_xutility_h
+// --------------------------------------------------------------------------
+#include "da_utility"
+// --------------------------------------------------------------------------
+namespace da_std
+{
+// copy function
+template<class TIterator1, class TIterator2> 
+inline TIterator2 copy(TIterator1 first, TIterator1 last, TIterator2 first_destination)
+{
+	for (; first != last; ++first_destination, ++first)
+	{
+		*first_destination = *first;
+	}
+
+	return (first_destination); 
+}
+
+// copy_backward function
+template<class TIterator1, class TIterator2> 
+inline TIterator2 copy_backward(TIterator1 first, TIterator1 last, TIterator2 first_destination)
+{
+	while (first != last)
+	{
+		*--first_destination = *--last;
+	}
+	
+	return (first_destination); 
+}
+
+// fill function
+template<class TIterator, class TType> 
+inline void fill(TIterator first, TIterator last, const TType& instance_to_copy)
+{
+	for (; first != last; ++first)
+	{
+		*first = instance_to_copy;
+	}
+}
+// --------------------------------------------------------------------------
+// lexicographical_compare
+template<class TIterator1, class TIterator2> 
+inline bool lexicographical_compare(TIterator1 first_1, TIterator1 last_1, TIterator2 first_2, TIterator2 last_2)
+{
+	for (; first_1 != last_1 && first_2 != last_2; ++first_1, ++first_2)
+	{
+		if (*first_1 < *first_2)
+		{
+			return (true);
+		}
+		else if (*first_2 < *first_1)
+		{
+			return (false);
+		}
+	}
+	
+	return (first_1 == last_1 && first_2 != last_2); 
+}
+
+template<class TIterator1, class TIterator2, class _Pr> 
+inline bool lexicographical_compare(TIterator1 first_1, TIterator1 last_1, TIterator2 first_2, TIterator2 last_2, _Pr _P)
+{
+	for (; first_1 != last_1 && first_2 != last_2; ++first_1, ++first_2)
+	{
+		if (_P(*first_1, *first_2))
+		{
+			return (true);
+		}
+		else if (_P(*first_2, *first_1))
+		{
+			return (false);
+		}
+	}
+
+	return (first_1 == last_1 && first_2 != last_2); 
+}
+// --------------------------------------------------------------------------
+}	// namespace da_std
+// --------------------------------------------------------------------------
+#endif	// da_xutility_h
+// --------------------------------------------------------------------------
+/*
+ * Copyright (c) 1995 by P.J. Plauger.  ALL RIGHTS RESERVED. 
+ * Consult your license regarding permissions and restrictions.
+ */
+
+/*
+ * This file is derived from software bearing the following
+ * restrictions:
+ *
+ * Copyright (c) 1994
+ * Hewlett-Packard Company
+ *
+ * Permission to use, copy, modify, distribute and sell this
+ * software and its documentation for any purpose is hereby
+ * granted without fee, provided that the above copyright notice
+ * appear in all copies and that both that copyright notice and
+ * this permission notice appear in supporting documentation.
+ * Hewlett-Packard Company makes no representations about the
+ * suitability of this software for any purpose. It is provided
+ * "as is" without express or implied warranty.
+ */

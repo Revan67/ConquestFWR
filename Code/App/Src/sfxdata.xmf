@@ -1,0 +1,216 @@
+//--------------------------------------------------------------------------//
+//                                                                          //
+//                               sfxdata.xmf                                //
+//                                                                          //
+//                  COPYRIGHT (C) 1998 BY DIGITAL ANVIL, INC.               //
+//                                                                          //
+//--------------------------------------------------------------------------//
+/*
+    $Header: /Conquest/App/Src/sfxdata.xmf 46    10/24/00 2:10p Jasony $
+*/			    
+//--------------------------------------------------------------------------//
+//
+#include <sfxid.h>
+
+#define SFXCHUNK(id, volume, filename)   \
+                long id          \
+                float volume     \
+                char[32] filename \
+				float 0.5
+
+#define SFXCHUNK2(id, volume, filename, cutoff)   \
+                long id          \
+                float volume     \
+                char[32] filename \
+				float cutoff
+
+
+/*
+Members of SFXCHUNK:
+	id:  One of the sample ID's enumerated in sfxid.h
+	volume: value between 0.0 and 1.0. Sample is scaled by the value.
+			1.0 = full volume, 0.5 = 50% volume, 0.0 = silence
+			The effects of this scaling are cumulative with any runtime volumes in effect.
+	filename: Name of the .WAV file within the SFX directory.
+	cutoff:  position in sfx where sound can be cutoff. (0 - 1.0)
+*/
+// Note also that SFXCHUNK entries do not have to be listed in any particular order.
+
+//
+// record size of sfx::id enumeration
+//
+long LAST              
+//
+// Place no data before this line of text.
+//
+//--------------------------------------------------------------------------//
+//-------------------------Start of definition file-------------------------//
+//--------------------------------------------------------------------------//
+
+SFXCHUNK(BUTTONPRESS1, 1.0, "interface1.wav")
+SFXCHUNK(BUTTONPRESS2, 1.0, "interface4.wav")
+SFXCHUNK(CONFIRMATION, 1.0, "confirmation.wav")
+
+SFXCHUNK(inRange, 1.0, "1001.wav")
+SFXCHUNK(startConstruction, 0.8, "1008.wav")
+SFXCHUNK(endConstruction, 0.8, "1010.wav")
+SFXCHUNK(zeroMoney, 0.8, "1013.wav")
+SFXCHUNK(planetDepleted, 0.8, "1015.wav")
+SFXCHUNK(lightindustryButton, 0.8, "1019.wav")
+SFXCHUNK(heavyindustryButton, 0.8, "1020.wav")
+SFXCHUNK(hitechindustryButton, 0.8, "1021.wav")
+SFXCHUNK(hqButton, 0.8, "1023.wav")
+SFXCHUNK(researchButton, 0.8, "1024.wav")
+SFXCHUNK(harvestRedeploy, 0.8, "1025.wav")
+SFXCHUNK(researchCompleted, 0.8, "1026.wav")
+
+SFXCHUNK(JG_ENTER1, 1.0, "wormhole_enter1.wav")
+SFXCHUNK(JG_ENTER2, 1.0, "wormhole_enter2.wav")
+SFXCHUNK(JG_ARRIVE1, 1.0, "wormhole_arrive1.wav")
+SFXCHUNK(JG_ARRIVE2, 1.0, "wormhole_arrive2.wav")
+SFXCHUNK(JG_AMBIENCE, 1.0, "jumpgate_ambience.wav")
+
+SFXCHUNK(T_ARC_CANNON, 1.0, "T_Arc_cannon.wav")
+SFXCHUNK(T_DEFENSEGUN1, 0.4, "T_Defenseturret.wav")
+SFXCHUNK2(T_SHIELDHIT, 0.6, "T_Shieldhit.wav",0.3)
+SFXCHUNK2(T_SHIELDFIZZOUT, 0.6, "T_Shield_off.wav",0.3)
+SFXCHUNK2(T_SHIELDFIZZIN, 0.6, "T_Shield_on.wav",0.3)
+SFXCHUNK(T_LASERTURRET_SML, 0.6, "T_Laserturret_Sml.wav")
+SFXCHUNK(T_CORVETTE_IMPACT, 1.0, "t_corvette_impact.wav")
+SFXCHUNK(T_LASERTURRET_MED, 0.8, "T_Laserturret_Med.wav")
+SFXCHUNK(T_LASERTURRET_LGE, 1.0, "T_Laserturret_Lge.wav")
+SFXCHUNK(T_MISSILE, 0.8, "T_Missile.wav")
+SFXCHUNK2(T_FLYBY1, 1.0, "T_Flyby1.wav",1.0)
+SFXCHUNK2(T_FIGHTERLAUNCH1, 1.0, "t_fighterlaunch1.wav",1.0)
+SFXCHUNK2(T_FIGHTERLAUNCH2, 1.0, "t_fighterlaunch2.wav",1.0)
+SFXCHUNK2(T_FIGHTERLAUNCH3, 1.0, "t_fighterlaunch3.wav",1.0)
+SFXCHUNK2(T_FIGHTERLAUNCH4, 1.0, "t_fighterlaunch4.wav",1.0)
+SFXCHUNK(T_CONSTRUCTION, 0.5, "t_construction.wav")
+SFXCHUNK(T_POWERUP, 1.0, "t_powerup.wav")
+SFXCHUNK2(T_FIGHTERFLYBY1, 1.0, "t_fighterflyby1.wav",1.0)
+SFXCHUNK2(T_FIGHTERFLYBY2, 1.0, "t_fighterflyby2.wav",1.0)
+SFXCHUNK2(T_FIGHTERFLYBY3, 1.0, "t_fighterflyby3.wav",1.0)
+SFXCHUNK2(T_FIGHTERFLYBY4, 1.0, "t_fighterflyby4.wav",1.0)
+SFXCHUNK2(M_FIGHTERLAUNCH1, 1.0, "m_fighterlaunch1.wav",1.0)
+SFXCHUNK2(M_FIGHTERLAUNCH2, 1.0, "m_fighterlaunch2.wav",1.0)
+SFXCHUNK2(M_FIGHTERLAUNCH3, 1.0, "m_fighterlaunch3.wav",1.0)
+SFXCHUNK2(M_FIGHTERLAUNCH4, 1.0, "m_fighterlaunch4.wav",1.0)
+SFXCHUNK2(M_FIGHTERFLYBY1, 1.0, "m_fighterflyby1.wav",1.0)
+SFXCHUNK2(M_FIGHTERFLYBY2, 1.0, "m_fighterflyby2.wav",1.0)
+SFXCHUNK2(M_FIGHTERFLYBY3, 1.0, "m_fighterflyby3.wav",1.0)
+SFXCHUNK2(M_FIGHTERFLYBY4, 1.0, "m_fighterflyby4.wav",1.0)
+SFXCHUNK(T_LSATFIRE, 1.0, "t_lsat_fire.wav")
+SFXCHUNK2(T_FIGHTEREXPLO, 1.0, "t_fighter_explosion.wav",1.0)
+SFXCHUNK(T_LSATDEPLOY, 1.0, "t_lsat_deploy.wav")
+SFXCHUNK(M_PLASMASMALL, 1.0, "M_Bolt_Sml.wav")
+SFXCHUNK(M_PLASMAMED, 1.0, "M_Bolt_Med.wav")
+SFXCHUNK(M_CONSTRUCTION, 0.5, "m_construction.wav")
+SFXCHUNK(T_HARVESTERUNLOAD, 0.5, "t_tanker_unload.wav")
+SFXCHUNK2(T_IMPACTCORVETTE, 0.6, "t_corvette_impact.wav",0.3)
+SFXCHUNK2(T_IMPACTLSAT, 0.6, "t_lsat_impact.wav",0.3)
+SFXCHUNK(T_TROOPRELEASE, 0.5, "t_troopship_release.wav")
+SFXCHUNK2(T_IMPACTMISSILE, 0.6, "t_missile_impact.wav",0.3)
+SFXCHUNK2(T_IMPACTFIGHTER, 0.6, "t_fighter_impact.wav",0.3)
+SFXCHUNK2(T_FIGHTERFIRE1, 1.0, "t_fighter_fire1.wav",1.0)
+SFXCHUNK2(T_FIGHTERFIRE2, 1.0, "t_fighter_fire2.wav",1.0)
+SFXCHUNK2(T_FIGHTERFIRE3, 1.0, "t_fighter_fire3.wav",1.0)
+SFXCHUNK2(T_FIGHTERFIRE4, 1.0, "t_fighter_fire4.wav",1.0)
+SFXCHUNK(T_PROBELAUNCH, 1.0, "t_probe_launch.wav")
+SFXCHUNK(T_FIGHTERKAMIKAZE, 1.0, "t_fighter_kamikaze.wav")
+SFXCHUNK(T_TEMPESTLAUNCH, 1.0, "t_tempest_launch.wav")
+SFXCHUNK2(T_IMPACTDREADNOUGHT, 0.6, "t_dreadnought_impact.wav",0.3)
+SFXCHUNK(T_GRAVWELL, 1.0, "M_gravitywell.wav")
+SFXCHUNK(M_REPELLCLOUD, 1.0, "M_gas.wav")
+SFXCHUNK(M_FIGHTERBLAST, 1.0, "m_fighter_blast.wav")
+SFXCHUNK(T_TRACTORDEBRIS, 0.5, "t_tractor_debris.wav")
+SFXCHUNK(M_PLASMACHARGE, 1.0, "m_plasma_charge.wav")
+SFXCHUNK(S_CONSTRUCTION, 0.5, "S_construction.wav")
+SFXCHUNK(S_BALLENERGY, 1.0, "S_ballenergy.wav")
+SFXCHUNK(S_BEAM_LG, 1.0, "S_beam_lge.wav")
+SFXCHUNK(S_BEAM_MED, 1.0, "S_beam_med.wav")
+SFXCHUNK(S_DESTABILIZER, 1.0, "S_destabilizer.wav")
+SFXCHUNK(S_DISRUPTORDAM, 1.0, "S_disruptordamage.wav")
+SFXCHUNK(S_ECLIPSE, 1.0, "S_eclipse.wav")
+SFXCHUNK(S_FORGERDEPLOY, 1.0, "S_fabricator_deploy.wav")
+SFXCHUNK(S_LAUNCHDESTAB, 1.0, "S_launch_destabilizer.wav")
+SFXCHUNK(S_LAUNCHDISRUP, 1.0, "S_launchdisruptor.wav")
+SFXCHUNK(S_LEGIONAIRE, 1.0, "S_legionnaire.wav")
+SFXCHUNK(S_LEGIONSUCCESS, 1.0, "S_legionnaire_success.wav")
+SFXCHUNK(S_MINELAYER, 1.0, "S_minelayer.wav")
+SFXCHUNK(S_REPULSOR, 1.0, "S_repulsor.wav")
+SFXCHUNK(S_SELLINGUNIT, 1.0, "S_selling_unit.wav")
+SFXCHUNK(S_STRATUM, 1.0, "S_stratum.wav")
+SFXCHUNK(S_SYNTHESIS, 1.0, "S_synthesis.wav")
+SFXCHUNK(S_UNLOAD, 1.0, "S_unload.wav")
+SFXCHUNK(S_BEAM_MED2, 1.0, "S_beam_med2.wav")
+SFXCHUNK(M_SELLINGUNIT, 1.0, "M_selling_unit.wav")
+SFXCHUNK2(M_SHIELDHIT, 0.6, "M_Shieldhit.wav",0.3)
+SFXCHUNK2(S_SHIELDHIT, 0.6, "S_Shieldhit.wav",0.3)
+SFXCHUNK(T_TROOPASSAULT, 1.0, "t_assault_board.wav")
+SFXCHUNK(T_AEGISSHIELD, 0.5, "t_dreadnought_shield.wav")
+SFXCHUNK(T_PROBEFIZZLE, 1.0, "t_probe_fizzle.wav")
+SFXCHUNK(T_IONCHARGE, 1.0, "t_ioncannon.wav")
+SFXCHUNK(S_BEAM_SML, 1.0, "S_beam_sml.wav")
+
+
+
+//NEBULAS & TERRAIN
+SFXCHUNK(NEBULA_ION, 0.5, "nebula_ion_ambience.wav")
+SFXCHUNK(NEBULA_IONSPARK, 0.5, "nebula_spark1.wav")
+SFXCHUNK(NEBULA_PLASMA, 0.5, "nebula_plasma.wav")
+SFXCHUNK(NEBULA_ARGON, 0.5, "nebula_argon.wav")
+SFXCHUNK(NEBULA_HELIOUS, 0.5, "nebula_helious_ambience.wav")
+SFXCHUNK(NEBULA_HYADES, 0.5, "nebula_hyades_ambience.wav")
+SFXCHUNK(ASTEROID_FIELD, 0.5, "asteroid_field.wav")
+SFXCHUNK(NEBULA_CELSIUS, 0.5, "nebula_celsius_ambience.wav")
+SFXCHUNK(NEBULA_CYGNUS, 0.5, "nebula_cygnus_ambience.wav")
+SFXCHUNK(NEBULA_LITHIUM, 0.5, "nebula_lithium_ambience.wav")
+
+
+//EXPLOSIONS and MISC
+SFXCHUNK(EXPT_S_SUB, 0.6, "expt2_sub1.wav")
+SFXCHUNK(EXPT_S_FINAL, 0.6, "expt2_main.wav")
+SFXCHUNK(EXPT_M_SUB, 0.8, "expt2_sub2.wav")
+SFXCHUNK(EXPT_M_FINAL, 0.9, "expt2_cat.wav")
+SFXCHUNK(EXPT_L_SUB, 0.9, "expt1_sub.wav")
+SFXCHUNK(EXPT_L_FINAL, 1.0, "expt1_final.wav")
+SFXCHUNK(EXPM_RIPPLE1, 0.6, "expm1_sub1.wav")
+SFXCHUNK(EXPM_RIPPLE2, 0.6, "expm1_sub2.wav")
+SFXCHUNK(EXPM_RIPPLE3, 0.6, "expm1_sub3.wav")
+SFXCHUNK(EXPM_RIPPLE4, 0.6, "expm1_sub4.wav")
+SFXCHUNK(EXPM_S_SUB, 0.6, "expm1_sub2.wav")
+SFXCHUNK(EXPM_S_FINAL, 0.7, "expm2_middle.wav")
+SFXCHUNK(EXPM_M_SUB, 0.8, "expm1_sub3.wav")
+SFXCHUNK(EXPM_M_FINAL, 0.9, "expm1_scream.wav")
+SFXCHUNK(EXPM_L_SUB, 0.9, "expm1_sub4.wav")
+SFXCHUNK(EXPM_L_FINAL, 1.0, "expm1_cat.wav")
+SFXCHUNK(EXPS_S_SUB, 0.6, "exps1_sub.wav")
+SFXCHUNK(EXPS_S_FINAL, 0.6, "expt1_edgy.wav")
+SFXCHUNK(EXPS_M_SUB, 0.7, "exps1_sub.wav")
+SFXCHUNK(EXPS_M_FINAL, 0.9, "expm1_scream.wav")
+SFXCHUNK(EXPS_L_SUB, 0.9, "expm1_sub1.wav")
+SFXCHUNK(EXPS_L_FINAL, 1.0, "exps1_main.wav")
+SFXCHUNK(EXPLOSION, 1.0, "explosion1.wav")
+SFXCHUNK(EXPLOSION1, 1.0, "explosion1.wav")
+SFXCHUNK(EXPLOSION2, 1.0, "explosion2.wav")
+SFXCHUNK(EXPLOSION3, 1.0, "explosion3.wav")
+SFXCHUNK(EXPLOSION4, 1.0, "explosion4.wav")
+SFXCHUNK(SECEXPLODE1, 0.7, "childexplosion1.wav")
+SFXCHUNK(SECEXPLODE2, 0.7, "childexplosion2.wav")
+SFXCHUNK(SECEXPLODE3, 0.7, "childexplosion3.wav")
+SFXCHUNK(SECEXPLODE4, 0.7, "childexplosion4.wav")
+SFXCHUNK(SMALLEXPLOSION, 0.5, "explosion2.wav")
+
+SFXCHUNK2(TELETYPE, 0.9, "teletype.wav", 1.0)
+SFXCHUNK(SPECIALDENIED, 0.9, "specialDenied.wav")
+SFXCHUNK2(BEACON, 1.0, "Beacon.wav", 1.0)
+
+//
+// mark end of file. Place no data beyond this point.
+//
+END:
+
+
+//--------------------------------------------------------------------------//
+//-----------------------------End sfxdata.xmf------------------------------//
+//--------------------------------------------------------------------------//

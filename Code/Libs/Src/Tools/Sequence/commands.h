@@ -1,0 +1,29 @@
+#ifndef COMMANDS_H
+#define COMMANDS_H
+
+//
+
+typedef enum
+{
+	CT_IDLE,
+	CT_STOP,
+	CT_WALK,
+	CT_RUN,
+	CT_TURN_LEFT,
+	CT_TURN_RIGHT,
+	CT_MOVE_LEFT,
+	CT_MOVE_RIGHT,
+	CT_TOGGLE_SPECIAL,
+	CT_TOGGLE_WEAPON_READY,
+	CT_FIRE_WEAPON,
+	CT_ATTACK,
+	CT_NUM_COMMAND_TYPES
+} CommandType;
+
+//
+
+extern const char * CommandTypeNames[CT_NUM_COMMAND_TYPES];
+
+//
+
+#endif

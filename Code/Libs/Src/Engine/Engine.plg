@@ -1,0 +1,39 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Engine - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSPB226.TMP" with contents
+[
+/nologo /G5 /ML /W3 /Zi /Od /I "..\include" /D "DA_HEAP_ENABLED" /D DA_ERROR_LEVEL=7 /D "_WINDOWS" /D LAZY_UPDATE=1 /D "WIN32" /D "_DEBUG" /D DA_ERROR_LEVEL=8 /Fr"Debug/" /Fp"Debug/Engine.pch" /YX"windows.h" /Fo"Debug/" /Fd"Debug/" /FD /c 
+"C:\Win32\LIBS\DEV\Src\Engine\engine.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPB226.TMP" 
+<h3>Output Window</h3>
+Compiling...
+engine.cpp
+TODO: fix O(n) get_arch_index 
+TODO: make duplicate_archetype work with compounds
+TODO: spec. instance_handler->destroy_instance
+Creating temporary file "C:\WINDOWS\TEMP\RSPB271.TMP" with contents
+[
+MathLib.lib COMHeap.lib DACOM.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Debug/Engine.pdb" /map:"Debug/Engine.map" /debug /machine:I386 /out:"Debug/Engine.dll" /implib:"Debug/Engine.lib" /pdbtype:con 
+.\Debug\engine.obj
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPB271.TMP"
+<h3>Output Window</h3>
+Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/Engine.bsc"  .\Debug\engine.sbr"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+Engine.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,598 @@
+#ifndef DMTECHNODE_H
+#define DMTECHNODE_H
+//--------------------------------------------------------------------------//
+//                                                                          //
+//                               DMTechNode.h                               //
+//                                                                          //
+//                  COPYRIGHT (C) 1999 BY DIGITAL ANVIL, INC.               //
+//                                                                          //
+//--------------------------------------------------------------------------//
+/*
+    $Header: /Conquest/App/DInclude/DMTechNode.h 45    10/20/00 11:34a Jasony $
+*/			    
+//--------------------------------------------------------------------------//
+
+#ifndef _ADB
+#ifndef DBASEDATA_H
+#include "DBaseData.h"
+#endif
+#endif
+
+#define RACEMASK 0x0FFFFFFF
+
+namespace TECHTREE
+{
+//--------------------------------------------------------------------------//
+// NOTE: All enum values in this file are really bitfields!
+// Also remember that ADB cannot solve equations. If you need to combine hex values,
+// do the math yourself.
+//
+//--------------------------------------------------------------------------//
+//--------------------------------------------------------------------------//
+// enum TECHUPGRADE is used by all races, although not all values are used.
+//
+enum TECHUPGRADE
+{
+	NO_TECHUPGRADE		= 0x00000000,
+	ALL_TECHUPGRADE		= 0xFFFFFFFF,
+
+	//terran tech
+	
+	T_RES_XCHARGES		= 0x00000001,
+	T_RES_XSHIELD		= 0x00000002,
+	T_RES_XPROBE		= 0x00000004,
+	T_RES_XCLOAK		= 0x00000008,
+	T_RES_XVAMPIRE		= 0x00000010,	
+	T_RES_MISSLEPACK1	= 0x00000020,
+	T_RES_MISSLEPACK2	= 0x00000040,
+	T_RES_MISSLEPACK3	= 0x00000080,
+	T_RES_TROOPSHIP1	= 0x00000100,
+	T_RES_TROOPSHIP2	= 0x00000200,
+	T_RES_TROOPSHIP3	= 0x00000400,
+
+	// ...
+
+	//mantis tech
+
+	M_RES_XCAMO			= 0x10000001,
+	M_RES_XGRAVWELL		= 0x10000002,
+	M_RES_XRCLOUD		= 0x10000004,
+	M_RES_REPULSOR		= 0x10000010,
+	M_RES_EXPLODYRAM1	= 0x10000020,
+	M_RES_EXPLODYRAM2	= 0x10000040,
+	M_RES_LEECH1		= 0x10000080,
+	M_RES_LEECH2		= 0x10000100,
+
+	//...
+
+	//solarian tech
+
+	S_RES_SYNTHESIS		= 0x20000001,
+	S_RES_MASSDISRUPTOR = 0x20000002,
+	S_RES_AURORACLOAK   = 0x20000004,
+	S_RES_DESTABILIZER  = 0x20000008,
+	S_RES_TRACTOR		= 0x20000010,
+	S_RES_LEGION1		= 0x20000020,
+	S_RES_LEGION2		= 0x20000040,
+	S_RES_LEGION3		= 0x20000080,
+	S_RES_LEGION4		= 0x20000100,
+	S_RES_PROTEUSPACK1	= 0x20000200,
+	S_RES_PROTEUSPACK2	= 0x20000400,
+
+	//...
+
+	//vyrium tech
+
+	//...
+
+	// ships
+
+	T_SHIP__FABRICATOR		= 0x08000000,
+	T_SHIP__SUPPLY			= 0x04000000,
+	T_SHIP__CORVETTE		= 0x02000000,
+	T_SHIP__MISSILECRUISER	= 0x01000000,
+	T_SHIP__BATTLESHIP		= 0x00800000,
+	T_SHIP__DREADNOUGHT		= 0x00400000,
+	T_SHIP__CARRIER			= 0x00200000,
+	T_SHIP__LANCER			= 0x00100000,
+	T_SHIP__INFILTRATOR		= 0x00080000,
+	T_SHIP__HARVEST			= 0x00040000,				
+	T_SHIP__RECONPROBE		= 0x00020000,
+	T_SHIP__TROOPSHIP		= 0x00010000,
+	T_SHIP__FLAGSHIP		= 0x00008000,
+
+
+	M_SHIP_WEAVER			= 0x18000000,		
+	M_SHIP_SPINELAYER		= 0x14000000,		
+	M_SHIP_SIPHON			= 0x12000000,			
+	M_SHIP_ZORAP			= 0x11000000,			
+	M_SHIP_SEEKER			= 0x10800000,			
+	M_SHIP_SCOUTCARRIER		= 0x10400000,	
+	M_SHIP_FRIGATE			= 0x10200000,				
+	M_SHIP_KHAMIR			= 0x10100000,		
+	M_SHIP_HIVECARRIER		= 0x10080000,		
+	M_SHIP_LEECH			= 0x10040000,		
+	M_SHIP_SCARAB			= 0x10020000,				
+	M_SHIP_TIAMAT			= 0x10010000,			
+	M_SHIP_WARLORD			= 0x10008000,			
+
+
+	S_SHIP_FORGER			= 0x28000000,			
+	S_SHIP_STRATUM			= 0x24000000,			
+	S_SHIP_GALIOT			= 0x22000000,			
+	S_SHIP_TAOS				= 0x21000000,				
+	S_SHIP_POLARIS			= 0x20800000,			
+	S_SHIP_AURORA			= 0x20400000,			
+	S_SHIP_LEGIONAIRE		= 0x20200000,		
+	S_SHIP_ORACLE			= 0x20100000,			
+	S_SHIP_ATLAS			= 0x20080000,			
+	S_SHIP_TRIREME			= 0x20040000,			
+	S_SHIP_MONOLITH			= 0x20020000,			
+	S_SHIP_HIGHCOUNSEL		= 0x20010000		
+
+};
+
+//--------------------------------------------------------------------------//
+//
+enum BUILDNODE
+{
+	NO_BUILDNODE		=  0x00000000,
+	ALL_BUILDNODE		=  0xFFFFFFFF,
+
+	//these researches should not be hear but I am out of bits
+	RES_REFINERY_GAS1		= 0x08000000,	
+	RES_REFINERY_GAS2		= 0x04000000,
+	RES_REFINERY_GAS3		= 0x02000000,
+	RES_REFINERY_METAL1		= 0x01000000,
+	RES_REFINERY_METAL2		= 0x00800000,
+	RES_REFINERY_METAL3		= 0x00400000,
+	RES_REFINERY_CREW1		= 0x00200000,
+
+	///////////////////////////////////////////
+	// WARNING this could cause bugs because of masking problems in the tech node. -tom
+	RES_REFINERY_CREW2		= 0x40000000,
+	RES_REFINERY_CREW3		= 0x80000000,//very bad but.....
+	///////////////////////////////////////////
+
+
+	//terran build
+	TDEPEND_LIGHT_IND	  =  0x00000001,
+	TDEPEND_HEAVY_IND	  =  0x00000002,
+	TDEPEND_TECH_IND	  =  0x00000004,
+	TDEPEND_REFINERY	  =  0x00000008,
+	TDEPEND_OUTPOST		  =  0x00000010,
+	TDEPEND_ACADEMY		  =  0x00000020,
+	TDEPEND_ADVHULL		  =  0x00000040,
+	TDEPEND_AWSLAB		  =  0x00000080,
+	TDEPEND_BALLISTICS	  =  0x00000100,
+	TDEPEND_TENDER		  =  0x00000200,
+	TDEPEND_SENSORTOWER	  =  0x00000400,
+	TDEPEND_HANGER		  =  0x00000800,
+	TDEPEND_WEAPONS		  =  0x00001000,
+	TDEPEND_DISPLACEMENT  =  0x00002000,
+	TDEPEND_HEADQUARTERS  =  0x00004000,
+	TDEPEND_PROPLAB		  =  0x00008000,
+	TDEPEND_LASER_TURRET   = 0x00010000,
+	TDEPEND_ION_CANNON	  =  0x00020000,
+	TDEPEND_JUMP_INHIBITOR  =0x00040000,
+	TDEPEND_SPACE_STATION   =0x00080000,
+	TDEPEND_REPAIR		    =0x00100000,
+
+	TCOMBO_ACADEMY_DIS_HEAVY	= 0x00002022,	//TDEPEND_ACADEMY|TDEPEND_DISPLACEMENT|TDEPEND_HEAVY_IND,
+	TCOMBO_HANGER_HEAVY			= 0x00000802,	//TDEPEND_HANGER |TDEPEND_HEAVY_IND,
+	TCOMBO_LIGHT_BALLISTICS		= 0x00000101,	//TDEPEND_BALLISTICS|TDEPEND_LIGHT_IND,
+	TCOMBO_WEAPONS_HEAVY		= 0x00001002,	//TDEPEND_WEAPONS|TDEPEND_HEAVY_IND
+	TCOMBO_PROP_HEAVY			= 0x00008002,	//TDEPEND_PROJECTILE|TDEPEND_HEAVY_IND
+	TCOMBO_ACADEMY_DIS_PROP		= 0x0000a020,   //TDEPEND_ACADEMY|TDEPEND_DISPLACEMENT|TDEPEND_PROPLAB
+	TCOMBO_PROP_AWS				= 0x00008080,	//TDEPEND_PROPLAB|TDEPEND_AWSLAB
+	TCOMBO_LIGHT_SENSOR			= 0x00000401,
+	TCOMBO_BALLISTICS_HEAVY_SENSOR = 0x00000502,
+	TCOMBO_PROP_SENSOR			= 0x00008400,
+	TCOMBO_ADVHULL_DIS			= 0x00002040,
+	TCOMBO_BALLISTICS_HANGER	= 0x00000900,
+	TCOMBO_ACADEMY_LIGHT		= 0x00000021,
+	TCOMBO_SENSOR_JUMP			= 0x00040400,
+	// ...
+
+	//mantis build
+
+	MDEPEND_COCOON		= 0x10000001,
+	MDEPEND_COLLECTOR	= 0x10000002,
+	
+	MDEPEND_PLANTATION	= 0x10000004,
+	MDEPEND_GR_PLANTATION = 0x1000000C,
+
+	MDEPEND_THRIPID		= 0x10000010,
+	MDEPEND_NIAD		= 0x10000030,
+
+	MDEPEND_EYESTOCK	= 0x10000040,
+	MDEPEND_WARLORDTRAIN= 0x10000080,
+	MDEPEND_MUTATECOLON = 0x10000140,
+
+	MDEPEND_CARRIONROOST= 0x10000200,
+
+	MDEPEND_BLASTFURNACE= 0x10000400,
+	MDEPEND_EXPLSVRANGE	= 0x10000C00,
+
+	MDEPEND_BIOFORGE	= 0x10001000,
+	MDEPEND_FUSIONMILL	= 0x10003000,
+	MDEPEND_CARPACEPLANT= 0x10005000,
+	MDEPEND_HYBRIDCENTER= 0x10007000,
+
+	MDEPEND_PLASMA_SPITTER =0x10008000,
+	MDEPEND_DUAL_SPITTER = 0x10018000,
+	MDEPEND_PLASMA_HIVE = 0x10028000,
+
+	MDEPEMD_JUMP_PLAT =   0x10040000,
+
+	MDEPEND_GR_COLLECTOR= 0x10080002,
+
+	MDEPEND_DISECTION	= 0x10100000,
+
+	MCOMBO_CARAPCE_CARRION	= 0x10005200,	//MDEPEND_CARPACEPLANT|MDEPEND_CARRIONROOST
+	MCOMBO_COLLECT_PLANT	= 0x10000006,	//MDEPEND_COLLECTOR|MDEPEND_PLANTATION
+	MCOMBO_CARRION_BIO_DISECT=0x10101200,	//MDEPEND_CARRIONROOST|MDEPEND_BIOFORGE|MDEPEND_DISECTION
+	MCOMBO_COCCON_COL_EYE	= 0x10000043,	//MDEPEND_COCOON|MDEPEND_COLLECTOR|MDEPEND_EYESTOCK
+	MCOMBO_NIAD_CAR_BIO_DIS = 0x10101230,	//MDEPEND_NIAD|MDEPEND_CARRIONROOST|MDEPEND_BIOFORGE|MDEPEND_DISECTION
+	//...
+
+	//solarian build
+
+	SDEPEND_ACROPOLIS	=	0x20000001,
+	SDEPEND_OXIDATOR	=	0x20000002,
+	SDEPEND_PAVILION	=	0x20000004,
+	SDEPEND_SENTINALTOWER = 0x20000008,
+	SDEPEND_BUNKER		=	0x20000010,
+	SDEPEND_SANCTUM		=	0x20000020,
+	SDEPEND_EUTROMIL	=	0x20000040,
+	SDEPEND_GREATERPAVILION=0x20000080,
+	SDEPEND_HELIONVIEL	=	0x20000100,
+	SDEPEND_CITADEL		=	0x20000200,
+	SDEPEND_XENOCHAMBER	=	0x20000400,
+	SDEPEND_ANVIL		=	0x20000800,
+	SDEPEND_MUNITIONSANEX = 0x20001000,
+	SDEPEND_TURBINEDOCK =	0x20002000,
+	SDEPEND_TALOREANMATRIX= 0x20004000,
+	SDEPEND_JUMP_PLAT   =   0x20008000,
+
+	SDEPEND_ESP_COIL    =   0x20010000,
+	SDEPEND_PROTEUS     =   0x20020000,
+	SDEPEND_HYDROFOIL   =   0x20040000,
+	SDEPEND_STARBURST   =   0x20080000,
+	SDEPEND_PORTAL      =   0x20100000,
+
+	SCOMBO_MUNITION_TURB	= 0x20003000,	//SDEPEND_MUNITIONSANEX|SDEPEND_TURBINEDOCK
+	SCOMBO_CITADEL_GPAV		= 0x20000280,	//SDEPEND_CITADEL|SDEPEND_GREATERPAVILION
+	SCOMBO_XENO_MUNITION	= 0x20001400,	//SDEPEND_XENOCHAMBER|SDEPEND_MUNITIONSANEX
+	SCOMBO_OXY_EUTRO		= 0x20000042,	//SDEPEND_OXIDATOR|SDEPEND_EUTROMIL
+	SCOMBO_MUN_TURB_XENO    = 0x20003400,	//SDEPEND_MUNITIONSANEX|SDEPEND_TURBINEDOCK,SDEPEND_XENOCHAMBER
+	SCOMBO_HELL_GRPAV		= 0x20000180,	//SDEPEND_HELIONVIEL|SDEPEND_GREATERPAVILION
+	SCOMBO_OXI_SENT			= 0x2000000a,	//SDEPEND_OXIDATOR |SDEPEND_SENTINALTOWER
+	SCOMBO_GREATPAV_PROT	= 0x20020080,   //SDEPEND_GREATERPAVILION|SDEPEND_PROTEUS
+	SCOMBO_GRPAV_MUAX_TDOCK_XEN = 0x20003480, //SDEPEND_GREATERPAVILION|SDEPEND_MUNITIONSANEX|SDEPEND_TURBINEDOCK|SDEPEND_XENOCHAMBER
+	SCOMBO_GRPAV_PAV_HEVIEL = 0x20000184,   //SDEPEND_GREATERPAVILION|SDEPEND_PAVILION|SDEPEND_HELIONVIEL
+	//...
+
+	//vyrium build
+
+	//...
+};
+
+enum COMMON
+{
+	NO_COMMONUPGRADE	= 0x00000000,
+	ALL_COMMON			= 0x1FFFFFFF,
+
+	RESERVED_FABRICATOR	=  0x20000000,
+	RESERVED_ADMIRAL	=  0x40000000,
+	RESERVED_NEVER		=  0x80000000,
+
+	RES_ENGINE1		= 0x00000001,	
+	RES_ENGINE2		= 0x00000002,
+	RES_ENGINE3		= 0x00000004,
+	RES_ENGINE4		= 0x00000008,
+	RES_ENGINE5		= 0x00000010,
+	
+	RES_SHIELDS1	= 0x00000020,
+	RES_SHIELDS2	= 0x00000040,
+	RES_SHIELDS3	= 0x00000080,
+	RES_SHIELDS4	= 0x00000100,
+	RES_SHIELDS5	= 0x00000200,
+	
+	RES_HULL1		= 0x00000400,
+	RES_HULL2		= 0x00000800,
+	RES_HULL3		= 0x00001000,
+	RES_HULL4		= 0x00002000,
+	RES_HULL5		= 0x00004000,
+
+	RES_SUPPLY1		= 0x00008000,
+	RES_SUPPLY2		= 0x00010000,
+	RES_SUPPLY3		= 0x00020000,
+	RES_SUPPLY4		= 0x00040000,
+	RES_SUPPLY5		= 0x00080000,
+
+	RES_WEAPONS1	= 0x00100000,
+	RES_WEAPONS2	= 0x00200000,
+	RES_WEAPONS3	= 0x00400000,
+	RES_WEAPONS4	= 0x00800000,
+	RES_WEAPONS5	= 0x01000000,
+
+	MDEPEND_HYBRID_EXTRA = 0x02000000,
+
+};
+
+enum COMMON_EXTRA
+{
+	NO_COMMONEXTRAUPGRADE	= 0x00000000,
+	ALL_COMMONEXTRAUPGRADES = 0xFFFFFFFF,
+
+	RES_FLEET1		= 0x00000001,
+	RES_FLEET2		= 0x00000002,
+	RES_FLEET3		= 0x00000004,
+	RES_FLEET4		= 0x00000008,
+	RES_FLEET5		= 0x00000010,
+
+	RES_TANKER1		= 0x00000020,
+	RES_TANKER2		= 0x00000040,
+	RES_TANKER3		= 0x00000080,
+	RES_TANKER4		= 0x00000100,
+	RES_TANKER5		= 0x00000200,
+
+	RES_TENDER1		= 0x00000400,
+	RES_TENDER2		= 0x00000800,
+	RES_TENDER3		= 0x00001000,
+	RES_TENDER4		= 0x00002000,
+	RES_TENDER5		= 0x00004000,
+
+	RES_SENSORS1	= 0x00008000,
+	RES_SENSORS2	= 0x00010000,
+	RES_SENSORS3	= 0x00020000,
+	RES_SENSORS4	= 0x00040000,
+	RES_SENSORS5	= 0x00080000,
+
+	RES_FIGHTER1	= 0x00100000,
+	RES_FIGHTER2	= 0x00200000,
+	RES_FIGHTER3	= 0x00400000,
+	RES_FIGHTER4	= 0x00800000,
+	RES_FIGHTER5	= 0x01000000,
+
+	RES_ADMIRAL1	= 0x02000000,
+	RES_ADMIRAL2	= 0x04000000,
+	RES_ADMIRAL3	= 0x08000000,
+	RES_ADMIRAL4	= 0x10000000,
+	RES_ADMIRAL5	= 0x20000000,
+	RES_ADMIRAL6	= 0x40000000
+};
+
+//The high bits are used to keep shared base values separate in ADB
+// 0x0XXXXXXX = terran or shared
+// 0x1XXXXXXX = mantis
+// 0x2XXXXXXX = solarian
+// 0x4XXXXXXX = vyrium
+enum CQ2_VARS_1
+{
+	NO_CQ2_VARS_1		= 0x00000000,
+	//vyrium ships
+	V_SHIP_SHAPER		= 0x40000001,
+	V_SHIP_ANACONDA		= 0x40000002,
+	V_SHIP_AGGREGATOR	= 0x40000004,
+	V_SHIP_MYSTIC		= 0x40000008,
+	V_SHIP_VIPER		= 0x40000010,
+	V_SHIP_ADDER		= 0x40000020,
+	V_SHIP_NECTROP		= 0x40000040,
+	V_SHIP_ERTRAG		= 0x40000080,
+	V_SHIP_MOK			= 0x40000100,
+	V_SHIP_COBRA		= 0x40000200,
+	V_SHIP_CROTAL		= 0x40000400,
+	V_SHIP_BASILISK		= 0x40000800,
+	V_SHIP_LEVIATHIN	= 0x40001000,
+
+
+	//vyrium platforms
+	VDEPEND_LOCUS			= 0x40002000,
+	VDEPEND_COALESCER		= 0x40004000,
+	VDEPEND_HATCHERY		= 0x40008000,
+	VDEPEND_COCHLEA_DISH	= 0x40010000,
+	VDEPEND_COMPILER		= 0x40020000,
+	VDEPEND_FORMULATOR		= 0x40040000,
+	VDEPEND_GUDGEON			= 0x40080000,
+	VDEPEND_REPOSITORIUM	= 0x40100000,
+	VDEPEND_PERPETUATOR		= 0x40200000,
+	VDEPEND_CLAW_OF_VYRIE	= 0x40400000,
+	VDEPEND_EYE_OF_VYRIE	= 0x40800000,
+	VDEPEND_TEMPLE_OF_VYRIE	= 0x41000000,
+	VDEPEND_HAMMER_OF_VYRIE = 0x42000000,
+	VDEPEND_SINUATOR		= 0x44000000,
+	VDEPEND_SHIELD_OF_VYRIE = 0x48000000,
+
+	VCOMBO_REPOSIT_COMPILER =0x40120000,
+	VCOMBO_CLAW_COMPILER    =0x40420000,
+	VCOMBO_EYE_GUDGEON		=0x40880000,
+	VCOMBO_HATCHERY_COMPILER=0x40028000,
+
+	//terran ships
+	T_SHIP_REPAIR			= 0x00000001,
+	T_SHIP_ESPIONAGE        = 0x00000002,
+	T_SHIP_GENESIS_ART      = 0x00000004,
+	T_SHIP_BLOCKADE_RUN_ART = 0x00000008,
+	T_SHIP_LISTENING_ART    = 0x00000010,
+};
+
+enum CQ2_VARS_2
+{
+	NO_CQ2_VARS_2		= 0x00000000,
+
+	//terran platforms
+	TDEPEND_TEMPHQ				=0x00000001,
+	TDEPEND_INTEL_CENTER		=0x00000002,
+	TDEPEND_NOVA_BOMB			=0x00000004,
+	TDEPEND_RESOURCE_FACTORY	=0x00000008,
+	TDEPEND_INDUSTRIAL_FACILITY =0x00000010,
+	TDEPEND_RESEARCH_LAB		=0x00000020,
+
+	//vyrium research
+	V_RES_INHIBITOR_LIMPETS		=0x40000001,
+	V_RES_DEATH_BLOOM			=0x40000002,
+	V_RES_PARALISIS_BEAM		=0x40000004,
+	V_RES_JUMP_DRIVE			=0x40000008,
+	V_RES_ANTIMATTER_CANNON		=0x40000010,
+	V_RES_CAMOFLAGE				=0x40000020,
+	V_RES_ATTRACTOR_WAVE		=0x40000040,
+
+
+
+};
+
+enum LEVEL_INIT
+{
+	FULL_TREE,
+};
+
+}  // end namespace TECHTREE
+
+
+#define NUM_RACES_TECH   4
+
+//--------------------------------------------------------------------------//
+//
+struct SINGLE_TECHNODE
+{
+	enum M_RACE raceID;
+
+	TECHTREE::TECHUPGRADE	tech;
+	TECHTREE::BUILDNODE		build;
+	TECHTREE::COMMON		common;
+	TECHTREE::COMMON_EXTRA	common_extra;
+	TECHTREE::CQ2_VARS_1	cq2Vars1;
+	TECHTREE::CQ2_VARS_2	cq2Vars2;
+
+#ifndef _ADB
+	SINGLE_TECHNODE (void) {
+		raceID = (M_RACE)0;
+		tech = (TECHTREE::TECHUPGRADE)0;
+		build = (TECHTREE::BUILDNODE)0;
+		common = (TECHTREE::COMMON)0;
+		common_extra = (TECHTREE::COMMON_EXTRA)0;
+		cq2Vars1 = (TECHTREE::CQ2_VARS_1)0;
+		cq2Vars2 = (TECHTREE::CQ2_VARS_2)0;
+	}
+#endif
+};
+
+#define NOCOMP_MASK 0x0FFFFFFF
+
+//--------------------------------------------------------------------------//
+//
+struct TECHNODE
+{
+	struct _races
+	{
+		TECHTREE::TECHUPGRADE	tech;
+		TECHTREE::BUILDNODE		build;
+		TECHTREE::COMMON		common;
+		TECHTREE::COMMON_EXTRA	common_extra;
+		TECHTREE::CQ2_VARS_1	cq2Vars1;
+		TECHTREE::CQ2_VARS_2	cq2Vars2;
+	} race[NUM_RACES_TECH];
+
+#ifndef _ADB
+	TECHNODE (void) { }
+
+	bool HasTech(SINGLE_TECHNODE node)
+	{
+		if(node.raceID == M_NO_RACE)
+			return false;
+		_races * racePtr = &(race[node.raceID-1]);
+		return (((node.tech & racePtr->tech)& NOCOMP_MASK) == (node.tech & NOCOMP_MASK)) && (((node.build & racePtr->build)& NOCOMP_MASK) == (node.build & NOCOMP_MASK)) &&
+			    (((node.cq2Vars1 & racePtr->cq2Vars1)& NOCOMP_MASK) == (node.cq2Vars1 & NOCOMP_MASK)) && (((node.cq2Vars2 & racePtr->cq2Vars2)& NOCOMP_MASK) == (node.cq2Vars2 & NOCOMP_MASK)) &&
+				((node.common & racePtr->common) == node.common) && ((node.common_extra & racePtr->common_extra) == node.common_extra);
+	}
+
+	bool HasTech(U8 raceID,S32 techValue, S32 buildValue,S32 commonValue, S32 commonExtraValue, S32 cq2Var1Value, S32 cq2Var2Value)
+	{
+		if(raceID == M_NO_RACE)
+			return false;
+		_races * racePtr = &(race[raceID-1]);
+		return (((techValue & racePtr->tech)& NOCOMP_MASK) == (techValue& NOCOMP_MASK)) && (((buildValue & racePtr->build)& NOCOMP_MASK) == (buildValue& NOCOMP_MASK)) &&
+			    (((cq2Var1Value & racePtr->cq2Vars1)& NOCOMP_MASK) == (cq2Var1Value& NOCOMP_MASK)) && (((cq2Var2Value & racePtr->cq2Vars2)& NOCOMP_MASK) == (cq2Var2Value& NOCOMP_MASK)) &&
+				((commonValue & racePtr->common) == commonValue) && ((commonExtraValue & racePtr->common_extra) == commonExtraValue);
+	}
+
+	bool HasSomeTech(SINGLE_TECHNODE node)
+	{
+		if(node.raceID == M_NO_RACE)
+			return false;
+		_races * racePtr = &(race[node.raceID-1]);
+		return (node.tech & racePtr->tech & RACEMASK) || (node.build & racePtr->build & RACEMASK) ||
+			     (node.cq2Vars1 & racePtr->cq2Vars1 & RACEMASK) || (node.cq2Vars2 & racePtr->cq2Vars2 & RACEMASK) ||
+				 (node.common & racePtr->common) || (node.common_extra & racePtr->common_extra) ;
+	}
+
+	bool HasSomeTech(U8 raceID,S32 techValue, S32 buildValue,S32 commonValue, S32 commonExtraValue, S32 cq2Var1Value, S32 cq2Var2Value)
+	{
+		if(raceID == M_NO_RACE)
+			return false;
+		_races * racePtr = &(race[raceID-1]);
+		return (techValue & racePtr->tech & RACEMASK) || (buildValue & racePtr->build & RACEMASK) ||
+			    (cq2Var1Value & racePtr->cq2Vars1 & RACEMASK) || (cq2Var2Value & racePtr->cq2Vars2 & RACEMASK) ||
+				(commonValue & racePtr->common) || (commonExtraValue & racePtr->common_extra);
+	}
+
+	void AddToNode(SINGLE_TECHNODE node)
+	{
+		CQASSERT(node.raceID != M_NO_RACE);
+		race[node.raceID-1].tech = (TECHTREE::TECHUPGRADE)(((U32)(race[node.raceID-1].tech)) | ((U32)(node.tech)));
+		race[node.raceID-1].build = (TECHTREE::BUILDNODE)(((U32)(race[node.raceID-1].build)) | ((U32)(node.build)));
+		race[node.raceID-1].common = (TECHTREE::COMMON)(((U32)(race[node.raceID-1].common)) | ((U32)(node.common)));
+		race[node.raceID-1].common_extra = (TECHTREE::COMMON_EXTRA)(((U32)(race[node.raceID-1].common_extra)) | ((U32)(node.common_extra)));
+		race[node.raceID-1].cq2Vars1 = (TECHTREE::CQ2_VARS_1)(((U32)(race[node.raceID-1].cq2Vars1)) | ((U32)(node.cq2Vars1)));
+		race[node.raceID-1].cq2Vars2 = (TECHTREE::CQ2_VARS_2)(((U32)(race[node.raceID-1].cq2Vars2)) | ((U32)(node.cq2Vars2)));
+	}
+
+	void RemoveFromNode(SINGLE_TECHNODE node)
+	{
+		CQASSERT(node.raceID != M_NO_RACE);
+		race[node.raceID-1].tech = (TECHTREE::TECHUPGRADE)(((U32)(race[node.raceID-1].tech)) & (~((U32)(node.tech))));
+		race[node.raceID-1].build = (TECHTREE::BUILDNODE)(((U32)(race[node.raceID-1].build)) & (~((U32)(node.build))));
+		race[node.raceID-1].common = (TECHTREE::COMMON)(((U32)(race[node.raceID-1].common)) & (~((U32)(node.common))));
+		race[node.raceID-1].common_extra = (TECHTREE::COMMON_EXTRA)(((U32)(race[node.raceID-1].common_extra)) & (~((U32)(node.common_extra))));
+		race[node.raceID-1].cq2Vars1 = (TECHTREE::CQ2_VARS_1)(((U32)(race[node.raceID-1].cq2Vars1)) & (~((U32)(node.cq2Vars1))));
+		race[node.raceID-1].cq2Vars2 = (TECHTREE::CQ2_VARS_2)(((U32)(race[node.raceID-1].cq2Vars2)) & (~((U32)(node.cq2Vars2))));
+	}
+
+	void InitLevel(TECHTREE::LEVEL_INIT level)
+	{
+		switch(level)
+		{
+		case(TECHTREE::FULL_TREE):
+			{
+				for(U32 i = 0; i < NUM_RACES_TECH;++i)
+				{
+					race[i].tech = (TECHTREE::TECHUPGRADE)0xFFFFFFFF;
+					race[i].build = (TECHTREE::BUILDNODE)0xFFFFFFFF;
+					race[i].common = (TECHTREE::COMMON)0x0FFFFFFF;
+					race[i].common_extra = (TECHTREE::COMMON_EXTRA)0xFFFFFFFF;
+					race[i].cq2Vars1 = (TECHTREE::CQ2_VARS_1)0xFFFFFFFF;
+					race[i].cq2Vars2 = (TECHTREE::CQ2_VARS_2)0xFFFFFFFF;
+				}
+				break;
+			}
+		}
+	}
+
+	bool IsEqual(TECHNODE node)
+	{
+		for(U32 i = 0; i <NUM_RACES_TECH;++i)
+		{
+			if((race[i].tech != node.race[i].tech) || (race[i].build != node.race[i].build) ||
+				(race[i].cq2Vars1 != node.race[i].cq2Vars1) || (race[i].cq2Vars2 != node.race[i].cq2Vars2) ||
+				(race[i].common != node.race[i].common) || (race[i].common_extra != node.race[i].common_extra))
+				return false;
+		}
+		return true;
+	}
+#endif
+};
+
+
+#endif

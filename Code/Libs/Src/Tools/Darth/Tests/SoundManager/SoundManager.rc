@@ -1,0 +1,160 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_SOUND_MANAGER DIALOG DISCARDABLE  0, 0, 309, 262
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "SoundManager"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "PASSED",IDPASS,66,224,67,24
+    PUSHBUTTON      "FAILED",IDFAIL,178,224,63,23
+    GROUPBOX        "Current Configuration",IDC_STATIC,11,7,287,203
+    EDITTEXT        IDC_FILENAME,58,17,233,12,ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "3D Sound",IDC_IS_3D,"Button",BS_AUTORADIOBUTTON | 
+                    WS_DISABLED,23,90,47,8
+    CONTROL         "Looping Sound",IDC_IS_LOOPING,"Button",
+                    BS_AUTORADIOBUTTON | WS_DISABLED,107,89,70,10
+    LTEXT           "Filename:",IDC_STATIC,18,19,35,10
+    LTEXT           "Number of Instances:",IDC_STATIC,25,46,69,10
+    EDITTEXT        IDC_NUM_INSTANCES1,106,45,70,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    GROUPBOX        "Instance Properties",IDC_STATIC,19,33,161,68
+    GROUPBOX        "SoundManager Properties",IDC_STATIC,183,33,108,172
+    CONTROL         "Use 3D Hardware",IDC_USE_3D_HW,"Button",
+                    BS_AUTORADIOBUTTON | WS_DISABLED,189,46,87,8
+    CONTROL         "Use 2D Hardware",IDC_USE_2D_HW,"Button",
+                    BS_AUTORADIOBUTTON | WS_DISABLED,189,57,85,8
+    CONTROL         "Use EAX",IDC_USE_EAX,"Button",BS_AUTORADIOBUTTON | 
+                    WS_DISABLED,189,68,90,8
+    CONTROL         "Use A3D",IDC_USE_A3D,"Button",BS_AUTORADIOBUTTON | 
+                    WS_DISABLED,189,79,92,8
+    CONTROL         "Use DS3D for SW Buffers",IDC_SW_DS3D,"Button",
+                    BS_AUTORADIOBUTTON | WS_DISABLED,189,90,96,8
+    CONTROL         "Create 2D sounds in SW",IDC_USE_SWONLY_2D,"Button",
+                    BS_AUTORADIOBUTTON | WS_DISABLED,189,101,96,8
+    LTEXT           "Max Channels:",IDC_STATIC,188,115,48,10
+    LTEXT           "Speakers:",IDC_STATIC,188,129,33,9
+    GROUPBOX        "Primary Buffer Format",IDC_STATIC,190,143,96,59
+    EDITTEXT        IDC_MAX_CHANNELS,237,113,50,12,ES_READONLY | ES_NUMBER
+    LTEXT           "Number of Sounds Submitted:",IDC_STATIC,19,180,99,10
+    LTEXT           "Number of Sounds Playing:",IDC_STATIC,19,193,99,10
+    COMBOBOX        IDC_SAMPLE_RATE,194,152,89,32,CBS_DROPDOWN | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL
+    COMBOBOX        IDC_BIT,194,168,89,29,CBS_DROPDOWN | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_STEREO,194,184,89,12,CBS_DROPDOWN | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_NUM_ACTIVE,124,178,47,12,ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_NUM_PLAYING,124,192,47,12,ES_READONLY | ES_NUMBER
+    CONTROL         "Playing Streamer File",IDC_STREAMER,"Button",
+                    BS_AUTORADIOBUTTON | WS_DISABLED,18,167,83,11
+    COMBOBOX        IDC_SPEAKER_CONFIG,224,127,63,52,CBS_DROPDOWN | CBS_SORT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Interrupt Test",IDC_INTERRUPT_TEXT,11,210,287,45
+    EDITTEXT        IDC_LOCATION1,106,59,70,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Location of Instances:",IDC_STATIC,25,61,74,10
+    GROUPBOX        "Device Properties",IDC_STATIC,19,109,160,51
+    LTEXT           "Total HW Buffers:",IDC_STATIC,25,123,66,10
+    EDITTEXT        IDC_NUM_BUFFERS,101,121,24,12,ES_READONLY | ES_NUMBER
+    LTEXT           "Free:",IDC_STATIC,129,123,17,10
+    EDITTEXT        IDC_NUM_FREE_BUFFERS,149,121,24,12,ES_READONLY | 
+                    ES_NUMBER
+    LTEXT           "Total 3D HW Buffers:",IDC_STATIC,25,140,72,10
+    EDITTEXT        IDC_NUM_3DBUFFERS,101,138,24,12,ES_READONLY | ES_NUMBER
+    LTEXT           "Free:",IDC_STATIC,129,140,17,10
+    EDITTEXT        IDC_NUM_FREE_3DBUFFERS,149,138,24,12,ES_READONLY | 
+                    ES_NUMBER
+    EDITTEXT        IDC_NUM_INSTANCES2,23,74,21,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_LOCATION2,46,74,50,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_NUM_INSTANCES3,99,74,21,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_LOCATION3,122,74,54,12,ES_AUTOHSCROLL | ES_READONLY
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_SOUND_MANAGER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 255
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

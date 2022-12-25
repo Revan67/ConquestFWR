@@ -1,0 +1,89 @@
+May 20, 2002
+
+Tooltips for display variables should be use the main window as their parent,
+instead of the document window, to stop them from being clipped unnecessarily
+early when displaying huge values (lists, strings, etc.)
+
+Tracebacks need to be easier to analyze. Ideally the debugger should display
+them like a normal call stack - with local variables still intact - like
+the IDLE debugger does. Second best would be allowing double clicking on the
+trace lines to take you to the line of code, but halting on the crash would
+be ideal. The debugger shouldn't terminate unless the user rqeuests it or
+the program terminates normally.
+
+HAP no longer builds in Open Source mode due to use of stringprintf, and
+possibly other problems.
+
+April 22, 2002
+
+Serious:
+04-22-2002 - Multi-threading bug due to the debug thread calling AddTrace(). 
+Multiple threads referencing vector, and possible threading bug due to window 
+update - should be deferred to main thread.
+
+04-22-2002 - Program output sometimes ends up in the call stack window - 
+possible consequence of multi-threading bug in AddTrace()?
+
+04-22-2002 - Saving the handle returned by _beginthread is subject to race 
+conditions because _beginthread() closes the thread handle, thus it becomes 
+invalid as soon as the thread exits. You should use _beginthreadex() and 
+then close the handle after you have finished waiting on it.  It is used in
+DbgRemote.cpp(1019) and FileFindDlg.cpp(190).
+
+04-22-2002 - When a file is deleted from a project the change doesn't get saved, 
+presumably the 'changed' flag is not being set, and there is no explicit save option.
+
+
+Minor:
+
+04-22-2002 - Need some indicator of the debugger running versus not. The 
+locals/watch/callstack/connection windows should default to being closed in the 
+non-debug configuration, to serve as this indication.
+
+04-22-2002 - m_DbgStartupInfo is never initialized - should be properly initialized 
+and be a local variable.
+
+04-22-2002 - Remote host history doesn't use last entry as default.
+
+04-22-2002 - Search history is erratic, not always updated.
+
+04-22-2002 - The Tools->Options->registry page can have both buttons grayed out
+
+
+Fixed:
+
+04-22-2002 - Problems with popen() and system() are because the sub-processes 
+were also being deferred and as soon as one of them exited, the debugger thought 
+it was finished. This could have been detected in a few ways, such as asserting 
+that CREATE_PROCESS_DEBUG_EVENT and EXCEPTION_BREAKPOINT only happened once 
+per session.
+
+Made SMsgHeader::MsgSize private, added SetMsgSize() and GetMsgSize(), and 
+increased the size of the field - thus increasing the maximum message size from 
+9999 to 999999. The code now asserts on illegal length messages.
+
+Added socket logging code to record outgoing and incoming messages from client 
+and debugger, to aid in diagnosing socket problems. Set g_logSocketTraffic to 
+true to enable this.
+
+Fixed (hacked?) problem with read/write errors, by increasing time-out period. 
+This could use more attention, but it works far more reliably for me now.
+
+Fixed problem with reading packets larger than 8960 bytes - code was incorrectly 
+reporting receive errors due to bugs in the data collating code.
+
+Fixed problem with step over not working after Python exceptions. The single 
+stepping code is now correct, and much simpler!
+
+Fixed occasional silent crash of client when displaying call stack.
+
+Fixed client exception handler to only catch specific C++ exceptions, instead 
+of all exceptions, to stop crashes from being silent.
+
+Debugger now looks for the client in the application directory, instead of the 
+current directory, and gives an error message if it cannot find it.
+
+Made HapDebugger dependent on the HapClient, so that it is always up to date. 
+Please - let this change last this time!
+
+

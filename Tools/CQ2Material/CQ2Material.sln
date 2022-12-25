@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CQ2Material", "CQ2Material.vcproj", "{D046DC28-2C8D-4AA9-8E7A-ED80C4B02CDB}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccProjectName0 = CQ2Material
+		SccLocalPath0 = .
+		SccProvider0 = MSSCCI:NXN\u0020alienbrain
+		CanCheckoutShared = true
+		SolutionUniqueID = {532B3B91-B8C1-4DBE-A563-039595E53D93}
+		SccProjectUniqueName1 = CQ2Material.vcproj
+		SccLocalPath1 = .
+		CanCheckoutShared = true
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Hybrid
+		ConfigName.2 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{D046DC28-2C8D-4AA9-8E7A-ED80C4B02CDB}.Debug.ActiveCfg = Debug|Win32
+		{D046DC28-2C8D-4AA9-8E7A-ED80C4B02CDB}.Debug.Build.0 = Debug|Win32
+		{D046DC28-2C8D-4AA9-8E7A-ED80C4B02CDB}.Hybrid.ActiveCfg = Hybrid|Win32
+		{D046DC28-2C8D-4AA9-8E7A-ED80C4B02CDB}.Hybrid.Build.0 = Hybrid|Win32
+		{D046DC28-2C8D-4AA9-8E7A-ED80C4B02CDB}.Release.ActiveCfg = Release|Win32
+		{D046DC28-2C8D-4AA9-8E7A-ED80C4B02CDB}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

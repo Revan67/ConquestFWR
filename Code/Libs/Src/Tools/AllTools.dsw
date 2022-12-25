@@ -1,0 +1,293 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "CmpndView"=.\ObjView\CmpndView.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/ObjView", KDCAAAAA
+    .\objview
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "FatScale"=.\FatScale\FatScale.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/FatScale", JAXAAAAA
+    .\fatscale
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "HotkeyEditor"=.\HotkeyEditor\HotkeyEditor.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/HotkeyEditor", SECAAAAA
+    .\hotkeyeditor
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Pack"=.\Pack\Pack.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/Pack", JFCAAAAA
+    .\pack
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "ParticleEditor"=.\ParticleEditor\ParticleEditor.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/ParticleEditor", IPCAAAAA
+    .\particleeditor
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "PropEdit"=.\PropEdit\PropEdit.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/PropEdit", OKFAAAAA
+    .\propedit
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "TreeView"=.\TreeView\TreeView.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/TreeView", KFCAAAAA
+    .\treeview
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "UTFApp"=.\ViewUTF\UTFApp.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/ViewUTF", GADAAAAA
+    .\viewutf
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "VfxView"=.\VfxView\VfxView.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/VfxView", HTEAAAAA
+    .\vfxview
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "char"=.\DeformView\char.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/DeformView", YQGAAAAA
+    .\deformview
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "dbgtee"=.\dbgtee\dbgtee.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/dbgtee", SPFAAAAA
+    .\dbgtee
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "mergeanm"=.\MergeAnm\mergeanm.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/mergeanm", XGMAAAAA
+    .\mergeanm
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "phyedit"=.\PhysicsEditor\phyedit.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/PhysicsEditor", IIAAAAAA
+    .\physicseditor
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "stview"=.\stview\stview.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/stview", QAXAAAAA
+    .\stview
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "traceout"=.\traceout\traceout.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/traceout", YLEAAAAA
+    .\traceout
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "txmlib"=.\Exporters\Common\txmlib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/Exporters/Common", QHCAAAAA
+    .\exporters\common
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "utftool"=.\utftool\utftool.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/utftool", ZEDAAAAA
+    .\utftool
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools", IAAAAAAA
+    .
+    end source code control
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

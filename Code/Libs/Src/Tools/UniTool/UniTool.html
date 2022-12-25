@@ -1,0 +1,214 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>UniTool Design Notes</title>
+</head>
+
+<body>
+
+<h1>UniTool Design Notes</h1>
+
+<h2>Overview</h2>
+
+<p>UniTool stands for UNIversal TOOL. It is designed to be a
+framework for creating usable tools with graphical user
+interfaces from reusable components. The major components are:
+the framework program, the components, and the scripting language</p>
+
+<h3>The Framework Program</h3>
+
+<p>The framework program sets up the executable environment, runs
+the main event loop, and generally orchestrates the communication
+between the scripting language and the components. It provides
+the standard scripting library, loads the components and exposes
+them to the scripting language, and maintains the major
+components of the graphic interface.</p>
+
+<p>In theory, once the component interfaces and scripting library
+have been defined, will change very little, while new
+functionality will be provided by new components and new scripts.</p>
+
+<p>The framework program supports a set of functions for
+manipulating common user interface items, such as windows,
+controls, menus, etc. Using a layout manager system similar to
+Java and Tk, the programmer can concentrate on the specifics of
+the tool without worrying too much about laying out the user
+interface.</p>
+
+<h3>The Components</h3>
+
+<p>Complex user interaction requires complex, and sometimes time
+critical, programming. This sort of programming takes significant
+resources, so it would be in our best interest to reuse it, if at
+all possible. The entire concept of the framework is based on the
+fact that we tend to perform the same sorts of operations in
+different tools (displaying and manipulating views of objects,
+selecting objects or faces of objects, displaying and editing
+bitmaps, etc.)</p>
+
+<p>The framework supports, using DACOM, dynamically loading
+objects which adhere to a set of interfaces that allow them to
+publish functionality to a scripting language, and that allow
+them to be manipulated by the framework. Some of these components
+are visual, while others may provide non-visual sets of
+functions.</p>
+
+<h3>The Scripting Language</h3>
+
+<p>With the framework providing the user interface elements and
+the components providing the complex functionality, the last
+thing needed to some way to specify the user interface and to
+attach user interface actions to component calls. This is where
+the scripting language comes into play.</p>
+
+<p>The script language is used first to create the user interface
+and to attach actions to the individual user interface elements.
+Then the framework takes over, feeding the events as they come to
+the handlers specified in the scripting language, which are
+themselves functions in the scripting language. Although code is
+still being written, the code is more simple than C++ (in theory)
+and is running in a protected interpreted environment, which
+means that the edit-debug cycle is shorter.</p>
+
+<h2>The Implementation of the Framework Program</h2>
+
+<h3>Initialization</h3>
+
+<p>The first task of the framework program is to initialize both
+the scripting library and the DACOM system. DACOM will then load
+all of the components specified in the initialization file,
+exposing their published interfaces to the scripting language.
+Once this is done, a default startup script will be run. An
+alternative to having DACOM initialize itself from a .INI file is
+to have the startup script explicitly load each required
+component.</p>
+
+<p>The default startup script will include any other scripting
+files it needs, define functions as needed, and execute any
+desired startup code. When it has completed, the framework will
+run the main loop, dispatching events among the various windows
+to the components or script functions that need to receive them.
+This will continue until a component or script function requests
+the the program exit.</p>
+
+<h3>The Widget System</h3>
+
+<p>The widget system is a simple wrapper for Win32 windows. Most
+visual objects are derived from a basic Widget type (menus are
+the exception). The framework provides a set of commonly needed
+widgets, while more complex widgets are provided by components
+that export a widget interface. The Widgets generate events,
+which are either handled automatically by the widget, or by
+script functions.</p>
+
+<p>Widgets have properties which determine how they appear and
+behave, and they have methods which allow them to be manipulated
+by the framework, the scripting language, and by other widgets.</p>
+
+<p>Behind the scenes, Widgets are Win32 windows. Since by default
+controls send messages to their parent window, if the Widget is
+to handle its own messages, a control Widget will have to create
+a parent window to serve as the parent of the associated Win32
+control. This invisible parent will receive the messages from the
+control, form them into Widget messages, and post them to the
+widget message handler. From there, the framework will dispatch
+the message to the appropriate handler.</p>
+
+<h4>Widget Events</h4>
+
+<p>There are two fundamental approaches to handling events from
+the user interface: direct handling and message passing. The
+direct handling method attaches a handler for an event directly
+to the object which can generate the event. For example, each
+button would have a routine which would be called when it was
+pressed (or a nil routine if nothing should happen). The message
+passing method gives each entity a handling routine for general
+messages, and defines a heirarchy through which the message will
+pass. Messages are passed up the hierarchy until they are handled
+or the top of the tree is reached, at which point the message is
+thrown away.</p>
+
+<p>Windows itself is based on message passing. Message passing
+allows a centralized handler to handle similar messages from
+varied message senders. However, most programs in windows,
+including Microsoft's MFC-based programs, end up mapping these
+messages back onto function calls for individual controls and
+their messages. And since an event handler could be installed as
+the action handler for more than one control, it seems that the
+direct approach is the most simple.</p>
+
+<h3>The Component Interfaces</h3>
+
+<h4>Standard Interfaces</h4>
+
+<p>All components must implement the IDispatch and ITypeLibrary
+interfaces. The IDispatch interface allows methods to be called
+by name, while the ITypeLibrary interface allows the component to
+be queried as to the functions callable via IDispatch and their
+valid parameter lists. The framework uses the ITypeLibrary
+interface to export the dispatch functions to the scripting
+language when the component is loaded.</p>
+
+<h4>Visual Components</h4>
+
+<p>All components which implement Widgets must implement the
+IWidget interface. This interface allows the widget component to
+be controlled like any other widget, to be layed out as needed,
+and to generate messages into the Widget message system.</p>
+
+<p>There are generally two classes of visual components: top
+level and child. Top-level visuals create their own window frame,
+and generally do not support other widgets being attached to them
+as children. Child visuals, on the other hand, can be created
+like any other widget and embedded into a regular TopLevel
+Widget.</p>
+
+<h4>Differences from Other Component Systems</h4>
+
+<p>Although the DACOM system was inspired by MSCOM, and the
+components somewhat resemble the ActiveX/OLE controls from
+Microsoft, they are much more simple and therefore easier to
+understand and use.</p>
+
+<p>For example, since window handles are a limited resource, OLE
+controls can be implemented to not allocate a window and instead
+draw themselves in-place. UniTool visual components are required
+to implement a Widget interface, which requires that they create
+a window.</p>
+
+<p>Another example is that to completely generically define event
+interfaces, OLE controls must implement a series of interfaces
+which allow them to publish the interfaces they are willing to
+talk to. Although DACOM provides these same interfaces, UniTool
+components instead send standard Widget messages.</p>
+
+<h3>The Scripting Language is LUA</h3>
+
+<p>Instead of inventing another scripting language for UniTool, a
+readily available language was chosen. Using a standard language
+means that we need only document the libraries we provide instead
+of the language as well. Standard languages generally have good
+documentation, tutorials for learning the language, and people
+who already know the language. </p>
+
+<p>The languages concidered were: Perl, Tcl, Python, and LUA.
+Perl was eliminated because it is clear that Perl is better
+suited to being extended instead of being embedded into an
+application. Its syntax is also complex and strange, even to its
+most enthusiastic user. Tcl was eliminated because it has strange
+parsing quirks and is too heavily string based. Python was
+concidered, but was eventually abandoned, primarily because by
+default it delimits code blocks via indentation. The winner was
+LUA.</p>
+
+<p>LUA is compact, simple to learn, untyped, extendable, and
+efficient. It is designed to be embedded into an application, and
+has facilities for allowing opaque objects from the host to be
+passed around by the scripting language.</p>
+
+<p>&nbsp;</p>
+</body>
+</html>

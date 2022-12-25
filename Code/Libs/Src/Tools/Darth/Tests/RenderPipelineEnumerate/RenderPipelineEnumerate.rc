@@ -1,0 +1,143 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DEVICE_DIALOG DIALOG DISCARDABLE  0, 0, 226, 82
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "RenderPipeline Devices"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Use Default",IDOK,169,7,50,14
+    PUSHBUTTON      "Use Selected",IDCANCEL,169,24,50,14
+    COMBOBOX        IDC_TYPE,7,7,154,81,CBS_DROPDOWNLIST | WS_DISABLED | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_NAME,7,24,154,129,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    EDITTEXT        IDC_ID,7,59,154,14,ES_AUTOHSCROLL | ES_READONLY | 
+                    WS_DISABLED
+    COMBOBOX        IDC_D3DTYPE,7,42,154,67,CBS_DROPDOWNLIST | WS_DISABLED | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DEVICE_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 219
+        VERTGUIDE, 161
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 75
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_DEVICE_DIALOG DLGINIT
+BEGIN
+    IDC_TYPE, 0x403, 9, 0
+0x6944, 0x6572, 0x7463, 0x4433, "\000" 
+    IDC_TYPE, 0x403, 7, 0
+0x704f, 0x6e65, 0x4c47, "\000" 
+    IDC_TYPE, 0x403, 7, 0
+0x6152, 0x7473, 0x7265, "\000" 
+    IDC_NAME, 0x403, 28, 0
+0x564e, 0x4449, 0x4149, 0x5420, 0x544e, 0x2032, 0x6944, 0x6572, 0x7463, 
+0x4433, 0x4420, 0x7665, 0x6369, 0x0065, 
+    IDC_D3DTYPE, 0x403, 47, 0
+0x694d, 0x7263, 0x736f, 0x666f, 0x2074, 0x6148, 0x6472, 0x6177, 0x6572, 
+0x4120, 0x6363, 0x6c65, 0x7265, 0x7461, 0x6f69, 0x206e, 0x6976, 0x2061, 
+0x6556, 0x646e, 0x726f, 0x4820, 0x4c41, "\000" 
+    IDC_D3DTYPE, 0x403, 31, 0
+0x694d, 0x7263, 0x736f, 0x666f, 0x2074, 0x6552, 0x6566, 0x6572, 0x636e, 
+0x2065, 0x6152, 0x7473, 0x7265, 0x7a69, 0x7265, "\000" 
+    IDC_D3DTYPE, 0x403, 34, 0
+0x694d, 0x7263, 0x736f, 0x666f, 0x2074, 0x4752, 0x2042, 0x6f53, 0x7466, 
+0x6177, 0x6572, 0x5220, 0x7361, 0x6574, 0x6972, 0x657a, 0x0072, 
+    IDC_D3DTYPE, 0x403, 43, 0
+0x694d, 0x7263, 0x736f, 0x666f, 0x2074, 0x4d4d, 0x2058, 0x6e45, 0x6168, 
+0x636e, 0x6465, 0x5320, 0x666f, 0x7774, 0x7261, 0x2065, 0x6152, 0x7473, 
+0x7265, 0x7a69, 0x7265, "\000" 
+    IDC_D3DTYPE, 0x403, 26, 0
+0x694d, 0x7263, 0x736f, 0x666f, 0x2074, 0x754e, 0x6c6c, 0x5220, 0x7361, 
+0x6574, 0x6972, 0x657a, 0x0072, 
+    0
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

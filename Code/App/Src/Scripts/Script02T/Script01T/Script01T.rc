@@ -1,0 +1,241 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "digital anvil\0"
+            VALUE "FileDescription", "SCRIPT01T\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "SCRIPT01T\0"
+            VALUE "LegalCopyright", "Copyright © 1999\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "SCRIPT01T.dll\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "digital anvil SCRIPT01T\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PARSER
+//
+
+IDR_PARSER_1            PARSER  DISCARDABLE     "DataDef.i"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM1_OBJECTIVES      "Objectives:\n \n1. Link up with Captain Blackwell in Tau Ceti.\n2. Scout Tau Ceti.\n3. Captain Blackwell must survive."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM1_TELETYPE_SUCCESS 
+                            "SUCCESSFUL MISSION. STAND DOWN PENDING FURTHER ORDERS."
+    IDS_TM1_TELETYPE_FAILURE 
+                            "MISSION FAILURE. STAND DOWN PENDING FURTHER ORDERS."
+    IDS_TM1_TELETYPE_LOCATION 
+                            "3rd Naval Squadron, 2nd Fleet, Tau Ceti Sector,  0830 Hours GMT."
+    IDS_TM1_NAME            "UNCHARTED TERRITORY."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM1_DESCRIPTION     "A Terran research vessel and Admrial have gone missing in uncharted space. Your orders are to investigate"
+    IDS_TM1_OBJECTIVE2      "Link up with Captain Blackwell in Tau Ceti."
+    IDS_TM1_OBJECTIVE3      "Scout Tau Ceti."
+    IDS_TM1_OBJECTIVE4      "Destroy alien vessels attacking TNS Austin."
+    IDS_TM1_OBJECTIVE5      "Blackwell must survive."
+    IDS_TM1_OBJECTIVE6      "Secure the Tau Ceti system."
+    IDS_TM1_OBJECTIVE7      "Use Harvesters to collect metal from asteroids and debris, and gas from nebulas."
+    IDS_TM1_OBJECTIVE9      "Retrieve the Andromeda's Beacon and return it to HQ."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM1_INCOMING        "INCOMING TERRAN COMMAND UPLINK.  ALPHA PRIORITY.  YOUR EYES ONLY."
+    IDS_TM1_OBJECTIVE2_1    "Select Blackwell's ship."
+    IDS_TM1_OBJECTIVE2_2    "Issue a movement order to Captain Blackwell."
+    IDS_TM1_OBJECTIVE2_3    "Select all corvettes."
+    IDS_TM1_OBJECTIVE2_4    "Position fabricator in orbit around Tau Ceti Prime."
+    IDS_TM1_OBJECTIVE2_5    "Build a Headquarters."
+    IDS_TM1_OBJECTIVE2_6    "Build a Refinery."
+    IDS_TM1_OBJECTIVE2_7    "Build a Marine Training Facility."
+    IDS_TM1_OBJECTIVE2_8    "Build a Harvester."
+    IDS_TM1_OBJECTIVE2_9    "Build a Light Shipyard."
+    IDS_TM1_OBJECTIVE2_10   "Build six additional corvettes."
+    IDS_TM1_OBJECTIVE2_11   "Fend off the alien attack."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM1_OBJECTIVE2_12   "Navigate the wormhole into enemy space."
+    IDS_TM1_OBJECTIVE2_13   "Harvest the beacon."
+    IDS_TM1_OBJECTIVE2_14   "Escort Harvester carrying beacon back to HQ."
+    IDS_TM1_MANTIS_PLAYER_NAME "Alien Race"
+    IDS_TM1_OBJECTIVE10     "Clear Tau Ceti of Alien vessels."
+    IDS_TM1_FAIL_BLACKWELL_LOST "Captain Blackwell has perished."
+    IDS_TM1_SUB_M01BL03     "Blackwell: Tau Ceti. Ok, let's make sure this virtual command interface is working, on your holo display select my ship commander."
+    IDS_TM1_SUB_M01BL05     "Blackwell: Well, good, the Commander can work a mouse!  That big box of stats is your context window, it'll tell you how I'm doing and it'll do the same for most anything else you select. Now let's move-- right click on the screen to send my ship somewhere."
+    IDS_TM1_SUB_M01BL06     "Blackwell: All right here come our reinforcements. Looks like the basic command uplink system is fully operational. Let's make sure it's working for your entire command. Select all three ships by holding down the left button and dragging a box around them."
+    IDS_TM1_SUB_M01BL07     "Blackwell: We're in business! Now that we have run the diagnostics, let's get back to the mission. The Intel data I have says the wormhole is somewhere near the bottom of this system.  Let's start scouting. One tip, you can either issue move orders by right clicking on the main holo-display, or by clicking in the system view that's on your control interface. As we scout our sensors will pick up any signs of activity."
+    IDS_TM1_SUB_M01BL08     "Blackwell: Hello! Commander! Goin' home already? We're supposed to scout this new system!"
+    IDS_TM1_SUB_M01BL99     "Blackwell: Ah it's an alert, when an alert comes up you can hit the space bar and it will take you right to the action."
+    IDS_TM1_SUB_M01BL10     "Blackwell: Good enough for me, Commander. Target those bogeys!"
+    IDS_TM1_SUB_M01BL11     "Blackwell: Commander, what are you waiting for?  Select the ships you want to attack with, move your cursor over the alien vessels and right-click!  Didn't they show you how to use the holo-tank in the Academy?"
+    IDS_TM1_SUB_M01BL13     "Blackwell: Commander, I received a coded transmission from the Austin just before they went up.  Let's get Admiral Halsey on the horn! "
+    IDS_TM1_SUB_M01HA14     "Halsey: Commander, the situation is worse than we feared. It appears that the Andromeda must have made contact with an alien race and-- engaged them somehow. We must assume they are hostile, and now they know about this wormhole. That's our own backdoor, so I want it locked. We're sending a fabricator into your system immediately. You are to build a forward base on Tau Ceti Prime, and secure this system. We cannot allow hostile alien forces to explore our jump points at will."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM1_SUB_M01BL15     "Blackwell: Let's get us a forward base, commander--   Fly that Fabricator towards Tau Ceti Prime, the large planet near the top left of the system."
+    IDS_TM1_SUB_M01BL16     "Blackwell: Hey! Greenhorn! You even know where that wormhole goes? Get back here."
+    IDS_TM1_SUB_M01BL17     "Blackwell: Ok, we need a Headquarters.. When you click on a fabricator, take notice of the four information tabs in the fabricators context window: the tabs represent, build, research, and defense platforms as well as unit upgrade status. Select the build tab, followed by the Headquarters icon, and left-click on any empty slot around Tau Ceti Prime."
+    IDS_TM1_SUB_M01BL17A    "Blackwell: While we are waiting for the HQ to build, let's explore the rest of this system. Select one of our ships and send it around the map to scout out the area. Here is a tip: you can set multiple way points by holding the shift key down and clicking around the entire system."
+    IDS_TM1_SUB_M01BL18     "Blackwell: A brand new Terran HQ, just like home, if YOUR home could command a whole fleet, build ships, and head up an inter-galactic supply line that is."
+    IDS_TM1_SUB_M01BL19     "Blackwell: Okay, Commander! I notice your HQ is sitting on a virgin planet! Use your fabricator to build a refinery and lets start depleting some natural resources!"
+    IDS_TM1_SUB_M01BL20     "Blackwell: The refinery can process both Ore and Gas from the planet.  You'll need that and Crew to get a sizeable force going: everything requires Ore, most require Crew, and more advanced units also need Gas.  All planets have resources-- hit 'em all. You can cursor over a planet on your holo display to get a read-out of its' available resources."
+    IDS_TM1_SUB_M01BL20A    "Blackwell: Great, we are now gathering ore and gas, the last major resource is crew, you need a Marine Training facility to harvest crew from earth  type planets. Having crew available is crucial to all military operations."
+    IDS_TM1_SUB_M01BL21     "Blackwell: Remember that you can upgrade your Refineries' capabilities of collecting Ore and Gas, by clicking on the upgrade ore or gas icons.\nOk, ready for a Harvester! Select your refinery, and tell it to construct a Harvester."
+    IDS_TM1_SUB_M01BL22     "Blackwell: Harvesters can salvage all sorts of things: debris from battles, ore from the asteroid fields, and Gas from nebulas.  We can't do without 'em."
+    IDS_TM1_SUB_M01BL23     "Blackwell: Something tells me we will need plenty of ore to finish this mission. Send the Harvester to a nearby asteroid field and start mining ore."
+    IDS_TM1_SUB_M01BL24     "Blackwell: We need to start building a fleet for our protection. Use your fabricator to build a Light Shipyard and let's get started laying down the keels of a battle squadron."
+    IDS_TM1_SUB_M01BL25     "Blackwell: Uh, while you're at it, you might want to build some extra harvesters. Waging war takes serious resources; collect both ore from the asteroid fields and gas from the nebulas."
+    IDS_TM1_SUB_M01BL26     "Blackwell: All right, don't just admire it, use it-- S-O-P is at least six corvettes. Build 'em!"
+    IDS_TM1_SUB_M01BL27     "Blackwell: Well, look at Mister efficiency! You've hit your command point limit.  Which means you can't build any more units until you either build another HQ or a Sensor Tower. If I were you, I'd build that Tower-- you might need the early warning system. And you'll love this: the Sensor Tower can upgrade ship's sensors. Build it. Build several: even the Towers have sight limits."
+    IDS_TM1_SUB_M01BL28     "Blackwell: Commander! Look alive, we're under full-scale attack! I want to see ships closing to attack, and keep building we need to get our base up and running as soon as possible."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM1_SUB_M01BL29     "Blackwell: Oh, swell, they're smarter than they look, they're going after our resources.  Protect that harvester or we're shut down!"
+    IDS_TM1_SUB_M01BL29B    "Blackwell: The natives are definitely restless. You may want to build another fabricator at your HQ and construct some LSAT laser turret defense satellites around your base. We should never be that exposed again."
+    IDS_TM1_SUB_M01HA30     "Halsey: Well, Commander! So you survived both a hostile alien attack AND your first encounter with Captain Blackwell. I'm not sure which is worse-- Nice job. Too bad it's not over. Intel's analysis of the Austin's downloaded transmission indicates that the Andromeda's beacon is a few short LMs on the other side of the wormhole. Escort a Harvester through, find that emergency beacon, and harvest it just like any other debris. And be sure and protect that Harvester. I'm not about to lose what may be the last words of Admiral Hawkes. Halsey out. "
+    IDS_TM1_SUB_M01BL31     "Blackwell: Okay, we're headed out, so make sure your ships are stocked up on supplies and ammo. If the blue bar above a selected ship is getting low, get it near an HQ for re-supply-- anywhere within the HQ's supply ring and it will be re-supplied automatically. Supply and repair platforms can also supply your units. "
+    IDS_TM1_SUB_M01BL32     "Blackwell: Commander, time to navigate the wormhole. We'll need at least six Corvettes and the Harvester. Just select the fleet and click on the wormhole."
+    IDS_TM1_SUB_M01BL33     "Blackwell: Since we're about ready to enter another system, I should probably brief you on commanding units across multiple systems: The smaller circular scanner on your command bar is your local Sector Map.  Currently, it is just displaying Tau Ceti.  As you navigate and chart new systems, they'll appear on your sector map too.  To change the focus of your command between systems, simply click on the system you want to look at, and your view will switch to that system. "
+    IDS_TM1_SUB_M01BL34     "Blackwell: Hah! We're through. Hurry, we don't know this system! Look for the flashing dot on your system interface, that'll be the beacon. Don't just send the whole force, you have no idea what you might run into, send some corvettes to scout around."
+    IDS_TM1_SUB_M01BL35     "Blackwell: As our ships fly across uncharted space your tactical holo-display should be filling in the information on the new territory."
+    IDS_TM1_SUB_M01BL35A    "Blackwell: Gotta love I.F.F. codes.  That's the Andromeda's beacon.  Let's recover it and go home. Select a Harvester and right click on the beacon."
+    IDS_TM1_SUB_M01BL36     "Blackwell: Great now we need to escort our harvester back to HQ for analysis. You can give your corvettes an Escort command by selecting them, clicking on Escort, then left clicking on the Harvester."
+    IDS_TM1_SUB_M01BL82     "Blackwell: Great, now let's bring that beacon back to the HQ in Tau Ceti, and call it a day."
+    IDS_TM1_SUB_M01BL39     "Blackwell: Let's get the hell out of here.  I think we've overstayed our welcome!"
+    IDS_TM1_SUB_M01BL41     "Blackwell: Like my old academy instructor used to say, ""A job worth doing, is worth doing right.""  Destroy all enemy ships in Tau Ceti and our mission will be complete. "
+    IDS_TM1_SUB_M01HA42     "Halsey: Good work commander. Stand your ships down and take a well-earned rest. "
+    IDS_TM1_SUB_M01BL43     "Blackwell: Ship's breaking up... been good fightin' with ya... [STATIC]"
+    IDS_TM1_SUB_M01HA44     "Halsey: I have no confidence in your abilities to hold a crucial system if you can't even keep your officers alive.  You are to stand down.  Admiral Smirnoff will take over your command. "
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM1_SUB_M01HA45     "Halsey: Commander, I can't afford to lose this system to a hostile alien race of unknown intent. You are to stand down immediately and relinquish command to Captain Blackwell so he can rebuild."
+    IDS_TM1_SUB_M01AU09     "TNS Austin: Mayday, mayday ! This is the TNS Austin calling all Terran vessels. We are under attack and badly damaged. Repeat, we under attack by unidentified alien craft."
+    IDS_TM1_SUB_M01AU12     "TNS Austin: Reactor's critical... I'm transmitting recon's data to all nearby receivers, someone out there better get this... we've done all we can do! Arrggggh!"
+    IDS_TM1_SUB_M01HV38     "Harvetser: Beacon recovered. "
+    IDS_TM1_SUB_M01HV40     "Harvester: Secure uplink active.  Transmitting now..."
+    IDS_TM1_SUB_PROLOG01    "Radio: \nYou're listening to TNR, Terran Naval Radio, with news and entertainment from around the galaxy. Brought to you by Implant Heaven.  \n \nEyes! Arms! Pecs to die for! At Implant Heaven, a new you is soooo cheap we must be CRAZY! \n \nT-N-R! KEEPIN ' YOU CLOSE TO HOME! \n \nThis is Jill Davis with your TNR News brief. Terran Forces wants to remind us all once again to retain complete silence regarding military affairs. All officers caught talking to non-military press will be severely reprimanded. ""Loose lips,"" gentlemen!"
+    IDS_TM1_SUB_M01HA01     "Halsey: \nCommander, this is Admiral Halsey. One hundred and thirty hours ago, the TNS Andromeda, commanded by Rear Admiral Hawkes, went through the Tau Ceti wormhole."
+    IDS_TM1_SUB_M01HA01A    "Halsey:\nWe lost contact with her at T plus two hours.\nWe immediately dispatched the TNS Austin, to LOOK for the Andromeda. "
+    IDS_TM1_SUB_M01HA01B    "Halsey:\nAbout eight hours later we lost contact with the Austin too."
+    IDS_TM1_SUB_M01HA01C    "Halsey:\nSince your outfit is the closest; I need you to lead a recon squadron, in force, to locate her. I know you're still fresh, so I'm assigning Captain Tom Blackwell to your group.  He served with me in the Succession Wars, and is the most experienced field officer I have.  I suggest you listen to his advice. Be prepared for anything. Halsey out."
+    IDS_TM1_SUB_M01BL02     "Blackwell: \nCommander? I'm locking jump coordinates with your squadron. When we arrive in Tau Ceti, I'll uplink again. "
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

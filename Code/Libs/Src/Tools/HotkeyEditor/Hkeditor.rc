@@ -1,0 +1,194 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG1 DIALOG DISCARDABLE  0, 0, 211, 115
+STYLE WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | 
+    WS_THICKFRAME
+CAPTION "Hotkey Editor"
+MENU IDR_MENU1
+FONT 12, "MS Sans Serif"
+BEGIN
+    CONTROL         "Generic1",IDC_LISTVIEW,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | WS_DISABLED | WS_BORDER | WS_TABSTOP,5,8,
+                    123,57
+END
+
+IDD_HOTKEY DIALOG DISCARDABLE  0, 0, 223, 121
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Edit HotKey"
+FONT 10, "MS Sans Serif"
+BEGIN
+    RTEXT           "&Symbol:",IDC_STATIC,3,4,29,8
+    COMBOBOX        IDC_SYMBOLNAME,34,3,104,55,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | CBS_SORT | CBS_DISABLENOSCROLL | 
+                    WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Record",IDC_RECORD,144,17,28,14
+    RTEXT           "&Keys:",IDC_STATIC,3,19,28,8
+    LTEXT           "",IDC_HOTKEYTEXT,34,18,104,11,SS_SUNKEN | WS_BORDER
+    RTEXT           "&Action:",IDC_STATIC,3,49,28,8
+    EDITTEXT        IDC_ACTION,34,48,104,41,ES_MULTILINE | WS_VSCROLL
+    CHECKBOX        "Key &Ordering",IDC_SEQUENCE,151,45,49,10
+    GROUPBOX        "&Trigger Event",IDC_STATIC,151,56,51,30
+    CONTROL         "Press",IDC_PRESS_EVENT,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,154,64,29,10
+    CONTROL         "Release",IDC_RELEASE_EVENT,"Button",BS_AUTORADIOBUTTON,
+                    154,74,37,10
+    GROUPBOX        "O&verrides",IDC_STATIC,3,91,217,25
+    CONTROL         "None",IDC_NOTHING,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,6,101,28,10
+    CONTROL         "Alpha keys",IDC_ANY_ALPHA,"Button",BS_AUTORADIOBUTTON,
+                    34,101,45,10
+    CONTROL         "Number keys",IDC_ANY_NUMBER,"Button",BS_AUTORADIOBUTTON,
+                    79,101,51,10
+    CONTROL         "Other keys",IDC_OTHER_KEYS,"Button",BS_AUTORADIOBUTTON,
+                    130,101,43,10
+    CONTROL         "Single keys",IDC_SINGLE_KEY,"Button",BS_AUTORADIOBUTTON,
+                    173,101,46,10
+    PUSHBUTTON      "OK",IDOK,183,4,32,16
+    PUSHBUTTON      "Cancel",IDCANCEL,183,24,32,16
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New...",                     IDM_NEW
+        MENUITEM "&Open...",                    IDM_OPEN
+        MENUITEM "&Close",                      IDM_CLOSE, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "&Save",                       IDM_SAVE, GRAYED
+        MENUITEM "Save &As...",                 IDM_SAVEAS, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       IDM_EXIT
+    END
+    POPUP "&Edit", GRAYED
+    BEGIN
+        MENUITEM "&Undo\tCtrl-Z",               IDM_UNDO, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "&Modify",                     IDM_MODIFY
+        MENUITEM "&Insert",                     IDM_INSERT
+        MENUITEM "&Delete",                     IDM_DELETE
+    END
+    POPUP "&Preferences"
+    BEGIN
+        MENUITEM "&On Top",                     IDM_ALWAYS_ON_TOP
+        MENUITEM "Generate &Text (*.txt) File", IDM_WRITE_TEXT
+        MENUITEM "Generate C &Header File",     IDM_WRITE_HEADER
+    END
+    MENUITEM "&Test",                       IDM_TEST, GRAYED
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON    DISCARDABLE     "icon1.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCELERATOR1 ACCELERATORS DISCARDABLE 
+BEGIN
+    "Z",            IDM_UNDO,               VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_APP_NAME            "Hotkey Editor"
+    IDS_IDNAME              "Hotkey Name"
+    IDS_KEYCOMBO            "Key Combination"
+    IDS_DESCRIPTION         "Description"
+    IDS_FILTERSTRING        "HotKey Files (*.utf)|*.utf|"
+    IDS_BAD_REGISTRY_VALUE  "Bad registry value detected."
+    IDS_QUERY_SAVE_FILE     "Do you want to save %s?"
+    IDS_UNTITLED            "Untitled"
+    IDS_STRING10            "Hotkey table is full. Max == %d"
+    IDS_STRING11            "Operation can not be completed while editing."
+    IDS_TEST_NAME           "Hotkey Test"
+    IDS_STRING13            "Unable to start event system."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

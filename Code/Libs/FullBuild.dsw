@@ -1,0 +1,1068 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "Anim"=.\Src\Anim\Anim.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/Anim", VHFAAAAA
+    .\src\anim
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "COMHeap"=.\Src\COMHeap\COMHeap.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/COMHeap", EDAAAAAA
+    .\src\comheap
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Channel"=.\Src\Channel\Channel.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/EngComps/Channel", RAFAAAAA
+    .\src\channel
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "CmpndView"=.\SRC\TOOLS\ObjView\CmpndView.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Tools/ObjView", BLGAAAAA
+    .\src\tools\objview
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Collision"=.\Src\EngComps\Collision\Collision.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Dev/Src/EngComps/Collision", WAHAAAAA
+    .\src\engcomps\collision
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "D3DRenderPipe"=.\Src\RenderPipeline\D3DRenderPipe.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/RenderPipeline", URVAAAAA
+    .\src\renderpipeline
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "DACOM"=.\Src\DACOM\DACOM.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Dev/Src/DACOM", ZAAAAAAA
+    .\src\dacom
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "DOSFile"=.\Src\DOSFile\DOSFile.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/DOSFile", GBCAAAAA
+    .\src\dosfile
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "DataViewer"=.\Src\Viewer\DocuView\DataViewer.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/DataViewer", UVCAAAAA
+    .\src\viewer\docuview
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Engine"=.\Src\Engine\Engine.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/Engine", DGDAAAAA
+    .\src\engine
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "EngineCameras"=.\Src\EngComps\EngineCameras\EngineCameras.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/EngComps/EngineCameras", PCGAAAAA
+    .\src\engcomps\enginecameras
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "EngineLights"=.\Src\EngComps\EngineLights\EngineLights.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/EngComps/EngineLights", PCGAAAAA
+    .\src\engcomps\enginelights
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "FullBuild"=.\FullBuild\FullBuild.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    FullBuild
+    .\fullbuild
+    end source code control
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name Anim
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name asciiexp
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Channel
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name DACOM
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name DOSFile
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Engine
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name EngineCameras
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name EngineLights
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name HardPoint
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name HexView
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name K62Math
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Optics
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name PolyMesh
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name RenderBatcher
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name RenderMgr
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name streamer
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name System
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name TextureLibrary
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name VertexBufferManager
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name VfxView
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name D3DRenderPipe
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name dsstreamer
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name LightManager
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name LuaProfile
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name NURBMesh
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "HardPoint"=.\Src\EngComps\Hardpoint\HardPoint.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/EngComps/Hardpoint", QDIAAAAA
+    .\src\engcomps\hardpoint
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "HexView"=.\Src\Viewer\HexView\HexView.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/Viewer/HexView", VDEAAAAA
+    .\src\viewer\hexview
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Hotkey"=.\Src\DAHotkey\Hotkey.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/Hotkey", JDAAAAAA
+    .\src\dahotkey
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "HotkeyEditor"=.\SRC\Tools\HotkeyEditor\HotkeyEditor.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Tools/HotkeyEditor", CICAAAAA
+    .\src\tools\hotkeyeditor
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "K62Math"=.\Src\x86Math\k62math.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Dev/Src/x86Math", IBAAAAAA
+    .\src\x86math
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "LightManager"=.\Src\Shading\LightManager\LightManager.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/RenderPipeline", URVAAAAA
+    .\src\shading\lightmanager
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "LuaProfile"=.\Src\LuaProfile\LuaProfile.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Dev/Src/LuaProfile", OQEAAAAA
+    .\src\luaprofile
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Materials"=.\SRC\Shading\Materials\Materials.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/RenderPipeline", URVAAAAA
+    .\src\shading\materials
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "MathLib"=.\Src\x86Math\MathLib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/x86math/MathLib", BKSAAAAA
+    .\src\x86math
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "NURBMesh"=.\Src\RendComp\NURBMesh\NURBMesh.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/RendComp/NURBMesh", VCGAAAAA
+    .\src\rendcomp\nurbmesh
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Optics"=.\Src\RendComp\Optics\Optics.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/RendComp/Optics", OKLAAAAA
+    .\src\rendcomp\optics
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Pack"=.\SRC\Tools\Pack\Pack.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Tools/Pack", TICAAAAA
+    .\src\tools\pack
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "ParticleEditor"=.\SRC\Tools\ParticleEditor\ParticleEditor.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Tools/ParticleEditor", QDNAAAAA
+    .\src\tools\particleeditor
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Physics"=.\Src\EngComps\Physics\Physics.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/EngComps/Physics", ECEAAAAA
+    .\src\engcomps\physics
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "PolyMesh"=.\Src\RendComp\PolyMesh\PolyMesh.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/RendComp/PolyMesh", VCGAAAAA
+    .\src\rendcomp\polymesh
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "PropEdit"=.\SRC\Tools\PropEdit\PropEdit.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Tools/PropEdit", OKFAAAAA
+    .\src\tools\propedit
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Property"=.\SRC\ENGCOMPS\Property\Property.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Dev/Src/EngComps/Property", CKFAAAAA
+    .\src\engcomps\property
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "RPUL"=.\Src\RenderPipeline\RPUL\RPUL.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/RenderPipeline/RPUL", VIWAAAAA
+    .\src\renderpipeline\rpul
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "RenderBatcher"=.\Src\RenderBatcher\RenderBatcher.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/RenderPipeline", URVAAAAA
+    .\src\renderbatcher
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "RenderMgr"=.\Src\EngComps\RenderMgr\RenderMgr.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/EngComps/RenderMgr", PCGAAAAA
+    .\src\engcomps\rendermgr
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "ResTool"=.\SRC\Tools\ResTool\ResTool.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/ResTool", SWWAAAAA
+    .\src\tools\restool
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "SoundManager"=.\Src\SoundManager\SoundManager.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Dev/Src/SoundManager", EQEAAAAA
+    .\src\soundmanager
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "System"=.\Src\System\System.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/System", SGAAAAAA
+    .\src\system
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "TextureLibrary"=.\Src\Shading\TextureLibrary\TextureLibrary.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/RenderPipeline", URVAAAAA
+    .\src\shading\texturelibrary
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "TreeView"=.\SRC\Tools\TreeView\TreeView.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Tools/TreeView", WGCAAAAA
+    .\src\tools\treeview
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "TriMesh"=.\SRC\RendComp\TriMesh\TriMesh.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/RendComp/TriMesh", VCGAAAAA
+    .\src\rendcomp\trimesh
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "UTFApp"=.\SRC\Tools\ViewUTF\UTFApp.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Tools/ViewUTF", GADAAAAA
+    .\src\tools\viewutf
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "VertexBufferManager"=.\SRC\VertexBufferManager\VertexBufferManager.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/RenderPipeline", URVAAAAA
+    .\src\vertexbuffermanager
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "VfxView"=.\Src\Viewer\VfxView\VfxView.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/Viewer/VfxView", LPEAAAAA
+    .\src\viewer\vfxview
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "WavLib"=.\Src\WavLib\WavLib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/WavLib", UHVAAAAA
+    .\src\wavlib
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "asciiexp"=".\SRC\Tools\Exporters\3DS MAX\asciiexp.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Tools/Exporters/MAX", BFLAAAAA
+    .\src\tools\exporters\3ds max
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "char"=.\SRC\Tools\DeformView\char.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Tools/DeformView", YQGAAAAA
+    .\src\tools\deformview
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "dainfo"=.\SRC\Tools\dainfo\dainfo.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "dbgtee"=.\SRC\Tools\dbgtee\dbgtee.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/dbgtee", SPFAAAAA
+    .\src\tools\dbgtee
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "defcomp"=.\Src\defcomp\defcomp.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Dev/Src/defcomp", WCFAAAAA
+    .\src\defcomp
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "dsstreamer"=.\Src\Streamer\dsstreamer\dsstreamer.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/streamer", TKUAAAAA
+    .\src\streamer\dsstreamer
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "mergeanm"=.\SRC\Tools\MergeAnm\mergeanm.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/mergeanm", XGMAAAAA
+    .\src\tools\mergeanm
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "movielib"=.\Src\movielib\movielib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Dev/Src/movielib", VJEAAAAA
+    .\src\movielib
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "msgbuffer"=.\Src\Sockets\msgbuffer.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/Sockets", SDPAAAAA
+    .\src\sockets
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "phyedit"=.\SRC\Tools\PhysicsEditor\phyedit.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Tools/Physics Editor", IIAAAAAA
+    .\src\tools\physicseditor
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "proto"=.\Src\x86Math\x86math.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/x86math", VPCAAAAA
+    .\src\x86math
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "sockets"=.\Src\Sockets\Sockets.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/Sockets", SDPAAAAA
+    .\src\sockets
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "streamer"=.\Src\Streamer\streamer.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/streamer", TKUAAAAA
+    .\src\streamer
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "traceout"=.\SRC\Tools\traceout\traceout.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Tools/traceout", YLEAAAAA
+    .\src\tools\traceout
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "trap"=.\Src\EngComps\Physics\ODE\Trap\trap.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Src/EngComps/Physics/ODE/trap", WNEAAAAA
+    .\src\engcomps\physics\ode\trap
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "txmlib"=.\SRC\Tools\Exporters\Common\txmlib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/dev/Src/Tools/Exporters/Common", QHCAAAAA
+    .\src\tools\exporters\common
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "ui"=.\Src\daui\ui.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Libs/Dev/Src/daui", QHEAAAAA
+    .\src\daui
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "utftool"=.\SRC\Tools\utftool\utftool.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Tools/utftool", ZEDAAAAA
+    .\src\tools\utftool
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+    begin source code control
+    FullBuild
+    .
+    end source code control
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

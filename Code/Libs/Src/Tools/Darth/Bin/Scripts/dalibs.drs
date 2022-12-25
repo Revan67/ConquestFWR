@@ -1,0 +1,247 @@
+-- dalibs.drs
+--
+--
+--
+
+$debug
+
+----
+
+DefaultGuid = "{00000000-0000-0000-0000-000000000000}";
+
+Data = "Data\\";
+Images = Data;
+Output = Data;
+
+--
+
+CompareTests = {
+	{	Data = "cdiffuse.3db",
+		Desc = "Renders an object with a material with a constant diffuse color."
+	},
+
+	{	Data = "cemissive.3db",
+		Desc = "Renders an object with a material with a constant emissive color.",
+		Ambient = { 0.0, 0.0, 0.0 }
+	},
+
+	{	Data = "malpha.3db",
+		Desc = "Renders an object with a material with only a constant material transparency."
+	},
+
+	{	Data = "diffuse1.3db",
+		Desc = "Renders an object with a material with a single diffuse texture as the diffuse1 texture."
+	},
+
+	{	Data = "diffuse2.3db",
+		Desc = "Renders an object with a material with a single diffuse texture as the diffuse2 texture."
+	},
+
+	{	Data = "emissive.3db",
+		Desc = "Renders an object with a material with only an emissive texture.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	},
+
+	{	Data = "cemissive_emissive.3db",
+		Desc = "Renders an object with a material with a constant emissive color and an emissive texture.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	},
+
+	{	Data = "emissive_malpha.3db",
+		Desc = "Renders an object with a material with an emissive texture and a constant material transparency.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	},
+
+	{	Data = "diffuse1_diffuse2.3db",
+		Desc = "Renders an object with a material with two diffuse textures."
+	},
+
+	{	Data = "multichannel_diffuse1_diffuse2.3db",
+		Desc = "Renders an object with a material with two diffuse textures and two texture coordinate channels.  " ..
+			   "Note that the brick texture is tiled four times in the u and v directions while the \"1234\" texture is not tiled at all."
+	},
+
+	{	Data = "diffuse1_emissive.3db",
+		Desc = "Renders an object with a material with a single diffuse texture as the diffuse1 texture and an emissive texture.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	},
+
+	{	Data = "diffuse2_emissive.3db",
+		Desc = "Renders an object with a material with a single diffuse texture as the diffuse2 texture and an emissive texture.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	},
+
+	{	Data = "diffuse1_diffuse2_emissive.3db",
+		Desc = "Renders an object with a material with two diffuse textures and an emissive texture.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	},
+
+	{	Data = "diffuse1_emissive_malpha.3db",
+		Desc = "Renders an object with a material with a single diffuse texture as the diffuse2 texture, an emissive texture, and a material transparency.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	},
+
+	{	Data = "diffuse2_emissive_malpha.3db",
+		Desc = "Renders an object with a material with a single diffuse texture as the diffuse2 texture, an emissive texture, and a material transparency.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	},
+
+	{	Data = "diffuse1_diffuse2_emissive_malpha.3db",
+		Desc = "Renders an object with a material with two diffuse textures, an emissive texture, and a constant material transparency.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	},
+
+	{	Data = "diffuse1_diffuse2_emissive_malpha_talpha.3db",
+		Desc = "Renders an object with a material with two diffuse textures, an emissive texture, a constant material transparency, and a textured transparency.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	},
+
+	{	Data = "cdiffuse_cemissive_diffuse1_diffuse2_emissive_malpha_talpha.3db",
+		Desc = "Renders an object with a diffuse constant color, two diffuse textures, an emissive constant, an emissive texture, a material transparency, and a textured transparency.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	}
+};
+
+--
+
+function DoCompare( idx, tbl )
+	local DText = "";
+	EngineRenderInstance.Name = tbl.Data;
+	EngineRenderInstance.Description = tbl.Desc;
+	EngineRenderInstance.IniFile = "Config\\EngineRenderInstance.ini";
+	DText = "(" .. tbl.Data .. "): " .. tbl.Desc;
+	EngineRenderInstance( RenderPipelineDevice, Data .. tbl.Data, Images .. tbl.Data .. ".bmp", "", 0, DText, tbl.Ambient );
+	return nil;
+end
+
+--
+
+function TestMode( RPDevice, W, H, Cbpp, Dbpp, FS, BCount )
+
+	local ModeDesc = "Attempts to create ";
+
+	if( FS ~= 0 ) then
+		ModeDesc = ModeDesc .. "fullscreen buffers ";
+	else
+		ModeDesc = ModeDesc .. "windowed buffers ";
+	end
+	if( W == -1 ) then
+		ModeDesc = ModeDesc .. "in every width, ";
+	else
+		ModeDesc = ModeDesc .. "with a width of " .. W .. ", ";
+	end
+	if( H == -1 ) then
+		ModeDesc = ModeDesc .. "in every height, ";
+	else
+		ModeDesc = ModeDesc .. "with a height of " .. H .. ", ";
+	end
+	if( Cbpp == -1 ) then
+		ModeDesc = ModeDesc .. "in every color bitdepth, ";
+	else
+		ModeDesc = ModeDesc .. "with a color bitdepth of " .. Cbpp .. ", ";
+	end
+	if( Dbpp == -1 ) then
+		ModeDesc = ModeDesc .. "in every depth bitdepth, ";
+	else
+		ModeDesc = ModeDesc .. "with a depth bitdepth of " .. Dbpp .. ", ";
+	end
+
+	ModeDesc = ModeDesc .. "with " .. BCount-1 .. " backbuffers.";
+
+	RenderPipelineBufferCreateSimple.Description = ModeDesc;
+	RenderPipelineBufferCreateSimple( RenderPipelineDevice, W, H, Cbpp, Dbpp, FS, BCount );
+
+end
+
+--
+
+function DoModeTest( idx, Mode )
+	TestMode( RenderPipelineDevice, Mode.Width, Mode.Height, Mode.CBpp, Mode.DBpp, Mode.FullScreen, Mode.BufferCount ) ;
+end
+
+--
+
+Modes = {
+	{ Width = 640, Height = 480, CBpp = 16, DBpp = 16, FullScreen = 0, BufferCount = 2 },
+	{ Width = 640, Height = 480, CBpp = 16, DBpp = 32, FullScreen = 0, BufferCount = 2 },
+	{ Width = 640, Height = 480, CBpp = 32, DBpp = 16, FullScreen = 0, BufferCount = 2 },
+	{ Width = 640, Height = 480, CBpp = 32, DBpp = 32, FullScreen = 0, BufferCount = 2 },
+
+	{ Width = 800, Height = 600, CBpp = 16, DBpp = 16, FullScreen = 0, BufferCount = 2 },
+	{ Width = 800, Height = 600, CBpp = 16, DBpp = 32, FullScreen = 0, BufferCount = 2 },
+	{ Width = 800, Height = 600, CBpp = 32, DBpp = 16, FullScreen = 0, BufferCount = 2 },
+	{ Width = 800, Height = 600, CBpp = 32, DBpp = 32, FullScreen = 0, BufferCount = 2 },
+
+	{ Width = 1024, Height = 768, CBpp = 16, DBpp = 16, FullScreen = 0, BufferCount = 2 },
+	{ Width = 1024, Height = 768, CBpp = 16, DBpp = 32, FullScreen = 0, BufferCount = 2 },
+	{ Width = 1024, Height = 768, CBpp = 32, DBpp = 16, FullScreen = 0, BufferCount = 2 },
+	{ Width = 1024, Height = 768, CBpp = 32, DBpp = 32, FullScreen = 0, BufferCount = 2 },
+
+	{ Width = 640, Height = 480, CBpp = 16, DBpp = 16, FullScreen = 1, BufferCount = 2 },
+	{ Width = 640, Height = 480, CBpp = 16, DBpp = 32, FullScreen = 1, BufferCount = 2 },
+	{ Width = 640, Height = 480, CBpp = 32, DBpp = 16, FullScreen = 1, BufferCount = 2 },
+	{ Width = 640, Height = 480, CBpp = 32, DBpp = 32, FullScreen = 1, BufferCount = 2 },
+
+	{ Width = 800, Height = 600, CBpp = 16, DBpp = 16, FullScreen = 1, BufferCount = 2 },
+	{ Width = 800, Height = 600, CBpp = 16, DBpp = 32, FullScreen = 1, BufferCount = 2 },
+	{ Width = 800, Height = 600, CBpp = 32, DBpp = 16, FullScreen = 1, BufferCount = 2 },
+	{ Width = 800, Height = 600, CBpp = 32, DBpp = 32, FullScreen = 1, BufferCount = 2 },
+
+	{ Width = 1024, Height = 768, CBpp = 16, DBpp = 16, FullScreen = 1, BufferCount = 2 },
+	{ Width = 1024, Height = 768, CBpp = 16, DBpp = 32, FullScreen = 1, BufferCount = 2 },
+	{ Width = 1024, Height = 768, CBpp = 32, DBpp = 16, FullScreen = 1, BufferCount = 2 },
+	{ Width = 1024, Height = 768, CBpp = 32, DBpp = 32, FullScreen = 1, BufferCount = 2 }
+};
+
+--
+
+function TestQueryDeviceAbilitiesDuringEnumerate( )
+	RenderPipelineEnumerate.Description = "This attempts to query for device abilities during the enumeration process.";
+	RenderPipelineEnumerate( 1 );
+end
+
+--
+
+function Main( ) 
+
+	--TestPromptMode = DARTH_MODE_EXECUTE;
+	--TestFailureMode = DARTH_MODE_CONTINUE;
+	--TestExceptionMode = DARTH_MODE_CONTINUE;
+	--TestLibraryErrorMode = DARTH_MODE_CONTINUE;
+	
+	--ExceptionTest();
+	--TestFailureTest();
+
+	RenderPipelineDevice, Result, passed = RenderPipelineEnumerate();
+
+	if( RenderPipelineDevice == nil ) then
+		RenderPipelineDevice = DefaultGuid;
+	end
+
+	TestQueryDeviceAbilitiesDuringEnumerate();
+
+	RenderPipelineDeviceCreateSimple( RenderPipelineDevice );
+	RenderPipelineAbilitiesCheck( RenderPipelineDevice );
+
+	TestPromptMode = DARTH_MODE_EXECUTE;
+	foreachi( Modes, DoModeTest );
+	TestPromptMode = DARTH_MODE_PROMPT;
+
+	RenderPipelineBufferCreateComplete( RenderPipelineDevice,  640,  480 );
+	RenderPipelineBufferCreateComplete( RenderPipelineDevice,  800,  600 );
+
+	RenderPipelineDepthBufferTest();
+
+	RenderPipelineTextureFormatsCheck( RenderPipelineDevice );
+	RenderPipelineTextureLock( RenderPipelineDevice );
+	RenderPipelineTextureAbilitiesCheck( RenderPipelineDevice );
+
+	BigImageTest();
+
+	TestPromptMode = DARTH_MODE_EXECUTE;
+	TestFailureMode = DARTH_MODE_CONTINUE;
+	foreachi( CompareTests,  DoCompare );
+
+	return DARTH_SCRIPT_PASS;
+end
+

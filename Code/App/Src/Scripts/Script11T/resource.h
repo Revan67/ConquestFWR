@@ -1,0 +1,125 @@
+//{{NO_DEPENDENCIES}}
+// Microsoft Developer Studio generated include file.
+// Used by Script11T.rc
+//
+#define IDS_TM10_MISSION_NAME           1
+#define IDS_TM11_MISSION_NAME           1
+#define IDS_TM10_MISSION_DESC           2
+#define IDS_TM11_NEWS_M11NP01           2
+#define IDS_TM10_MISSION_SUCCESS        3
+#define IDS_TM11_HALSEY_M11HA02         3
+#define IDS_TM10_MISSION_FAILURE        4
+#define IDS_TM11_STEELE_M11ST03         4
+#define IDS_TM10_OBJECTIVES             5
+#define IDS_TM11_TAKEI_M11TK04          5
+#define IDS_TM10_TELETYPE_LOCATION      6
+#define IDS_TM11_STEELE_M11ST05         6
+#define IDS_TM10_NEWS_M10NP01           7
+#define IDS_TM11_BLACKWELL_M11BK06      7
+#define IDS_TM10_HALSEY_M10HA02         8
+#define IDS_TM11_STEELE_M11ST07         8
+#define IDS_TM10_OBJECTIVES_START       9
+#define IDS_TM11_BLACKWELL_M11BK08      9
+#define IDS_TM10_BREGON_M10BG03         10
+#define IDS_TM11_STEELE_M11ST09         10
+#define IDS_TM10_BREGON_M10BG05         11
+#define IDS_TM11_BLACKWELL_M11BK10      11
+#define IDS_TM10_BREGON_M10BG07         12
+#define IDS_TM11_STEELE_M11ST11         12
+#define IDS_TM10_SOLARIAN_M10SM04       13
+#define IDS_TM11_BLACKWELL_M11BK12      13
+#define IDS_TM10_SOLARIAN_M10SM06       14
+#define IDS_TM11_HAWKES_M11HW13         14
+#define IDS_TM10_SOLARIAN_M10SM08       15
+#define IDS_TM11_BLACKWELL_M11BK14      15
+#define IDS_TM10_STEELE_M10ST09         16
+#define IDS_TM11_VIVAC_M11VV15          16
+#define IDS_TM10_TAKEI_M10TK10          17
+#define IDS_TM11_STEELE_M11ST16         17
+#define IDS_TM10_KERTAK_M10KR11         18
+#define IDS_TM11_HAWKES_M11HW17         18
+#define IDS_TM10_BENSON_M10BN12         19
+#define IDS_TM11_BLACKWELL_M11BK18      19
+#define IDS_TM11_BLACKWELL_M11BK19      20
+#define IDS_TM11_STEELE_M11ST20         21
+#define IDS_TM11_TAKEI_M11TK21          22
+#define IDS_TM11_STEELE_M11ST22         23
+#define IDS_TM11_HALSEY_M11HA23         24
+#define IDS_TM11_HAWKES_M11HW24         25
+#define IDS_TM11_MISSION_FAILURE        26
+#define IDS_TM11_MISSION_SUCCESS        27
+#define IDS_TM11_HALSEY_M11HA25         28
+#define IDS_TM11_TELETYPE_LOCATION      29
+#define IDS_TM11_OBJECTIVES             30
+#define IDS_TM11_OBJECTIVE1             31
+#define IDS_TM11_OBJECTIVE2             32
+#define IDS_TM11_OBJECTIVE3             33
+#define IDS_TM11_OBJECTIVE4             34
+#define IDS_TM11_OBJECTIVE5             35
+#define IDS_TM11_MISSION_DESC           36
+#define IDS_TM11_NEWMO                  37
+#define IDS_TM11_OBJECTIVE6             38
+#define IDS_TM11_OBJECTIVE7             39
+#define IDS_TM11_OBJECTIVE8             40
+#define IDS_TM11_MISSION1_COMPLETE      41
+#define IDS_TM11_MISSION2_COMPLETE      42
+#define IDS_TM11_SMIRNOFF_M11SM11       51
+#define IDS_TM11_MANTIS                 60
+#define IDS_TM11_MANTIS6                61
+#define IDS_TM11_FAIL_BLACKWELL_LOST    62
+#define IDS_TM11_FAIL_HAWKES_LOST       63
+#define IDS_TM11_FAIL_TAKEI_LOST        64
+#define IDS_TM11_FAIL_STEELE_LOST       65
+#define IDS_TM11_FAIL_VIVAC_LOST        66
+#define IDS_TM11_SUB_PROLOG11           67
+#define IDS_TM11_SUB_M11HA18            68
+#define IDS_TM11_SUB_M11HA18A           69
+#define IDS_TM11_SUB_M11SM02            70
+#define IDS_TM11_SUB_M11HW03            71
+#define IDS_TM11_SUB_M11SM04            72
+#define IDS_TM11_SUB_M11HW05            73
+#define IDS_TM11_SUB_M11SM06            74
+#define IDS_TM11_SUB_M11OF08            75
+#define IDS_TM11_SUB_M11SM09            76
+#define IDS_TM11_SUB_M11MA10            77
+#define IDS_TM11_SUB_M11SM11            78
+#define IDS_TM11_SUB_M11MA12            79
+#define IDS_TM11_SUB_M11HW13            80
+#define IDS_TM11_SUB_M11SM14            81
+#define IDS_TM11_SUB_M11HW15            82
+#define IDS_TM11_SUB_M11SM16            83
+#define IDS_TM11_SUB_M11BL17            84
+#define IDS_TM11_SUB_M11ST19            85
+#define IDS_TM11_SUB_M11TK20            86
+#define IDS_TM11_SUB_M11ST21            87
+#define IDS_TM11_SUB_M11ST23            88
+#define IDS_TM11_SUB_M11BL24            89
+#define IDS_TM11_SUB_M11ST25            90
+#define IDS_TM11_SUB_M11BL26            91
+#define IDS_TM11_SUB_M11HW27            92
+#define IDS_TM11_SUB_M11BL28            93
+#define IDS_TM11_SUB_M11RV28A           94
+#define IDS_TM11_SUB_M11VV29            95
+#define IDS_TM11_SUB_M11ST30            96
+#define IDS_TM11_SUB_M11HW31            97
+#define IDS_TM11_SUB_M11BL32            98
+#define IDS_TM11_SUB_M11BL33            99
+#define IDS_TM11_SUB_M11ST34            100
+#define IDR_PARSER_1                    101
+#define IDS_TM11_SUB_M11TK35            101
+#define IDS_TM11_SUB_M11ST36            102
+#define IDS_TM11_SUB_M11HA37            103
+#define IDS_TM11_SUB_M11HW38            104
+#define IDS_TM11_SUB_M11HA39            105
+#define IDS_TM11_SUB_M11BL22            106
+
+// Next default values for new objects
+// 
+#ifdef APSTUDIO_INVOKED
+#ifndef APSTUDIO_READONLY_SYMBOLS
+#define _APS_NEXT_RESOURCE_VALUE        101
+#define _APS_NEXT_COMMAND_VALUE         40001
+#define _APS_NEXT_CONTROL_VALUE         1000
+#define _APS_NEXT_SYMED_VALUE           101
+#endif
+#endif

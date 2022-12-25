@@ -1,0 +1,14 @@
+-- Simple.drs
+--
+--
+--
+
+$debug
+
+
+function Main( ) 
+	TestFailureTest();
+	return DARTH_SCRIPT_PASS;
+end
+
+

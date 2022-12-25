@@ -1,0 +1,133 @@
+-- SampleRun.drs
+--
+--
+--
+
+$debug
+
+----
+
+DefaultGuid = "{00000000-0000-0000-0000-000000000000}";
+
+Data = "Data\\";
+Images = Data;
+Output = Data;
+
+--
+
+CompareTests = {
+	{	Data = "cdiffuse.3db",
+		Desc = "Renders an object with a material with a constant diffuse color."
+	},
+
+	{	Data = "cemissive.3db",
+		Desc = "Renders an object with a material with a constant emissive color.",
+		Ambient = { 0.0, 0.0, 0.0 }
+	},
+
+	{	Data = "diffuse1.3db",
+		Desc = "Renders an object with a material with a single diffuse texture as the diffuse1 texture."
+	},
+
+	{	Data = "diffuse1_diffuse2.3db",
+		Desc = "Renders an object with a material with two diffuse textures."
+	},
+
+	{	Data = "diffuse2.3db",
+		Desc = "Renders an object with a material with a single diffuse texture as the diffuse2 texture."
+	},
+
+	{	Data = "diffuse1_diffuse2_emissive.3db",
+		Desc = "Renders an object with a material with two diffuse textures and an emissive texture.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	},
+
+	{	Data = "diffuse2_emissive.3db",
+		Desc = "Renders an object with a material with a single diffuse texture as the diffuse2 texture and an emissive texture.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	},
+
+	{	Data = "emissive.3db",
+		Desc = "Renders an object with a material with only an emissive texture.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	},
+
+	{	Data = "cemissive_emissive.3db",
+		Desc = "Renders an object with a material with a constant emissive color and an emissive texture.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	},
+
+	{	Data = "malpha.3db",
+		Desc = "Renders an object with a material with only a constant material transparency."
+	},
+
+	{	Data = "diffuse1_diffuse2_emissive_malpha.3db",
+		Desc = "Renders an object with a material with two diffuse textures, an emissive texture, and a constant material transparency.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	},
+
+	{	Data = "diffuse2_emissive_malpha.3db",
+		Desc = "Renders an object with a material with a single diffuse texture as the diffuse2 texture, an emissive texture, and a material transparency.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	},
+
+	{	Data = "emissive_malpha.3db",
+		Desc = "Renders an object with a material with an emissive texture and a constant material transparency.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	},
+
+	{	Data = "diffuse1_diffuse2_emissive_malpha_talpha.3db",
+		Desc = "Renders an object with a material with two diffuse textures, an emissive texture, a constant material transparency, and a textured transparency.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	},
+
+	{	Data = "cdiffuse_cemissive_diffuse1_diffuse2_emissive_malpha_talpha.3db",
+		Desc = "Renders an object with a diffuse constant color, two diffuse textures, an emissive constant, an emissive texture, a material transparency, and a textured transparency.",
+		Ambient = { 0.5, 0.5, 0.5 }
+	}
+};
+
+--
+
+function DoCompare( idx, tbl )
+	EngineRenderInstance.Name = tbl.Data;
+	EngineRenderInstance.Description = tbl.Desc;
+	EngineRenderInstance.IniFile = "Config\\EngineRenderInstance.ini";
+	EngineRenderInstance( RenderPipelineDevice, Data .. tbl.Data, Images .. tbl.Data .. ".bmp", "", 0, tbl.Desc, tbl.Ambient );
+	return nil;
+end
+
+--
+
+function Main( ) 
+
+	--TestPromptMode = DARTH_MODE_EXECUTE;
+	--TestFailureMode = DARTH_MODE_CONTINUE;
+	--TestExceptionMode = DARTH_MODE_CONTINUE;
+	--TestLibraryErrorMode = DARTH_MODE_CONTINUE;
+	
+	ExceptionTest();
+
+	TestFailureTest();
+
+	RenderPipelineDevice, Result, passed = RenderPipelineEnumerate();
+
+	if( RenderPipelineDevice == nil ) then
+		RenderPipelineDevice = DefaultGuid;
+	end
+
+	RenderPipelineDeviceCreateSimple( RenderPipelineDevice );
+
+	RenderPipelineAbilitiesCheck( RenderPipelineDevice );
+
+	RenderPipelineBufferCreateSimple( RenderPipelineDevice, 640, 480, 16, 16, 1, 2 );
+
+	--RenderPipelineBufferCreateSimple( RenderPipelineDevice );
+
+	--RenderPipelineTextureBlit( Data .. "duck.tga" );
+
+	foreachi( CompareTests,  DoCompare );
+
+	return DARTH_SCRIPT_PASS;
+end
+

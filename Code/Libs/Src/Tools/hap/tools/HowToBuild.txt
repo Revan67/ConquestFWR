@@ -1,0 +1,43 @@
+The HE Python Remote Debugger was built using Visual C++ 6.0.  You will also need the current Microsoft Platform SDK installed on your machine.
+
+1.  Download the source from sourceforge
+
+2.  Download and install Python (www.python.org)
+
+3.  Open the HapDebugger.dsw workspace in Visual C++
+
+4.  Add the Python/Include path to your include file path (tools - options - Directories page)
+	or
+    Add the Python/Include path to all three project include paths (project - settings - c/c++ tab - Category = Preprocessor)
+
+5.  Add the Python/Libs path to your libs path  (tools - options - Directories page)
+	or
+    Add the Python/Libs path to all three project link paths (project - settings - link tab - Category = Input)
+
+6.  Build the HapDebugger project
+
+7.  Run HapDebugger to start using the IDE
+
+Notes:
+The debug build of HapClient requires the debug version of Python.
+
+To debug a local script:
+1.  Open the script in the IDE
+2.  Select "Run Local Debug" from the "Debug" menu
+	or
+	Select "Go" from the "Debug" menu
+
+A console window will appear which the python script will run in.  The python 
+script will automatically break before the first line of python code.
+
+To debug a remote script:
+1.  Open the script in the IDE.
+2.  On the remote machine, run the "ConsoleEmbed.exe" program - a conlole
+    window will appear, waiting for a connection.
+3.  In the IDE, select "Connect Remote Debug" from the "Debug" menu.
+4.  Select the "Remote" radio button in the "Connection" group.
+5.  Enter the IP Address or machine name of the remote computer in the 
+	"Remote Machine or Address" box.
+The IDE will connect to the remote machine and then break right before the 
+first line of python code.
+

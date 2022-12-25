@@ -1,0 +1,117 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_COMPARE_VIEW DIALOGEX 0, 0, 538, 330
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION
+CAPTION "Depth Buffer Test"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Yes",IDOK,214,308,50,14
+    PUSHBUTTON      "No",IDCANCEL,267,308,50,14
+    CTEXT           "Does your system render the correct output?",IDC_STATIC,
+                    160,296,218,8,SS_CENTERIMAGE
+    LTEXT           "",IDC_YOU_VIEW,266,33,256,233,SS_SUNKEN
+    PUSHBUTTON      "Save...",IDC_SAVE_OUTPUT,473,272,50,14
+    CONTROL         105,IDC_SAMPLE_VIEW,"Static",SS_BITMAP | SS_SUNKEN,7,33,
+                    256,233
+    LTEXT           "You should see six sets of up to three quads.  In cases where multiple quads appear, the red quad should be partially covered by the green, which is partially covered by the blue. ",
+                    IDC_TEST_DESCRIPTION,7,7,524,22,SS_SUNKEN
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKRECT | SS_SUNKEN,7,290,
+                    524,1,WS_EX_CLIENTEDGE
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_COMPARE_VIEW, DIALOG
+    BEGIN
+        VERTGUIDE, 7
+        VERTGUIDE, 264
+        VERTGUIDE, 267
+        VERTGUIDE, 523
+        VERTGUIDE, 531
+        HORZGUIDE, 33
+        HORZGUIDE, 266
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_CORRECTBMP          BITMAP  DISCARDABLE     "Correctb.bmp"
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

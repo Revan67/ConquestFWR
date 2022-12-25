@@ -1,0 +1,104 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_JOY0                "JOY0"
+    IDS_JOY1                "JOY1"
+    IDS_JOY2                "JOY2"
+    IDS_JOY3                "JOY3"
+    IDS_JOY4                "JOY4"
+    IDS_JOY5                "JOY5"
+    IDS_JOY6                "JOY6"
+    IDS_JOY7                "JOY7"
+    IDS_JOY8                "JOY8"
+    IDS_JOY9                "JOY9"
+    IDS_JOY10               "JOY10"
+    IDS_JOY11               "JOY11"
+    IDS_JOY12               "JOY12"
+    IDS_JOY13               "JOY13"
+    IDS_JOY_DIR_U           "JOY UP"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_JOY_DIR_UR          "JOY UP-RIGHT"
+    IDS_JOY_DIR_R           "JOY RIGHT"
+    IDS_JOY_DIR_DR          "JOY DOWN-RIGHT"
+    IDS_JOY_DIR_D           "JOY DOWN"
+    IDS_JOY_DIR_DL          "JOY DOWN-LEFT"
+    IDS_JOY_DIR_L           "JOY LEFT"
+    IDS_JOY_DIR_UL          "JOY UP-LEFT"
+    IDS_POV_UP              "POV-UP"
+    IDS_POV_DOWN            "POV-DOWN"
+    IDS_POV_RIGHT           "POV-RIGHT"
+    IDS_POV_LEFT            "POV-LEFT"
+    IDS_MOUSE_LEFT          "MOUSE_LEFT"
+    IDS_MOUSE_RIGHT         "MOUSE_RIGHT"
+    IDS_MOUSE_MIDDLE        "MOUSE_MIDDLE"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

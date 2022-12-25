@@ -1,0 +1,675 @@
+ DACOM
+
+ Timestamp is 529180f1 (Sat Nov 23 23:30:41 2013)
+
+ Preferred load address is 10000000
+
+ Start         Length     Name                   Class
+ 0001:00000000 00005066H .text                   CODE
+ 0002:00000000 00000150H .idata$5                DATA
+ 0002:00000150 00000004H .CRT$XCA                DATA
+ 0002:00000154 00000004H .CRT$XCZ                DATA
+ 0002:00000158 00000004H .CRT$XIA                DATA
+ 0002:0000015c 00000004H .CRT$XIAA               DATA
+ 0002:00000160 00000004H .CRT$XIZ                DATA
+ 0002:00000170 00000658H .rdata                  DATA
+ 0002:000007c8 00000052H .rdata$debug            DATA
+ 0002:0000081c 00000718H .rdata$r                DATA
+ 0002:00000f34 00000004H .rtc$IAA                DATA
+ 0002:00000f38 00000004H .rtc$IZZ                DATA
+ 0002:00000f3c 00000004H .rtc$TAA                DATA
+ 0002:00000f40 00000004H .rtc$TZZ                DATA
+ 0002:00000f48 000000a4H .xdata$x                DATA
+ 0002:00000fec 00000050H .idata$2                DATA
+ 0002:0000103c 00000014H .idata$3                DATA
+ 0002:00001050 00000150H .idata$4                DATA
+ 0002:000011a0 00000584H .idata$6                DATA
+ 0002:00001730 000000aaH .edata                  DATA
+ 0003:00000000 00000488H .data                   DATA
+ 0003:00000488 00000394H .bss                    DATA
+ 0004:00000000 000000a0H .rsrc$01                DATA
+ 0004:000000a0 00000658H .rsrc$02                DATA
+
+  Address         Publics by Value              Rva+Base       Lib:Object
+
+ 0000:00000000       ___safe_se_handler_table   00000000     <absolute>
+ 0000:00000000       ___safe_se_handler_count   00000000     <absolute>
+ 0000:00000000       ___ImageBase               10000000     <linker-defined>
+ 0001:00000000       ??0DACOMDESC@@QAE@PBD@Z    10001000 f i BaseHeap.obj
+ 0001:00000020       ??0DAHEAPDESC@@QAE@PBD@Z   10001020 f i BaseHeap.obj
+ 0001:00000040       ?getUpper@BASE_BLOCK@@QAEPAU1@XZ 10001040 f i BaseHeap.obj
+ 0001:00000050       ?getLower@BASE_BLOCK@@QAEPAU1@XZ 10001050 f i BaseHeap.obj
+ 0001:00000060       ?isAllocated@BASE_BLOCK@@QAEHXZ 10001060 f i BaseHeap.obj
+ 0001:00000070       ??0IDAComponent@@QAE@XZ    10001070 f i BaseHeap.obj
+ 0001:00000080       ??0ErrorCode@@QAE@W4ErrorKind@@W4SeverityLevel@@@Z 10001080 f i BaseHeap.obj
+ 0001:000000a0       ?QueryInterface@BaseHeap@@UAG?AW4GENRESULT@@PBDPAPAX@Z 100010a0 f   BaseHeap.obj
+ 0001:000000e0       ?AddRef@BaseHeap@@UAGKXZ   100010e0 f   BaseHeap.obj
+ 0001:000000f0       ?Release@BaseHeap@@UAGKXZ  100010f0 f   BaseHeap.obj
+ 0001:00000150       ?AddToList@BaseHeap@@QAIHPAUHeapInstance@@@Z 10001150 f   BaseHeap.obj
+ 0001:000001c0       ?FindTheHeap@BaseHeap@@QAIPAUHeapInstance@@PAX@Z 100011c0 f i BaseHeap.obj
+ 0001:000001e0       ?ClearAllocateMemory@BaseHeap@@UAGPAXKPBDE@Z 100011e0 f   BaseHeap.obj
+ 0001:00000220       ?FreeMemory@BaseHeap@@UAGJPAX@Z 10001220 f   BaseHeap.obj
+ 0001:00000270       ?EnumerateBlocks@BaseHeap@@UAGJP6GJPAUIHeap@@PAXK1@Z1@Z 10001270 f   BaseHeap.obj
+ 0001:000002b0       ?GetBlockSize@BaseHeap@@UAGKPAX@Z 100012b0 f   BaseHeap.obj
+ 0001:00000300       ?GetBlockMessage@BaseHeap@@UAGPBDPAX@Z 10001300 f   BaseHeap.obj
+ 0001:00000350       ?SetBlockMessage@BaseHeap@@UAGJPAXPBD@Z 10001350 f   BaseHeap.obj
+ 0001:00000390       ?DidAlloc@BaseHeap@@UAGJPAX@Z 10001390 f   BaseHeap.obj
+ 0001:000003c0       ?GetAvailableMemory@BaseHeap@@UAGKXZ 100013c0 f   BaseHeap.obj
+ 0001:000003f0       ?GetLargestBlock@BaseHeap@@UAGKXZ 100013f0 f   BaseHeap.obj
+ 0001:00000420       ?GetHeapSize@BaseHeap@@UAGKXZ 10001420 f   BaseHeap.obj
+ 0001:00000450       ?SetErrorHandler@BaseHeap@@UAGP6AHUErrorCode@@PBDZZP6AH01ZZ@Z 10001450 f   BaseHeap.obj
+ 0001:00000480       ?GetErrorHandler@BaseHeap@@UAGP6AHUErrorCode@@PBDZZXZ 10001480 f   BaseHeap.obj
+ 0001:00000490       ?doError@BaseHeap@@QAEJKKK@Z 10001490 f   BaseHeap.obj
+ 0001:00000550       ?SetBlockOwner@BaseHeap@@UAGJPAXK@Z 10001550 f   BaseHeap.obj
+ 0001:00000590       ?GetBlockOwner@BaseHeap@@UAGKPAX@Z 10001590 f   BaseHeap.obj
+ 0001:000005e0       ?HeapMinimize@BaseHeap@@UAGXXZ 100015e0 f   BaseHeap.obj
+ 0001:00000660       ?GetHeapFlags@BaseHeap@@UAGKXZ 10001660 f   BaseHeap.obj
+ 0001:00000680       ?RegisterHeap@@YAXPAUICOManager@@@Z 10001680 f   BaseHeap.obj
+ 0001:000006a0       ??0IComponentFactory@@QAE@XZ 100016a0 f i BaseHeap.obj
+ 0001:000006b0       ?verifyBlock@HeapInstance@@QAEPAUBASE_BLOCK@@PAX@Z 100016b0 f i BaseHeap.obj
+ 0001:00000720       ?AllocateMemory@BaseHeap@@UAGPAXKPBD@Z 10001720 f   BaseHeap.obj
+ 0001:00000880       ?ReallocateMemory@BaseHeap@@UAGPAXPAXKPBD@Z 10001880 f   BaseHeap.obj
+ 0001:00000970       ??0IHeap@@QAE@XZ           10001970 f i BaseHeap.obj
+ 0001:00000980       ??0BaseHeap@@QAE@XZ        10001980 f i BaseHeap.obj
+ 0001:000009a0       ??0HeapInstance@@QAE@XZ    100019a0 f i BaseHeap.obj
+ 0001:000009d0       ??0MTHeapInstance@@QAE@XZ  100019d0 f i BaseHeap.obj
+ 0001:00000a00       ?AllocateMemory@MTHeapInstance@@UAGPAXKPBD@Z 10001a00 f i BaseHeap.obj
+ 0001:00000a30       ?ReallocateMemory@MTHeapInstance@@UAGPAXPAXKPBD@Z 10001a30 f i BaseHeap.obj
+ 0001:00000a70       ?FreeMemory@MTHeapInstance@@UAGJPAX@Z 10001a70 f i BaseHeap.obj
+ 0001:00000ab0       ?EnumerateBlocks@MTHeapInstance@@UAGJP6GJPAUIHeap@@PAXK1@Z1@Z 10001ab0 f i BaseHeap.obj
+ 0001:00000ae0       ?GetBlockSize@MTHeapInstance@@UAGKPAX@Z 10001ae0 f i BaseHeap.obj
+ 0001:00000b10       ?GetBlockMessage@MTHeapInstance@@UAGPBDPAX@Z 10001b10 f i BaseHeap.obj
+ 0001:00000b40       ?DidAlloc@MTHeapInstance@@UAGJPAX@Z 10001b40 f i BaseHeap.obj
+ 0001:00000b70       ?GetAvailableMemory@MTHeapInstance@@UAGKXZ 10001b70 f i BaseHeap.obj
+ 0001:00000ba0       ?GetLargestBlock@MTHeapInstance@@UAGKXZ 10001ba0 f i BaseHeap.obj
+ 0001:00000bd0       ?GetHeapSize@MTHeapInstance@@UAGKXZ 10001bd0 f i BaseHeap.obj
+ 0001:00000c00       ?SetErrorHandler@MTHeapInstance@@UAGP6AHUErrorCode@@PBDZZP6AH01ZZ@Z 10001c00 f i BaseHeap.obj
+ 0001:00000c30       ?GetErrorHandler@MTHeapInstance@@UAGP6AHUErrorCode@@PBDZZXZ 10001c30 f i BaseHeap.obj
+ 0001:00000c60       ?SetBlockOwner@MTHeapInstance@@UAGJPAXK@Z 10001c60 f i BaseHeap.obj
+ 0001:00000c90       ?GetBlockOwner@MTHeapInstance@@UAGKPAX@Z 10001c90 f i BaseHeap.obj
+ 0001:00000cc0       ?SetBlockMessage@MTHeapInstance@@UAGJPAXPBD@Z 10001cc0 f i BaseHeap.obj
+ 0001:00000cf0       ?CreateInstance@BaseHeap@@UAG?AW4GENRESULT@@PAUDACOMDESC@@PAPAX@Z 10001cf0 f   BaseHeap.obj
+ 0001:00000f20       ?strchr@@YAPADPADH@Z       10001f20 f i DACOM.obj
+ 0001:00000f30       ?strrchr@@YAPADPADH@Z      10001f30 f i DACOM.obj
+ 0001:00000f40       ??0AGGDESC@@QAE@PBD0@Z     10001f40 f i DACOM.obj
+ 0001:00000f70       ??0PROFPARSEDESC2@@QAE@PBD@Z 10001f70 f i DACOM.obj
+ 0001:00000f90       ?set@TempStr@@QAEXPAD0@Z   10001f90 f i DACOM.obj
+ 0001:00000fb0       ??BTempStr@@QAEPADXZ       10001fb0 f i DACOM.obj
+ 0001:00000fc0       ?QueryInterface@DACOManager@@UAG?AW4GENRESULT@@PBDPAPAX@Z 10001fc0 f   DACOM.obj
+ 0001:00001070       ?AddRef@DACOManager@@UAGKXZ 10002070 f   DACOM.obj
+ 0001:00001080       ?Release@DACOManager@@UAGKXZ 10002080 f   DACOM.obj
+ 0001:000010f0       ?GetAbsolutePath@DACOManager@@SGJPADPBD1J@Z 100020f0 f   DACOM.obj
+ 0001:00001260       ?STANDARD_DUMP@@YAHUErrorCode@@PBDZZ 10002260 f   DACOM.obj
+ 0001:00001390       _DACOM_GetDllVersion       10002390 f   DACOM.obj
+ 0001:00001500       ?last@?$LList@UREGISTERED_OBJECT@@@@QBEPAUREGISTERED_OBJECT@@XZ 10002500 f i DACOM.obj
+ 0001:00001510       ?prev@?$LList@UREGISTERED_OBJECT@@@@QBEPAUREGISTERED_OBJECT@@PAU2@@Z 10002510 f i DACOM.obj
+ 0001:00001530       ?last@?$LList@UADDED_LIBRARY@@@@QBEPAUADDED_LIBRARY@@XZ 10002530 f i DACOM.obj
+ 0001:00001540       ?reset@?$LList@UREGISTERED_OBJECT@@@@QAEXXZ 10002540 f i DACOM.obj
+ 0001:00001550       ?first@?$LList@UREGISTERED_OBJECT@@@@QBEPAUREGISTERED_OBJECT@@XZ 10002550 f i DACOM.obj
+ 0001:00001560       ?link@?$LList@UREGISTERED_OBJECT@@@@QAEPAUREGISTERED_OBJECT@@PAU2@0@Z 10002560 f i DACOM.obj
+ 0001:000015a0       ?unlink@?$LList@UREGISTERED_OBJECT@@@@QAEXPAUREGISTERED_OBJECT@@@Z 100025a0 f i DACOM.obj
+ 0001:000015e0       ?reset@?$LList@UADDED_LIBRARY@@@@QAEXXZ 100025e0 f i DACOM.obj
+ 0001:000015f0       ?first@?$LList@UADDED_LIBRARY@@@@QBEPAUADDED_LIBRARY@@XZ 100025f0 f i DACOM.obj
+ 0001:00001600       ?link@?$LList@UADDED_LIBRARY@@@@QAEPAUADDED_LIBRARY@@PAU2@0@Z 10002600 f i DACOM.obj
+ 0001:00001640       ?unlink@?$LList@UADDED_LIBRARY@@@@QAEXPAUADDED_LIBRARY@@@Z 10002640 f i DACOM.obj
+ 0001:00001680       ??$strncpy_s@$0BAM@@@YAHAAY0BAM@DPBDI@Z 10002680 f i DACOM.obj
+ 0001:000016a0       ??$_strupr_s@$0BAM@@@YAHAAY0BAM@D@Z 100026a0 f i DACOM.obj
+ 0001:000016c0       ??$strcpy_s@$0BAI@@@YAHAAY0BAI@DPBD@Z 100026c0 f i DACOM.obj
+ 0001:000016e0       ??$strcat_s@$0BAI@@@YAHAAY0BAI@DPBD@Z 100026e0 f i DACOM.obj
+ 0001:00001700       ??0TempStr@@QAA@PADZZ      10002700 f i DACOM.obj
+ 0001:00001720       ?LoadAllFromDirectory@DACOManager@@QAEJPBD0@Z 10002720 f   DACOM.obj
+ 0001:00001880       ?LoadAllFromPath@DACOManager@@QAEXPBD@Z 10002880 f   DACOM.obj
+ 0001:00001980       ?initialize@DACOManager@@QAEJXZ 10002980 f   DACOM.obj
+ 0001:00001b20       _DACOM_GetVersion          10002b20 f   DACOM.obj
+ 0001:00001bd0       ??0?$LList@UREGISTERED_OBJECT@@@@QAE@XZ 10002bd0 f i DACOM.obj
+ 0001:00001be0       ?next@?$LList@UREGISTERED_OBJECT@@@@QBEPAUREGISTERED_OBJECT@@PAU2@@Z 10002be0 f i DACOM.obj
+ 0001:00001c00       ?alloc@?$LList@UREGISTERED_OBJECT@@@@QAEPAUREGISTERED_OBJECT@@PAU2@@Z 10002c00 f i DACOM.obj
+ 0001:00001c50       ?free@?$LList@UREGISTERED_OBJECT@@@@QAEXPAUREGISTERED_OBJECT@@@Z 10002c50 f i DACOM.obj
+ 0001:00001ca0       ??0?$LList@UADDED_LIBRARY@@@@QAE@XZ 10002ca0 f i DACOM.obj
+ 0001:00001cb0       ?next@?$LList@UADDED_LIBRARY@@@@QBEPAUADDED_LIBRARY@@PAU2@@Z 10002cb0 f i DACOM.obj
+ 0001:00001cd0       ?alloc@?$LList@UADDED_LIBRARY@@@@QAEPAUADDED_LIBRARY@@PAU2@@Z 10002cd0 f i DACOM.obj
+ 0001:00001d20       ?free@?$LList@UADDED_LIBRARY@@@@QAEXPAUADDED_LIBRARY@@@Z 10002d20 f i DACOM.obj
+ 0001:00001d70       ??0ICOManager@@QAE@XZ      10002d70 f i DACOM.obj
+ 0001:00001d80       ?CreateInstance@DACOManager@@UAG?AW4GENRESULT@@PAUDACOMDESC@@PAPAX@Z 10002d80 f   DACOM.obj
+ 0001:00001e90       ?RegisterComponent@DACOManager@@UAG?AW4GENRESULT@@PAUIComponentFactory@@PBDK@Z 10002e90 f   DACOM.obj
+ 0001:00001f00       ?UnregisterComponent@DACOManager@@UAG?AW4GENRESULT@@PAUIComponentFactory@@PBD@Z 10002f00 f   DACOM.obj
+ 0001:00001f80       ?EnumerateComponents@DACOManager@@UAG?AW4GENRESULT@@PBDP6AJPAUIComponentFactory@@0KPAX@Z2@Z 10002f80 f   DACOM.obj
+ 0001:00002010       ?AddLibrary@DACOManager@@UAG?AW4GENRESULT@@PBD@Z 10003010 f   DACOM.obj
+ 0001:00002240       ?ShutDown@DACOManager@@UAG?AW4GENRESULT@@XZ 10003240 f   DACOM.obj
+ 0001:00002300       ?SetINIConfig@DACOManager@@UAG?AW4GENRESULT@@PBDK@Z 10003300 f   DACOM.obj
+ 0001:00002380       ?UnregisterRelatedComponents@DACOManager@@QAEXPAUADDED_LIBRARY@@@Z 10003380 f   DACOM.obj
+ 0001:00002400       ??0DACOManager@@QAE@XZ     10003400 f   DACOM.obj
+ 0001:000024c0       ?RemoveLibrary@DACOManager@@UAG?AW4GENRESULT@@PBD@Z 100034c0 f   DACOM.obj
+ 0001:00002630       _DACOM_Acquire             10003630 f   DACOM.obj
+ 0001:00002660       ?getMsg@BASE_BLOCK@@QAEPBDXZ 10003660 f i HeapInst.obj
+ 0001:00002670       ?setMsg@BASE_BLOCK@@QAEXPBD@Z 10003670 f i HeapInst.obj
+ 0001:00002680       ?getOwner@BASE_BLOCK@@QAEKXZ 10003680 f i HeapInst.obj
+ 0001:00002690       ?setOwner@BASE_BLOCK@@QAEXK@Z 10003690 f i HeapInst.obj
+ 0001:000026a0       ?getPrev@FREE_BLOCK@@QAEPAU1@XZ 100036a0 f i HeapInst.obj
+ 0001:000026b0       ?getNext@FREE_BLOCK@@QAEPAU1@XZ 100036b0 f i HeapInst.obj
+ 0001:000026c0       ?RELINK@HeapInstance@@QAEXPAUFREE_BLOCK@@@Z 100036c0 f i HeapInst.obj
+ 0001:00002720       ?UNLINK@HeapInstance@@QAEXPAUFREE_BLOCK@@@Z 10003720 f i HeapInst.obj
+ 0001:00002790       ?Release@HeapInstance@@UAGKXZ 10003790 f   HeapInst.obj
+ 0001:000027d0       ?EnumerateBlocks@HeapInstance@@UAGJP6GJPAUIHeap@@PAXK1@Z1@Z 100037d0 f   HeapInst.obj
+ 0001:00002860       ?GetBlockSize@HeapInstance@@UAGKPAX@Z 10003860 f   HeapInst.obj
+ 0001:00002890       ?GetBlockMessage@HeapInstance@@UAGPBDPAX@Z 10003890 f   HeapInst.obj
+ 0001:000028c0       ?SetBlockMessage@HeapInstance@@UAGJPAXPBD@Z 100038c0 f   HeapInst.obj
+ 0001:00002900       ?DidAlloc@HeapInstance@@UAGJPAX@Z 10003900 f   HeapInst.obj
+ 0001:00002930       ?GetAvailableMemory@HeapInstance@@UAGKXZ 10003930 f   HeapInst.obj
+ 0001:00002970       ?GetLargestBlock@HeapInstance@@UAGKXZ 10003970 f   HeapInst.obj
+ 0001:000029c0       ?GetHeapSize@HeapInstance@@UAGKXZ 100039c0 f   HeapInst.obj
+ 0001:000029e0       ?SetErrorHandler@HeapInstance@@UAGP6AHUErrorCode@@PBDZZP6AH01ZZ@Z 100039e0 f   HeapInst.obj
+ 0001:00002a00       ?GetErrorHandler@HeapInstance@@UAGP6AHUErrorCode@@PBDZZXZ 10003a00 f   HeapInst.obj
+ 0001:00002a10       ?initHeap@HeapInstance@@QAE?AW4GENRESULT@@PAUDAHEAPDESC@@@Z 10003a10 f   HeapInst.obj
+ 0001:00002b20       ?sort@HeapInstance@@QAIXPAUFREE_BLOCK@@@Z 10003b20 f   HeapInst.obj
+ 0001:00002bf0       ?malloc@HeapInstance@@QAIPAUBASE_BLOCK@@K@Z 10003bf0 f   HeapInst.obj
+ 0001:00002c80       ?mergeWithLower@HeapInstance@@QAIHPAUBASE_BLOCK@@@Z 10003c80 f i HeapInst.obj
+ 0001:00002d60       ?free@HeapInstance@@QAIHPAUFREE_BLOCK@@@Z 10003d60 f   HeapInst.obj
+ 0001:00002de0       ?SetBlockOwner@HeapInstance@@UAGJPAXK@Z 10003de0 f   HeapInst.obj
+ 0001:00002e20       ?GetBlockOwner@HeapInstance@@UAGKPAX@Z 10003e20 f   HeapInst.obj
+ 0001:00002e60       ?AllocateMemory@HeapInstance@@UAGPAXKPBD@Z 10003e60 f   HeapInst.obj
+ 0001:00002ea0       ?ReallocateMemory@HeapInstance@@UAGPAXPAXKPBD@Z 10003ea0 f   HeapInst.obj
+ 0001:00002f20       ?FreeMemory@HeapInstance@@UAGJPAX@Z 10003f20 f   HeapInst.obj
+ 0001:00002f48       ?malloc_pass_through@BaseHeap@@UAGPAXPBD@Z 10003f48 f   HeapPass.obj
+ 0001:00002f7d       ?realloc_pass_through@BaseHeap@@UAGPAXPBD@Z 10003f7d f   HeapPass.obj
+ 0001:00002fb7       ?calloc_pass_through@BaseHeap@@UAGPAXPBD@Z 10003fb7 f   HeapPass.obj
+ 0001:00002ff3       ?malloc_pass_through@MSHeap@@UAGPAXPBD@Z 10003ff3 f   HeapPass.obj
+ 0001:00002ffc       ?realloc_pass_through@MSHeap@@UAGPAXPBD@Z 10003ffc f   HeapPass.obj
+ 0001:00003005       ?calloc_pass_through@MSHeap@@UAGPAXPBD@Z 10004005 f   HeapPass.obj
+ 0001:00003010       ?CreateInstance@MSHeap@@UAG?AW4GENRESULT@@PAUDACOMDESC@@PAPAX@Z 10004010 f   MSHeap.obj
+ 0001:00003020       ?AllocateMemory@MSHeap@@UAGPAXKPBD@Z 10004020 f   MSHeap.obj
+ 0001:00003040       ?ClearAllocateMemory@MSHeap@@UAGPAXKPBDE@Z 10004040 f   MSHeap.obj
+ 0001:00003070       ?ReallocateMemory@MSHeap@@UAGPAXPAXKPBD@Z 10004070 f   MSHeap.obj
+ 0001:00003090       ?FreeMemory@MSHeap@@UAGJPAX@Z 10004090 f   MSHeap.obj
+ 0001:000030b0       ?EnumerateBlocks@MSHeap@@UAGJP6GJPAUIHeap@@PAXK1@Z1@Z 100040b0 f   MSHeap.obj
+ 0001:000030d0       ?GetBlockSize@MSHeap@@UAGKPAX@Z 100040d0 f   MSHeap.obj
+ 0001:000030f0       ?GetBlockMessage@MSHeap@@UAGPBDPAX@Z 100040f0 f   MSHeap.obj
+ 0001:00003100       ?SetBlockMessage@MSHeap@@UAGJPAXPBD@Z 10004100 f   MSHeap.obj
+ 0001:00003110       ?DidAlloc@MSHeap@@UAGJPAX@Z 10004110 f   MSHeap.obj
+ 0001:00003120       ?GetAvailableMemory@MSHeap@@UAGKXZ 10004120 f   MSHeap.obj
+ 0001:00003130       ?GetLargestBlock@MSHeap@@UAGKXZ 10004130 f   MSHeap.obj
+ 0001:00003140       ?GetHeapSize@MSHeap@@UAGKXZ 10004140 f   MSHeap.obj
+ 0001:00003150       ?SetErrorHandler@MSHeap@@UAGP6AHUErrorCode@@PBDZZP6AH01ZZ@Z 10004150 f   MSHeap.obj
+ 0001:00003170       ?GetErrorHandler@MSHeap@@UAGP6AHUErrorCode@@PBDZZXZ 10004170 f   MSHeap.obj
+ 0001:00003180       ?SetBlockOwner@MSHeap@@UAGJPAXK@Z 10004180 f   MSHeap.obj
+ 0001:00003190       ?GetBlockOwner@MSHeap@@UAGKPAX@Z 10004190 f   MSHeap.obj
+ 0001:000031a0       ?HeapMinimize@MSHeap@@UAGXXZ 100041a0 f   MSHeap.obj
+ 0001:000031b0       ?GetHeapFlags@MSHeap@@UAGKXZ 100041b0 f   MSHeap.obj
+ 0001:000031c0       _HEAP_Acquire              100041c0 f   MSHeap.obj
+ 0001:000031e0       ??0MSHeap@@QAE@XZ          100041e0 f i MSHeap.obj
+ 0001:000031f0       ??0?$DAComponent@UMSHeap@@@@QAE@XZ 100041f0 f i MSHeap.obj
+ 0001:00003200       ?_GetEntriesIn@MSHeap@@SGPBU_DACOM_INTMAP_ENTRY@@XZ 10004200 f i MSHeap.obj
+ 0001:00003210       ?QueryInterface@?$DAComponent@UMSHeap@@@@UAG?AW4GENRESULT@@PBDPAPAX@Z 10004210 f i MSHeap.obj
+ 0001:000032c0       ?AddRef@?$DAComponent@UMSHeap@@@@UAGKXZ 100042c0 f i MSHeap.obj
+ 0001:000032d0       ?Release@?$DAComponent@UMSHeap@@@@UAGKXZ 100042d0 f i MSHeap.obj
+ 0001:00003300       _DllMain@12                10004300 f   MSHeap.obj
+ 0001:00003380       ?_GetEntriesIn@ProfileParser@@SGPBU_DACOM_INTMAP_ENTRY@@XZ 10004380 f i ProfileParser.obj
+ 0001:00003390       ?_GetEntriesIn@ProfileParser2@@SGPBU_DACOM_INTMAP_ENTRY@@XZ 10004390 f i ProfileParser.obj
+ 0001:000033a0       ?free@ProfileParser@@QAEXXZ 100043a0 f   ProfileParser.obj
+ 0001:000033c0       ?Initialize2@ProfileParser2@@UAG?AW4GENRESULT@@PBDK@Z 100043c0 f   ProfileParser.obj
+ 0001:000033e0       ?getLine@ProfileParser@@SIPBDPBDH@Z 100043e0 f   ProfileParser.obj
+ 0001:00003450       ?getSection@ProfileParser@@SIPBDPBDH@Z 10004450 f   ProfileParser.obj
+ 0001:00003490       ?EnumerateSections@ProfileParser@@UAGJP6GJPAUIProfileParser@@PBDPAX@Z2@Z 10004490 f   ProfileParser.obj
+ 0001:000034f0       ?EnumerateSections@ProfileParser2@@UAGJPAUIProfileCallback@@PAX@Z 100044f0 f   ProfileParser.obj
+ 0001:00003560       ?EnumerateKeys@ProfileParser2@@UAGJPAUIProfileCallback@@PAX1@Z 10004560 f   ProfileParser.obj
+ 0001:00003720       ?CreateSection@ProfileParser@@UAGPAXPBDW4CREATE_MODE@IProfileParser@@@Z 10004720 f   ProfileParser.obj
+ 0001:000037c0       ?CloseSection@ProfileParser@@UAGJPAX@Z 100047c0 f   ProfileParser.obj
+ 0001:000037d0       ?ReadKeyValue@ProfileParser@@UAGKPAXPBDPADK@Z 100047d0 f   ProfileParser.obj
+ 0001:00003910       ?getLine@ProfileParser@@QAEPBDPAXH@Z 10004910 f i ProfileParser.obj
+ 0001:00003930       ?Initialize@ProfileParser@@UAG?AW4GENRESULT@@PBDW4ACCESS@IProfileParser@@@Z 10004930 f   ProfileParser.obj
+ 0001:00003ab0       ?ReadProfileLine@ProfileParser@@UAGKPAXKPADK@Z 10004ab0 f   ProfileParser.obj
+ 0001:00003b60       ??0?$DAComponentFactoryBase@U?$DAComponentAggregate@UProfileParser2@@@@UPROFPARSEDESC2@@@@QAE@PBD@Z 10004b60 f i ProfileParser.obj
+ 0001:00003b80       ??0?$DAComponentFactoryBase@U?$DAComponentAggregate@UProfileParser@@@@UPROFPARSEDESC@@@@QAE@PBD@Z 10004b80 f i ProfileParser.obj
+ 0001:00003ba0       ??0?$DAComponentFactory2@U?$DAComponentAggregate@UProfileParser2@@@@UPROFPARSEDESC2@@@@QAE@PBD@Z 10004ba0 f i ProfileParser.obj
+ 0001:00003bd0       ??2ProfileParser@@SAPAXI@Z 10004bd0 f i ProfileParser.obj
+ 0001:00003bf0       ??3ProfileParser@@SAXPAX@Z 10004bf0 f i ProfileParser.obj
+ 0001:00003c10       ?init@ProfileParser2@@QAE?AW4GENRESULT@@PAUPROFPARSEDESC2@@@Z 10004c10 f i ProfileParser.obj
+ 0001:00003c20       ?QueryInterface@?$DAComponentFactoryBase@U?$DAComponentAggregate@UProfileParser2@@@@UPROFPARSEDESC2@@@@UAG?AW4GENRESULT@@PBDPAPAX@Z 10004c20 f i ProfileParser.obj
+ 0001:00003c80       ?AddRef@?$DAComponentFactoryBase@U?$DAComponentAggregate@UProfileParser2@@@@UPROFPARSEDESC2@@@@UAGKXZ 10004c80 f i ProfileParser.obj
+ 0001:00003c90       ?Release@?$DAComponentFactoryBase@U?$DAComponentAggregate@UProfileParser2@@@@UPROFPARSEDESC2@@@@UAGKXZ 10004c90 f i ProfileParser.obj
+ 0001:00003cc0       ??0IProfileParser2@@QAE@XZ 10004cc0 f i ProfileParser.obj
+ 0001:00003cd0       ??0?$DAComponentInner@UProfileParser2@@UIDAComponent@@@@QAE@PAUProfileParser2@@@Z 10004cd0 f i ProfileParser.obj
+ 0001:00003cf0       ?QueryInterface@?$DAComponentInner@UProfileParser2@@UIDAComponent@@@@UAG?AW4GENRESULT@@PBDPAPAX@Z 10004cf0 f i ProfileParser.obj
+ 0001:00003da0       ?AddRef@?$DAComponentInner@UProfileParser2@@UIDAComponent@@@@UAGKXZ 10004da0 f i ProfileParser.obj
+ 0001:00003db0       ??1ProfileParser@@QAE@XZ   10004db0 f i ProfileParser.obj
+ 0001:00003dc0       ??0IProfileParser@@QAE@XZ  10004dc0 f i ProfileParser.obj
+ 0001:00003dd0       ??1ProfileParser2@@QAE@XZ  10004dd0 f i ProfileParser.obj
+ 0001:00003de0       ??0ProfileParser@@QAE@XZ   10004de0 f i ProfileParser.obj
+ 0001:00003df0       ??0?$DAComponentFactory2@U?$DAComponentAggregate@UProfileParser@@@@UPROFPARSEDESC@@@@QAE@PBD@Z 10004df0 f i ProfileParser.obj
+ 0001:00003e20       ?init@ProfileParser@@QAE?AW4GENRESULT@@PAUPROFPARSEDESC@@@Z 10004e20 f i ProfileParser.obj
+ 0001:00003e30       ?QueryInterface@?$DAComponentFactoryBase@U?$DAComponentAggregate@UProfileParser@@@@UPROFPARSEDESC@@@@UAG?AW4GENRESULT@@PBDPAPAX@Z 10004e30 f i ProfileParser.obj
+ 0001:00003e90       ?AddRef@?$DAComponentFactoryBase@U?$DAComponentAggregate@UProfileParser@@@@UPROFPARSEDESC@@@@UAGKXZ 10004e90 f i ProfileParser.obj
+ 0001:00003ea0       ?Release@?$DAComponentFactoryBase@U?$DAComponentAggregate@UProfileParser@@@@UPROFPARSEDESC@@@@UAGKXZ 10004ea0 f i ProfileParser.obj
+ 0001:00003ed0       ??0?$DAComponentInner@UProfileParser@@UIDAComponent@@@@QAE@PAUProfileParser@@@Z 10004ed0 f i ProfileParser.obj
+ 0001:00003ef0       ?QueryInterface@?$DAComponentInner@UProfileParser@@UIDAComponent@@@@UAG?AW4GENRESULT@@PBDPAPAX@Z 10004ef0 f i ProfileParser.obj
+ 0001:00003fa0       ?AddRef@?$DAComponentInner@UProfileParser@@UIDAComponent@@@@UAGKXZ 10004fa0 f i ProfileParser.obj
+ 0001:00003fb0       ??_GProfileParser@@QAEPAXI@Z 10004fb0 f i ProfileParser.obj
+ 0001:00003fe0       ??1?$DAComponentAggregate@UProfileParser@@@@QAE@XZ 10004fe0 f i ProfileParser.obj
+ 0001:00003ff0       ?Release@?$DAComponentInner@UProfileParser@@UIDAComponent@@@@UAGKXZ 10004ff0 f i ProfileParser.obj
+ 0001:00004030       ??_G?$DAComponentAggregate@UProfileParser@@@@QAEPAXI@Z 10005030 f i ProfileParser.obj
+ 0001:00004060       ??_GProfileParser2@@QAEPAXI@Z 10005060 f i ProfileParser.obj
+ 0001:00004090       ??1?$DAComponentAggregate@UProfileParser2@@@@QAE@XZ 10005090 f i ProfileParser.obj
+ 0001:000040a0       ??0?$DAComponentAggregate@UProfileParser@@@@QAE@PAUAGGDESC@@@Z 100050a0 f i ProfileParser.obj
+ 0001:000040f0       ?QueryInterface@?$DAComponentAggregate@UProfileParser@@@@UAG?AW4GENRESULT@@PBDPAPAX@Z 100050f0 f i ProfileParser.obj
+ 0001:00004110       ?AddRef@?$DAComponentAggregate@UProfileParser@@@@UAGKXZ 10005110 f i ProfileParser.obj
+ 0001:00004130       ?Release@?$DAComponentAggregate@UProfileParser@@@@UAGKXZ 10005130 f i ProfileParser.obj
+ 0001:00004150       ??0ProfileParser2@@QAE@XZ  10005150 f i ProfileParser.obj
+ 0001:00004160       ?CreateProfileParserFactory2@@YAPAUIComponentFactory@@XZ 10005160 f   ProfileParser.obj
+ 0001:00004190       ?CreateProfileParserFactory@@YAPAUIComponentFactory@@XZ 10005190 f   ProfileParser.obj
+ 0001:000041c0       ?CreateInstance@?$DAComponentFactory2@U?$DAComponentAggregate@UProfileParser@@@@UPROFPARSEDESC@@@@UAG?AW4GENRESULT@@PAUDACOMDESC@@PAPAX@Z 100051c0 f i ProfileParser.obj
+ 0001:00004250       ?Release@?$DAComponentInner@UProfileParser2@@UIDAComponent@@@@UAGKXZ 10005250 f i ProfileParser.obj
+ 0001:000042a0       ??_G?$DAComponentAggregate@UProfileParser2@@@@QAEPAXI@Z 100052a0 f i ProfileParser.obj
+ 0001:000042d0       ??0?$DAComponentAggregate@UProfileParser2@@@@QAE@PAUAGGDESC@@@Z 100052d0 f i ProfileParser.obj
+ 0001:00004320       ?QueryInterface@?$DAComponentAggregate@UProfileParser2@@@@UAG?AW4GENRESULT@@PBDPAPAX@Z 10005320 f i ProfileParser.obj
+ 0001:00004340       ?AddRef@?$DAComponentAggregate@UProfileParser2@@@@UAGKXZ 10005340 f i ProfileParser.obj
+ 0001:00004360       ?Release@?$DAComponentAggregate@UProfileParser2@@@@UAGKXZ 10005360 f i ProfileParser.obj
+ 0001:00004380       ?AddRef@?$DAComponentAggregate@UProfileParser2@@@@W3AGKXZ 10005380 f i ProfileParser.obj
+ 0001:00004390       ?QueryInterface@?$DAComponentAggregate@UProfileParser2@@@@W3AG?AW4GENRESULT@@PBDPAPAX@Z 10005390 f i ProfileParser.obj
+ 0001:000043a0       ?Release@?$DAComponentAggregate@UProfileParser2@@@@W3AGKXZ 100053a0 f i ProfileParser.obj
+ 0001:000043b0       ?CreateSection@ProfileParser2@@UAGPAXPBDW4CREATE_MODE@IProfileParser@@@Z 100053b0 f i ProfileParser.obj
+ 0001:000043c0       ?CloseSection@ProfileParser2@@UAGJPAX@Z 100053c0 f i ProfileParser.obj
+ 0001:000043d0       ?ReadKeyValue@ProfileParser2@@UAGKPAXPBDPADK@Z 100053d0 f i ProfileParser.obj
+ 0001:000043e0       ?CloseSection@ProfileParser2@@W3AGJPAX@Z 100053e0 f i ProfileParser.obj
+ 0001:000043f0       ?ReadKeyValue@ProfileParser2@@W3AGKPAXPBDPADK@Z 100053f0 f i ProfileParser.obj
+ 0001:00004400       ?CreateSection@ProfileParser2@@W3AGPAXPBDW4CREATE_MODE@IProfileParser@@@Z 10005400 f i ProfileParser.obj
+ 0001:00004410       ?Initialize@ProfileParser2@@UAG?AW4GENRESULT@@PBDW4ACCESS@IProfileParser@@@Z 10005410 f i ProfileParser.obj
+ 0001:00004420       ?ReadProfileLine@ProfileParser2@@UAGKPAXKPADK@Z 10005420 f i ProfileParser.obj
+ 0001:00004430       ?ReadProfileLine@ProfileParser2@@W3AGKPAXKPADK@Z 10005430 f i ProfileParser.obj
+ 0001:00004440       ?Initialize@ProfileParser2@@W3AG?AW4GENRESULT@@PBDW4ACCESS@IProfileParser@@@Z 10005440 f i ProfileParser.obj
+ 0001:00004450       ?CreateInstance@?$DAComponentFactory2@U?$DAComponentAggregate@UProfileParser2@@@@UPROFPARSEDESC2@@@@UAG?AW4GENRESULT@@PAUDACOMDESC@@PAPAX@Z 10005450 f i ProfileParser.obj
+ 0001:000044e0       _VerQueryValueA@16         100054e0 f   version:VERSION.dll
+ 0001:000044e6       _GetFileVersionInfoA@16    100054e6 f   version:VERSION.dll
+ 0001:000044ec       _GetFileVersionInfoSizeA@8 100054ec f   version:VERSION.dll
+ 0001:000044f2       _DeleteCriticalSection@4   100054f2 f   kernel32:KERNEL32.dll
+ 0001:000044f8       _VirtualFree@12            100054f8 f   kernel32:KERNEL32.dll
+ 0001:000044fe       _LeaveCriticalSection@4    100054fe f   kernel32:KERNEL32.dll
+ 0001:00004504       _EnterCriticalSection@4    10005504 f   kernel32:KERNEL32.dll
+ 0001:0000450a       _InitializeCriticalSection@4 1000550a f   kernel32:KERNEL32.dll
+ 0001:00004510       _OutputDebugStringA@4      10005510 f   kernel32:KERNEL32.dll
+ 0001:00004516       _FreeLibrary@4             10005516 f   kernel32:KERNEL32.dll
+ 0001:0000451c       _GetModuleFileNameA@12     1000551c f   kernel32:KERNEL32.dll
+ 0001:00004522       _LoadLibraryA@4            10005522 f   kernel32:KERNEL32.dll
+ 0001:00004528       _FindClose@4               10005528 f   kernel32:KERNEL32.dll
+ 0001:0000452e       _FindNextFileA@8           1000552e f   kernel32:KERNEL32.dll
+ 0001:00004534       _FindFirstFileA@8          10005534 f   kernel32:KERNEL32.dll
+ 0001:0000453a       _GetEnvironmentVariableA@12 1000553a f   kernel32:KERNEL32.dll
+ 0001:00004540       _GetShortPathNameA@12      10005540 f   kernel32:KERNEL32.dll
+ 0001:00004546       _VirtualAlloc@16           10005546 f   kernel32:KERNEL32.dll
+ 0001:0000454c       _CloseHandle@4             1000554c f   kernel32:KERNEL32.dll
+ 0001:00004552       _ReadFile@20               10005552 f   kernel32:KERNEL32.dll
+ 0001:00004558       _GetFileSize@8             10005558 f   kernel32:KERNEL32.dll
+ 0001:0000455e       _CreateFileA@28            1000555e f   kernel32:KERNEL32.dll
+ 0001:00004564       _LoadStringA@16            10005564 f   user32:USER32.dll
+ 0001:0000456a       _wvsprintfA@12             1000556a f   user32:USER32.dll
+ 0001:00004570       _PostQuitMessage@4         10005570 f   user32:USER32.dll
+ 0001:00004576       _MessageBoxA@16            10005576 f   user32:USER32.dll
+ 0001:0000457c       ??3@YAXPAX@Z               1000557c f   MSVCRT:MSVCR90.dll
+ 0001:00004582       _memset                    10005582 f   MSVCRT:MSVCR90.dll
+ 0001:00004588       @__security_check_cookie@4 10005588 f   MSVCRT:secchk.obj
+ 0001:00004598       _memcpy                    10005598 f   MSVCRT:MSVCR90.dll
+ 0001:0000459e       ??0type_info@@AAE@ABV0@@Z  1000559e f   MSVCRT:ti_inst.obj
+ 0001:000045a9       ??_Etype_info@@UAEPAXI@Z   100055a9 f i MSVCRT:ti_inst.obj
+ 0001:000045f5       ??4type_info@@AAEAAV0@ABV0@@Z 100055f5 f   MSVCRT:ti_inst.obj
+ 0001:000045fa       ??2@YAPAXI@Z               100055fa f   MSVCRT:MSVCR90.dll
+ 0001:00004600       _strchr                    10005600 f   MSVCRT:MSVCR90.dll
+ 0001:00004606       _strrchr                   10005606 f   MSVCRT:MSVCR90.dll
+ 0001:0000460c       _strncpy                   1000560c f   MSVCRT:MSVCR90.dll
+ 0001:00004612       _abort                     10005612 f   MSVCRT:MSVCR90.dll
+ 0001:00004620       __chkstk                   10005620 f   MSVCRT:chkstk.obj
+ 0001:00004620       __alloca_probe             10005620     MSVCRT:chkstk.obj
+ 0001:0000464c       _strncpy_s                 1000564c f   MSVCRT:MSVCR90.dll
+ 0001:00004652       __strupr_s                 10005652 f   MSVCRT:MSVCR90.dll
+ 0001:00004658       _strcpy_s                  10005658 f   MSVCRT:MSVCR90.dll
+ 0001:0000465e       _strcat_s                  1000565e f   MSVCRT:MSVCR90.dll
+ 0001:00004664       _calloc                    10005664 f   MSVCRT:MSVCR90.dll
+ 0001:0000466a       _malloc                    1000566a f   MSVCRT:MSVCR90.dll
+ 0001:00004670       _realloc                   10005670 f   MSVCRT:MSVCR90.dll
+ 0001:00004676       _free                      10005676 f   MSVCRT:MSVCR90.dll
+ 0001:0000467c       __heapchk                  1000567c f   MSVCRT:MSVCR90.dll
+ 0001:00004682       __msize                    10005682 f   MSVCRT:MSVCR90.dll
+ 0001:00004688       __heapmin                  10005688 f   MSVCRT:MSVCR90.dll
+ 0001:0000468e       __purecall                 1000568e f   MSVCRT:MSVCR90.dll
+ 0001:00004694       _isalnum                   10005694 f   MSVCRT:MSVCR90.dll
+ 0001:0000469a       _NtCurrentTeb              1000569a f i MSVCRT:crtdll.obj
+ 0001:000046f0       __CRT_INIT@12              100056f0 f   MSVCRT:crtdll.obj
+ 0001:00004a2c       __DllMainCRTStartup@12     10005a2c f   MSVCRT:crtdll.obj
+ 0001:00004a4f       ___report_gsfailure        10005a4f f   MSVCRT:gs_report.obj
+ 0001:00004b67       ?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z 10005b67 f   MSVCRT:ehvecdtr.obj
+ 0001:00004bc5       ??_M@YGXPAXIHP6EX0@Z@Z     10005bc5 f   MSVCRT:ehvecdtr.obj
+ 0001:00004c28       ___clean_type_info_names   10005c28 f   MSVCRT:tncleanup.obj
+ 0001:00004c34       __onexit                   10005c34 f   MSVCRT:atonexit.obj
+ 0001:00004cd9       _atexit                    10005cd9 f   MSVCRT:atonexit.obj
+ 0001:00004cf0       __RTC_Initialize           10005cf0 f   MSVCRT:_initsect_.obj
+ 0001:00004d16       __RTC_Terminate            10005d16 f   MSVCRT:_initsect_.obj
+ 0001:00004d3c       __encode_pointer           10005d3c f   MSVCRT:MSVCR90.dll
+ 0001:00004d42       __malloc_crt               10005d42 f   MSVCRT:MSVCR90.dll
+ 0001:00004d48       __encoded_null             10005d48 f   MSVCRT:MSVCR90.dll
+ 0001:00004d4e       __decode_pointer           10005d4e f   MSVCRT:MSVCR90.dll
+ 0001:00004d60       __ValidateImageBase        10005d60 f   MSVCRT:pesect.obj
+ 0001:00004da0       __FindPESection            10005da0 f   MSVCRT:pesect.obj
+ 0001:00004df0       __IsNonwritableInCurrentImage 10005df0 f   MSVCRT:pesect.obj
+ 0001:00004eae       __initterm                 10005eae f   MSVCRT:MSVCR90.dll
+ 0001:00004eb4       __initterm_e               10005eb4 f   MSVCRT:MSVCR90.dll
+ 0001:00004eba       __amsg_exit                10005eba f   MSVCRT:MSVCR90.dll
+ 0001:00004ec0       ___CppXcptFilter           10005ec0 f   MSVCRT:MSVCR90.dll
+ 0001:00004ec8       __SEH_prolog4              10005ec8 f   MSVCRT:sehprolg4.obj
+ 0001:00004f0d       __SEH_epilog4              10005f0d f   MSVCRT:sehprolg4.obj
+ 0001:00004f21       __except_handler4          10005f21 f   MSVCRT:chandler4gs.obj
+ 0001:00004f46       ___security_init_cookie    10005f46 f   MSVCRT:gs_support.obj
+ 0001:00004fdc       __crt_debugger_hook        10005fdc f   MSVCRT:MSVCR90.dll
+ 0001:00004fe2       ?terminate@@YAXXZ          10005fe2 f   MSVCRT:MSVCR90.dll
+ 0001:00004fe8       ??1type_info@@UAE@XZ       10005fe8 f   MSVCRT:MSVCR90.dll
+ 0001:00004fe8       ?_type_info_dtor_internal_method@type_info@@QAEXXZ 10005fe8 f   MSVCRT:MSVCR90.dll
+ 0001:00004fee       ___clean_type_info_names_internal 10005fee f   MSVCRT:MSVCR90.dll
+ 0001:00004ff4       __unlock                   10005ff4 f   MSVCRT:MSVCR90.dll
+ 0001:00004ffa       ___dllonexit               10005ffa f   MSVCRT:MSVCR90.dll
+ 0001:00005000       __lock                     10006000 f   MSVCRT:MSVCR90.dll
+ 0001:00005006       __except_handler4_common   10006006 f   MSVCRT:MSVCR90.dll
+ 0001:0000500c       _InterlockedExchange@8     1000600c f   kernel32:KERNEL32.dll
+ 0001:00005012       _Sleep@4                   10006012 f   kernel32:KERNEL32.dll
+ 0001:00005018       _InterlockedCompareExchange@12 10006018 f   kernel32:KERNEL32.dll
+ 0001:0000501e       _TerminateProcess@8        1000601e f   kernel32:KERNEL32.dll
+ 0001:00005024       _GetCurrentProcess@0       10006024 f   kernel32:KERNEL32.dll
+ 0001:0000502a       _UnhandledExceptionFilter@4 1000602a f   kernel32:KERNEL32.dll
+ 0001:00005030       _SetUnhandledExceptionFilter@4 10006030 f   kernel32:KERNEL32.dll
+ 0001:00005036       _IsDebuggerPresent@0       10006036 f   kernel32:KERNEL32.dll
+ 0001:0000503c       _QueryPerformanceCounter@4 1000603c f   kernel32:KERNEL32.dll
+ 0001:00005042       _GetTickCount@0            10006042 f   kernel32:KERNEL32.dll
+ 0001:00005048       _GetCurrentThreadId@0      10006048 f   kernel32:KERNEL32.dll
+ 0001:0000504e       _GetCurrentProcessId@0     1000604e f   kernel32:KERNEL32.dll
+ 0001:00005054       _GetSystemTimeAsFileTime@4 10006054 f   kernel32:KERNEL32.dll
+ 0001:0000505a       __stricmp                  1000605a f   MSVCRT:MSVCR90.dll
+ 0001:00005060       __strnicmp                 10006060 f   MSVCRT:MSVCR90.dll
+ 0002:00000000       __imp__UnhandledExceptionFilter@4 10007000     kernel32:KERNEL32.dll
+ 0002:00000004       __imp__TerminateProcess@8  10007004     kernel32:KERNEL32.dll
+ 0002:00000008       __imp__GetSystemTimeAsFileTime@4 10007008     kernel32:KERNEL32.dll
+ 0002:0000000c       __imp__GetCurrentProcessId@0 1000700c     kernel32:KERNEL32.dll
+ 0002:00000010       __imp__DeleteCriticalSection@4 10007010     kernel32:KERNEL32.dll
+ 0002:00000014       __imp__VirtualFree@12      10007014     kernel32:KERNEL32.dll
+ 0002:00000018       __imp__LeaveCriticalSection@4 10007018     kernel32:KERNEL32.dll
+ 0002:0000001c       __imp__EnterCriticalSection@4 1000701c     kernel32:KERNEL32.dll
+ 0002:00000020       __imp__InitializeCriticalSection@4 10007020     kernel32:KERNEL32.dll
+ 0002:00000024       __imp__OutputDebugStringA@4 10007024     kernel32:KERNEL32.dll
+ 0002:00000028       __imp__FreeLibrary@4       10007028     kernel32:KERNEL32.dll
+ 0002:0000002c       __imp__GetModuleFileNameA@12 1000702c     kernel32:KERNEL32.dll
+ 0002:00000030       __imp__LoadLibraryA@4      10007030     kernel32:KERNEL32.dll
+ 0002:00000034       __imp__FindClose@4         10007034     kernel32:KERNEL32.dll
+ 0002:00000038       __imp__FindNextFileA@8     10007038     kernel32:KERNEL32.dll
+ 0002:0000003c       __imp__FindFirstFileA@8    1000703c     kernel32:KERNEL32.dll
+ 0002:00000040       __imp__GetEnvironmentVariableA@12 10007040     kernel32:KERNEL32.dll
+ 0002:00000044       __imp__GetShortPathNameA@12 10007044     kernel32:KERNEL32.dll
+ 0002:00000048       __imp__VirtualAlloc@16     10007048     kernel32:KERNEL32.dll
+ 0002:0000004c       __imp__CloseHandle@4       1000704c     kernel32:KERNEL32.dll
+ 0002:00000050       __imp__ReadFile@20         10007050     kernel32:KERNEL32.dll
+ 0002:00000054       __imp__GetFileSize@8       10007054     kernel32:KERNEL32.dll
+ 0002:00000058       __imp__CreateFileA@28      10007058     kernel32:KERNEL32.dll
+ 0002:0000005c       __imp__GetCurrentThreadId@0 1000705c     kernel32:KERNEL32.dll
+ 0002:00000060       __imp__GetTickCount@0      10007060     kernel32:KERNEL32.dll
+ 0002:00000064       __imp__QueryPerformanceCounter@4 10007064     kernel32:KERNEL32.dll
+ 0002:00000068       __imp__IsDebuggerPresent@0 10007068     kernel32:KERNEL32.dll
+ 0002:0000006c       __imp__SetUnhandledExceptionFilter@4 1000706c     kernel32:KERNEL32.dll
+ 0002:00000070       __imp__InterlockedCompareExchange@12 10007070     kernel32:KERNEL32.dll
+ 0002:00000074       __imp__Sleep@4             10007074     kernel32:KERNEL32.dll
+ 0002:00000078       __imp__InterlockedExchange@8 10007078     kernel32:KERNEL32.dll
+ 0002:0000007c       __imp__GetCurrentProcess@0 1000707c     kernel32:KERNEL32.dll
+ 0002:00000080       \177KERNEL32_NULL_THUNK_DATA 10007080     kernel32:KERNEL32.dll
+ 0002:00000084       __imp__strchr              10007084     MSVCRT:MSVCR90.dll
+ 0002:00000088       __imp__strrchr             10007088     MSVCRT:MSVCR90.dll
+ 0002:0000008c       __imp__strncpy             1000708c     MSVCRT:MSVCR90.dll
+ 0002:00000090       __imp__abort               10007090     MSVCRT:MSVCR90.dll
+ 0002:00000094       __imp_??2@YAPAXI@Z         10007094     MSVCRT:MSVCR90.dll
+ 0002:00000098       __imp___strupr_s           10007098     MSVCRT:MSVCR90.dll
+ 0002:0000009c       __imp__strcpy_s            1000709c     MSVCRT:MSVCR90.dll
+ 0002:000000a0       __imp__strcat_s            100070a0     MSVCRT:MSVCR90.dll
+ 0002:000000a4       __imp__calloc              100070a4     MSVCRT:MSVCR90.dll
+ 0002:000000a8       __imp___strnicmp           100070a8     MSVCRT:MSVCR90.dll
+ 0002:000000a8       __imp__strnicmp            100070a8     MSVCRT:MSVCR90.dll
+ 0002:000000ac       __imp__realloc             100070ac     MSVCRT:MSVCR90.dll
+ 0002:000000b0       __imp__free                100070b0     MSVCRT:MSVCR90.dll
+ 0002:000000b4       __imp___heapchk            100070b4     MSVCRT:MSVCR90.dll
+ 0002:000000b8       __imp___msize              100070b8     MSVCRT:MSVCR90.dll
+ 0002:000000bc       __imp___heapmin            100070bc     MSVCRT:MSVCR90.dll
+ 0002:000000c0       __imp___purecall           100070c0     MSVCRT:MSVCR90.dll
+ 0002:000000c4       __imp__isalnum             100070c4     MSVCRT:MSVCR90.dll
+ 0002:000000c8       __imp___encode_pointer     100070c8     MSVCRT:MSVCR90.dll
+ 0002:000000cc       __imp___malloc_crt         100070cc     MSVCRT:MSVCR90.dll
+ 0002:000000d0       __imp___encoded_null       100070d0     MSVCRT:MSVCR90.dll
+ 0002:000000d4       __imp___decode_pointer     100070d4     MSVCRT:MSVCR90.dll
+ 0002:000000d8       __imp___initterm           100070d8     MSVCRT:MSVCR90.dll
+ 0002:000000dc       __imp___initterm_e         100070dc     MSVCRT:MSVCR90.dll
+ 0002:000000e0       __imp___amsg_exit          100070e0     MSVCRT:MSVCR90.dll
+ 0002:000000e4       __imp___adjust_fdiv        100070e4     MSVCRT:MSVCR90.dll
+ 0002:000000e8       __imp____CppXcptFilter     100070e8     MSVCRT:MSVCR90.dll
+ 0002:000000ec       __imp___crt_debugger_hook  100070ec     MSVCRT:MSVCR90.dll
+ 0002:000000f0       __imp_?terminate@@YAXXZ    100070f0     MSVCRT:MSVCR90.dll
+ 0002:000000f4       __imp_?_type_info_dtor_internal_method@type_info@@QAEXXZ 100070f4     MSVCRT:MSVCR90.dll
+ 0002:000000f8       __imp____clean_type_info_names_internal 100070f8     MSVCRT:MSVCR90.dll
+ 0002:000000fc       __imp___unlock             100070fc     MSVCRT:MSVCR90.dll
+ 0002:00000100       __imp____dllonexit         10007100     MSVCRT:MSVCR90.dll
+ 0002:00000104       __imp___lock               10007104     MSVCRT:MSVCR90.dll
+ 0002:00000108       __imp___onexit             10007108     MSVCRT:MSVCR90.dll
+ 0002:0000010c       __imp___except_handler4_common 1000710c     MSVCRT:MSVCR90.dll
+ 0002:00000110       __imp__memcpy              10007110     MSVCRT:MSVCR90.dll
+ 0002:00000114       __imp__memset              10007114     MSVCRT:MSVCR90.dll
+ 0002:00000118       __imp_??3@YAXPAX@Z         10007118     MSVCRT:MSVCR90.dll
+ 0002:0000011c       __imp__stricmp             1000711c     MSVCRT:MSVCR90.dll
+ 0002:0000011c       __imp___stricmp            1000711c     MSVCRT:MSVCR90.dll
+ 0002:00000120       __imp__strncpy_s           10007120     MSVCRT:MSVCR90.dll
+ 0002:00000124       __imp__malloc              10007124     MSVCRT:MSVCR90.dll
+ 0002:00000128       \177MSVCR90_NULL_THUNK_DATA 10007128     MSVCRT:MSVCR90.dll
+ 0002:0000012c       __imp__MessageBoxA@16      1000712c     user32:USER32.dll
+ 0002:00000130       __imp__PostQuitMessage@4   10007130     user32:USER32.dll
+ 0002:00000134       __imp__wvsprintfA@12       10007134     user32:USER32.dll
+ 0002:00000138       __imp__LoadStringA@16      10007138     user32:USER32.dll
+ 0002:0000013c       \177USER32_NULL_THUNK_DATA 1000713c     user32:USER32.dll
+ 0002:00000140       __imp__GetFileVersionInfoSizeA@8 10007140     version:VERSION.dll
+ 0002:00000144       __imp__GetFileVersionInfoA@16 10007144     version:VERSION.dll
+ 0002:00000148       __imp__VerQueryValueA@16   10007148     version:VERSION.dll
+ 0002:0000014c       \177VERSION_NULL_THUNK_DATA 1000714c     version:VERSION.dll
+ 0002:00000150       ___xc_a                    10007150     MSVCRT:cinitexe.obj
+ 0002:00000154       ___xc_z                    10007154     MSVCRT:cinitexe.obj
+ 0002:00000158       ___xi_a                    10007158     MSVCRT:cinitexe.obj
+ 0002:00000160       ___xi_z                    10007160     MSVCRT:cinitexe.obj
+ 0002:0000018c       ??_C@_0CE@JBJGEEGD@?$CFs?$CI?$CFd?$CJ?5?3?5FATAL?3Assertion?5failed?3@ 1000718c     BaseHeap.obj
+ 0002:000001b0       ??_C@_0P@IJECOCHM@?4?2BaseHeap?4cpp?$AA@ 100071b0     BaseHeap.obj
+ 0002:000001c0       ??_C@_08EMNENPBA@instance?$AA@ 100071c0     BaseHeap.obj
+ 0002:000001cc       ??_C@_05EHEOJPMF@pHeap?$AA@ 100071cc     BaseHeap.obj
+ 0002:000001dc       ??_7BaseHeap@@6B@          100071dc     BaseHeap.obj
+ 0002:00000244       ??_7HeapInstance@@6B@      10007244     BaseHeap.obj
+ 0002:000002ac       ??_7MTHeapInstance@@6B@    100072ac     BaseHeap.obj
+ 0002:00000310       ??_C@_0BD@BIJEMHFL@Heap?5control?5block?$AA@ 10007310     BaseHeap.obj
+ 0002:00000324       ??_C@_0L@MDPAODCI@descriptor?$AA@ 10007324     BaseHeap.obj
+ 0002:00000330       ??_C@_0L@LBMKGELD@ICOManager?$AA@ 10007330     DACOM.obj
+ 0002:0000033c       ??_C@_0M@GAJLBDFG@?4?2Dacom?4cpp?$AA@ 1000733c     DACOM.obj
+ 0002:00000348       ??_C@_07INPCGBBE@lpInput?$AA@ 10007348     DACOM.obj
+ 0002:00000350       ??_C@_0BF@GBPECEGN@DACOM?3?3STANDARD_DUMP?$AA@ 10007350     DACOM.obj
+ 0002:00000368       ??_C@_01EEMJAFIK@?6?$AA@   10007368     DACOM.obj
+ 0002:0000036c       ??_C@_01KICIPPFI@?2?$AA@   1000736c     DACOM.obj
+ 0002:00000370       ??_C@_05INHGLLJ@DACOM?$AA@ 10007370     DACOM.obj
+ 0002:00000376       ??_C@_00CNPNBAHC@?$AA@     10007376     DACOM.obj
+ 0002:00000378       ??_C@_05KKDKJPNC@?$CK?4dll?$AA@ 10007378     DACOM.obj
+ 0002:00000380       ??_C@_0BL@IMPGKKEI@?$CFs?$CI?$CFd?$CJ?5?3?5NOTICE?3General?3?$CFs?$AA@ 10007380     DACOM.obj
+ 0002:000003a0       ??_C@_0FH@NDEIDMEE@DACOM?3?5initialize?3?5?$FLLibraries?$FN?5g@ 100073a0     DACOM.obj
+ 0002:000003f8       ??_C@_09MNJANFLL@Libraries?$AA@ 100073f8     DACOM.obj
+ 0002:00000404       ??_C@_0CF@OIOOADIO@?5Compiled?5against?5version?3?5?$CFd?4?$CFd@ 10007404     DACOM.obj
+ 0002:0000042c       ??_C@_0CF@JPMDHGHL@Current?5DACOM?4DLL?5version?3?5?$CFd?4?$CFd@ 1000742c     DACOM.obj
+ 0002:00000454       ??_C@_09KLJBNEJJ@DACOM?4DLL?$AA@ 10007454     DACOM.obj
+ 0002:00000460       ??_C@_0CI@JMILELKA@DACOM?3?5AddLibrary?3?5DLL?5?8?$CFs?8?5?$FL?$CFd?4@ 10007460     DACOM.obj
+ 0002:00000488       ??_C@_0DL@NDGPNMNI@DACOM?3?5AddLibrary?3?5Unable?5to?5loc@ 10007488     DACOM.obj
+ 0002:000004c4       ??_C@_0BA@ELABPMED@IProfileParser2?$AA@ 100074c4     DACOM.obj
+ 0002:000004d4       ??_C@_0P@MNPPFFKF@IProfileParser?$AA@ 100074d4     DACOM.obj
+ 0002:000004e8       ??_7DACOManager@@6B@       100074e8     DACOM.obj
+ 0002:00000514       ??_C@_0P@KGMHEPGH@?4?2HeapInst?4cpp?$AA@ 10007514     HeapInst.obj
+ 0002:00000524       ??_C@_07OAAHBBHO@pMemory?$AA@ 10007524     HeapInst.obj
+ 0002:0000052c       ??_C@_06JMELBMAE@lpDesc?$AA@ 1000752c     HeapInst.obj
+ 0002:00000534       ??_C@_06DPHEOBMB@pBlock?$AA@ 10007534     HeapInst.obj
+ 0002:00000544       ??_7MSHeap@@6B@            10007544     MSHeap.obj
+ 0002:000005ac       ??_7?$DAComponent@UMSHeap@@@@6B@ 100075ac     MSHeap.obj
+ 0002:00000610       ?_entries@?1??_GetEntriesIn@MSHeap@@SGPBU_DACOM_INTMAP_ENTRY@@XZ@4QBU3@B 10007610     MSHeap.obj
+ 0002:00000628       ??_C@_05GEDLMJKA@IHeap?$AA@ 10007628     MSHeap.obj
+ 0002:00000630       ??_C@_08EAJIKJOM@IHeap__1?$AA@ 10007630     MSHeap.obj
+ 0002:0000063c       ?_entries@?1??_GetEntriesIn@ProfileParser@@SGPBU_DACOM_INTMAP_ENTRY@@XZ@4QBU3@B 1000763c     ProfileParser.obj
+ 0002:00000654       ??_C@_0BC@HKOKIBB@IProfileParser__1?$AA@ 10007654     ProfileParser.obj
+ 0002:00000668       ?_entries@?1??_GetEntriesIn@ProfileParser2@@SGPBU_DACOM_INTMAP_ENTRY@@XZ@4QBU3@B 10007668     ProfileParser.obj
+ 0002:00000690       ??_C@_0CB@CLJOKLAE@IProfileParser2__IProfileParser2@ 10007690     ProfileParser.obj
+ 0002:000006b8       ??_7?$DAComponentFactory2@U?$DAComponentAggregate@UProfileParser2@@@@UPROFPARSEDESC2@@@@6B@ 100076b8     ProfileParser.obj
+ 0002:000006c8       ??_C@_0O@HHBOEDJH@ProfileParser?$AA@ 100076c8     ProfileParser.obj
+ 0002:000006d8       ??_C@_0BC@BGIMAKFB@IComponentFactory?$AA@ 100076d8     ProfileParser.obj
+ 0002:000006f0       ??_7?$DAComponentInner@UProfileParser2@@UIDAComponent@@@@6B@ 100076f0     ProfileParser.obj
+ 0002:00000700       ??_7?$DAComponentFactory2@U?$DAComponentAggregate@UProfileParser@@@@UPROFPARSEDESC@@@@6B@ 10007700     ProfileParser.obj
+ 0002:00000714       ??_7?$DAComponentInner@UProfileParser@@UIDAComponent@@@@6B@ 10007714     ProfileParser.obj
+ 0002:00000724       ??_7?$DAComponentAggregate@UProfileParser@@@@6B@ 10007724     ProfileParser.obj
+ 0002:0000074c       ??_7?$DAComponentAggregate@UProfileParser2@@@@6BProfileParser@@@ 1000774c     ProfileParser.obj
+ 0002:00000774       ??_7?$DAComponentAggregate@UProfileParser2@@@@6BIProfileParser2@@@ 10007774     ProfileParser.obj
+ 0002:000007a4       ??_7type_info@@6B@         100077a4     MSVCRT:ti_inst.obj
+ 0002:000007a8       __pRawDllMain              100077a8     MSVCRT:crtdll.obj
+ 0002:000007a8       __pDefaultRawDllMain       100077a8     MSVCRT:crtdll.obj
+ 0002:000007b4       ?ProcessDetach@NativeDll@<CrtImplementationDetails>@@0IB 100077b4     MSVCRT:tncleanup.obj
+ 0002:000007b8       ?ProcessAttach@NativeDll@<CrtImplementationDetails>@@0IB 100077b8     MSVCRT:tncleanup.obj
+ 0002:000007bc       ?ThreadAttach@NativeDll@<CrtImplementationDetails>@@0IB 100077bc     MSVCRT:tncleanup.obj
+ 0002:000007c0       ?ThreadDetach@NativeDll@<CrtImplementationDetails>@@0IB 100077c0     MSVCRT:tncleanup.obj
+ 0002:000007c4       ?ProcessVerifier@NativeDll@<CrtImplementationDetails>@@0IB 100077c4     MSVCRT:tncleanup.obj
+ 0002:0000081c       ??_R4BaseHeap@@6B@         1000781c     BaseHeap.obj
+ 0002:00000830       ??_R3BaseHeap@@8           10007830     BaseHeap.obj
+ 0002:00000840       ??_R2BaseHeap@@8           10007840     BaseHeap.obj
+ 0002:00000854       ??_R1A@?0A@EA@BaseHeap@@8  10007854     BaseHeap.obj
+ 0002:00000870       ??_R1A@?0A@EA@IHeap@@8     10007870     BaseHeap.obj
+ 0002:0000088c       ??_R3IHeap@@8              1000788c     BaseHeap.obj
+ 0002:0000089c       ??_R2IHeap@@8              1000789c     BaseHeap.obj
+ 0002:000008ac       ??_R1A@?0A@EA@IComponentFactory@@8 100078ac     BaseHeap.obj
+ 0002:000008c8       ??_R3IComponentFactory@@8  100078c8     BaseHeap.obj
+ 0002:000008d8       ??_R2IComponentFactory@@8  100078d8     BaseHeap.obj
+ 0002:000008e4       ??_R1A@?0A@EA@IDAComponent@@8 100078e4     BaseHeap.obj
+ 0002:00000900       ??_R3IDAComponent@@8       10007900     BaseHeap.obj
+ 0002:00000910       ??_R2IDAComponent@@8       10007910     BaseHeap.obj
+ 0002:00000918       ??_R4HeapInstance@@6B@     10007918     BaseHeap.obj
+ 0002:0000092c       ??_R3HeapInstance@@8       1000792c     BaseHeap.obj
+ 0002:0000093c       ??_R2HeapInstance@@8       1000793c     BaseHeap.obj
+ 0002:00000954       ??_R1A@?0A@EA@HeapInstance@@8 10007954     BaseHeap.obj
+ 0002:00000970       ??_R4MTHeapInstance@@6B@   10007970     BaseHeap.obj
+ 0002:00000984       ??_R3MTHeapInstance@@8     10007984     BaseHeap.obj
+ 0002:00000994       ??_R2MTHeapInstance@@8     10007994     BaseHeap.obj
+ 0002:000009b0       ??_R1A@?0A@EA@MTHeapInstance@@8 100079b0     BaseHeap.obj
+ 0002:000009cc       ??_R4DACOManager@@6B@      100079cc     DACOM.obj
+ 0002:000009e0       ??_R3DACOManager@@8        100079e0     DACOM.obj
+ 0002:000009f0       ??_R2DACOManager@@8        100079f0     DACOM.obj
+ 0002:00000a04       ??_R1A@?0A@EA@DACOManager@@8 10007a04     DACOM.obj
+ 0002:00000a20       ??_R1A@?0A@EA@ICOManager@@8 10007a20     DACOM.obj
+ 0002:00000a3c       ??_R3ICOManager@@8         10007a3c     DACOM.obj
+ 0002:00000a4c       ??_R2ICOManager@@8         10007a4c     DACOM.obj
+ 0002:00000a5c       ??_R4MSHeap@@6B@           10007a5c     MSHeap.obj
+ 0002:00000a70       ??_R3MSHeap@@8             10007a70     MSHeap.obj
+ 0002:00000a80       ??_R2MSHeap@@8             10007a80     MSHeap.obj
+ 0002:00000a94       ??_R1A@?0A@EA@MSHeap@@8    10007a94     MSHeap.obj
+ 0002:00000ab0       ??_R4?$DAComponent@UMSHeap@@@@6B@ 10007ab0     MSHeap.obj
+ 0002:00000ac4       ??_R3?$DAComponent@UMSHeap@@@@8 10007ac4     MSHeap.obj
+ 0002:00000ad4       ??_R2?$DAComponent@UMSHeap@@@@8 10007ad4     MSHeap.obj
+ 0002:00000aec       ??_R1A@?0A@EA@?$DAComponent@UMSHeap@@@@8 10007aec     MSHeap.obj
+ 0002:00000b08       ??_R4?$DAComponentFactory2@U?$DAComponentAggregate@UProfileParser2@@@@UPROFPARSEDESC2@@@@6B@ 10007b08     ProfileParser.obj
+ 0002:00000b1c       ??_R3?$DAComponentFactory2@U?$DAComponentAggregate@UProfileParser2@@@@UPROFPARSEDESC2@@@@8 10007b1c     ProfileParser.obj
+ 0002:00000b2c       ??_R2?$DAComponentFactory2@U?$DAComponentAggregate@UProfileParser2@@@@UPROFPARSEDESC2@@@@8 10007b2c     ProfileParser.obj
+ 0002:00000b40       ??_R1A@?0A@EA@?$DAComponentFactory2@U?$DAComponentAggregate@UProfileParser2@@@@UPROFPARSEDESC2@@@@8 10007b40     ProfileParser.obj
+ 0002:00000b5c       ??_R1A@?0A@EA@?$DAComponentFactoryBase@U?$DAComponentAggregate@UProfileParser2@@@@UPROFPARSEDESC2@@@@8 10007b5c     ProfileParser.obj
+ 0002:00000b78       ??_R3?$DAComponentFactoryBase@U?$DAComponentAggregate@UProfileParser2@@@@UPROFPARSEDESC2@@@@8 10007b78     ProfileParser.obj
+ 0002:00000b88       ??_R2?$DAComponentFactoryBase@U?$DAComponentAggregate@UProfileParser2@@@@UPROFPARSEDESC2@@@@8 10007b88     ProfileParser.obj
+ 0002:00000b98       ??_R4?$DAComponentInner@UProfileParser2@@UIDAComponent@@@@6B@ 10007b98     ProfileParser.obj
+ 0002:00000bac       ??_R3?$DAComponentInner@UProfileParser2@@UIDAComponent@@@@8 10007bac     ProfileParser.obj
+ 0002:00000bbc       ??_R2?$DAComponentInner@UProfileParser2@@UIDAComponent@@@@8 10007bbc     ProfileParser.obj
+ 0002:00000bc8       ??_R1A@?0A@EA@?$DAComponentInner@UProfileParser2@@UIDAComponent@@@@8 10007bc8     ProfileParser.obj
+ 0002:00000be4       ??_R4?$DAComponentFactory2@U?$DAComponentAggregate@UProfileParser@@@@UPROFPARSEDESC@@@@6B@ 10007be4     ProfileParser.obj
+ 0002:00000bf8       ??_R3?$DAComponentFactory2@U?$DAComponentAggregate@UProfileParser@@@@UPROFPARSEDESC@@@@8 10007bf8     ProfileParser.obj
+ 0002:00000c08       ??_R2?$DAComponentFactory2@U?$DAComponentAggregate@UProfileParser@@@@UPROFPARSEDESC@@@@8 10007c08     ProfileParser.obj
+ 0002:00000c1c       ??_R1A@?0A@EA@?$DAComponentFactory2@U?$DAComponentAggregate@UProfileParser@@@@UPROFPARSEDESC@@@@8 10007c1c     ProfileParser.obj
+ 0002:00000c38       ??_R1A@?0A@EA@?$DAComponentFactoryBase@U?$DAComponentAggregate@UProfileParser@@@@UPROFPARSEDESC@@@@8 10007c38     ProfileParser.obj
+ 0002:00000c54       ??_R3?$DAComponentFactoryBase@U?$DAComponentAggregate@UProfileParser@@@@UPROFPARSEDESC@@@@8 10007c54     ProfileParser.obj
+ 0002:00000c64       ??_R2?$DAComponentFactoryBase@U?$DAComponentAggregate@UProfileParser@@@@UPROFPARSEDESC@@@@8 10007c64     ProfileParser.obj
+ 0002:00000c74       ??_R4?$DAComponentInner@UProfileParser@@UIDAComponent@@@@6B@ 10007c74     ProfileParser.obj
+ 0002:00000c88       ??_R3?$DAComponentInner@UProfileParser@@UIDAComponent@@@@8 10007c88     ProfileParser.obj
+ 0002:00000c98       ??_R2?$DAComponentInner@UProfileParser@@UIDAComponent@@@@8 10007c98     ProfileParser.obj
+ 0002:00000ca4       ??_R1A@?0A@EA@?$DAComponentInner@UProfileParser@@UIDAComponent@@@@8 10007ca4     ProfileParser.obj
+ 0002:00000cc0       ??_R4?$DAComponentAggregate@UProfileParser@@@@6B@ 10007cc0     ProfileParser.obj
+ 0002:00000cd4       ??_R3?$DAComponentAggregate@UProfileParser@@@@8 10007cd4     ProfileParser.obj
+ 0002:00000ce4       ??_R2?$DAComponentAggregate@UProfileParser@@@@8 10007ce4     ProfileParser.obj
+ 0002:00000cf8       ??_R1A@?0A@EA@?$DAComponentAggregate@UProfileParser@@@@8 10007cf8     ProfileParser.obj
+ 0002:00000d14       ??_R1A@?0A@EA@ProfileParser@@8 10007d14     ProfileParser.obj
+ 0002:00000d30       ??_R3ProfileParser@@8      10007d30     ProfileParser.obj
+ 0002:00000d40       ??_R2ProfileParser@@8      10007d40     ProfileParser.obj
+ 0002:00000d50       ??_R1A@?0A@EA@IProfileParser@@8 10007d50     ProfileParser.obj
+ 0002:00000d6c       ??_R3IProfileParser@@8     10007d6c     ProfileParser.obj
+ 0002:00000d7c       ??_R2IProfileParser@@8     10007d7c     ProfileParser.obj
+ 0002:00000d88       ??_R4?$DAComponentAggregate@UProfileParser2@@@@6BIProfileParser2@@@ 10007d88     ProfileParser.obj
+ 0002:00000d9c       ??_R3?$DAComponentAggregate@UProfileParser2@@@@8 10007d9c     ProfileParser.obj
+ 0002:00000dac       ??_R2?$DAComponentAggregate@UProfileParser2@@@@8 10007dac     ProfileParser.obj
+ 0002:00000dcc       ??_R1A@?0A@EA@?$DAComponentAggregate@UProfileParser2@@@@8 10007dcc     ProfileParser.obj
+ 0002:00000de8       ??_R1A@?0A@EA@ProfileParser2@@8 10007de8     ProfileParser.obj
+ 0002:00000e04       ??_R3ProfileParser2@@8     10007e04     ProfileParser.obj
+ 0002:00000e14       ??_R2ProfileParser2@@8     10007e14     ProfileParser.obj
+ 0002:00000e30       ??_R1A@?0A@EA@IProfileParser2@@8 10007e30     ProfileParser.obj
+ 0002:00000e4c       ??_R3IProfileParser2@@8    10007e4c     ProfileParser.obj
+ 0002:00000e5c       ??_R2IProfileParser2@@8    10007e5c     ProfileParser.obj
+ 0002:00000e68       ??_R1A@?0A@EC@IDAComponent@@8 10007e68     ProfileParser.obj
+ 0002:00000e84       ??_R13?0A@EA@ProfileParser@@8 10007e84     ProfileParser.obj
+ 0002:00000ea0       ??_R13?0A@EA@IProfileParser@@8 10007ea0     ProfileParser.obj
+ 0002:00000ebc       ??_R13?0A@EC@IDAComponent@@8 10007ebc     ProfileParser.obj
+ 0002:00000ed8       ??_R4?$DAComponentAggregate@UProfileParser2@@@@6BProfileParser@@@ 10007ed8     ProfileParser.obj
+ 0002:00000eec       ??_R4type_info@@6B@        10007eec     MSVCRT:ti_inst.obj
+ 0002:00000f00       ??_R3type_info@@8          10007f00     MSVCRT:ti_inst.obj
+ 0002:00000f10       ??_R2type_info@@8          10007f10     MSVCRT:ti_inst.obj
+ 0002:00000f18       ??_R1A@?0A@EA@type_info@@8 10007f18     MSVCRT:ti_inst.obj
+ 0002:00000f34       ___rtc_iaa                 10007f34     MSVCRT:_initsect_.obj
+ 0002:00000f38       ___rtc_izz                 10007f38     MSVCRT:_initsect_.obj
+ 0002:00000f3c       ___rtc_taa                 10007f3c     MSVCRT:_initsect_.obj
+ 0002:00000f40       ___rtc_tzz                 10007f40     MSVCRT:_initsect_.obj
+ 0002:00000fec       __IMPORT_DESCRIPTOR_VERSION 10007fec     version:VERSION.dll
+ 0002:00001000       __IMPORT_DESCRIPTOR_KERNEL32 10008000     kernel32:KERNEL32.dll
+ 0002:00001014       __IMPORT_DESCRIPTOR_USER32 10008014     user32:USER32.dll
+ 0002:00001028       __IMPORT_DESCRIPTOR_MSVCR90 10008028     MSVCRT:MSVCR90.dll
+ 0002:0000103c       __NULL_IMPORT_DESCRIPTOR   1000803c     version:VERSION.dll
+ 0003:0000001c       ??_R0?AUBaseHeap@@@8       1000901c     BaseHeap.obj
+ 0003:00000034       ??_R0?AUIHeap@@@8          10009034     BaseHeap.obj
+ 0003:00000048       ??_R0?AUIComponentFactory@@@8 10009048     BaseHeap.obj
+ 0003:00000068       ??_R0?AUIDAComponent@@@8   10009068     BaseHeap.obj
+ 0003:00000084       ??_R0?AUHeapInstance@@@8   10009084     BaseHeap.obj
+ 0003:000000a0       ??_R0?AUMTHeapInstance@@@8 100090a0     BaseHeap.obj
+ 0003:000000c4       ??_R0?AUDACOManager@@@8    100090c4     DACOM.obj
+ 0003:000000e0       ??_R0?AUICOManager@@@8     100090e0     DACOM.obj
+ 0003:00000104       ??_R0?AUMSHeap@@@8         10009104     MSHeap.obj
+ 0003:0000011c       ??_R0?AU?$DAComponent@UMSHeap@@@@@8 1000911c     MSHeap.obj
+ 0003:00000148       ??_R0?AU?$DAComponentFactory2@U?$DAComponentAggregate@UProfileParser2@@@@UPROFPARSEDESC2@@@@@8 10009148     ProfileParser.obj
+ 0003:000001b0       ??_R0?AU?$DAComponentFactoryBase@U?$DAComponentAggregate@UProfileParser2@@@@UPROFPARSEDESC2@@@@@8 100091b0     ProfileParser.obj
+ 0003:00000218       ??_R0?AU?$DAComponentInner@UProfileParser2@@UIDAComponent@@@@@8 10009218     ProfileParser.obj
+ 0003:00000260       ??_R0?AU?$DAComponentFactory2@U?$DAComponentAggregate@UProfileParser@@@@UPROFPARSEDESC@@@@@8 10009260     ProfileParser.obj
+ 0003:000002c0       ??_R0?AU?$DAComponentFactoryBase@U?$DAComponentAggregate@UProfileParser@@@@UPROFPARSEDESC@@@@@8 100092c0     ProfileParser.obj
+ 0003:00000328       ??_R0?AU?$DAComponentInner@UProfileParser@@UIDAComponent@@@@@8 10009328     ProfileParser.obj
+ 0003:0000036c       ??_R0?AU?$DAComponentAggregate@UProfileParser@@@@@8 1000936c     ProfileParser.obj
+ 0003:000003a4       ??_R0?AUProfileParser@@@8  100093a4     ProfileParser.obj
+ 0003:000003c0       ??_R0?AUIProfileParser@@@8 100093c0     ProfileParser.obj
+ 0003:000003e0       ??_R0?AU?$DAComponentAggregate@UProfileParser2@@@@@8 100093e0     ProfileParser.obj
+ 0003:00000418       ??_R0?AUProfileParser2@@@8 10009418     ProfileParser.obj
+ 0003:00000438       ??_R0?AUIProfileParser2@@@8 10009438     ProfileParser.obj
+ 0003:00000458       ___security_cookie         10009458     MSVCRT:gs_cookie.obj
+ 0003:0000045c       ___security_cookie_complement 1000945c     MSVCRT:gs_cookie.obj
+ 0003:00000460       ??_R0?AVtype_info@@@8      10009460     MSVCRT:ti_inst.obj
+ 0003:00000480       ___native_dllmain_reason   10009480     MSVCRT:natstart.obj
+ 0003:00000484       ___native_vcclrit_reason   10009484     MSVCRT:natstart.obj
+ 0003:00000488       ?hInstance@@3PAUHINSTANCE__@@A 10009488     DACOM.obj
+ 0003:0000048c       _FDUMP                     1000948c     DACOM.obj
+ 0003:000004cc       _HEAP                      100094cc     MSHeap.obj
+ 0003:000004d0       ?g_pMSHeap@@3PAUIHeap@@A   100094d0     MSHeap.obj
+ 0003:000007fc       ?__type_info_root_node@@3U__type_info_node@@A 100097fc     MSVCRT:tncleanup.obj
+ 0003:00000804       __adjust_fdiv              10009804     <common>
+ 0003:00000808       ___native_startup_state    10009808     <common>
+ 0003:0000080c       ___native_startup_lock     1000980c     <common>
+ 0003:00000810       ___onexitend               10009810     <common>
+ 0003:00000814       ___onexitbegin             10009814     <common>
+ 0003:00000818       ___dyn_tls_init_callback   10009818     <common>
+
+ entry point at        0001:00004a2c
+
+ Static symbols
+
+ 0001:00001090       ?parseFilename@@YAPADPAD@Z 10002090 f   DACOM.obj
+ 0001:00002750       ?snanfill@@YGXPAXK@Z       10003750 f   HeapInst.obj
+ 0001:000046a1       _pre_c_init                100056a1 f   MSVCRT:crtdll.obj
+ 0001:00004916       ___DllMainCRTStartup       10005916 f   MSVCRT:crtdll.obj
+ 0001:00004b55       ?ArrayUnwindFilter@@YAHPAU_EXCEPTION_POINTERS@@@Z 10005b55 f   MSVCRT:ehvecdtr.obj

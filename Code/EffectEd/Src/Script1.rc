@@ -1,0 +1,787 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINMENU MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New",                        IDD_FILE_NEW
+        MENUITEM "&Load",                       IDD_FILE_LOAD
+        MENUITEM "&Save",                       IDD_FILE_SAVE
+        MENUITEM "&SaveAs",                     IDD_FILE_SAVEAS
+        MENUITEM SEPARATOR
+        MENUITEM "&Exit",                       IDD_FILE_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Cut",                        IDM_CUT
+        MENUITEM "Copy",                        IDM_COPY
+        MENUITEM "&Paste",                      IDM_PASTE
+    END
+    POPUP "&Select"
+    BEGIN
+        MENUITEM "&Target",                     IDD_SELECT_TARGET
+        MENUITEM "&Parameters",                 IDM_SELECT_PARAM
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Preview",                    IDM_PREVIEW_WINDOW
+        MENUITEM "Material Manager",            ID_VIEW_MATERIALMANAGER
+    END
+END
+
+IDR_PREVIEWMENU MENU 
+BEGIN
+    POPUP "Playback"
+    BEGIN
+        MENUITEM "Play",                        ID_PLAYBACK_PLAY
+        MENUITEM "Stop",                        ID_PLAYBACK_STOP
+    END
+END
+
+IDR_FILTER_POPUP MENU 
+BEGIN
+    POPUP "Dummy"
+    BEGIN
+        MENUITEM "Edit",                        ID_EDIT
+        MENUITEM "Delete",                      ID_DELETE
+    END
+END
+
+IDR_MATH_STANDARD_RIGHT MENU 
+BEGIN
+    POPUP "Dummy"
+    BEGIN
+        MENUITEM "New Float",                   ID_NEWFLOAT
+        MENUITEM "New Key",                     ID_NEWKEY
+        MENUITEM "New Trans",                   ID_NEWTRANS
+        MENUITEM SEPARATOR
+        MENUITEM "Save",                        ID_SAVE
+        MENUITEM "Load",                        ID_LOAD
+    END
+END
+
+IDR_MATH_CONTEXT_RIGHT MENU 
+BEGIN
+    POPUP "Dummy"
+    BEGIN
+        MENUITEM "Delete",                      146
+        MENUITEM "Edit",                        147
+        MENUITEM "Resort",                      ID_RESORT
+    END
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_NEWBUTTON           BITMAP                  "bitmap1.bmp"
+IDB_LOADBUTTON          BITMAP                  "bmp00001.bmp"
+IDB_SAVEBUTTON          BITMAP                  "bmp00002.bmp"
+IDB_TARGET_LIST         BITMAP                  "bmp00003.bmp"
+IDB_PARAMETER_LIST      BITMAP                  "bmp00004.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_TARGET_VIEW DIALOG  0, 0, 190, 157
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_TARGET_LIST,7,7,102,143,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Add",IDC_ADD_TARGET,110,7,73,16
+    PUSHBUTTON      "Delete",IDC_DELETE_TARGET,110,23,73,16
+    PUSHBUTTON      "Select",IDC_SELECT_TARGET,110,63,73,16
+    PUSHBUTTON      "Move Up",IDC_MOVEUP_TARGET,110,79,73,16
+    PUSHBUTTON      "Move Down",IDC_MOVEDOWN_TARGET,110,95,73,16
+END
+
+IDD_ADD_TARGET DIALOG  0, 0, 174, 66
+STYLE DS_SETFONT | DS_MODALFRAME | WS_CAPTION
+CAPTION "Add Target"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_TARGET_NAME,48,13,119,12,ES_AUTOHSCROLL
+    LTEXT           "Name",IDC_STATIC,17,15,27,12
+    PUSHBUTTON      "Ok",IDC_OK_BUTTON,7,42,78,17
+    PUSHBUTTON      "Cancel",IDC_CANCEL_BUTTON,89,42,78,17
+END
+
+IDD_TARGET_INFO DIALOGEX 0, 0, 713, 159
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_TARGET_NAME_2,61,8,130,14,ES_AUTOHSCROLL
+    LTEXT           "Target Name",IDC_STATIC,13,9,43,10
+    LISTBOX         IDC_HARDPOINTLIST,7,42,130,110,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Hard Points",IDC_STATIC,48,29,41,11
+    LTEXT           "Loaded Animations",IDC_STATIC,172,28,68,8
+    LISTBOX         IDC_ANIMATIONLIST,139,42,133,110,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Load Mesh",IDC_LOAD_MESH,199,8,56,17
+    LTEXT           "No Mesh",IDC_MESH_NAME,258,12,392,10
+    PUSHBUTTON      "Target List",IDC_TO_PARENT,275,138,50,14
+END
+
+IDD_ADD_HARDPOINT DIALOG  0, 0, 174, 66
+STYLE DS_SETFONT | DS_MODALFRAME | WS_CAPTION
+CAPTION "Add Hardpoint"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_TARGET_NAME,48,13,119,12,ES_AUTOHSCROLL
+    LTEXT           "Name",IDC_STATIC,17,15,27,12
+    PUSHBUTTON      "Ok",IDC_OK_BUTTON,7,42,78,17
+    PUSHBUTTON      "Cancel",IDC_CANCEL_BUTTON,89,42,78,17
+END
+
+IDD_ADD_ANIMATION DIALOG  0, 0, 174, 66
+STYLE DS_SETFONT | DS_MODALFRAME | WS_CAPTION
+CAPTION "Add Animation"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_TARGET_NAME,48,13,119,12,ES_AUTOHSCROLL
+    LTEXT           "Name",IDC_STATIC,17,15,27,12
+    PUSHBUTTON      "Ok",IDC_OK_BUTTON,7,42,78,17
+    PUSHBUTTON      "Cancel",IDC_CANCEL_BUTTON,89,42,78,17
+END
+
+IDD_PARAMETER_VIEW DIALOG  0, 0, 407, 152
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "List1",IDC_PARAM_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | WS_BORDER | WS_TABSTOP,7,7,393,121
+    EDITTEXT        IDC_VALUE_EDIT,283,132,117,13,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | NOT WS_VISIBLE
+END
+
+IDD_EVENT_SELECT DIALOG  0, 0, 310, 140
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Event:",IDC_STATIC,14,7,23,9
+    LTEXT           "Event Name",IDC_EVENT_NAME,45,7,118,8
+    PUSHBUTTON      "Add Action",IDC_ADD_ACTION,15,20,68,19
+END
+
+IDD_NEW_ACTION DIALOG  0, 0, 186, 49
+STYLE DS_SETFONT | DS_MODALFRAME | WS_CAPTION | WS_SYSMENU
+CAPTION "New Action"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,28,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,28,50,14
+    COMBOBOX        IDC_ACTION_TYPE,7,7,172,56,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_ANIMATION_DIALOG DIALOGEX 0, 0, 393, 123
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    COMBOBOX        IDC_TARGET_COMBO,45,24,168,56,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Target",IDC_STATIC,15,27,23,11
+    LTEXT           "Animation",IDC_STATIC,12,40,34,12
+    COMBOBOX        IDC_ANIM_COMBO,45,38,168,48,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Select",IDC_SELECT_TARGET,216,25,50,11
+    PUSHBUTTON      "Select",IDC_SELECT_ANIMATION,216,39,50,11
+    CONTROL         "Looping",IDC_LOOPING_CHECK,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | WS_TABSTOP,6,51,46,14
+    LTEXT           "Name",IDC_STATIC,16,14,20,8
+    EDITTEXT        IDC_NAME,46,11,166,12,ES_AUTOHSCROLL
+    CONTROL         "Force Call",IDC_FORCE_CALL,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | WS_TABSTOP,6,63,46,14
+    PUSHBUTTON      "Delete",IDC_DELETE,101,57,50,14
+END
+
+IDD_TARGET_ANIM_INFO DIALOG  0, 0, 514, 162
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Name Goes here",IDC_TARGET_ANIM_NAME,7,7,126,12
+    LTEXT           "Parent Name Goes Here",IDC_PARENT_TARGET,59,22,126,8
+    LTEXT           "Anim File:",IDC_STATIC,22,35,32,10
+    LTEXT           "File Name Goes here",IDC_ANIM_FILE_NAME,59,35,232,11
+    PUSHBUTTON      "Load Animation",IDC_ASSIGN_FILENAME,33,49,86,17
+    PUSHBUTTON      "Unload Animation",IDC_REMOVE_FILENAME,33,67,86,19
+    LTEXT           "Scripted:",IDC_STATIC,24,91,29,12
+    LTEXT           "Say if it is scripted",IDC_SCRIPTED,62,91,58,9
+    PUSHBUTTON      "ParentTarget",IDC_TO_PARENT,7,19,50,14
+    LISTBOX         IDC_CUE_LIST,126,66,169,89,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | LBS_NOSEL | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Cues",IDC_STATIC,128,54,65,9
+END
+
+IDD_PARTICLE_ACTION_HEADER DIALOG  0, 0, 551, 27
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Name:",IDC_STATIC,9,8,23,8
+    EDITTEXT        IDC_NAME_EDIT,35,7,149,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "Add Effect",IDC_ADD_EFFECT,192,7,108,13
+    PUSHBUTTON      "Delete",IDC_DELETE,406,7,50,14
+    PUSHBUTTON      "Export",IDC_EXPORT,305,7,50,14
+    PUSHBUTTON      "Import",IDC_IMPORT,356,7,50,14
+    CONTROL         "Disable",IDC_DISABLE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,500,9,39,10
+END
+
+IDD_NEW_PARTICLE_EFFECT DIALOG  0, 0, 319, 47
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "New Particle Effect"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,262,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,262,24,50,14
+    COMBOBOX        IDC_EFFECT_TYPE_COMBO,7,17,252,98,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_ACTION_LISTEN DIALOGEX 0, 0, 594, 132
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_LISTEN_STRING,77,36,212,12,ES_AUTOHSCROLL
+    LTEXT           "Listen String",IDC_STATIC,20,38,40,8
+    LTEXT           "Name",IDC_STATIC,29,23,20,8
+    EDITTEXT        IDC_ACTION_NAME,77,21,212,12,ES_AUTOHSCROLL
+    COMBOBOX        IDC_TARGET_COMBO,77,51,212,77,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Target",IDC_STATIC,27,53,22,8
+    PUSHBUTTON      "Delete",IDC_DELETE,143,71,50,14
+    LTEXT           "Listen Action",IDC_STATIC,160,9,42,8
+END
+
+IDD_GENERAL_FILTER_DIALOG DIALOGEX 0, 0, 321, 226
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CLIPSIBLINGS | 
+    WS_CLIPCHILDREN | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_OVERLAPPEDWINDOW | WS_EX_TOOLWINDOW
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    COMBOBOX        IDC_WORK_COMBO,149,203,163,105,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_PARAM_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_NOSORTHEADER | WS_TABSTOP,0,0,321,
+                    225
+END
+
+IDD_EDIT_FILTER_NAME DIALOG  0, 0, 205, 26
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Edit Filter Name"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,148,7,50,12
+    EDITTEXT        IDC_EDIT_NAME,7,7,140,12,ES_AUTOHSCROLL
+END
+
+IDD_FLOAT_EDITOR DIALOGEX 0, 0, 213, 70
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Float Editor"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,155,49,50,14
+    COMBOBOX        IDC_TYPE_COMBO,90,7,115,78,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Float Type",IDC_STATIC,31,9,34,8
+    CTEXT           "Value1",IDC_VALUE1,7,23,81,8,SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT_VALUE1,90,21,115,12,ES_AUTOHSCROLL
+    LTEXT           "Target",IDC_STATIC,36,36,22,8
+    COMBOBOX        IDC_TARGET_COMBO,90,33,115,90,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_EDIT_RAMP_KEY DIALOGEX 0, 0, 186, 42
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Edit Ramp Key"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,21,50,14
+    LTEXT           "Key",IDC_STATIC,29,8,13,8
+    EDITTEXT        IDC_KEY_EDIT,61,7,118,12,ES_AUTOHSCROLL
+END
+
+IDD_EDIT_TRANS DIALOGEX 0, 0, 186, 84
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,63,50,14
+    LTEXT           "Type",IDC_STATIC,21,11,17,8
+    COMBOBOX        IDC_TYPE_COMBO,54,8,125,80,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Target",IDC_STATIC,19,24,22,8
+    LTEXT           "Hardpoint",IDC_STATIC,15,36,32,8
+    COMBOBOX        IDC_TARGET_COMBO,54,21,125,80,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_HARDPOINT_COMBO,54,34,125,80,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Filter Name",IDC_STATIC_FILTER,13,49,36,8
+    EDITTEXT        IDC_FILTER_EDIT,53,47,126,13,ES_AUTOHSCROLL
+END
+
+IDD_STRING_EDITOR DIALOG  0, 0, 186, 41
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "String Edit"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,20,50,14
+    EDITTEXT        IDC_STRING_EDIT,7,7,172,12,ES_AUTOHSCROLL
+END
+
+IDD_EDIT_ENUM DIALOG  0, 0, 186, 42
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Edit Enum"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,21,50,14
+    COMBOBOX        IDC_ENUM_COMBO,7,7,172,95,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_EDIT_TARGET DIALOG  0, 0, 186, 44
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Edit Target Type"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,23,50,14
+    COMBOBOX        IDC_TARGET_COMBO,7,7,172,71,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_ACTION_SOUND DIALOG  0, 0, 191, 129
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Target",IDC_STATIC,13,33,22,8
+    LTEXT           "Sound",IDC_STATIC,13,63,22,8
+    COMBOBOX        IDC_TARGET_COMBO,48,31,136,78,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_SOUND,48,61,136,78,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_ACTION_NAME,49,18,135,12,ES_AUTOHSCROLL
+    LTEXT           "Name",IDC_STATIC,15,20,20,8
+    PUSHBUTTON      "Delete",IDC_DELETE,69,105,50,14
+    LTEXT           "Min Range",IDC_STATIC,8,77,36,8
+    LTEXT           "Max Range",IDC_STATIC,7,90,38,8
+    EDITTEXT        IDC_MIN_RANGE,48,75,135,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_MAX_RANGE,48,88,135,12,ES_AUTOHSCROLL
+    CONTROL         "Looping",IDC_LOOPING,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | WS_TABSTOP,15,102,41,10
+    COMBOBOX        IDC_HARDPOINT_COMBO,48,45,136,78,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Hardpoint",IDC_STATIC,13,47,32,8
+    LTEXT           "Sound Action",IDC_STATIC,72,8,44,8
+END
+
+IDD_ACTION_SWITCH DIALOGEX 0, 0, 201, 113
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_ACTION_NAME,41,22,135,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_NUM_CHOICES,41,35,135,12,ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_SPIN_C1,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNLEFT | UDS_AUTOBUDDY | UDS_ARROWKEYS | 
+                    UDS_NOTHOUSANDS,151,56,10,14
+    PUSHBUTTON      "Delete",IDC_DELETE,58,54,50,14
+    LTEXT           "Name",IDC_STATIC,14,23,20,8
+    LTEXT           "Choices",IDC_STATIC,11,36,26,8
+    LTEXT           "Switch Action",IDC_STATIC,79,10,44,8
+END
+
+IDD_ACTION_HIDE_TARGET DIALOG  0, 0, 223, 95
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_ACTION_NAME,41,22,135,12,ES_AUTOHSCROLL
+    LTEXT           "Name",IDC_STATIC,14,23,20,8
+    PUSHBUTTON      "Delete",IDC_DELETE,7,74,50,14
+    LTEXT           "Target",IDC_STATIC,13,36,22,8
+    COMBOBOX        IDC_TARGET_COMBO,41,34,136,78,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Hide",IDC_HIDE_CHECK,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | WS_TABSTOP,16,49,34,10
+    LTEXT           "Hide Action",IDC_STATIC,88,10,38,8
+END
+
+IDD_MATH_LAYOUT DIALOGEX 0, 0, 500, 374
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_VSCROLL | 
+    WS_HSCROLL | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Math Layout"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_ACTION_GAMEEVENT DIALOG  0, 0, 594, 132
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_EVENT_STRING,77,36,212,12,ES_AUTOHSCROLL
+    LTEXT           "Game Event String",IDC_STATIC,10,38,60,8
+    LTEXT           "Name",IDC_STATIC,29,23,20,8
+    EDITTEXT        IDC_ACTION_NAME,77,21,212,12,ES_AUTOHSCROLL
+    COMBOBOX        IDC_TARGET_COMBO,77,51,212,77,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Target",IDC_STATIC,27,53,22,8
+    PUSHBUTTON      "Delete",IDC_DELETE,143,85,50,14
+    LTEXT           "Game Event Action",IDC_STATIC,160,9,62,8
+    CONTROL         "Responce Cue",IDC_RESPONCE_CHECK,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,302,13,63,10
+    CONTROL         "Effect End",IDC_EFFECTEND_CHECK,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,302,47,49,10
+    CONTROL         "Distace Dependant",IDC_DISTANCE_CHECK,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,302,71,77,10
+    LTEXT           "Set the Responce Cue flag if this is a call to the game",
+                    IDC_STATIC,409,10,169,8
+    LTEXT           "where you want to play a particulare responce effect.",
+                    IDC_STATIC,409,19,168,8
+    LTEXT           "Set the End Effect flag if this is where the game should ",
+                    IDC_STATIC,410,45,174,8
+    LTEXT           "logicaly end the effect.",IDC_STATIC,410,54,72,8
+    LTEXT           "Set The Distance Dependant Flag if this action is ",
+                    IDC_STATIC,410,71,157,8
+    LTEXT           "dependant on timing based on distance.  The game ",
+                    IDC_STATIC,410,80,165,8
+    LTEXT           "needs to approximate this for the rules system so you ",
+                    IDC_STATIC,410,89,168,8
+    LTEXT           "will also need to provide a speed between target 0 ",
+                    IDC_STATIC,410,98,161,8
+    LTEXT           "and this target.",IDC_STATIC,410,107,48,8
+    EDITTEXT        IDC_SPEED_EDIT,302,93,96,12,ES_AUTOHSCROLL
+    LTEXT           "Speed",IDC_STATIC,302,83,22,8
+    LTEXT           "The String should be the name of the responce to use.",
+                    IDC_STATIC,409,28,172,8
+END
+
+IDD_ACTION_JOINT_TRACK DIALOGEX 0, 0, 594, 132
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_JOINT_STRING,77,36,212,12,ES_AUTOHSCROLL
+    LTEXT           "Joint Name",IDC_STATIC,20,38,36,8
+    LTEXT           "Name",IDC_STATIC,29,24,20,8
+    EDITTEXT        IDC_ACTION_NAME,77,22,212,12,ES_AUTOHSCROLL
+    COMBOBOX        IDC_TARGET_COMBO,77,51,212,77,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Target",IDC_STATIC,27,53,22,8
+    PUSHBUTTON      "Delete",IDC_DELETE,143,103,50,14
+    LTEXT           "Joint Track Action",IDC_STATIC,160,9,58,8
+    COMBOBOX        IDC_SOURCE_COMBO,77,66,212,77,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Source",IDC_STATIC,27,68,24,8
+    EDITTEXT        IDC_ANG_VELOCITY_STRING,77,81,212,12,ES_AUTOHSCROLL
+    LTEXT           "Angular Velocity",IDC_STATIC,16,83,52,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_TARGET_VIEW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 183
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 150
+    END
+
+    IDD_ADD_TARGET, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 167
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 59
+    END
+
+    IDD_TARGET_INFO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 706
+        TOPMARGIN, 8
+        BOTTOMMARGIN, 152
+    END
+
+    IDD_ADD_HARDPOINT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 167
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 59
+    END
+
+    IDD_ADD_ANIMATION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 167
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 59
+    END
+
+    IDD_PARAMETER_VIEW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 400
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 145
+    END
+
+    IDD_EVENT_SELECT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 303
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 133
+    END
+
+    IDD_NEW_ACTION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 42
+    END
+
+    IDD_ANIMATION_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 386
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 116
+    END
+
+    IDD_TARGET_ANIM_INFO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 507
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 155
+    END
+
+    IDD_PARTICLE_ACTION_HEADER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 544
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 20
+    END
+
+    IDD_NEW_PARTICLE_EFFECT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 312
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 40
+    END
+
+    IDD_ACTION_LISTEN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 587
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 125
+    END
+
+    IDD_GENERAL_FILTER_DIALOG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 320
+        BOTTOMMARGIN, 95
+    END
+
+    IDD_EDIT_FILTER_NAME, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 198
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 19
+    END
+
+    IDD_FLOAT_EDITOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 205
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 63
+    END
+
+    IDD_EDIT_RAMP_KEY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 35
+    END
+
+    IDD_EDIT_TRANS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 77
+    END
+
+    IDD_STRING_EDITOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 34
+    END
+
+    IDD_EDIT_ENUM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 35
+    END
+
+    IDD_EDIT_TARGET, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 37
+    END
+
+    IDD_ACTION_SOUND, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 184
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 122
+    END
+
+    IDD_ACTION_SWITCH, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 194
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 106
+    END
+
+    IDD_ACTION_HIDE_TARGET, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 216
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+
+    IDD_MATH_LAYOUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 482
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 357
+    END
+
+    IDD_ACTION_GAMEEVENT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 587
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 125
+    END
+
+    IDD_ACTION_JOINT_TRACK, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 587
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 125
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCELERATOR ACCELERATORS 
+BEGIN
+    "C",            IDM_COPY,               VIRTKEY, CONTROL, NOINVERT
+    "V",            IDM_PASTE,              VIRTKEY, CONTROL, NOINVERT
+    "X",            IDM_CUT,                VIRTKEY, CONTROL, NOINVERT
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

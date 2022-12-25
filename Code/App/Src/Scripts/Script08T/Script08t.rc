@@ -1,0 +1,196 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "digital anvil\0"
+            VALUE "FileDescription", "SCRIPT01T\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "SCRIPT01T\0"
+            VALUE "LegalCopyright", "Copyright © 1999\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "SCRIPT01T.dll\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "digital anvil SCRIPT01T\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PARSER
+//
+
+IDR_PARSER_1            PARSER  DISCARDABLE     "DataDef.i"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM8_TELETYPE_LOCATION 
+                            "Terran system, Lemo Prime, Kappa Sector, 0900 Hours GMT."
+    IDS_TM8_OBJECTIVES      "Mission Objectives:\n1. Locate Admiral Benson and get her to safety.\n2. Ker Tak must survive."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM8_OBJECTIVE1      "Locate  Admiral Benson and get her to safety"
+    IDS_TM8_OBJECTIVE2      "Ker Tak must survive."
+    IDS_TM8_MISSION_NAME    "Mission 8"
+    IDS_TM8_MISSION_DESC    "Find and rescue Admiral Benson"
+    IDS_TM8_OBJECTIVE3      "Destroy all Mantis in Aeon, Graan, Kalidon, and Arcturus."
+    IDS_TM8_OBJECTIVE4      "Destroy all Cocoons in Sendlor and Varn"
+    IDS_TM8_OBJECTIVE5      "Benson and Ker Tak must survive."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM8_MISSION_FAILURE "MISSION FAILURE. STAND DOWN PENDING REASSIGNMENT"
+    IDS_TM8_MISSION_SUCCESS "SUCCESSFUL MISSION."
+    IDS_TM8_OBJECTIVE6      "Go rescue Benson from Kalidon!!"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM8_IMMEDIATEMO     "Answer Benson's distress call from Kalidon....go get her before its too late!!"
+    IDS_TM8_MANTIS          "Mantis"
+    IDS_TM8_FAIL_BLACKWELL_LOST "Captain Blackwell has perished."
+    IDS_TM8_FAIL_KERTAK_LOST "Warlord Ker'Tak has perished."
+    IDS_TM8_FAIL_BENSON_LOST "Admiral Benson has perished."
+    IDS_TM8_SUB_PROLOG08    "Radio:\nAnouncer: Happy thanksgiving, Everyone!  Want to work for TNR? Terran News Radio is looking for fun, outgoing civilians and support personnel to broadcast live from all corners of the TNR network galaxy! Remember, ladies, those far-flung soldiers are some of the loneliest guys in the world!\n \nJill Davis: Oh, yeah, there's a  big plus. Sources close to the military indicate a possible alliance with a rebel Mantis leader.  (under her breath) Mantis alliance, what the hell are those bozos at Headquarters thinking...\n \nTech: Jill, we are still on the air. \n \nJill Davis: What the f#$*!"
+    IDS_TM8_SUB_M08HA03     "Halsey:\nThat's gotta stop. Where are they getting their information?  Commander, we have a problem.  Just yesterday, Admirals Hawkes, Steele, Smirnoff, and Takei commanded a convoy into Orion's Belt.  Malkor was moving more supplies through there. We've lost contact with all of them Admiral Benson followed two hours ago. Again, no contact. Here's the situation: You're going to accompany Ker'tak, who will let us use her Mantis ships as cover. You'll start with Kalidon, where Benson last checked in. You're going to find our friends, and get them back home. We cannot allow such a tragedy as the loss of five admirals--  Not with the press already second-guessing us. Get them back, Commander.\n"
+    IDS_TM8_SUB_M08KR04     "Ker'Tak: You fear to follow Mantis, tell I can. No fear. We will find your Admal.  Resources we need for large forces may encounter. Now off to Kalidon."
+    IDS_TM8_SUB_M08KR05     "Ker'Tak: Many resources there are, Malkor surely protects.  Establish base here, strength we grow. "
+    IDS_TM8_SUB_M08BN06     "Benson: Are we back online, does anyone copy? We're under attack! "
+    IDS_TM8_SUB_M08BN09     "Benson: Thought we were doomed for sure, we're practically crippled here. That you, Ker'tak? Great, Casper the friendly alien."
+    IDS_TM8_SUB_M08KR10     "Ker'Tak: Good alive you are, Admal."
+    IDS_TM8_SUB_M08BN11     "Benson: I'm not an ADMAL, you tongue-tied roach! "
+    IDS_TM8_SUB_M08KR12     "Ker'Tak: When Mantis you speak, then complain you can Admal. "
+    IDS_TM8_SUB_M08BN13     "Benson: Commander. I couldn't locate the missing Admirals.  Malkor's got this area so heavily guarded, they could be anywhere... if they're still alive. We still need to disable the Orion supply line.  If we can mount an offensive into Sendlor and Varn, we would cripple Malkor's defense in that area.  We're out numbered and out gunned. I still don't like your command style,  but I know you're not the type to back down. Let's go. And... thanks."
+    IDS_TM8_SUB_M08KR14     "Ker'Tak: Look not good, Admal. Retreat we suggest."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM8_SUB_M08BN15     "Benson: Can't BELIEVE I'm saying this, but I'm with you, sister. Commander, full retreat, let's get the hell outta here!"
+    IDS_TM8_SUB_M08KR16     "Ker'Tak: Too many there are! "
+    IDS_TM8_SUB_M08BL17     "Blackwell: Woooo-ahhh! Are we too late to join the party?"
+    IDS_TM8_SUB_M08BN18     "Benson: Tom-- Captain Blackwell?!"
+    IDS_TM8_SUB_M08BL19     "Blackwell: Hey, Bekk, what, you think I wasn't comin' back? Let em' have it, fellas! "
+    IDS_TM8_SUB_M08BN20     "Benson: Tom, what did you just do? "
+    IDS_TM8_SUB_M08BL21     "Blackwell: Just something I picked up on the other side of the universe, Rebecca. I'll explain everything, you won't BELIEVE where I've--"
+    IDS_TM8_SUB_M08BN22     "Benson: It's ADMIRAL while we're in the field, Captain-- and we're still in a battle here. "
+    IDS_TM8_SUB_M08BL23     "Blackwell: Right."
+    IDS_TM8_SUB_M08BL24     "Blackwell: Ok, let's finish off Varn and get the heck outta here!"
+    IDS_TM8_SUB_M08BN25     "Benson: Wait we still have some unfinished work. "
+    IDS_TM8_SUB_M08KR26     "Ker'Tak: Without these Cocoons, useless Malkor's supply line is."
+    IDS_TM8_SUB_M08BN27     "Benson: Ok, Commander. All we have to do is finish off the rest of the cocoons here and mission accomplished."
+    IDS_TM8_SUB_M08KR28     "Ker'Tak: Us you leave, Commander! If your own admals you waste so, my company not you keep. To Terra Return."
+    IDS_TM8_SUB_M08HA29     "Halsey: Commander, get back here where we can keep an eye on you. You're finished in the field."
+    IDS_TM8_SUB_M08BN30     "Benson: Commander, I said you'd get no mistakes on my watch. We have lost our only ally, now we're back to square one.  Stand down, prepare for incoming transmission."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM8_SUB_M08HA31     "Halsey: Commander, come home for re-assignment. You allowed it to be destroyed."
+    IDS_TM8_SUB_M08BN33     "Benson: That man just crawled from his own grave and you kicked him back in! I want you out of my Navy, Commander."
+    IDS_TM8_SUB_M08HA33     "Halsey: Ok Commander, stay put with Captain Blackwell in Varn and prepare for debriefing. "
+    IDS_TM8_SUB_M08BL34     "Blackwell: You will not BELIEVE it..."
+    IDS_TM8_SUB_M08HA35     "Halsey: Apparently he has quite a story to share! "
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

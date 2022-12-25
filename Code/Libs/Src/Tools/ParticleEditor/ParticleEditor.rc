@@ -1,0 +1,421 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_PARTICLE_PARAMETERS DIALOGEX 0, 0, 381, 334
+STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Particle System Parameters"
+MENU IDR_EDITOR_MENU
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_INITIAL_PARTICLE_COUNT,73,11,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_MAX_PARTICLE_COUNT,73,25,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EMITTER_FREQUENCY,73,39,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EMITTER_LIFETIME,73,53,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EMITTER_DIRECTION_X,73,67,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EMITTER_DIRECTION_Y,73,81,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EMITTER_DIRECTION_Z,73,95,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EMITTER_SIZE,73,109,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EMITTER_DAMP_X,73,123,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EMITTER_DAMP_Y,73,137,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EMITTER_DAMP_Z,73,151,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_BOUNDING_RADIUS,73,165,36,12,ES_AUTOHSCROLL | 
+                    ES_READONLY | WS_DISABLED
+    CONTROL         "Inherit parent transform",IDC_F_INHERIT_TRANSFORM,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,191,96,8
+    CONTROL         "Inherit parent velocity",IDC_F_INHERIT_VELOCITY,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,14,202,96,8
+    EDITTEXT        IDC_PARTICLE_LIFETIME,198,11,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PARTICLE_SIZE,198,25,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PARTICLE_SIZE_VELOCITY,198,39,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PARTICLE_VELOCITY,198,53,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PARTICLE_VELOCITY_RANDOM,198,67,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PARTICLE_TWIST_VELOCITY,198,81,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PARTICLE_POSITION_RANDOM,198,95,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GRAVITY_X,198,109,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GRAVITY_Y,198,123,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GRAVITY_Z,198,137,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PARTICLE_COLOR_KEY_FRAME,73,227,36,12,ES_AUTOHSCROLL | 
+                    ES_READONLY | WS_DISABLED
+    EDITTEXT        IDC_PARTICLE_COLOR_KEY_COUNT,135,227,36,12,
+                    ES_AUTOHSCROLL | ES_READONLY | WS_DISABLED
+    CONTROL         "Slider1",IDC_PARTICLE_COLOR_KEY_FRAME_SLIDER,
+                    "msctls_trackbar32",TBS_TOP | WS_TABSTOP,13,242,158,15
+    PUSHBUTTON      "Clear Key",IDC_PARTICLE_COLOR_CLEAR_KEY,67,290,50,14
+    PUSHBUTTON      "Reset All",IDC_PARTICLE_COLOR_CLEAR_ALL,121,290,50,14
+    COMBOBOX        IDC_PARTICLE_SRC_BLEND,13,309,77,51,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_PARTICLE_DST_BLEND,94,309,77,51,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Dither Enable",IDC_F_RENDER_DITHER,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,197,239,66,9
+    CONTROL         "Fog Enable",IDC_F_RENDER_FOG,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,197,250,66,9
+    CONTROL         "Use Particle Life",IDC_F_RENDER_PARTICLE_LIFETIME,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,197,262,66,9
+    EDITTEXT        IDC_MIN_RENDER_DIST,225,291,36,12,ES_AUTOHSCROLL | 
+                    WS_DISABLED
+    EDITTEXT        IDC_MAX_RENDER_DIST,225,309,36,12,ES_AUTOHSCROLL | 
+                    WS_DISABLED
+    PUSHBUTTON      "Import...",IDC_IMPORT,308,296,42,14
+    EDITTEXT        IDC_PARTICLE_TEXTURE_FPS,333,312,36,12,ES_AUTOHSCROLL
+    CONTROL         "1",IDC_EVENT1,"Button",BS_AUTOCHECKBOX | BS_PUSHLIKE | 
+                    WS_TABSTOP,263,15,19,18,WS_EX_STATICEDGE
+    CONTROL         "2",IDC_EVENT2,"Button",BS_AUTOCHECKBOX | BS_PUSHLIKE | 
+                    WS_TABSTOP,283,15,19,18,WS_EX_STATICEDGE
+    CONTROL         "3",IDC_EVENT3,"Button",BS_AUTOCHECKBOX | BS_PUSHLIKE | 
+                    WS_TABSTOP,303,15,19,18,WS_EX_STATICEDGE
+    CONTROL         "4",IDC_EVENT4,"Button",BS_AUTOCHECKBOX | BS_PUSHLIKE | 
+                    WS_TABSTOP,323,15,19,18,WS_EX_STATICEDGE
+    CONTROL         "Active",IDC_CHECK_ACTIVE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,263,39,97,8
+    CONTROL         "Draw Radius Cloud",IDC_RENDER_RADIUS,"Button",
+                    BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,263,52,97,8
+    CONTROL         "Export Physics Data",IDC_EXPORT_PHYSICS,"Button",
+                    BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,263,66,97,8
+    CONTROL         "Use Point Extent",IDC_POINTEXTENT,"Button",
+                    BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,263,81,97,8
+    CONTROL         "Update Size Velocity",
+                    IDC_PE_PARTICLE_CALC_SIZE_VELOCITY,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,263,95,97,8
+    RTEXT           "Grid Scale:",IDC_STATIC,260,110,59,8
+    EDITTEXT        IDC_GRID_SCALE,324,108,36,12,ES_AUTOHSCROLL
+    RTEXT           "System Velocity:",IDC_STATIC,260,124,59,8
+    EDITTEXT        IDC_EVENT_VELOCITY,324,122,36,12,ES_AUTOHSCROLL
+    RTEXT           "Framerate:",IDC_STATIC,288,314,40,8
+    GROUPBOX        "Emitter:",IDC_STATIC,7,1,120,215
+    RTEXT           "Initial Particles:",IDC_STATIC,14,13,53,8
+    RTEXT           "Intitial Velocity:",IDC_STATIC,138,55,53,8
+    LTEXT           "Velocity Random:",IDC_STATIC,136,69,55,8
+    RTEXT           "Lifetime:",IDC_STATIC,14,55,53,8
+    RTEXT           "Nozzle Size:",IDC_STATIC,14,111,53,8
+    RTEXT           "Twist Speed:",IDC_STATIC,138,83,53,8
+    RTEXT           "Initial Size:",IDC_STATIC,138,27,53,8
+    RTEXT           "Size Velocity:",IDC_STATIC,148,41,43,8
+    RTEXT           "Frequency:",IDC_STATIC,14,41,53,8
+    RTEXT           "Lifetime:",IDC_STATIC,138,13,51,9
+    RTEXT           "Nozzle Damp:",IDC_STATIC,14,125,53,8
+    CTEXT           "I",IDC_STATIC,112,125,8,8
+    CTEXT           "J",IDC_STATIC,112,139,8,8
+    CTEXT           "K",IDC_STATIC,112,153,8,8
+    RTEXT           "Nozzle Direction:",IDC_STATIC,14,69,53,8
+    LTEXT           "I",IDC_STATIC,115,69,8,8
+    LTEXT           "J",IDC_STATIC,114,82,8,8
+    LTEXT           "K",IDC_STATIC,113,97,8,8
+    RTEXT           "Position Random:",IDC_STATIC,136,97,55,8
+    RTEXT           "Max Particles:",IDC_STATIC,14,27,53,8
+    GROUPBOX        "Particles:",IDC_STATIC,131,1,120,215
+    RTEXT           "Bounding Radius:",IDC_STATIC,11,167,56,8
+    RTEXT           "Gravity:",IDC_STATIC,136,111,55,8
+    RTEXT           "Min D:",IDC_STATIC,197,293,25,8
+    RTEXT           "Max D:",IDC_STATIC,197,311,25,8
+    GROUPBOX        "Rendering:",IDC_STATIC,7,218,367,111
+    RTEXT           "Color Key Frame:",IDC_STATIC,13,229,54,8
+    LTEXT           "of",IDC_STATIC,119,229,8,8
+    CTEXT           "I",IDC_STATIC,236,110,8,8
+    CTEXT           "J",IDC_STATIC,236,124,8,8
+    CTEXT           "K",IDC_STATIC,236,138,8,8
+    GROUPBOX        "Editor Instance:",IDC_STATIC,254,1,120,215
+    LTEXT           "",IDC_PARTICLE_COLOR_KEY_COLOR,13,260,158,24,SS_NOTIFY,
+                    WS_EX_CLIENTEDGE
+    PUSHBUTTON      "<<",IDC_PARTICLE_TEXTURE_PREV,289,296,17,14
+    PUSHBUTTON      ">>",IDC_PARTICLE_TEXTURE_NEXT,352,296,17,14
+    CTEXT           "Static",IDC_PARTICLE_TEXTURE,289,286,80,8
+    LTEXT           "",IDC_TEXTURE_WINDOW,289,227,80,58,SS_NOTIFY,
+                    WS_EX_CLIENTEDGE
+    CONTROL         "5",IDC_EVENT5,"Button",BS_AUTOCHECKBOX | BS_PUSHLIKE | 
+                    WS_TABSTOP,343,15,19,18,WS_EX_STATICEDGE
+END
+
+IDD_COLOR_SELECT DIALOGEX 0, 0, 198, 117
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Set Color Key Frame "
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    RTEXT           "Red:",IDC_STATIC,7,10,26,8
+    CTEXT           "0.0000 (255)",IDC_GCS_R,38,10,49,8
+    CONTROL         "Slider1",IDC_GCS_SLIDER_R,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOP | WS_TABSTOP,87,7,104,15
+    RTEXT           "Green:",IDC_STATIC,7,25,26,8
+    CTEXT           "0",IDC_GCS_G,38,25,49,8
+    CONTROL         "Slider1",IDC_GCS_SLIDER_G,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOP | WS_TABSTOP,87,22,104,15
+    RTEXT           "Blue:",IDC_STATIC,7,41,26,8
+    CTEXT           "0",IDC_GCS_B,38,41,49,8
+    CONTROL         "Slider1",IDC_GCS_SLIDER_B,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOP | WS_TABSTOP,87,38,104,15
+    RTEXT           "Alpha:",IDC_STATIC,7,57,26,8
+    CTEXT           "0",IDC_GCS_A,38,57,49,8
+    CONTROL         "Slider1",IDC_GCS_SLIDER_A,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOP | WS_TABSTOP,87,54,104,15
+    DEFPUSHBUTTON   "OK",IDOK,41,96,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,107,96,50,14
+    LTEXT           "",IDC_GCS_COLOR,7,75,184,14,0,WS_EX_CLIENTEDGE
+END
+
+IDD_TEXTURE_SELECT DIALOG DISCARDABLE  0, 0, 198, 117
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Select Texture"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,41,96,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,107,96,50,14
+    LTEXT           "Texture:",IDC_STATIC,7,7,184,8
+    COMBOBOX        IDC_GTS_LIST,7,17,184,83,CBS_DROPDOWNLIST | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_GTS_TEXTURE,"Static",SS_BLACKRECT | SS_SUNKEN,7,
+                    34,67,55
+    LTEXT           "Width: 128\nHeight: 128\nFrameCount: 12\nFrameRate: 24",
+                    IDC_GTS_DESCRIPTION,79,34,112,55
+END
+
+IDD_TEXTURE_LOADING DIALOG DISCARDABLE  0, 0, 201, 22
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_VISIBLE
+FONT 8, "MS Sans Serif"
+BEGIN
+    CTEXT           "Loading texture ...",IDC_LOADING_TEXT,7,7,187,8
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_EDITOR_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New",                        ID_PTE_NEW
+        MENUITEM "&Open",                       ID_PTE_LOAD
+        MENUITEM "&Save",                       ID_PTE_SAVE
+        MENUITEM "Save &As",                    ID_PTE_SAVEAS
+        MENUITEM "E&xit",                       ID_FILE_EXIT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_PARTICLE_PARAMETERS, DIALOG
+    BEGIN
+        VERTGUIDE, 14
+        VERTGUIDE, 171
+    END
+
+    IDD_COLOR_SELECT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 191
+        VERTGUIDE, 33
+        VERTGUIDE, 38
+        VERTGUIDE, 87
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 110
+    END
+
+    IDD_TEXTURE_SELECT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 191
+        VERTGUIDE, 74
+        VERTGUIDE, 79
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 110
+        HORZGUIDE, 34
+        HORZGUIDE, 89
+    END
+
+    IDD_TEXTURE_LOADING, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 194
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 15
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_TEXTURE_SELECT DLGINIT
+BEGIN
+    IDC_GTS_LIST, 0x403, 9, 0
+0x6170, 0x7472, 0x6369, 0x656c, "\000" 
+    IDC_GTS_LIST, 0x403, 6, 0
+0x6d73, 0x6b6f, 0x0065, 
+    IDC_GTS_LIST, 0x403, 8, 0
+0x6d73, 0x6b6f, 0x5f65, 0x0030, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_PTE_LOAD             "Loads particle event into current slot"
+    ID_PTE_SAVE             "Saves current particle event"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_BOUNDING_RADIUS     "This value defines the maximum size for the entire particle \nsystem.  For example, the bounding radius is used when culling \nthe particle system and determining particle system visibility."
+    IDC_PARTICLE_LIFETIME   "This value determines the lifetime of an individual particle.  Use \na value of 0 to indicate that particles never die."
+    IDC_PARTICLE_POSITION_RANDOM 
+                            "This value determines an initial random offset for the position of \na new particle in the system."
+    IDC_PARTICLE_VELOCITY   "This value determines the initial velocity of particles as they are \nemitted.  Note that the actual inital particle velocity may be \naffected by the emitter velocity depending on the state of the \n""inherit velocity"" and ""inherit position"" checkboxs."
+    IDC_PARTICLE_TWIST_VELOCITY 
+                            "This value determines the rate at which the particles in the \nsystem rotate around the Z axis."
+    IDC_PARTICLE_SIZE       "This value determines the initial size of particles in the system."
+    IDC_PARTICLE_SIZE_VELOCITY 
+                            "This value determines the rate of change of the size of particles \nover the lifetime of the particle.  Positive values cause the \nparticles to grow while negative values cause particles to shrink. \nNote that if the ""Update Size Velocity"" checkbox is checked in \nthe Particle Editor, the size velocity will automatically be \ncalculated such that the particle is ""full size"" at birth and ""zero \nsize"" at death (if particles have infinite lifetime, then the emitter \nlifetime is used instead of the particle lifetime)."
+    IDC_PARTICLE_SRC_BLEND  "This value determines the source blend factor to use when\nrendering.  Setting the destination blend factor to ZERO and \nthe source blend factor to ONE will disable framebuffer blending."
+    IDC_PARTICLE_DST_BLEND  "This value determines the destination blend factor to use when \nrendering.  Setting the destination blend factor to ZERO and the \nsource blend factor to ONE will disable framebuffer blending."
+    IDC_PARTICLE_TEXTURE    "This is the name of the texture to use when rendering \nparticles in the system."
+    IDC_PARTICLE_TEXTURE_FPS 
+                            "This value determines the texture framerate to use when the\nparticle texture is an animated texture.  This value is ignored \nwhen the particle texture is not animated."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_CHECK_ACTIVE        "Check this box to actively render this particle system."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_DRAW_RADIUS         "Check this box to actively render a point cloud approximation of the bounding radius."
+    IDC_EDIT_MIN_RENDER_DIST 
+                            "This value determines the minimum distance (in camera space) at which to render this particle system.  At distances less than this value, the particle system is no longer rendered.  If this value is greater than the maximum rendering distance, both values (minimum and maximum) are ignored."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_EDIT_MAX_RENDER_DIST 
+                            "This value determines the maximum distance (in camera space) at which to render this particle system.  At distances greater than this value, the particle system is no longer rendered.  If this value is less than the minimum rendering distance, both values (minimum and maximum) are ignored."
+    IDC_F_INHERIT_POSITION  "Check this box to force the initial particle position and velocity\nto be relative to the emitter."
+    IDC_F_INHERIT_VELOCITY  "Check this box to force new particles to inherit the emitter's\nvelocity upon creation."
+    IDC_F_IGNORE_ORIENTATION 
+                            "Check this box to force the particle system to be\norientation independent."
+    IDC_F_RENDER_PARTICLE_LIFETIME 
+                            "Check this box to force the particle system to continue to render \nas long as there are particles that are alive.  If this field is left\nunchecked, the particle system will die (and hence not be\nrendered) as soon the emitter lifetime is extinguished."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_EDIT_SCALE          "This value determines the scale of the ground plane.  This is used only while in the Particle Editor and the value does not affect the particle system in any way."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_F_RENDER_DITHER     "Check this box to enable dithering when rendering."
+    IDC_F_RENDER_FOG        "Check this box to enable fog when rendering.  Note that the\nruntime only enables or disables fog, it does NOT set any other\nfog-related state (functions, color, etc...).  "
+    IDC_INITIAL_PARTICLE_COUNT 
+                            "This value determines the number of particles to create when\nthe particle system is first created."
+    IDC_MAX_PARTICLE_COUNT  "This value determines the absolute maximum number of particles \nto create over the lifetime of the particle system.  "
+    IDC_EMITTER_LIFETIME    "The emitter lifetime of the system control how the length of time\nthat new particles will be created and emitted.  Use a value of 0 \nto signify that the emitter never dies."
+    IDC_EMITTER_FREQUENCY   "The emitter frequency controls how often new particles are\ncreated and emitted into the particle system."
+    IDC_EMITTER_DIRECTION_X "The emitter direction (together with the emitter randomizer value\nand the emitter damp) controls the vector along which particles \nare emitted.  "
+    IDC_EMITTER_DIRECTION_Y "The emitter direction (together with the emitter randomizer value \nand the emitter damp) controls the vector along which particles \nare emitted.  "
+    IDC_EMITTER_DIRECTION_Z "The emitter direction (together with the emitter randomizer value \nand the emitter damp) controls the vector along which particles \nare emitted.  "
+    IDC_EMITTER_RANDOM      "The emitter randomizer value is used to determine a random \noffset direction vector that is added to the emitter direction when \nemitting new particles."
+    IDC_EMITTER_DAMP_X      "The emitter damp controls how much the emiiter direction is \naffected along a particular axis (X, Y, Z).  The (i, j, k) of the \nemitter damp should normally be between 0.0 and 1.0."
+    IDC_EMITTER_DAMP_Y      "The emitter damp controls how much the emiiter direction is \naffected along a particular axis (X, Y, Z).  The (i, j, k) of the \nemitter damp should normally be between 0.0 and 1.0."
+    IDC_EMITTER_DAMP_Z      "The emitter damp controls how much the emiiter direction is \naffected along a particular axis (X, Y, Z).  The (i, j, k) of the \nemitter damp should normally be between 0.0 and 1.0."
+    IDC_GRAVITY_X           "This value determines the full gravity vector that should be \napplied to each living particle in the particle system.  The gravity \nis applied additively during particle simulation."
+    IDC_GRAVITY_Y           "This value determines the full gravity vector that should be \napplied to each living particle in the particle system.  The gravity \nis applied additively during particle simulation.\n"
+    IDC_GRAVITY_Z           "This value determines the full gravity vector that should be \napplied to each living particle in the particle system.  The gravity \nis applied additively during particle simulation."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_PARTICLE_COLOR_CLEAR_KEY 
+                            "Removes the currently selected frame from the list of color key frames."
+    IDC_PARTICLE_COLOR_CLEAR_ALL 
+                            "Resets the color frames to a constant color."
+    IDC_PARTICLE_COLOR_KEY_COLOR 
+                            "This is the value of the currently selected color key frame.  Click here to change the color value."
+    IDC_PARTICLE_COLOR_KEY_COLOR_GRADIENT 
+                            "This shows an approximation of the effect of the current color key frame set."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

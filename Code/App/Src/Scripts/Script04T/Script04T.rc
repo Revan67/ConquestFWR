@@ -1,0 +1,166 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PARSER
+//
+
+IDR_PARSER_1            PARSER  DISCARDABLE     "DataDef.i"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM4_MISSION_SUCCESS "SUCCESSFUL MISSION."
+    IDS_TM4_TELETYPE_LOCATION "Perilon System, 1600 hours GMT"
+    IDS_TM4_OBJECTIVES      "Objectives:\n \n1. Locate the Mantis rebels.\n2. Blackwell and Hawkes must survive."
+    IDS_TM4_NEW_OBJ1        "NEW OBJECTIVE:\n \n- Stop attacks by Red Mantis against the rebel mantis."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM4_NEW_OBJ2        "NEW OBJECTIVE:\n \n- Build up forward defenses in Perilon prime."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM4_MISSION_FAILURE "MISSION FAILURE.  STAND DOWN PENDING REASSIGNMENT."
+    IDS_TM4_PERILON         "Perilon System ..."
+    IDS_TM4_OBJECTIVE1      "Locate the Mantis rebels"
+    IDS_TM4_OBJECTIVE6      "Blackwell and Hawkes must survive"
+    IDS_TM4_OBJECTIVE2      "Stop attacks by red Mantis against the rebel Mantis"
+    IDS_TM4_OBJECTIVE3      "Build a base and defenses in Perilon"
+    IDS_TM4_OBJECTIVE4      "Protect the rebel harvesters"
+    IDS_TM4_OBJECTIVE5      "Protect the rebel Jump Gate"
+    IDS_TM4_OBJECTIVE7      "Investigate the rebel system Alto"
+    IDS_TM4_OBJECTIVE8      "Retreat to the Capella system"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM4_MISSION_NAME    "Locate Ker Tak leader of Mantis rebellion"
+    IDS_TM4_MISSION_DESC    "Mission 4 description (designers?)"
+    IDS_TM4_MANTIS          "Mantis"
+    IDS_TM4_REBELS          "Mantis rebels"
+    IDS_TM4_TELETYPE_LOCATION2 
+                            "Unexplored System, Perilon Prime, Perilon Sector, 10.29.2330 1600 hours GMT"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM4_FAIL_BLACKWELL_LOST "Captain Blackwell has perished."
+    IDS_TM4_FAIL_HAWKS_LOST "Admiral Hawkes has perished."
+    IDS_TM4_SUB_PROLOG04    "Radio:\nAll personnel in the Ghelen Sector are encouraged to attend the 0800 dinner celebrating the return of Admiral Hawkes. Terran Naval Radio extends a greeting from us gearheads in the tower.  In other news TNR is eager to remind you that those pictures of me circulating on the network are not authentic and if one more little cree\n\nRED ALERT. All hands, prepare for deployment t- minus ONE HOUR. Report to your COs for briefing!"
+    IDS_TM4_SUB_M04HA03     "Halsey:\nCommander, it's time to get back to work.  We've awakened a giant. This hasn't hit even military press, but the Mantis attacked a Terran Colony at 0400 this morning. Early estimates are 1.3 million dead.\n"
+    IDS_TM4_SUB_M04HA03A    "Halsey:\nThat took nine minutes. Admiral Hawkes was a Mantis prisoner, so he's seen them at work. He wants to go back to Mantis space with you to look for someone. "
+    IDS_TM4_SUB_M04HA03B    "Halsey:\nWe now know that we lost the Andromeda because she came between a fleeing spacecraft and an entire fleet... The escaping ship belonged to a rebel leader: Ker'Tak. The Mantis who interrogated Admiral Hawkes were very interested in this Ker'Tak. That means the Mantis have an enemy. And the enemy of the enemy is our friend. Find this friend, Commander. We need all the help we can get. Halsey out."
+    IDS_TM4_SUB_M04HW05     "Hawkes: Right.  I know this is where Ker'Tak's rebel ship was heading.  The question is where is she now? "
+    IDS_TM4_SUB_M04BL06     "Blackwell: Admiral, a ship is sending out a distress signal, but it's being jammed from this side."
+    IDS_TM4_SUB_M04HW08     "Hawkes: Mantis versus Mantis. Those ships bear Rebel markings: my captors showed them to me, demanding that I turn over my rebel friends."
+    IDS_TM4_SUB_M04BL09     "Blackwell: You have rebel friends?"
+    IDS_TM4_SUB_M04HW10     "Hawkes: Let's make some. Intercept those attacking ships."
+    IDS_TM4_SUB_M04MR11     "Rebel: Klik klikklikklikklik."
+    IDS_TM4_SUB_M04HW12     "Hawkes: Hawkes to Engineering, is that translation device ready yet?\n \nEngineer: Yes Admiral.\n \nHawkes: Activate it."
+    IDS_TM4_SUB_M04MR15     "Rebel: Klik-klik.\nAccept we your help- and acknowledge. Need-we mining ore. If no collect ore, base destroyed"
+    IDS_TM4_SUB_M04BL16     "Blackwell: That the best the translator can do? "
+    IDS_TM4_SUB_M04HW17     "Hawkes: I'm Afraid so."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM4_SUB_M04MR03     "Rebel: Red Mantis help, you fight until enough ore harvest-we? "
+    IDS_TM4_SUB_M04HW18     "Hawkes: Ah... Well, we are looking for a Mantis named Ker'Tak. Do you know of him? "
+    IDS_TM4_SUB_M04MR19     "Rebel: Klik.\nTake-you to Kertok when help us harvest enough ore! "
+    IDS_TM4_SUB_M04BL20     "Blackwell: Sound like a fair trade, Admiral? "
+    IDS_TM4_SUB_M04HW21     "Hawkes: Fair enough. Right, radio in to base and have them send us a Fabricator."
+    IDS_TM4_SUB_M04BL22     "Blackwell: Obey-I."
+    IDS_TM4_SUB_M04HW23     "Hawkes: You really think you're very clever, don't you, Captain? "
+    IDS_TM4_SUB_M04HW24     "Hawkes: All right, Commander, TNF has sent us a fabricator. We need to build up forward base defenses, quickly. "
+    IDS_TM4_SUB_M04BL25     "Blackwell: They just-- keep-- coming! Look, it's time to build an Advanced Hull Factory. That'll increase the hull integrity of our ships and give us access to Heavy shipyards-- and bigger ships! (beat) \nWhile you're at it, try and build the new mobile re-supply ship."
+    IDS_TM4_SUB_M04BL25A    "Blackwell: Listen. Bigger ships take an awful lotta crew. If you build an Academy you can recruit faster."
+    IDS_TM4_SUB_M04BL25B    "Blackwell: Fine. Remember-- bigger ships take an awful lotta crew. Luckily you have an Academy, so you can recruit faster."
+    IDS_TM4_SUB_M04BL26     "Blackwell: Commander, this is too much firepower for our ships-- it'd be a lot better to defend from Perilon. "
+    IDS_TM4_SUB_M04BL27     "Blackwell: Oh, great-- this does NOT look good; there are too many fighters!  We better regroup back in Perilon. "
+    IDS_TM4_SUB_M04HW28     "Hawkes: Sorry Commander, we don't have permission yet from the rebels to enter their system. "
+    IDS_TM4_SUB_M04HW29     "Hawkes: Aren't they finished yet? Send someone through to Alto to investigate."
+    IDS_TM4_SUB_M04BL30     "Blackwell: Hey, what the...?  Sir, there are no rebels here! No BASE, either-- we're looking at a debris field a parsec long. "
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM4_SUB_M04HW31     "Hawkes: Wonderful."
+    IDS_TM4_SUB_M04HW32     "Hawkes: Retreat to the jumpgate-- we need assistance!"
+    IDS_TM4_SUB_M04HW33     "Hawkes: You let those rebels just die out there. Now we'll never find Ker'Tak.  Prepare to be decommissioned. Hawkes out."
+    IDS_TM4_SUB_M04BL34     "Blackwell: Now you've done it!  You killed Admiral Hawkes!  After everything we went through. Stand down, Commander, and report to Admiral Halsey. "
+    IDS_TM4_SUB_M04HW35     "Hawkes: Commander, I don't think this is the best place for you. It's time to stand down and report to Admiral Halsey for re-assignment. "
+    IDS_TM4_SUB_M04HW36     "Hawkes: We had a simple task: protect the rebel jumpgate and oh, look! You allowed it to be destroyed.  Stand down, Commander so we can reassign you to something easier."
+    IDS_TM4_SUB_M04HA37     "Halsey: Commander, come home for re-assignment. The rest of us need to figure out what to do next."
+    IDS_TM4_SUB_M04HA38     "Halsey: So much for our friends. Lets regroup and form a new plan."
+    IDS_TM4_SUB_M01BL16     "Blackwell: Hey! Greenhorn! You even know where that wormhole goes? Get back here."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

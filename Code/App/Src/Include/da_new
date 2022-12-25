@@ -1,0 +1,71 @@
+// Author: Shaival Varma
+// --------------------------------------------------------------------------
+// Adapted from the Hewlett-Packard Company implementation.
+// --------------------------------------------------------------------------
+#ifndef da_new_h
+#define da_new_h
+// --------------------------------------------------------------------------
+#include <exception>
+// --------------------------------------------------------------------------
+namespace da_std
+{
+// --------------------------------------------------------------------------
+// bad_alloc
+class bad_alloc: public std::exception
+{
+	public:
+		bad_alloc(const char *_S = "bad allocation") _THROW0()
+		: exception(_S) 
+		{
+		}
+
+		virtual ~bad_alloc() _THROW0()
+		{
+		}
+
+	protected:
+		virtual void _Doraise() const
+		{
+			_RAISE(*this); 
+		}
+};
+// --------------------------------------------------------------------------
+// nothrow_t
+struct nothrow_t 
+{
+};
+// --------------------------------------------------------------------------
+extern _CRTIMP const nothrow_t nothrow;
+// --------------------------------------------------------------------------
+}	// namespace da_std
+// --------------------------------------------------------------------------
+typedef void (__cdecl *new_handler)();
+// --------------------------------------------------------------------------
+// new AND delete functions
+void __cdecl operator delete(void *) _THROW0();
+void *__cdecl operator new(size_t) _THROW1(da_std::bad_alloc);
+void *__cdecl operator new(size_t, const da_std::nothrow_t&) _THROW0();
+// --------------------------------------------------------------------------
+#ifndef __PLACEMENT_NEW_INLINE
+#define __PLACEMENT_NEW_INLINE
+inline void *__cdecl operator new(size_t, void *_P)
+{
+	return (_P); 
+}
+
+#if _MSC_VER >= 1200
+inline void __cdecl operator delete(void *, void *)
+{
+	return; 
+}
+#endif
+#endif
+
+new_handler __cdecl set_new_handler(new_handler) _THROW0();
+// --------------------------------------------------------------------------
+#endif //	da_new_h
+// --------------------------------------------------------------------------
+/*
+ * Copyright (c) 1994 by P.J. Plauger.  ALL RIGHTS RESERVED. 
+ * Consult your license regarding permissions and restrictions.
+ */

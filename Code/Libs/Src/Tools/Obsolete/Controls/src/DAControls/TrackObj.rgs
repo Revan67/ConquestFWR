@@ -1,0 +1,24 @@
+HKCR
+{
+	TrackObj.TrackObj.1 = s 'TrackObj Class'
+	{
+		CLSID = s '{49C11E47-53D8-11D2-85B3-0000F4A24553}'
+	}
+	TrackObj.TrackObj = s 'TrackObj Class'
+	{
+		CurVer = s 'TrackObj.TrackObj.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {49C11E47-53D8-11D2-85B3-0000F4A24553} = s 'TrackObj Class'
+		{
+			ProgID = s 'TrackObj.TrackObj.1'
+			VersionIndependentProgID = s 'TrackObj.TrackObj'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

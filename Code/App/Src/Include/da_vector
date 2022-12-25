@@ -1,0 +1,524 @@
+// Author: Shaival Varma
+// --------------------------------------------------------------------------
+// Adapted from the Hewlett-Packard Company implementation.
+// --------------------------------------------------------------------------
+#ifndef da_vector_h
+#define da_vector_h
+// --------------------------------------------------------------------------
+#include "da_memory"
+#include "da_xutility"
+// --------------------------------------------------------------------------
+namespace da_std
+{
+// --------------------------------------------------------------------------
+// vector
+template<class TType, class TAllocator = allocator<TType> >
+class vector
+{
+	public:
+		typedef vector<TType, TAllocator> my_type;
+		typedef TAllocator allocator_type;
+		typename typedef TAllocator::size_type size_type;
+		typename typedef TAllocator::difference_type difference_type;
+		typename typedef TAllocator::pointer type_pointer;
+		typename typedef TAllocator::const_pointer const_ptr;
+		typename typedef TAllocator::reference reference;
+		typename typedef TAllocator::const_reference const_reference;
+		typename typedef TAllocator::value_type value_type;
+		typedef type_pointer iterator;
+		typedef const_ptr const_iterator;
+		typedef reverse_iterator<const_iterator, value_type, const_reference, const_ptr, difference_type> const_reverse_iterator;
+		typedef reverse_iterator<iterator, value_type, reference, type_pointer, difference_type> reverse_iterator;
+		
+		explicit vector(const TAllocator& allocator_to_use = TAllocator())
+		: mAllocator(allocator_to_use), mFirst(0), mLast(0), mEnd(0) 
+		{
+		}
+
+		explicit vector(size_type count, const TType& instance_to_copy = TType(), const TAllocator& allocator_to_use = TAllocator())
+		: mAllocator(allocator_to_use)
+		{
+			mFirst = mAllocator.allocate(count, (void *)0);
+
+			ConstructInstances(mFirst, count, instance_to_copy);
+			
+			mLast = mFirst + count;
+			mEnd = mLast; 
+		}
+
+		vector(const my_type& vector_to_copy)
+		: mAllocator(vector_to_copy.mAllocator)
+		{
+			mFirst = mAllocator.allocate(vector_to_copy.size(), (void *)0);
+			
+			mLast = CopyInstances(vector_to_copy.begin(), vector_to_copy.end(), mFirst);
+			
+			mEnd = mLast; 
+		}
+
+		vector(const_iterator first, const_iterator last, const TAllocator& allocator_to_use = TAllocator())
+		: mAllocator(allocator_to_use), mFirst(0), mLast(0), mEnd(0)
+		{
+			insert(begin(), first, last); 
+		}
+
+		~vector()
+		{
+			DestroyInstances(mFirst, mLast);
+			
+			mAllocator.deallocate(mFirst, mEnd - mFirst);
+			
+			mFirst = 0, mLast = 0, mEnd = 0; 
+		}
+
+		my_type& operator=(const my_type& vector_to_copy)
+		{
+			if (this == &vector_to_copy)
+			{
+				;
+			}
+			else if (vector_to_copy.size() <= size())
+			{
+				iterator end_iterator = copy(vector_to_copy.begin(), vector_to_copy.end(), mFirst);
+			
+				DestroyInstances(end_iterator, mLast);
+				
+				mLast = mFirst + vector_to_copy.size(); 
+			}
+			else if (vector_to_copy.size() <= capacity())
+			{
+				const_iterator end_iterator = vector_to_copy.begin() + size();
+				
+				copy(vector_to_copy.begin(), end_iterator, mFirst);
+				
+				CopyInstances(end_iterator, vector_to_copy.end(), mLast);
+				
+				mLast = mFirst + vector_to_copy.size(); 
+			}
+			else
+			{
+				DestroyInstances(mFirst, mLast);
+				
+				mAllocator.deallocate(mFirst, mEnd - mFirst);
+				mFirst = mAllocator.allocate(vector_to_copy.size(), (void *)0);
+				
+				mLast = CopyInstances(vector_to_copy.begin(), vector_to_copy.end(), mFirst);
+				
+				mEnd = mLast; 
+			}
+			
+			return (*this); 
+		}
+
+		void reserve(size_type count)
+		{
+			if (capacity() < count)
+			{
+				iterator first = mAllocator.allocate(count, (void *)0);
+				
+				CopyInstances(mFirst, mLast, first);
+				DestroyInstances(mFirst, mLast);
+				
+				mAllocator.deallocate(mFirst, mEnd - mFirst);
+				
+				mEnd = first + count;
+				mLast = first + size();
+				mFirst = first; 
+			}
+		}
+
+		size_type capacity() const
+		{
+			return (mFirst == 0 ? 0 : mEnd - mFirst); 
+		}
+
+		iterator begin()
+		{
+			return (mFirst); 
+		}
+		
+		const_iterator begin() const
+		{
+			return ((const_iterator)mFirst); 
+		}
+		
+		iterator end()
+		{
+			return (mLast); 
+		}
+		
+		const_iterator end() const
+		{
+			return ((const_iterator)mLast); 
+		}
+		
+		reverse_iterator rbegin()
+		{
+			return (reverse_iterator(end())); 
+		}
+		
+		const_reverse_iterator rbegin() const
+		{
+			return (const_reverse_iterator(end())); 
+		}
+		
+		reverse_iterator rend()
+		{
+			return (reverse_iterator(begin())); 
+		}
+		
+		const_reverse_iterator rend() const
+		{
+			return (const_reverse_iterator(begin())); 
+		}
+		
+		void resize(size_type count, const TType& instance_to_copy = TType())
+		{
+			if (size() < count)
+			{
+				insert(end(), count - size(), instance_to_copy);
+			}
+			else if (count < size())
+			{
+				erase(begin() + count, end()); 
+			}
+		}
+		
+		size_type size() const
+		{
+			return (mFirst == 0 ? 0 : mLast - mFirst); 
+		}
+		
+		size_type max_size() const
+		{
+			return (mAllocator.max_size()); 
+		}
+
+		bool empty() const
+		{
+			return (size() == 0); 
+		}
+		
+		TAllocator get_allocator() const
+		{
+			return (mAllocator); 
+		}
+		
+		const_reference at(size_type index) const
+		{
+			if (size() <= index)
+			{
+				_ThrowException();
+			}
+
+			return (*(begin() + index)); 
+		}
+
+		reference at(size_type index)
+		{
+			if (size() <= index)
+			{
+				_ThrowException();
+			}
+
+			return (*(begin() + index)); 
+		}
+
+		const_reference operator[](size_type index) const
+		{
+			return (*(begin() + index)); 
+		}
+		
+		reference operator[](size_type index)
+		{
+			return (*(begin() + index)); 
+		}
+		
+		reference front()
+		{
+			return (*begin()); 
+		}
+		
+		const_reference front() const
+		{
+			return (*begin()); 
+		}
+
+		reference back()
+		{
+			return (*(end() - 1)); 
+		}
+		
+		const_reference back() const
+		{
+			return (*(end() - 1)); 
+		}
+
+		void push_back(const TType& instance)
+		{
+			insert(end(), instance); 
+		}
+		
+		void pop_back()
+		{
+			erase(end() - 1); 
+		}
+
+		void assign(const_iterator first, const_iterator last)
+		{
+			erase(begin(), end());
+			insert(begin(), first, last); 
+		}
+		
+		void assign(size_type count, const TType& instance_to_copy = TType())
+		{
+			erase(begin(), end());
+			insert(begin(), count, instance_to_copy); 
+		}
+		
+		iterator insert(iterator insert_before, const TType& instance_to_copy = TType())
+		{
+			size_type index = insert_before - begin();
+			
+			insert(insert_before, 1, instance_to_copy);
+			
+			return (begin() + index); 
+		}
+		
+		void insert(iterator insert_before, size_type count, const TType& instance_to_copy)
+		{
+			if (size_type(mEnd - mLast) < count)
+			{
+				size_type new_size = size() + (count < size() ? size() : count);
+
+				iterator new_memory = mAllocator.allocate(new_size, (void *)0);
+
+				iterator end_iterator = CopyInstances(mFirst, insert_before, new_memory);
+				ConstructInstances(end_iterator, count, instance_to_copy);
+				CopyInstances(insert_before, mLast, end_iterator + count);
+				DestroyInstances(mFirst, mLast);
+
+				mAllocator.deallocate(mFirst, mEnd - mFirst);
+				
+				mEnd = new_memory + new_size;
+				mLast = new_memory + size() + count;
+				mFirst = new_memory; 
+			}
+			else if (size_type(mLast - insert_before) < count)
+			{
+				CopyInstances(insert_before, mLast, insert_before + count);
+				ConstructInstances(mLast, count - (mLast - insert_before), instance_to_copy);
+				fill(insert_before, mLast, instance_to_copy);
+				
+				mLast += count; 
+			}
+			else if (0 < count)
+			{
+				CopyInstances(mLast - count, mLast, mLast);
+				copy_backward(insert_before, mLast - count, mLast);
+				fill(insert_before, insert_before + count, instance_to_copy);
+				
+				mLast += count; 
+			}
+		}
+
+		void insert(iterator insert_before, const_iterator first, const_iterator last)
+		{
+			size_type source_size = 0;
+
+			_Distance(first, last, source_size);
+
+			if (mEnd - mLast < source_size)
+			{
+				size_type new_size = size() + (source_size < size() ? size() : source_size);
+				
+				iterator new_first = mAllocator.allocate(new_size, (void *)0);
+				iterator end_iterator = CopyInstances(mFirst, insert_before, new_first);
+				
+				end_iterator = CopyInstances(first, last, end_iterator);
+				CopyInstances(insert_before, mLast, end_iterator);
+				DestroyInstances(mFirst, mLast);
+				
+				mAllocator.deallocate(mFirst, mEnd - mFirst);
+				
+				mEnd = new_first + new_size;
+				mLast = new_first + size() + source_size;
+				mFirst = new_first; 
+			}
+			else if (mLast - insert_before < source_size)
+			{
+				CopyInstances(insert_before, mLast, insert_before + source_size);
+				CopyInstances(first + (mLast - insert_before), last, mLast);
+				copy(first, first + (mLast - insert_before), insert_before);
+				
+				mLast += source_size; 
+			}
+			else if (0 < source_size)
+			{
+				CopyInstances(mLast - source_size, mLast, mLast);
+				copy_backward(insert_before, mLast - source_size, mLast);
+				copy(first, last, insert_before);
+				
+				mLast += source_size; 
+			}
+		}
+
+		iterator erase(iterator instance)
+		{
+			copy(instance + 1, end(), instance);
+			DestroyInstances(mLast - 1, mLast);
+			
+			--mLast;
+			
+			return (instance); 
+		}
+		
+		iterator erase(iterator first, iterator last)
+		{
+			iterator end_iterator = copy(last, end(), first);
+			DestroyInstances(end_iterator, end());
+			
+			mLast = end_iterator;
+			
+			return (first); 
+		}
+		
+		void clear()
+		{
+			erase(begin(), end()); 
+		}
+
+		bool _Eq(const my_type& vector_to_compare) const
+		{
+			return (size() == vector_to_compare.size() && 
+					equal(begin(), end(), vector_to_compare.begin())); 
+		}
+		
+		bool _Lt(const my_type& vector_to_compare) const
+		{
+			return (lexicographical_compare(begin(), end(), vector_to_compare.begin(), vector_to_compare.end())); 
+		}
+
+		void swap(my_type& vector_to_swap)
+		{
+			if (mAllocator == vector_to_swap.mAllocator)
+			{
+				std::swap(mFirst, vector_to_swap.mFirst);
+				std::swap(mLast, vector_to_swap.mLast);
+				std::swap(mEnd, vector_to_swap.mEnd); 
+			}
+			else
+			{
+				my_type temp = *this; 
+				*this = vector_to_swap;
+				vector_to_swap= temp; 
+			}
+		}
+		
+		friend void swap(my_type& vector_1, my_type& vector_2)
+		{
+			vector_1.swap(vector_2); 
+		}
+
+	protected:
+		void DestroyInstances(iterator first, iterator last)
+		{
+			for (; first != last; ++first)
+			{
+				mAllocator.destroy(first); 
+			}
+		}
+
+		iterator CopyInstances(const_iterator first, const_iterator last, iterator first_to_construct)
+		{
+			for (; first != last; ++first)
+			{
+				mAllocator.construct(first_to_construct, *first);
+
+				++first_to_construct;
+			}
+		
+			return (first_to_construct); 
+		}
+		
+		void ConstructInstances(iterator first, size_type count, const TType& instance_to_copy)
+		{
+			for (; 0 < count; --count)
+			{
+				mAllocator.construct(first, instance_to_copy); 
+
+				++first;
+			}
+		}
+
+		void _ThrowException() const
+		{
+			throw out_of_range("invalid vector<T> subscript"); 
+		}
+
+		TAllocator mAllocator;
+		iterator mFirst, mLast, mEnd;
+};
+// --------------------------------------------------------------------------
+// vector operators
+template<class TType, class TAllocator> 
+inline bool operator==(const vector<TType, TAllocator>& l_vector, const vector<TType, TAllocator>& r_vector)
+{
+	return (l_vector._Eq(r_vector)); 
+}
+
+template<class TType, class TAllocator>
+inline bool operator!=(const vector<TType, TAllocator>& l_vector, const vector<TType, TAllocator>& r_vector)
+{
+	return (!(l_vector == r_vector)); 
+}
+
+template<class TType, class TAllocator> 
+inline bool operator<(const vector<TType, TAllocator>& l_vector, const vector<TType, TAllocator>& r_vector)
+{
+	return (l_vector._Lt(r_vector));
+}
+
+template<class TType, class TAllocator> 
+inline bool operator>(const vector<TType, TAllocator>& l_vector, const vector<TType, TAllocator>& r_vector)
+{
+	return (r_vector < l_vector); 
+}
+
+template<class TType, class TAllocator> 
+inline bool operator<=(const vector<TType, TAllocator>& l_vector, const vector<TType, TAllocator>& r_vector)
+{
+	return (!(r_vector < l_vector)); 
+}
+
+template<class TType, class TAllocator> 
+inline bool operator>=(const vector<TType, TAllocator>& l_vector, const vector<TType, TAllocator>& r_vector)
+{
+	return (!(l_vector < r_vector)); 
+}
+// --------------------------------------------------------------------------
+}	// namespace da_std
+// --------------------------------------------------------------------------
+#endif // da_vector_h
+// --------------------------------------------------------------------------
+/*
+ * Copyright (c) 1995 by P.J. Plauger.  ALL RIGHTS RESERVED. 
+ * Consult your license regarding permissions and restrictions.
+ */
+
+/*
+ * This file is derived from software bearing the following
+ * restrictions:
+ *
+ * Copyright (c) 1994
+ * Hewlett-Packard Company
+ *
+ * Permission to use, copy, modify, distribute and sell this
+ * software and its documentation for any purpose is hereby
+ * granted without fee, provided that the above copyright notice
+ * appear in all copies and that both that copyright notice and
+ * this permission notice appear in supporting documentation.
+ * Hewlett-Packard Company makes no representations about the
+ * suitability of this software for any purpose. It is provided
+ * "as is" without express or implied warranty.
+ */

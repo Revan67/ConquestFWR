@@ -1,0 +1,126 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PARSER
+//
+
+IDR_PARSER_1            PARSER  DISCARDABLE     "DataDef.i"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM7_MISSION_NAME    "Mission 7"
+    IDS_TM7_MISSION_DESC    "Mission 7 description"
+    IDS_TM7_TELETYPE_LOCATION 
+                            "Terran System, Ghelen Prime, Beta Sector, 0600 GMT"
+    IDS_TM7_OBJECTIVES      "Objectives:\n \n1. Build an AWS Research Lab.\n2. Destroy all Mantis installations and build Headquarters in Lemo.\n3. Admiral Benson and Ker Tak must survive."
+    IDS_TM7_MANTIS          "Mantis"
+    IDS_TM7_REBELS          "Mantis rebels"
+    IDS_TM7_TELETYPE_LOCATION2 
+                            "Terran System, Ghelen Prime, Beta Sector, 0600 GMT"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM7_MISSION_FAILURE "MISSION FAILURE.  STAND DOWN PENDING REASSIGNMENT."
+    IDS_TM7_MISSION_SUCCESS "SUCCESSFUL MISSION."
+    IDS_TM7_OBJECTIVE1      "Build an AWS Research Lab."
+    IDS_TM7_OBJECTIVE2      "Destroy all Mantis installations and build Headquarters in Lemo."
+    IDS_TM7_OBJECTIVE3      "Admiral Benson and Ker Tak must survive."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM7_MONITORING      "MONITORING BASE TRAFFIC CONTROL ..."
+    IDS_TM7_OBJECTIVE4      "Build a Propulsion Lab."
+    IDS_TM7_FAIL_BENSON_LOST "Admiral Benson has perished."
+    IDS_TM7_FAIL_KERTAK_LOST "Warlord Ker'Tak has perished."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM7_SUB_PROLOG07    "Ghelen HQ: Oh crap, All hands, we have Mantis ships closing on the base! We are under attack! Arming Laser turrets, all ships target...\n \nSteele: Belay that order! Belay that order! \n \nHawkes: This is Admiral Hawkes, we are escorting Mantis allies, these are REBEL ALLIES, STAND DOWN, GHELEN. \n \n Ghelen HQ: That carrier is arming...\n \n Hawkes: Those are defensive systems responding to your threat, now stand DOWN.\n \nGhelen HQ: Standing down as ordered. "
+    IDS_TM7_SUB_M07ST08     "Steele:\nJeez, don't you people read the memos? Ker'tak, please accept my apologies."
+    IDS_TM7_SUB_M07KR09     "Ker'Tak:\nEager to kill good trait."
+    IDS_TM7_SUB_M07HA10     "Halsey: \nRight. All right. Commander, now that we're all the best of friends, it's important that we keep our alliance fruitful. That way this sector can remain safe once this civil war has ended. Ker'tak? "
+    IDS_TM7_SUB_M07KR11     "Ker'Tak:\nMalkor General a supply line has. Lemo system is nearest, best place attack for. Supply line crush... Queen Verlax injure."
+    IDS_TM7_SUB_M07HA12     "Halsey:  \nYou're going to be joined by Admiral Benson, Commander. After the loss of Captain Blackwell, she's unusually eager to get out there. Good luck."
+    IDS_TM7_SUB_M07BN13     "Benson: So, Commander you're the one who sent Captain Blackwell to his death, is that right? My name's Benson. There won't be any such mistakes on my watch.  Now, our orders are simple enough even for you.  We need to establish a forward base in the Lemo system.\n"
+    IDS_TM7_SUB_M07BN14     "Benson: Hey, rookie! I just learned you now have access to the Propulsion Lab:"
+    IDS_TM7_SUB_M07BN15     "Benson: The Propulsion Lab can jack up your ship speeds and that will come in handy."
+    IDS_TM7_SUB_M07BN17     "Benson: Okay, I need to tell you about this other facility, so listen up. Despite the fact that I don't think we can trust these Mantis any farther than we can throw them, the Mantis allies have given us some new tech-- and you can access these gifts at the Advanced Weapons Systems Lab -- or AWS."
+    IDS_TM7_SUB_M07BN19     "Benson: Right now the AWS can build two Special Weapons-- the Probe, which can be sent from the Fleet Carrier, and the Tempest Charge, which is fired from the Battleship. Both are based on mantis weaponry. You feel creepy yet?\nOne more thing, I don't care what the report says, Commander. You should have smelled a trap before you ever sent Tom in. \nJust so we understand one another.\n"
+    IDS_TM7_SUB_M07HA20     "Halsey: Now you've done it!  You've lost Admiral Benson.  Prepare to stand down with further orders."
+    IDS_TM7_SUB_M07HA21     "Halsey: Commander, come home for re-assignment."
+    IDS_TM7_SUB_M07BN22     "Benson: Commander, I don't know why they ever let you out of the academy. You lost my friend. Now you've lost our only ally, Tom's sacrifice was for NOTHING.  Stand down. I want you out of this woman's Navy."
+    IDS_TM7_SUB_M07HA23     "Halsey: Commander, come home for re-assignment. I've had it with babysitting you."
+    IDS_TM7_SUB_M07HA24     "Halsey: Good job Commander!  Regroup at the new base on Lemo prime."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

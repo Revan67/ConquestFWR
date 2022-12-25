@@ -1,0 +1,7 @@
+1
+Flat Color
+FLOAT 1 0.000000 52 "SpecPower"
+FLOAT 1 0.000000 53 "SpecWhite"
+FLOAT 1 1.000000 54 "SpecMetal"
+COLOR 1 255 0 0 76 "Color"
+END

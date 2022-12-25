@@ -1,0 +1,62 @@
+ObjView.exe users guide
+
+INI file options:
+
+[ObjView]
+DisplayWidth = <integer>		;default 640
+DisplayHeight = <integer>		;default 480
+Window = false					;run full screen (true to run in window)
+JointMotion = <float>			;a rate of change for automatic joint motion in degrees/second.
+DefaultAmbientLight = <float>	;valid range: (0.0 <= value <= 1.0).  red, green, 
+								;and blue will be set to this value.
+PATH = <some string>			;will be appended to the search path
+ClearRed = <float>				;valid range: (0.0 <= value <= 1.0)
+ClearGreen = <float>			;valid range: (0.0 <= value <= 1.0)
+ClearBlue = <float>				;valid range: (0.0 <= value <= 1.0)
+FarClip = <float>				;far clipping distance of camera
+SpinRate = <float>				;rate in degrees/sec of spin
+
+command line:
+
+[] indicates optional parameter
+<> means replace with something meaningful
+
+objview [-l] [-i<filename>] [-e[<filename>]] <filename>
+	-l			interpret filename as lego format
+	filename	when used without -l, specifies full path to either a 3db or cmp file.
+	-i			specify ini file
+	-e			enable error file, if followed immediately by a filename, use that name
+				as the debug file, otherwise "ErrView.txt" is used
+
+keyboard:
+
+arrow keys: rotate camera about the object.  use shift + left or right to roll camera.
+keypad plus: zoom in.
+keypad minus: zoom out.
+'a': increase ambient light. shift + a: decrease
+'m': toggle exercise joints. shift + m: increase motion rate. ctrl + m: decrease motion rate
+'e': explode.
+'home': set camera back to starting position, object to world frame, and joints to rest position
+'n': set joints to their minimum  shift + n: maximum
+'esc': delete all objects
+'d': delete all objects and reload object
+'t' (currently disabled): tie light to camera.  shift + t: untie light from camera.
+'l': if no light, create light at camera position, else destroy light 
+keys 1-0: start animation script. if ctrl down, start in looping mode.  if shift down, stop.
+'s': if light, toggle porcelain effect.  default = disabled
+'o': if light, toggle orbit around object.  default = disabled
+'r': if light, increase red component.  shift + r: decrease.  ctrl + r: set light to red.
+'g': if light, increase green component.  shift + g: decrease.  ctrl + g: set light to green.
+'b': if light, increase blue component.  shift + b: decrease.  ctrl + b: set light to blue.
+'w': if light, set to white.
+'c': if in lego mode, establish next connection.
+'i': spin object about I.  ctrl + i:  spin about -I.  shift + i: stop.
+'j': spin object about J.  ctrl + j:  spin about -J.  shift + j: stop.
+'k': spin object about K.  ctrl + k:  spin about -K.  shift + k: stop.
+'x': translate object along x.  shift + x: translate object along -x
+'y': translate object along y.  shift + y: translate object along -y
+'z': translate object along z.  shift + z: translate object along -z
+'h': view hard points (togle); shift + h w/o depth sorting
+'F1': basic help
+'F2': view bounding spheres. shift+F2 also shows radius
+'F3': view bounding boxes. shift+F3 also shows dimensions & mass

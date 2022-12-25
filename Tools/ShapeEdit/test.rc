@@ -1,0 +1,134 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_SHPDIALOG DIALOG DISCARDABLE  0, 0, 342, 201
+STYLE DS_MODALFRAME | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "SHP Editor"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Open SHP",IDC_OPEN,7,40,50,14
+    PUSHBUTTON      "Save SHP",IDC_SAVE,7,59,50,14
+    PUSHBUTTON      "Save As... ",IDC_SAVEAS,7,78,50,14
+    LISTBOX         IDC_LIST1,65,25,48,169,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "Insert...",IDC_INSERT,7,112,50,14
+    PUSHBUTTON      "Replace...",IDC_REPLACE,235,180,50,14
+    LTEXT           "",IDC_DIMENSIONS,145,167,145,8
+    LTEXT           "",IDC_FILENAME,7,7,327,9
+    PUSHBUTTON      "Delete",IDC_DELETE,142,180,50,14
+    PUSHBUTTON      "New SHP",IDC_NEW,7,20,50,14
+END
+
+IDD_GETNUMBER DIALOG DISCARDABLE  0, 0, 133, 53
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION
+CAPTION "New Index Number..."
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,86,32,40,14
+    PUSHBUTTON      "Cancel",IDCANCEL,23,32,33,14
+    EDITTEXT        IDC_EDIT1,67,7,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "New image-index:",IDC_STATIC,7,11,60,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_SHPDIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 334
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 194
+    END
+
+    IDD_GETNUMBER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 126
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 46
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// BINARY
+//
+
+IDR_MISSINGDATA         BINARY  DISCARDABLE     "imagemissing.data"
+IDR_MISSINGPAL          BINARY  DISCARDABLE     "imagemissingpalette"
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

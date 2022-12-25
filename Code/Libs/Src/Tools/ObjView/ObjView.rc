@@ -1,0 +1,451 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCELERATORS ACCELERATORS DISCARDABLE 
+BEGIN
+    "0",            IDC_ANIM_0_START,       VIRTKEY, NOINVERT
+    "0",            IDC_ANIM_0_STOP,        VIRTKEY, CONTROL, NOINVERT
+    "0",            IDC_ANIM_0_START_LOOP,  VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    "1",            IDC_ANIM_1_START,       VIRTKEY, NOINVERT
+    "1",            IDC_ANIM_1_STOP,        VIRTKEY, CONTROL, NOINVERT
+    "1",            IDC_ANIM_1_START_LOOP,  VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    188,            IDC_SCALE_DOWN,         VIRTKEY, SHIFT, NOINVERT
+    190,            IDC_SCALE_UP,           VIRTKEY, SHIFT, NOINVERT
+    "2",            IDC_ANIM_2_START,       VIRTKEY, NOINVERT
+    "2",            IDC_ANIM_2_STOP,        VIRTKEY, CONTROL, NOINVERT
+    "3",            IDC_ANIM_3_START,       VIRTKEY, NOINVERT
+    "3",            IDC_ANIM_3_STOP,        VIRTKEY, CONTROL, NOINVERT
+    "4",            IDC_ANIM_4_START,       VIRTKEY, NOINVERT
+    "4",            IDC_ANIM_4_STOP,        VIRTKEY, CONTROL, NOINVERT
+    "5",            IDC_ANIM_5_START,       VIRTKEY, NOINVERT
+    "5",            IDC_ANIM_5_STOP,        VIRTKEY, CONTROL, NOINVERT
+    "6",            IDC_ANIM_6_START,       VIRTKEY, NOINVERT
+    "6",            IDC_ANIM_6_STOP,        VIRTKEY, CONTROL, NOINVERT
+    "7",            IDC_ANIM_7_START,       VIRTKEY, NOINVERT
+    "7",            IDC_ANIM_7_STOP,        VIRTKEY, CONTROL, NOINVERT
+    "8",            IDC_ANIM_8_START,       VIRTKEY, NOINVERT
+    "8",            IDC_ANIM_8_STOP,        VIRTKEY, CONTROL, NOINVERT
+    "9",            IDC_ANIM_9_START,       VIRTKEY, NOINVERT
+    "9",            IDC_ANIM_9_STOP,        VIRTKEY, CONTROL, NOINVERT
+    "A",            ID_LIGHTS_AMBIENT_NEXT, VIRTKEY, NOINVERT
+    "A",            ID_LIGHTS_AMBIENT_PREV, VIRTKEY, CONTROL, NOINVERT
+    "C",            IDC_CAMERA_SELECT_NEXT, VIRTKEY, NOINVERT
+    "C",            IDC_CAMERA_SELECT_PREV, VIRTKEY, CONTROL, NOINVERT
+    "C",            IDC_CAMERA_SELECT_TOGGLE, VIRTKEY, SHIFT, NOINVERT
+    "D",            IDC_OBJECT_LOAD_SAME,   VIRTKEY, NOINVERT
+    "D",            IDC_OBJECT_LOAD_NEW,    VIRTKEY, CONTROL, NOINVERT
+    "E",            IDC_EDGE_ANGLE_NEXT,    VIRTKEY, NOINVERT
+    "E",            IDC_EDGE_ANGLE_PREV,    VIRTKEY, SHIFT, NOINVERT
+    "F",            IDC_CAMERA_FOV_INC,     VIRTKEY, NOINVERT
+    "F",            IDC_CAMERA_FOV_DEC,     VIRTKEY, SHIFT, NOINVERT
+    "H",            IDC_HARDPOINT_NEXT,     VIRTKEY, NOINVERT
+    "H",            IDC_HARDPOINT_PREV,     VIRTKEY, CONTROL, NOINVERT
+    "H",            IDC_HARDPOINT_DISABLE,  VIRTKEY, CONTROL, ALT, NOINVERT
+    "H",            IDC_HARDPOINT_DETAILED, VIRTKEY, SHIFT, NOINVERT
+    "L",            ID_LIGHTS_BUILTIN_ENABLED, VIRTKEY, NOINVERT
+    "L",            ID_LIGHTS_BUILTIN_RENDER, VIRTKEY, ALT, NOINVERT
+    "L",            ID_LIGHTS_BUILTIN_RESET, VIRTKEY, SHIFT, NOINVERT
+    "M",            IDC_JOINT_RATE_NEXT,    VIRTKEY, NOINVERT
+    "M",            IDC_JOINT_RATE_PREV,    VIRTKEY, CONTROL, NOINVERT
+    "M",            IDC_JOINT_DISABLE,      VIRTKEY, CONTROL, ALT, NOINVERT
+    "M",            IDC_JOINT_DETAIL,       VIRTKEY, SHIFT, NOINVERT
+    "M",            IDC_JOINT_TOGGLE,       VIRTKEY, SHIFT, CONTROL, ALT, 
+                                                    NOINVERT
+    "N",            IDC_JOINT_MAXIMA,       VIRTKEY, NOINVERT
+    "N",            IDC_JOINT_MINIMA,       VIRTKEY, SHIFT, NOINVERT
+    "P",            IDC_OBJECT_NEXT,        VIRTKEY, NOINVERT
+    "P",            IDC_OBJECT_PREV,        VIRTKEY, CONTROL, NOINVERT
+    "P",            IDC_OBJECT_DISABLE,     VIRTKEY, CONTROL, ALT, NOINVERT
+    "P",            IDC_OBJECT_DETAIL,      VIRTKEY, SHIFT, NOINVERT
+    "S",            IDC_DISPLAY_RENDER_STATS, VIRTKEY, NOINVERT
+    VK_ADD,         IDC_CAMERA_TRANSLATION_RATE_NEXT, VIRTKEY, CONTROL, 
+                                                    NOINVERT
+    VK_ADD,         IDC_OBJECT_TRANSLATION_RATE_NEXT, VIRTKEY, SHIFT, 
+                                                    NOINVERT
+    VK_END,         IDC_OBJECT_ROTATE_STOP, VIRTKEY, NOINVERT
+    VK_ESCAPE,      IDC_OBJECT_FLUSH,       VIRTKEY, NOINVERT
+    VK_F1,          IDC_HELP_NEXT,          VIRTKEY, NOINVERT
+    VK_F1,          IDC_HELP_PREV,          VIRTKEY, CONTROL, NOINVERT
+    VK_F1,          IDC_HELP_DESCRIBE,      VIRTKEY, ALT, NOINVERT
+    VK_F1,          IDC_HELP_DISABLE,       VIRTKEY, CONTROL, ALT, NOINVERT
+    VK_F2,          IDC_EXTENT_NEXT,        VIRTKEY, NOINVERT
+    VK_F2,          IDC_EXTENT_PREV,        VIRTKEY, CONTROL, NOINVERT
+    VK_F2,          IDC_EXTENT_DISABLE,     VIRTKEY, CONTROL, ALT, NOINVERT
+    VK_F2,          IDC_EXTENT_DETAILED,    VIRTKEY, SHIFT, NOINVERT
+    VK_F3,          IDC_DISPLAY_GEOMETRY_STATS, VIRTKEY, NOINVERT
+    VK_F5,          IDC_AXIS_NEXT,          VIRTKEY, NOINVERT
+    VK_F5,          IDC_AXIS_PREV,          VIRTKEY, CONTROL, NOINVERT
+    VK_F5,          IDC_AXIS_DISABLE,       VIRTKEY, CONTROL, ALT, NOINVERT
+    VK_F5,          IDC_AXIS_DETAILED,      VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          IDC_WIREFRAME_NEXT,     VIRTKEY, NOINVERT
+    VK_F6,          IDC_WIREFRAME_PREV,     VIRTKEY, CONTROL, NOINVERT
+    VK_F6,          IDC_WIREFRAME_DISABLE,  VIRTKEY, CONTROL, ALT, NOINVERT
+    VK_F6,          IDC_WIREFRAME_DETAILED, VIRTKEY, SHIFT, NOINVERT
+    VK_F7,          IDC_TEXTURE_NEXT,       VIRTKEY, NOINVERT
+    VK_F7,          IDC_TEXTURE_PREV,       VIRTKEY, CONTROL, NOINVERT
+    VK_F7,          IDC_TEXTURE_DISABLE,    VIRTKEY, CONTROL, ALT, NOINVERT
+    VK_F7,          IDC_TEXTURE_DETAILED,   VIRTKEY, SHIFT, NOINVERT
+    VK_F8,          IDC_MATERIAL_NEXT,      VIRTKEY, NOINVERT
+    VK_F8,          IDC_MATERIAL_PREV,      VIRTKEY, CONTROL, NOINVERT
+    VK_F8,          IDC_MATERIAL_DISABLE,   VIRTKEY, CONTROL, ALT, NOINVERT
+    VK_F8,          IDC_MATERIAL_DETAILED,  VIRTKEY, SHIFT, NOINVERT
+    VK_HOME,        IDC_CAMERA_POSE_DEFAULT, VIRTKEY, NOINVERT
+    VK_HOME,        IDC_OBJECT_POSE_DEFAULT, VIRTKEY, SHIFT, NOINVERT
+    VK_NEXT,        IDC_OBJECT_LOD_NEXT,    VIRTKEY, NOINVERT
+    VK_NEXT,        IDC_OBJECT_LOD_STEP_NEXT, VIRTKEY, CONTROL, NOINVERT
+    VK_PAUSE,       IDC_UPDATE_PAUSE,       VIRTKEY, NOINVERT
+    VK_PRIOR,       IDC_OBJECT_LOD_PREV,    VIRTKEY, NOINVERT
+    VK_PRIOR,       IDC_OBJECT_LOD_STEP_PREV, VIRTKEY, CONTROL, NOINVERT
+    VK_RETURN,      IDC_DISPLAYMODE_FULLSCREEN_TOGGLE, VIRTKEY, ALT, 
+                                                    NOINVERT
+    VK_RETURN,      IDC_DISPLAYMODE_PREV,   VIRTKEY, CONTROL, ALT, NOINVERT
+    VK_RETURN,      IDC_DISPLAYMODE_NEXT,   VIRTKEY, SHIFT, ALT, NOINVERT
+    VK_SUBTRACT,    IDC_CAMERA_TRANSLATION_RATE_PREV, VIRTKEY, CONTROL, 
+                                                    NOINVERT
+    VK_SUBTRACT,    IDC_OBJECT_TRANSLATION_RATE_PREV, VIRTKEY, SHIFT, 
+                                                    NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "Scene"
+    BEGIN
+        MENUITEM "Capture Trace To File...",    IDC_SCENE_CAPTURE_TRACE_TO_FILE
+
+        MENUITEM "Capture Screen Shot...",      IDC_SCENE_CAPTURE_TO_FILE
+    END
+    POPUP "Objects"
+    BEGIN
+        MENUITEM "Load...",                     IDC_OBJECT_LOAD_NEW
+        MENUITEM "Reload",                      IDC_OBJECT_LOAD_SAME
+        MENUITEM "Flush",                       IDC_OBJECT_FLUSH
+        MENUITEM "Render",                      IDC_OBJECT_DISABLE
+        MENUITEM "Connect...",                  IDC_OBJECT_CONNECT
+        MENUITEM "Wireframe",                   IDC_WIREFRAME_NEXT
+    END
+    POPUP "Joints"
+    BEGIN
+        MENUITEM "Minima",                      IDC_JOINT_MINIMA
+        MENUITEM "Maxima",                      IDC_JOINT_MAXIMA
+        MENUITEM "Exercise",                    IDC_JOINT_TOGGLE
+    END
+    POPUP "Lights"
+    BEGIN
+        POPUP "Ambient"
+        BEGIN
+            MENUITEM "Reset to Default",            ID_LIGHTS_AMBIENT_RESETTODEFAULT
+
+            MENUITEM "Full Intensity",              ID_LIGHTS_AMBIENT_FULLINTENSITY
+
+            MENUITEM "Select Color...",             ID_LIGHTS_AMBIENT_SELECTCOLOR
+
+        END
+        POPUP "Builtin"
+        BEGIN
+            MENUITEM "Reset",                       ID_LIGHTS_BUILTIN_RESET
+            MENUITEM "Enabled",                     ID_LIGHTS_BUILTIN_ENABLED
+
+            MENUITEM "Render",                      ID_LIGHTS_BUILTIN_RENDER
+            MENUITEM "Orbit",                       ID_LIGHTS_BUILTIN_ORBIT
+            MENUITEM "Attached to Camera",          ID_LIGHTS_BUILTIN_ATTACHEDTOCAMERA
+
+            MENUITEM "Select Color...",             ID_LIGHTS_BUILTIN_SELECTCOLOR
+
+        END
+        POPUP "Exported"
+        BEGIN
+            MENUITEM "Render",                      ID_LIGHTS_EXPORTED_RENDER
+
+        END
+    END
+    POPUP "Cameras"
+    BEGIN
+        MENUITEM "Attach to First Exported",    IDC_CAMERA_SELECT_NEXT
+    END
+    POPUP "Hardpoints"
+    BEGIN
+        MENUITEM "Next",                        IDC_HARDPOINT_NEXT
+        MENUITEM "Prev",                        IDC_HARDPOINT_PREV
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_CONNECT_OBJECT DIALOG DISCARDABLE  0, 0, 248, 81
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Connect Object"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,66,60,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,132,60,50,14
+    RTEXT           "Child Object:",IDC_STATIC,7,26,59,8
+    EDITTEXT        IDC_CHILD_OBJECT,70,23,117,14,ES_AUTOHSCROLL | 
+                    ES_READONLY | WS_DISABLED
+    PUSHBUTTON      "Browse...",IDC_CHILD_OBJECT_BROWSE,191,23,50,14
+    RTEXT           "Child Hardpoint:",IDC_STATIC,7,42,59,8
+    COMBOBOX        IDC_CHILD_HARDPOINT,70,40,117,57,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_PARENT_HARDPOINT,70,7,117,57,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    RTEXT           "Parent Hardpoint:",IDC_STATIC,7,9,59,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_CONNECT_OBJECT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 241
+        VERTGUIDE, 66
+        VERTGUIDE, 70
+        VERTGUIDE, 187
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 74
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_WIREFRAME_PREV      "Select the previous wireframe rendering mode"
+    IDC_WIREFRAME_DETAILED  "Toggle depth-testing during wireframe rendering"
+    IDC_TEXTURE_NEXT        "View the next texture in the texture library"
+    IDC_TEXTURE_PREV        "View the previous texture in the texture library"
+    IDC_TEXTURE_DETAILED    "Display extended information about the texture currently being viewed"
+    IDC_TEXTURE_DISABLE     "Disable the texture viewing mode"
+    IDC_EDGE_ANGLE_NEXT     "Increase the edge angle used during wireframe rendering"
+    IDC_EDGE_ANGLE_PREV     "Decrease the edge angle used during wireframe rendering"
+    IDC_DISPLAY_RENDER_STATS "Toggle display of extended rendering statistics"
+    IDC_OBJECT_POSE_DEFAULT "Reset the object to its default position and orientation"
+    IDC_CAMERA_POSE_DEFAULT "Set camera back to default position and orientation"
+    IDC_UPDATE_PAUSE        "Toggle simulation update"
+    IDC_OBJECT_LOD_NEXT     "Increase the object level of detail"
+    IDC_OBJECT_LOD_PREV     "Decrease the object level of detail"
+    IDC_OBJECT_LOD_STEP_NEXT "Increase the object level of detail step size"
+    IDC_OBJECT_LOD_STEP_PREV "Decrease the object level of detail step size"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_CAMERA_FOV_INC      "Increase the camera horizontal field-of-view"
+    IDC_CAMERA_FOV_DEC      "Decrease the camera horizontal field-of-view"
+    IDC_OBJECT_ROTATE_STOP  "Stop the object from rotating"
+    IDC_OBJECT_FLUSH        "Unload the object"
+    IDC_HELP_DETAILED       "Popup detailed help on using this application"
+    IDC_EXTENT_NEXT         "Select the next object extent rendering mode"
+    IDC_EXTENT_PREV         "Select the previous object extent rendering mode"
+    IDC_EXTENT_DETAILED     "Toggle extent-specific information during object extent rendering"
+    IDC_DISPLAY_GEOMETRY_STATS 
+                            "Toggle display of extended geometry statistics"
+    IDC_AXIS_NEXT           "Select the next object axis rendering mode"
+    IDC_AXIS_PREV           "Select the previous object axis rendering mode"
+    IDC_AXIS_DETAILED       "Toggle depth-testing during object axis rendering"
+    IDC_WIREFRAME_NEXT      "Select the next wireframe rendering mode"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_OBJECT_DISABLE      "Disable object rendering completely"
+    IDC_OBJECT_NEXT         "Select the next child object to render"
+    IDC_OBJECT_PREV         "Select the previous child object to render"
+    IDC_OBJECT_DETAIL       "Display extended information about the object"
+    IDC_JOINT_RATE_NEXT     "Select the next object joint rendering mode"
+    IDC_JOINT_RATE_PREV     "Select the previous object joint rendering mode"
+    IDC_JOINT_DETAIL        "Toggle depth-testing during object joint rendering"
+    IDC_JOINT_DISABLE       "Disable object joint rendering"
+    IDC_JOINT_TOGGLE        "Toggle excercising of joints"
+    IDC_DISPLAYMODE_FULLSCREEN_TOGGLE 
+                            "Toggle between fullscreen and windowed rendering modes"
+    IDC_DISPLAYMODE_NEXT    "Select the next display mode"
+    IDC_DISPLAYMODE_PREV    "Select the previous display mode"
+    IDC_HELP_DESCRIBE       "Describe the next command sequence entered"
+    IDC_HELP_SIMPLE         "Toggle display of simple help"
+    IDC_ANIM_0_START_LOOP   "Start animation 0 with looping"
+    IDC_ANIM_1_START_LOOP   "Start animation 1 with looping"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_CAMERA_TRANSLATION_RATE_NEXT "Increase the camera translation speed"
+    IDC_CAMERA_TRANSLATION_RATE_PREV "Decrease the camera translation speed"
+    IDC_OBJECT_TRANSLATION_RATE_NEXT "Increase the object translation speed"
+    IDC_OBJECT_TRANSLATION_RATE_PREV "Decrease the object translation speed"
+    IDC_ANIM_0_START        "Start animation 0 without looping"
+    IDC_ANIM_0_STOP         "Stop animation 0"
+    IDC_ANIM_1_START        "Start animation 1 without looping"
+    IDC_ANIM_2_START        "Start animation 2 without looping"
+    IDC_ANIM_3_START        "Start animation 3 without looping"
+    IDC_ANIM_4_START        "Start animation 4 without looping"
+    IDC_ANIM_5_START        "Start animation 5 without looping"
+    IDC_ANIM_6_START        "Start animation 6 without looping"
+    IDC_ANIM_7_START        "Start animation 7 without looping"
+    IDC_ANIM_8_START        "Start animation 8 without looping"
+    IDC_ANIM_9_START        "Start animation 9 without looping"
+    IDC_ANIM_1_STOP         "Stop animation 1"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_ANIM_2_STOP         "Stop animation 2"
+    IDC_ANIM_3_STOP         "Stop animation 3"
+    IDC_ANIM_4_STOP         "Stop animation 4"
+    IDC_ANIM_5_STOP         "Stop animation 5"
+    IDC_ANIM_6_STOP         "Stop animation 6"
+    IDC_ANIM_7_STOP         "Stop animation 7"
+    IDC_ANIM_8_STOP         "Stop animation 8"
+    IDC_ANIM_9_STOP         "Stop animation 9"
+    IDC_AMBIENT_FULL        "Set ambient lighting to full intensity (white)"
+    IDC_CAMERA_SELECT_PREV  "Select the previous exported camera"
+    IDC_CAMERA_SELECT_NEXT  "Select the next exported camera"
+    IDC_CAMERA_SELECT_TOGGLE "Not implemented"
+    IDC_HARDPOINT_NEXT      "Select the next object hardpoint rendering mode"
+    IDC_HARDPOINT_PREV      "Select the previous object hardpoint rendering mode"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_JOINT_MINIMA        "Set all joints to minimum position"
+    IDC_JOINT_MAXIMA        "Set all joints to maximum position"
+    IDC_MATERIAL_NEXT       "View the next material in the material library"
+    IDC_MATERIAL_PREV       "View the previous material in the material library"
+    IDC_MATERIAL_DISABLE    "Disable the material viewing mode"
+    IDC_MATERIAL_DETAILED   "Display extended information about the material currently being viewed"
+    IDC_HELP_PREV           "Display the previous page of help"
+    IDC_HELP_NEXT           "Display the next page of key help"
+    IDC_HELP_DISABLE        "Disable the help display"
+    IDC_LIGHT_BUILTIN_COLOR "Select the diffuse color of the builtin light"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_HARDPOINT_DETAILED  "Toggle depth-testing during object hardpoint rendering"
+    IDC_HARDPOINT_DISABLE   "Disable object hardpoint rendering"
+    IDC_EXTENT_DISABLE      "Disable object extent rendering"
+    IDC_AXIS_DISABLE        "Disable object axis rendering"
+    IDC_WIREFRAME_DISABLE   "Disable wireframe rendering"
+    IDC_OBJECT_LOAD_SAME    "Reload the current object"
+    IDC_OBJECT_LOAD_NEW     "Replace the current object with a newly loaded object"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_LIGHTS_AMBIENT_RESETTODEFAULT 
+                            "Reset the current ambient lighting parameters to the default"
+    ID_LIGHTS_AMBIENT_SELECTCOLOR "Select the color of the ambient light"
+    ID_LIGHTS_AMBIENT_FULLINTENSITY 
+                            "Set the ambient light color to full white"
+    ID_LIGHTS_BUILTIN_ENABLED "Enable/disable the builtin light"
+    ID_LIGHTS_BUILTIN_ORBIT "Enable/disable the orbiting of the builtin light."
+    ID_LIGHTS_BUILTIN_SELECTCOLOR "Select the color of the builtin light"
+    ID_LIGHTS_BUILTIN_ATTACHEDTOCAMERA 
+                            "Attach/detach the builtin light to the camera"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_LIGHTS_BUILTIN_RESET "Recreate the builtin light and reset the values to the load time defaults"
+    ID_LIGHTS_BUILTIN_RENDER 
+                            "Enable/disable the rendering of the builtin light"
+    ID_LIGHTS_EXPORTED_RENDER "Enable/disable rendering of exported lights"
+    IDC_OBJECT_CONNECT      "Connect a child to a specified hardpoint on the current object."
+    IDC_NTSC_TOGGLE         "Toggle post-render NTSC frame buffer filter."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_SCENE_CAPTURE_TRACE_TO_FILE "Capture a single scene trace to a file"
+    IDC_SCENE_CAPTURE_TO_FILE 
+                            "Capture an image of the backbuffer just before swapping buffers."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

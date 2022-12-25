@@ -1,0 +1,34 @@
+HKCR
+{
+	Timeline.Timeline.1 = s 'Timeline Class'
+	{
+		CLSID = s '{95C42E40-4273-11D2-85B3-0000F4A24553}'
+	}
+	Timeline.Timeline = s 'Timeline Class'
+	{
+		CurVer = s 'Timeline.Timeline.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {95C42E40-4273-11D2-85B3-0000F4A24553} = s 'Timeline Class'
+		{
+			ProgID = s 'Timeline.Timeline.1'
+			VersionIndependentProgID = s 'Timeline.Timeline'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'Programmable'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 1'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '131473'
+			}
+			'TypeLib' = s '{E0E7BC62-4286-11D2-85B3-0000F4A24553}'
+			'Version' = s '1.0'
+		}
+	}
+}

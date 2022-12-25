@@ -1,0 +1,11 @@
+ABORTPRINT DIALOG DISCARDABLE  0, 0, 186, 95
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION |
+    WS_SYSMENU
+CAPTION "Abort Print"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Cancel",IDCANCEL,67,63,50,14
+    LTEXT           "Now Printing, press Cancel to abort.",IDC_STATIC,19,21,
+                    146,25
+END
+

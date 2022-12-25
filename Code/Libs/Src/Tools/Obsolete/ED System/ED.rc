@@ -1,0 +1,978 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif\r\n"
+    "#include ""res\\ED.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\ED.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_SCENE_PALETTE_UI_DIALOG DIALOGEX 0, 0, 383, 167
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "ED"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "Sc&ene File:",IDC_SCENE_FILE_STATIC,9,10,36,8
+    EDITTEXT        IDC_SCENE_FILE_EDIT,51,7,323,14,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    GROUPBOX        "Entities",IDC_OBJECTS_GROUP_BOX,8,24,367,107
+    CONTROL         "A&ll",IDC_ALL_RADIO,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,17,38,23,10
+    CONTROL         "&Cameras",IDC_CAMERAS_RADIO,"Button",BS_AUTORADIOBUTTON,
+                    17,51,43,10
+    CONTROL         "L&ights",IDC_LIGHTS_RADIO,"Button",BS_AUTORADIOBUTTON,
+                    17,64,35,10
+    CONTROL         "Ar&ticles",IDC_ARTICLES_RADIO,"Button",
+                    BS_AUTORADIOBUTTON,17,77,39,10
+    CONTROL         "&Actors",IDC_ACTORS_RADIO,"Button",BS_AUTORADIOBUTTON,
+                    17,90,36,10
+    CONTROL         "Co&mpounds",IDC_COMPOUNDS_RADIO,"Button",
+                    BS_AUTORADIOBUTTON,17,103,53,10
+    CONTROL         "De&formables",IDC_DEFORMABLES_RADIO,"Button",
+                    BS_AUTORADIOBUTTON,17,115,55,10
+    LISTBOX         IDC_OBJECT_LIST,81,51,277,74,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_GROUP | WS_TABSTOP
+    CONTROL         "Lock &selection",IDC_LOCK_SELECTION_CHECK,"Button",
+                    BS_AUTOCHECKBOX | BS_PUSHLIKE | WS_GROUP | WS_TABSTOP,81,
+                    35,56,11
+    GROUPBOX        "",IDC_PROPERTIES_GROUP_BOX,8,140,367,17
+    PUSHBUTTON      "",IDC_PROPERTIES_BUTTON,14,139,355,9
+    CONTROL         "&Render",IDC_RENDER_SELECTION_CHECK,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,149,35,39,11
+    CONTROL         "",IDC_TOOLBAR_SEPARATOR_STATIC,"Static",SS_ETCHEDHORZ,0,
+                    0,383,1
+END
+
+IDD_MISSING_CONTROLS_DIALOG DIALOG DISCARDABLE  0, 0, 254, 43
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "The selected Scene Entity Type does not have custom controls.",
+                    IDC_STATIC,28,18,210,17
+    GROUPBOX        "Missing Controls",IDC_STATIC,1,0,252,43,BS_LEFT
+END
+
+IDD_ANIMATION_TOOLS_DIALOG DIALOG DISCARDABLE  0, 0, 90, 39
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Animation Tools"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Play",IDC_PLAY_BUTTON,"Button",BS_AUTOCHECKBOX | 
+                    BS_PUSHLIKE | WS_TABSTOP,7,4,76,13
+    PUSHBUTTON      "Settings...",IDC_SET_BUTTON,7,21,76,13
+END
+
+IDD_TRACK_VIEW_DIALOG DIALOG DISCARDABLE  0, 0, 410, 206
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Track View"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Close",IDOK,353,7,50,14
+    CONTROL         "",IDC_TIMELINE,"{95C42E40-4273-11D2-85B3-0000F4A24553}",
+                    WS_TABSTOP,7,7,337,191
+END
+
+IDD_ORIENTATION_KEY_PROPERTIES_DIALOG DIALOG DISCARDABLE  0, 0, 196, 110
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,139,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,139,24,50,14
+    EDITTEXT        IDC_TIME_EDIT,61,16,48,14,ES_AUTOHSCROLL
+    LTEXT           "&Track Time:",IDC_TIME_STATIC,11,19,39,8
+    CONTROL         "&Linear",IDC_LINEAR_RADIO,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,18,50,35,10
+    CONTROL         "&Tangent",IDC_TANGENT_RADIO,"Button",BS_AUTORADIOBUTTON,
+                    99,50,39,10
+    GROUPBOX        "Interpolation",IDC_INTERPOLATION_STATIC,11,40,178,25
+    CONTROL         "Look &at",IDC_LOOK_AT_RADIO,"Button",BS_AUTORADIOBUTTON,
+                    145,50,38,10
+    CONTROL         "&Spline",IDC_SPLINE_RADIO,"Button",BS_AUTORADIOBUTTON,
+                    60,50,32,10
+    GROUPBOX        "Target",IDC_TARGET_STATIC,11,69,178,33
+    COMBOBOX        IDC_TARGET_COMBO_BOX,18,81,165,63,CBS_DROPDOWN | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_ANIMATION_SETTINGS_DIALOG DIALOGEX 0, 0, 191, 66
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,134,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,134,24,50,14
+    GROUPBOX        "Duration",IDC_DURATION_STATIC,5,7,119,51
+    LTEXT           "&Time:",IDC_TIME_STATIC,17,31,18,8
+    EDITTEXT        IDC_TIME_EDIT,43,28,39,13,ES_AUTOHSCROLL,WS_EX_RIGHT
+    LTEXT           "seconds",IDC_STATIC,91,31,28,9
+END
+
+IDD_DEFORMABLE_KEY_PROPERTIES_DIALOG DIALOG DISCARDABLE  0, 0, 209, 135
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Deformable Key Properties"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,137,9,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,137,26,50,14
+    EDITTEXT        IDC_TIME_EDIT,65,7,48,14,ES_AUTOHSCROLL
+    LTEXT           "&Track Time:",IDC_TIME_STATIC,11,10,39,8
+    EDITTEXT        IDC_TRANSITION_EDIT,65,44,48,14,ES_AUTOHSCROLL
+    LTEXT           "T&ransition Time:",IDC_TRANSITION_STATIC,11,47,51,8
+    EDITTEXT        IDC_START_EDIT,65,25,48,14,ES_AUTOHSCROLL
+    LTEXT           "&Start Time:",IDC_START_STATIC,11,28,35,8
+    EDITTEXT        IDC_DAMPING_EDIT,73,73,48,14,ES_AUTOHSCROLL
+    LTEXT           "&Damping Factor:",IDC_DAMPING_STATIC,14,76,53,8
+    LTEXT           "&Front Axis",IDC_AXIS_STATIC,125,73,32,8
+    CONTROL         "X",IDC_X_AXIS_RADIO,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,131,84,21,10
+    CONTROL         "Y",IDC_Y_AXIS_RADIO,"Button",BS_AUTORADIOBUTTON,131,97,
+                    21,10
+    CONTROL         "Z",IDC_Z_AXIS_RADIO,"Button",BS_AUTORADIOBUTTON,131,110,
+                    21,10
+    CONTROL         "&Move To Target",IDC_MOVE_TO_TARGET,"Button",
+                    BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,14,94,67,10
+    CONTROL         "&Point at Target",IDC_POINT_AT_TARGET,"Button",
+                    BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,14,107,67,10
+    GROUPBOX        "IK Motion Properties",IDC_STATIC,0,64,209,71
+    LTEXT           "&Up Axis",IDC_UP_AXIS_STATIC,171,73,25,8
+    CONTROL         "X",IDC_X_UP_AXIS_RADIO,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,173,84,21,10
+    CONTROL         "Y",IDC_Y_UP_AXIS_RADIO,"Button",BS_AUTORADIOBUTTON,173,
+                    97,21,10
+    CONTROL         "Z",IDC_Z_UP_AXIS_RADIO,"Button",BS_AUTORADIOBUTTON,173,
+                    110,21,10
+    CONTROL         "Minus",IDC_NEGATE_FRONT,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | WS_TABSTOP,105,123,35,10
+    CONTROL         "Minus",IDC_NEGATE_UP,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | WS_TABSTOP,147,123,35,10
+END
+
+IDD_A_COMPOUND_ENTITY_CUSTOM_DIALOG DIALOG DISCARDABLE  0, 0, 254, 41
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_MOTION_COMBO_BOX,66,18,165,205,CBS_DROPDOWN | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Animated Scene Entity",IDC_ANIMATED_GROUP_BOX,0,4,253,
+                    37,BS_LEFT
+    LTEXT           "Motion name:",IDC_MOTION_STATIC,15,20,44,8
+END
+
+IDD_SELECT_ENTITY_TYPE_DIALOG DIALOG DISCARDABLE  0, 0, 146, 57
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Select Entity Type"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,88,7,50,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,88,24,50,14
+    GROUPBOX        "Entity Type",IDC_STATIC,9,7,67,41
+    CONTROL         "&Deformable",IDC_DEFORMABLE_ENTITY_RADIO,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,17,19,52,10
+    CONTROL         "&Compound",IDC_COMPOUND_ENTITY_RADIO,"Button",
+                    BS_AUTORADIOBUTTON,17,33,50,10
+END
+
+IDD_SELECT_DB_ENTITY_DIALOG DIALOG DISCARDABLE  0, 0, 294, 109
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Select Entity"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,238,7,50,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,238,24,50,14
+    LISTBOX         IDC_ENTITY_LISTBOX,105,20,113,72,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_GROUP | 
+                    WS_TABSTOP
+    GROUPBOX        "Entities",IDC_ENTITIES_STATIC,8,8,220,92
+END
+
+IDD_TIMELINE DIALOG DISCARDABLE  0, 0, 425, 134
+STYLE WS_POPUP | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_CAPTION | 
+    WS_VSCROLL | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Track View"
+FONT 8, "MS Sans Serif"
+BEGIN
+    SCROLLBAR       IDC_TIMESCROLL,124,123,283,11,SBS_RIGHTALIGN
+    CONTROL         "Slider1",IDC_TIMESCALE,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOP | WS_TABSTOP,3,113,115,21
+END
+
+IDD_TONYTEST DIALOG DISCARDABLE  0, 0, 186, 95
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,24,50,14
+    SCROLLBAR       IDC_SCROLLBAR1,27,68,133,11
+END
+
+IDD_AMBIENT_LIGHT_CUSTOM_DIALOG DIALOG DISCARDABLE  0, 0, 254, 79
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Ambient Light",IDC_AMBIENT_LIGHT_GROUP_BOX,0,4,253,75,
+                    BS_LEFT
+    LTEXT           "Red:",IDC_RED_STATIC,87,22,16,8
+    EDITTEXT        IDC_RED_EDIT,112,19,30,14,ES_RIGHT | ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_RED_SPIN,"msctls_updown32",UDS_ARROWKEYS,141,
+                    19,10,14
+    LTEXT           "Green:",IDC_GREEN_STATIC,87,40,22,8
+    EDITTEXT        IDC_GREEN_EDIT,112,37,30,14,ES_RIGHT | ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_GREEN_SPIN,"msctls_updown32",UDS_ARROWKEYS,
+                    141,37,10,14
+    LTEXT           "Blue:",IDC_BLUE_STATIC,87,58,17,8
+    EDITTEXT        IDC_BLUE_EDIT,112,55,30,14,ES_RIGHT | ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_BLUE_SPIN,"msctls_updown32",UDS_ARROWKEYS,
+                    141,55,10,14
+    CONTROL         "",IDC_COLOR_PICTURE,"Static",SS_BLACKFRAME,182,19,38,32
+    CONTROL         "Spin1",IDC_INTENSITY_SPIN,"msctls_updown32",
+                    UDS_ARROWKEYS,43,19,10,14
+    LTEXT           "Intensity:",IDC_INTENSITY_STATIC,13,22,29,8
+    PUSHBUTTON      "Palette...",IDC_COLOR_PALETTE_BUTTON,182,55,38,14
+END
+
+IDD_DIRECTIONAL_LIGHT_CUSTOM_DIALOG DIALOG DISCARDABLE  0, 0, 254, 79
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Directional Light",IDC_DIRECTIONAL_LIGHT_GROUP_BOX,0,4,
+                    253,75,BS_LEFT
+    LTEXT           "Red:",IDC_RED_STATIC,87,22,16,8
+    EDITTEXT        IDC_RED_EDIT,112,19,30,14,ES_RIGHT | ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_RED_SPIN,"msctls_updown32",UDS_ARROWKEYS,141,
+                    19,10,14
+    LTEXT           "Green:",IDC_GREEN_STATIC,87,40,22,8
+    EDITTEXT        IDC_GREEN_EDIT,112,37,30,14,ES_RIGHT | ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_GREEN_SPIN,"msctls_updown32",UDS_ARROWKEYS,
+                    141,37,10,14
+    LTEXT           "Blue:",IDC_BLUE_STATIC,87,58,17,8
+    EDITTEXT        IDC_BLUE_EDIT,112,55,30,14,ES_RIGHT | ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_BLUE_SPIN,"msctls_updown32",UDS_ARROWKEYS,
+                    141,55,10,14
+    CONTROL         "",IDC_COLOR_PICTURE,"Static",SS_BLACKFRAME,182,19,38,32
+    CONTROL         "Spin1",IDC_INTENSITY_SPIN,"msctls_updown32",
+                    UDS_ARROWKEYS,43,19,10,14
+    LTEXT           "Intensity:",IDC_INTENSITY_STATIC,13,22,29,8
+    PUSHBUTTON      "Palette...",IDC_COLOR_PALETTE_BUTTON,182,55,38,14
+END
+
+IDD_POINT_LIGHT_CUSTOM_DIALOG DIALOG DISCARDABLE  0, 0, 254, 79
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Point Light",IDC_POINT_LIGHT_GROUP_BOX,0,4,253,75,
+                    BS_LEFT
+    LTEXT           "Red:",IDC_RED_STATIC,87,22,16,8
+    EDITTEXT        IDC_RED_EDIT,112,19,30,14,ES_RIGHT | ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_RED_SPIN,"msctls_updown32",UDS_ARROWKEYS,141,
+                    19,10,14
+    LTEXT           "Green:",IDC_GREEN_STATIC,87,40,22,8
+    EDITTEXT        IDC_GREEN_EDIT,112,37,30,14,ES_RIGHT | ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_GREEN_SPIN,"msctls_updown32",UDS_ARROWKEYS,
+                    141,37,10,14
+    LTEXT           "Blue:",IDC_BLUE_STATIC,87,58,17,8
+    EDITTEXT        IDC_BLUE_EDIT,112,55,30,14,ES_RIGHT | ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_BLUE_SPIN,"msctls_updown32",UDS_ARROWKEYS,
+                    141,55,10,14
+    CONTROL         "",IDC_COLOR_PICTURE,"Static",SS_BLACKFRAME,182,19,38,32
+    CONTROL         "Spin1",IDC_INTENSITY_SPIN,"msctls_updown32",
+                    UDS_ARROWKEYS,43,19,10,14
+    LTEXT           "Intensity:",IDC_INTENSITY_STATIC,13,22,29,8
+    PUSHBUTTON      "Palette...",IDC_COLOR_PALETTE_BUTTON,182,55,38,14
+    LTEXT           "Range:",IDC_RANGE_STATIC,13,40,24,8
+    EDITTEXT        IDC_RANGE_EDIT,41,37,30,14,ES_RIGHT | ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_RANGE_SPIN,"msctls_updown32",UDS_ARROWKEYS,
+                    71,37,10,14
+END
+
+IDD_SPOT_LIGHT_CUSTOM_DIALOG DIALOG DISCARDABLE  0, 0, 254, 79
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Spot Light",IDC_SPOT_LIGHT_GROUP_BOX,0,4,253,75,BS_LEFT
+    LTEXT           "Red:",IDC_RED_STATIC,87,22,16,8
+    EDITTEXT        IDC_RED_EDIT,112,19,30,14,ES_RIGHT | ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_RED_SPIN,"msctls_updown32",UDS_ARROWKEYS,141,
+                    19,10,14
+    LTEXT           "Green:",IDC_GREEN_STATIC,87,40,22,8
+    EDITTEXT        IDC_GREEN_EDIT,112,37,30,14,ES_RIGHT | ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_GREEN_SPIN,"msctls_updown32",UDS_ARROWKEYS,
+                    141,37,10,14
+    LTEXT           "Blue:",IDC_BLUE_STATIC,87,58,17,8
+    EDITTEXT        IDC_BLUE_EDIT,112,55,30,14,ES_RIGHT | ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_BLUE_SPIN,"msctls_updown32",UDS_ARROWKEYS,
+                    141,55,10,14
+    CONTROL         "",IDC_COLOR_PICTURE,"Static",SS_BLACKFRAME,182,19,38,32
+    CONTROL         "Spin1",IDC_INTENSITY_SPIN,"msctls_updown32",
+                    UDS_ARROWKEYS,43,19,10,14
+    LTEXT           "Intensity:",IDC_INTENSITY_STATIC,13,22,29,8
+    PUSHBUTTON      "Palette...",IDC_COLOR_PALETTE_BUTTON,182,55,38,14
+    LTEXT           "Range:",IDC_RANGE_STATIC,13,40,24,8
+    EDITTEXT        IDC_RANGE_EDIT,41,37,30,14,ES_RIGHT | ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_RANGE_SPIN,"msctls_updown32",UDS_ARROWKEYS,
+                    71,37,10,14
+    LTEXT           "Cut off:",IDC_CUTOFF_STATIC,13,58,24,8
+    EDITTEXT        IDC_CUTOFF_EDIT,41,55,30,14,ES_RIGHT | ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_CUTOFF_SPIN,"msctls_updown32",UDS_ARROWKEYS,
+                    71,55,10,14
+END
+
+IDD_KEY_PROPERTIES_DIALOG DIALOG DISCARDABLE  0, 0, 186, 47
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,24,50,14
+    EDITTEXT        IDC_TIME_EDIT,61,16,48,14,ES_AUTOHSCROLL
+    LTEXT           "&Track Time:",IDC_TIME_STATIC,11,19,39,8
+END
+
+IDD_INTERPOLATION_KEY_PROPERTIES_DIALOG DIALOG DISCARDABLE  0, 0, 186, 102
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,7,50,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,129,24,50,14
+    EDITTEXT        IDC_TIME_EDIT,61,16,48,14,ES_AUTOHSCROLL | WS_GROUP
+    LTEXT           "&Track Time:",IDC_TIME_STATIC,11,19,39,8
+    CONTROL         "&Linear",IDC_LINEAR_RADIO,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,18,50,35,10
+    CONTROL         "&Spline",IDC_SPLINE_RADIO,"Button",BS_AUTORADIOBUTTON,
+                    67,50,35,10
+    GROUPBOX        "Interpolation",IDC_INTERPOLATION_STATIC,11,40,98,25
+    CONTROL         "&Fixed",IDC_FIXED_RADIO,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,18,77,33,10
+    GROUPBOX        "Velocity",IDC_VELOCITY_STATIC,12,68,97,25
+    CONTROL         "&Blend",IDC_BLEND_RADIO,"Button",BS_AUTORADIOBUTTON,67,
+                    77,34,10
+END
+
+IDD_CAMERA_CUSTOM_DIALOG DIALOG DISCARDABLE  0, 0, 254, 62
+STYLE DS_CONTROL | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Camera",IDC_CAMERA_GROUP_BOX,0,4,253,57,BS_LEFT
+    LTEXT           "Horizontal FOV:",IDC_HORIZONTAL_FOV_STATIC,13,22,50,8
+    EDITTEXT        IDC_HORIZONTAL_FOV_EDIT,66,19,30,14,ES_RIGHT | 
+                    ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_HORIZONTAL_FOV_SPIN,"msctls_updown32",
+                    UDS_ARROWKEYS,95,19,10,14
+    LTEXT           "Vertical FOV:",IDC_VERTICAL_FOV_STATIC,13,40,42,8
+    EDITTEXT        IDC_VERTICAL_FOV_EDIT,66,37,30,14,ES_RIGHT | 
+                    ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_VERTICAL_FOV_SPIN,"msctls_updown32",
+                    UDS_ARROWKEYS,95,37,10,14
+END
+
+IDD_ENTITY_BROWSER DIALOG DISCARDABLE  0, 0, 392, 242
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION 
+"IK Selection: Set root and end bones for source, and entity and sub-entity for target."
+
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,335,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,335,24,50,14
+    CONTROL         "Tree1",IDC_BROWSE_TREE,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_DISABLEDRAGDROP | 
+                    TVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,7,33,131,200
+    CONTROL         "Tree2",IDC_IK_TARGET_TREE,"SysTreeView32",
+                    TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | 
+                    TVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,195,35,131,
+                    200
+    COMBOBOX        IDC_IK_TARGET,221,14,106,172,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Target Entity:",IDC_STATIC,177,16,43,8
+    LTEXT           "Source Entity:",IDC_STATIC,7,16,45,8
+    LTEXT           "",IDC_IK_SOURCE_NAME,56,14,85,11,SS_SUNKEN
+END
+
+IDD_SELECT_ENTITY_PART DIALOG DISCARDABLE  0, 0, 302, 194
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Select an entity part from the list."
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,245,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,245,24,50,14
+    CONTROL         "Tree1",IDC_PART_TREE,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_SHOWSELALWAYS | 
+                    WS_BORDER | WS_TABSTOP,7,7,225,180
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 3,4,0,0
+ PRODUCTVERSION 3,4,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x21L
+#else
+ FILEFLAGS 0x20L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "Digital Anvil, Inc.\0"
+            VALUE "FileDescription", "ED\0"
+            VALUE "FileVersion", "3, 5, 0, 0\0"
+            VALUE "InternalName", "ED\0"
+            VALUE "LegalCopyright", "Copyright (C) 1998\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "ED.EXE\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Digital Anvil ED\0"
+            VALUE "ProductVersion", "3, 5, 0, 0\0"
+            VALUE "SpecialBuild", "Release, Pre-Release\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_SCENE_VIEW_POPUP_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "SceneView"
+    BEGIN
+        MENUITEM "&Mesh",                       ID_SCENE_VIEW_MESH
+        MENUITEM "&Axes",                       ID_SCENE_VIEW_AXES
+        MENUITEM SEPARATOR
+        MENUITEM "Associate &Camera",           ID_SCENE_VIEW_SELECT_CAMERA
+        MENUITEM SEPARATOR
+        MENUITEM "&XY Plane",                   ID_SCENEVIEW_XY_PLANE
+        MENUITEM "&YZ Plane",                   ID_SCENEVIEW_YZ_PLANE
+        MENUITEM "&ZX Plane",                   ID_SCENEVIEW_ZX_PLANE
+        MENUITEM SEPARATOR
+        MENUITEM "&Textured",                   ID_SCENE_VIEW_RENDER_TEXTURED
+
+        MENUITEM "&Show Letterbox",             ID_SCENEVIEW_SHOWLETTERBOX
+    END
+    POPUP "SceneEntity"
+    BEGIN
+        MENUITEM "&XY Plane",                   ID_SCENEVIEW_SELECTION_XY_PLANE
+
+        MENUITEM "&YZ Plane",                   ID_SCENEVIEW_SELECTION_YZ_PLANE
+
+        MENUITEM "&ZX Plane",                   ID_SCENEVIEW_SELECTION_ZX_PLANE
+
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Motion Path",           ID_SCENE_ENTITY_SHOW_MOTION_PATH
+
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties...",              ID_SCENE_ENTITY_PROPERTIES
+    END
+    POPUP "Compound"
+    BEGIN
+        MENUITEM "&Start Motion",               ID_DEFORMABLE_ENTITY_START_MOTION
+
+        MENUITEM "&Loop Motion",                ID_DEFORMABLE_ENTITY_LOOP_MOTION
+
+        MENUITEM "P&ause Motion",               ID_DEFORMABLE_ENTITY_PAUSE_MOTION
+
+        MENUITEM "&Resume Motion",              ID_DEFORMABLE_ENTITY_RESUME_MOTION
+
+        MENUITEM "S&top Motion",                ID_DEFORMABLE_ENTITY_STOP_MOTION
+
+        MENUITEM SEPARATOR
+        MENUITEM "Pla&y Sound...",              ID_COMPOUND_ENTITY_PLAY_SOUND
+
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Hardpoints",            ID_COMPOUND_ENTITY_SHOW_HARDPOINTS
+
+        MENUITEM SEPARATOR
+        MENUITEM "&Remember Hardpoint",         ID_COMPOUND_ENTITY_COPY_HARDPOINT_POSITION
+
+        MENUITEM SEPARATOR
+        MENUITEM "&Move To Remembered Hardpoint", 
+                                                ID_COMPOUND_ENTITY_PASTE_POSITION
+
+        MENUITEM SEPARATOR
+        MENUITEM "&Make Child Of Remembered Hardpoint", 
+                                                ID_COMPOUND_ENTITY_MAKE_CHILD
+
+        MENUITEM SEPARATOR
+        MENUITEM "Set &View Position",          ID_COMPOUND_ENTITY_SET_CAMERA
+
+        MENUITEM SEPARATOR
+        MENUITEM "&XY Plane",                   ID_SCENEVIEW_SELECTION_XY_PLANE
+
+        MENUITEM "&YZ Plane",                   ID_SCENEVIEW_SELECTION_YZ_PLANE
+
+        MENUITEM "&ZX Plane",                   ID_SCENEVIEW_SELECTION_ZX_PLANE
+
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Motion Path",           ID_COMPOUND_ENTITY_SHOW_MOTION_PATH
+
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties...",              ID_COMPOUND_ENTITY_PROPERTIES
+
+    END
+    POPUP "Deformable"
+    BEGIN
+        MENUITEM "&Start Motion",               ID_DEFORMABLE_ENTITY_START_MOTION
+
+        MENUITEM "&Loop Motion",                ID_DEFORMABLE_ENTITY_LOOP_MOTION
+
+        MENUITEM "P&ause Motion",               ID_DEFORMABLE_ENTITY_PAUSE_MOTION
+
+        MENUITEM "&Resume Motion",              ID_DEFORMABLE_ENTITY_RESUME_MOTION
+
+        MENUITEM "S&top Motion",                ID_DEFORMABLE_ENTITY_STOP_MOTION
+
+        MENUITEM SEPARATOR
+        MENUITEM "Pla&y Sound...",              ID_DEFORMABLE_ENTITY_PLAY_SOUND
+
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Hardpoints",            ID_DEFORMABLE_ENTITY_SHOW_HARDPOINTS
+
+        MENUITEM "Show Skeleton",               ID_DEFORMABLE_ENTITY_SHOW_SKELETON
+
+        MENUITEM SEPARATOR
+        MENUITEM "&Remember Hardpoint",         ID_DEFORMABLE_ENTITY_COPY_HARDPOINT_POSITION
+
+        MENUITEM SEPARATOR
+        MENUITEM "&Move To Remembered Hardpoint", 
+                                                ID_DEFORMABLE_ENTITY_PASTE_POSITION
+
+        MENUITEM SEPARATOR
+        MENUITEM "&Make Child Of Remembered Hardpoint", 
+                                                ID_DEFORMABLE_ENTITY_MAKE_CHILD
+
+        MENUITEM SEPARATOR
+        MENUITEM "&XY Plane",                   ID_SCENEVIEW_SELECTION_XY_PLANE
+
+        MENUITEM "&YZ Plane",                   ID_SCENEVIEW_SELECTION_YZ_PLANE
+
+        MENUITEM "&ZX Plane",                   ID_SCENEVIEW_SELECTION_ZX_PLANE
+
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties...",              ID_DEFORMABLE_ENTITY_PROPERTIES
+
+    END
+    POPUP "Position Marker"
+    BEGIN
+        MENUITEM "&XY Plane",                   ID_SCENEVIEW_SELECTION_XY_PLANE
+
+        MENUITEM "&YZ Plane",                   ID_SCENEVIEW_SELECTION_YZ_PLANE
+
+        MENUITEM "&ZX Plane",                   ID_SCENEVIEW_SELECTION_ZX_PLANE
+
+        MENUITEM SEPARATOR
+        MENUITEM "Pla&y Sound...",              ID_POSITION_MARKER_ENTITY_PLAY_SOUND
+
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Motion Path",           ID_SCENE_ENTITY_SHOW_MOTION_PATH
+
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties...",              ID_SCENE_ENTITY_PROPERTIES
+    END
+END
+
+IDR_TRACK_VIEW_POPUP_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "Marker"
+    BEGIN
+        MENUITEM "&Delete",                     ID_TRACK_VIEW_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "&Set Scene Time to Marker",   ID_TRACK_VIEW_SET_SCENE_TIME_TO_MARKER_TIME
+
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties...",              ID_TRACK_VIEW_PROPERTIES
+    END
+    POPUP "Live Camera Track"
+    BEGIN
+        MENUITEM "Switch To &Camera",           ID_TRACK_VIEW_SELECT_LIVE_CAMERA
+
+    END
+    POPUP "Track Context Menu"
+    BEGIN
+        MENUITEM "&Add Marker At Current Time", ID_TRACK_VIEW_ADD_MARKER_AT_CURRENT_TIME
+
+    END
+END
+
+IDR_SCENE_PALETTE_POPUP_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "Scene Entity"
+    BEGIN
+        MENUITEM "&Delete",                     ID_SCENE_PALETTE_DELETE
+    END
+    POPUP "Deformable Scene Entity"
+    BEGIN
+        MENUITEM "&Delete",                     ID_SCENE_PALETTE_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "&Replace",                    ID_SCENE_PALETTE_REPLACE
+    END
+END
+
+IDR_INSTANCETREE_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "ContextMenu"
+    BEGIN
+        MENUITEM "Set IK Root To Selection",    ID_IK_SET_ROOT
+        MENUITEM "Set IK End To Selection",     ID_IK_SET_EFFECTOR
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_TRACK_VIEW_DIALOG DLGINIT
+BEGIN
+    IDC_TIMELINE, 0x376, 20, 0
+0x0000, 0x0000, 0x0202, 0x0000, 0x344c, 0x0000, 0x200a, 0x0000, 0xc374, 
+0x0053, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_CLOSED              BITMAP  DISCARDABLE     "res\\closed.bmp"
+IDB_OPEN                BITMAP  DISCARDABLE     "res\\open.bmp"
+IDR_MAIN                BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+IDB_IK_IMAGELIST        BITMAP  DISCARDABLE     "res\\IKImages.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAIN TOOLBAR DISCARDABLE  16, 16
+BEGIN
+    BUTTON      IDC_NEW_SCENE_BUTTON
+    BUTTON      IDC_OPEN_SCENE_BUTTON
+    BUTTON      IDC_SAVE_SCENE_BUTTON
+    SEPARATOR
+    BUTTON      IDC_SAVE_AND_CONVERT_SCENE_BUTTON
+    SEPARATOR
+    BUTTON      IDC_ADD_OBJECT_BUTTON
+    SEPARATOR
+    BUTTON      IDC_ADD_POSITION_MARKER_BUTTON
+    BUTTON      IDC_ADD_CAMERA_BUTTON
+    BUTTON      IDC_ADD_LIVE_CAMERA_BUTTON
+    BUTTON      IDC_ADD_AMBIENT_LIGHT_BUTTON
+    BUTTON      IDC_ADD_DIRECTIONAL_LIGHT_BUTTON
+    BUTTON      IDC_ADD_POINT_LIGHT_BUTTON
+    BUTTON      IDC_ADD_SPOT_LIGHT_BUTTON
+    SEPARATOR
+    BUTTON      IDC_DELETE_OBJECT_BUTTON
+    SEPARATOR
+    BUTTON      IDC_EDIT_OBJECTS_BUTTON
+    BUTTON      IDC_EDIT_VIEWS_BUTTON
+    SEPARATOR
+    BUTTON      IDC_UNDO_OPERATION
+    BUTTON      IDC_REDO_OPERATION
+    SEPARATOR
+    BUTTON      IDC_CREATE_VIEW_BUTTON
+    BUTTON      IDC_CREATE_TRACK_VIEW_BUTTON
+    SEPARATOR
+    BUTTON      IDC_EXIT_BUTTON
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCELERATOR ACCELERATORS DISCARDABLE 
+BEGIN
+    "W",            ID_WRITE_ENTITY_POSITIONS_FILE, VIRTKEY, CONTROL, 
+                                                    NOINVERT
+    "Y",            ID_REDO,                VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_UNDO,                VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_TIMELINE, DIALOG
+    BEGIN
+        RIGHTMARGIN, 415
+    END
+
+    IDD_INTERPOLATION_KEY_PROPERTIES_DIALOG, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 99
+    END
+
+    IDD_ENTITY_BROWSER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 385
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 235
+    END
+
+    IDD_SELECT_ENTITY_PART, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 295
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 187
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_SCENE_VIEW_MESH      "Toggle Mesh\nToggle mesh display"
+    ID_SCENE_VIEW_AXES      "Toggle Axes\nToggle axes display"
+    ID_SCENEVIEW_XY_PLANE   "Set XY View\nSet the view to the XY plane"
+    ID_SCENEVIEW_YZ_PLANE   "Set YZ View\nSet the view to the YZ plane"
+    ID_SCENEVIEW_ZX_PLANE   "Set ZX View\n Set the view to the ZX plane"
+    ID_SCENE_ENTITY_PROPERTIES "Properties\nProperties of the scene entity"
+    ID_COMPOUND_ENTITY_SET_CAMERA 
+                            "Set Camera\nSet camera to camera settings stored in the compound entity"
+    ID_COMPOUND_ENTITY_PROPERTIES "Properties\nProperties"
+    ID_TRACK_VIEW_DELETE    "Delete Key Point\nDelete the key point"
+    ID_TRACK_VIEW_PROPERTIES "Properties\nProperties"
+    ID_DEFORMABLE_ENTITY_START_MOTION 
+                            "Start Motion\nStart currently selected motion"
+    ID_DEFORMABLE_ENTITY_LOOP_MOTION 
+                            "Loop motion\nLoop currently selected motion"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_DEFORMABLE_ENTITY_PAUSE_MOTION "Pause All Motions\nPause all motions"
+    ID_DEFORMABLE_ENTITY_RESUME_MOTION "Resume Motions\nResume motions"
+    ID_DEFORMABLE_ENTITY_STOP_MOTION "Stop All Motions\nStop all motions"
+    ID_DEFORMABLE_ENTITY_PLAY_SOUND "Play Sound\nPlay sound"
+    ID_DEFORMABLE_ENTITY_PROPERTIES "Display Properties\nDisplay properties"
+    ID_SCENE_PALETTE_DELETE "Delete Scene Entity\nDelete scene entity"
+    ID_SCENE_VIEW_SELECT_CAMERA 
+                            "Associate Camera\nAssociate the camera to the view"
+    ID_SCENE_VIEW_RENDER_TEXTURED "Render Textured\nRender view with textures"
+    IDC_DELETE_OBJECT_BUTTON "Remove Entity"
+    IDC_ADD_CAMERA_BUTTON   "Add Camera"
+    IDC_SAVE_SCENE_BUTTON   "Save Scene"
+    IDC_CREATE_TRACK_VIEW_BUTTON "Show Track View"
+    IDC_EXIT_BUTTON         "Exit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_SCENE_ENTITY_SHOW_MOTION_PATH 
+                            "Toggle Motion Path\nToggle motion path display"
+    IDC_ADD_LIVE_CAMERA_BUTTON "Add Live Camera"
+    ID_TRACK_VIEW_SELECT_LIVE_CAMERA "Switch To Camera\nSwitch to the camera"
+    IDC_ADD_POSITION_MARKER_BUTTON "Add Position Marker"
+    ID_COMPOUND_ENTITY_PASTE_POSITION 
+                            "Move To Remembered Hardpoint\nMove to remembered hardpoint"
+    ID_SCENEVIEW_SELECTION_XY_PLANE 
+                            "Set Selection XY View\nSet the view to the XY plane for selection"
+    ID_SCENEVIEW_SELECTION_YZ_PLANE 
+                            "Set Selection YZ View\nSet the view to the YZ plane for selection"
+    ID_SCENEVIEW_SELECTION_ZX_PLANE 
+                            "Set Selection ZX View\nSet the view to the ZX plane for selection"
+    ID_TRACK_VIEW_ADD_MARKER_AT_CURRENT_TIME 
+                            "Add Marker At Current Time\nAdd a new marker at the current time"
+    ID_TRACK_VIEW_SET_SCENE_TIME_TO_MARKER_TIME 
+                            "Set Scene Time To Marker Time\nSets the current scene time to the marker time"
+    ID_SCENE_PALETTE_REPLACE "Replace Scene Entity\nReplace scene entity"
+    ID_COMPOUND_ENTITY_PLAY_SOUND "Play Sound\nPlay sound"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_SCENE_FILE_EDIT     "Scene File"
+    IDC_OPEN_SCENE_BUTTON   "Open Scene"
+    IDC_ALL_RADIO           "List All Entities"
+    IDC_CAMERAS_RADIO       "List Cameras"
+    IDC_LIGHTS_RADIO        "List Lights"
+    IDC_ARTICLES_RADIO      "List Articles"
+    IDC_ACTORS_RADIO        "List Actors"
+    IDC_COMPOUNDS_RADIO     "List Compounds"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_DEFORMABLES_RADIO   "List Deformables"
+    IDC_OBJECT_LIST         "Entity List"
+    IDC_ADD_OBJECT_BUTTON   "Add Entity"
+    IDC_LOCK_SELECTION_CHECK "Lock Selection"
+    IDC_PROPERTIES_BUTTON   "Custom Controls"
+    IDC_CREATE_VIEW_BUTTON  "Add Scene View"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_RENDER_SELECTION_CHECK "Render Entity"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_NEW_SCENE_BUTTON    "New Scene"
+    IDC_EDIT_OBJECTS_BUTTON "Edit Entities"
+    IDC_EDIT_VIEWS_BUTTON   "Edit Views"
+    ID_COMPOUND_ENTITY_SHOW_HARDPOINTS 
+                            "Toggle Hardpoints\nToggle hardpoints display"
+    ID_COMPOUND_ENTITY_COPY_HARDPOINT_POSITION 
+                            "Remember Hardpoint\nRemember hardpoint"
+    ID_DEFORMABLE_ENTITY_PASTE_POSITION 
+                            "Move To Remembered Hardpoint\nMove to remembered hardpoint"
+    IDC_ADD_AMBIENT_LIGHT_BUTTON "Add Ambient Light"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_ADD_SPOT_LIGHT_BUTTON "Add Spot Light"
+    IDC_ADD_DIRECTIONAL_LIGHT_BUTTON "Add Directional Light"
+    IDC_ADD_POINT_LIGHT_BUTTON "Add Point Light"
+    IDC_UNDO_OPERATION      "Undo"
+    IDC_REDO_OPERATION      "Redo"
+    ID_COMPOUND_ENTITY_SHOW_MOTION_PATH 
+                            "Toggle Motion Path\nToggle motion path display"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_POSITION_MARKER_ENTITY_PLAY_SOUND "Play Sound\nPlay sound"
+    ID_DEFORMABLE_ENTITY_SHOW_HARDPOINTS 
+                            "Toggle Hardpoints\nToggle hardpoints display"
+    ID_DEFORMABLE_ENTITY_COPY_HARDPOINT_POSITION 
+                            "Remember Hardpoint\nRemember hardpoint"
+    ID_COMPOUND_ENTITY_MAKE_CHILD 
+                            "Make Child Of Remembered Hardpoint\nMake child of remembered hardpoint"
+    ID_DEFORMABLE_ENTITY_MAKE_CHILD 
+                            "Make Child Of Remembered Hardpoint\nMake child of remembered hardpoint"
+    ID_IK_SET_ROOT          "Sets the root of this IK chain to the currently selected bone."
+    ID_IK_SET_EFFECTOR      "Sets the end of the IK chain to the currently selected bone."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif
+#include "res\ED.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

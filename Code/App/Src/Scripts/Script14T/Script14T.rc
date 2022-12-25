@@ -1,0 +1,133 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PARSER
+//
+
+IDR_PARSER_1            PARSER  DISCARDABLE     "DataDef.i"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM14_MISSION_NAME   "Mission 14"
+    IDS_TM14_MISSION_DESC   "Mission 14 description"
+    IDS_TM14_OBJECTIVES     "Objectives: \n \n1. Destroy all Mantis installations throughout the Delta sector.\n2. Benson, Steele, Takei, Halsey, and Vivac must survive."
+    IDS_TM14_MISSION_SUCCESS "SUCCESSFUL MISSION."
+    IDS_TM14_MISSION_FAILURE 
+                            "MISSION FAILURE.  STAND DOWN PENDING REASSIGNMENT."
+    IDS_TM14_TELETYPE_LOC   "Disputed System, Quasili Prime, Delta Sector,  0700 hours GMT."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM14_OBJECTIVE1     "Use Troopship to download plans from Malkor's Cocoon in the Draconis system."
+    IDS_TM14_OBJECTIVE2     "Destroy all Mantis installations throughout the Delta sector."
+    IDS_TM14_OBJECTIVE3     "Benson, Steele, Takei, Halsey, and Vivac must survive."
+    IDS_TM14_MANTIS_PLAYER_NAME "Mantis"
+    IDS_TM14_FAIL_BENSON_LOST "Admiral Benson has perished."
+    IDS_TM14_FAIL_TAKEI_LOST "Admiral Takei has perished."
+    IDS_TM14_FAIL_STEELE_LOST "Admiral Steele has perished."
+    IDS_TM14_FAIL_VIVAC_LOST "Magistrate Vivac has perished."
+    IDS_TM14_FAIL_HALSEY_LOST "Admiral Halsey has perished."
+    IDS_TM14_SUB_PROLOG14   "Radio:\nJill Davis: For those of you-- are we back on? For those of you listening, Earth has been held, repeat, we have held the line at Earth! Personnel under Admiral Hawkes' command are urged to report in, search parties are being dispatched for pilots and soldiers who may have ditched during the Mantis Assaults. Guys, we have no idea what the causalties are looking like yet, but you should all know this. We held our home. Congratulations."
+    IDS_TM14_SUB_M14HA02    "Halsey:\nCommander! I can't possibly find the words to express the... pure joy we're all feeling-- all of us. Your service to Admiral Hawkes was remarkable. But... but. If you look down onto earth you can see the black smoke from her cities. If you listen to the emergency bands you can hear the wails of the wounded. This war does not stop here. You're rested enough. Malkor and his maggots are beating a retreat into the Delta sector-- some weaponry they have there. You're gonna drill into Mantis territory like a three-ton augur. I wanta see every weapon, every outpost, every stinking insect carrier from here to Hell reduced to molten spaceborne slag. That's all. Halsey out ."
+    IDS_TM14_SUB_M14ST03    "Steele: Whoah! Is that Admiral Halsey's ship I see with us?"
+    IDS_TM14_SUB_M14BN04    "Benson: I thought that thing was still in mothballs."
+    IDS_TM14_SUB_M14HA05    "Halsey: Sometimes you gotta get out from behind the desk, Admirals. Now look alive, this is Malkor's territory. We think he's headed for a super-weapons lab somewhere in Draconis."
+    IDS_TM14_SUB_M14VV05A   "Vivac: I overheard from Bregon what they are building-- it's a very large spaceborne weapon. The plans would be very helpful if we could retrieve them."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM14_SUB_M14BN06    "Benson: Uh-- I'm showing two different ways to pursue Malkor to the Draconis System."
+    IDS_TM14_SUB_M14TK06A   "Takei: We'll need to send in marines --troopship the base."
+    IDS_TM14_SUB_M14HA07    "Halsey: Right. Benson, you and Takei take the low road through Jahr.  Steele and Vivac take high through Quasili. You'll rendezvous when you're closer, but this way..."
+    IDS_TM14_SUB_M14TK08    "Takei: This way you can be sure one group survives. Understood."
+    IDS_TM14_SUB_M14HA09    "Halsey: I'll stay here and protect our position. Good luck."
+    IDS_TM14_SUB_M14TSVB10  "Takei, Steele, Vivac, and Benson: Yes sir."
+    IDS_TM14_SUB_M14MA12    "Malkor: Welcome Human!  Your arrival we await. Too near our base you dare: you wish death, clearly."
+    IDS_TM14_SUB_M14BN13    "Benson: Leave your door wide open and sometimes people drop in."
+    IDS_TM14_SUB_M14MA14    "Malkor: Enter then. See what we have to offer."
+    IDS_TM14_SUB_M14TK16    "Takei: What you offer, we will never take."
+    IDS_TM14_SUB_M14ST16A   "Steele: Uh, if you guys're done talkin' to the bug, I'd like to get some killin' in before closing."
+    IDS_TM14_SUB_M14TK17    "Takei: Commander, we have downloaded the Mantis super weapon plans."
+    IDS_TM14_SUB_M14HA18    "Halsey: Excellent work Commander! We'll have our revenge soon enough."
+    IDS_TM14_SUB_M14ST19    "Steele: Oh, boy, THAT was good. You know, we could have taken that thang over."
+    IDS_TM14_SUB_M14ST20    "Steele: Son, we don't kill admirals where I come from. Ya better stand down and wait for further orders. "
+    IDS_TM14_SUB_M14HA21    "Halsey: After all your work, to fail us now... stand down, Commander. You're going home."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM14_SUB_M14ST22    "Steele: Son, don't you understand that we cain't afford to lose our alien allies? You better just stand down. I'm afraid I need you outta here. Commander, you've screwed up! "
+    IDS_TM14_SUB_M14HA23    "Halsey: Commander, come home for re-assignment. That is all."
+    IDS_TM14_SUB_M14HA11    "Halsey: Commander, did you go deaf when the Mantis missiles were falling? I'm staying here. You contain the Epsilon system while recon retrieves the Mantis plans."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

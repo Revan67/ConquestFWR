@@ -1,0 +1,141 @@
+#include <olectl.h>
+// DAControls.idl : IDL source for DAControls.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (DAControls.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+	
+	[
+		object,
+		uuid(E0E7BC6F-4286-11D2-85B3-0000F4A24553),
+		dual,
+		helpstring("ITimeline Interface"),
+		pointer_default(unique),
+		oleautomation
+	]
+	interface ITimeline : IDispatch
+	{
+		[propget, id(1), helpstring("property CursorPos")] HRESULT CursorPos([out, retval] float *pVal);
+		[propput, id(1), helpstring("property CursorPos")] HRESULT CursorPos([in] float newVal);
+		[propget, id(2), helpstring("property VScale")] HRESULT VScale([out, retval] float *pVal);
+		[propput, id(2), helpstring("property VScale")] HRESULT VScale([in] float newVal);
+		[propget, id(3), helpstring("property HScale")] HRESULT HScale([out, retval] float *pVal);
+		[propput, id(3), helpstring("property HScale")] HRESULT HScale([in] float newVal);
+		[propget, id(4), helpstring("property Length")] HRESULT Length([out, retval] float *pVal);
+		[propput, id(4), helpstring("property Length")] HRESULT Length([in] float newVal);
+		[propget, id(5), helpstring("property VScroll")] HRESULT VScroll([out, retval] float *pVal);
+		[propput, id(5), helpstring("property VScroll")] HRESULT VScroll([in] float newVal);
+		[propget, id(6), helpstring("property HScroll")] HRESULT HScroll([out, retval] float *pVal);
+		[propput, id(6), helpstring("property HScroll")] HRESULT HScroll([in] float newVal);
+		[propget, id(7), helpstring("property UILock")] HRESULT UILock([out, retval] BOOL *pVal);
+		[propput, id(7), helpstring("property UILock")] HRESULT UILock([in] BOOL newVal);
+		[id(8), helpstring("method AddTrack")] HRESULT AddTrack(int trackId, int parentId);
+		[id(9), helpstring("method DelTrack")] HRESULT DelTrack(int trackId);
+		[id(10), helpstring("method SetTrackName")] HRESULT SetTrackName(int trackId, BSTR name);
+		[id(11), helpstring("method GetTrackName")] HRESULT GetTrackName(int trackId, BSTR *pName);
+		[id(12), helpstring("method AddMarker")] HRESULT AddMarker(int trackId, int markerId);
+		[id(13), helpstring("method DelMarker")] HRESULT DelMarker(int markerId);
+		[id(14), helpstring("method SetMarkerPos")] HRESULT SetMarkerPos(int markerId, float pos);
+		[id(15), helpstring("method GetMarkerPos")] HRESULT GetMarkerPos(int markerId, float *pos);
+		[id(16), helpstring("method SetMarkerData")] HRESULT SetMarkerData(int markerId, LPUNKNOWN data);
+		[id(17), helpstring("method GetMarkerData")] HRESULT GetMarkerData(int markerId, LPUNKNOWN *data);
+		[id(18), helpstring("method SetMarkerTrack")] HRESULT SetMarkerTrack(int markerId, int trackId);
+		[id(19), helpstring("method GetMarkerTrack")] HRESULT GetMarkerTrack(int markerId, int *trackId);
+		[propget, id(20), helpstring("property StartTime")] HRESULT StartTime([out, retval] float *pVal);
+		[propput, id(20), helpstring("property StartTime")] HRESULT StartTime([in] float newVal);
+		[propget, id(21), helpstring("property StopTime")] HRESULT StopTime([out, retval] float *pVal);
+		[propput, id(21), helpstring("property StopTime")] HRESULT StopTime([in] float newVal);
+		[id(22), helpstring("method SetTrackData")] HRESULT SetTrackData(int trackId, LPUNKNOWN userData);
+		[id(23), helpstring("method GetTrackData")] HRESULT GetTrackData(int trackId, LPUNKNOWN *userData);
+		[id(24), helpstring("method ExpandTrack")] HRESULT ExpandTrack(int trackId, int expand);
+		[id(25), helpstring("method DelAllTracks")] HRESULT DelAllTracks();
+		[id(26), helpstring("method DelAllMarkers")] HRESULT DelAllMarkers();
+		[id(27), helpstring("method DelAllTrackMarkers")] HRESULT DelAllTrackMarkers(int trackId);
+		[propget, id(28), helpstring("property Height")] HRESULT Height([out, retval] long *pVal);
+		[id(29), helpstring("method SetMarkerDuration")] HRESULT SetMarkerDuration(int markerId, float duration);
+		[id(30), helpstring("method GetMarkerDuration")] HRESULT GetMarkerDuration(int markerId, float *duration);
+		[propget, id(31), helpstring("property ShowScale")] HRESULT ShowScale([out, retval] BOOL *pVal);
+		[propput, id(31), helpstring("property ShowScale")] HRESULT ShowScale([in] BOOL newVal);
+		[propget, id(32), helpstring("property MarkerPosition")] HRESULT MarkerPosition(int markerId, [out, retval] float *pVal);
+		[propput, id(32), helpstring("property MarkerPosition")] HRESULT MarkerPosition(int markerId, [in] float newVal);
+		[propget, id(33), helpstring("property Track")] HRESULT Track(long index, [out, retval] LPDISPATCH *pVal);
+		[id(34), helpstring("method LinkMarkers")] HRESULT LinkMarkers(long mId1, long mId2);
+		[id(35), helpstring("method UnlinkMarkers")] HRESULT UnlinkMarkers(long mId);
+	};
+[
+	uuid(E0E7BC62-4286-11D2-85B3-0000F4A24553),
+	version(1.0),
+	helpstring("DAControls 1.0 Type Library")
+]
+library DACONTROLSLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+    [
+        uuid(377E3240-438E-11d2-89DA-00400521015D),
+        helpstring("Event interface for Timeline Class")
+    ]
+    dispinterface _TimelineEvents
+    {
+        properties:
+        methods:
+        [id(1)] void MarkerChanged([in]long markerId);
+        [id(2)] void TrackChanged([in]long trackId);
+        [id(3)] void CursorChanged([in]float newPos);
+        [id(4)] void TrackLabelContextRequest([in]long trackId, [in]long mouseX, [in] long mouseY);
+        [id(5)] void MarkerContextRequest([in]long markerId, [in]long mouseX, [in] long mouseY);
+        [id(6)] void TrackContextRequest([in]long trackId, [in]float time, [in]long mouseX, [in] long mouseY);
+    };
+	
+	[
+		object,
+		uuid(94B5A6D2-52FA-11D2-85B3-0000F4A24553),
+		dual,
+		helpstring("ITrackObject Interface"),
+		pointer_default(unique)
+	]
+	interface ITrackObject : IDispatch
+	{
+		[propget, id(1), helpstring("property Id")] HRESULT Id([out, retval] long *pVal);
+		[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR *pVal);
+		[propput, id(2), helpstring("property Name")] HRESULT Name([in] BSTR newVal);
+		[id(3), helpstring("method AddMarker")] HRESULT AddMarker(long markerId);
+		[propget, id(4), helpstring("property Expanded")] HRESULT Expanded([out, retval] BOOL *pVal);
+		[propput, id(4), helpstring("property Expanded")] HRESULT Expanded([in] BOOL newVal);
+	};
+
+
+	[
+		uuid(95C42E40-4273-11D2-85B3-0000F4A24553),
+		helpstring("Timeline Class")
+	]
+	coclass Timeline
+	{
+		[default] interface ITimeline;
+		[default, source] dispinterface _TimelineEvents;
+	};
+	
+
+	[
+		uuid(34B41D35-438B-11D2-89DA-00400521015D),
+		helpstring("TimelineProp Class")
+	]
+	coclass TimelineProp
+	{
+		interface IUnknown;
+	};
+	
+	[
+		uuid(94B5A6D3-52FA-11D2-85B3-0000F4A24553),
+		helpstring("TrackObject Class")
+	]
+	coclass TrackObject
+	{
+		[default] interface ITrackObject;
+	};
+};

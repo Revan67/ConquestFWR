@@ -1,0 +1,7 @@
+// TimelineProp.cpp : Implementation of CTimelineProp
+#include "stdafx.h"
+#include "TimelineProp.h"
+
+/////////////////////////////////////////////////////////////////////////////
+// CTimelineProp
+

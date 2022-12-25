@@ -1,0 +1,170 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PARSER
+//
+
+IDR_PARSER_1            PARSER  DISCARDABLE     "DataDef.i"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_MT_DESC             "Mantis Training Tutorial"
+    IDS_MT_NAME             "Mantis training mission"
+    IDS_MT_TELETYPE_LOCATION "Voraak System, Voraak Prime, Omega Sector."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_MT_BEGIN            "Prepare for Mantis training..."
+    IDS_MT_OBJECTIVE1       "Select the Weaver."
+    IDS_MT_OBJECTIVE2       "Right-click on an open area to move."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_MT_OBJECTIVE3       "Select all three ships."
+    IDS_MT_OBJECTIVE4       "Start scouting in this system."
+    IDS_MT_OBJECTIVE5       "Build a Collector."
+    IDS_MT_OBJECTIVE6       "Build a Siphon."
+    IDS_MT_OBJECTIVE7       "Build a Warlord Training Grounds on an Earth or Swamp planet."
+    IDS_MT_OBJECTIVE8       "Build an Eye Stalk."
+    IDS_MT_OBJECTIVE9       "Build a Thripid shipyard."
+    IDS_MT_OBJECTIVE10      "Build a Blast Furnace."
+    IDS_MT_OBJECTIVE11      "Build a Plasma Spitter for defense near Cocoon on Voraak Prime."
+    IDS_MT_OBJECTIVE12      "Build at least six Hive Carriers."
+    IDS_MT_OBJECTIVE13      "Build a Plantation."
+    IDS_MT_OBJECTIVE14      "Build a Jump Gate on the wormhole to Iode."
+    IDS_MT_OBJECTIVE15      "Jump force into Iode."
+    IDS_MT_OBJECTIVE16      "Build a Plasma Spitter to protect Jump Gate in Iode."
+    IDS_MT_OBJECTIVE17      "Build a Plantation on Iode Prime."
+    IDS_MT_OBJECTIVE18      "Regroup back to Voraak."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_MT_OBJECTIVE19      "Build at least 4 Scarabs."
+    IDS_MT_OBJECTIVE20      "Build at least 2 Tiamats."
+    IDS_MT_OBJECTIVE21      "Evolve Thripid into a Niad for access to heavy ships."
+    IDS_MT_FINAL            "Eliminate all the Terrans in the Iode System."
+    IDS_MT_MISSION_SUCCESS  "SUCCESSFUL MISSION."
+    IDS_MT_MISSION_FAILURE  "MISSION FAILURE. EMBARRASSMENT YOU ARE TO MANTIS."
+    IDS_MT_OBJECTIVE12a     "Build a Carrion Roost."
+    IDS_MT_OBJECTIVE19a     "Build a Bio Forge."
+    IDS_MT_OBJECTIVE19b     "Evolve Bio Forge into a Carapace Plant."
+    IDS_MT_OBJECTIVE20b     "Build a Dissection Chamber."
+    IDS_MT_ENEMY_NAME       "Terrans"
+    IDS_MT_SUB_PROLOG17     "Radio:\nI great Mantis General MalMax and grand news have I!  To pursue one's foe, to crush their bones beneath one's feet, these things tire the exoskeleton and oppress the brain. For this recommend I MantisAde! Made from the strained fluid of Terran Spines! Tinged with viscus fluid from Terran Pets! Replenish your innards and bring fullness to your spongy brain! MantisAde! Drink not to your enemies: Drink your enemies!"
+    IDS_MT_SUB_MTMD03       "Mordella:\nMajesty, Warlord Mordella am I. Great Leader you will be if to me you listen. The blood of enemies in your mandibles will flow after my methods you learn. Attention pay! Weakling peace lover Terrans may we find, and crush them we will! Crush them and feel their dying warmth! Hail Queen!"
+    IDS_MT_SUB_MTMD04       "Mordella: Begin we then, Majesty.  Before you see 3 ships and a Cocoon. The larger ship the Weaver is.  With your mouse select the Weaver."
+    IDS_MT_SUB_MTMD05       "Mordella: Excellent. Once selected the Weaver is, right-click in an open area on the screen to move."
+    IDS_MT_SUB_MTMD06       "Mordella: Now test we multiple ship commands.  Select Weaver and the other two ships-- called Frigates. Once selected all three ships, hold down the control key and select one of the number keys.  This a control group creates.  Now with one single command, move you can multiple ships! Hail Queen!"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_MT_SUB_MTMD07       "Mordella: Our collective linkup excellent is.  Since explore you will multiple systems during battle, scout you should to uncover areas not yet visited.  Select your Frigate ships and right-click-send them anywhere on the screen that still dark appears."
+    IDS_MT_SUB_MTMD08       "Mordella: Notice, Majesty! When into the darkness your ships fly, visible the space becomes! Friend to darkness are the Mantis!  Now learn we to build up your collective Army.  Select your Weaver-- which weaves all platforms and ships-- and click on the ""build Collector"" button, then place the new Collector around one of the nearby planets."
+    IDS_MT_SUB_MTMD09       "Mordella: Remember that your Weaver is the creator-- very necessary for building enough for full-scale war.  When build more Weavers you need, do so at the Cocoon.  While the weaving the Collector is, explain I its purpose. Collectors are vital in building up your resources. Power they have to Ore and Gas harvest from a planet's surface. Thus be Collectors the main source of weapon and ship-powering resources."
+    IDS_MT_SUB_MTMD10       "Mordella: To increase the amount of resources you gather, select your Collector and build a Siphon harvester."
+    IDS_MT_SUB_MTMD11       "Mordella: Collectors only from planets can harvest-- but with Siphon harvester can you gather resources off planet, ore from loose asteroid fields and ship debris, gas nuggets from Nebulas."
+    IDS_MT_SUB_MTMD12A      "Mordella: Notice, Majesty, the information at the top of your screen.  Here you keep track of resources, crew, and command points. Let us of command points and crew speak. Collectors act as recruitment centers of your Army. Collect they crew off planets that have life.  If a Collector you have created, Warlord training grounds become available-- and these even more crew can collect. Select your weaver and click on Warlord Training grounds then place it on an earth or swamp planet."
+    IDS_MT_SUB_MTMD13A      "Mordella: Warlord Training Grounds allow the creation of fleet warlords, assign Warlords to lead your fleets into battle."
+    IDS_MT_SUB_MTMD32       "Mordella: Once you have recruited a Warlord, select the Warlord and right click on the specific ship you wish it to control.  Warlords increase the effectiveness of all ships under their command."
+    IDS_MT_SUB_MTMD14       "Mordella: Lastly consider we command points.  Command points limit the number of ships and defensive satellites you may have at any time given.  Increase your command points by another Cocoon building, or at even better cost, build Eyestalks.  Select your Weaver and create a Eyestalk around a planet."
+    IDS_MT_SUB_MTMD15       "Mordella: The Eyestalk extra command points awards.  Also Eyestalks far away can see-- increased sensor range, even with sight of cloaked units."
+    IDS_MT_SUB_MTMD16       "Mordella: Majesty, now a good time is to build a Thripid.  Select your Weaver, and click on Thripid icon, then place Thripid on a planet."
+    IDS_MT_SUB_MTMD17       "Mordella: Thripid builds Majesty's first level of attack ships.  Here build the Frigate, scout carrier, Hive carrier, the seeker and the Khamir.  Once Thripid you have, gain you access to Niad -- which build bigger, grander attack ships.  To evolve a Niad, a Thripid you must have first."
+    IDS_MT_SUB_MTMD18A      "Mordella: Now ships you have, but Upgrade and Re-supply them you will desire. To upgrade your weapons, build you must a Blast Furnace."
+    IDS_MT_SUB_MTMD19       "Mordella: Heed my words or die you will, Majesty!"
+    IDS_MT_SUB_MTMD20       "Mordella: Under attack we are!  Defense platforms you should have to protect your base and Siphon resource route.  Select your Weaver and click on the Plasma Spitter, which anywhere in space you can build. Place one just outside your Cocoon for defense."
+    IDS_MT_SUB_MTMD21       "Mordella: For greater range and damage, evolve the Plasma Spitter into either a plasma Hive-- which attack fighters-- or a Voraak cannon, which is stronger and more powerful."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_MT_SUB_MTMD21A      "Mordella: Suggest I a Warlord training grounds."
+    IDS_MT_SUB_MTMD21B      "Mordella: Mantis fighters are staple of powerful fleet. In order to build stronger fighters, build carrion roost."
+    IDS_MT_SUB_MTMD22       "Mordella: More attack ships I advise-- to explore the next system of Iode.  If there are Terrans attacking from there, good it would be to discover their base.  Build six Hive carriers from your Thripid-- then will I instruct you further."
+    IDS_MT_SUB_MTMD23       "Mordella: Good, since about to explore a new system we are, explain I how supplies and supply lines work.  Have your Weaver build a Plantation and place it on any planet. "
+    IDS_MT_SUB_MTMD24       "Mordella: The Plantation is only platform that can both supply and repair ships.  With a Plantation, you gain access to Zorap supply ships, built from the Cocoon, that give you the ability for mobile re-supply of your ships. Lastly, Zorap acts as a supply pipeline to another connecting system."
+    IDS_MT_SUB_MTMD25       "Mordella: Now have your Weaver build a Jumpgate to seal up the wormhole to Iode.  Select your Weaver, click on jumpgate, and over the wormhole place it."
+    IDS_MT_SUB_MTMD26       "Mordella: Jumpgates allow friendlies only to pass through the wormhole. Also act Jumpgates as go-between for connecting supply lines to other adjoining systems. A Cocoon in a system you should have, then a Plantation in the new connecting system.  A system can only be in supply so long as a jumpgate is on a wormhole, connected to a system with a Cocoon."
+    IDS_MT_SUB_MTMD27       "Mordella: With our system by the jumpgate secured, now can we send in our attack force in Iode to determine enemy resistance.  Jump us now with your force to Iode."
+    IDS_MT_SUB_MTMD28       "Mordella: Majesty, new we are to this system-- first we must establish a defensive perimeter around the jumpgate to Voraak.  With your Weaver construct defensive platforms around the jumpgate to protect from enemy attacks.  Also, since planet Iode Prime nearby is, wise it would be to construct and place there another Plantation to complete the supply line process."
+    IDS_MT_SUB_MTMD33       "Mordella: Majesty! Now a good time would be to Evolve Thripid to a Niad for heavy support."
+    IDS_MT_SUB_MTMD30A      "Mordella: More firepower will we need. Build you should  Scarab cruisers and Tiamat Carriers at the Niad."
+    IDS_MT_SUB_MTMD34A      "Mordella: The Bio Forge upgrades shields, and evolves into a Fusion Mill or Carapace Plant. Fusion Mill upgrades engines, Carapace Plant which upgrades ships' hull.  Once evolved you have to a Fusion Mill and Carapace plant, evolve you can to a Hybrid Center; the highest upgrade level."
+    IDS_MT_SUB_MTMD34       "Mordella: The Mutation Colony our Science facility is-- develop here the latest technologies.  A Warlord Training Grounds you must have to build a Mutation colony. The special upgrades are: the Mimic for the Frigate; the Repellent Cloud for the Hive carrier; the Gravity Well for the Scarab; and the Repulsor Beam the Tiamat Carrier.  To research these special upgrades, build a Mutation colony and click on the upgrade button for each different ship.  Once the upgrade you have, click you can on the ""special weapon"" button on the specific ship the effect to create."
+    IDS_MT_SUB_MTMD35       "Mordella: Ahh, majesty. Their base we have found.  Exterminate them!"
+    IDS_MT_SUB_MTMD36       "Mordella: Golden runs your Mantis blood, and red that of your enemies! Praise Majesty! Hail Queen!"
+    IDS_MT_SUB_MTMD37       "Mordella: A riotous joke and shameful flatu you are, Majesty. Leave this place of warriors."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

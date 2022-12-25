@@ -1,0 +1,32 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MaterialManager", "MaterialManager.vcproj", "{B12B9D80-2386-4478-AB50-9AF9ABBA3FA7}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccProjectName0 = MaterialManager
+		SccLocalPath0 = .
+		SccProvider0 = MSSCCI:NXN\u0020alienbrain
+		CanCheckoutShared = true
+		SolutionUniqueID = {4FFCC7CB-9F91-4183-9968-BDD036BBD6FA}
+		SccProjectUniqueName1 = MaterialManager.vcproj
+		SccLocalPath1 = .
+		CanCheckoutShared = true
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{B12B9D80-2386-4478-AB50-9AF9ABBA3FA7}.Debug.ActiveCfg = Debug|Win32
+		{B12B9D80-2386-4478-AB50-9AF9ABBA3FA7}.Debug.Build.0 = Debug|Win32
+		{B12B9D80-2386-4478-AB50-9AF9ABBA3FA7}.Release.ActiveCfg = Release|Win32
+		{B12B9D80-2386-4478-AB50-9AF9ABBA3FA7}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

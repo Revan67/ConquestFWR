@@ -1,0 +1,185 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PARSER
+//
+
+IDR_PARSER_1            PARSER  DISCARDABLE     "DataDef.i"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM10_MISSION_NAME   "Mission 10"
+    IDS_TM10_MISSION_DESC   "Mission 10 description"
+    IDS_TM10_MISSION_SUCCESS "SUCCESSFUL MISSION."
+    IDS_TM10_MISSION_FAILURE 
+                            "MISSION FAILURE.  STAND DOWN PENDING REASSIGNMENT."
+    IDS_TM10_OBJECTIVES     "Objectives:\n \n1. Locate Vivac's base in Procyon.\n2. Steele, Benson, Takei, and Ker Tak must survive."
+    IDS_TM10_DECODING       "Decoding... Now joining summit meeting in progress.  Your eyes only."
+    IDS_TM10_TELETYPE_TIME  "Solar System, 0700 hours GMT"
+    IDS_TM10_OBJECTIVES_START 
+                            "Objectives:\n \n1. Leave Solar.\n2. Steele, Benson, Takei, and Ker Tak must survive."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM10_OBJECTIVE1     "Locate Vivac in Procyon before it's too late"
+    IDS_TM10_OBJECTIVE2     "Steele, Benson, Takei, Ker Tak, and Vivac must survive."
+    IDS_TM10_OBJECTIVE3     "Build an Acropolis or HQ in the Natus system."
+    IDS_TM10_OBJECTIVE4     "Do not destroy enemy Acropolis or Oxidators."
+    IDS_TM10_OBJECTIVE5     "Leave Solar system."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM10_MANTIS         "Natus Rebels"
+    IDS_TM10_TELETYPE_LOCATION 
+                            "Celareon System, Solar Prime, Gamma Sector, 12.15.2330 1200 hours GMT."
+    IDS_TM10_FAIL_BENSON_LOST "Admiral Benson has perished."
+    IDS_TM10_FAIL_TAKEI_LOST "Admiral Takei has perished."
+    IDS_TM10_FAIL_STEELE_LOST "Admiral Steele has perished."
+    IDS_TM10_FAIL_KERTAK_LOST "Warlord Ker'Tak has perished."
+    IDS_TM10_FAIL_VIVAC_LOST "Magistrate Vivac has perished."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM10_SUB_M10EL01    "Elan:\nWe would prefer that Captain Blackwell remain as our liason. He, Admiral, has gained our trust."
+    IDS_TM10_SUB_M10SM02    "Smirnoff:\nHow pleasant.."
+    IDS_TM10_SUB_M10HA03    "Halsey:\nYou have something to add, Admiral Smirnoff?"
+    IDS_TM10_SUB_M10SM04    "Smirnoff:\nOnly that trust can be hard to come by. And sometimes it can linger too long. Like dead fish. Or Hawkes."
+    IDS_TM10_SUB_M10HW05    "Hawkes:\nWhat are you trying to say?"
+    IDS_TM10_SUB_M10SM06    "Smirnoff:\nI have disturbing news, Admirals. Solarian Magistrate Natus forwarded me this: it was intercepted ten hours ago."
+    IDS_TM10_SUB_M10HW07    "Hawkes:\n Yes... General Malkor. You should be receiving the co-ordinates of Terra. I trust you will keep your half of the bargain."
+    IDS_TM10_SUB_M10HW08    "Hawkes:\nWhat?"
+    IDS_TM10_SUB_M10SM09    "Smirnoff:\nThat was all we intercepted, but it is clear enough, da?"
+    IDS_TM10_SUB_M10HW10    "Hawkes:\nThat's a... a fabrication, my lips didn't even match my words!"
+    IDS_TM10_SUB_M10NT11    "Natus:\nIf I may interject, honored Admirals, this message was heavily encrypted. I assure you there has been no mistake. "
+    IDS_TM10_SUB_M10HA12    "Halsey:\nAdmiral Hawkes. Please report to the brig. "
+    IDS_TM10_SUB_M10HW13    "Hawkes:\nYou've got to be joking. "
+    IDS_TM10_SUB_M10HA14    "Halsey:\nAdmiral Hawkes. Report to the brig. Or I will have you escorted there.  Smirnoff? \n"
+    IDS_TM10_SUB_M10SM15    "Smirnoff:\nDa? "
+    IDS_TM10_SUB_M10HA16    "Halsey:\nHe'll have his day in court. Once he's in leg-irons, I want you to escort the Admiral to Corlar."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM10_SUB_M10SM17    "Smirnoff:\nI would be honored. "
+    IDS_TM10_SUB_M10HA18    "Halsey:\nI appreciate your help, if not your... enthusiasm. "
+    IDS_TM10_SUB_M10BL19    "Blackwell:\nCommander? Something's not right about this. You take care of things here. I'm gonna disappear for awhile-- literally-- and follow Smirnoff and Hawkes cloaked. Keep your ear to the ground and stick to the other admirals when you head out of Solar. "
+    IDS_TM10_SUB_M10BN18A   "Benson: Just a moment, Commander. If it gets hairy out there, you should probably take advantage of the new equipment coming available-- the Lancer Cruisers and the shield-enhancing Displacement Labs."
+    IDS_TM10_SUB_M10NT26    "Natus: I'm sorry Magistrate, but we have explicit instructions not to let you or the Terran Commanders leave."
+    IDS_TM10_SUB_M10EL27    "Natus. Are you blockading us? You do realize that you lack the right to blockade another Magistrate and his guests."
+    IDS_TM10_SUB_M10NT28    "Natus: I regret the timing. But I have convinced a number of the Magistrates to ally with Mantis General Malkor. It was a suit of peace, something you have failed to deliver. We provided the wormhole-constructing technology to Malkor in exchange for his cease-fire. You understand this means an end to our Terran alliance.  "
+    IDS_TM10_SUB_M10NT30    "Natus: It is already done."
+    IDS_TM10_SUB_M10EL31    "Elan: Then you have doomed us all.\n \nTerran Commanders, I have jammed Magistrate Natus's frequency. We must reach my trusted advisor, Vivac.  He can be located in the Procyon system. Get around this blockade. Find Vivac. We might be able to repair the damage my people have done here."
+    IDS_TM10_SUB_M10EL29    "Elan: Don't be foolish, Natus. "
+    IDS_TM10_SUB_M10ST32    "Steele: Ok. Procyon system. Vivac, here we come. "
+    IDS_TM10_SUB_M10TK33    "Takei: Let's hope he's still a friendly sort."
+    IDS_TM10_SUB_M10KR34    "Ker'Tak: Friendly he is, or kill we must."
+    IDS_TM10_SUB_M10BN35    "Benson: Wasting time, gentlemen.  Let's hurry. Hey, anyone seen Blackwell? "
+    IDS_TM10_SUB_M10TK36    "Takei: Not since the conference. "
+    IDS_TM10_SUB_M10TK37    "Takei: Commander, Elan's advisor should be here. I wonder we know if they're friendly or not?"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM10_SUB_M10ST38    "Steele: Well, I guess we'll have to go ask them. "
+    IDS_TM10_SUB_M10VV39    "Vivac: Identify yourselves, trespassers."
+    IDS_TM10_SUB_M10ST40    "Steele: This is Admiral Steele of the Terran Federation, we are in search of the advisor Vivac."
+    IDS_TM10_SUB_M10VV41    "Vivac: ""Advisor"" Vivac? So. Elan is in trouble. Are you the race of Blackwell the Traveler?"
+    IDS_TM10_SUB_M10ST42    "Steele: We are."
+    IDS_TM10_SUB_M10VV43    "Vivac: Elan trusts you. So shall I."
+    IDS_TM10_SUB_M10KR44    "Ker'Tak: Ally with Malkor your Natus Magistrate did.  Your people strong, no need for Malkor alliance. "
+    IDS_TM10_SUB_M10VV45    "Vivac: Did he really? How auspicious. That will not do."
+    IDS_TM10_SUB_M10ST46    "Steele: He gave over the wormhole technology to Malkor in exchange for peace."
+    IDS_TM10_SUB_M10VV47    "Vivac: Well, then. We must stop them at all costs.  Our homeworld and yours are at risk until we do."
+    IDS_TM10_SUB_M10VV47A   "Vivac: I must insist, that you not destroy my people. "
+    IDS_TM10_SUB_M10ST48    "Steele: What the hell are the Mantis doing out here! No disrespect, there, Ker'Tak. "
+    IDS_TM10_SUB_M10KR49    "Ker'Tak: Taken none Admal.  "
+    IDS_TM10_SUB_M10ST50    "Steele: Heh, I love it when he calls me ""Admal."""
+    IDS_TM10_SUB_M10VV51    "Vivac: She, Admiral. Fascinating. The traitors have turned over precious Celareon space to Malkor. No, that won't do, either. "
+    IDS_TM10_SUB_M10BN52    "Benson: No problem, Vivac, we'll help you run' em off. "
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM10_SUB_M10ST53    "Steele: Hey, Ker'tak! Say Admiral! Say Admiral!"
+    IDS_TM10_SUB_M10BN52A   "Benson: Leave the insect alone, Steele."
+    IDS_TM10_SUB_M10ST54    "Steele: Now you've done it!  You killed an Admiral.  Prepare to stand down with further orders."
+    IDS_TM10_SUB_M10BN55    "Benson: Now you've done it Commander!  You killed our only ticket out of here.  Stand down for reassignment."
+    IDS_TM10_SUB_M10ST56    "Steele: Commander, you've screwed up!  We have lost our only ally, now we're back to square one.  Stand down, prepare for incoming transmission.  "
+    IDS_TM10_SUB_M10HA57    "Halsey: Commander, come home for re-assignment. "
+    IDS_TM10_SUB_M10ST58    "Steele: Commander, you've screwed up!  We have lost an important ally, and now were back to square one.  Stand down, prepare for incoming transmission."
+    IDS_TM10_SUB_M10HA59    "Halsey: Commander, This is just the way we didn't want to greet our new friends. With the Magistrate killed, you have single-handedly doomed this war for us!"
+    IDS_TM10_SUB_M10HA60    "Halsey: We just got him back, Commander. Don't you understand how important Blackwell is to our alliance? Come home before you screw up again."
+    IDS_TM10_SUB_M10HA61    "Halsey: Excellent work Commander! Captain Blackwell will take it from here. Halsey out. "
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

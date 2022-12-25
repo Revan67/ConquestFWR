@@ -1,0 +1,134 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PARSER
+//
+
+IDR_PARSER_1            PARSER  DISCARDABLE     "DataDef.i"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM15_MISSION_NAME   "Mission 15"
+    IDS_TM15_MISSION_DESC   "Push the Mantis back and build a base in Alto"
+    IDS_TM15_OBJECTIVES     "Mission Objectives:\n1. Destroy all Mantis installations throughout the Omega Sector. \n2. Build a forward base in the Alto system. \n3. Takei, Steele, Halsey, Benson and Vivac must survive."
+    IDS_TM15_OBJECTIVE1     "Destroy all Mantis installations throughout the Omega Sector."
+    IDS_TM15_OBJECTIVE2     "Build a forward base in the Alto system."
+    IDS_TM15_OBJECTIVE4     "Build an HQ, 2 Refineries and 2 Supply Platforms in the Alto system."
+    IDS_TM15_OBJECTIVE3     "Takei, Steele,  Halsey, Benson, and Vivac must survive."
+    IDS_TM15_MISSION_FAILURE 
+                            "MISSION FAILURE. STAND DOWN PENDING REASSIGNMENT."
+    IDS_TM15_MISSION_SUCCESS "SUCCESSFUL  MISSION."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM15_TELETYPE_LOCATION 
+                            "Geld System, Geld Prime, Omega Sector, 1100 Hours GMT."
+    IDS_TM15_MANTIS         "Mantis"
+    IDS_TM15_FAIL_HALSEY_LOST "Admiral Halsey has perished."
+    IDS_TM15_FAIL_TAKEI_LOST "Admiral Takei has perished."
+    IDS_TM15_FAIL_BENSON_LOST "Admiral Benson has perished."
+    IDS_TM15_FAIL_STEELE_LOST "Admiral Steele has perished."
+    IDS_TM15_FAIL_VIVAC_LOST "Magistrate Vivac has perished."
+    IDS_TM15_SUB_PROLOG15   "Radio:\nWhile New Years celebrations roll out across the Earth, Terran thoughts remain with the Allies in what is apparently a major offensive against the Mantis, our bug eyed enemies recently failed in an attempt to send an invasion force to Earth-- a fleet luckily intercepted thanks to the efforts of..."
+    IDS_TM15_SUB_M15HA03    "Halsey:\nWhat are you trying to say, Ker'Tak? "
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM15_NEWMO          "Build an HQ, 2 Refineries and 2 Supply Platforms in the Alto system"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM15_SUB_M15KR04    "Ker'Tak:\nFor help we thank. But close to home we are. Unsafe for us to help you more."
+    IDS_TM15_SUB_M15ST05    "Steele:\nHold on, there, ladybug-- we could win this little civil war for you!"
+    IDS_TM15_SUB_M15KR06    "Ket'Tak:\nAlso lose could you. And have to live here I. Continue in grace. Ker'tak. Out."
+    IDS_TM15_SUB_M15HA07    "Halsey:\nThen that's that. We'll have to do without our Mantis allies, Commander. But we found what we wanted to know: Admiral Malkor is building an extraordinarily large ship on the Mantis home world. A ship we cannot allow to launch. I saw Mantis ships over the Pacific, Commander. Now it's their turn. Punch deep into their space. We're moving into the Omega Sector. Destroy every outpost between here and their front door. Make them regret they ever heard of Earth."
+    IDS_TM15_SUB_M15HA08    "Halsey: They may be on the run but don't let your guard down. Stay sharp and hold this system while the Special Forces move front."
+    IDS_TM15_SUB_M15TK09    "Takei: Admiral, my sensors are picking up large defenses surrounding this system.  We will definitely need to be careful."
+    IDS_TM15_SUB_M15HA10    "Halsey: Commander, you're the whiz kid. You take the reins. It's your race now."
+    IDS_TM15_SUB_M15HA11    "Halsey: Commander, are you listening! We're to hold this system for now!"
+    IDS_TM15_SUB_M15BN12    "Benson: Okay, boys. Dig in. We'll launch the final assault from here."
+    IDS_TM15_SUB_M15ST13    "Steele: Hey, Benson? You think we're in the right, invadin' another race's territory?"
+    IDS_TM15_SUB_M15BN14    "Benson: Hitting them where they live? Seem cruel to you? They started it, Steele."
+    IDS_TM15_SUB_M15ST15    "Steele: Just asking', that's good enough for me.  We need a perimeter around this system, Commander.  At least 2 heavy refineries and 2 supply depots. And you could use an HQ. "
+    IDS_TM15_SUB_M15HA16    "Halsey: Fine job, Commander. Wait. Feel the moment. You're about to see the end of the Mantis Empire."
+    IDS_TM15_SUB_M15ST17    "Steele: Oh, boy, that was good. Let an Admiral die. Get outta my war, son."
+    IDS_TM15_SUB_M15HA18    "Halsey: Oh, that's perfect, you let Steele get killed. He was vital! Get behind my line, Commander!"
+    IDS_TM15_SUB_M15ST19    "Steele: Commander, has it occurred to you we don't have enough allies to waste? Stand down and prepare for incoming transmission."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TM15_SUB_M15HA20    "Halsey: Commander, come home for re-assignment. You're through here."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

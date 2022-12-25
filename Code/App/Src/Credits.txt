@@ -1,0 +1,28 @@
+[t] Conquest Vyrium Uprising
+[t] A Warthog Game
+[d] 5
+[t] CREDITS
+[d] 20
+[t] Producers
+Eric Peterson
+[t] Lead Programmer
+Thomas Mauer
+[t] Lead Designer
+Arvee Garde
+[t] Art Director
+John Sommer
+[t] Creative Director
+Michael Morlan
+[d] 5
+[t] Programmers
+Ryan Clark
+Allen Jackson
+[t] Mission Programmers
+John Sripan
+[t] Artists
+Steve Garcia
+Mike McKinley
+[t] Designers
+John Sripan
+Wynne McLaughlin
+David Shramek 
