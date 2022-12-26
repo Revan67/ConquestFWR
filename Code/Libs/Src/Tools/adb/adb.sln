@@ -1,28 +1,32 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.4.33205.214
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "adb", "adb.vcxproj", "{8FAAFD75-61D1-41E0-8AAE-722E237201C1}"
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "adb", "adb.vcproj", "{E5DF0CD7-C8C3-4547-8E99-35D221E013F5}"
 EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x86 = Debug|x86
-		EndUser|x86 = EndUser|x86
-		Release|x86 = Release|x86
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 1
+		SccProjectUniqueName0 = adb.vcproj
+		SccProjectName0 = \u0022$/Conquest/Database\u0022,\u0020MYFAAAAA
+		SccLocalPath0 = .
+		SccProvider0 = MSSCCI:NXN\u0020alienbrain
+		CanCheckoutShared = true
 	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8FAAFD75-61D1-41E0-8AAE-722E237201C1}.Debug|x86.ActiveCfg = Debug|Win32
-		{8FAAFD75-61D1-41E0-8AAE-722E237201C1}.Debug|x86.Build.0 = Debug|Win32
-		{8FAAFD75-61D1-41E0-8AAE-722E237201C1}.EndUser|x86.ActiveCfg = EndUser|Win32
-		{8FAAFD75-61D1-41E0-8AAE-722E237201C1}.EndUser|x86.Build.0 = EndUser|Win32
-		{8FAAFD75-61D1-41E0-8AAE-722E237201C1}.Release|x86.ActiveCfg = Release|Win32
-		{8FAAFD75-61D1-41E0-8AAE-722E237201C1}.Release|x86.Build.0 = Release|Win32
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = EndUser
+		ConfigName.2 = Release
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{E5DF0CD7-C8C3-4547-8E99-35D221E013F5}.Debug.ActiveCfg = Debug|Win32
+		{E5DF0CD7-C8C3-4547-8E99-35D221E013F5}.Debug.Build.0 = Debug|Win32
+		{E5DF0CD7-C8C3-4547-8E99-35D221E013F5}.EndUser.ActiveCfg = EndUser|Win32
+		{E5DF0CD7-C8C3-4547-8E99-35D221E013F5}.EndUser.Build.0 = EndUser|Win32
+		{E5DF0CD7-C8C3-4547-8E99-35D221E013F5}.Release.ActiveCfg = Release|Win32
+		{E5DF0CD7-C8C3-4547-8E99-35D221E013F5}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E5972290-34D6-4532-B35C-BD760326DCC6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
 	EndGlobalSection
 EndGlobal

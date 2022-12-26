@@ -1,30 +1,35 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.4.33205.214
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UTFApp", "UTFApp.vcxproj", "{D1821AFF-9980-4D2A-B934-EF1AB2E0B3D4}"
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UTFApp", "UTFApp.vcproj", "{D1821AFF-9980-4D2A-B934-EF1AB2E0B3D4}"
 EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x86 = Debug|x86
-		EditDebug|x86 = EditDebug|x86
-		EditRelease|x86 = EditRelease|x86
-		Release|x86 = Release|x86
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 1
+		SccProjectUniqueName0 = UTFApp.vcproj
+		SccProjectName0 = \u0022$/Tools/ViewUTF\u0022,\u0020GADAAAAA
+		SccLocalPath0 = .
+		SccProvider0 = MSSCCI:NXN\u0020alienbrain
+		CanCheckoutShared = true
 	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D1821AFF-9980-4D2A-B934-EF1AB2E0B3D4}.Debug|x86.ActiveCfg = Debug|Win32
-		{D1821AFF-9980-4D2A-B934-EF1AB2E0B3D4}.Debug|x86.Build.0 = Debug|Win32
-		{D1821AFF-9980-4D2A-B934-EF1AB2E0B3D4}.EditDebug|x86.ActiveCfg = EditDebug|Win32
-		{D1821AFF-9980-4D2A-B934-EF1AB2E0B3D4}.EditDebug|x86.Build.0 = EditDebug|Win32
-		{D1821AFF-9980-4D2A-B934-EF1AB2E0B3D4}.EditRelease|x86.ActiveCfg = EditRelease|Win32
-		{D1821AFF-9980-4D2A-B934-EF1AB2E0B3D4}.EditRelease|x86.Build.0 = EditRelease|Win32
-		{D1821AFF-9980-4D2A-B934-EF1AB2E0B3D4}.Release|x86.ActiveCfg = Release|Win32
-		{D1821AFF-9980-4D2A-B934-EF1AB2E0B3D4}.Release|x86.Build.0 = Release|Win32
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = EditDebug
+		ConfigName.2 = EditRelease
+		ConfigName.3 = Release
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{D1821AFF-9980-4D2A-B934-EF1AB2E0B3D4}.Debug.ActiveCfg = Debug|Win32
+		{D1821AFF-9980-4D2A-B934-EF1AB2E0B3D4}.Debug.Build.0 = Debug|Win32
+		{D1821AFF-9980-4D2A-B934-EF1AB2E0B3D4}.EditDebug.ActiveCfg = EditDebug|Win32
+		{D1821AFF-9980-4D2A-B934-EF1AB2E0B3D4}.EditDebug.Build.0 = EditDebug|Win32
+		{D1821AFF-9980-4D2A-B934-EF1AB2E0B3D4}.EditRelease.ActiveCfg = EditRelease|Win32
+		{D1821AFF-9980-4D2A-B934-EF1AB2E0B3D4}.EditRelease.Build.0 = EditRelease|Win32
+		{D1821AFF-9980-4D2A-B934-EF1AB2E0B3D4}.Release.ActiveCfg = Release|Win32
+		{D1821AFF-9980-4D2A-B934-EF1AB2E0B3D4}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5D275ED6-3097-45EF-AE2B-294EE417F915}
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
 	EndGlobalSection
 EndGlobal
