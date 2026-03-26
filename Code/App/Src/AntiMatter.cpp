@@ -129,24 +129,16 @@ struct Vector2
 // Friend overloaded operators follow.
 //
 	inline friend Vector2 operator + (const Vector2 & v1, const Vector2 & v2)
-	{
-		return ::add(v1, v2);
-	}
+	{ Vector2 r; r.x = v1.x + v2.x; r.y = v1.y + v2.y; return r; }
 
 	inline friend Vector2 operator - (const Vector2 & v1, const Vector2 & v2)
-	{
-		return ::subtract(v1, v2);
-	}
+	{ Vector2 r; r.x = v1.x - v2.x; r.y = v1.y - v2.y; return r; }
 
 	inline friend Vector2 operator * (const Vector2 & v, SINGLE s)
-	{
-		return ::scale(v, s);
-	}
+	{ Vector2 r; r.x = v.x * s; r.y = v.y * s; return r; }
 
 	inline friend Vector2 operator * (SINGLE s, const Vector2 & v)
-	{
-		return ::scale(v, s);
-	}
+	{ Vector2 r; r.x = v.x * s; r.y = v.y * s; return r; }
 };
 
 void ComputeCoeff(Vector2 & a, Vector2 & b, Vector2 & c, Vector2 & d, Vector2 p[4]);

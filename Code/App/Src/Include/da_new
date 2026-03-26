@@ -6,6 +6,16 @@
 #define da_new_h
 // --------------------------------------------------------------------------
 #include <exception>
+// _THROW0/_THROW1/_RAISE were old MSVC CRT macros removed in modern toolsets.
+#ifndef _THROW0
+#define _THROW0()
+#endif
+#ifndef _THROW1
+#define _THROW1(x)
+#endif
+#ifndef _RAISE
+#define _RAISE(x) throw(x)
+#endif
 // --------------------------------------------------------------------------
 namespace da_std
 {

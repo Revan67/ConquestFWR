@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Shared build properties for all projects in the ConquestFWR tree.
+  MSBuild automatically imports this file from any subdirectory.
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <!-- DirectX June 2010 SDK - required for d3dx9.h, d3dx9.lib, etc.
+         Place AFTER the Windows SDK headers to avoid SAL annotation conflicts. -->
+    <DXSDK_IncludeDir>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include</DXSDK_IncludeDir>
+    <DXSDK_LibDir_x86>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86</DXSDK_LibDir_x86>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Compatibility stubs for removed APIs (DirectPlay, etc.) -->
+    <Compat_IncludeDir>$(MSBuildThisFileDirectory)Code\Libs\Include\Compat</Compat_IncludeDir>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <!-- Compat stubs first so they shadow missing system headers -->
+      <!-- DXSDK after Windows SDK so modern sal.h wins -->
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(Compat_IncludeDir);$(DXSDK_IncludeDir)</AdditionalIncludeDirectories>
+      <!-- Disable C++11 thread-safe static init ("magic statics") to work around
+           a VS 2022 front-end ICE (toinil.c:899) triggered by non-const static
+           local arrays in DACOM_MAP template expansion. Safe for this codebase
+           since it is single-threaded during static initialization. -->
+      <AdditionalOptions>%(AdditionalOptions) /Zc:threadSafeInit-</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(DXSDK_LibDir_x86)</AdditionalLibraryDirectories>
+      <!-- Legacy prebuilt objects lack SAFESEH records; disable the requirement. -->
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(DXSDK_LibDir_x86)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+
+</Project>

@@ -438,28 +438,9 @@ rc /l 0x409 /fo Final\Globals.res /dNDEBUG Globals.rc
     <None Include="Res\Trightscroll.cur" />
     <None Include="RuseKeys.utf" />
     <None Include="Sfxdata.dat" />
-    <CustomBuild Include="sfxdata.xmf">
-      <Command Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'">xmiff -i ..\DInclude %(FullPath) %(Filename).dat
-</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'">..\DInclude\sfxid.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='DEMO Debug|Win32'">%(Filename).dat;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">xmiff -i ..\DInclude %(FullPath) %(Filename).dat
-</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">..\DInclude\sfxid.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='DEMO Final|Win32'">%(Filename).dat;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\Libs\Bin\xmiff -i ..\DInclude %(FullPath) %(Filename).dat
-</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\DInclude\sfxid.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename).dat;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">xmiff -i ..\DInclude %(FullPath) %(Filename).dat
-</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">..\DInclude\sfxid.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">%(Filename).dat;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">xmiff -i ..\DInclude %(FullPath) %(Filename).dat
-</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\DInclude\sfxid.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).dat;%(Outputs)</Outputs>
-    </CustomBuild>
+    <!-- sfxdata.xmf was processed by XMIFF.EXE (16-bit tool, incompatible with Win64).
+         TODO: replace with xmiff2.py (Tools/xmiff2/xmiff2.py) -->
+    <None Include="sfxdata.xmf" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Data.cpp">

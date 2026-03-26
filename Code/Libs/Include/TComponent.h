@@ -37,34 +37,43 @@ struct _DACOM_INTMAP_ENTRY
 	U32 offset;
 };
 
+// DACOM_MAP macros use a lazy-fill pattern to work around MSVC 2022 ICE
+// (toinil.c:899) that fires when a static local array with non-constexpr
+// initializers appears inside a template member function.
+// Fix: use a zero-initialized static array (constexpr, no toinil path) and
+// fill entries via assignment on the first call, when the class is complete.
 #define BEGIN_DACOM_MAP_INBOUND(x) public: \
-	const static _DACOM_INTMAP_ENTRY* __stdcall _GetEntriesIn() { \
+	__declspec(noinline) static const _DACOM_INTMAP_ENTRY* __stdcall _GetEntriesIn() { \
 	typedef x _DaComMapClass; \
-	static const _DACOM_INTMAP_ENTRY _entries[] = { 
+	static bool _inited = false; \
+	static _DACOM_INTMAP_ENTRY _entries[32] = {}; \
+	if (!_inited) { _inited = true; int _idx = 0;
 
 #define BEGIN_DACOM_MAP_OUTBOUND(x) public: \
-	const static _DACOM_INTMAP_ENTRY* __stdcall _GetEntriesOut() { \
+	__declspec(noinline) static const _DACOM_INTMAP_ENTRY* __stdcall _GetEntriesOut() { \
 	typedef x _DaComMapClass; \
-	static const _DACOM_INTMAP_ENTRY _entries[] = { 
+	static bool _inited = false; \
+	static _DACOM_INTMAP_ENTRY _entries[32] = {}; \
+	if (!_inited) { _inited = true; int _idx = 0;
 
 #define DACOM_INTERFACE_ENTRY(x)\
-	{#x, \
-	daoffsetofclass(x, _DaComMapClass) },
+	_entries[_idx].interface_name = #x; \
+	_entries[_idx++].offset = (U32)daoffsetofclass(x, _DaComMapClass);
 
 #define DACOM_INTERFACE_ENTRY2(x,y)\
-	{x, \
-	daoffsetofclass(y, _DaComMapClass) },
+	_entries[_idx].interface_name = (x); \
+	_entries[_idx++].offset = (U32)daoffsetofclass(y, _DaComMapClass);
 
 #define DACOM_INTERFACE_ENTRY_REF(x,y)\
-	{x, \
-	daoffsetofmember(_DaComMapClass, y) | 0x80000000 },
+	_entries[_idx].interface_name = (x); \
+	_entries[_idx++].offset = (U32)(daoffsetofmember(_DaComMapClass, y) | 0x80000000);
 
 #define DACOM_INTERFACE_ENTRY_AGGREGATE(x,y)\
-	{x, \
-	daoffsetofmember(_DaComMapClass, y) },
+	_entries[_idx].interface_name = (x); \
+	_entries[_idx++].offset = (U32)daoffsetofmember(_DaComMapClass, y);
 
-#define END_DACOM_MAP()   {0, 0}};\
-	return _entries;}
+#define END_DACOM_MAP() \
+	} return _entries; }
 
 
 

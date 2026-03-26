@@ -7,7 +7,7 @@
 //
 // Generated from the TEXTINCLUDE 2 resource.
 //
-#include "afxres.h"
+#include "winres.h"
 
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
@@ -126,7 +126,7 @@ BEGIN
             VALUE "FileDescription", "DACOM Core Library\0"
             VALUE "FileVersion", LIB_VER_STRING
             VALUE "InternalName", "DACOM\0"
-            VALUE "LegalCopyright", "Copyright © 1998-2000\0"
+            VALUE "LegalCopyright", "Copyright ï¿½ 1998-2000\0"
             VALUE "LegalTrademarks", "\0"
             VALUE "OriginalFilename", "DACOM.dll\0"
             VALUE "PrivateBuild", "\0"

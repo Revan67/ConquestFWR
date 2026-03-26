@@ -1116,7 +1116,7 @@ void Cursor::init (void)
 	// now initialize DirectInput stuff
 	//
 	COMPTR<IDirectInput> pDI;
-	if( FAILED( DirectInputCreate( GetModuleHandle(0), DIRECTINPUT_VERSION, pDI, NULL ) ) ) 
+	if( FAILED( DirectInput8Create( GetModuleHandle(0), DIRECTINPUT_VERSION, IID_IDirectInput8A, pDI, NULL ) ) ) 
 	{
 		if (CQFLAGS.bNoGDI)
 			CQBOMB0("DirectInput failed.");

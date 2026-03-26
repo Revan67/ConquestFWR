@@ -355,12 +355,33 @@ public:
 
 	inline friend Quaternion operator * (const Quaternion & q, const SINGLE scalar)
 	{
-		return ::scale(q, scalar);
+		Quaternion result;
+#if !defined(ANONYMOUS_ILLEGAL)
+		result.s = q.s * scalar;
+		result.v = q.v * scalar;
+#else
+		result.w = q.w * scalar;
+		result.x = q.x * scalar;
+		result.y = q.y * scalar;
+		result.z = q.z * scalar;
+#endif
+		return result;
 	}
 
-	inline friend Quaternion operator / (const Quaternion & q, const SINGLE scalar)
+	inline friend Quaternion operator / (const Quaternion & q, SINGLE scalar)
 	{
-		return ::scale_by_reciprocal(q, scalar);
+		scalar = 1.0f / scalar;
+		Quaternion result;
+#if !defined(ANONYMOUS_ILLEGAL)
+		result.s = q.s * scalar;
+		result.v = q.v * scalar;
+#else
+		result.w = q.w * scalar;
+		result.x = q.x * scalar;
+		result.y = q.y * scalar;
+		result.z = q.z * scalar;
+#endif
+		return result;
 	}
 };
 

@@ -97,7 +97,7 @@ enum InterfaceRes
 #define IDEAL2HRIDEALX(x) ((((x) * SCREEN_HRIDEAL_WIDTH) / (S32)SCREEN_WIDTH))
 #define IDEAL2HRIDEALY(y) ((((y) * SCREEN_HRIDEAL_HEIGHT) / (S32)SCREEN_HEIGHT))
 
-#define DIRECTINPUT_VERSION 0x0700
+#define DIRECTINPUT_VERSION 0x0800
 
 //--------------------------------------------------------------------------//
 //-------------------GLOBAL message #defines for Event System---------------//

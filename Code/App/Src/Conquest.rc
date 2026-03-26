@@ -7,7 +7,7 @@
 //
 // Generated from the TEXTINCLUDE 2 resource.
 //
-#include "afxres.h"
+#include "winres.h"
 
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
@@ -82,9 +82,9 @@ BEGIN
             VALUE "FileDescription", "Conquest"
             VALUE "FileVersion", "02.00.05.2501"
             VALUE "InternalName", "Conquest"
-            VALUE "LegalCopyright", "Copyright © 2004"
+            VALUE "LegalCopyright", "Copyright ï¿½ 2004"
             VALUE "OriginalFilename", "Conquest.exe"
-            VALUE "ProductName", "Conquest: Vyrium Uprising™"
+            VALUE "ProductName", "Conquest: Vyrium Uprisingï¿½"
             VALUE "ProductVersion", "1.00"
         END
     END

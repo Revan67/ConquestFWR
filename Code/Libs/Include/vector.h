@@ -312,27 +312,28 @@ public:
 //
 	inline friend Vector operator + (const Vector & v1, const Vector & v2)
 	{
-		return ::add(v1, v2);
+		return Vector(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z);
 	}
 
 	inline friend Vector operator - (const Vector & v1, const Vector & v2)
 	{
-		return ::subtract(v1, v2);
+		return Vector(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z);
 	}
 
 	inline friend Vector operator * (const Vector & v, const SINGLE s)
 	{
-		return ::scale(v, s);
+		return Vector(v.x * s, v.y * s, v.z * s);
 	}
 
 	inline friend Vector operator * (SINGLE s, const Vector & v)
 	{
-		return ::scale(v, s);
+		return Vector(v.x * s, v.y * s, v.z * s);
 	}
 
 	inline friend Vector operator / (const Vector & v, const SINGLE s)
 	{
-		return ::scale_by_reciprocal(v, s);
+		const SINGLE inv_s = 1.0F / s;
+		return Vector(v.x * inv_s, v.y * inv_s, v.z * inv_s);
 	}
 };
 

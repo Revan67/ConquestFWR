@@ -48,7 +48,10 @@
 #include <stdio.h>
 #include <commctrl.h>
 #include <ZMouse.h>
-#include <AfxRes.h>
+#include <winres.h>
+#ifndef ID_APP_EXIT
+#define ID_APP_EXIT 0xE141
+#endif
 #include <math.h>
 
 //--------------------------------------------------------------------------//

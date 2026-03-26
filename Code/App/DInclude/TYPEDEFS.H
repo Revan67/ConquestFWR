@@ -24,6 +24,7 @@ typedef unsigned char bool;
 #endif
 #endif
 
+#ifndef __cplusplus
 #ifndef true
 #define true ((bool)1)
 #endif
@@ -31,6 +32,7 @@ typedef unsigned char bool;
 #ifndef false
 #define false ((bool)0)
 #endif
+#endif /* __cplusplus */
 
 #ifdef __cplusplus      // (for H2INC compatibility)
 #ifdef SGI

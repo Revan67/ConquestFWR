@@ -74,19 +74,13 @@ struct ControlPoint
 // Friend overloaded operators follow.
 //
 	inline friend ControlPoint operator + (const ControlPoint & v1, const ControlPoint & v2)
-	{
-		return ::add(v1, v2);
-	}
+	{ ControlPoint r; r.time = v1.time + v2.time; r.percent = v1.percent + v2.percent; return r; }
 
 	inline friend ControlPoint operator * (const ControlPoint & v, SINGLE s)
-	{
-		return ::scale(v, s);
-	}
+	{ ControlPoint r; r.time = v.time * s; r.percent = v.percent * s; return r; }
 
 	inline friend ControlPoint operator * (SINGLE s, const ControlPoint & v)
-	{
-		return ::scale(v, s);
-	}
+	{ ControlPoint r; r.time = v.time * s; r.percent = v.percent * s; return r; }
 };
 
 void ComputeCoeff(ControlPoint & a, ControlPoint & b, ControlPoint & c, ControlPoint & d, ControlPoint p[4]);
