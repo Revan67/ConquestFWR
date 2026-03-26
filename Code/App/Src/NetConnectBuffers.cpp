@@ -151,11 +151,14 @@ Done:
 CONN_BUFFER * __stdcall EnumConnections (void)
 {
 	CONN_BUFFER * result = (CONN_BUFFER *) calloc(BUFFER_SIZE + sizeof(CONN_BUFFER), 1);
-	
+
 	result->buffer = (result+1);
 	result->dwSize = BUFFER_SIZE;
 	result->dwUsed = 0;
-	
+
+	if (!DPLAY)
+		return result;
+
 	DPLAY->EnumConnections( &APPGUID_CONQUEST, EnumConnectionsCallback, result, DPCONNECTION_DIRECTPLAY);
 
 	return result;
@@ -184,18 +187,20 @@ HRESULT SESSION_BUFFER::ContinueEnumSessions (void)
 	DPSESSIONDESC2 desc;
 	HRESULT hresult=DP_OK;
 
+	if (!DPLAY)
+		return DP_OK;
+
 	if (!bEnumStopped)
 	{
-		
 		buffer = (this+1);
 		dwSize = BUFFER_SIZE;
 		dwUsed = 0;
-		
+
 		memset(buffer, 0, BUFFER_SIZE);
 		memset(&desc, 0, sizeof(desc));
 		desc.dwSize = sizeof(desc);
 		desc.guidApplication = APPGUID_CONQUEST;
-		
+
 		hresult = DPLAY->EnumSessions(&desc, 0, EnumSessionsCallback2, this, DPENUMSESSIONS_ALL | DPENUMSESSIONS_ASYNC);
 	}
 
@@ -208,7 +213,13 @@ SESSION_BUFFER * SESSION_BUFFER::StartEnumSessions (void)
 	SESSION_BUFFER * result = (SESSION_BUFFER *) calloc(BUFFER_SIZE + sizeof(SESSION_BUFFER), 1);
 	DPSESSIONDESC2 desc;
 	HRESULT hresult;
-		 
+
+	if (!DPLAY)
+	{
+		free(result);
+		return 0;
+	}
+
 	result->buffer = (result+1);
 	result->dwSize = BUFFER_SIZE;
 	result->dwUsed = 0;
@@ -240,6 +251,9 @@ HRESULT SESSION_BUFFER::StopEnumSessions (void)
 {
 	DPSESSIONDESC2 desc;
 	HRESULT hresult = DP_OK;
+
+	if (!DPLAY)
+		return DP_OK;
 
 	if (bEnumStopped == false)
 	{
@@ -290,11 +304,14 @@ static BOOL CALLBACK enumPlayersCallback (DPID dpId, DWORD dwPlayerType, LPCDPNA
 PLAYER_BUFFER * __stdcall EnumPlayers (const GUID & guidSession)
 {
 	PLAYER_BUFFER * result = (PLAYER_BUFFER *) calloc(BUFFER_SIZE + sizeof(PLAYER_BUFFER), 1);
-	
+
 	result->buffer = (result+1);
 	result->dwSize = BUFFER_SIZE;
 	result->dwUsed = 0;
-	
+
+	if (!DPLAY)
+		return result;
+
 	DPLAY->EnumPlayers( const_cast<GUID *>(&guidSession), enumPlayersCallback, result, DPENUMPLAYERS_REMOTE | DPENUMPLAYERS_SESSION);
 
 	return result;

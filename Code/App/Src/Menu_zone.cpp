@@ -224,7 +224,12 @@ void Menu_zone::startZone (void)
 	wchar_t addressw[256];
 	char address[256];
 
-	CQASSERT(DPLOBBY);
+	if (!DPLOBBY)
+	{
+		CQMessageBox(IDS_HELP_LOBBYFAILED, IDS_APP_NAMETM, MB_OK);
+		endDialog(0);
+		return;
+	}
 
 	startWaitingThread();
 

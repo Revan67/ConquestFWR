@@ -145,6 +145,11 @@ BOOL32 StartNetConnection (BOOL32 & bLobbied)
 
 	StopNetConnection();
 
+	// DirectPlay is not available on Windows 11 — CoCreateInstance returns
+	// REGDB_E_CLASSNOTREG.  Skip straight to Done so callers show their
+	// "lobby/network unavailable" message boxes rather than crashing.
+	goto Done;
+
 	if (DPLOBBY == 0 && CreateDirectPlayLobbyInterface(&DPLOBBY) != DP_OK)
 		goto Done;
 
@@ -264,6 +269,9 @@ U32 __stdcall GetHostIPAddress (wchar_t * ipaddress, wchar_t * ipaddress2, U32 b
 	void * buffer = 0;
 
 	*ipaddress = 0;
+
+	if (!DPLAY || !DPLOBBY)
+		goto Done;
 
 	if (DPLAY->GetPlayerAddress(HOSTID, NULL, &dwSize) != DPERR_BUFFERTOOSMALL || dwSize==0)
 		goto Done;
