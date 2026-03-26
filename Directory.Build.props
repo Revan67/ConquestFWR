@@ -17,6 +17,12 @@
     <Compat_IncludeDir>$(MSBuildThisFileDirectory)Code\Libs\Include\Compat</Compat_IncludeDir>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <!-- BSCMAKE browse-info generation is not needed with VS2022 IntelliSense
+         and fails when .sbr files are missing after a partial clean. -->
+    <GenerateBrowseInformation>false</GenerateBrowseInformation>
+  </PropertyGroup>
+
   <ItemDefinitionGroup>
     <ClCompile>
       <!-- Compat stubs first so they shadow missing system headers -->

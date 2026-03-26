@@ -109,6 +109,9 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="COMHeap_VS2022.c" />
+  </ItemGroup>
+  <ItemGroup>
     <CustomBuild Include="COMHeap.asm">
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ml /coff /c /Cx /nologo /Zi /Zd  /Fo$(IntDir)%(Filename).obj  %(FullPath)
 </Command>
