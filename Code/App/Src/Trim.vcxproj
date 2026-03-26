@@ -138,7 +138,7 @@
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>Release\Globals.lib;ddraw.lib;strmiids.lib;shlwapi.lib;rpul.lib;version.lib;dinput8.lib;amstrmid.lib;imm32.lib;dsetup.lib;DXGuid.lib;MathLib.lib;DACOM.lib;COMHeap.lib;winmm.lib;msacm32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Release\Globals.lib;ddraw.lib;strmiids.lib;shlwapi.lib;rpul.lib;version.lib;dinput8.lib;amstrmid.lib;imm32.lib;DXGuid.lib;MathLib.lib;DACOM.lib;COMHeap.lib;winmm.lib;msacm32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Release/Trim.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\Libs\Static\$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -188,7 +188,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>Debug\Globals.lib;ddraw.lib;dsetup.lib;shlwapi.lib;rpul.lib;version.lib;dinput8.lib;imm32.lib;DXGuid.lib;MathLib.lib;DACOM.lib;COMHeap.lib;winmm.lib;msacm32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Debug\Globals.lib;ddraw.lib;shlwapi.lib;rpul.lib;version.lib;dinput8.lib;imm32.lib;DXGuid.lib;MathLib.lib;DACOM.lib;COMHeap.lib;winmm.lib;msacm32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Debug/Trim.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\Libs\Static\$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -238,7 +238,7 @@
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>Final\Globals.lib;ddraw.lib;strmiids.lib;shlwapi.lib;rpul.lib;version.lib;dinput8.lib;amstrmid.lib;imm32.lib;dsetup.lib;DXGuid.lib;MathLib.lib;DACOM.lib;COMHeap.lib;winmm.lib;msacm32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Final\Globals.lib;ddraw.lib;strmiids.lib;shlwapi.lib;rpul.lib;version.lib;dinput8.lib;amstrmid.lib;imm32.lib;DXGuid.lib;MathLib.lib;DACOM.lib;COMHeap.lib;winmm.lib;msacm32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Final/Trim.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\Libs\Static\$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -286,7 +286,7 @@
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>DemoDebug\Globals.lib;ddraw.lib;strmiids.lib;dsetup.lib;shlwapi.lib;rpul.lib;version.lib;dinput8.lib;amstrmid.lib;imm32.lib;DXGuid.lib;MathLib.lib;DACOM.lib;COMHeap.lib;winmm.lib;msacm32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DemoDebug\Globals.lib;ddraw.lib;strmiids.lib;shlwapi.lib;rpul.lib;version.lib;dinput8.lib;amstrmid.lib;imm32.lib;DXGuid.lib;MathLib.lib;DACOM.lib;COMHeap.lib;winmm.lib;msacm32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\DemoDebug/Trim.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\Libs\Static\$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -336,7 +336,7 @@
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>DemoFinal\Globals.lib;ddraw.lib;strmiids.lib;shlwapi.lib;rpul.lib;version.lib;dinput8.lib;amstrmid.lib;imm32.lib;dsetup.lib;DXGuid.lib;MathLib.lib;DACOM.lib;COMHeap.lib;winmm.lib;msacm32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DemoFinal\Globals.lib;ddraw.lib;strmiids.lib;shlwapi.lib;rpul.lib;version.lib;dinput8.lib;amstrmid.lib;imm32.lib;DXGuid.lib;MathLib.lib;DACOM.lib;COMHeap.lib;winmm.lib;msacm32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\DemoFinal/Trim.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\Libs\Static\$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

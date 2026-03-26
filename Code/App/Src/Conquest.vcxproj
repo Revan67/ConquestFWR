@@ -139,7 +139,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>Release\Mission.lib;Release\Globals.lib;Release\Trim.lib;Release\ZBatcher.lib;DXGuid.lib;MathLib.lib;COMCTL32.lib;DACOM.lib;COMHeap.lib;d3dx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Release\Mission.lib;Release\Globals.lib;Release\Trim.lib;Release\ZBatcher.lib;DXGuid.lib;MathLib.lib;COMCTL32.lib;DACOM.lib;COMHeap.lib;d3dx9.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Release/Conquest.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\Libs\Static\$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -189,7 +189,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>DemoDebug\Mission.lib;DemoDebug\Globals.lib;DemoDebug\Trim.lib;DemoDebug\ZBatcher.lib;DXGuid.lib;MathLib.lib;COMCTL32.lib;DACOM.lib;COMHeap.lib;d3dx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DemoDebug\Mission.lib;DemoDebug\Globals.lib;DemoDebug\Trim.lib;DemoDebug\ZBatcher.lib;DXGuid.lib;MathLib.lib;COMCTL32.lib;DACOM.lib;COMHeap.lib;d3dx9.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\DemoDebug/Conquest.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\Libs\Static\$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -293,7 +293,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>DemoFinal\Mission.lib;DemoFinal\Globals.lib;DemoFinal\Trim.lib;DemoFinal\ZBatcher.lib;DXGuid.lib;MathLib.lib;COMCTL32.lib;DACOM.lib;COMHeap.lib;d3dx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DemoFinal\Mission.lib;DemoFinal\Globals.lib;DemoFinal\Trim.lib;DemoFinal\ZBatcher.lib;DXGuid.lib;MathLib.lib;COMCTL32.lib;DACOM.lib;COMHeap.lib;d3dx9.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\DemoFinal/Conquest.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\Libs\Static\$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -341,7 +341,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>Final\Mission.lib;Final\Globals.lib;Final\Trim.lib;Final\ZBatcher.lib;DXGuid.lib;MathLib.lib;COMCTL32.lib;DACOM.lib;COMHeap.lib;d3dx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Final\Mission.lib;Final\Globals.lib;Final\Trim.lib;Final\ZBatcher.lib;DXGuid.lib;MathLib.lib;COMCTL32.lib;DACOM.lib;COMHeap.lib;d3dx9.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Final/Conquest.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\Libs\Static\$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

@@ -29,7 +29,12 @@
       <AdditionalOptions>%(AdditionalOptions) /Zc:threadSafeInit-</AdditionalOptions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(DXSDK_LibDir_x86)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(DXSDK_LibDir_x86);$(MSBuildThisFileDirectory)Code\Libs\Static</AdditionalLibraryDirectories>
+      <!-- Legacy prebuilt libs reference old CRT names that no longer ship in VS2022. -->
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries);libc.lib;libcd.lib</IgnoreSpecificDefaultLibraries>
+      <!-- COMHeap.lib replaces CRT heap functions (_msize, malloc, free etc.).
+           /FORCE:MULTIPLE lets the linker keep the first definition (COMHeap wins). -->
+      <AdditionalOptions>%(AdditionalOptions) /FORCE:MULTIPLE</AdditionalOptions>
       <!-- Legacy prebuilt objects lack SAFESEH records; disable the requirement. -->
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>

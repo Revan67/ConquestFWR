@@ -28,7 +28,7 @@
 #include <Document.h>
 #include <TSmartPointer.h>
 #include <WindowManager.h>
-#include <dsetup.h>
+// #include <dsetup.h>  // DirectPlay lobby registration — not available on Windows 11
 
 #include <stdio.h>
 #include <commdlg.h>               // Common dialogs
@@ -451,27 +451,12 @@ BOOL32 UserDefaults::storeDPlayInfo (void)
 	if (createKey(hkey, HKEY_LOCAL_MACHINE))
 	{
 		char dir[MAX_PATH];
-		char path[MAX_PATH];
-		char * tmp;
-		DIRECTXREGISTERAPP directXRegister;
 
 		::GetCurrentDirectory(sizeof(dir), dir);
 		RegSetValueEx(hkey, "InstallPath", 0, REG_SZ, (U8 *)dir, strlen(dir)+1);
 		RegSetValueEx(hkey, "Version", 0, REG_SZ, (U8 *)szVersion, 4);
 
-		::GetModuleFileName(0, path, sizeof(path));
-		if ((tmp = strrchr(path, '\\')) != 0)
-			*tmp++ = 0;
-
-		memset(&directXRegister, 0, sizeof(directXRegister));
-		directXRegister.dwSize = sizeof(directXRegister);
-		directXRegister.lpszApplicationName = "Conquest Frontier Wars";
-		directXRegister.lpGUID = const_cast<GUID *>(&APPGUID_CONQUEST);
-		directXRegister.lpszFilename = tmp;
-		directXRegister.lpszCommandLine = "/lobby";
-		directXRegister.lpszPath = path;
-		directXRegister.lpszCurrentDirectory = dir;
-		DirectXRegisterApplication(0, &directXRegister);
+		// DirectXRegisterApplication removed — DirectPlay lobby not available on Windows 11
 
 		result = 1;
 		RegCloseKey(hkey);
