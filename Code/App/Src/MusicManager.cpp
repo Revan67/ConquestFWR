@@ -606,8 +606,7 @@ struct _music : GlobalComponent
 		HMENU hMenu = MENU->GetSubMenu(MENUPOS_VIEW);
 		MENUITEMINFO minfo;
 
-		if (manager->CreateViewer() == 0)
-			CQBOMB0("Viewer could not be created.");
+		manager->CreateViewer(); // viewer is a debug tool; failure is non-fatal
 
 		memset(&minfo, 0, sizeof(minfo));
 		minfo.cbSize = sizeof(minfo);

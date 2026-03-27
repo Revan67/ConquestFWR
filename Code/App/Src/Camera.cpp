@@ -2165,8 +2165,7 @@ struct _camera : GlobalComponent
 	{
 		COMPTR<IDAConnectionPoint> connection;
 
-		if (camera->CreateViewer() == 0)
-			CQBOMB0("Viewer could not be created.");
+		camera->CreateViewer(); // viewer is a debug tool; failure is non-fatal
 
 //		if (info->flags & CIF_MENUID)
 		{

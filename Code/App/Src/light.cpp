@@ -2025,8 +2025,7 @@ struct _lights : GlobalComponent
 
 	virtual void Initialize (void)
 	{
-		if (lights->CreateViewer() == 0)
-			CQBOMB0("Viewer could not be created.");
+		lights->CreateViewer(); // viewer is a debug tool; failure is non-fatal
 
 		if( OBJLIST )
 			OBJLIST->DEBUG_IncLightCount();

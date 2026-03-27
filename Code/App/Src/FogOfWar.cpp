@@ -2365,8 +2365,7 @@ struct _warfog : GlobalComponent
 	{
 		fog->Init();
 
-		if (fog->CreateViewer() == 0)
-			CQBOMB0("Viewer could not be created.");
+		fog->CreateViewer(); // viewer is a debug tool; failure is non-fatal
 	}
 };
 

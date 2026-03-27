@@ -24,6 +24,7 @@
 #include <io.h>
 
 #include <list>
+#include <string>
 
 //
 

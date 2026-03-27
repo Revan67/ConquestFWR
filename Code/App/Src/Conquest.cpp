@@ -635,7 +635,7 @@ int WINAPI WinMain(HINSTANCE _hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 	// note to self: change this later
 
 #ifndef FINAL_RELEASE
-	CQFLAGS.bDumpFile = 1;
+	// CQFLAGS.bDumpFile = 1;  // disabled: DOSFile vtable corruption under VS2022 debug heap
 	CQFLAGS.bHostRecordMode = 1;
 #ifdef _DEBUG
 	CQFLAGS.bSkipIntroMovie = 1;
@@ -792,7 +792,7 @@ int WINAPI WinMain(HINSTANCE _hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 	CQASSERT(HARDPOINT);
 	CQASSERT(VB_MANAGER);
 	CQASSERT(STRINGTABLE);
-	CQASSERT(VIDEOSYS);
+	// VIDEOSYS (binkw32.dll dependency) may be absent; skip assert
 	CQASSERT(MATMAN);
 	CQASSERT(PARTMAN);
 	CQASSERT(MESHMAN);
@@ -874,7 +874,7 @@ int WINAPI WinMain(HINSTANCE _hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 	matInfo.TMANAGER = TMANAGER;
 	matInfo.MATDIR = MATERIALDIR;
 	MATMAN->Initialize(matInfo);
-	VIDEOSYS->Initialize(MOVIEDIR,PIPE);
+	if (VIDEOSYS) VIDEOSYS->Initialize(MOVIEDIR,PIPE);
 
 	if (!DEFAULTS->GetDefaults()->bWindowMode)
 	{

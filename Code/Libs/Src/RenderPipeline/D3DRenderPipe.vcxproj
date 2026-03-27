@@ -149,7 +149,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.;.\..;.\..\..;..\..\..\Libs\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;.\..;.\..\..;..\..\..\Libs\Include;$(DXSDK_DIR)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>RP_RD_DEBUG=1;_WINDOWS;D3D_OVERLOADS;DA_ERROR_LEVEL=8;DA_HEAP_ENABLED;WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -173,7 +173,7 @@
       <AdditionalDependencies>vfw32.lib;comheap.lib;mathlib.lib;dacom.lib;ddraw.lib;rpul.lib;dxguid.lib;d3dx9d.lib;d3d9.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>..\..\ExplicitDLL\$(OutDir)D3DRenderPipe.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>..\..\Static\$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\Static\$(OutDir);$(DXSDK_DIR)Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\DirectDraw\D3D\Debug/D3DRenderPipe.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
