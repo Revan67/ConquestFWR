@@ -1,6 +1,6 @@
 # Conquest: Frontier Wars — Restoration Project
 
-A community effort to get **Conquest: Frontier Wars** (Sierra Entertainment, 2001) running natively on modern Windows (Windows 10/11) and to modernize its codebase over time.
+A community effort to get **Conquest: Frontier Wars** (Ubisoft, 2001) running natively on modern Windows (Windows 10/11) and to modernize its codebase over time.
 
 ## Goals
 
@@ -52,4 +52,4 @@ Directory.Build.props — Shared MSBuild properties (SDK paths, compiler flags)
 
 ## Background
 
-Conquest: Frontier Wars was released in 2001 by Fever Pitch Studios / Ubisoft. The source code was never officially released, but a substantial portion of the codebase has been recovered and is being restored here. The original build targeted Visual Studio 6/7 with DirectX 8/9 and DirectPlay; this project targets VS2022 with modern Windows 11 compatibility.
+Conquest: Frontier Wars was released in 2001 by Fever Pitch Studios / Ubisoft. The source code used here is an officially released development build. The original build targeted Visual Studio 6/7 with DirectX 8/9 and DirectPlay; this project targets VS2022 with modern Windows 11 compatibility.
