@@ -26,6 +26,10 @@
 
 #include <Streamer.h>
 #include <DMenuBriefing.h>
+#include <stdio.h>
+
+static FILE *g_brf_f = NULL;
+#define BRF_LOG(s) do { if(!g_brf_f) g_brf_f=fopen("briefing_diag.txt","w"); if(g_brf_f){fputs((s),g_brf_f);fflush(g_brf_f);} } while(0)
 
 #define NUM_CELLS 12
 #define NUM_ANIM  4
@@ -513,12 +517,19 @@ void MenuBriefing::onButtonPressed (U32 buttonID)
 	{
 		case IDS_START:
 			// start the mission
+			BRF_LOG("IDS_START: before PlayMusic\n");
 			MUSICMANAGER->PlayMusic("Battle_loading.wav", false);
+			BRF_LOG("IDS_START: before flush\n");
 			flush();	// flush needed before switching to 3D mode.  Jason was here, he knows this now...
+			BRF_LOG("IDS_START: before enableLowLatencyStreaming(false)\n");
 			enableLowLatencyStreaming(false);
+			BRF_LOG("IDS_START: before SetVisible(false)\n");
 			SetVisible(false);
+			BRF_LOG("IDS_START: before ChangeInterfaceRes\n");
 			ChangeInterfaceRes(IR_IN_GAME_RESOLUTION);
+			BRF_LOG("IDS_START: before Reload\n");
 			MISSION->Reload();
+			BRF_LOG("IDS_START: after Reload\n");
 			endDialog(1);
 			break;
 

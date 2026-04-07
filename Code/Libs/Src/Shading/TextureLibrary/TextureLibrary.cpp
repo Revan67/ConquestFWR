@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <ddraw.h>
 #include <map>
+#include <string>
 #pragma warning( disable: 4018 4245 4663 )	// for some reason this is required *right here* again
 #include <vector>
 #include <mmsystem.h>

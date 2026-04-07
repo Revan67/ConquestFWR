@@ -1,28 +1,123 @@
 /*
  * COMHeap_VS2022.c — VS2022 CRT compatibility shim for COMHeap.
  *
- * Problem: VS2003-era CRT called _heap_init() directly during startup, which
- * let COMHeap.asm hook it to call HEAP_Acquire() and set _HEAP.  VS2022's CRT
- * no longer calls _heap_init(); instead it uses __acrt_initialize_heap() and
- * then immediately calls __acrt_initialize_multibyte(), which calls malloc().
- * COMHeap intercepts malloc but _HEAP is still NULL → access violation.
+ * The VS2022 CRT calls malloc/free during DLL CRT initialization (via
+ * __acrt_initialize_multibyte and related functions) before DACOM has had a
+ * chance to call __heap_init and set _HEAP.  COMHeap.asm intercepts these
+ * calls but historically crashed because _HEAP was NULL.
  *
- * Fix: place a pointer to __heap_init in the .CRT$XIB segment.  The VS2022
- * CRT iterates .CRT$XIA … .CRT$XIZ and calls every non-NULL function pointer
- * it finds there.  .CRT$XIB fires before .CRT$XIC (where locale/multibyte
- * init lives), so _HEAP is set before any CRT subsystem calls malloc.
+ * Fix: provide a private early heap (g_early_heap, created via HeapCreate on
+ * first use) for all allocations that arrive before _HEAP is set.  When _HEAP
+ * is subsequently set by DACOM, free/realloc calls use is_early_heap_block()
+ * to route early-heap blocks back to g_early_heap rather than the DACOM heap,
+ * avoiding the STATUS_HEAP_CORRUPTION that results from freeing a block through
+ * the wrong heap.
  *
- * DACOM.dll is an implicit dependency of every module that links COMHeap.lib
- * (via the EXTRN __imp__HEAP_Acquire in COMHeap.asm), so the loader always
- * initialises DACOM before running this module's CRT init — HEAP_Acquire()
- * will therefore return a valid pointer when __heap_init fires here.
+ * Block identification — inline header tag:
+ *   Every early-heap allocation stores EARLY_HEAP_MAGIC in the 4 bytes
+ *   immediately before the pointer returned to the caller.  is_early_heap_block()
+ *   reads those 4 bytes and checks the magic — no HeapValidate() call, no
+ *   "Invalid address specified to RtlValidateHeap" debug output, no debugger
+ *   breaks caused by probing a foreign heap.
+ *
+ * Note: the .CRT$XIB pre-init hook (used in older versions of this shim) is
+ * NOT used here.  Trim.dll, Mission.dll, ZBatcher.dll and others are loaded
+ * dynamically by DACOM's plugin system, so DACOM (and therefore HEAP_Acquire)
+ * is not available when their DLL_PROCESS_ATTACH fires.  Calling __heap_init
+ * at that point would call through an uninitialized IAT entry and crash.
+ * The early-heap approach handles pre-DACOM allocations safely without needing
+ * DACOM to be present at CRT init time.
  */
 
-#pragma warning(disable: 4152) /* non-standard function/object pointer conversion */
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
 
-extern int __cdecl __heap_init(void);
+/* -------------------------------------------------------------------------
+ * Pre-DACOM fallback heap.
+ *
+ * Every allocation carries a 4-byte header immediately before the user
+ * pointer:
+ *
+ *   [ EARLY_HEAP_MAGIC (4 bytes) ][ user data (size bytes) ]
+ *                                  ^--- returned to caller
+ *
+ * is_early_heap_block(ptr) reads ptr[-4] and compares to EARLY_HEAP_MAGIC.
+ * No Windows heap API is called, so there is no debugger-visible
+ * "Invalid address specified to RtlValidateHeap" side-effect.
+ * ---------------------------------------------------------------------- */
 
-typedef void (__cdecl *_PVFV)(void);
+#define EARLY_HEAP_MAGIC  0xEA12EA12UL
 
-#pragma section(".CRT$XIB", long, read)
-__declspec(allocate(".CRT$XIB")) _PVFV _comheap_vs2022_init = (_PVFV)__heap_init;
+typedef struct { DWORD magic; } early_hdr;
+
+static HANDLE g_early_heap = NULL;
+
+static HANDLE get_early_heap(void)
+{
+    /* Use the process heap so early-heap blocks are owned by a single heap
+     * that all DLLs and DACOM's MSHeap::FreeMemory can HeapFree into. */
+    g_early_heap = GetProcessHeap();
+    return g_early_heap;
+}
+
+void * __stdcall early_heap_alloc(size_t size)
+{
+    early_hdr *h = (early_hdr *)HeapAlloc(get_early_heap(), 0,
+                                           sizeof(early_hdr) + size);
+    if (!h) return NULL;
+    h->magic = EARLY_HEAP_MAGIC;
+    return h + 1;
+}
+
+void * __stdcall early_heap_calloc(size_t count, size_t size)
+{
+    early_hdr *h = (early_hdr *)HeapAlloc(get_early_heap(), HEAP_ZERO_MEMORY,
+                                           sizeof(early_hdr) + count * size);
+    if (!h) return NULL;
+    h->magic = EARLY_HEAP_MAGIC;   /* set after zero-fill */
+    return h + 1;
+}
+
+void * __stdcall early_heap_realloc(void *ptr, size_t size)
+{
+    early_hdr *h;
+    early_hdr *nh;
+    if (!ptr)
+        return early_heap_alloc(size);
+    h  = ((early_hdr *)ptr) - 1;
+    nh = (early_hdr *)HeapReAlloc(get_early_heap(), 0, h,
+                                   sizeof(early_hdr) + size);
+    if (!nh) return NULL;
+    nh->magic = EARLY_HEAP_MAGIC;
+    return nh + 1;
+}
+
+/*
+ * Returns non-zero if ptr was allocated from the early heap.
+ * Reads the 4-byte magic stored immediately before the user pointer.
+ * O(1), no Windows heap API, no debugger-visible side effects.
+ */
+int __stdcall is_early_heap_block(void *ptr)
+{
+    if (!ptr) return 0;
+    return (((early_hdr *)ptr) - 1)->magic == EARLY_HEAP_MAGIC;
+}
+
+void __stdcall early_heap_free(void *ptr)
+{
+    early_hdr *h;
+    if (!ptr || !g_early_heap) return;
+    h = ((early_hdr *)ptr) - 1;
+    h->magic = 0;   /* poison before free to catch double-free */
+    HeapFree(g_early_heap, 0, h);
+}
+
+size_t __stdcall early_heap_msize(void *ptr)
+{
+    SIZE_T s;
+    early_hdr *h;
+    if (!ptr || !g_early_heap) return 0;
+    h = ((early_hdr *)ptr) - 1;
+    s = HeapSize(g_early_heap, 0, h);
+    return (s == (SIZE_T)-1) ? 0 : (size_t)(s - sizeof(early_hdr));
+}

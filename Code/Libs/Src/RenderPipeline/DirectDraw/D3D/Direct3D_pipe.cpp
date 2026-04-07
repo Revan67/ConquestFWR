@@ -173,6 +173,10 @@ static int PixelShaderVersion = 0;
 
 static LPDIRECT3DDEVICE9			direct3d_device = 0;
 
+/* Swap/begin diagnostics — shared between begin_scene and swap_buffers */
+static FILE *g_swap_f   = NULL;
+static int   g_swap_frame = 0;
+
 struct Direct3D_RenderPipeline: IRenderPipeline, 
 								IRenderPrimitive,
 								IDDBackDoor,
@@ -2581,7 +2585,14 @@ DA_METHOD(	begin_scene,(void ) )
 	CHECK_CREATE_BUFFERS(begin_scene);
 	ASSERT( direct3d_device );	// assert after the create_buffers check
 
-	if( SUCCEEDED( direct3d_device->BeginScene() ) ) {
+	HRESULT hr_bs = direct3d_device->BeginScene();
+	if (!g_swap_f) g_swap_f = fopen("swap_diag.txt", "w");
+	if (g_swap_f && g_swap_frame < 10) {
+		fprintf(g_swap_f, "frame %d: BeginScene hr=0x%08lX\n",
+		        g_swap_frame, (unsigned long)hr_bs);
+		fflush(g_swap_f);
+	}
+	if( SUCCEEDED(hr_bs) ) {
 		rp_rd_begin_scene();
 		rp_rd_clear_prim_counts();
 		return GR_OK;
@@ -2795,9 +2806,10 @@ GENRESULT Direct3D_RenderPipeline::draw_indexed_primitive_vb( D3DPRIMITIVETYPE t
 #define SCRATCHICOUNT 3000
 	if (scratchIB == 0)
 	{
-		direct3d_device->CreateIndexBuffer(SCRATCHICOUNT * 2,0,
+		direct3d_device->CreateIndexBuffer(SCRATCHICOUNT * 2,
+			D3DUSAGE_DYNAMIC | D3DUSAGE_WRITEONLY,
 			D3DFMT_INDEX16,
-			D3DPOOL_MANAGED,
+			D3DPOOL_DEFAULT,
 			(IDirect3DIndexBuffer9**) &scratchIB,
 			NULL);
 	}
@@ -2871,7 +2883,8 @@ GENRESULT Direct3D_RenderPipeline::draw_indexed_primitive_vb( D3DPRIMITIVETYPE t
 
 DA_METHOD( create_index_buffer(UINT Length, IDirect3DIndexBuffer9** ppIndexBuffer))
 {
-	direct3d_device->CreateIndexBuffer(Length, 0,D3DFMT_INDEX16, D3DPOOL_MANAGED,ppIndexBuffer, NULL);
+	direct3d_device->CreateIndexBuffer(Length, D3DUSAGE_DYNAMIC | D3DUSAGE_WRITEONLY,
+	    D3DFMT_INDEX16, D3DPOOL_DEFAULT, ppIndexBuffer, NULL);
 	return GR_OK;
 }
  	
@@ -3009,9 +3022,16 @@ DA_METHOD(	create_texture,(int width, int height, const PixelFormat &desiredform
 	
 
 	
-	D3DXCreateTexture(direct3d_device,width, height, numTextureLevels, 0,texFmt, D3DPOOL_MANAGED,(LPDIRECT3DTEXTURE9 *) (&out_htexture));
-
-	//D3DXCreateTextureFromFile(direct3d_device, "Z:\\CQ2\\test\\test.bmp", 	(LPDIRECT3DTEXTURE9 *) (&out_htexture));
+	/* D3DPOOL_MANAGED is not supported with IDirect3DDevice9Ex (used for Win11/WDDM
+	 * compatibility). Use D3DPOOL_DEFAULT + D3DUSAGE_DYNAMIC instead, which allows
+	 * LockRect for texture upload in set_texture_level_data. */
+	if (!direct3d_device)
+	{
+		GENERAL_WARNING("create_texture: direct3d_device is NULL");
+		out_htexture = 0;
+		return GR_GENERIC;
+	}
+	direct3d_device->CreateTexture(width, height, numTextureLevels, D3DUSAGE_DYNAMIC, texFmt, D3DPOOL_DEFAULT, (LPDIRECT3DTEXTURE9 *)(&out_htexture), NULL);
 
 	return GR_OK;
 }
@@ -3515,7 +3535,14 @@ DA_METHOD(	clear_buffers,(DWORD flag, RECT *rect ))
 
 DA_METHOD(	swap_buffers,(void ))
 {
-	direct3d_device->Present(NULL,NULL,NULL,NULL);
+	if (!g_swap_f) g_swap_f = fopen("swap_diag.txt", "w");
+	HRESULT hr_present = direct3d_device->Present(NULL,NULL,NULL,NULL);
+	if (g_swap_f && g_swap_frame < 10) {
+		fprintf(g_swap_f, "frame %d: Present hr=0x%08lX\n",
+		        g_swap_frame, (unsigned long)hr_present);
+		fflush(g_swap_f);
+	}
+	++g_swap_frame;
 	/*
 	CHECK_CREATE_BUFFERS(swap_buffers);
 
@@ -3605,70 +3632,164 @@ DA_METHOD(	unlock_buffer,(void ))
 
 static HWND devWindow = 0;
 
+/* Isolated helper: keeps the __try/__except SEH frame in its own stack frame,
+ * separate from create_buffers, so DXVK's GCC stack usage cannot corrupt the
+ * MSVC SEH chain in the caller. */
+static HRESULT try_create_device_ex(IDirect3D9Ex *d3d, HWND hwnd,
+    D3DPRESENT_PARAMETERS *params, DWORD flags, IDirect3DDevice9Ex **ppDev)
+{
+    HRESULT hr = E_FAIL;
+    __try {
+        hr = d3d->CreateDeviceEx(0, D3DDEVTYPE_HAL, hwnd, flags, params, NULL, ppDev);
+    } __except(EXCEPTION_EXECUTE_HANDLER) {
+        hr = E_FAIL;
+    }
+    return hr;
+}
+
+/* Single file handle held open for the lifetime of create_buffers.
+ * Using fflush instead of fclose between entries avoids triggering the
+ * Debug CRT's _CrtCheckMemory (which fires on every fclose->free and can
+ * crash on COMHeap blocks that don't have a CRT debug header). */
+#define _CB_LOG(s) do { if(_cb_f){fputs((s),_cb_f);fflush(_cb_f);} } while(0)
+#define _CB_LOGF(fmt,...) do { if(_cb_f){fprintf(_cb_f,fmt,__VA_ARGS__);fflush(_cb_f);} } while(0)
 DA_METHOD(	create_buffers,(HWND hwnd, int hres, int vres ))
 {
+	FILE *_cb_f = fopen("d3d_diag.txt","w");
+	_CB_LOG("cb: entered\n");
+	_CB_LOG("cb-1: logging open\n");
 	CHECK_STARTUP(create_buffers);
 	HRESULT hr;
 	d3drp_f_flags &= ~(D3DRP_F_CHECK_CREATE_BUFFERS);
 	destroy_buffers();
-	
+	_CB_LOG("cb-2: after destroy_buffers\n");
+
 	devWindow = hwnd;
 	direct3d_device = NULL ;
 	d3drp_f_flags |= D3DRP_F_BUFFERS_CREATED;
 	d3drp_f_flags |= D3DRP_F_DEPTH_CREATED;
 
-	D3DPRESENT_PARAMETERS params;
-	params.BackBufferWidth = 0;
-	params.BackBufferHeight = 0;
-    params.BackBufferFormat = D3DFMT_UNKNOWN ;
-    params.BackBufferCount = 1;
-    params.MultiSampleType = D3DMULTISAMPLE_NONE;
-    params.MultiSampleQuality = 0;
-    params.SwapEffect = D3DSWAPEFFECT_COPY;
-    params.hDeviceWindow = hwnd;
-    params.Windowed = true;
-    params.EnableAutoDepthStencil = true;
-    params.AutoDepthStencilFormat = D3DFMT_D24X8;
-    params.Flags = 0;
-    params.FullScreen_RefreshRateInHz = 0;
-    params.PresentationInterval = D3DPRESENT_INTERVAL_DEFAULT;
+	/* Use Direct3DCreate9Ex (Vista+ / WDDM-aware) — avoids TerminateProcess
+	 * inside CreateDevice seen with legacy Direct3DCreate9 on Windows 11 NVIDIA. */
+	IDirect3D9Ex *direct3d = NULL;
+	Direct3DCreate9Ex(D3D_SDK_VERSION, &direct3d);
+	_CB_LOG("cb-3: after Direct3DCreate9Ex\n");
 
-	IDirect3D9 *direct3d = Direct3DCreate9(D3D_SDK_VERSION);
-	direct3d->CreateDevice(0,D3DDEVTYPE_HAL,hwnd,D3DCREATE_HARDWARE_VERTEXPROCESSING | D3DCREATE_MULTITHREADED,&params,&direct3d_device);
-	
+	/* Pick the best supported depth format: D24S8 > D16.
+	 * D3DFMT_D24X8 is not guaranteed on modern drivers/hardware. */
+	D3DFORMAT depthFmt = D3DFMT_D16;
+	if (direct3d &&
+	    SUCCEEDED(direct3d->CheckDeviceFormat(0, D3DDEVTYPE_HAL,
+	              D3DFMT_X8R8G8B8, D3DUSAGE_DEPTHSTENCIL,
+	              D3DRTYPE_SURFACE, D3DFMT_D24S8)) &&
+	    SUCCEEDED(direct3d->CheckDepthStencilMatch(0, D3DDEVTYPE_HAL,
+	              D3DFMT_X8R8G8B8, D3DFMT_X8R8G8B8, D3DFMT_D24S8)))
+		depthFmt = D3DFMT_D24S8;
+
+	D3DPRESENT_PARAMETERS params;
+	memset(&params, 0, sizeof(params));
+	params.BackBufferWidth            = hres;
+	params.BackBufferHeight           = vres;
+	params.BackBufferFormat           = D3DFMT_X8R8G8B8;
+	params.BackBufferCount            = 1;
+	params.MultiSampleType            = D3DMULTISAMPLE_NONE;
+	params.MultiSampleQuality         = 0;
+	params.SwapEffect                 = D3DSWAPEFFECT_DISCARD;
+	params.hDeviceWindow              = hwnd;
+	params.Windowed                   = TRUE;
+	params.EnableAutoDepthStencil     = FALSE;   /* create depth buffer manually */
+	params.AutoDepthStencilFormat     = D3DFMT_UNKNOWN;
+	params.Flags                      = 0;
+	params.FullScreen_RefreshRateInHz = 0;
+	/* D3DPRESENT_INTERVAL_DEFAULT causes DXVK 2.7+ to select
+	 * VK_PRESENT_MODE_FIFO_RELAXED_KHR.  With VK_EXT_surface_maintenance1
+	 * enabled, DXVK then issues vkGetPhysicalDeviceSurfaceCapabilities2KHR
+	 * with VkSurfacePresentModeEXT{FIFO_RELAXED} chained — NVIDIA 581.80+
+	 * returns VK_ERROR_SURFACE_LOST_KHR for this query on windowed apps,
+	 * permanently breaking presentation.  INTERVAL_ONE forces plain
+	 * VK_PRESENT_MODE_FIFO_KHR which does not trigger the driver bug. */
+	params.PresentationInterval       = D3DPRESENT_INTERVAL_ONE;
+
+	/* Flush pending posted messages with the real WndProc before we replace it.
+	 * DXVK's swap chain creation also queries the window state internally. */
+	{ MSG _msg;
+	  while (PeekMessage(&_msg, NULL, 0, 0, PM_REMOVE)) {
+	      TranslateMessage(&_msg);
+	      DispatchMessage(&_msg);
+	  } }
+	_CB_LOG("cb-4: after PeekMessage flush\n");
+
+	HRESULT hr_cd = E_POINTER;
+	if (direct3d) {
+		{ LONG _ws = GetWindowLong(hwnd, GWL_STYLE);
+		  BOOL _vis = IsWindowVisible(hwnd);
+		  _CB_LOGF("cb-5a: w=0x%08lX vis=%d d3d=%p\n", _ws, (int)_vis, (void*)direct3d); }
+
+		IDirect3DDevice9Ex *dev9ex = NULL;
+		hr_cd = try_create_device_ex(direct3d, hwnd,
+		    &params, D3DCREATE_HARDWARE_VERTEXPROCESSING | D3DCREATE_MULTITHREADED,
+		    &dev9ex);
+		_CB_LOGF("cb-5x: try_create_device_ex returned hr=0x%08lX dev=%p\n",
+		         (unsigned long)hr_cd, (void*)dev9ex);
+		if (SUCCEEDED(hr_cd) && dev9ex) {
+			direct3d_device = dev9ex;
+			_CB_LOG("cb-5y: HW device accepted\n");
+		} else {
+			if (dev9ex) { dev9ex->Release(); dev9ex = NULL; }
+			_CB_LOG("cb-5z: HW failed, trying SW\n");
+			hr_cd = try_create_device_ex(direct3d, hwnd,
+			    &params, D3DCREATE_SOFTWARE_VERTEXPROCESSING | D3DCREATE_MULTITHREADED,
+			    &dev9ex);
+			_CB_LOGF("cb-5w: SW try returned hr=0x%08lX dev=%p\n",
+			         (unsigned long)hr_cd, (void*)dev9ex);
+			if (SUCCEEDED(hr_cd) && dev9ex)
+				direct3d_device = dev9ex;
+			else if (dev9ex) { dev9ex->Release(); dev9ex = NULL; }
+		}
+		_CB_LOG("cb-5v: before direct3d->Release\n");
+		direct3d->Release();
+		_CB_LOG("cb-5u: after direct3d->Release\n");
+	}
+	_CB_LOGF("cb-6: after CreateDeviceEx hr=0x%08lX device=%p\n",
+	         (unsigned long)hr_cd, (void*)direct3d_device);
 
 	LPD3DXBUFFER pBufferErrors = NULL;
 	ID3DXEffect* effect = 0;
 
 	internal_set_abilities();
-
+	_CB_LOG("cb-7: after internal_set_abilities\n");
 	lights.clear();
+	_CB_LOG("cb-8: after lights.clear\n");
 	d3drp_f_flags |= D3DRP_F_CHECK_CREATE_BUFFERS;
+	_CB_LOG("cb-9: returning GR_OK\n");
+	/* Do NOT fclose(_cb_f) — fclose triggers _CrtCheckMemory in Debug builds,
+	 * which crashes on COMHeap blocks lacking CRT debug headers. OS reclaims it. */
 	return GR_OK;
 }
+#undef _CB_LOG
+#undef _CB_LOGF
 
 
 DA_METHOD(	destroy_buffers,(void ))
 {
 
-	if (!devWindow) return GR_OK;
+	if (!devWindow || !direct3d_device) return GR_OK;
 	D3DPRESENT_PARAMETERS params;
 	params.BackBufferWidth = 0;
 	params.BackBufferHeight = 0;
-    params.BackBufferFormat = D3DFMT_UNKNOWN ;
+    params.BackBufferFormat = D3DFMT_UNKNOWN;
     params.BackBufferCount = 1;
     params.MultiSampleType = D3DMULTISAMPLE_NONE;
     params.MultiSampleQuality = 0;
-    params.SwapEffect = D3DSWAPEFFECT_COPY;
+    params.SwapEffect = D3DSWAPEFFECT_DISCARD;
     params.hDeviceWindow = devWindow;
-    params.Windowed = true;
-    params.EnableAutoDepthStencil = true;
-    params.AutoDepthStencilFormat = D3DFMT_D24X8;
+    params.Windowed = TRUE;
+    params.EnableAutoDepthStencil = TRUE;
+    params.AutoDepthStencilFormat = D3DFMT_D16;
     params.Flags = 0;
     params.FullScreen_RefreshRateInHz = 0;
     params.PresentationInterval = D3DPRESENT_INTERVAL_DEFAULT;
-	
-	
+
     while(FAILED(direct3d_device->Reset(&params)))
 	{
 		Sleep(100);
@@ -3738,14 +3859,18 @@ DA_METHOD(	destroy_buffers,(void ))
 
 //
 
-GENRESULT COMAPI Direct3D_RenderPipeline::create_vertex_buffer( U32 vertex_format, int num_verts, U32 irp_vbf_flags, IRP_VERTEXBUFFERHANDLE *out_vb_handle ) 
+GENRESULT COMAPI Direct3D_RenderPipeline::create_vertex_buffer( U32 vertex_format, int num_verts, U32 irp_vbf_flags, IRP_VERTEXBUFFERHANDLE *out_vb_handle )
 {
 	CHECK_CREATE_BUFFERS(create_vertex_buffer);
 	ASSERT( direct3d_device != NULL );
 	U32 stride = FVF_SIZEOF_VERT(vertex_format);
-	if( FAILED( direct3d_device-> CreateVertexBuffer(stride * num_verts,0,vertex_format,D3DPOOL_MANAGED,(IDirect3DVertexBuffer9**)out_vb_handle,NULL))) {
+	/* D3D9Ex (used by DXVK) does not support D3DPOOL_MANAGED; use D3DPOOL_DEFAULT
+	 * with D3DUSAGE_DYNAMIC|D3DUSAGE_WRITEONLY for lockable dynamic buffers. */
+	HRESULT hr_cvb = direct3d_device->CreateVertexBuffer(stride * num_verts,
+	    D3DUSAGE_DYNAMIC | D3DUSAGE_WRITEONLY, vertex_format,
+	    D3DPOOL_DEFAULT, (IDirect3DVertexBuffer9**)out_vb_handle, NULL);
+	if( FAILED(hr_cvb) )
 		return GR_GENERIC;
-	}
 	return GR_OK;
 }
 
@@ -4189,7 +4314,10 @@ void Direct3D_RenderPipeline::internal_set_abilities( void )
 	}
 	else {
 
-		D3DCAPS9 data;
+		/* Heap-allocate to avoid any stack overwrite from GetDeviceCaps */
+		D3DCAPS9 *pData = new D3DCAPS9();
+		D3DCAPS9 &data = *pData;
+		struct _DeleteOnExit { D3DCAPS9 *p; ~_DeleteOnExit(){ delete p; } } _guard = { pData };
 
 		direct3d_device->GetDeviceCaps(&data);
 		

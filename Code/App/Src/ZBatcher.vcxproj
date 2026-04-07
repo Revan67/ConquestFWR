@@ -122,10 +122,9 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>include;..\DInclude;..\..\Libs\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_USRDLL;ZBATCHER_EXPORTS;WIN32;_DEBUG;_WINDOWS;DA_ERROR_LEVEL=7;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_USRDLL;ZBATCHER_EXPORTS;WIN32;_WINDOWS;DA_ERROR_LEVEL=7;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
-      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeaderOutputFile>.\ZBatcherDebug/ZBatcher.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>.\ZBatcherDebug/</AssemblerListingLocation>
       <ObjectFileName>.\ZBatcherDebug/</ObjectFileName>

@@ -3,6 +3,8 @@
 
 #include "pch.h"
 #include <globals.h>
+#include <stdio.h>
+#define IGM_LOG(s) do{FILE*_igf=fopen("ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
 
 #include "anim2d.h"
 #include "camera.h"
@@ -38,18 +40,24 @@ void AnimArchetype::load (IFileSystem* fs)
 {
 //	int any_txms_found = txm_lib->load_library (NULL, fs);
 
+	IGM_LOG("anim::load: start\n");
 	DAFILEDESC desc ("Frequency");
 
 	HANDLE hndl;
 	DWORD read;
 
+	IGM_LOG("anim::load: before OpenChild(Frequency)\n");
 	hndl = fs->OpenChild (&desc);
+	IGM_LOG("anim::load: before CQASSERT Frequency\n");
 	CQASSERT (hndl != INVALID_HANDLE_VALUE);
+	IGM_LOG("anim::load: after CQASSERT Frequency\n");
 
 	fs->ReadFile (hndl, &capture_rate, sizeof (SINGLE), &read);
 	fs->CloseHandle (hndl);
 
+	IGM_LOG("anim::load: before SetCurrentDirectory(UV Set)\n");
 	fs->SetCurrentDirectory ("UV Set");
+	IGM_LOG("anim::load: after SetCurrentDirectory(UV Set)\n");
 
 /*	desc.lpFileName = "Library name";
 
@@ -64,8 +72,11 @@ void AnimArchetype::load (IFileSystem* fs)
 
 	desc.lpFileName = "Texture names";
 
+	IGM_LOG("anim::load: before OpenChild(Texture names)\n");
 	hndl = fs->OpenChild (&desc);
+	IGM_LOG("anim::load: before CQASSERT Texture names\n");
 	CQASSERT (hndl != INVALID_HANDLE_VALUE);
+	IGM_LOG("anim::load: after CQASSERT Texture names\n");
 
 	S32 len_names = fs->GetFileSize (hndl);
 
@@ -87,13 +98,17 @@ void AnimArchetype::load (IFileSystem* fs)
 		texCnt = cur-1;
 		CQASSERT(texCnt);
 	}
+	IGM_LOG("anim::load: after texCnt CQASSERT\n");
 
 	fs->CloseHandle (hndl);
 
 	desc.lpFileName = "UV Rects";
 
+	IGM_LOG("anim::load: before OpenChild(UV Rects)\n");
 	hndl = fs->OpenChild (&desc);
+	IGM_LOG("anim::load: before CQASSERT UV Rects\n");
 	CQASSERT (hndl != INVALID_HANDLE_VALUE);
+	IGM_LOG("anim::load: after CQASSERT UV Rects\n");
 
 	DWORD fsize = fs->GetFileSize (hndl);
 	CQASSERT (!(fsize % sizeof (UVRect)));
@@ -107,6 +122,7 @@ void AnimArchetype::load (IFileSystem* fs)
 
 	fs->ReadFile (hndl, uvrects, fsize, &read);
 	fs->CloseHandle (hndl);
+	IGM_LOG("anim::load: after ReadFile UV Rects\n");
 
 /*	desc.lpFileName = "Frame Counts";
 
@@ -136,15 +152,33 @@ void AnimArchetype::load (IFileSystem* fs)
 	
 	CQASSERT(texCnt < 256 && "REALLY big tex anm.  expand arrays?");
 	tex = new U32[texCnt];
+	IGM_LOG("anim::load: before TEXLIB loop\n");
 	for (unsigned int i = 0;i<texCnt;i++)
 	{
+		IGM_LOG("anim::load: before has_texture_id\n");
 		if (TEXLIB->has_texture_id(name_ptrs[i]) != GR_OK)		// name is not present yet
-			TEXLIB->load_library(fs, 0);
+		{
+			IGM_LOG("anim::load: before load_library\n");
+			__try {
+				TEXLIB->load_library(fs, 0);
+			} __except(EXCEPTION_EXECUTE_HANDLER) {
+				IGM_LOG("anim::load: load_library AV caught - texturelibrary.dll crash\n");
+			}
+			IGM_LOG("anim::load: after load_library\n");
+		}
 		tex[i]=0;
-		TEXLIB->get_texture_id(name_ptrs[i], tex+i);
+		IGM_LOG("anim::load: before get_texture_id\n");
+		__try {
+			TEXLIB->get_texture_id(name_ptrs[i], tex+i);
+		} __except(EXCEPTION_EXECUTE_HANDLER) {
+			IGM_LOG("anim::load: get_texture_id AV caught\n");
+			tex[i] = 0;
+		}
+		IGM_LOG("anim::load: after get_texture_id\n");
 		//	TEXLIB->add_ref_texture_id(tex[i], NULL);
 
 	}
+	IGM_LOG("anim::load: before frames loop\n");
 
 	for (unsigned int j = 0; j < frame_cnt; j++)
 	{
@@ -165,8 +199,8 @@ void AnimArchetype::load (IFileSystem* fs)
 			txm_lib->load_library(fs);//texFile);
 			frames[j].texture = txm_lib->get_texture_id (name_ptrs[uvrects[j].txm_id]);
 		}*/
-		
-		
+
+
 		CQASSERT (uvrects[j].txm_id < MAX_TXMS);
 
 		//frames[j].texture = txm_lib->get_texture_id (name_ptrs[uvrects[j].txm_id]);
@@ -179,7 +213,9 @@ void AnimArchetype::load (IFileSystem* fs)
 	delete [] uvrects;
 	free (buf);
 
+	IGM_LOG("anim::load: before SetCurrentDirectory(..)\n");
 	fs->SetCurrentDirectory ("..");
+	IGM_LOG("anim::load: done\n");
 
 	//free (libName);
 }

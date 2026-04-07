@@ -16,6 +16,11 @@
 #include <globals.h>
 #include <wchar.h>
 #include <string.h>
+#include <stdio.h>
+
+static FILE *g_mc_f = NULL;
+#define MC_LOG(s) do { if(!g_mc_f) g_mc_f=fopen("campaign_diag.txt","w"); if(g_mc_f){fputs((s),g_mc_f);fflush(g_mc_f);} } while(0)
+#define MC_LOGF(fmt,...) do { if(!g_mc_f) g_mc_f=fopen("campaign_diag.txt","w"); if(g_mc_f){fprintf(g_mc_f,(fmt),__VA_ARGS__);fflush(g_mc_f);} } while(0)
 
 #include <DMenu1.h>
 
@@ -161,24 +166,24 @@ void Menu_campaign::setStateInfo (void)
 	//
 	// initialize in draw-order
 	//
-	background->InitStatic(data.background, this);
-	title->InitStatic(data.title, this);
-	staticName->InitStatic(data.staticName, this);
-	buttonTerran->InitButton(data.buttonTerran, this);
-	buttonMantis->InitButton(data.buttonMantis, this);
-	buttonSolarian->InitButton(data.buttonSolarian, this);
-	buttonBack->InitButton(data.buttonBack, this);
+	if (background)  background->InitStatic(data.background, this);
+	if (title)       title->InitStatic(data.title, this);
+	if (staticName)  staticName->InitStatic(data.staticName, this);
+	if (buttonTerran)   buttonTerran->InitButton(data.buttonTerran, this);
+	if (buttonMantis)   buttonMantis->InitButton(data.buttonMantis, this);
+	if (buttonSolarian) buttonSolarian->InitButton(data.buttonSolarian, this);
+	if (buttonBack)     buttonBack->InitButton(data.buttonBack, this);
 
-	buttonTerran->SetTransparent(true);
-	buttonMantis->SetTransparent(true);
-	buttonSolarian->SetTransparent(true);
+	if (buttonTerran)   buttonTerran->SetTransparent(true);
+	if (buttonMantis)   buttonMantis->SetTransparent(true);
+	if (buttonSolarian) buttonSolarian->SetTransparent(true);
 
 	// get the name of the player out of the registry
 	char nameAnsi[128];
 	wchar_t nameWide[128];
-	DEFAULTS->GetStringFromRegistry(NAME_REG_KEY, nameAnsi, sizeof(nameAnsi)); 
+	DEFAULTS->GetStringFromRegistry(NAME_REG_KEY, nameAnsi, sizeof(nameAnsi));
 	_localAnsiToWide(nameAnsi, nameWide, sizeof(nameWide));
-	staticName->SetText(nameWide);
+	if (staticName) staticName->SetText(nameWide);
 
 	if (childFrame)
 	{
@@ -191,15 +196,15 @@ void Menu_campaign::setStateInfo (void)
 		switch (race)
 		{
 		case M_MANTIS:
-			setFocus(buttonMantis);
+			if (buttonMantis) setFocus(buttonMantis);
 			break;
 
 		case M_SOLARIAN:
-			setFocus(buttonSolarian);
+			if (buttonSolarian) setFocus(buttonSolarian);
 			break;
 
 		default:
-			setFocus(buttonTerran);
+			if (buttonTerran) setFocus(buttonTerran);
 			break;
 		}
 	}
@@ -217,29 +222,49 @@ void Menu_campaign::init (void)
 	//
 	// create members
 	//
+	MC_LOGF("Menu_campaign::init: background.staticType='%s'\n", data.background.staticType);
+	MC_LOGF("Menu_campaign::init: title.staticType='%s'\n", data.title.staticType);
+	MC_LOGF("Menu_campaign::init: buttonTerran.buttonType='%s'\n", data.buttonTerran.buttonType);
+
 	COMPTR<IDAComponent> pComp;
-	GENDATA->CreateInstance(data.background.staticType, pComp);
-	pComp->QueryInterface("IStatic", background);
+	if (GENDATA->CreateInstance(data.background.staticType, pComp) == GR_OK && pComp)
+		pComp->QueryInterface("IStatic", background);
+	else
+		MC_LOGF("Menu_campaign::init: CreateInstance failed for background '%s'\n", data.background.staticType);
 
-	GENDATA->CreateInstance(data.title.staticType, pComp);
-	pComp->QueryInterface("IStatic", title);
+	if (GENDATA->CreateInstance(data.title.staticType, pComp) == GR_OK && pComp)
+		pComp->QueryInterface("IStatic", title);
+	else
+		MC_LOGF("Menu_campaign::init: CreateInstance failed for title '%s'\n", data.title.staticType);
 
-	GENDATA->CreateInstance(data.staticName.staticType, pComp);
-	pComp->QueryInterface("IStatic", staticName);
+	if (GENDATA->CreateInstance(data.staticName.staticType, pComp) == GR_OK && pComp)
+		pComp->QueryInterface("IStatic", staticName);
+	else
+		MC_LOGF("Menu_campaign::init: CreateInstance failed for staticName '%s'\n", data.staticName.staticType);
 
-	GENDATA->CreateInstance(data.buttonTerran.buttonType, pComp);
-	pComp->QueryInterface("IButton2", buttonTerran);
+	if (GENDATA->CreateInstance(data.buttonTerran.buttonType, pComp) == GR_OK && pComp)
+		pComp->QueryInterface("IButton2", buttonTerran);
+	else
+		MC_LOGF("Menu_campaign::init: CreateInstance failed for buttonTerran '%s'\n", data.buttonTerran.buttonType);
 
-	GENDATA->CreateInstance(data.buttonMantis.buttonType, pComp);
-	pComp->QueryInterface("IButton2", buttonMantis);
+	if (GENDATA->CreateInstance(data.buttonMantis.buttonType, pComp) == GR_OK && pComp)
+		pComp->QueryInterface("IButton2", buttonMantis);
+	else
+		MC_LOGF("Menu_campaign::init: CreateInstance failed for buttonMantis '%s'\n", data.buttonMantis.buttonType);
 
-	GENDATA->CreateInstance(data.buttonSolarian.buttonType, pComp);
-	pComp->QueryInterface("IButton2", buttonSolarian);
+	if (GENDATA->CreateInstance(data.buttonSolarian.buttonType, pComp) == GR_OK && pComp)
+		pComp->QueryInterface("IButton2", buttonSolarian);
+	else
+		MC_LOGF("Menu_campaign::init: CreateInstance failed for buttonSolarian '%s'\n", data.buttonSolarian.buttonType);
 
-	GENDATA->CreateInstance(data.buttonBack.buttonType, pComp);
-	pComp->QueryInterface("IButton2", buttonBack);
+	if (GENDATA->CreateInstance(data.buttonBack.buttonType, pComp) == GR_OK && pComp)
+		pComp->QueryInterface("IButton2", buttonBack);
+	else
+		MC_LOGF("Menu_campaign::init: CreateInstance failed for buttonBack '%s'\n", data.buttonBack.buttonType);
 
+	MC_LOG("Menu_campaign::init: calling setStateInfo\n");
 	setStateInfo();
+	MC_LOG("Menu_campaign::init: done\n");
 }
 //--------------------------------------------------------------------------//
 //

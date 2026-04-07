@@ -17,6 +17,7 @@
 
 #include "pch.h"
 #include <globals.h>
+#include <stdio.h>
 
 #include "Resource.h"
 #include "Cursor.h"
@@ -293,8 +294,22 @@ void PrimitiveBuilder2::Begin( PBenum _type, U32 _vert_cnt)
 //-----------------Main window procedure-------------------------------
 //---------------------------------------------------------------------
 //
+static DWORD s_wndProcThreadId = 0;
+
 static LONG CALLBACK wndProc (HWND hWindow, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	/* Log the first 30 messages arriving at wndProc (on any thread) so we
+	 * can confirm (a) wndProc is being called at all, and (b) which messages
+	 * arrive vs. which are eaten before reaching here. */
+	{ static int s_wpc=0; if(s_wpc<30){s_wpc++;FILE*_wf=fopen("wndproc_trace.txt","a");if(_wf){fprintf(_wf,"wndProc msg=0x%04X wp=0x%08X lp=0x%08X tid=%u main=%u\n",message,(unsigned)wParam,(unsigned)lParam,(unsigned)GetCurrentThreadId(),(unsigned)s_wndProcThreadId);fclose(_wf);}} }
+
+	/* This WndProc uses static (non-thread-safe) state and calls EVENTSYS which
+	 * is also not thread-safe.  DXVK background threads send messages to the
+	 * device window — forward those straight to DefWindowProc so they never
+	 * touch the game's state. */
+	if (s_wndProcThreadId && GetCurrentThreadId() != s_wndProcThreadId)
+		return DefWindowProc(hWindow, message, wParam, lParam);
+
 	MSG msg;
 	static BOOL32 bInactive,bRecurse,bHasFocus,bLeadChar;
 	static C8 charBuffer[3];
@@ -427,6 +442,7 @@ static LONG CALLBACK wndProc (HWND hWindow, UINT message, WPARAM wParam, LPARAM 
 	case WM_MBUTTONUP:
 		if (bRecurse == 0)
 		{
+			{ FILE*_f=fopen("input_diag.txt","a");if(_f){fprintf(_f,"BTN msg=%u x=%d y=%d inactive=%d eventsys=%p\n",message,short(LOWORD(lParam)),short(HIWORD(lParam)),(int)bInactive,(void*)EVENTSYS);fclose(_f);} }
 			bRecurse++;
 			wndProc(hWindow, WM_MOUSEMOVE, wParam, lParam);	// send a fake mouse move
 			wndProc(hWindow, message, wParam, lParam);		// send the real message
@@ -513,6 +529,7 @@ Done:
 //
 void SetupWindowCallback (void)
 {
+	s_wndProcThreadId = GetCurrentThreadId();
 	WM->SetCallback(wndProc);
 }
 //------------------------------------------------------------------------
@@ -1589,19 +1606,23 @@ InterfaceRes __stdcall GetCurrentInterfaceRes()
 
 void __stdcall ChangeInterfaceRes(enum InterfaceRes res)
 {
+	static FILE *_cir_f = NULL;
+	#define CIR_LOG(s) do { if(!_cir_f) _cir_f=fopen("changeires_diag.txt","w"); if(_cir_f){fputs((s),_cir_f);fflush(_cir_f);} } while(0)
+
 	if(lastRes == res)
 		return;
+	CIR_LOG("ChangeInterfaceRes: entered\n");
 	switch(lastRes)
 	{
 	case IR_IN_GAME_RESOLUTION:
-		{
-			EVENTSYS->Send(CQE_LEAVING_INGAMEMODE);
-		}
+		CIR_LOG("ChangeInterfaceRes: sending CQE_LEAVING_INGAMEMODE\n");
+		EVENTSYS->Send(CQE_LEAVING_INGAMEMODE);
+		CIR_LOG("ChangeInterfaceRes: CQE_LEAVING_INGAMEMODE done\n");
 		break;
 	case IR_FRONT_END_RESOLUTION:
-		{
-			EVENTSYS->Send(CQE_LEAVING_FRONTENDMODE);
-		}
+		CIR_LOG("ChangeInterfaceRes: sending CQE_LEAVING_FRONTENDMODE\n");
+		EVENTSYS->Send(CQE_LEAVING_FRONTENDMODE);
+		CIR_LOG("ChangeInterfaceRes: CQE_LEAVING_FRONTENDMODE done\n");
 		break;
 	}
 	lastRes = res;
@@ -1611,23 +1632,37 @@ void __stdcall ChangeInterfaceRes(enum InterfaceRes res)
 		{
 			SCREEN_WIDTH = 640;
 			SCREEN_HEIGHT = 480;
+			{FILE *_igm_r=fopen("ingame_diag.txt","w");if(_igm_r)fclose(_igm_r);}
+			CIR_LOG("ChangeInterfaceRes: sending CQE_ENTERING_INGAMEMODE\n");
 			EVENTSYS->Send(CQE_ENTERING_INGAMEMODE);
+			CIR_LOG("ChangeInterfaceRes: CQE_ENTERING_INGAMEMODE done\n");
 		}
 		break;
 	case IR_FRONT_END_RESOLUTION:
 		{
 			SCREEN_WIDTH = 800;
 			SCREEN_HEIGHT = 600;
+			CIR_LOG("ChangeInterfaceRes: sending CQE_ENTERING_FRONTENDMODE\n");
 			EVENTSYS->Send(CQE_ENTERING_FRONTENDMODE);
+			CIR_LOG("ChangeInterfaceRes: CQE_ENTERING_FRONTENDMODE done\n");
 		}
 		break;
 	}
+	CIR_LOG("ChangeInterfaceRes: sending CQE_INTERFACE_RES_CHANGE\n");
 	EVENTSYS->Send(CQE_INTERFACE_RES_CHANGE);
+	CIR_LOG("ChangeInterfaceRes: done\n");
 }
 //---------------------------------------------------------------------
 //
 void __stdcall Start3DMode()
 {
+	/* Suppress the game wndProc callback during D3D initialization.
+	 * ShowWindow dispatches messages synchronously on the main thread;
+	 * those handlers (WM_SETCURSOR, WM_ACTIVATEAPP, etc.) reach DACOM
+	 * components that may not be fully ready yet, corrupting the COMHeap.
+	 * The WindowManager still manages its own state (bAppActive, size)
+	 * via its critical-section-protected _wndProc. */
+	WM->SetCallback(NULL);
 
 	//hardcoded temporary settings
 	CQEFFECTS.bExpensiveTerrain = GlobalEffectsOptions::on;
@@ -1644,8 +1679,18 @@ void __stdcall Start3DMode()
 
 	CQFLAGS.bPrimaryDevice = 1;
 	GENRESULT result = PIPE->startup(NULL);			// switch back to primary device
+	/* Single file handle kept open across all startup checkpoints — avoids
+	 * fclose->_CrtCheckMemory on every log entry (Debug CRT heap walk crashes
+	 * on COMHeap-allocated blocks that lack CRT debug headers). */
+	FILE *_sd_f = fopen("startup_diag.txt","w");
+#define _SD_LOG(s)       do { if(_sd_f){fputs((s),_sd_f);fflush(_sd_f);} } while(0)
+/* Use wsprintfA (Win32, stack-only) instead of fprintf to avoid touching the
+ * CRT heap — which can crash in Debug builds due to COMHeap block mismatches. */
+#define _SD_LOGF(fmt,...) do { if(_sd_f){ char _sdbuf[256]; \
+    wsprintfA(_sdbuf,fmt,__VA_ARGS__); fputs(_sdbuf,_sd_f); fflush(_sd_f); } } while(0)
+	_SD_LOGF("PIPE->startup result: 0x%08X\npipe ptr visible from System.cpp\n",(unsigned)result);
 	ASSERT(result == GR_OK);
-
+	_SD_LOG("step A: VB_MANAGER->initialize\n");
 	VB_MANAGER->initialize(NULL);
 	if (CQFLAGS.bFPUExceptions)
 	{
@@ -1667,6 +1712,7 @@ void __stdcall Start3DMode()
 		PIPE->set_pipeline_state(RP_BUFFERS_SWAP_STALL,1);
 
 
+	_SD_LOG("step B: BATCH->set_state\n");
 	BATCH->set_state(RPR_BATCH_POOLS, RPR_TRANSLUCENT_DEPTH_SORTED|RPR_TRANSLUCENT_UNSORTED |RPR_OPAQUE);
 	BATCH->set_state(RPR_BATCH_TRANSLUCENT_MODE, RPR_TRANSLUCENT_UNSORTED );
 
@@ -1683,7 +1729,9 @@ void __stdcall Start3DMode()
 	{
 		SCREENRESX = 1024;// SCREEN_WIDTH;
 		SCREENRESY = 768;//SCREEN_HEIGHT;
+		_SD_LOG("step C: ChangeInterfaceRes\n");
 		ChangeInterfaceRes(IR_FRONT_END_RESOLUTION);
+		_SD_LOG("step C done\n");
 	}
 
 
@@ -1709,7 +1757,18 @@ void __stdcall Start3DMode()
 		WM->SetWindowPos(SCREENRESX, SCREENRESY, flag);
 	}
 
+	_SD_LOG("step D: ShowWindow\n");
 	ShowWindow(hMainWindow, SW_SHOWNORMAL);
+	_SD_LOG("step D done\n");
+
+	/* NOTE: Do NOT set HWND_TOPMOST here.  On Windows 11 with NVIDIA drivers
+	 * and DXVK, setting WS_EX_TOPMOST on the window (before or after
+	 * CreateDeviceEx) causes vkGetPhysicalDeviceSurfaceCapabilities2KHR to
+	 * return VK_ERROR_SURFACE_LOST_KHR on every frame, preventing any
+	 * presentation.  The VK_EXT_full_screen_exclusive extension treats topmost
+	 * windowed surfaces as exclusive candidates; since we never acquire
+	 * exclusive mode the surface is permanently "lost".  Leave the window
+	 * at normal Z-order so the Vulkan surface stays valid. */
 
 	U32 hasFSAA=0;
 
@@ -1723,20 +1782,26 @@ void __stdcall Start3DMode()
 		}
 	}
 
+	_SD_LOGF("step E: create_buffers hwnd=%p %dx%d\n",(void*)hMainWindow,SCREENRESX,SCREENRESY);
 	GENRESULT gr = PIPE->create_buffers(hMainWindow,SCREENRESX, SCREENRESY);
+	_SD_LOG("step E returned\n");
+	_SD_LOGF("step E done: gr=0x%08X\n",(unsigned)gr);
 	//	U32 depth;
 	//	PIPE->get_pipeline_state(RP_BUFFERS_DEPTH_BPP,&depth);
-
+	_SD_LOG("step E1: g_bHasBuffers\n");
 	g_bHasBuffers = 1;
 
-	// force window to be on top
-	if (CQFLAGS.bNoGDI)
-		SetWindowPos(hMainWindow, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOREDRAW | SWP_NOSIZE);
-
+	_SD_LOG("step E3: SetUnhandledExceptionFilter\n");
 	CQASSERT(prevExceptionHandler==0);
 	prevExceptionHandler = SetUnhandledExceptionFilter(cqExceptionHandler);
 
+	_SD_LOG("step E4: CQBATCH->Startup\n");
 	CQBATCH->Startup();
+	_SD_LOG("step E4 done\n");
+	/* Leave _sd_f open — fclose triggers _CrtCheckMemory which crashes on
+	 * COMHeap blocks in Debug builds. The OS reclaims it at process exit. */
+#undef _SD_LOG
+#undef _SD_LOGF
 	BATCH->set_sampler_state( 0, D3DSAMP_MINFILTER, D3DTEXF_LINEAR );
 	BATCH->set_sampler_state( 0, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR );
 	BATCH->set_sampler_state( 1, D3DSAMP_MINFILTER, D3DTEXF_LINEAR );
@@ -1889,6 +1954,11 @@ void __stdcall Start3DMode()
 		SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS);
 	else
 		SetPriorityClass(GetCurrentProcess(), NORMAL_PRIORITY_CLASS);
+
+	/* D3D device and all subsystems are now stable.  Re-enable the game
+	 * wndProc so the game loop receives input.  The thread guard inside
+	 * wndProc redirects DXVK background-thread messages to DefWindowProc. */
+	WM->SetCallback(wndProc);
 }
 //---------------------------------------------------------------------
 //
@@ -2043,7 +2113,9 @@ void __stdcall Enable3DMode (bool bEnable)
 				}
 			}
 
+			{ FILE *_f2 = fopen("startup_diag.txt","a"); if(_f2){fprintf(_f2,"step E2: create_buffers hwnd=%p %dx%d\n",(void*)hMainWindow,SCREENRESX,SCREENRESY);fclose(_f2);} }
 			GENRESULT gr = PIPE->create_buffers(hMainWindow,SCREENRESX, SCREENRESY);
+			{ FILE *_f2 = fopen("startup_diag.txt","a"); if(_f2){fprintf(_f2,"step E2 done: gr=0x%08X\n",(unsigned)gr);fclose(_f2);} }
 			//	U32 depth;
 			//	PIPE->get_pipeline_state(RP_BUFFERS_DEPTH_BPP,&depth);
 

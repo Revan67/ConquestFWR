@@ -10,23 +10,6 @@
 
 
 
-			    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -60,8 +43,10 @@ typedef signed   long    S32;
 
 
 
-typedef unsigned __int64 U64;
-typedef signed   __int64 S64;
+
+
+
+
 
 
 
@@ -676,7 +661,6 @@ typedef struct tagRECT
 typedef char M_STRING[32];
 typedef unsigned short wchar_t;
 typedef wchar_t M_STRINGW[32];
-
 
 
 
@@ -9491,7 +9475,6 @@ struct GT_GLOBAL_SOUNDS
 
 
 
-
 struct GT_FONT : GENBASE_DATA
 {
 	enum FONT
@@ -11405,7 +11388,6 @@ enum MULTIBUTTONINFO
 };
 
 } 
-
 
 
 
@@ -18931,15 +18913,6 @@ struct TROOPPOD_SAVELOAD
 {
 	__hexview U32 dwTargetID;
 };
-
-
-
-
-
-
-
-
-
 
 
 

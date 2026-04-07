@@ -33,6 +33,9 @@
            local arrays in DACOM_MAP template expansion. Safe for this codebase
            since it is single-threaded during static initialization. -->
       <AdditionalOptions>%(AdditionalOptions) /Zc:threadSafeInit-</AdditionalOptions>
+      <!-- Force static release CRT (/MT) across all configurations to match
+           Conquest.exe. Mixing /MTd DLLs with the /MT exe causes R6030. -->
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(DXSDK_LibDir_x86);$(MSBuildThisFileDirectory)Code\Libs\Static</AdditionalLibraryDirectories>

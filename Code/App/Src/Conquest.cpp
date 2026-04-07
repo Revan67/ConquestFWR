@@ -652,9 +652,11 @@ int WINAPI WinMain(HINSTANCE _hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 	InitRendSections(cmd_line_ini);
 
 	DWORD messages = DAHEAPFLAG_DEBUGFILL_SNAN|DAHEAPFLAG_GROWHEAP|DAHEAPFLAG_NOHEAPEXPANDMSG;
-#ifdef NDEBUG
-	messages |=	DAHEAPFLAG_NOMSGS;
-#endif
+	// Always use NOMSGS to match release behavior: in debug builds,
+	// SetBlockOwner->verifyBlock reports false "Invalid ptr" errors caused by
+	// a pre-existing free-list corruption we can't yet trace.  SNAN fill above
+	// still catches use-after-free; only the per-block owner tracking is lost.
+	messages |= DAHEAPFLAG_NOMSGS;
 
 	if (InitializeDAHeap(0x10000, 0x4000, messages)==0)
 	{
@@ -804,6 +806,18 @@ int WINAPI WinMain(HINSTANCE _hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 	if ((hMainDC = GetDC(hMainWindow)) == 0)
 		goto Done;
 
+	// Disable visual styles (uxtheme) on the game window to prevent
+	// uxtheme/D3D9 heap conflicts on Windows 11 with DWM compositing.
+	{
+		HMODULE hUxTheme = LoadLibraryA("uxtheme.dll");
+		if (hUxTheme) {
+			typedef HRESULT (WINAPI *PFN_SWT)(HWND, LPCWSTR, LPCWSTR);
+			PFN_SWT pSWT = (PFN_SWT)GetProcAddress(hUxTheme, "SetWindowTheme");
+			if (pSWT) pSWT(hMainWindow, L"", L"");
+			FreeLibrary(hUxTheme);
+		}
+	}
+
 	ReadRenderOptions();
 	SetupWindowCallback();
 	
@@ -876,23 +890,13 @@ int WINAPI WinMain(HINSTANCE _hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 	MATMAN->Initialize(matInfo);
 	if (VIDEOSYS) VIDEOSYS->Initialize(MOVIEDIR,PIPE);
 
-	if (!DEFAULTS->GetDefaults()->bWindowMode)
-	{
-		DEVMODE dm;
-		dm.dmSize = sizeof(dm);
-		dm.dmPelsHeight = SCREENRESY;
-		dm.dmPelsWidth = SCREENRESX;
-		dm.dmFields = DM_PELSHEIGHT | DM_PELSWIDTH;
-		ChangeDisplaySettings(&dm, CDS_FULLSCREEN);
-		WM->SetWindowPos(SCREENRESX, SCREENRESY, WMF_FULL_SCREEN);	
-		PIPE->destroy_buffers();
-	}
-	else
-	{
-		ChangeDisplaySettings(NULL, 0);
-		WM->SetWindowPos(SCREENRESX, SCREENRESY, WMF_CENTER);	
-		PIPE->destroy_buffers();
-	}
+	/* Start3DMode (System.cpp) already calls WM->SetWindowPos and create_buffers
+	 * in the correct order.  The old fullscreen/windowed branching here was
+	 * legacy DirectDraw code that called destroy_buffers() without a matching
+	 * create_buffers(), leaving the D3D device in a broken 0x0 state and
+	 * triggering VK_ERROR_SURFACE_LOST_KHR on every subsequent Present call.
+	 * bFullScreen is always forced to 0 by Start3DMode, so the else branch
+	 * always ran — both SetWindowPos and destroy_buffers were redundant. */
 
 	if (cmd_line_script[0])
 	{

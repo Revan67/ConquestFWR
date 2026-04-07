@@ -682,6 +682,7 @@ U32 TManager::createTextureFromMemory (void *pMemory, DA::FILETYPE type, const P
 	int numMipmapLevels = log((float)minDim)/log(2.0f) -1;
 
 
+	if (!PIPE) { return 0; }
 	PIPE->create_texture(width,height,format,numMipmapLevels,0,textureID);
 
 	//

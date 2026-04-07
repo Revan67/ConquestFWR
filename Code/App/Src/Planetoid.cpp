@@ -13,6 +13,8 @@
 
 #include "pch.h"
 #include <globals.h>
+#include <stdio.h>
+#define IGM_LOG(s) do{FILE*_igf=fopen("ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
 
 #include "MGlobals.h"
 #include "FogofWar.h"
@@ -2763,7 +2765,9 @@ GENRESULT PlanetFactory::Notify (U32 message, void *param)
 	switch (message)
 	{
 	case CQE_ENTERING_INGAMEMODE:
+		IGM_LOG("Planetoid: entered\n");
 		loadTextures(true);
+		IGM_LOG("Planetoid: after loadTextures\n");
 		break;
 	case CQE_LEAVING_INGAMEMODE:
 		loadTextures(false);
@@ -2789,13 +2793,22 @@ void PlanetFactory::loadTextures (bool bLoad)
 {
 	if (bLoad)
 	{
+		IGM_LOG("loadTextures: before CreateInstance(point.anm)\n");
 		DAFILEDESC fdesc = "point.anm";
 		COMPTR<IFileSystem> file;
 		if (OBJECTDIR->CreateInstance(&fdesc, file) == GR_OK)
 		{
+			IGM_LOG("loadTextures: before create_archetype\n");
 			pointAnimArch = ANIM2D->create_archetype(file);
+			IGM_LOG("loadTextures: after create_archetype\n");
 		}
+		else
+		{
+			IGM_LOG("loadTextures: CreateInstance(point.anm) failed\n");
+		}
+		IGM_LOG("loadTextures: before load_global_slots\n");
 		load_global_slots();
+		IGM_LOG("loadTextures: after load_global_slots\n");
 	}
 	else
 	{

@@ -336,7 +336,7 @@ U32 Menu_SPGame::countNumberSavedGames (void)
 //
 void Menu_SPGame::onButtonCampaign (void)
 {
-/*	SetVisible(false);
+	SetVisible(false);
 
 	if (DoMenu_campaign(this, mdata, bSkipMenu))
 	{
@@ -347,24 +347,6 @@ void Menu_SPGame::onButtonCampaign (void)
 		SetVisible(true);
 		setFocus(buttonCampaign);
 	}
-	*/
-	MISSION->SetSinglePlayerRace(M_TERRAN);
-
-	SetVisible(false);
-	Notify(CQE_KILL_FOCUS, 0);
-	U32 result = 0;
-	result = DoMenu_Briefing(this, "demo_2_1.qmission");
-
-	if (result)
-	{
-		endDialog(1);
-	}
-	else
-	{
-		SetVisible(true);
-	}
-
-	Notify(CQE_SET_FOCUS, 0);
 }
 //--------------------------------------------------------------------------//
 //

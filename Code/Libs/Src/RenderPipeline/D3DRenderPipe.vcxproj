@@ -150,9 +150,9 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>.;.\..;.\..\..;..\..\..\Libs\Include;$(DXSDK_DIR)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>RP_RD_DEBUG=1;_WINDOWS;D3D_OVERLOADS;DA_ERROR_LEVEL=8;DA_HEAP_ENABLED;WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RP_RD_DEBUG=1;_WINDOWS;D3D_OVERLOADS;DA_ERROR_LEVEL=8;DA_HEAP_ENABLED;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeaderOutputFile>.\DirectDraw\D3D\Debug/D3DRenderPipe.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>.\DirectDraw\D3D\Debug/</AssemblerListingLocation>
       <ObjectFileName>.\DirectDraw\D3D\Debug/</ObjectFileName>
@@ -224,7 +224,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>vfw32.lib;comheap.lib;mathlib.lib;dacom.lib;ddraw.lib;rpul.lib;d3dx9.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>vfw32.lib;comheap.lib;mathlib.lib;dacom.lib;ddraw.lib;rpul.lib;d3dx9.lib;d3d9.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>..\..\ExplicitDLL\$(OutDir)D3DRenderPipe.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\Static\$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

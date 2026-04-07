@@ -15,6 +15,8 @@
 
 #include "pch.h"
 #include <globals.h>
+#include <stdio.h>
+#define IGM_LOG(s) do{FILE*_igf=fopen("ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
 
 #include "Menu.h"
 #include "Resource.h"
@@ -624,7 +626,9 @@ GENRESULT SpaceEnvironment::Notify (U32 message, void *param)
 	switch (message)
 	{
 	case CQE_ENTERING_INGAMEMODE:
+		IGM_LOG("SpaceEnv: entered\n");
 		textureID = TMANAGER->CreateTextureFromFile("StarBk.tga", TEXTURESDIR, DA::TGA, PF_RGB5_A1);
+		IGM_LOG("SpaceEnv: after CreateTextureFromFile\n");
 		if (CQRENDERFLAGS.bMultiTexture)
 			multiStages = 0xffffffff;
 		else

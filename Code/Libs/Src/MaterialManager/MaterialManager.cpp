@@ -988,8 +988,8 @@ void MaterialManager::parseShaders()
 				}
 			}
 			while( SHADERDIR->FindNextFile(hFile, &findData) );
+			SHADERDIR->FindClose(hFile);
 		}
-		SHADERDIR->FindClose(hFile);
 	}
 }
 //----------------------------------------------------------------------------------------------

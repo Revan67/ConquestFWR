@@ -12,6 +12,7 @@
 
 #include "pch.h"
 #include <globals.h>
+#include <stdio.h>
 
 #include "ObjList.h"
 #include "NetBuffer.h"
@@ -247,13 +248,17 @@ ModalEventCallback * ModalEventCallback::root;
 
 bool bInScene=0;
 
+static FILE *g_em_f = NULL;
+#define EM_LOG(s) do { if(!g_em_f) g_em_f=fopen("em_diag.txt","w"); if(g_em_f){fputs((s),g_em_f);fflush(g_em_f);} } while(0)
+
 BOOL32 EndModal(SINGLE dt)
 {
 	bool bNoSwap = false;		// true if viewing a full-screen movie
 	__int64 time1,time2;
 	bool bUseLocking = (CQFLAGS.bFrameLockEnabled!=0);
 	QueryPerformanceCounter((LARGE_INTEGER *)&time1);
-	
+
+	EM_LOG("EndModal entered\n");
 	if (bInScene)
 	{
 		CQASSERT(CQFLAGS.bInProgressAnimActive==0);   // should not be drawing when progress anim is running!
@@ -291,12 +296,13 @@ BOOL32 EndModal(SINGLE dt)
 		
 		// when the game is active, draw movies before 2D components
 		// when the game is not active (ie. front end menus) then movies are always on top.
+		EM_LOG("before slam2D\n");
 		if (CQFLAGS.bGameActive)
 		{
 			SOUNDMANAGER->BltMovies();
 			slam2Dcomponents(dt, bUseLocking);		// lock frame buffer, write 2D stuff, unlock
 		}
-		else 
+		else
 /*			if (CQFLAGS.bFullScreenMovie)
 			{
 				SOUNDMANAGER->BltMovies();
@@ -308,7 +314,8 @@ BOOL32 EndModal(SINGLE dt)
 				slam2Dcomponents(dt, bUseLocking);		// lock frame buffer, write 2D stuff, unlock
 				SOUNDMANAGER->BltMovies();
 			}
-			
+		EM_LOG("after slam2D\n");
+
 			if (bUseLocking==0)
 			{
 				if (CQFLAGS.b3DEnabled)
@@ -323,10 +330,12 @@ BOOL32 EndModal(SINGLE dt)
 					PB.End();
 					//BATCH->flush(RPR_OPAQUE | RPR_TRANSLUCENT_UNSORTED_ONLY | RPR_TRANSLUCENT_DEPTH_SORTED_ONLY);
 					//			BATCH->flush(RPR_OPAQUE);
+					EM_LOG("before end_scene\n");
 					BATCH->flush(RPR_TRANSLUCENT_DEPTH_SORTED_ONLY);
 					BATCH->flush(RPR_TRANSLUCENT_UNSORTED_ONLY);
 					if (PIPE->end_scene() != GR_OK)
 						CQTRACE10("Error in end_scene - probably lost surfaces");
+					EM_LOG("after end_scene\n");
 				}
 				bInScene = 0;
 			}
@@ -344,7 +353,9 @@ BOOL32 EndModal(SINGLE dt)
 	if (bNoSwap==false)
 	{
 		//PIPE->clear_buffers(RP_CLEAR_COLOR_BIT|RP_CLEAR_DEPTH_BIT, NULL);
+		EM_LOG("before swap_buffers\n");
 		PIPE->swap_buffers();
+		EM_LOG("after swap_buffers\n");
 		PIPE->clear_buffers(RP_CLEAR_COLOR_BIT|RP_CLEAR_DEPTH_BIT, NULL);
 	}
 	

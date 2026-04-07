@@ -14,6 +14,12 @@
 
 #include "pch.h"
 #include <globals.h>
+#include <stdio.h>
+
+static FILE *g_mis_f = NULL;
+#define IGM_LOG(s) do{FILE*_igf=fopen("ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
+#define MIS_LOG(s) do { if(!g_mis_f) g_mis_f=fopen("mission_diag.txt","w"); if(g_mis_f){fputs((s),g_mis_f);fflush(g_mis_f);} } while(0)
+#define MIS_LOGF(fmt,...) do { if(!g_mis_f) g_mis_f=fopen("mission_diag.txt","w"); if(g_mis_f){fprintf(g_mis_f,(fmt),__VA_ARGS__);fflush(g_mis_f);} } while(0)
 
 #include "Mission.h"
 #include "Resource.h"
@@ -1378,7 +1384,9 @@ GENRESULT Mission::Notify (U32 message, void *param)
 		break;
 
 	case CQE_ENTERING_INGAMEMODE:
+		IGM_LOG("Mission: entered\n");
 		EVENTSYS->Send(CQE_LOAD_TOOLBAR, 0);		// unload interface
+		IGM_LOG("Mission: after Send(CQE_LOAD_TOOLBAR)\n");
 		break;
 
 	case CQE_DELETEPLAYER:
@@ -2471,8 +2479,9 @@ BOOL32 Mission::Reload (void)
 	BOOL32 result = 0;
 	bool bMouseBusy = false;
 
+	MIS_LOG("Reload: entered\n");
 	if (close() == 0)
-		goto Done;
+		{ MIS_LOG("Reload: close() failed\n"); goto Done; }
 
 	CURSOR->SetBusy(1);
 	bMouseBusy = 1;
@@ -2487,15 +2496,18 @@ BOOL32 Mission::Reload (void)
 	}
 
 	// don't create the progress animation if its already around
+	MIS_LOG("Reload: before CreateInProgressAnim\n");
 	if (ipAnim == 0)
 	{
 		CreateInProgressAnim(ipAnim);
 	}
+	MIS_LOG("Reload: after CreateInProgressAnim\n");
 
 	ipAnim->UpdateString(IDS_PROG_INITMAP);
+	MIS_LOG("Reload: before LoadParseData\n");
 	LoadParseData(inFile);
 	ipAnim->SetProgress(0.05f);
-
+	MIS_LOG("Reload: before MGlobals::Load\n");
 	MGlobals::Load(inFile);
 	ipAnim->SetProgress(0.08f);
 
@@ -2517,6 +2529,7 @@ BOOL32 Mission::Reload (void)
 	char buffer[MAX_PATH+4];
 	MGlobals::GetTerrainFilename(buffer,sizeof(buffer));
 
+	MIS_LOGF("Reload: terrain buffer='%s'\n", buffer);
 	if (buffer[0])
 	{
 		COMPTR<IFileSystem> terrainFile;
@@ -2524,42 +2537,53 @@ BOOL32 Mission::Reload (void)
 		DAFILEDESC fdesc = buffer;
 
 		fdesc.lpImplementation = "UTF";
-	
+
+		MIS_LOG("Reload: opening terrain file\n");
 		if (SPMAPDIR->CreateInstance(&fdesc, terrainFile) == GR_OK)
 		{
 			HANDLE _hPrevSymbols = hPrevSymbols;		// save old parse info
 			hPrevSymbols = NULL;
-			
+
+			MIS_LOG("Reload: terrain LoadParseData\n");
 			LoadParseData(terrainFile);
 
 			ipAnim->SetProgress(0.15f);
+			MIS_LOG("Reload: SECTOR->Load\n");
 			SECTOR->Load(terrainFile);
+			MIS_LOG("Reload: SYSMAP->Load\n");
 			SYSMAP->Load(terrainFile);
 
 			ipAnim->SetProgress(0.20f);
 			ipAnim->UpdateString(IDS_PROG_CAMERA);
+			MIS_LOG("Reload: CAMERAMANAGER->Load\n");
 			CAMERAMANAGER->Load(terrainFile);
 
 			ipAnim->SetProgress(0.22f);
 			ipAnim->UpdateString(IDS_PROG_OBJECTS);
+			MIS_LOG("Reload: NUGGETMANAGER->Load\n");
 			NUGGETMANAGER->Load(terrainFile);
 
 			ipAnim->SetProgress(0.25f);
 			baseObjPercent=ipAnim->GetProgress();
 			totalObjPercent=0.40-baseObjPercent;
+			MIS_LOG("Reload: OBJLIST->Load(terrainFile)\n");
 			OBJLIST->Load(terrainFile,true);
 
 			ipAnim->SetProgress(0.40f);
 			ipAnim->UpdateString(IDS_PROG_MATRIX);
+			MIS_LOG("Reload: THEMATRIX->Load\n");
 			THEMATRIX->Load(terrainFile);
 
 			ipAnim->SetProgress(0.43f);
+			MIS_LOG("Reload: FOGOFWAR->Load\n");
 			FOGOFWAR->Load(terrainFile);
 
 			ipAnim->SetProgress(0.47f);
+			MIS_LOG("Reload: MUSICMANAGER->Load\n");
 			MUSICMANAGER->Load(terrainFile);
 
 			ipAnim->SetProgress(0.50f);
+			MIS_LOG("Reload: LIGHTS->Load\n");
 			LIGHTS->Load(terrainFile);
 
 			ipAnim->SetProgress(0.53f);
@@ -2569,26 +2593,31 @@ BOOL32 Mission::Reload (void)
 			}
 			hPrevSymbols = _hPrevSymbols;
 		}
-		
+
 		ipAnim->UpdateString(IDS_PROG_OBJECTS);
 		baseObjPercent=ipAnim->GetProgress();
 		totalObjPercent=0.80 - baseObjPercent;
+		MIS_LOG("Reload: OBJLIST->Load(inFile)\n");
 		OBJLIST->Load(inFile);
 
 		ipAnim->SetProgress(0.80f);
 		ipAnim->UpdateString(IDS_PROG_SCRIPTS);
+		MIS_LOG("Reload: MScript::Load\n");
 		MScript::Load(NULL);		// should not have any save/load info here anyway
 		ipAnim->SetProgress(0.90f);
 	}
 	else
 	{
 		// initialize the load
+		MIS_LOG("Reload: else branch - SECTOR->Load\n");
 		SECTOR->Load(inFile);
+		MIS_LOG("Reload: SYSMAP->Load\n");
 		SYSMAP->Load(inFile);
 		ipAnim->SetProgress(0.10f);
 
 		// load the artificial intelligence
 		ipAnim->UpdateString(IDS_PROG_CREATEAI);
+		MIS_LOG("Reload: loadPlayerAI\n");
 		loadPlayerAI(inFile);
 		ipAnim->SetProgress(0.15f);
 
@@ -2678,17 +2707,21 @@ BOOL32 Mission::LoadBriefing (const char * fileName)
 	BOOL32 result = 0;
 	DAFILEDESC fdesc = fileName;
 
+	MIS_LOGF("LoadBriefing: %s\n", fileName ? fileName : "(null)");
 	if (close() == 0)
-		goto Done;
+		{ MIS_LOG("LoadBriefing: close() failed\n"); goto Done; }
 
 	if (SPMAPDIR->CreateInstance(&fdesc, inFile) != GR_OK)
-		goto Done;
-		
+		{ MIS_LOG("LoadBriefing: CreateInstance failed\n"); goto Done; }
+	MIS_LOG("LoadBriefing: file opened\n");
+
 	LoadParseData(inFile);
+	MIS_LOG("LoadBriefing: ParseData done\n");
 	MGlobals::Load(inFile);
+	MIS_LOG("LoadBriefing: MGlobals done\n");
 	if (PLAYERID==0 && MGlobals::IsSinglePlayer())		// we may want to store this data in the map!
 		DEFAULTS->GetDefaults()->fogMode = FOGOWAR_NORMAL;
-		
+
 	if (MGlobals::GetGameSettings().version && MGlobals::GetGameSettings().version != GetBuildVersion())
 	{
 #ifdef _DEBUG
@@ -2699,11 +2732,13 @@ BOOL32 Mission::LoadBriefing (const char * fileName)
 	}
 
 	MScript::LoadScript();
+	MIS_LOG("LoadBriefing: LoadScript done\n");
 	SetWindowTitle();
 	bUnsavedData=0;
 	result = 1;
 
 Done:
+	MIS_LOGF("LoadBriefing: done result=%d\n", result);
 	return result;
 }
 //--------------------------------------------------------------------------

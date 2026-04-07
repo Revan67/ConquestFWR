@@ -1,0 +1,18 @@
+# Disc image / physical media dump
+CONQUEST FRONTIER WARS/
+
+# VS build outputs
+Debug/
+Release/
+*.user
+*.suo
+*.ncb
+*.aps
+*.pch
+*.obj
+*.ilk
+*.pdb
+*.idb
+*.exp
+*.lib
+.vs/

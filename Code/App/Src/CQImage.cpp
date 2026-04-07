@@ -528,7 +528,7 @@ bool ICQImage::Assert (const char *exp, void *file, unsigned line)
 		text.addText(buffer);
 		text.addText("Call Stack:\r\n");
 
-		for (i = 0; i < 8; i++)
+		for (i = 0; i < 16; i++)
 		{
 			if (IsBadReadPtr(pFrame, sizeof(STACK_FRAME)) == 0)
 			{
@@ -580,7 +580,7 @@ bool ICQImage::Assert (const char *exp, void *file, unsigned line)
 		}
 
 		FDUMP(ErrorCode(ERR_GENERAL, SEV_TRACE_1), "-------------------------------------------------\r\nAssertion Failed: \r\n");
-		FDUMP(ErrorCode(ERR_GENERAL, SEV_TRACE_1), text.buffer);
+		FDUMP(ErrorCode(ERR_GENERAL, SEV_TRACE_1), "%s", text.buffer);
 		int result = IDIGNORE;
 
 		FlipToGDI();
@@ -661,7 +661,7 @@ bool __cdecl ICQImage::Bomb (const char *exp, ...)
 			text.addText("Call Stack:\r\n");
 		}
 
-		for (i = 0; i < 8; i++)
+		for (i = 0; i < 16; i++)
 		{
 			if (IsBadReadPtr(pFrame, sizeof(STACK_FRAME)) == 0)
 			{
@@ -713,7 +713,7 @@ bool __cdecl ICQImage::Bomb (const char *exp, ...)
 		}
 
 		FDUMP(ErrorCode(ERR_GENERAL, SEV_TRACE_1), "-------------------------------------------------\r\nBomb: \r\n");
-		FDUMP(ErrorCode(ERR_GENERAL, SEV_TRACE_1), text.buffer);
+		FDUMP(ErrorCode(ERR_GENERAL, SEV_TRACE_1), "%s", text.buffer);
 		int result = IDABORT;
 		
 		FlipToGDI();
@@ -792,7 +792,7 @@ bool __cdecl ICQImage::Error (const char *exp, ...)
 			text.addText("Call Stack:\r\n");
 		}
 
-		for (i = 0; i < 8; i++)
+		for (i = 0; i < 16; i++)
 		{
 			if (IsBadReadPtr(pFrame, sizeof(STACK_FRAME)) == 0)
 			{
@@ -844,7 +844,7 @@ bool __cdecl ICQImage::Error (const char *exp, ...)
 		}
 
 		FDUMP(ErrorCode(ERR_GENERAL, SEV_TRACE_1), "-------------------------------------------------\r\nRecoverable Error: \r\n");
-		FDUMP(ErrorCode(ERR_GENERAL, SEV_TRACE_1), text.buffer);
+		FDUMP(ErrorCode(ERR_GENERAL, SEV_TRACE_1), "%s", text.buffer);
 		int result = IDIGNORE;
 		
 		FlipToGDI();
@@ -866,7 +866,7 @@ bool __cdecl ICQImage::Error (const char *exp, ...)
 		return false;
 	}
 
-	FDUMP(ErrorCode(ERR_GENERAL, SEV_ERROR), buffer);
+	FDUMP(ErrorCode(ERR_GENERAL, SEV_ERROR), "%s", buffer);
 
 #endif  // end !FINAL_RELEASE
 	
@@ -991,7 +991,7 @@ int ICQImage::Exception (struct _EXCEPTION_POINTERS * exceptionInfo)
 
 		text.addText("Call Stack:\r\n");
 
-		for (i = 0; i < 8; i++)
+		for (i = 0; i < 16; i++)
 		{
 			if (IsBadReadPtr(pFrame, sizeof(STACK_FRAME)) == 0)
 			{
@@ -1229,6 +1229,10 @@ int ICQImage::STANDARD_DUMP (ErrorCode code, const C8 *fmt, ...)
 		{
 		case DAHEAP_ALLOC_ZERO:
 			// let it go...growl
+			return 0;
+
+		case DAHEAP_INVALID_PTR:
+			// ptr allocated outside DACOM heap (e.g. CRT calloc); tracking mismatch in debug builds only
 			return 0;
 
 		case DAHEAP_VALLOC_FAILED:

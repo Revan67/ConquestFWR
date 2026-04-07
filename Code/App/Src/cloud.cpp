@@ -15,6 +15,8 @@
 
 #include "pch.h"
 #include <globals.h>
+#include <stdio.h>
+#define IGM_LOG(s) do{FILE*_igf=fopen("ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
 
 #include <stdio.h>
 
@@ -4182,7 +4184,9 @@ GENRESULT FieldManager::Notify (U32 message, void *param)
 		loadTextures(false);
 		break;
 	case CQE_ENTERING_INGAMEMODE:
+		IGM_LOG("cloud: entered\n");
 		loadTextures(true);
+		IGM_LOG("cloud: after loadTextures\n");
 		break;
 
 /*	case WM_MOUSEMOVE:

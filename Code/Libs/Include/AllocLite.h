@@ -4,6 +4,11 @@
 #include <xmemory>
 #include "fdump.h"
 
+// _FARQ was removed from VS2022 release CRT headers
+#ifndef _FARQ
+#  define _FARQ
+#endif
+
 //EMAURER attempt to minimize STL calls to new and delete.
 
 //EMAURER since the MS std::list and std::map implementations don't 

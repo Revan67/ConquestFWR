@@ -12,6 +12,8 @@
 
 #include "pch.h"
 #include <globals.h>
+#include <stdio.h>
+#define IGM_LOG(s) do{FILE*_igf=fopen("ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
 
 #include "Resource.h"
 #include "Startup.h"
@@ -2157,7 +2159,9 @@ GENRESULT FogOfWar::Notify (U32 message, void *param)
 		break;
 
 	case CQE_ENTERING_INGAMEMODE:
+		IGM_LOG("FogOfWar: entered\n");
 		loadTextures(true);
+		IGM_LOG("FogOfWar: after loadTextures\n");
 		RECT thumbRect;
 		thumbRect.left = IDEAL2REALX(134);  
 		thumbRect.right = IDEAL2REALX(213);
@@ -2166,7 +2170,9 @@ GENRESULT FogOfWar::Notify (U32 message, void *param)
 		mapX = TEXTURE_RES;//thumbRect.right-thumbRect.left;
 		mapY = TEXTURE_RES;//thumbRect.bottom-thumbRect.top;
 		//	mapGrid = new BOOL[mapX*mapY];
+		IGM_LOG("FogOfWar: before MakeMapTextures\n");
 		MakeMapTextures(1);
+		IGM_LOG("FogOfWar: after MakeMapTextures\n");
 		break;
 	case CQE_LEAVING_INGAMEMODE:
 		loadTextures(false);

@@ -16,6 +16,8 @@
  
 #include "pch.h"
 #include <globals.h>
+#include <stdio.h>
+#define IGM_LOG(s) do{FILE*_igf=fopen("ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
 
 #include "Menu.h"
 #include "UserDefaults.h"
@@ -458,6 +460,7 @@ GENRESULT MenuResource::Notify (U32 message, void *param)
 		break;
 
 	case CQE_ENTERING_INGAMEMODE:
+		IGM_LOG("menu: entered\n");
 		if (DEFAULTS->GetDefaults()->bEditorMode)
 			SendMessage(hMainWindow, WM_COMMAND, IDM_EDITOR_MODE, 0);
 		if (DEFAULTS->GetDefaults()->bEditorMode)

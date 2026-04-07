@@ -14,6 +14,8 @@
 //--------------------------------------------------------------------------//
 #include "pch.h"
 #include <globals.h>
+#include <stdio.h>
+#define IGM_LOG(s) do{FILE*_igf=fopen("ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
 
 #include "TDocClient.h"
 #include "Menu.h"
@@ -125,7 +127,9 @@ GENRESULT CQLight::Notify(U32 message, void *param)
 
 	if (message == CQE_ENTERING_INGAMEMODE)
 	{
+		IGM_LOG("CQLight: entered\n");
 		UpdateLight();
+		IGM_LOG("CQLight: after UpdateLight\n");
 	}
 
 	if (message == CQE_CAMERA_MOVED)
@@ -1399,7 +1403,9 @@ GENRESULT Lights::Notify (U32 message, void *param)
 		break;
 
 	case CQE_ENTERING_INGAMEMODE:
+		IGM_LOG("LightManager: entered\n");
 		loadTextures(true);
+		IGM_LOG("LightManager: after loadTextures\n");
 	//	EnableSpecular(param!=0);
 		break;
 	case CQE_LEAVING_INGAMEMODE:

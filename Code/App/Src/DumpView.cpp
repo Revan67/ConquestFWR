@@ -249,6 +249,23 @@ bool DumpView::sendData (const char * _buffer, DWORD length, DWORD dwFlags)
 //
 int DumpView::STANDARD_DUMP (ErrorCode code, const C8 *fmt, ...)
 {
+	{
+		static FILE *_log = NULL;
+		if (!_log) _log = fopen("startup_log.txt", "w");
+		if (_log) {
+			va_list _a; va_start(_a, fmt);
+			fprintf(_log, "[%d,%d] ", code.kind, code.severity);
+			__try {
+				vfprintf(_log, fmt, _a);
+			} __except(EXCEPTION_EXECUTE_HANDLER) {
+				// vfprintf crashed (likely NULL %s arg from pre-built DLL)
+				// vfprintf holds the FILE* lock when interrupted - release it
+				_unlock_file(_log);
+			}
+			va_end(_a);
+			fflush(_log);
+		}
+	}
 	if (code.kind == ERR_MEMORY || code.kind == ERR_NETWORK || code.kind == ERR_MISSION ||
 		((code.kind != ERR_RULES       || CQFLAGS.bTraceRules) &&
 		(code.kind != ERR_PERFORMANCE || CQFLAGS.bTracePerformance) &&

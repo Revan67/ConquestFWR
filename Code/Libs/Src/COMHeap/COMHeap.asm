@@ -27,6 +27,15 @@ EXTRN	__imp__DACOM_Acquire:NEAR
 EXTRN   __imp__GetModuleFileNameA@12:NEAR
 ENDIF
 
+; Early-heap helpers (COMHeap_VS2022.c) — private heap used before DACOM is ready.
+; All are __stdcall so the callee cleans args from the stack.
+EXTRN   _early_heap_alloc@4:NEAR         ; void* __stdcall early_heap_alloc(size_t)
+EXTRN   _early_heap_calloc@8:NEAR        ; void* __stdcall early_heap_calloc(size_t count, size_t size)
+EXTRN   _early_heap_realloc@8:NEAR       ; void* __stdcall early_heap_realloc(void* ptr, size_t)
+EXTRN   _is_early_heap_block@4:NEAR      ; int   __stdcall is_early_heap_block(void* ptr)
+EXTRN   _early_heap_free@4:NEAR          ; void   __stdcall early_heap_free(void* ptr)
+EXTRN   _early_heap_msize@4:NEAR        ; size_t __stdcall early_heap_msize(void* ptr)
+
 .data
 
 _HEAP   DD  0                              ; HEAP (pointer to IHeap interface)	
@@ -235,10 +244,16 @@ _SetDefaultHeapMsg endp
 __nh_malloc		proc
 
 		mov	eax, DWORD PTR _HEAP
+		or	eax, eax
+		je	SHORT __nh_malloc_early
 		mov	ecx, DWORD PTR [eax]
 		push	OFFSET defaultMsg
 		push	eax
 		call	DWORD PTR [ecx+88]			;  HEAP->malloc_pass_through();
+		ret
+__nh_malloc_early:
+		push	DWORD PTR [esp+4]			;  size arg from caller
+		call	_early_heap_alloc@4			;  stdcall, callee cleans 4 bytes
 		ret
 
 __nh_malloc		endp
@@ -247,10 +262,16 @@ __nh_malloc		endp
 ??2@YAPAXI@Z    proc
 
 		mov	eax, DWORD PTR _HEAP
+		or	eax, eax
+		je	SHORT new_op_early
 		mov	ecx, DWORD PTR [eax]
 		push	OFFSET defaultMsg
 		push	eax
 		call	DWORD PTR [ecx+88]			;  HEAP->malloc_pass_through();
+		ret
+new_op_early:
+		push	DWORD PTR [esp+4]			;  size arg from caller
+		call	_early_heap_alloc@4			;  stdcall, callee cleans 4 bytes
 		ret
 
 ??2@YAPAXI@Z    endp
@@ -259,117 +280,289 @@ __nh_malloc		endp
 ??3@YAXPAX@Z    proc
 		; HEAP->FreeMemory(ptr);
 
-		mov	eax, DWORD PTR [esp+4]
-		or  eax, eax
-		mov	ecx, DWORD PTR _HEAP	; HEAP
-		je	@F
-		push	eax
-		push	ecx
+		mov	eax, DWORD PTR [esp+4]		;  eax = ptr
+		or	eax, eax
+		je	SHORT delete_op_done		;  NULL ptr, nothing to do
+		mov	ecx, DWORD PTR _HEAP
+		or	ecx, ecx
+		je	SHORT delete_op_early		;  _HEAP not set, always early heap
+		;  _HEAP is set — check ownership: might be an early-allocated block
+		push	ecx				;  save HEAP
+		push	eax				;  save ptr
+		push	eax				;  arg: ptr
+		call	_is_early_heap_block@4		;  eax = 1 if early, 0 if DACOM; callee cleans 4
+		or	eax, eax
+		pop	eax				;  restore ptr
+		pop	ecx				;  restore HEAP
+		jne	SHORT delete_op_early		;  IS an early block — route to early heap
+		;  DACOM-owned block
+		push	eax				;  ptr
+		push	ecx				;  HEAP
 		mov	eax, DWORD PTR [ecx]
-		call	DWORD PTR [eax+28]
-@@:
-		ret	
+		call	DWORD PTR [eax+28]		;  HEAP->FreeMemory()
+		ret
+delete_op_early:
+		push	eax				;  ptr arg
+		call	_early_heap_free@4		;  stdcall, callee cleans 4 bytes
+delete_op_done:
+		ret
 ??3@YAXPAX@Z    endp
 
 ;delete[]
 ??_V@YAXPAX@Z    proc
 		; HEAP->FreeMemory(ptr);
 
-		mov	eax, DWORD PTR [esp+4]
-		or  eax, eax
-		mov	ecx, DWORD PTR _HEAP	; HEAP
-		je	@F
+		mov	eax, DWORD PTR [esp+4]		;  eax = ptr
+		or	eax, eax
+		je	SHORT delete_vec_done		;  NULL ptr, nothing to do
+		mov	ecx, DWORD PTR _HEAP
+		or	ecx, ecx
+		je	SHORT delete_vec_early		;  _HEAP not set
+		;  _HEAP is set — check ownership
+		push	ecx
+		push	eax
+		push	eax
+		call	_is_early_heap_block@4		;  callee cleans 4
+		or	eax, eax
+		pop	eax
+		pop	ecx
+		jne	SHORT delete_vec_early
+		;  DACOM-owned block
 		push	eax
 		push	ecx
 		mov	eax, DWORD PTR [ecx]
 		call	DWORD PTR [eax+28]
-@@:
-		ret	
+		ret
+delete_vec_early:
+		push	eax
+		call	_early_heap_free@4
+delete_vec_done:
+		ret
 ??_V@YAXPAX@Z     endp
 
 ;------------------------------------------------------
 
-__malloc_dbg         proc  
+__malloc_dbg         proc
 
 		mov	eax, DWORD PTR _HEAP
+		or	eax, eax
+		je	SHORT malloc_dbg_early
 		mov	ecx, DWORD PTR [eax]
 		push	OFFSET defaultMsg
 		push	eax
 		call	DWORD PTR [ecx+88]			;  HEAP->malloc_pass_through();
 		ret
+malloc_dbg_early:
+		push	DWORD PTR [esp+4]			;  size arg from caller
+		call	_early_heap_alloc@4			;  stdcall, callee cleans 4 bytes
+		ret
 
 __malloc_dbg  	endp
 
-_malloc         proc  
+_malloc         proc
 
 		mov	eax, DWORD PTR _HEAP
+		or	eax, eax
+		je	SHORT malloc_early
 		mov	ecx, DWORD PTR [eax]
 		push	OFFSET defaultMsg
 		push	eax
 		call	DWORD PTR [ecx+88]			;  HEAP->malloc_pass_through();
+		ret
+malloc_early:
+		push	DWORD PTR [esp+4]			;  size arg from caller
+		call	_early_heap_alloc@4			;  stdcall, callee cleans 4 bytes
 		ret
 
 _malloc  	endp
 
 ;------------------------------------------------------
 
-_realloc        proc 
+_realloc        proc
 
-		mov	eax, DWORD PTR _HEAP
-		mov	ecx, DWORD PTR [eax]
+		; on entry: [esp+4]=ptr  [esp+8]=new_size
+		mov	ecx, DWORD PTR _HEAP
+		or	ecx, ecx
+		je	SHORT realloc_early		;  _HEAP not set
+		;  _HEAP is set — check if ptr is an early-heap block
+		mov	eax, DWORD PTR [esp+4]		;  eax = ptr
+		push	ecx				;  save HEAP
+		push	eax				;  save ptr
+		push	eax				;  arg: ptr
+		call	_is_early_heap_block@4		;  callee cleans 4; eax = 1/0
+		or	eax, eax
+		pop	eax				;  restore ptr
+		pop	ecx				;  restore HEAP; esp back to entry level
+		jne	SHORT realloc_early2		;  IS early block
+		;  DACOM-owned block
+		mov	eax, DWORD PTR [ecx]		;  vtable
 		push	OFFSET defaultMsg
-		push	eax
-		call	DWORD PTR [ecx+92]			;  HEAP->realloc_pass_through();
+		push	ecx				;  HEAP
+		call	DWORD PTR [eax+92]		;  realloc_pass_through(); callee ret 8
+		ret
+realloc_early2:
+		;  early-heap block — reallocate within early heap
+		;  [esp+4]=ptr, [esp+8]=new_size (entry-relative; esp is at entry level here)
+		push	DWORD PTR [esp+8]		;  new_size; after: [esp+8] = ptr
+		push	DWORD PTR [esp+8]		;  ptr
+		call	_early_heap_realloc@8		;  stdcall, callee cleans 8
+		ret
+realloc_early:
+		;  _HEAP is NULL — use early heap (ptr may be NULL for initial alloc)
+		push	DWORD PTR [esp+8]		;  new_size; after: [esp+8] = ptr
+		push	DWORD PTR [esp+8]		;  ptr
+		call	_early_heap_realloc@8		;  stdcall, callee cleans 8
 		ret
 
 _realloc  	endp
 
 ;---------------------------------------------------------------
 
-_calloc         proc  
+_calloc         proc
 
+		; on entry: [esp+4]=count  [esp+8]=element_size
 		mov	eax, DWORD PTR _HEAP
+		or	eax, eax
+		je	SHORT calloc_early
 		mov	ecx, DWORD PTR [eax]
 		push	OFFSET defaultMsg
 		push	eax
 		call	DWORD PTR [ecx+96]			;  HEAP->calloc_pass_through();
 		ret
-
+calloc_early:
+		;  early_heap_calloc(count, element_size) — stdcall, push right-to-left
+		push	DWORD PTR [esp+8]			;  element_size; after: [esp+8] = count
+		push	DWORD PTR [esp+8]			;  count
+		call	_early_heap_calloc@8			;  stdcall, callee cleans 8 bytes
+		ret
 _calloc  	endp
 
 ;----------------------------------------------------------------
 
-_free           proc  
+_free           proc
 
 ; HEAP->FreeMemory(ptr);
 
-		mov	eax, DWORD PTR [esp+4]
-		or  eax, eax
-		mov	ecx, DWORD PTR _HEAP	; HEAP
-		je	@F
+		mov	eax, DWORD PTR [esp+4]		;  eax = ptr
+		or	eax, eax
+		je	SHORT free_done			;  NULL ptr, nothing to do
+		mov	ecx, DWORD PTR _HEAP
+		or	ecx, ecx
+		je	SHORT free_early		;  _HEAP not set
+		;  _HEAP is set — check ownership
+		push	ecx
+		push	eax
+		push	eax
+		call	_is_early_heap_block@4		;  callee cleans 4
+		or	eax, eax
+		pop	eax
+		pop	ecx
+		jne	SHORT free_early		;  IS early block
+		;  DACOM-owned block
 		push	eax
 		push	ecx
 		mov	eax, DWORD PTR [ecx]
 		call	DWORD PTR [eax+28]
-@@:
-		ret	
+		ret
+free_early:
+		push	eax
+		call	_early_heap_free@4
+free_done:
+		ret
 _free 		endp
 
-__free_dbg           proc  
+__free_dbg           proc
 
 ; HEAP->FreeMemory(ptr);
 
-		mov	eax, DWORD PTR [esp+4]
-		or  eax, eax
-		mov	ecx, DWORD PTR _HEAP	; HEAP
-		je	@F
+		mov	eax, DWORD PTR [esp+4]		;  eax = ptr
+		or	eax, eax
+		je	SHORT free_dbg_done		;  NULL ptr, nothing to do
+		mov	ecx, DWORD PTR _HEAP
+		or	ecx, ecx
+		je	SHORT free_dbg_early		;  _HEAP not set
+		;  _HEAP is set — check ownership
+		push	ecx
+		push	eax
+		push	eax
+		call	_is_early_heap_block@4		;  callee cleans 4
+		or	eax, eax
+		pop	eax
+		pop	ecx
+		jne	SHORT free_dbg_early		;  IS early block
+		;  DACOM-owned block
 		push	eax
 		push	ecx
 		mov	eax, DWORD PTR [ecx]
 		call	DWORD PTR [eax+28]
-@@:
-		ret	
+		ret
+free_dbg_early:
+		push	eax
+		call	_early_heap_free@4
+free_dbg_done:
+		ret
 __free_dbg 		endp
+
+__calloc_dbg         proc
+
+; _calloc_dbg(count, size, blockType, file, line)
+; [esp+4]=count  [esp+8]=size  (extra args ignored)
+
+		mov	eax, DWORD PTR _HEAP
+		or	eax, eax
+		je	SHORT calloc_dbg_early
+		mov	ecx, DWORD PTR [eax]
+		push	OFFSET defaultMsg
+		push	eax
+		call	DWORD PTR [ecx+96]		;  HEAP->calloc_pass_through(); callee ret 8
+		ret
+calloc_dbg_early:
+		;  early_heap_calloc(count, size) — stdcall, push right-to-left
+		push	DWORD PTR [esp+8]		;  size; after: [esp+8]=count
+		push	DWORD PTR [esp+8]		;  count (now at [esp+8])
+		call	_early_heap_calloc@8		;  stdcall, callee cleans 8 bytes
+		ret
+
+__calloc_dbg  	endp
+
+__realloc_dbg         proc
+
+; _realloc_dbg(ptr, newSize, blockType, file, line)
+; [esp+4]=ptr  [esp+8]=newSize  (extra args ignored)
+
+		mov	ecx, DWORD PTR _HEAP
+		or	ecx, ecx
+		je	SHORT realloc_dbg_early		;  _HEAP not set
+		;  _HEAP is set — check if ptr is an early-heap block
+		mov	eax, DWORD PTR [esp+4]		;  ptr
+		push	ecx				;  save HEAP
+		push	eax				;  save ptr
+		push	eax				;  arg: ptr
+		call	_is_early_heap_block@4		;  callee cleans 4; eax = 1/0
+		or	eax, eax
+		pop	eax				;  restore ptr
+		pop	ecx				;  restore HEAP
+		jne	SHORT realloc_dbg_early2	;  IS early block
+		;  DACOM-owned block
+		mov	eax, DWORD PTR [ecx]		;  vtable
+		push	OFFSET defaultMsg
+		push	ecx				;  HEAP
+		call	DWORD PTR [eax+92]		;  realloc_pass_through(); callee ret 8
+		ret
+realloc_dbg_early2:
+		;  early-heap block — [esp+4]=ptr, [esp+8]=newSize (entry-relative)
+		push	DWORD PTR [esp+8]		;  newSize; after: [esp+8]=ptr
+		push	DWORD PTR [esp+8]		;  ptr
+		call	_early_heap_realloc@8		;  stdcall, callee cleans 8
+		ret
+realloc_dbg_early:
+		;  _HEAP NULL — [esp+4]=ptr, [esp+8]=newSize
+		push	DWORD PTR [esp+8]		;  newSize; after: [esp+8]=ptr
+		push	DWORD PTR [esp+8]		;  ptr
+		call	_early_heap_realloc@8		;  stdcall, callee cleans 8
+		ret
+
+__realloc_dbg  	endp
 
 ;---------------------------------------------------------------
 public _check_heap
@@ -402,17 +595,33 @@ __msize	PROC
 __msize	ENDP
 
 
-__msize_dbg	PROC	
+__msize_dbg	PROC
 
-; 52   : 	return HEAP->GetBlockSize(ptr);
+; _msize_dbg(ptr, blockType) — [esp+4]=ptr (blockType ignored)
 
-	mov	eax, DWORD PTR [esp+4]
-	mov	ecx, DWORD PTR _HEAP	; HEAP
+	mov	eax, DWORD PTR [esp+4]		;  ptr
+	mov	ecx, DWORD PTR _HEAP
+	or	ecx, ecx
+	je	SHORT msize_dbg_early		;  _HEAP not set
+	;  _HEAP set — check ownership
+	push	ecx
+	push	eax
+	push	eax
+	call	_is_early_heap_block@4		;  callee cleans 4
+	or	eax, eax
+	pop	eax				;  restore ptr
+	pop	ecx				;  restore HEAP
+	jne	SHORT msize_dbg_early		;  IS early block
+	;  DACOM-owned block
 	push	eax
 	push	ecx
 	mov	eax, DWORD PTR [ecx]
-	call	DWORD PTR [eax+36]
-	ret	
+	call	DWORD PTR [eax+36]		;  HEAP->GetBlockSize()
+	ret
+msize_dbg_early:
+	push	eax				;  ptr
+	call	_early_heap_msize@4		;  stdcall, callee cleans 4
+	ret
 
 __msize_dbg	ENDP
 
