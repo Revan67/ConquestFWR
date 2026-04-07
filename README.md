@@ -52,4 +52,4 @@ Directory.Build.props — Shared MSBuild properties (SDK paths, compiler flags)
 
 ## Background
 
-Conquest: Frontier Wars was released in 2001 by Fever Pitch Studios / Sierra Entertainment. The source code was never officially released, but a substantial portion of the codebase has been recovered and is being restored here. The original build targeted Visual Studio 6/7 with DirectX 8/9 and DirectPlay; this project targets VS2022 with modern Windows 11 compatibility.
+Conquest: Frontier Wars was released in 2001 by Fever Pitch Studios / Ubisoft. The source code was never officially released, but a substantial portion of the codebase has been recovered and is being restored here. The original build targeted Visual Studio 6/7 with DirectX 8/9 and DirectPlay; this project targets VS2022 with modern Windows 11 compatibility.
