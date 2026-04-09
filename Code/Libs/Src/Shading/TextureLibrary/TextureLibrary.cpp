@@ -5,6 +5,8 @@
 #pragma warning( disable: 4018 4100 4201 4512 4530 4663 4688 4710 4786 )
 
 #define WIN32_LEAN_AND_MEAN
+#define TL_LOG(s) do{FILE*_tlf=fopen("texlib_diag.txt","a");if(_tlf){fputs((s),_tlf);fclose(_tlf);}}while(0)
+#define TL_LOGF(fmt,...) do{FILE*_tlf=fopen("texlib_diag.txt","a");if(_tlf){fprintf(_tlf,fmt,__VA_ARGS__);fclose(_tlf);}}while(0)
 //#define INITGUID
 #include <windows.h>
 #include <stdio.h>
@@ -1680,26 +1682,35 @@ inline void TextureLibrary::insert_name (const char* name, ITL_TEXTURE_ID hndl)
 HRESULT TextureLibrary::load_guts (U32 uMipLevelSet, IFileSystem* IFS, ITL_TEXTUREIMAGEDATA& overrides, U32 uM, U32& rp_id)
 {
 	ITL_TEXTUREIMAGEDATA *image_data = NULL;
+	TL_LOG("load_guts: before load_texture_image\n");
 	if( SUCCEEDED( load_texture_image( IFS, overrides, &image_data ) ) ) {
+		TL_LOGF("load_guts: image loaded %dx%d\n", image_data ? image_data->width : -1, image_data ? image_data->height : -1);
 
 		PixelFormat texture_pf;
-	
+
 		if( uMipLevelSet == 0 ) {
 			choose_texture_format( image_data, &texture_pf );
 
 			U32 w, h;
 			massage_texture_dimension( image_data->width, image_data->height, w, h );
 
+			TL_LOGF("load_guts: before create_texture %dx%d mips=%d\n", w, h, uM);
 			if( FAILED( render_pipe->create_texture( w, h, texture_pf, uM, 0, rp_id) ) ) {
 				GENERAL_TRACE_1( "Unable to create renderpipe texture\n" );
+				TL_LOG("load_guts: create_texture FAILED\n");
 				delete image_data;
 				return E_FAIL;
 			}
+			TL_LOGF("load_guts: create_texture OK rp_id=%u\n", rp_id);
 		}
 
+		TL_LOG("load_guts: before set_texture_level_data\n");
 		render_pipe->set_texture_level_data( rp_id, uMipLevelSet, image_data->width, image_data->height, image_data->stride, image_data->format, image_data->colors, image_data->alphas, image_data->palette );
+		TL_LOG("load_guts: after set_texture_level_data\n");
 
 		delete image_data;
+	} else {
+		TL_LOG("load_guts: load_texture_image FAILED\n");
 	}
 
 	return S_OK;
@@ -2725,40 +2736,57 @@ GENRESULT TextureLibrary::load_library( IFileSystem *IFS, const char *library_na
 
 	// Load Texture Library.
 	//
+	TL_LOGF("load_library: trying SetCurrentDirectory('%s')\n", library_name);
 	if( IFS->SetCurrentDirectory( library_name ) ) {
+		TL_LOG("load_library: entered Texture library dir\n");
 
 		if( (hTxmSearch = IFS->FindFirstFile( tlib_search, &TxmSearchData )) != INVALID_HANDLE_VALUE ) {
 			do {
 				if( TxmSearchData.cFileName[0] != '.' ) {
+					TL_LOGF("load_library: loading texture '%s'\n", TxmSearchData.cFileName);
 					if (GR_OK != load_texture( IFS, TxmSearchData.cFileName ))
 						GENERAL_WARNING (TEMPSTR ("failed to load \'%s\'", TxmSearchData.cFileName));
+					TL_LOGF("load_library: done texture '%s'\n", TxmSearchData.cFileName);
 				}
 			} while( IFS->FindNextFile( hTxmSearch, &TxmSearchData ) );
 
 			IFS->FindClose (hTxmSearch);
+		} else {
+			TL_LOG("load_library: FindFirstFile returned INVALID_HANDLE_VALUE\n");
 		}
 
 		IFS->SetCurrentDirectory( ".." );
 		got_any = true;
+	} else {
+		TL_LOG("load_library: Texture library dir not found\n");
 	}
 
+	TL_LOGF("load_library: trying SetCurrentDirectory('%s')\n", tlib_axmname);
 	if( IFS->SetCurrentDirectory( tlib_axmname ) ) {
+		TL_LOG("load_library: entered Animation library dir\n");
 
 		if( (hTxmSearch = IFS->FindFirstFile( tlib_search, &TxmSearchData )) != INVALID_HANDLE_VALUE ) {
 			do {
 				if( TxmSearchData.cFileName[0] != '.' ) {
+					TL_LOGF("load_library: loading anim texture '%s'\n", TxmSearchData.cFileName);
 					if (GR_OK != load_texture( IFS, TxmSearchData.cFileName ))
 						GENERAL_WARNING (TEMPSTR ("failed to load \'%s\'", TxmSearchData.cFileName));
+					TL_LOGF("load_library: done anim texture '%s'\n", TxmSearchData.cFileName);
 				}
 			} while( IFS->FindNextFile( hTxmSearch, &TxmSearchData ) );
 
 			IFS->FindClose (hTxmSearch);
+		} else {
+			TL_LOG("load_library: FindFirstFile (anim) returned INVALID_HANDLE_VALUE\n");
 		}
 
 		IFS->SetCurrentDirectory( ".." );
 		got_any = true;
+	} else {
+		TL_LOG("load_library: Animation library dir not found\n");
 	}
 
+	TL_LOGF("load_library: returning %s\n", got_any ? "GR_OK" : "GR_GENERIC");
 	return got_any? GR_OK : GR_GENERIC;
 }
 

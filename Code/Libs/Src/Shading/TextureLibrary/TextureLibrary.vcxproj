@@ -341,7 +341,7 @@
       <AdditionalIncludeDirectories>.;.\..;.\..\..;..\..\include;..\..\..\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DA_HEAP_ENABLED;DA_ERROR_LEVEL=8;_WINDOWS;D3D_OVERLOADS;WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeaderOutputFile>.\Debug/TextureLibrary.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
       <ObjectFileName>.\Debug/</ObjectFileName>
@@ -355,7 +355,7 @@
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <AdditionalDependencies>comheap.lib;winmm.lib;mathlib.lib;dacom.lib;ddraw.lib;rpul.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>..\..\..\ExplicitDLL\$(OutDir)TextureLibrary.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>

@@ -124,7 +124,7 @@
       <AdditionalIncludeDirectories>include;..\DInclude;..\..\Libs\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_USRDLL;ZBATCHER_EXPORTS;WIN32;_WINDOWS;DA_ERROR_LEVEL=7;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeaderOutputFile>.\ZBatcherDebug/ZBatcher.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>.\ZBatcherDebug/</AssemblerListingLocation>
       <ObjectFileName>.\ZBatcherDebug/</ObjectFileName>
