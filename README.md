@@ -1,6 +1,6 @@
 # Conquest: Frontier Wars — Restoration Project
 
-A community effort to get **Conquest: Frontier Wars** (Ubisoft, 2001) running natively on modern Windows (Windows 10/11) and to modernize its codebase over time.
+An  effort to get **Conquest: Frontier Wars** (Ubisoft, 2001) running natively on modern Windows (Windows 10/11) and to modernize its codebase over time.
 
 ## Goals
 
@@ -18,23 +18,6 @@ Once the game runs reliably, the goal is to modernize incrementally:
 - Replace DirectPlay networking (stubbed out for Win11 compatibility) with a modern equivalent
 - Improve resolution and widescreen support
 - Reduce reliance on prebuilt legacy DLLs by rebuilding from source
-
-## Building
-
-### Prerequisites
-- Visual Studio 2022 (Desktop C++ workload)
-- DirectX SDK (June 2010) — set `DXSDK_DIR` environment variable or let `Directory.Build.props` find it
-- A GOG or original install of Conquest: Frontier Wars (for game data and original DLLs)
-
-### Steps
-1. Open `Code/App/Src/Conquest.sln` in Visual Studio 2022.
-2. Build the solution in **Debug** configuration.
-3. Set the VS debugger working directory to your Conquest install folder (e.g. `E:\Games\GOG\Conquest Frontier Wars`).
-4. Set the `DACOM` environment variable (in `.vcxproj.user`) to the `DLL\` subfolder of your install so DACOM can find its component DLLs.
-
-### Notes
-- The prebuilt DLLs in `Code/Libs/ExplicitDLL/debug/` and `Code/Libs/ImplicitDLL/` are VS2022-rebuilt versions of the engine library DLLs. Copy them alongside the executable at runtime.
-- `binkw32.dll` (Bink Video DX9) must be present in the install folder for video playback. A compatible version is included in `Code/Libs/ExplicitDLL/`.
 
 ## Repository Layout
 
