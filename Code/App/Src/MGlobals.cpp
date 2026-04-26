@@ -1608,7 +1608,7 @@ SINGLE MGlobals::GetAIBonus (U32 playerID)
 	{
 		if(globalData.playerAssignments[i] == playerID && globalData.gameSettings.slot[i].type == CQGAMETYPES::COMPUTER)
 		{
-			CQGAMETYPES::COMP_CHALANGE compCH =	globalData.gameSettings.slot[i].compChalange;
+			CQGAMETYPES::COMP_CHALANGE compCH = (CQGAMETYPES::COMP_CHALANGE)globalData.gameSettings.slot[i].compChalange;
 			if(compCH == EASY_CH)
 				return -0.25;
 			else if(compCH == AVERAGE_CH)
@@ -1631,7 +1631,7 @@ bool MGlobals::AdvancedAI (U32 playerID, bool expertOnly)
 	{
 		if(globalData.playerAssignments[i] == playerID && globalData.gameSettings.slot[i].type == CQGAMETYPES::COMPUTER)
 		{
-			CQGAMETYPES::COMP_CHALANGE compCH =	globalData.gameSettings.slot[i].compChalange;
+			CQGAMETYPES::COMP_CHALANGE compCH = (CQGAMETYPES::COMP_CHALANGE)globalData.gameSettings.slot[i].compChalange;
 			if(compCH == EASY_CH)
 			{
 				if(expertOnly)
@@ -1659,7 +1659,7 @@ bool MGlobals::IsNightmareAI (U32 playerID)
 	{
 		if(globalData.playerAssignments[i] == playerID && globalData.gameSettings.slot[i].type == CQGAMETYPES::COMPUTER)
 		{
-			CQGAMETYPES::COMP_CHALANGE compCH =	globalData.gameSettings.slot[i].compChalange;
+			CQGAMETYPES::COMP_CHALANGE compCH = (CQGAMETYPES::COMP_CHALANGE)globalData.gameSettings.slot[i].compChalange;
 			if(compCH == NIGHTMARE_CH)
 				return true;
 			else 
@@ -1964,7 +1964,7 @@ static U8 findUnusedColor (void)
 static void __stdcall assignCoOpPlayers (const struct FULLCQGAME & cqgame, U32 playerSlots[MAX_PLAYERS], int slot)
 {
 	int i;
-	const COLOR color = cqgame.slot[slot].color;
+	const COLOR color = (COLOR)cqgame.slot[slot].color;
 	const U32 playerID = playerSlots[slot];
 
 	for (i = 0; i < MAX_PLAYERS; i++)

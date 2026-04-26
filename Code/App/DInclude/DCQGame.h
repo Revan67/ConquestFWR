@@ -93,13 +93,15 @@ namespace CQGAMETYPES
 
 	struct SLOT
 	{
-		TYPE type:3;
-		COMP_CHALANGE compChalange:4;
-		STATE state:3;
-		RACE race:4;
-		COLOR color:5;
-		TEAM team:4;
-		U32  zoneSeat:3;
+		// All unsigned int so VS2022 packs into one storage unit, matching VS6 layout.
+		// (VS2022 gives each different enum type its own int storage unit; same-type packs.)
+		unsigned int type:3;
+		unsigned int compChalange:4;
+		unsigned int state:3;
+		unsigned int race:4;
+		unsigned int color:5;
+		unsigned int team:4;
+		unsigned int zoneSeat:3;
 		DPID dpid;			// id of player, 0 if computer player
 	};
 
@@ -167,20 +169,22 @@ namespace CQGAMETYPES
 	struct OPTIONS
 	{
 		U32 version;
-		GAMETYPE gameType:3;
-		S32 gameSpeed:5;	// need enough bits for -16 to 15
-		U32 regenOn:1;
-		U32 spectatorsOn:1;
-		U32 lockDiplomacyOn:1;
-		U32 numSystems:5;
-		MONEY money:2;
-		MAPTYPE mapType:2;
-		RANDOM_TEMPLATE templateType:2;
-		MAPSIZE mapSize:2;
-		TERRAIN terrain:2;
-		STARTING_UNITS units:2;
-		VISIBILITYMODE visibility:2;
-		COMMANDLIMIT  commandLimit:2;
+		// All int so VS2022 packs into one storage unit matching VS6 layout.
+		// Enum values with negatives (GAMETYPE, MONEY, etc.) need signed int for correct comparisons.
+		int gameType:3;
+		int gameSpeed:5;	// need enough bits for -16 to 15
+		int regenOn:1;
+		int spectatorsOn:1;
+		int lockDiplomacyOn:1;
+		int numSystems:5;
+		int money:2;
+		int mapType:2;
+		int templateType:2;
+		int mapSize:2;
+		int terrain:2;
+		int units:2;
+		int visibility:2;
+		int commandLimit:2;
 
 #ifndef _ADB
 		bool operator == (const OPTIONS & options)

@@ -80,9 +80,9 @@ struct BASE_FIGHTER_SAVELOAD
 	S32 patrolTime:16;
 	S32 generalCounter;
 	Vector kamikaziTarget;	// in target's object space
-	FighterState   state:8;
-	FormationType  formationType:8;
-	M_RACE race:8;
+	unsigned int state:8;        // was FighterState; U32 packing matches VS6 (different enum types pack separately in VS2022)
+	unsigned int formationType:8; // was FormationType
+	unsigned int race:8;         // was M_RACE
 	U8  patrolState;		// LAUNCHING, CIRCLING, RETURNING, ENTERING
 	U8   formationState;		// LOCKED, BREAKING, LOOSE, FORMING
 	U8   kamikazeTimer;		// time to wait until self-destruct (when target and owner are dead)

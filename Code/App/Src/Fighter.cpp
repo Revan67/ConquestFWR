@@ -914,7 +914,7 @@ void Fighter::LaunchFighter (const class TRANSFORM & orientation, const class Ve
 		
 	IBaseObject::MDATA mdata;
 	if (owner.Ptr()->GetMissionData(mdata))
-		race = mdata.pSaveData->race;
+		race = (M_RACE)mdata.pSaveData->race;
 	formationType = (race == M_MANTIS) ? FT_MANTIS_PATROL : FT_HUMAN_PATROL;
 	//
 	// reset kamikazi data
@@ -955,7 +955,7 @@ U32 Fighter::GetFighterSupplies (void) const
 //
 FighterState Fighter::GetState (void) const
 {
-	return state;
+	return (FighterState)state;
 }
 //---------------------------------------------------------------------------
 //
