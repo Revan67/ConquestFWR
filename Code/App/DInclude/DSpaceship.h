@@ -42,6 +42,8 @@
 struct ROCKING_DATA : DYNAMICS_DATA
 {
 	SINGLE rockLinearMax, rockAngMax;			// max distance to rock (meters, radians)
+	SINGLE rockLinearAccel, rockAngAccel;		// VS6 binary layout; used in rocking physics
+	SINGLE _rock_vs6[6];						// VS6 binary: 56 bytes total (DYNAMICS_DATA=16 + own=40)
 };
 //----------------------------------------------------------------
 //
