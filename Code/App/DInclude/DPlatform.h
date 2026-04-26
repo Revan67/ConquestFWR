@@ -53,7 +53,7 @@ struct BASE_PLATFORM_DATA : BASIC_DATA
 	char explosionType[GT_PATH];
 	char shieldHitType[GT_PATH];
 	char ambient_animation[GT_PATH];
-	char ambientEffect[GT_PATH];
+	// ambientEffect not in VS6 binary; size/bMoonPlatform not in binary (sizeof==560, slotsNeeded at 476)
 	SINGLE mass;
 	SINGLE_TECHNODE techActive;
 	struct SHIELD_DATA shield;
@@ -63,8 +63,6 @@ struct BASE_PLATFORM_DATA : BASIC_DATA
 	U32 metalStorage;
 	U32 gasStorage;
 	U32 crewStorage;
-	U8  size;
-	bool bMoonPlatform:1;
 };
 //----------------------------------------------------------------
 //

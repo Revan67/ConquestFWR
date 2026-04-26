@@ -27,7 +27,7 @@
 //----------------------------------------------------------------
 //
 
-#define MAX_EXTENSIONS 5	// VS6 binary: 5 slots × 32 bytes = 160 bytes before explosionType
+#define MAX_EXTENSIONS 4	// VS6 binary: 4 slots; sizeof(BASE_PLATFORM_DATA)=560, slotsNeeded at 476
 
 struct EXTENSION_DATA
 {

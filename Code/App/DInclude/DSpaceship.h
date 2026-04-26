@@ -158,7 +158,7 @@ struct BASE_SPACESHIP_DATA : BASIC_DATA
 	char explosionType[GT_PATH];
 	char trailType[GT_PATH];
 	char ambient_animation[GT_PATH];
-	char ambientEffect[GT_PATH];
+	// ambientEffect not in VS6 binary; set to NULL in loadSpaceshipArchetype
 	ENGINE_GLOW_DATA engineGlow;
 	BLINKER_DATA blinkers;
 	SHIELD_DATA shield;
