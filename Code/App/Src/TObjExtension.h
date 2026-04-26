@@ -248,9 +248,17 @@ void ObjectExtension< Base >::initExtension (const EXTENDINITINFO & data)
 		{
 			BT_EXTENSION_INFO * exData = (BT_EXTENSION_INFO *) ARCHLIST->GetArchetypeData(data.pData->extension[exCount].extensionName);
 
+			if (!exData) {
+				extension[exCount].isArch = false;
+				extension[exCount].addIndex = INVALID_ARCHETYPE_INDEX;
+				extension[exCount].removeIndex = INVALID_ARCHETYPE_INDEX;
+				continue;
+			}
+
 #ifdef _DEBUG
 			BASE_PLATFORM_DATA * bdata = (BASE_PLATFORM_DATA *) ARCHLIST->GetArchetypeData(exData->archetypeName);
-			extension[exCount].fileName = bdata->fileName;
+			if (bdata)
+				extension[exCount].fileName = bdata->fileName;
 #endif
 
 			if(exData->archetypeName[0])
@@ -260,13 +268,14 @@ void ObjectExtension< Base >::initExtension (const EXTENDINITINFO & data)
 			else
 				extension[exCount].isArch = false;
 			if(exData->addChildName[0])
-			{	
+			{
 				bool found = false;
 				for(U32 i = 0; i < exCount && (!found); ++i)
 				{
 					if(extension[i].addIndex != INVALID_INSTANCE_INDEX)
 					{
-						if(strcmp(exData->addChildName,ENGINE->get_instance_part_name(extension[i].addIndex)) == 0)
+						const char* _pn1 = ENGINE->get_instance_part_name(extension[i].addIndex);
+						if(_pn1 && strcmp(exData->addChildName,_pn1) == 0)
 						{
 							found = true;
 							extension[exCount].bDuplicateAdd = true;
@@ -281,7 +290,7 @@ void ObjectExtension< Base >::initExtension (const EXTENDINITINFO & data)
 				{
 					if((extension[exCount].addIndex = ENGINE->get_instance_child_next(instanceIndex,0,INVALID_INSTANCE_INDEX)) != INVALID_ARCHETYPE_INDEX)
 					{
-						while(strcmp(exData->addChildName,ENGINE->get_instance_part_name(extension[exCount].addIndex))!=0)
+						while([&](){ const char* _p = ENGINE->get_instance_part_name(extension[exCount].addIndex); return !_p || strcmp(exData->addChildName,_p)!=0; }())
 						{
 							extension[exCount].addIndex = ENGINE->get_instance_child_next(instanceIndex,0,extension[exCount].addIndex);
 							if(extension[exCount].addIndex == INVALID_ARCHETYPE_INDEX)
@@ -309,7 +318,8 @@ void ObjectExtension< Base >::initExtension (const EXTENDINITINFO & data)
 				{
 					if(extension[i].removeIndex != INVALID_INSTANCE_INDEX)
 					{
-						if(strcmp(exData->removeChildName,ENGINE->get_instance_part_name(extension[i].removeIndex)) == 0)
+						const char* _pn3 = ENGINE->get_instance_part_name(extension[i].removeIndex);
+						if(_pn3 && strcmp(exData->removeChildName,_pn3) == 0)
 						{
 							extension[exCount].bDuplicateRemove = true;
 							extension[i].bDuplicateRemove = true;
@@ -324,7 +334,7 @@ void ObjectExtension< Base >::initExtension (const EXTENDINITINFO & data)
 				{
 					if((extension[exCount].removeIndex = ENGINE->get_instance_child_next(instanceIndex,0,INVALID_INSTANCE_INDEX)) != INVALID_ARCHETYPE_INDEX)
 					{
-						while(strcmp(exData->removeChildName,ENGINE->get_instance_part_name(extension[exCount].removeIndex))!=0)
+						while([&](){ const char* _p = ENGINE->get_instance_part_name(extension[exCount].removeIndex); return !_p || strcmp(exData->removeChildName,_p)!=0; }())
 						{
 							extension[exCount].removeIndex = ENGINE->get_instance_child_next(instanceIndex,0,extension[exCount].removeIndex);
 							if(extension[exCount].removeIndex == INVALID_ARCHETYPE_INDEX)
@@ -477,12 +487,12 @@ void ObjectExtension< Base >::SetUpgrade(U32 level)
 				pArchetype = ARCHLIST->LoadArchetype(exData->archetypeName);
 				CQASSERT(pArchetype);
 				ARCHLIST->AddRef(pArchetype, OBJREFNAME);
-				pInitData = &(((BASE_PLATFORM_DATA *) ARCHLIST->GetArchetypeData(pArchetype))->missionData);
+				pInitData = reinterpret_cast<const MISSION_DATA *>(&(((BASE_PLATFORM_DATA *) ARCHLIST->GetArchetypeData(pArchetype))->missionData));
 				MGlobals::UpgradeMissionObj(this);
 //				hullPoints += hullPointsMax-oldHull;
 				if(supplies > supplyPointsMax)
 					supplies = supplyPointsMax;
-				mObjClass = pInitData->mObjClass;
+				mObjClass = (M_OBJCLASS)pInitData->mObjClass;
 
 				EXTENDINITINFO * iInfo = static_cast<EXTENDINITINFO *>(ARCHLIST->GetArchetypeHandle(pArchetype));
 				FRAME_upgrade(*iInfo);

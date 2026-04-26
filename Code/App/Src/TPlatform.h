@@ -1135,6 +1135,7 @@ void Platform<SaveStruct,InitStruct>::RevealFog (const U32 currentSystem)
 template <class SaveStruct, class InitStruct>
 void Platform<SaveStruct,InitStruct>::CastVisibleArea (void)
 {
+	if (playerID == 0) return; // neutral/no-race unit: no player, no fog visibility
 	const U32 mask = MGlobals::GetAllyMask(playerID);
 	SetVisibleToAllies(mask);
 
@@ -1492,6 +1493,8 @@ void Platform<SaveStruct,InitStruct>::detachChildren(U32 playerIndex)
 		{
 			BT_EXTENSION_INFO * exData = (BT_EXTENSION_INFO *) ARCHLIST->GetArchetypeData(initSt->pData->extension[exCount].extensionName);
 
+			if(!exData) continue;
+
 			if(exData->addChildName[0])
 			{	
 				bool found = false;
@@ -1499,7 +1502,8 @@ void Platform<SaveStruct,InitStruct>::detachChildren(U32 playerIndex)
 				{
 					if(shadowExt[i].addIndex != INVALID_INSTANCE_INDEX)
 					{
-						if(strcmp(exData->addChildName,ENGINE->get_instance_part_name(shadowExt[i].addIndex)) == 0)
+						const char* _pn1 = ENGINE->get_instance_part_name(shadowExt[i].addIndex);
+						if(_pn1 && strcmp(exData->addChildName,_pn1) == 0)
 						{
 							found = true;
 							shadowExt[exCount].bDuplicateAdd = true;
@@ -1514,7 +1518,7 @@ void Platform<SaveStruct,InitStruct>::detachChildren(U32 playerIndex)
 				{
 					if((shadowExt[exCount].addIndex = ENGINE->get_instance_child_next(instIndexShadowList,0,INVALID_INSTANCE_INDEX)) != INVALID_ARCHETYPE_INDEX)
 					{
-						while(strcmp(exData->addChildName,ENGINE->get_instance_part_name(shadowExt[exCount].addIndex))!=0)
+						while([&](){ const char* _p = ENGINE->get_instance_part_name(shadowExt[exCount].addIndex); return !_p || strcmp(exData->addChildName,_p)!=0; }())
 						{
 							shadowExt[exCount].addIndex = ENGINE->get_instance_child_next(instIndexShadowList,0,shadowExt[exCount].addIndex);
 							if(shadowExt[exCount].addIndex == INVALID_ARCHETYPE_INDEX)
@@ -1542,7 +1546,8 @@ void Platform<SaveStruct,InitStruct>::detachChildren(U32 playerIndex)
 				{
 					if(shadowExt[i].removeIndex != INVALID_INSTANCE_INDEX)
 					{
-						if(strcmp(exData->removeChildName,ENGINE->get_instance_part_name(shadowExt[i].removeIndex)) == 0)
+						const char* _pn3 = ENGINE->get_instance_part_name(shadowExt[i].removeIndex);
+						if(_pn3 && strcmp(exData->removeChildName,_pn3) == 0)
 						{
 							shadowExt[exCount].bDuplicateRemove = true;
 							shadowExt[i].bDuplicateRemove = true;
@@ -1557,7 +1562,7 @@ void Platform<SaveStruct,InitStruct>::detachChildren(U32 playerIndex)
 				{
 					if((shadowExt[exCount].removeIndex = ENGINE->get_instance_child_next(instIndexShadowList,0,INVALID_INSTANCE_INDEX)) != INVALID_ARCHETYPE_INDEX)
 					{
-						while(strcmp(exData->removeChildName,ENGINE->get_instance_part_name(shadowExt[exCount].removeIndex))!=0)
+						while([&](){ const char* _p = ENGINE->get_instance_part_name(shadowExt[exCount].removeIndex); return !_p || strcmp(exData->removeChildName,_p)!=0; }())
 						{
 							shadowExt[exCount].removeIndex = ENGINE->get_instance_child_next(instIndexShadowList,0,shadowExt[exCount].removeIndex);
 							if(shadowExt[exCount].removeIndex == INVALID_ARCHETYPE_INDEX)
@@ -3010,7 +3015,7 @@ bool arch_callback( ARCHETYPE_INDEX parent_arch_index, ARCHETYPE_INDEX child_arc
 //-----------------------Platform archetype loading-------------------------//
 //--------------------------------------------------------------------------//
 //
-template <class BT_TYPE> 
+template <class BT_TYPE>
 bool PLATFORM_INIT<BT_TYPE>::loadPlatformArchetype (BT_TYPE * data, PARCHETYPE _pArchetype)		// load archetype data
 {
 	bool result = false;
@@ -3020,8 +3025,8 @@ bool PLATFORM_INIT<BT_TYPE>::loadPlatformArchetype (BT_TYPE * data, PARCHETYPE _
 
 	meshArch = MESHMAN->CreateMeshArch(data->fileName);
 
-	if(data->ambientEffect[0])
-		ambientEffect = EFFECTPLAYER->LoadEffect(data->ambientEffect);
+	// ambientEffect field removed from BASE_PLATFORM_DATA (not in VS6 binary); no ambient effect loaded from archetype data.
+	ambientEffect = NULL;
 	
 	//try to determine the ship's footprint size for usage by ObjGen
 	if (ENGINE->is_archetype_compound(meshArch->GetEngineArchtype()))
@@ -3041,8 +3046,8 @@ bool PLATFORM_INIT<BT_TYPE>::loadPlatformArchetype (BT_TYPE * data, PARCHETYPE _
 	if (data->explosionType[0])
 	{
 		pExplosionType = ARCHLIST->LoadArchetype(data->explosionType);
-		CQASSERT(pExplosionType);
-		ARCHLIST->AddRef(pExplosionType, OBJREFNAME);
+		if (pExplosionType)
+			ARCHLIST->AddRef(pExplosionType, OBJREFNAME);
 	}
 	if (data->shieldHitType[0])
 	{
@@ -3063,11 +3068,10 @@ bool PLATFORM_INIT<BT_TYPE>::loadPlatformArchetype (BT_TYPE * data, PARCHETYPE _
 		{
 			damageAnimArch = ANIM2D->create_archetype(objFile);
 		}
-		else 
+		else
 		{
-			CQFILENOTFOUND(fdesc.lpFileName);
-			damageAnimArch =0;
-			goto Done;
+			// Non-fatal: damage animation is cosmetic; continue without it
+			damageAnimArch = 0;
 		}
 	}
 	
@@ -3083,9 +3087,12 @@ bool PLATFORM_INIT<BT_TYPE>::loadPlatformArchetype (BT_TYPE * data, PARCHETYPE _
 
 	if (data->blinkers.light_script[0])
 	{
-		blink_arch = CreateBlinkersArchetype(data->blinkers.light_script,archIndex);
+		const char *blink_ext = strrchr(data->blinkers.light_script, '.');
+		if (blink_ext && (_stricmp(blink_ext, ".ini") == 0 || _stricmp(blink_ext, ".lsc") == 0))
+			blink_arch = CreateBlinkersArchetype(data->blinkers.light_script, archIndex);
 		fname = data->blinkers.textureName;
-		blinkTex = TMANAGER->CreateTextureFromFile(fname, TEXTURESDIR, DA::TGA, PF_4CC_DAA4);
+		if (fname && fname[0])
+			blinkTex = TMANAGER->CreateTextureFromFile(fname, TEXTURESDIR, DA::TGA, PF_4CC_DAA4);
 	}
 
 	switch (pData->missionData.race)

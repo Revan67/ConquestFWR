@@ -320,7 +320,7 @@ extern U32 shipMapTexRef;
 // SpaceShip archetype data class, defined in DSpaceship.h
 //-------------------------------------------------------------------------
 //
-template <class BT_TYPE> 
+template <class BT_TYPE>
 bool SPACESHIP_INIT<BT_TYPE>::loadSpaceshipArchetype (BT_TYPE * _pData, PARCHETYPE _pArchetype)		// load archetype data
 {
 	bool result=false;
@@ -330,8 +330,8 @@ bool SPACESHIP_INIT<BT_TYPE>::loadSpaceshipArchetype (BT_TYPE * _pData, PARCHETY
 
 	meshArch = MESHMAN->CreateMeshArch(_pData->fileName);
 	
-	if(pData->ambientEffect[0])
-		ambientEffect = EFFECTPLAYER->LoadEffect(pData->ambientEffect);
+	// ambientEffect field removed from BASE_SPACESHIP_DATA (not in VS6 binary); no ambient effect loaded from archetype data.
+	ambientEffect = NULL;
 
 	//try to determine the ship's footprint size for usage by ObjGen
 	if (ENGINE->is_archetype_compound(archIndex))
@@ -352,8 +352,8 @@ bool SPACESHIP_INIT<BT_TYPE>::loadSpaceshipArchetype (BT_TYPE * _pData, PARCHETY
 	if (pData->explosionType[0])
 	{
 		pExplosionType = ARCHLIST->LoadArchetype(pData->explosionType);
-		CQASSERT(pExplosionType);
-		ARCHLIST->AddRef(pExplosionType, OBJREFNAME);
+		if (pExplosionType)
+			ARCHLIST->AddRef(pExplosionType, OBJREFNAME);
 	}
 
 	pSparkBlast = ARCHLIST->LoadArchetype("BLAST!!Spark");
@@ -395,11 +395,10 @@ bool SPACESHIP_INIT<BT_TYPE>::loadSpaceshipArchetype (BT_TYPE * _pData, PARCHETY
 		{
 			damageAnimArch = ANIM2D->create_archetype(objFile);
 		}
-		else 
+		else
 		{
-			CQFILENOTFOUND(fdesc.lpFileName);
-			damageAnimArch =0;
-			return 0;
+			// Non-fatal: damage animation is cosmetic; continue without it
+			damageAnimArch = 0;
 		}
 	}
 
@@ -411,7 +410,7 @@ bool SPACESHIP_INIT<BT_TYPE>::loadSpaceshipArchetype (BT_TYPE * _pData, PARCHETY
 			fdesc.lpFileName = "SH_Terran.anm";
 			break;
 		case M_MANTIS:
-			fdesc.lpFileName = "SH_Mantis.anm";		
+			fdesc.lpFileName = "SH_Mantis.anm";
 			break;
 		default:
 		case M_SOLARIAN:
@@ -424,11 +423,10 @@ bool SPACESHIP_INIT<BT_TYPE>::loadSpaceshipArchetype (BT_TYPE * _pData, PARCHETY
 		{
 			shieldAnimArch = ANIM2D->create_archetype(objFile);
 		}
-		else 
+		else
 		{
-			CQFILENOTFOUND(fdesc.lpFileName);
-			shieldAnimArch =0;
-			return 0;
+			// Non-fatal: shield animation is cosmetic; continue without it
+			shieldAnimArch = 0;
 		}
 	}
 
@@ -439,11 +437,10 @@ bool SPACESHIP_INIT<BT_TYPE>::loadSpaceshipArchetype (BT_TYPE * _pData, PARCHETY
 		{
 			shieldFizzAnimArch = ANIM2D->create_archetype(objFile);
 		}
-		else 
+		else
 		{
-			CQFILENOTFOUND(fdesc.lpFileName);
-			shieldFizzAnimArch =0;
-			return 0;
+			// Non-fatal: shield fizz animation is cosmetic; continue without it
+			shieldFizzAnimArch = 0;
 		}
 	}
 
@@ -498,12 +495,12 @@ bool SPACESHIP_INIT<BT_TYPE>::loadSpaceshipArchetype (BT_TYPE * _pData, PARCHETY
 
 	if (pData->blinkers.light_script[0])
 	{
-		blink_arch = CreateBlinkersArchetype(pData->blinkers.light_script,archIndex);
+		const char *blink_ext = strrchr(pData->blinkers.light_script, '.');
+		if (blink_ext && (_stricmp(blink_ext, ".ini") == 0 || _stricmp(blink_ext, ".lsc") == 0))
+			blink_arch = CreateBlinkersArchetype(pData->blinkers.light_script, archIndex);
 		fname = pData->blinkers.textureName;
-		if (fname[0])
-		{
+		if (fname && fname[0])
 			blinkTex = TMANAGER->CreateTextureFromFile(fname, TEXTURESDIR, DA::TGA, PF_4CC_DAA4);
-		}
 	}
 
 	fname = pData->cloak.cloakTex;
@@ -546,7 +543,6 @@ bool SPACESHIP_INIT<BT_TYPE>::loadSpaceshipArchetype (BT_TYPE * _pData, PARCHETY
 	// preload some sound effectds
 
 	SFXMANAGER->Preload(pData->shield.sfx);
-	SFXMANAGER->Preload(pData->shield.fizzOut);
 
 	if(shipMapTex == -1)
 	{
