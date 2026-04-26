@@ -4693,6 +4693,8 @@ struct TECHNODE
 struct ROCKING_DATA : DYNAMICS_DATA
 {
 	SINGLE rockLinearMax, rockAngMax;			
+	SINGLE rockLinearAccel, rockAngAccel;		
+	SINGLE _rock_vs6[6];						
 };
 
 
@@ -4807,7 +4809,7 @@ struct BASE_SPACESHIP_DATA : BASIC_DATA
 	char explosionType[32];
 	char trailType[32];
 	char ambient_animation[32];
-	char ambientEffect[32];
+	
 	ENGINE_GLOW_DATA engineGlow;
 	BLINKER_DATA blinkers;
 	SHIELD_DATA shield;
@@ -5476,13 +5478,13 @@ struct BASE_PLATFORM_DATA : BASIC_DATA
 	PLATFORMCLASS type;
     char fileName[32];
 	MISSION_DATA_BIN missionData;
-	EXTENSION_DATA extension[4];
+	EXTENSION_DATA extension[5];
 	U8 extensionBits;
 	S8 extensionLevel;
 	char explosionType[32];
 	char shieldHitType[32];
 	char ambient_animation[32];
-	char ambientEffect[32];
+	
 	SINGLE mass;
 	SINGLE_TECHNODE techActive;
 	struct SHIELD_DATA shield;
@@ -5492,9 +5494,9 @@ struct BASE_PLATFORM_DATA : BASIC_DATA
 	U32 metalStorage;
 	U32 gasStorage;
 	U32 crewStorage;
-	U8  size;
-	bool bMoonPlatform:1;
 };
+static_assert(sizeof(BASE_PLATFORM_DATA) == 560, "BASE_PLATFORM_DATA binary layout mismatch");
+static_assert(offsetof(BASE_PLATFORM_DATA, slotsNeeded) == 476, "BASE_PLATFORM_DATA::slotsNeeded offset mismatch");
 
 
 
@@ -6530,9 +6532,9 @@ struct BASE_FIGHTER_SAVELOAD
 	S32 patrolTime:16;
 	S32 generalCounter;
 	Vector kamikaziTarget;	
-	FighterState   state:8;
-	FormationType  formationType:8;
-	M_RACE race:8;
+	unsigned int state:8;        
+	unsigned int formationType:8; 
+	unsigned int race:8;         
 	U8  patrolState;		
 	U8   formationState;		
 	U8   kamikazeTimer;		
@@ -14590,13 +14592,15 @@ namespace CQGAMETYPES
 
 	struct SLOT
 	{
-		TYPE type:3;
-		COMP_CHALANGE compChalange:4;
-		STATE state:3;
-		RACE race:4;
-		COLOR color:5;
-		TEAM team:4;
-		U32  zoneSeat:3;
+		
+		
+		unsigned int type:3;
+		unsigned int compChalange:4;
+		unsigned int state:3;
+		unsigned int race:4;
+		unsigned int color:5;
+		unsigned int team:4;
+		unsigned int zoneSeat:3;
 		DPID dpid;			
 	};
 
@@ -14664,20 +14668,22 @@ namespace CQGAMETYPES
 	struct OPTIONS
 	{
 		U32 version;
-		GAMETYPE gameType:3;
-		S32 gameSpeed:5;	
-		U32 regenOn:1;
-		U32 spectatorsOn:1;
-		U32 lockDiplomacyOn:1;
-		U32 numSystems:5;
-		MONEY money:2;
-		MAPTYPE mapType:2;
-		RANDOM_TEMPLATE templateType:2;
-		MAPSIZE mapSize:2;
-		TERRAIN terrain:2;
-		STARTING_UNITS units:2;
-		VISIBILITYMODE visibility:2;
-		COMMANDLIMIT  commandLimit:2;
+		
+		
+		int gameType:3;
+		int gameSpeed:5;	
+		int regenOn:1;
+		int spectatorsOn:1;
+		int lockDiplomacyOn:1;
+		int numSystems:5;
+		int money:2;
+		int mapType:2;
+		int templateType:2;
+		int mapSize:2;
+		int terrain:2;
+		int units:2;
+		int visibility:2;
+		int commandLimit:2;
 
 
 

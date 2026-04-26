@@ -1071,7 +1071,7 @@ BOOL32 Planetoid::TestSlotHighlight (const S32 &mouseX,const S32 &mouseY)
 	if(BUILDARCHEID)
 	{
 		BASE_PLATFORM_DATA * data = (BASE_PLATFORM_DATA *)ARCHLIST->GetArchetypeData(BUILDARCHEID);
-		if(renderArch1->bMoon && data->bMoonPlatform)
+		if(renderArch1->bMoon && false) // bMoonPlatform removed
 		{
 			if(bMouseOver)
 			{
@@ -1092,7 +1092,7 @@ BOOL32 Planetoid::TestSlotHighlight (const S32 &mouseX,const S32 &mouseY)
 			renderHighlightSlot = highlightedSlot;
 			return bHasAllHighlightSlots;
 		}
-		else if((!(renderArch1->bMoon)) && (!(data->bMoonPlatform)))
+		else if(!(renderArch1->bMoon))
 		{
 			highlightedSlot = 0;
 			U32 centerSlot = -1;
@@ -2062,14 +2062,14 @@ U32 Planetoid::FindBestSlot(PARCHETYPE buildType, const Vector * preferedLoc)
 {
 	BASE_PLATFORM_DATA * data = (BASE_PLATFORM_DATA *)ARCHLIST->GetArchetypeData(buildType);
 	U32 bestSlot = 0;
-	if(data->bMoonPlatform && renderArch1->bMoon)
+	if(false && renderArch1->bMoon) // bMoonPlatform removed
 	{
 		if ( (slotUser[0] == 0))
 		{
 			return 0x00000001;
 		}
 	}
-	else if((!(data->bMoonPlatform)) && (!(renderArch1->bMoon)))
+	else if(!(renderArch1->bMoon))
 	{
 		SINGLE bestDistance = 0;
 		U32 numSlots = data->slotsNeeded;

@@ -64,6 +64,8 @@ struct BASE_PLATFORM_DATA : BASIC_DATA
 	U32 gasStorage;
 	U32 crewStorage;
 };
+static_assert(sizeof(BASE_PLATFORM_DATA) == 560, "BASE_PLATFORM_DATA binary layout mismatch");
+static_assert(offsetof(BASE_PLATFORM_DATA, slotsNeeded) == 476, "BASE_PLATFORM_DATA::slotsNeeded offset mismatch");
 //----------------------------------------------------------------
 //
 #ifndef _ADB

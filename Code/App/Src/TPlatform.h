@@ -869,7 +869,7 @@ bool Platform<SaveStruct,InitStruct>::IsDeepSpacePlatform ()
 template <class SaveStruct, class InitStruct>
 bool Platform<SaveStruct,InitStruct>::IsMoonPlatform ()
 {
-	return ((BASE_PLATFORM_DATA *)(ARCHLIST->GetArchetypeData(pArchetype)))->bMoonPlatform;
+	return false; // bMoonPlatform removed from BASE_PLATFORM_DATA (not in VS6 binary)
 }
 //---------------------------------------------------------------------------
 //
