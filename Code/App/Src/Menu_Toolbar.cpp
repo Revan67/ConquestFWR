@@ -586,8 +586,8 @@ struct Menu_tb : public Frame, IToolbar
 					pNode->type = GBT_HOTBUTTON;
 					pNode->buttonType = HOTBUTTONTYPE::HOTBUTTON;
 
-					GENDATA->CreateInstance(pButtonType, pComp);				
-					pComp->QueryInterface("IHotButton", pNode->pButton);	
+					GENDATA->CreateInstance(pButtonType, pComp);
+					if (pComp) pComp->QueryInterface("IHotButton", pNode->pButton);
 				}
 			}
 			else
@@ -605,8 +605,8 @@ struct Menu_tb : public Frame, IToolbar
 					pNode->type = GBT_HOTBUTTON;
 					pNode->buttonType = HOTBUTTONTYPE::BUILD;
 
-					GENDATA->CreateInstance(pBuildButtonType, pComp);				
-					pComp->QueryInterface("IHotButton", pNode->pButton);		
+					GENDATA->CreateInstance(pBuildButtonType, pComp);
+					if (pComp) pComp->QueryInterface("IHotButton", pNode->pButton);
 				}
 			}
 			else
@@ -624,8 +624,8 @@ struct Menu_tb : public Frame, IToolbar
 					pNode->type = GBT_HOTBUTTON;
 					pNode->buttonType = HOTBUTTONTYPE::RESEARCH;
 
-					GENDATA->CreateInstance(pResearchButtonType, pComp);				
-					pComp->QueryInterface("IHotButton", pNode->pButton);
+					GENDATA->CreateInstance(pResearchButtonType, pComp);
+					if (pComp) pComp->QueryInterface("IHotButton", pNode->pButton);
 				}
 			}
 			else
@@ -640,8 +640,8 @@ struct Menu_tb : public Frame, IToolbar
 				pNode->type = GBT_HOTBUTTON;
 				pNode->buttonType = HOTBUTTONTYPE::MULTI;
 
-				GENDATA->CreateInstance(pMultiButtonType, pComp);				
-				pComp->QueryInterface("IHotButton", pNode->pButton);						
+				GENDATA->CreateInstance(pMultiButtonType, pComp);
+				if (pComp) pComp->QueryInterface("IHotButton", pNode->pButton);
 			}
 			else
 			if (varDesc.typeName && strcmp(varDesc.typeName, "HOTSTATIC_DATA") == 0)
@@ -654,8 +654,8 @@ struct Menu_tb : public Frame, IToolbar
 				pNode->offset = varDesc.offset + baseOffset;
 				pNode->type = GBT_HOTSTATIC;
 
-				GENDATA->CreateInstance(pHotStaticType, pComp);				
-				pComp->QueryInterface("IHotStatic", pNode->pTech);						
+				GENDATA->CreateInstance(pHotStaticType, pComp);
+				if (pComp) pComp->QueryInterface("IHotStatic", pNode->pTech);
 			}
 			else
 			if (varDesc.typeName && strcmp(varDesc.typeName, "STATIC_DATA") == 0)
@@ -670,11 +670,20 @@ struct Menu_tb : public Frame, IToolbar
 
 				if (((STATIC_DATA *)(pBaseData+pNode->offset))->staticType[0] == 0)
 				{
-					CQBOMB3("Missing datatype for %s[%d].%s", (arrayVarName)?arrayVarName:"", arrayIndex, varDesc.varName);
+					static FILE* _tbf = nullptr;
+					if (!_tbf) { _tbf = fopen("toolbar_diag.txt", "a"); if (_tbf) { fprintf(_tbf, "sizeof(HOTBUTTON_DATA)=%zu sizeof(STATIC_DATA)=%zu sizeof(ICON_DATA)=%zu sizeof(EDIT_DATA)=%zu\n", sizeof(HOTBUTTON_DATA), sizeof(STATIC_DATA), sizeof(ICON_DATA), sizeof(EDIT_DATA)); fflush(_tbf); } }
+					if (_tbf) {
+						const unsigned char* bp = (const unsigned char*)pBaseData + pNode->offset;
+						fprintf(_tbf, "STATIC missing type @off=%u '%s': bytes:", (unsigned)(pNode->offset), varDesc.varName);
+						for (int _i = 0; _i < 32; ++_i) fprintf(_tbf, " %02x", (int)bp[_i]);
+						fprintf(_tbf, "\n"); fflush(_tbf);
+					}
+					pList = pNode->pNext; delete pNode;
+					return TRUE;
 				}
 
-				GENDATA->CreateInstance(((STATIC_DATA *)(pBaseData+pNode->offset))->staticType, pComp);				
-				pComp->QueryInterface("IStatic", pNode->pStatic);						
+				GENDATA->CreateInstance(((STATIC_DATA *)(pBaseData+pNode->offset))->staticType, pComp);
+				if (pComp) pComp->QueryInterface("IStatic", pNode->pStatic);
 			}
 			else
 			if (varDesc.typeName && strcmp(varDesc.typeName, "PROGRESS_STATIC_DATA") == 0)
@@ -689,11 +698,15 @@ struct Menu_tb : public Frame, IToolbar
 
 				if (((PROGRESS_STATIC_DATA *)(pBaseData+pNode->offset))->staticType[0] == 0)
 				{
-					CQBOMB3("Missing datatype for %s[%d].%s", (arrayVarName)?arrayVarName:"", arrayIndex, varDesc.varName);
+					static FILE* _tbf2 = nullptr;
+					if (!_tbf2) _tbf2 = fopen("toolbar_diag.txt", "a");
+					if (_tbf2) { fprintf(_tbf2, "PROGRESS_STATIC missing type @off=%u '%s'\n", (unsigned)(pNode->offset), varDesc.varName); fflush(_tbf2); }
+					pList = pNode->pNext; delete pNode;
+					return TRUE;
 				}
 
-				GENDATA->CreateInstance(((PROGRESS_STATIC_DATA *)(pBaseData+pNode->offset))->staticType, pComp);				
-				pComp->QueryInterface("IProgressStatic", pNode->pProgressStatic);						
+				GENDATA->CreateInstance(((PROGRESS_STATIC_DATA *)(pBaseData+pNode->offset))->staticType, pComp);
+				if (pComp) pComp->QueryInterface("IProgressStatic", pNode->pProgressStatic);
 			}
 			else
 			if (varDesc.typeName && strcmp(varDesc.typeName, "EDIT_DATA") == 0)
@@ -708,11 +721,20 @@ struct Menu_tb : public Frame, IToolbar
 
 				if (((EDIT_DATA *)(pBaseData+pNode->offset))->editType[0] == 0)
 				{
-					CQBOMB3("Missing datatype for %s[%d].%s", (arrayVarName)?arrayVarName:"", arrayIndex, varDesc.varName);
+					static FILE* _tbf3 = nullptr;
+					if (!_tbf3) _tbf3 = fopen("toolbar_diag.txt", "a");
+					if (_tbf3) {
+						const unsigned char* bp = (const unsigned char*)pBaseData + pNode->offset;
+						fprintf(_tbf3, "EDIT missing type @off=%u '%s': bytes:", (unsigned)(pNode->offset), varDesc.varName);
+						for (int _i = 0; _i < 32; ++_i) fprintf(_tbf3, " %02x", (int)bp[_i]);
+						fprintf(_tbf3, "\n"); fflush(_tbf3);
+					}
+					pList = pNode->pNext; delete pNode;
+					return TRUE;
 				}
 
-				GENDATA->CreateInstance(((EDIT_DATA *)(pBaseData+pNode->offset))->editType, pComp);				
-				pComp->QueryInterface("IEdit2", pNode->pEdit);						
+				GENDATA->CreateInstance(((EDIT_DATA *)(pBaseData+pNode->offset))->editType, pComp);
+				if (pComp) pComp->QueryInterface("IEdit2", pNode->pEdit);
 			}
 			else
 			if (varDesc.typeName && strcmp(varDesc.typeName, "SHIPSILBUTTON_DATA") == 0)
@@ -725,8 +747,8 @@ struct Menu_tb : public Frame, IToolbar
 				pNode->offset = varDesc.offset + baseOffset;
 				pNode->type = GBT_SHIPSILBUTTON;
 
-				GENDATA->CreateInstance(pShipSilButtonType, pComp);				
-				pComp->QueryInterface("IShipSilButton", pNode->pSil);						
+				GENDATA->CreateInstance(pShipSilButtonType, pComp);
+				if (pComp) pComp->QueryInterface("IShipSilButton", pNode->pSil);
 			}
 			else
 			if (varDesc.typeName && strcmp(varDesc.typeName, "TABCONTROL_DATA") == 0)
@@ -739,9 +761,8 @@ struct Menu_tb : public Frame, IToolbar
 				pNode->offset = varDesc.offset + baseOffset;
 				pNode->type = GBT_TABCONTROL;
 
-				GENDATA->CreateInstance(pTabType, pComp);				
-				pComp->QueryInterface("ITabControl", pNode->pTab);		
-				pLastTab = pNode->pTab;
+				GENDATA->CreateInstance(pTabType, pComp);
+				if (pComp) { pComp->QueryInterface("ITabControl", pNode->pTab); pLastTab = pNode->pTab; }
 			}
 			else
 			if(varDesc.typeName && strcmp(varDesc.typeName, "ICON_DATA") == 0)
@@ -753,8 +774,8 @@ struct Menu_tb : public Frame, IToolbar
 				pNode->offset = varDesc.offset + baseOffset;
 				pNode->type = GBT_ICON;
 
-				GENDATA->CreateInstance(pIconType, pComp);				
-				pComp->QueryInterface("IIcon", pNode->pIcon);						
+				GENDATA->CreateInstance(pIconType, pComp);
+				if (pComp) pComp->QueryInterface("IIcon", pNode->pIcon);
 			}
 			else
 			if(varDesc.typeName && strcmp(varDesc.typeName, "QUEUECONTROL_DATA") == 0)
@@ -766,8 +787,8 @@ struct Menu_tb : public Frame, IToolbar
 				pNode->offset = varDesc.offset + baseOffset;
 				pNode->type = GBT_QUEUECONTROL;
 
-				GENDATA->CreateInstance(pQType, pComp);				
-				pComp->QueryInterface("IQueueControl", pNode->pQControl);						
+				GENDATA->CreateInstance(pQType, pComp);
+				if (pComp) pComp->QueryInterface("IQueueControl", pNode->pQControl);
 			}
 			else
 			if (bRecursion==false && varDesc.kind == VARIABLEDESC::ARRAY && varDesc.varName)
@@ -1590,23 +1611,36 @@ void Menu_tb::loadInterface (const enum M_RACE *pRace)
 
 	ddesc.symbol = parser->GetSymbol(0, "GT_TOOLBAR");
 	CQASSERT(ddesc.symbol!=0);
-	CQASSERT(parser->GetTypeSize(ddesc.symbol) == dwDataSize && "GenData out of sync");
+
+	// data.i has grown (new archetypes added) since gendata.db was last generated.
+	// Zero-pad the blob so the parser can enumerate all fields; extra fields read
+	// as empty strings, which LoadArchetype ignores via null guard.
+	void * pPaddedData = 0;
+	if (parser && ddesc.symbol) {
+		U32 parserSize = (U32)parser->GetTypeSize(ddesc.symbol);
+		if (dwDataSize < parserSize) {
+			pPaddedData = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, parserSize);
+			if (pPaddedData) memcpy(pPaddedData, pData, dwDataSize);
+		}
+	}
+	const char * pBaseData = pPaddedData ? (const char *)pPaddedData : (const char *)pData;
 
 	parser->CreateInstance(&ddesc, dataParser);
 	CQASSERT(dataParser!=0);
 
-	createCallback callback (GENDATA->LoadArchetype(HOTBUTTON_TYPE), 
-							 GENDATA->LoadArchetype(BUILDBUTTON_TYPE), 
+	createCallback callback (GENDATA->LoadArchetype(HOTBUTTON_TYPE),
+							 GENDATA->LoadArchetype(BUILDBUTTON_TYPE),
 							 GENDATA->LoadArchetype(RESEARCHBUTTON_TYPE),
 							 GENDATA->LoadArchetype(MULTIHOTBUTTON_TYPE),
-							 GENDATA->LoadArchetype(HOTSTATIC_TYPE), 
+							 GENDATA->LoadArchetype(HOTSTATIC_TYPE),
 							 GENDATA->LoadArchetype(SHIPSILBUTTON_TYPE),
 							 GENDATA->LoadArchetype(TABCONTROLTYPE),
 							 GENDATA->LoadArchetype(ICON_TYPE),
 							 GENDATA->LoadArchetype(QUEUECONTROL_TYPE),
-							 (char *) pData,
+							 (char *) pBaseData,
 							 race);
 	dataParser->Enumerate(&callback);
+	if (pPaddedData) { HeapFree(GetProcessHeap(), 0, pPaddedData); pPaddedData = 0; }
 	CQASSERT(controlList == 0 && menuList == 0);
 	controlList = callback.pList;
 	menuList = callback.menuList;

@@ -843,9 +843,9 @@ void FogOfWar::RevealZone (struct IBaseObject * object, SINGLE radius, SINGLE cl
 //
 void FogOfWar::RevealBlackZone (U32 playerID,U32 systemID,const Vector &pos,SINGLE radius)
 {
-	CQASSERT(playerID && systemID);
+	if (!playerID || playerID > MAX_PLAYERS || !systemID) return;
 	CQASSERT(systemID <= MAX_SYSTEMS);
-	
+
 	if (radius && DEFAULTS->GetDefaults()->fogMode == FOGOWAR_NORMAL)
 	{
 		U8 playerMask = 0x1 << (playerID-1);
@@ -971,7 +971,7 @@ BOOL32 FogOfWar::CheckVisiblePosition (const class Vector & pos)
 
 BOOL32 FogOfWar::CheckHardFogVisibility (U32 playerID,U32 systemID,const class Vector & pos, SINGLE radius)
 {
-	CQASSERT(playerID && systemID);
+	if (!playerID || playerID > MAX_PLAYERS || !systemID) return 0;
 	if (DEFAULTS->GetDefaults()->fogMode != FOGOWAR_NORMAL)
 		return 1;
 	

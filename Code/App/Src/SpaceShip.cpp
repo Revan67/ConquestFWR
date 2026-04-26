@@ -1070,7 +1070,7 @@ void SpaceShip<SaveStruct,InitStruct>::RevealFog (const U32 currentSystem)
 template <class SaveStruct, class InitStruct>
 void SpaceShip<SaveStruct,InitStruct>::CastVisibleArea (void)
 {
-	if (playerID == 0) return; // neutral/no-race unit: no player, no fog visibility
+	if (playerID == 0 || playerID > MAX_PLAYERS) return;
 	if ((systemID & HYPER_SYSTEM_MASK)==0)
 	{
 		const U32 mask = MGlobals::GetAllyMask(playerID);

@@ -890,8 +890,8 @@ void MGlobals::SetAlly (U32 playerID1, U32 playerID2, bool bAlly)			// one-way a
 //
 bool MGlobals::AreAllies (U32 playerID1, U32 playerID2)
 {
-	if (playerID1 == 0 || playerID2 == 0) return false; // neutral/no-race units are never allied
-	CQASSERT2(playerID1-1 < MAX_PLAYERS && playerID2-1 < MAX_PLAYERS, "p1==%d, p2==%d", playerID1, playerID2);
+	if (playerID1 == 0 || playerID2 == 0) return false;
+	if (playerID1 > MAX_PLAYERS || playerID2 > MAX_PLAYERS) return false;
 	//
 	// must be two way alliance
 	//
@@ -902,18 +902,14 @@ bool MGlobals::AreAllies (U32 playerID1, U32 playerID2)
 //
 U32 MGlobals::GetOneWayAllyMask (U32 playerID)
 {
-	if (playerID == 0) return 0; // neutral/no-race unit
-	CQASSERT(playerID && playerID <= MAX_PLAYERS);
-
+	if (playerID == 0 || playerID > MAX_PLAYERS) return 0;
 	return globalData.allyMask[playerID-1];
 }
 //---------------------------------------------------------------------------
 //
 U32 MGlobals::GetAllyMask (U32 playerID)
 {
-	if (playerID == 0) return 0; // neutral/no-race unit
-	CQASSERT(playerID && playerID <= MAX_PLAYERS);
-
+	if (playerID == 0 || playerID > MAX_PLAYERS) return 0;
 	return twoWayAllyMask[playerID-1];
 }
 //---------------------------------------------------------------------------
