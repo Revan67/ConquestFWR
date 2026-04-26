@@ -287,14 +287,14 @@ void CMenu_WarPlat::onUpdate (U32 dt)
 			swprintf(buffer,_localLoadStringW(IDS_CONTEXT_LOCATION),nameBuff);
 			location->SetText(buffer);
 
-			techsupply->SetImageLevel(platform->techLevel.supplies,GetSuppliesUpgrades(platform->race));
-			techarmor->SetImageLevel(platform->techLevel.hull,GetArmorUpgrades(platform->race));
-			techsheild->SetImageLevel(platform->techLevel.shields,GetShieldUpgrades(platform->race));
-			techweapon->SetImageLevel(platform->techLevel.damage,GetWeaponsUpgrades(platform->race));
-			techsensors->SetImageLevel(platform->techLevel.sensors,GetSensorUpgrades(platform->race));
+			techsupply->SetImageLevel(platform->techLevel.supplies,GetSuppliesUpgrades((M_RACE)platform->race));
+			techarmor->SetImageLevel(platform->techLevel.hull,GetArmorUpgrades((M_RACE)platform->race));
+			techsheild->SetImageLevel(platform->techLevel.shields,GetShieldUpgrades((M_RACE)platform->race));
+			techweapon->SetImageLevel(platform->techLevel.damage,GetWeaponsUpgrades((M_RACE)platform->race));
+			techsensors->SetImageLevel(platform->techLevel.sensors,GetSensorUpgrades((M_RACE)platform->race));
 			if(platform->mObjClass == M_SPACESTATION || platform->mObjClass == M_PLASMAHIVE)
 			{
-				techspecial->SetImageLevel(platform->techLevel.classSpecific,GetFighterUpgrades(platform->race));
+				techspecial->SetImageLevel(platform->techLevel.classSpecific,GetFighterUpgrades((M_RACE)platform->race));
 				techspecial->SetTextString(HSTTXT::FIGHTER);
 			}
 			else
@@ -393,7 +393,7 @@ void CMenu_WarPlat::setPanelOwnership (bool bOwn)
 				(lastObjType == M_HYDROFOIL) || (lastObjType == M_ESPCOIL) ||
 				(lastObjType == M_STARBURST)|| (lastObjType == M_NOVA_BOMB))
 				strcpy(buffer,"WarTurret");
-			if (toolbar->GetToolbar(buffer, menu, part->race) == GR_OK)
+			if (toolbar->GetToolbar(buffer, menu, (M_RACE)part->race) == GR_OK)
 			{
 				COMPTR<IDAComponent> pComp;
 

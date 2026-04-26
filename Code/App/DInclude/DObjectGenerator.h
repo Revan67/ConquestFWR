@@ -22,7 +22,7 @@
 struct BT_OBJECT_GENERATOR : BASIC_DATA
 {
 	char fileName[GT_PATH];
-	MISSION_DATA missionData;
+	MISSION_DATA_BIN missionData;
 	SINGLE mean;
 	SINGLE minDiff;
 	char generateType[GT_PATH];

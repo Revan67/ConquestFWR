@@ -677,11 +677,12 @@ void MScript::Load (IFileSystem * inFile)
 //			runStartProgram(false);
 	}
 
-	// loading string table
-	loadStringTable( *inFile );
-
-	// loading new scripting
-	loadScripts( *inFile );
+	// loading string table / scripting (inFile may be NULL for new-game loads)
+	if (inFile)
+	{
+		loadStringTable( *inFile );
+		loadScripts( *inFile );
+	}
 }
 //--------------------------------------------------------------------------//
 //
@@ -3641,7 +3642,7 @@ void MScript::GiveCommandKit (const MPartRef & admiral, char * kitName)
 	if(admiral.isValid())
 	{
 		MCachedPart & admiralObj = admiral.getPartFromCache();
-		if(MGlobals::IsFlagship(admiralObj.mdata.pInitData->mObjClass))
+		if(MGlobals::IsFlagship((M_OBJCLASS)admiralObj.mdata.pInitData->mObjClass))
 		{
 			VOLPTR(IAdmiral) ad = admiralObj.obj;
 			ad->LearnCommandKit(kitName);
@@ -3655,7 +3656,7 @@ const char * MScript::GetFormationName(const MPartRef & admiral)
 	if(admiral.isValid())
 	{
 		MCachedPart & admiralObj = admiral.getPartFromCache();
-		if(MGlobals::IsFlagship(admiralObj.mdata.pInitData->mObjClass))
+		if(MGlobals::IsFlagship((M_OBJCLASS)admiralObj.mdata.pInitData->mObjClass))
 		{
 			VOLPTR(IAdmiral) ad = admiralObj.obj;
 			return ARCHLIST->GetArchName(ad->GetFormation());

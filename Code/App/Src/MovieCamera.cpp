@@ -613,7 +613,7 @@ HANDLE MovieCameraFactory::CreateArchetype (const char *szArchname, OBJCLASS obj
 			
 		result->pArchetype = ARCHLIST->GetArchetype(szArchname);
 
-		pInitData = &(data->missionData);
+		pInitData = reinterpret_cast<const MISSION_DATA *>(&(data->missionData));
 
 		DAFILEDESC fdesc = data->fileName;
 		COMPTR<IFileSystem> objFile;

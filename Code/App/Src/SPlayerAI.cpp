@@ -2713,7 +2713,7 @@ void SPlayerAI::doUpgrade (MPart & part)
 {
 	U32 pArcheID = 0;
 	int fail = 0;
-	M_OBJCLASS desiredplat = ChooseNextBuild(&fail, part->race, true, false);
+	M_OBJCLASS desiredplat = ChooseNextBuild(&fail, (M_RACE)part->race, true, false);
 	CQASSERT(desiredplat >= 0 && desiredplat < M_ENDOBJCLASS);
 
 	/*  //   fix   don't upgrade collectors on mined out planets in a non-regen game
@@ -2967,7 +2967,7 @@ void SPlayerAI::doFabricator (MPart & part)
 	while(!bDone)
 	{
 		int bestpri = 0;
-		ChosenPlat = ChooseNextBuild(&bestpri, part->race, true);    //true for platforms
+		ChosenPlat = ChooseNextBuild(&bestpri, (M_RACE)part->race, true);    //true for platforms
 		CQASSERT(ChosenPlat >= 0 && ChosenPlat < M_ENDOBJCLASS);
 		pArcheID = m_ArchetypeIDs[ChosenPlat];
 
@@ -3623,7 +3623,7 @@ void SPlayerAI::doShipyard (MPart & part)
 	while(!bDone)
 	{
 		int shipfail = 0;
-		ChosenShip = ChooseNextShip(&shipfail, part->race, part->mObjClass);
+		ChosenShip = ChooseNextShip(&shipfail, (M_RACE)part->race, part->mObjClass);
 		if(!ChosenShip) break;
 
 		archID = m_ArchetypeIDs[ChosenShip];
@@ -8122,11 +8122,11 @@ bool SPlayerAI::CanIBuild(U32 pArcheID, void *fail)
 	if(data->objClass == OC_SPACESHIP) 
 	{	
 		BASE_SPACESHIP_DATA* sdata = (BASE_SPACESHIP_DATA*)data;
-		MISSION_DATA* mdata = &sdata->missionData;
+		MISSION_DATA_BIN* mdata = &sdata->missionData;
 		if(!mdata) return false;
 		
 		if(DNA.buildMask.bUnitDependencyRules && 
-			(HasDependencies(mdata->mObjClass, &prereq) == false))
+			(HasDependencies((M_OBJCLASS)mdata->mObjClass, &prereq) == false))
 		{		
 			*((U32 *)fail) = M_COMMANDPTS + prereq;
 			return false;
@@ -8177,10 +8177,10 @@ bool SPlayerAI::CanIBuild(U32 pArcheID, void *fail)
 	else //probably a platform
 	{
 		BASE_PLATFORM_DATA* sdata = (BASE_PLATFORM_DATA*)data;
-		MISSION_DATA* mdata = &sdata->missionData;
+		MISSION_DATA_BIN* mdata = &sdata->missionData;
 		
 		if(DNA.buildMask.bUnitDependencyRules && 
-			(HasDependencies(mdata->mObjClass, &prereq) == false))
+			(HasDependencies((M_OBJCLASS)mdata->mObjClass, &prereq) == false))
 		{	
 			*((U32 *)fail) = M_COMMANDPTS + prereq;
 			return false;

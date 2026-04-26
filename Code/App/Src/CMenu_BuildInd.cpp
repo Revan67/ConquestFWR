@@ -614,7 +614,7 @@ void CMenu_BuildInd::setPanelOwnership (bool bOwn)
 				strcpy(menuName,"V_Compiler");
 			else if(part->mObjClass == M_FORMULATOR)
 				strcpy(menuName,"V_Formulator");
-			if (toolbar->GetToolbar(menuName, menu, part->race) == GR_OK)
+			if (toolbar->GetToolbar(menuName, menu, (M_RACE)part->race) == GR_OK)
 			{
 				COMPTR<IDAComponent> pComp;
 

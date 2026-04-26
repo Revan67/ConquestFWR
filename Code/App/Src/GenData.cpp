@@ -290,6 +290,11 @@ GENRESULT GenData::CreateInstance (PGENTYPE pArchetype, IDAComponent **pInstance
 	GENNODE * node = pArchetype;
 
 	CQASSERT(pArchetype);
+	if (!node)
+		return GR_GENERIC;
+
+	if (!node->factory)
+		return GR_GENERIC;
 
 	result = node->factory->CreateInstance(node->hArchetype, pInstance);
 
@@ -305,7 +310,6 @@ GENRESULT GenData::CreateInstance (PGENTYPE pArchetype, IDAComponent **pInstance
 GENRESULT GenData::CreateInstance (const char *name, IDAComponent **pInstance)
 {
 	GENNODE * node = LoadArchetype(name);
-
 	return CreateInstance(node, pInstance);
 }
 //-------------------------------------------------------------------

@@ -316,7 +316,7 @@ void CMenu_GenPlat::setPanelOwnership (bool bOwn)
 				(part->mObjClass == M_T_RESOURCE_FACTORY) || (part->mObjClass == M_T_RESEARCH_LAB) ||
 				(part->mObjClass == M_T_IND_FACILITY))
 				strcpy(buffer,"turret");
-			if (toolbar->GetToolbar(buffer, menu, part->race) == GR_OK)
+			if (toolbar->GetToolbar(buffer, menu, (M_RACE)part->race) == GR_OK)
 			{
 				COMPTR<IDAComponent> pComp;
 

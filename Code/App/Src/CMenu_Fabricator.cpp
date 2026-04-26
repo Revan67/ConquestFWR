@@ -517,10 +517,10 @@ void CMenu_Fabricator::onUpdate (U32 dt)
 					}
 				}
 			}
-			techarmor->SetImageLevel(fabricator->techLevel.hull,GetArmorUpgrades(fabricator->race));
-			techengine->SetImageLevel(fabricator->techLevel.engine,GetEngineUpgrades(fabricator->race));
-			techsheild->SetImageLevel(fabricator->techLevel.shields,GetShieldUpgrades(fabricator->race));
-			techsensors->SetImageLevel(fabricator->techLevel.sensors,GetSensorUpgrades(fabricator->race));
+			techarmor->SetImageLevel(fabricator->techLevel.hull,GetArmorUpgrades((M_RACE)fabricator->race));
+			techengine->SetImageLevel(fabricator->techLevel.engine,GetEngineUpgrades((M_RACE)fabricator->race));
+			techsheild->SetImageLevel(fabricator->techLevel.shields,GetShieldUpgrades((M_RACE)fabricator->race));
+			techsensors->SetImageLevel(fabricator->techLevel.sensors,GetSensorUpgrades((M_RACE)fabricator->race));
 
 			OBJPTR<IFabricator> fabPtr;
 			obj->QueryInterface(IFabricatorID,fabPtr);
@@ -565,7 +565,7 @@ void CMenu_Fabricator::setPanelOwnership (bool bOwn)
 				strcpy(buffer,"S_Forger");
 			else if(lastObjType == M_SHAPER)
 				strcpy(buffer,"V_Shaper");
-			if (toolbar->GetToolbar(buffer, menu,part->race) == GR_OK)
+			if (toolbar->GetToolbar(buffer, menu,(M_RACE)part->race) == GR_OK)
 			{
 				COMPTR<IDAComponent> pComp;
 

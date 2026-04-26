@@ -306,12 +306,12 @@ void Menu_map::onButtonPressed (U32 buttonID)
 		wchar_t szFileName[MAX_PATH];
 
 		// initialize our values
-		type = cqgame.mapType;
+		type = (MAPTYPE)cqgame.mapType;
 		wcsncpy(szFileName, cqgame.szMapName, sizeof(szFileName)/sizeof(wchar_t));
 
 		// the user wants to pick a new map to be displayed...
 		U32 result = DoMenu_MapSelect(this, cqgame, szFileName, sizeof(szFileName)/sizeof(wchar_t));
-		type = cqgame.mapType;
+		type = (MAPTYPE)cqgame.mapType;
 
 		if (result)
 		{

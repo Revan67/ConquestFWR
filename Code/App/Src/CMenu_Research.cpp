@@ -741,7 +741,7 @@ void CMenu_Research::setPanelOwnership (bool bOwn)
 			else if(part->mObjClass == M_HAMMER_OF_VYRIE)
 				strcpy(buffer,"V_HammerOfVyrie");
 
-		if (toolbar->GetToolbar(buffer, menu, part->race) == GR_OK)
+		if (toolbar->GetToolbar(buffer, menu, (M_RACE)part->race) == GR_OK)
 			{
 				COMPTR<IDAComponent> pComp;
 

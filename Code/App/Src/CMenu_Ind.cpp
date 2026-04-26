@@ -638,56 +638,56 @@ void CMenu_Ind::onUpdate (U32 dt)
 				else
 					techsheild->SetVisible(false);
 
-				techsupply->SetImageLevel(ship->techLevel.supplies,GetSuppliesUpgrades(ship->race));
-				techarmor->SetImageLevel(ship->techLevel.hull,GetArmorUpgrades(ship->race));
-				techengine->SetImageLevel(ship->techLevel.engine,GetEngineUpgrades(ship->race));
-				techsheild->SetImageLevel(ship->techLevel.shields,GetShieldUpgrades(ship->race));
-				techweapon->SetImageLevel(ship->techLevel.damage,GetWeaponsUpgrades(ship->race));
-				techsensors->SetImageLevel(ship->techLevel.sensors,GetSensorUpgrades(ship->race));
+				techsupply->SetImageLevel(ship->techLevel.supplies,GetSuppliesUpgrades((M_RACE)ship->race));
+				techarmor->SetImageLevel(ship->techLevel.hull,GetArmorUpgrades((M_RACE)ship->race));
+				techengine->SetImageLevel(ship->techLevel.engine,GetEngineUpgrades((M_RACE)ship->race));
+				techsheild->SetImageLevel(ship->techLevel.shields,GetShieldUpgrades((M_RACE)ship->race));
+				techweapon->SetImageLevel(ship->techLevel.damage,GetWeaponsUpgrades((M_RACE)ship->race));
+				techsensors->SetImageLevel(ship->techLevel.sensors,GetSensorUpgrades((M_RACE)ship->race));
 				if(ship->mObjClass == M_TROOPSHIP)
 				{
-					techspecial->SetImageLevel(ship->techLevel.classSpecific,GetTroopShipUpgrades(ship->race));
+					techspecial->SetImageLevel(ship->techLevel.classSpecific,GetTroopShipUpgrades((M_RACE)ship->race));
 					techspecial->SetTextString(HSTTXT::TROOPSHIP);
 				}
 				else if(ship->mObjClass == M_LEECH)
 				{
-					techspecial->SetImageLevel(ship->techLevel.classSpecific,GetTroopShipUpgrades(ship->race));
+					techspecial->SetImageLevel(ship->techLevel.classSpecific,GetTroopShipUpgrades((M_RACE)ship->race));
 					techspecial->SetTextString(HSTTXT::LEECH);
 				}
 				else if(ship->mObjClass == M_LEGIONAIRE)
 				{
-					techspecial->SetImageLevel(ship->techLevel.classSpecific,GetTroopShipUpgrades(ship->race));
+					techspecial->SetImageLevel(ship->techLevel.classSpecific,GetTroopShipUpgrades((M_RACE)ship->race));
 					techspecial->SetTextString(HSTTXT::LEGIONAIRE);
 				}				
 				else if(ship->mObjClass == M_HARVEST)
 				{
-					techspecial->SetImageLevel(ship->techLevel.classSpecific,GetHarvesterUpgrades(ship->race));
+					techspecial->SetImageLevel(ship->techLevel.classSpecific,GetHarvesterUpgrades((M_RACE)ship->race));
 					techspecial->SetTextString(HSTTXT::HARVESTER);
 				}
 				else if(ship->mObjClass == M_GALIOT)
 				{
-					techspecial->SetImageLevel(ship->techLevel.classSpecific,GetHarvesterUpgrades(ship->race));
+					techspecial->SetImageLevel(ship->techLevel.classSpecific,GetHarvesterUpgrades((M_RACE)ship->race));
 					techspecial->SetTextString(HSTTXT::GALIOT);
 				}
 				else if(ship->mObjClass == M_SIPHON)
 				{
-					techspecial->SetImageLevel(ship->techLevel.classSpecific,GetHarvesterUpgrades(ship->race));
+					techspecial->SetImageLevel(ship->techLevel.classSpecific,GetHarvesterUpgrades((M_RACE)ship->race));
 					techspecial->SetTextString(HSTTXT::SIPHON);
 				}
 				else if((ship->mObjClass == M_SUPPLY) || (ship->mObjClass == M_ZORAP) || (ship->mObjClass == M_STRATUM))
 				{
-					techspecial->SetImageLevel(ship->techLevel.classSpecific,GetTenderUpgrades(ship->race));
+					techspecial->SetImageLevel(ship->techLevel.classSpecific,GetTenderUpgrades((M_RACE)ship->race));
 					techspecial->SetTextString(HSTTXT::TENDER);
 				}
 				else if(MGlobals::IsFlagship(ship->mObjClass))
 				{
-					techspecial->SetImageLevel(ship->techLevel.classSpecific,GetFleetUpgrades(ship->race));
+					techspecial->SetImageLevel(ship->techLevel.classSpecific,GetFleetUpgrades((M_RACE)ship->race));
 					techspecial->SetTextString(HSTTXT::FLEET);
 				}
 				else if(MGlobals::IsCarrier(ship->mObjClass) ||
 					ship.pInit->displayName == OBJNAMES::MT_SPACE_STATION)
 				{
-					techspecial->SetImageLevel(ship->techLevel.classSpecific,GetFighterUpgrades(ship->race));
+					techspecial->SetImageLevel(ship->techLevel.classSpecific,GetFighterUpgrades((M_RACE)ship->race));
 					techspecial->SetTextString(HSTTXT::FIGHTER);
 				}
 				else if(ship.pInit->displayName == OBJNAMES::MT_MISSILE_CRUISER)
@@ -875,7 +875,7 @@ void CMenu_Ind::setPanelOwnership (bool bOwn)
 		{
 			IBaseObject * obj = OBJLIST->GetSelectedList();
 			MPart part(obj);
-			if (toolbar->GetToolbar("individual", menu, part->race) == GR_OK)
+			if (toolbar->GetToolbar("individual", menu, (M_RACE)part->race) == GR_OK)
 			{
 				COMPTR<IDAComponent> pComp;
 

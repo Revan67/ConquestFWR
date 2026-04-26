@@ -363,7 +363,7 @@ struct Menu_mshell : public DAComponent<Frame>, ICQGame
 				{
 					if (HOSTID != PLAYERID)
 					{
-						STATE oldState = slot[localSlot].state;
+						STATE oldState = (STATE)slot[localSlot].state;
 						slot[localSlot].state = ACTIVE;		// don't do this during load process!
 						bLocalDataChanged = true;		
 						sendClientPacket(true);
@@ -1772,10 +1772,10 @@ void Menu_mshell::sendClientPacket (bool bAlwaysSend)
 	{
 		CLIENTSETTING_PACKET packet;
 
-		packet.state = slot[localSlot].state;
-		packet.race  = slot[localSlot].race;
-		packet.color = slot[localSlot].color;
-		packet.team  = slot[localSlot].team;
+		packet.state = (STATE)slot[localSlot].state;
+		packet.race  = (RACE)slot[localSlot].race;
+		packet.color = (COLOR)slot[localSlot].color;
+		packet.team  = (TEAM)slot[localSlot].team;
 
 		NETPACKET->Send(HOSTID, 0, &packet);
 		bOutgoingData = false;

@@ -172,6 +172,7 @@ struct DACOM_NO_VTABLE DrawAgent : IDrawAgent
 //
 DrawAgent::DrawAgent (void)
 {
+	vfxShape = nullptr;
 }
 //--------------------------------------------------------------------------//
 //
@@ -225,6 +226,8 @@ void DrawAgent::Draw (PANE *pane, S32 x, S32 y)
 		if (pane->window == 0)
 			pane->window = const_cast<VFX_WINDOW *>(&SURFACE->GetWindow());
 
+		if (vfxShape == nullptr)
+			return;
 		VFX_shape_draw(pane, vfxShape, 0, x, y);
 	}
 	else	// use 3D rendering system
@@ -329,6 +332,8 @@ void DrawAgent::Draw (PANE *src, PANE *dst)
 		if (src->window == 0)
 			src->window = const_cast<VFX_WINDOW *>(&SURFACE->GetWindow());
 
+		if (vfxShape == nullptr)
+			return;
 		VFX_shape_draw(src, vfxShape, 0, dst->x0, dst->y0);
 	}
 	else	// use 3D rendering system

@@ -1847,7 +1847,8 @@ void MeshRender::SetupMeshInfo(MeshInfo *mc,bool bMakeBuffers, const char* mater
 					mc->fgi[pos->fg_idx].colorTex = TMANAGER->CreateTextureFromFile(texName, (IComponentFactory *)TEXTURESDIR, DA::TGA, PF_4CC_DAA8);
 					sprintf(tmp, "_bump.tga");
 					mc->fgi[pos->fg_idx].bumpTex = TMANAGER->CreateTextureFromFile(texName, (IComponentFactory *)TEXTURESDIR, DA::TGA, PF_4CC_DAA8);
-					if (mc->fgi[pos->fg_idx].colorTex && mc->fgi[pos->fg_idx].bumpTex)
+					if (mc->fgi[pos->fg_idx].colorTex && mc->fgi[pos->fg_idx].bumpTex
+						&& emissiveEffect && *emissiveEffect && nonEmissiveEffect && *nonEmissiveEffect)
 					{
 						mc->fgi[pos->fg_idx].bCQ2Mat = true;
 					}
@@ -3082,6 +3083,7 @@ void FaceGroupRender::Render(const Transform &inv)
 			else chosenEffect = fgi[fg_idx].glowTex ? *emissiveEffect : *nonEmissiveEffect;
 
 			//ID3DXEffect * chosenEffect = *nonEmissiveEffect;
+			if (!chosenEffect) { cleanupRenderStates(); return; }
 			chosenEffect->Begin(&passes, 0);
 			PIPE->set_render_state(D3DRS_ALPHABLENDENABLE,TRUE);
 
@@ -3318,6 +3320,7 @@ void MMaterial<VertexStruct,VERTEX_FORMAT>::RenderPortionZAlign(const Transform 
 			PIPE->set_texture_stage_state( 2, D3DTSS_TEXCOORDINDEX, 1);
 			UINT passes;
 			ID3DXEffect * chosenEffect = fgi[fg_idx].glowTex ? *emissiveEffect : *nonEmissiveEffect;
+			if (!chosenEffect) { cleanupRenderStates(); return; }
 			chosenEffect->Begin(&passes, 0);
 			if (passes == 1)
 			{
@@ -3547,6 +3550,7 @@ void MMaterial<VertexStruct,VERTEX_FORMAT>::RenderPortion(const Transform &inv,c
 			PIPE->set_texture_stage_state( 2, D3DTSS_TEXCOORDINDEX, 1);
 			UINT passes;
 			ID3DXEffect * chosenEffect = fgi[fg_idx].glowTex ? *emissiveEffect : *nonEmissiveEffect;
+			if (!chosenEffect) { cleanupRenderStates(); return; }
 			chosenEffect->Begin(&passes, 0);
 			if (passes == 1)
 			{

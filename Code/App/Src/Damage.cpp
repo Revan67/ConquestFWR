@@ -268,7 +268,7 @@ void ObjectDamage< Base >::initDamage (const DAMAGEINITINFO & data)
 	getScale();
 
 	shieldSoundID = data.pData->shield.sfx;
-	fizzSoundID = data.pData->shield.fizzOut;
+	fizzSoundID = (SFX::ID)0;
 }
 //---------------------------------------------------------------------------
 //

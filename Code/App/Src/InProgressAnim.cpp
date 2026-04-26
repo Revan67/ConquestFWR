@@ -218,7 +218,7 @@ void IPAnim::SetString (IFontDrawAgent * pAgent, S32 x, S32 y, U32 dwResID)
 void IPAnim::UpdateString (U32 dwResID)
 {
 	EnterCriticalSection(&criticalSection);
-	
+
 	stringResID = dwResID;
 
 	draw_S();
@@ -382,7 +382,7 @@ void IPAnim::draw_S (void)
 	GENRESULT gr = PIPE->clear_buffers(RP_CLEAR_COLOR_BIT|RP_CLEAR_DEPTH_BIT,0);
 	if (gr != GR_OK)
 		CQTRACE10("Failed to clear buffers");
-	
+
 	if ((bUsing3D==0) || (PIPE->begin_scene()==GR_OK))
 	{
 		if (bUsing3D || SURFACE->Lock())

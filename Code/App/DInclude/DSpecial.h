@@ -96,7 +96,7 @@ struct BT_STASISBOLT_DATA : BASE_WEAPON_DATA
 	SINGLE maxVelocity;	
 	SINGLE explosionRange;							// max distance a child tendril can travel	
 	SINGLE duration;
-	MISSION_DATA missionData;
+	MISSION_DATA_BIN missionData;
 };
 
 #define MAX_STASIS_TARGETS 26
@@ -137,7 +137,7 @@ struct BT_REPELLENTCLOUD_DATA : BASE_WEAPON_DATA
 	char explosionEffect[GT_PATH];
 	SFX::ID launchSfx;
 	SINGLE duration;
-	MISSION_DATA missionData;
+	MISSION_DATA_BIN missionData;
 	U32 damagePerSec;
 	SINGLE centerRange;
 };
@@ -184,7 +184,7 @@ struct BT_REPULSORWAVE_DATA : BASE_WEAPON_DATA
 	SINGLE range;
 	SINGLE ringTime;
 	SINGLE interRingTime;
-	MISSION_DATA missionData;
+	MISSION_DATA_BIN missionData;
 };
 
 #define MAX_REPULSORWAVE_TARGETS 24
@@ -422,7 +422,7 @@ struct BT_DESTABILIZER_DATA : BASE_WEAPON_DATA
 	SINGLE maxVelocity;	
 	SINGLE explosionRange;							// max distance a child tendril can travel	
 	SINGLE duration;
-	MISSION_DATA missionData;
+	MISSION_DATA_BIN missionData;
 };
 
 #define MAX_DESTABILIZER_TARGETS 3
@@ -460,7 +460,7 @@ struct BT_DUMBRECONPROBE_DATA : BASE_WEAPON_DATA
 	SFX::ID launchSfx;
 	SINGLE maxVelocity;	
 	SINGLE duration;
-	MISSION_DATA missionData;
+	MISSION_DATA_BIN missionData;
 };
 
 struct BASE_DUMBRECONPROBE_SAVELOAD

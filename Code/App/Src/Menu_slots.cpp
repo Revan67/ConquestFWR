@@ -398,7 +398,7 @@ void Menu_slots::setStateInfo (void)
 		dropSlots[i]->AddString(_localLoadStringW(IDS_SLOT_AI_IMPOSIBLE));
 		dropSlots[i]->AddString(_localLoadStringW(IDS_SLOT_AI_NIGHTMARE));
 	
-		STATE state = (bDataValid) ? cqgame.slot[i].state : CLOSED;
+		STATE state = (bDataValid) ? (STATE)cqgame.slot[i].state : CLOSED;
 		switch (state)
 		{
 		case CLOSED:
@@ -502,7 +502,7 @@ void Menu_slots::setStateInfo (void)
 		}
 		else
 		{
-			caretColor = cqgame.slot[cqgame.localSlot].color;
+			caretColor = (COLOR)cqgame.slot[cqgame.localSlot].color;
 		}
 
 		dropPlayers[i]->ResetContent();
@@ -875,11 +875,11 @@ void Menu_slots::onListSelectionRace (S32 listID)
 		{
 			if (cqgame.slot[i].race != cqgame.slot[index].race)
 			{
-				cqgame.SetRace(i, cqgame.slot[index].race, true);
+				cqgame.SetRace(i, (RACE)cqgame.slot[index].race, true);
 			}
 			if (cqgame.slot[i].team != cqgame.slot[index].team)
 			{
-				cqgame.SetTeam(i, cqgame.slot[index].team, true);
+				cqgame.SetTeam(i, (TEAM)cqgame.slot[index].team, true);
 			}
 		}
 	}
@@ -907,11 +907,11 @@ void Menu_slots::onListSelectionPlayer (S32 listID)
 		{
 			if (cqgame.slot[i].race != cqgame.slot[index].race)
 			{
-				cqgame.SetRace(i, cqgame.slot[index].race, true);
+				cqgame.SetRace(i, (RACE)cqgame.slot[index].race, true);
 			}
 			if (cqgame.slot[i].team != cqgame.slot[index].team)
 			{
-				cqgame.SetTeam(i, cqgame.slot[index].team, true);
+				cqgame.SetTeam(i, (TEAM)cqgame.slot[index].team, true);
 			}
 		}
 	}
@@ -939,11 +939,11 @@ void Menu_slots::onListSelectionTeam (S32 listID)
 		{
 			if (cqgame.slot[i].race != cqgame.slot[index].race)
 			{
-				cqgame.SetRace(i, cqgame.slot[index].race, true);
+				cqgame.SetRace(i, (RACE)cqgame.slot[index].race, true);
 			}
 			if (cqgame.slot[i].team != cqgame.slot[index].team)
 			{
-				cqgame.SetTeam(i, cqgame.slot[index].team, true);
+				cqgame.SetTeam(i, (TEAM)cqgame.slot[index].team, true);
 			}
 		}
 	}

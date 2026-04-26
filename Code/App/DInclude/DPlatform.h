@@ -46,7 +46,7 @@ struct BASE_PLATFORM_DATA : BASIC_DATA
 {
 	PLATFORMCLASS type;
     char fileName[GT_PATH];
-	MISSION_DATA missionData;
+	MISSION_DATA_BIN missionData;
 	EXTENSION_DATA extension[MAX_EXTENSIONS];
 	U8 extensionBits;
 	S8 extensionLevel;

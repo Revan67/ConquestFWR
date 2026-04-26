@@ -640,13 +640,13 @@ void CMenu_Fleet::onUpdate (U32 dt)
 
 			//stat tab
 
-			techarmor->SetImageLevel(admiralPart->techLevel.hull,GetArmorUpgrades(admiralPart->race));
-			techsupply->SetImageLevel(admiralPart->techLevel.supplies,GetSuppliesUpgrades(admiralPart->race));
-			techengine->SetImageLevel(admiralPart->techLevel.engine,GetEngineUpgrades(admiralPart->race));
-			techsheild->SetImageLevel(admiralPart->techLevel.shields,GetShieldUpgrades(admiralPart->race));
-			techweapon->SetImageLevel(admiralPart->techLevel.damage,GetWeaponsUpgrades(admiralPart->race));
-			techsensors->SetImageLevel(admiralPart->techLevel.sensors,GetSensorUpgrades(admiralPart->race));
-//			techspecial->SetImageLevel(admiralPart->techLevel.classSpecific,GetFleetUpgrades(admiralPart->race));
+			techarmor->SetImageLevel(admiralPart->techLevel.hull,GetArmorUpgrades((M_RACE)admiralPart->race));
+			techsupply->SetImageLevel(admiralPart->techLevel.supplies,GetSuppliesUpgrades((M_RACE)admiralPart->race));
+			techengine->SetImageLevel(admiralPart->techLevel.engine,GetEngineUpgrades((M_RACE)admiralPart->race));
+			techsheild->SetImageLevel(admiralPart->techLevel.shields,GetShieldUpgrades((M_RACE)admiralPart->race));
+			techweapon->SetImageLevel(admiralPart->techLevel.damage,GetWeaponsUpgrades((M_RACE)admiralPart->race));
+			techsensors->SetImageLevel(admiralPart->techLevel.sensors,GetSensorUpgrades((M_RACE)admiralPart->race));
+//			techspecial->SetImageLevel(admiralPart->techLevel.classSpecific,GetFleetUpgrades((M_RACE)admiralPart->race));
 //			techspecial->SetTextString(HSTTXT::FLEET);
 			techspecial->SetVisible(false);
 

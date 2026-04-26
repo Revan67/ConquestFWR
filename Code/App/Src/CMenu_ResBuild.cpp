@@ -819,7 +819,7 @@ void CMenu_ResBuild::setPanelOwnership (bool bOwn)
 			else if(part->mObjClass == M_OUTPOST)
 				strcpy(menuName,"outpost");
 
-			if (toolbar->GetToolbar(menuName, menu, part->race) == GR_OK)
+			if (toolbar->GetToolbar(menuName, menu, (M_RACE)part->race) == GR_OK)
 			{
 				COMPTR<IDAComponent> pComp;
 

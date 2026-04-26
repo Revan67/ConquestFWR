@@ -485,8 +485,8 @@ struct IBaseObject * createReconProbe (const RECONPROBE_INIT & data)
 
 	MPartNC part(obj);
 
-	part->mObjClass = data.pData->missionData.mObjClass;
-	part->race = data.pData->missionData.race;
+	part->mObjClass = (M_OBJCLASS)data.pData->missionData.mObjClass;
+	part->race = (M_RACE)data.pData->missionData.race;
 	part->caps = data.pData->missionData.caps;
 
 	part->hullPointsMax   = data.pData->missionData.hullPointsMax  ;

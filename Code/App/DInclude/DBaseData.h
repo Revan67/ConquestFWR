@@ -224,15 +224,27 @@ struct GT_VFXSHAPE : GENBASE_DATA
 //---------------------Mission definitions------------------------
 //----------------------------------------------------------------
 //
-struct MISSION_DATA		// all ADB mission structures inherit from this
+// Binary layout of MISSION_DATA as stored in gametypes.db (VS6-compiled, 40 bytes).
+// armorData/silhouetteImage/specialAbility/speechPriority were added to the source
+// after the binary data files were compiled and are NOT present in the binary.
+// Use MISSION_DATA_BIN for archetype binary structs; use MISSION_DATA for runtime objects.
+struct MISSION_DATA_BIN
 {
-	M_OBJCLASS	mObjClass:9;
-	M_RACE		race:4;
-	OBJNAMES::M_DISPLAY_NAME displayName:17;
+	// VS6 packed these three differently-typed enum bitfields into one int
+	// (9+4+17 = 30 bits ≤ 32) because it treated all enum bitfields as
+	// int-typed.  VS2022 gives each different type its own storage unit →
+	// 3×4 = 12 bytes instead of 4.  Use unsigned int to force packing and
+	// match the VS6 binary layout.
+	unsigned int mObjClass:9;	// was M_OBJCLASS
+	unsigned int race:4;		// was M_RACE
+	unsigned int displayName:17;	// was OBJNAMES::M_DISPLAY_NAME
 
 	struct M_CAPS
 	{
 		U8 padding;
+		// VS6 bool:1 uses byte-sized storage (1-byte per group), packing 8 flags
+		// per byte.  24 flags × bool:1 = 3 bytes + 1 byte padding = 4 bytes total.
+		// VS2022 bool:1 behaves identically, so no type change is needed.
 		bool moveOk:1;
 		bool attackOk:1;
 		bool specialAttackOk:1;
@@ -258,7 +270,6 @@ struct MISSION_DATA		// all ADB mission structures inherit from this
 		bool targetPositionOk:1;
 		bool specialTargetPlanetOk:1;
 
-
 #ifndef _ADB
 		M_CAPS & operator |= (const M_CAPS & other);
 		M_CAPS & operator &= (const M_CAPS & other);
@@ -266,26 +277,46 @@ struct MISSION_DATA		// all ADB mission structures inherit from this
 
 	} caps;
 
-
 	U16			hullPointsMax;
 	U16			supplyPointsMax;
 	U16			scrapValue;
 	U16			buildTime;
-	ResourceCost resourceCost;
+
+	ResourceCost	resourceCost;
 
 	SINGLE		sensorRadius;
 	SINGLE		cloakedSensorRadius;
 	SINGLE		maxVelocity;
 	SINGLE		baseWeaponAccuracy;
-	SINGLE		baseShieldLevel;		// see damage formula
+	SINGLE		baseShieldLevel;
+};
 
+#ifndef _ADB
+static_assert(sizeof(MISSION_DATA_BIN) == 40, "MISSION_DATA_BIN must be 40 bytes to match VS6 binary");
+#endif
+
+// Runtime MISSION_DATA extends the binary portion with fields that were added
+// to the source after gametypes.db was compiled.  These are NOT read from the
+// binary; they are zero-initialised and then populated via MISSION_DATA_OVERRIDE
+// scripts at mission load time.
+struct MISSION_DATA : MISSION_DATA_BIN
+{
 	ARMOR_DATA  armorData;
 	SILNAMES::M_SILHOUETTE_NAME silhouetteImage;
 	UNIT_SPECIAL_ABILITY    specialAbility;
-	UNIT_SPECIAL_ABILITY    specialAbility1;
-	UNIT_SPECIAL_ABILITY    specialAbility2;
 	UNITSOUNDS::PRIORITY speechPriority;
+
+#ifndef _ADB
+	// specialAbility1/2 were added post-VS6 and are NOT in the binary archetype
+	// files.  Static const so existing call sites compile without changing layout.
+	static const UNIT_SPECIAL_ABILITY specialAbility1 = USA_NONE;
+	static const UNIT_SPECIAL_ABILITY specialAbility2 = USA_NONE;
+#endif
 };
+
+#ifndef _ADB
+static_assert(sizeof(MISSION_DATA) == 72, "MISSION_DATA runtime size must be 72 bytes");
+#endif
 
 //----------------------------------------------------------------
 //---------------------Mission data overrides---------------------

@@ -27,6 +27,7 @@
 // 4711: function selected for inline expansion
 #pragma warning (disable : 4514 4201 4100 4512 4245 4127 4355 4244 4710 4702 4786 4711)
 #include <windows.h>
+#include <stdio.h>
 #pragma warning (disable : 4355 4201)
 
 

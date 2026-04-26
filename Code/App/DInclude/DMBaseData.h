@@ -27,7 +27,7 @@ struct MISSION_SAVELOAD
 	M_STRING partName;
 	__readonly __hexview U32 dwMissionID;
 	U32 systemID:8;		// need at least 8 bits because of hyperspace (sector.h)
-	M_RACE race:4;
+	U32 race:4;			// was M_RACE; U32 keeps this in same alloc unit as systemID/playerID (VS6 vs VS2022 packing)
 	U32  playerID:4;	// which slot
 
 	SINGLE maxVelocity;
@@ -54,7 +54,11 @@ struct MISSION_SAVELOAD
 	U8	 controlGroupID; 
 	U8	 groupIndex;			// which member (0 to num_ships-1) of the group am I?
 
+#ifdef _ADB
+	U32 caps;		// M_CAPS is 4 bytes; parser can't handle MISSION_DATA::M_CAPS
+#else
 	MISSION_DATA::M_CAPS caps;
+#endif
 	__readonly __hexview U32 groupID;				// just for spaceships, might contain a fleet officer
 	__readonly __hexview U32 admiralID;				// admiral is onboard!
 	__readonly __hexview U32 fleetID;				// controlling adimiral ID

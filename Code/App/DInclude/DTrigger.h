@@ -22,7 +22,7 @@
 struct BT_TRIGGER : BASIC_DATA
 {
 	char fileName[GT_PATH];
-	MISSION_DATA missionData;
+	MISSION_DATA_BIN missionData;
 
 	enum Type
 	{

@@ -638,7 +638,7 @@ void CMenu_MulMix::setPanelOwnership (bool bOwn)
 		{
 			IBaseObject * obj = OBJLIST->GetSelectedList();
 			MPart part(obj);
-			if (toolbar->GetToolbar("group", menu, part->race) == GR_OK)
+			if (toolbar->GetToolbar("group", menu, (M_RACE)part->race) == GR_OK)
 			{
 				COMPTR<IDAComponent> pComp;
 

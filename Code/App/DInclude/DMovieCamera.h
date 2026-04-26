@@ -46,7 +46,7 @@ struct MOVIE_CAMERA_SAVELOAD
 struct BT_MOVIE_CAMERA_DATA : BASIC_DATA
 {
 	char fileName[GT_PATH];
-	MISSION_DATA missionData;
+	MISSION_DATA_BIN missionData;
 };
 
 struct MOVIE_CAMERA_VIEW

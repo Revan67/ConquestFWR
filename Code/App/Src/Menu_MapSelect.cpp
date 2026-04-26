@@ -70,7 +70,7 @@ struct Menu_MapSelect : public DAComponent<Frame>
 	// instance methods
 	//
 
-	Menu_MapSelect (ICQGame & game, wchar_t * _szFileName, const int _nChars) : cqgame(game), numChars(_nChars), defaultMapType(game.mapType)
+	Menu_MapSelect (ICQGame & game, wchar_t * _szFileName, const int _nChars) : cqgame(game), numChars(_nChars), defaultMapType((CQGAMETYPES::MAPTYPE)game.mapType)
 	{
 		lastSuppliedFileIndex = 0;
 		suppliedFileList = NULL;

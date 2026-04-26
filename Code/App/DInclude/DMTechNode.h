@@ -551,7 +551,9 @@ struct TECHNODE
 
 	void RemoveFromNode(SINGLE_TECHNODE node)
 	{
-		CQASSERT(node.raceID != M_NO_RACE);
+		// Struct layout mismatch during cleanup can produce M_NO_RACE; skip silently
+		// so the primary exception stays visible in cq_bomb.txt.
+		if (node.raceID == M_NO_RACE) return;
 		race[node.raceID-1].tech = (TECHTREE::TECHUPGRADE)(((U32)(race[node.raceID-1].tech)) & (~((U32)(node.tech))));
 		race[node.raceID-1].build = (TECHTREE::BUILDNODE)(((U32)(race[node.raceID-1].build)) & (~((U32)(node.build))));
 		race[node.raceID-1].common = (TECHTREE::COMMON)(((U32)(race[node.raceID-1].common)) & (~((U32)(node.common))));

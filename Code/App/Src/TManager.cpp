@@ -668,9 +668,21 @@ U32 TManager::createTextureFromMemory (void *pMemory, DA::FILETYPE type, const P
 		nearWidth  = nearestPower(width);
 		nearHeight = nearestPower(height);
 
+		if (nearWidth == 0 || nearHeight == 0)
+		{
+			CQERROR1("Skipping texture with zero dimensions: \"%s\"", (name?name:""));
+			goto Done;
+		}
+
+		if (nearWidth > MAX_TEX_DIM || nearHeight > MAX_TEX_DIM)
+		{
+			CQERROR3("Skipping oversized texture %dx%d: \"%s\"", nearWidth, nearHeight, (name?name:""));
+			goto Done;
+		}
+
 		if (nearWidth != width || nearHeight != height || width != height)
 		{
-			CQERROR3("Attempt to create a %dx%d texture from \"%s\".\n\tTextures must be square and a power of two.", 
+			CQERROR3("Attempt to create a %dx%d texture from \"%s\".\n\tTextures must be square and a power of two.",
 				width, height, (name?name:""));
 
 			makeSquare(nearWidth, nearHeight);
@@ -776,6 +788,8 @@ U32 TManager::createTextureFromFile (const char *fileName, IComponentFactory *pa
 
 	hMapping = file->CreateFileMapping();
 	pMemory = (U8*) file->MapViewOfFile(hMapping);
+	if (!pMemory)
+		goto Done;
 
 	if (type == DA::UNKTYPE)
 	{

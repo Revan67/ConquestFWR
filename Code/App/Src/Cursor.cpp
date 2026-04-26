@@ -999,7 +999,8 @@ void Cursor::DrawMouse (S32 xPosMouse, S32 yPosMouse)
 		bUndrawValid = true;
 	}
 
-	drawAgent->Draw(0, xPosMouse, yPosMouse);
+	if (drawAgent)
+		drawAgent->Draw(0, xPosMouse, yPosMouse);
 }
 //--------------------------------------------------------------------------//
 //

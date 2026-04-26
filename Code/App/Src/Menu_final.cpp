@@ -855,7 +855,7 @@ bool Menu_final::checkForAllCooperative (void)
 	{
 		if (cqgame.slot[i].state == ACTIVE || cqgame.slot[i].state == READY)
 		{
-			color = cqgame.slot[i].color;
+			color = (COLOR)cqgame.slot[i].color;
 			break;
 		}
 	}

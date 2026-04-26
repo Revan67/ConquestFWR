@@ -37,7 +37,7 @@ struct BT_BLACKHOLE_DATA : BASIC_DATA
 	BILLBOARD_MESH billboardMesh[MAX_BB_MESHES];
 	char ringObjectName[GT_PATH];
 	char sysMapIcon[GT_PATH];
-	MISSION_DATA missionData;
+	MISSION_DATA_BIN missionData;
 	U16 damage;
 };
 

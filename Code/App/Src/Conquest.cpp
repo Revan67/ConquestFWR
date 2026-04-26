@@ -652,11 +652,11 @@ int WINAPI WinMain(HINSTANCE _hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 	InitRendSections(cmd_line_ini);
 
 	DWORD messages = DAHEAPFLAG_DEBUGFILL_SNAN|DAHEAPFLAG_GROWHEAP|DAHEAPFLAG_NOHEAPEXPANDMSG;
-	// Always use NOMSGS to match release behavior: in debug builds,
-	// SetBlockOwner->verifyBlock reports false "Invalid ptr" errors caused by
-	// a pre-existing free-list corruption we can't yet trace.  SNAN fill above
-	// still catches use-after-free; only the per-block owner tracking is lost.
-	messages |= DAHEAPFLAG_NOMSGS;
+	// VS2022/Win11 compat: DACOM's block-list verifier (verifyBlock) sees false
+	// HEAP_CORRUPTED errors due to CRT/heap layout differences. NOVERIFYPTR skips
+	// the linked-list walk entirely; SNAN fill above still catches use-after-free.
+	// NOMSGS suppresses per-block owner tracking messages.
+	messages |= DAHEAPFLAG_NOVERIFYPTR|DAHEAPFLAG_NOMSGS;
 
 	if (InitializeDAHeap(0x10000, 0x4000, messages)==0)
 	{

@@ -88,7 +88,7 @@ struct BT_ASTEROIDFIELD_DATA : BASE_FIELD_DATA
 	char softwareTexClearName[GT_PATH];
 	char softwareTexFogName[GT_PATH];
 
-	MISSION_DATA missionData;
+	MISSION_DATA_BIN missionData;
 	FIELD_ATTRIBUTES attributes;
 	S32 asteroidsPerSquare;
 	S32 polyroidsPerSquare;
@@ -98,8 +98,8 @@ struct BT_ASTEROIDFIELD_DATA : BASE_FIELD_DATA
 	S32 minDriftSpeed;
 	SINGLE stationaryPercentage;
 	SFX::ID ambientSFX;
-	SINGLE modTexSpeedScale;
-	S32 animSizeMin,animSizeMax;
+	SINGLE modTexSpeedScale;	// present in VS6 binary between ambientSFX and nuggetsPerSquare
+	S32 animSizeMin, animSizeMax;
 	U32 nuggetsPerSquare;
 	SINGLE nuggetZHeight;
 	char nuggetType[4][GT_PATH];
@@ -141,7 +141,7 @@ struct BT_ANTIMATTER_DATA : BASE_FIELD_DATA
 	S32 segment_width;
 	S32 spacing;
 
-	MISSION_DATA missionData;
+	MISSION_DATA_BIN missionData;
 };
 
 struct ANTIMATTER_SAVELOAD

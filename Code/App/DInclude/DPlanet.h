@@ -33,10 +33,9 @@ struct BT_PLANET_DATA : BASIC_DATA
 	char ambient_animation[GT_PATH];
 	char sysMapIcon[GT_PATH];
 	char ambientEffect[GT_PATH];
-	MISSION_DATA missionData;
+	MISSION_DATA_BIN missionData;
 	U16 maxMetal;
 	U16 maxGas;
-	U16 maxCrew;
 	SINGLE metalRegen;
 	SINGLE gasRegen;
 	SINGLE crewRegen;
@@ -66,6 +65,9 @@ struct BT_PLANET_DATA : BASIC_DATA
 
 	bool bMoon:1;//if this is a moon planet then most of this data is useless, should this be made a separate class??
 	bool bUncommon:1;//if this planet type is an uncommon thing like a Pirate Planet, Dead Planet, or a special planet like Celaron home planet
+	// Fields added after binary data files were compiled; placed at end so all
+	// original fields read at correct binary offsets. Clamped in Setup().
+	U16 maxCrew;
 };
 
 //----------------------------------------------------------------

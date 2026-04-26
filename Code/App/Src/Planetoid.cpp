@@ -70,6 +70,28 @@
 #include <IAnim.h>
 
 #include "TObjRender.h"
+
+// VS6 planet binary has MISSION_DATA = 40 bytes (4+4+8+4+20 = packed enums+M_CAPS+4xU16+ResourceCost+5xSINGLE).
+// The ARMOR_DATA, silhouetteImage, specialAbility, speechPriority fields were added post-release and are
+// NOT in gametypes.db planet entries.  Resource fields start at binary offset 176 =
+// BASIC_DATA(8) + 4xGT_PATH(128) + MISSION_DATA_40(40).
+struct BT_PLANET_RESC {
+	U16 maxMetal;
+	U16 maxGas;
+	U16 maxCrew;
+	U16 _align;
+	SINGLE metalRegen;
+	SINGLE gasRegen;
+	SINGLE crewRegen;
+	U32 planetType;
+};
+static const size_t BT_PLANET_RESC_OFF = 176;
+
+static inline const BT_PLANET_RESC * planet_resc(const BT_PLANET_DATA * p)
+{
+	return reinterpret_cast<const BT_PLANET_RESC *>((const U8 *)p + BT_PLANET_RESC_OFF);
+}
+
 //--------------------------------------------------------------------------//
 //--------------------------------------------------------------------------//
 #define GO_LEFT 0
@@ -114,6 +136,7 @@ SINGLE offGridY = 0;
 struct PLANET_INIT
 {
 	const BT_PLANET_DATA * pData;
+	bool bMoon; // binary is 200 bytes; bMoon is not in the binary, always false
 	PARCHETYPE pArchetype;
 	IEffectHandle * ambientEffect;
 	IMeshArchetype * meshArch;
@@ -660,7 +683,7 @@ struct _NO_VTABLE Planetoid : public ObjectEffectTarget
 
 	virtual U8 GetMaxSlots()
 	{
-		if(renderArch1->pData->bMoon)
+		if(renderArch1->bMoon)
 			return 1;
 		return M_MAX_SLOTS;
 	}
@@ -1024,7 +1047,7 @@ void Planetoid::enableTerrainFootprint (bool bEnable)
 		map_sys = systemID;
 		OBJMAP->AddObjectToMap(this,map_sys,map_square,OM_SYSMAP_FIRSTPASS);
 
-		if(renderArch1->pData->bMoon)
+		if(renderArch1->bMoon)
 			map->SetFootprint(gv, 1, fpi); 
 		else
 			map->SetFootprint(gv, 4, fpi); 
@@ -1035,7 +1058,7 @@ void Planetoid::enableTerrainFootprint (bool bEnable)
 		OBJMAP->RemoveObjectFromMap(this,map_sys,map_square);
 		map_sys = map_square = 0;
 	
-		if(renderArch1->pData->bMoon)
+		if(renderArch1->bMoon)
 			map->UndoFootprint(gv, 1, fpi); 
 		else
 			map->UndoFootprint(gv, 4, fpi);
@@ -1048,7 +1071,7 @@ BOOL32 Planetoid::TestSlotHighlight (const S32 &mouseX,const S32 &mouseY)
 	if(BUILDARCHEID)
 	{
 		BASE_PLATFORM_DATA * data = (BASE_PLATFORM_DATA *)ARCHLIST->GetArchetypeData(BUILDARCHEID);
-		if(renderArch1->pData->bMoon && data->bMoonPlatform)
+		if(renderArch1->bMoon && data->bMoonPlatform)
 		{
 			if(bMouseOver)
 			{
@@ -1069,7 +1092,7 @@ BOOL32 Planetoid::TestSlotHighlight (const S32 &mouseX,const S32 &mouseY)
 			renderHighlightSlot = highlightedSlot;
 			return bHasAllHighlightSlots;
 		}
-		else if((!(renderArch1->pData->bMoon)) && (!(data->bMoonPlatform)))
+		else if((!(renderArch1->bMoon)) && (!(data->bMoonPlatform)))
 		{
 			highlightedSlot = 0;
 			U32 centerSlot = -1;
@@ -1189,7 +1212,7 @@ BOOL32 Planetoid::TestSlotHighlight (const S32 &mouseX,const S32 &mouseY)
 
 void Planetoid::DrawFleetMoniker (bool bAllShips)
 {
-	if (bVisible==0 || bMouseOver==0 || renderArch1->pData->bMoon)
+	if (bVisible==0 || bMouseOver==0 || renderArch1->bMoon)
 		return;
 
 	S32 orgX,orgY;
@@ -1295,7 +1318,7 @@ void Planetoid::DrawFleetMoniker (bool bAllShips)
 		_localAnsiToWide(partName, buffer, sizeof(buffer));
 		pPlanetFont7->StringDraw(CAMERA->GetPane(),screenX+IDEAL2REALX(10),screenY+IDEAL2REALY(4),buffer);
 
-		switch(renderArch1->pData->planetType)
+		switch((BT_PLANET_DATA::_planetType)planet_resc(renderArch1->pData)->planetType)
 		{
 		case BT_PLANET_DATA::M_CLASS:
 			{
@@ -1569,17 +1592,17 @@ void Planetoid::Render (void)
 			if(delta < 0.5)
 			{
 				delta = 1.0-(delta*2);
-				renderHalo(renderArch2->pData->halo.red*delta,renderArch2->pData->halo.green*delta,renderArch2->pData->halo.blue*delta,renderArch2->pData->halo.sizeOuter,renderArch2->pData->halo.sizeInner);
+				renderHalo(0,0,0,0,0); // halo not in 200-byte binary
 			}
 			else
 			{
 				delta = (delta-0.5)*2;
-				renderHalo(renderArch1->pData->halo.red*delta,renderArch1->pData->halo.green*delta,renderArch1->pData->halo.blue*delta,renderArch1->pData->halo.sizeOuter,renderArch1->pData->halo.sizeInner);
+				renderHalo(0,0,0,0,0); // halo not in 200-byte binary
 			}
 		}
 		else
 		{
-			renderHalo(renderArch1->pData->halo.red,renderArch1->pData->halo.green,renderArch1->pData->halo.blue,renderArch1->pData->halo.sizeOuter,renderArch1->pData->halo.sizeInner);
+			renderHalo(0,0,0,0,0); // halo not in 200-byte binary
 		}
 		
 		//  draw platform slots
@@ -1588,7 +1611,7 @@ void Planetoid::Render (void)
 		trans.set_position(transform.get_position() + (trans.get_k() * -2500));
 		if (bEditorMode || BUILDARCHEID || clickTime > 0)
 		{
-			if(!(renderArch1->pData->bMoon))
+			if(!(renderArch1->bMoon))
 			{
 				int i;
 				for (i=0;i<M_MAX_SLOTS;i++)
@@ -1661,9 +1684,9 @@ void Planetoid::MapRender (bool bPing)
 	if( ((GetVisibilityFlags()&MGlobals::GetAllyMask(MGlobals::GetThisPlayer()))!=0) || DEFAULTS->GetDefaults()->bEditorMode || DEFAULTS->GetDefaults()->bSpectatorModeOn)
 	{
 		if(renderArch1->sysMapIconID != -1)
-			SYSMAP->DrawIcon(transform.translation,renderArch1->pData->bMoon ? GRIDSIZE : GRIDSIZE*2,renderArch1->sysMapIconID);
+			SYSMAP->DrawIcon(transform.translation,renderArch1->bMoon ? GRIDSIZE : GRIDSIZE*2,renderArch1->sysMapIconID);
 		else
-			SYSMAP->DrawCircle(transform.translation,renderArch1->pData->bMoon ? GRIDSIZE : GRIDSIZE*2,RGB(255,255,255));
+			SYSMAP->DrawCircle(transform.translation,renderArch1->bMoon ? GRIDSIZE : GRIDSIZE*2,RGB(255,255,255));
 		
 	}
 }
@@ -1866,7 +1889,7 @@ TRANSFORM Planetoid::GetSlotTransform (U32 slotNumber)
 {
 	CQASSERT(slotNumber && (!(slotNumber & (~0x00000FFF))));
 
-	if(renderArch1->pData->bMoon)
+	if(renderArch1->bMoon)
 	{
 		return GetTransform();
 	}
@@ -2039,19 +2062,19 @@ U32 Planetoid::FindBestSlot(PARCHETYPE buildType, const Vector * preferedLoc)
 {
 	BASE_PLATFORM_DATA * data = (BASE_PLATFORM_DATA *)ARCHLIST->GetArchetypeData(buildType);
 	U32 bestSlot = 0;
-	if(data->bMoonPlatform && renderArch1->pData->bMoon)
-	{		
+	if(data->bMoonPlatform && renderArch1->bMoon)
+	{
 		if ( (slotUser[0] == 0))
 		{
 			return 0x00000001;
 		}
 	}
-	else if((!(data->bMoonPlatform)) && (!(renderArch1->pData->bMoon)))
+	else if((!(data->bMoonPlatform)) && (!(renderArch1->bMoon)))
 	{
 		SINGLE bestDistance = 0;
 		U32 numSlots = data->slotsNeeded;
 		U32 slotMask = 0x00000001;
-		
+
 		while(!(slotMask & (0x00000001 << (numSlots-1))))
 		{
 			slotMask = (slotMask << 1) | 0x00000001;
@@ -2086,9 +2109,14 @@ U32 Planetoid::FindBestSlot(PARCHETYPE buildType, const Vector * preferedLoc)
 			slotMask = slotMask << 1;
 			if(slotMask & (0x00000001 << M_MAX_SLOTS))
 			{
-				slotMask = (slotMask & (~(0x00000001 << M_MAX_SLOTS))) | 0x00000001; 
+				slotMask = (slotMask & (~(0x00000001 << M_MAX_SLOTS))) | 0x00000001;
 			}
 		}
+	}
+	{
+		char _diagbuf[256];
+		sprintf(_diagbuf, "FindBestSlot: ret=%u bMoon=%d\n", bestSlot, (int)renderArch1->bMoon);
+		IGM_LOG(_diagbuf);
 	}
 	return bestSlot;
 }
@@ -2153,21 +2181,24 @@ void Planetoid::TeraformPlanet(const char * newArch, SINGLE changeTime, const Ve
 		teraformTime = 0;
 		totalTeraformTime= changeTime;
 		teraformHitDir = hitDir;
-		teraRing.Init(500,changeTime,renderArch1->teraRingAnim,renderArch1->pData->teraColor.red,renderArch1->pData->teraColor.green,renderArch1->pData->teraColor.blue,renderArch1->teraExplosion,systemID);
+		teraRing.Init(500,changeTime,renderArch1->teraRingAnim,0,0,0,renderArch1->teraExplosion,systemID); // teraColor not in 200-byte binary
 
-		crew = maxCrew = renderArch1->pData->maxCrew;
-		gas = maxGas =  renderArch1->pData->maxGas;
-		metal = maxMetal = renderArch1->pData->maxMetal;
-		metalRegen =  renderArch1->pData->metalRegen;
-		gasRegen = renderArch1->pData->gasRegen;
-		crewRegen =  renderArch1->pData->crewRegen;
+		{
+			const BT_PLANET_RESC * r = planet_resc(renderArch1->pData);
+			crew   = maxCrew  = r->maxCrew;
+			gas    = maxGas   = r->maxGas;
+			metal  = maxMetal = r->maxMetal;
+			metalRegen = r->metalRegen;
+			gasRegen   = r->gasRegen;
+			crewRegen  = r->crewRegen;
+		}
 	}
 }
 //-------------------------------------------------------------------
 //
 bool Planetoid::IsMoon()
 {
-	return renderArch1->pData->bMoon;
+	return renderArch1->bMoon;
 }
 //-------------------------------------------------------------------
 //
@@ -2335,12 +2366,15 @@ inline struct IBaseObject * createPlanetoid (const PLANET_INIT & data)
 	obj->pArchetype = data.pArchetype;
 	obj->objClass = OC_PLANETOID;
 
-	obj->lastCrew = obj->crew = obj->maxCrew = data.pData->maxCrew;
-	obj->lastGas = obj->gas = obj->maxGas =  data.pData->maxGas;
-	obj->lastMetal = obj->metal = obj->maxMetal = data.pData->maxMetal;
-	obj->metalRegen =  data.pData->metalRegen;
-	obj->gasRegen = data.pData->gasRegen;
-	obj->crewRegen =  data.pData->crewRegen;
+	{
+		const BT_PLANET_RESC * r = planet_resc(data.pData);
+		obj->lastCrew = obj->crew = obj->maxCrew = r->maxCrew;
+		obj->lastGas  = obj->gas  = obj->maxGas  = r->maxGas;
+		obj->lastMetal = obj->metal = obj->maxMetal = r->maxMetal;
+		obj->metalRegen = r->metalRegen;
+		obj->gasRegen   = r->gasRegen;
+		obj->crewRegen  = r->crewRegen;
+	}
 
 	obj->oreBoost = 0;
 	obj->crewBoost = 0;
@@ -2570,8 +2604,46 @@ HANDLE PlanetFactory::CreateArchetype (const char *szArchname, OBJCLASS objClass
 	{
 		int lastTexMem = TEXMEMORYUSED;
 		BT_PLANET_DATA * data = (BT_PLANET_DATA *) _data;
+
+		// DIAG: dump struct layout so we can catch VS6 vs VS2022 differences
+		{
+			static bool bDumped = false;
+			if (!bDumped) {
+				bDumped = true;
+				// Extended diagnostic: show all intermediate field offsets + raw bytes at key positions
+				FILE *f = fopen("planet_diag.txt","w");
+				if (f) {
+					fprintf(f, "[PLANET_DIAG] arch=%s\n", szArchname);
+					fprintf(f, "  sizeof(BASIC_DATA)=%zu sizeof(MISSION_DATA)=%zu sizeof(BT_PLANET_DATA)=%zu\n",
+						sizeof(BASIC_DATA), sizeof(MISSION_DATA), sizeof(BT_PLANET_DATA));
+					fprintf(f, "  off(fileName)=%zu off(sysMapIcon)=%zu off(ambientEffect)=%zu off(missionData)=%zu\n",
+						offsetof(BT_PLANET_DATA, fileName), offsetof(BT_PLANET_DATA, sysMapIcon),
+						offsetof(BT_PLANET_DATA, ambientEffect), offsetof(BT_PLANET_DATA, missionData));
+					fprintf(f, "  off(maxMetal)=%zu off(metalRegen)=%zu off(planetType)=%zu off(teraParticle)=%zu off(teraExplosions)=%zu\n",
+						offsetof(BT_PLANET_DATA, maxMetal), offsetof(BT_PLANET_DATA, metalRegen),
+						offsetof(BT_PLANET_DATA, planetType), offsetof(BT_PLANET_DATA, teraParticle),
+						offsetof(BT_PLANET_DATA, teraExplosions));
+					fprintf(f, "  val(fileName)='%.31s' val(sysMapIcon)='%.31s'\n", data->fileName, data->sysMapIcon);
+					fprintf(f, "  val(maxMetal)=%u val(metalRegen)=%.4f val(planetType)=%d (struct offsets - expected wrong)\n",
+						data->maxMetal, data->metalRegen, (int)data->planetType);
+					{
+						const BT_PLANET_RESC * r = planet_resc(data);
+						fprintf(f, "  binary(+176): maxMetal=%u maxGas=%u maxCrew=%u metalRegen=%.6f gasRegen=%.6f crewRegen=%.6f planetType=%d\n",
+							r->maxMetal, r->maxGas, r->maxCrew, r->metalRegen, r->gasRegen, r->crewRegen, (int)r->planetType);
+					}
+					// Dump raw bytes around binary resource offset
+					const U8 * raw = (const U8*)data;
+					fprintf(f, "  raw[170..205]: ");
+					for (int i = 170; i < 205; i++) fprintf(f, "%02x ", raw[i]);
+					fprintf(f, "\n");
+					fclose(f);
+				}
+			}
+		}
+
 		result = new OBJTYPE;
 		result->pData = data;
+		result->bMoon = false; // not in 200-byte binary; defaults to false
 		result->pArchetype = ARCHLIST->GetArchetype(szArchname);
 		result->pointAnimArch = pointAnimArch;
 
@@ -2670,24 +2742,10 @@ HANDLE PlanetFactory::CreateArchetype (const char *szArchname, OBJCLASS objClass
 
 		PLANETTEXMEMUSED += (TEXMEMORYUSED-lastTexMem);
 
-		if(data->teraParticle[0])
-		{
-			DAFILEDESC fdesc = data->teraParticle;
-			
-			fdesc.lpImplementation = "UTF";
-
-			COMPTR<IFileSystem> file;
-			
-			if (OBJECTDIR->CreateInstance(&fdesc, file) == GR_OK)
-			{
-				 result->teraRingAnim = ANIM2D->create_archetype(file);
-			}
-		}
-
-		if(data->teraExplosions[0])
-		{
-			result->teraExplosion = ARCHLIST->LoadArchetype(data->teraExplosions);
-		}
+		// teraParticle and teraExplosions are at VS2022 offsets 196 and 231,
+		// both past the 200-byte binary boundary — skip to avoid garbage reads.
+		result->teraRingAnim = NULL;
+		result->teraExplosion = NULL;
 
 		//build the global mesh
 		for(U32 i = 0; i < HALO_SEGMENTS; ++i)

@@ -61,7 +61,7 @@ struct BT_PLAYERBOMB_DATA : BASIC_DATA
 	char playerBomb_anim2D[GT_PATH];
 	S32 animSize;
 
-	MISSION_DATA missionData;
+	MISSION_DATA_BIN missionData;
 
 	char filename[GT_PATH];
 };

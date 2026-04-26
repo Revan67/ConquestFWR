@@ -66,9 +66,10 @@ struct SHIELD_DATA
 	char animName[GT_PATH];
 	char fizzAnimName[GT_PATH];
 	SFX::ID sfx;
-	SFX::ID fizzOut;
-	SFX::ID fizzIn;
 };
+#ifndef _ADB
+static_assert(sizeof(SHIELD_DATA) == 100, "SHIELD_DATA binary layout mismatch");
+#endif
 //----------------------------------------------------------------
 //
 struct DAMAGE_DATA
@@ -149,7 +150,7 @@ struct BASE_SPACESHIP_DATA : BASIC_DATA
 {
 	SPACESHIPCLASS type;
     char fileName[GT_PATH];
-	MISSION_DATA missionData;
+	MISSION_DATA_BIN missionData;
     DYNAMICS_DATA dynamicsData;
 	ROCKING_DATA rockingData;
 	char explosionType[GT_PATH];
