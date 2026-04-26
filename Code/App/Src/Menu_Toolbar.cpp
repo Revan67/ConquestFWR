@@ -678,9 +678,9 @@ struct Menu_tb : public Frame, IToolbar
 						for (int _i = 0; _i < 32; ++_i) fprintf(_tbf, " %02x", (int)bp[_i]);
 						fprintf(_tbf, "\n"); fflush(_tbf);
 					}
-					// Skip: empty, non-ASCII garbage, or !! prefix (VS6 "not used" convention)
+					// Skip: empty, control chars, non-ASCII, or !! prefix (VS6 "not used" convention)
 					unsigned char _fc = (unsigned char)pSD->staticType[0];
-					if (_fc == 0 || _fc > 127 || _fc == '!') { pList = pNode->pNext; delete pNode; return TRUE; }
+					if (_fc == 0 || _fc < 32 || _fc > 127 || _fc == '!') { pList = pNode->pNext; delete pNode; return TRUE; }
 				}
 
 				GENDATA->CreateInstance(((STATIC_DATA *)(pBaseData+pNode->offset))->staticType, pComp);
@@ -699,7 +699,7 @@ struct Menu_tb : public Frame, IToolbar
 
 				{
 					unsigned char _fc2 = (unsigned char)((PROGRESS_STATIC_DATA *)(pBaseData+pNode->offset))->staticType[0];
-					if (_fc2 == 0 || _fc2 > 127 || _fc2 == '!') { pList = pNode->pNext; delete pNode; return TRUE; }
+					if (_fc2 == 0 || _fc2 < 32 || _fc2 > 127 || _fc2 == '!') { pList = pNode->pNext; delete pNode; return TRUE; }
 				}
 
 				GENDATA->CreateInstance(((PROGRESS_STATIC_DATA *)(pBaseData+pNode->offset))->staticType, pComp);
@@ -718,7 +718,7 @@ struct Menu_tb : public Frame, IToolbar
 
 				{
 					unsigned char _fc3 = (unsigned char)((EDIT_DATA *)(pBaseData+pNode->offset))->editType[0];
-					if (_fc3 == 0 || _fc3 > 127 || _fc3 == '!') { pList = pNode->pNext; delete pNode; return TRUE; }
+					if (_fc3 == 0 || _fc3 < 32 || _fc3 > 127 || _fc3 == '!') { pList = pNode->pNext; delete pNode; return TRUE; }
 				}
 
 				GENDATA->CreateInstance(((EDIT_DATA *)(pBaseData+pNode->offset))->editType, pComp);

@@ -636,7 +636,8 @@
   </ImportGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <PostBuildEvent>
-      <Command>xcopy /Y "$(OutDir)Mission.dll" "E:\Games\GOG\Conquest Frontier Wars\"</Command>
+      <Command>xcopy /Y "$(OutDir)Mission.dll" "E:\Games\GOG\Conquest Frontier Wars\"
+xcopy /Y "$(OutDir)Mission.pdb" "E:\Games\GOG\Conquest Frontier Wars\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
 </Project>
