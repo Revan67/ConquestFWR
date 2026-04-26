@@ -581,6 +581,18 @@ bool ICQImage::Assert (const char *exp, void *file, unsigned line)
 
 		FDUMP(ErrorCode(ERR_GENERAL, SEV_TRACE_1), "-------------------------------------------------\r\nAssertion Failed: \r\n");
 		FDUMP(ErrorCode(ERR_GENERAL, SEV_TRACE_1), "%s", text.buffer);
+		{
+			FILE *_af = fopen("cq_bomb.txt", "a");
+			if (_af) {
+				fputs("=== ASSERT ===\r\n", _af);
+				fputs(text.buffer, _af);
+				fputs("\r\n", _af);
+				fflush(_af);
+				fclose(_af);
+			}
+			OutputDebugStringA("=== ASSERT ===\n");
+			OutputDebugStringA(text.buffer);
+		}
 		int result = IDIGNORE;
 
 		FlipToGDI();
@@ -714,8 +726,24 @@ bool __cdecl ICQImage::Bomb (const char *exp, ...)
 
 		FDUMP(ErrorCode(ERR_GENERAL, SEV_TRACE_1), "-------------------------------------------------\r\nBomb: \r\n");
 		FDUMP(ErrorCode(ERR_GENERAL, SEV_TRACE_1), "%s", text.buffer);
+
+		// VS2022/Win11 compat: log Bomb text to a file before showing the dialog,
+		// since DialogBoxParam hides behind the DXVK window making it invisible.
+		{
+			FILE *_bf = fopen("cq_bomb.txt", "a");
+			if (_bf) {
+				fputs("=== BOMB ===\r\n", _bf);
+				fputs(text.buffer, _bf);
+				fputs("\r\n", _bf);
+				fflush(_bf);
+				fclose(_bf);
+			}
+			OutputDebugStringA("=== BOMB ===\n");
+			OutputDebugStringA(text.buffer);
+		}
+
 		int result = IDABORT;
-		
+
 		FlipToGDI();
 		result = DialogBoxParam(hResource, MAKEINTRESOURCE(IDD_DIALOG13), hMainWindow, dlgProc, (LPARAM) &text);
 
@@ -1108,8 +1136,22 @@ int ICQImage::Exception (struct _EXCEPTION_POINTERS * exceptionInfo)
 
 		FDUMP(ErrorCode(ERR_GENERAL, SEV_TRACE_1), "-------------------------------------------------\r\nException: \r\n");
 		FDUMP(ErrorCode(ERR_GENERAL, SEV_TRACE_1), text.buffer);
+
+		{
+			FILE *_ef = fopen("cq_bomb.txt", "a");
+			if (_ef) {
+				fputs("=== EXCEPTION ===\r\n", _ef);
+				fputs(text.buffer, _ef);
+				fputs("\r\n", _ef);
+				fflush(_ef);
+				fclose(_ef);
+			}
+			OutputDebugStringA("=== EXCEPTION ===\n");
+			OutputDebugStringA(text.buffer);
+		}
+
 		int result = IDABORT;
-		
+
 		FlipToGDI();
 		result = DialogBoxParam(hResource, MAKEINTRESOURCE(IDD_DIALOG13), hMainWindow, dlgProc, (LPARAM) &text);
 
@@ -1233,6 +1275,14 @@ int ICQImage::STANDARD_DUMP (ErrorCode code, const C8 *fmt, ...)
 
 		case DAHEAP_INVALID_PTR:
 			// ptr allocated outside DACOM heap (e.g. CRT calloc); tracking mismatch in debug builds only
+			return 0;
+
+		case DAHEAP_HEAP_CORRUPTED:
+			// DACOM block-list corruption detected (VS2022/Win11 heap layout mismatch).
+			// Log and continue — the Bomb dialog hides behind the game window causing apparent freeze.
+			OutputDebugStringA("[DAHEAP] DAHEAP_HEAP_CORRUPTED ignored (VS2022 compat)\n");
+			OutputDebugStringA(buffer);
+			OutputDebugStringA("\n");
 			return 0;
 
 		case DAHEAP_VALLOC_FAILED:

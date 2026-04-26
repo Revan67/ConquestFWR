@@ -85,12 +85,18 @@ static S32 get_frame_time (void)
 }
 
 static RPDEVICESTATS stats;
+static FILE *g_em_f = NULL;
+#define EM_LOG(s) do { if(!g_em_f) g_em_f=fopen("em_diag.txt","w"); if(g_em_f){fputs((s),g_em_f);fflush(g_em_f);} } while(0)
+
 //--------------------------------------------------------------------------
 //
+static FILE *g_slam_f = NULL;
+#define SLAM_LOG(s) do { if(!g_slam_f) g_slam_f=fopen("slam_diag.txt","w"); if(g_slam_f){fputs((s),g_slam_f);fflush(g_slam_f);} } while(0)
+
 static void slam2Dcomponents (S32 frame_time, bool bUseLocking)
 {
 	S32 fps;
-#ifndef FINAL_RELEASE	
+#ifndef FINAL_RELEASE
 	C8  buffer[256];
 #endif
 
@@ -100,20 +106,28 @@ static void slam2Dcomponents (S32 frame_time, bool bUseLocking)
 		fps = RENDER_FRAMERATE;
 	if (fps + 1 == RENDER_FRAMERATE || fps - 1 == RENDER_FRAMERATE)
 		fps = RENDER_FRAMERATE;
-	
+
+	SLAM_LOG("slam2D: entered\n");
 	if (bUseLocking)
 	{
+		SLAM_LOG("slam2D: before SURFACE->Lock\n");
 		if (SURFACE->Lock() == false)
 			return;
+		SLAM_LOG("slam2D: after SURFACE->Lock\n");
 	}
-	
+
+	SLAM_LOG("slam2D: before DrawHighlightedList\n");
 	if (CQFLAGS.bFullScreenMap==0)
 		OBJLIST->DrawHighlightedList();
-	
+	SLAM_LOG("slam2D: after DrawHighlightedList\n");
+
+	SLAM_LOG("slam2D: before BATCH->set_state\n");
 	BATCH->set_state(RPR_BATCH,false);
+	SLAM_LOG("slam2D: before BATCH->flush\n");
 	BATCH->flush(RPR_OPAQUE | RPR_TRANSLUCENT_UNSORTED_ONLY | RPR_TRANSLUCENT_DEPTH_SORTED_ONLY);
-	
+	SLAM_LOG("slam2D: before EVENTSYS->Send\n");
 	EVENTSYS->Send(CQE_ENDFRAME);
+	SLAM_LOG("slam2D: after EVENTSYS->Send\n");
 	
 #ifndef FINAL_RELEASE	
 	if (CheckHotkeyPressed (IDH_DEBUG_PRINT))
@@ -248,9 +262,6 @@ ModalEventCallback * ModalEventCallback::root;
 
 bool bInScene=0;
 
-static FILE *g_em_f = NULL;
-#define EM_LOG(s) do { if(!g_em_f) g_em_f=fopen("em_diag.txt","w"); if(g_em_f){fputs((s),g_em_f);fflush(g_em_f);} } while(0)
-
 BOOL32 EndModal(SINGLE dt)
 {
 	bool bNoSwap = false;		// true if viewing a full-screen movie
@@ -297,10 +308,16 @@ BOOL32 EndModal(SINGLE dt)
 		// when the game is active, draw movies before 2D components
 		// when the game is not active (ie. front end menus) then movies are always on top.
 		EM_LOG("before slam2D\n");
-		if (CQFLAGS.bGameActive)
+		EM_LOG("reading bGA\n");
+		BOOL32 bGA_snap = CQFLAGS.bGameActive;
+		EM_LOG("got bGA\n");
+		if (bGA_snap)
 		{
+			EM_LOG("bGA1 before BltMovies\n");
 			SOUNDMANAGER->BltMovies();
+			EM_LOG("bGA1 before slam2D\n");
 			slam2Dcomponents(dt, bUseLocking);		// lock frame buffer, write 2D stuff, unlock
+			EM_LOG("bGA1 after slam2D\n");
 		}
 		else
 /*			if (CQFLAGS.bFullScreenMovie)
@@ -311,8 +328,11 @@ BOOL32 EndModal(SINGLE dt)
 			else
 */			{
 				// okay, we're in the front end, and we are not drawing a movie, so render the 2D stuff
+				EM_LOG("bGA0 before slam2D\n");
 				slam2Dcomponents(dt, bUseLocking);		// lock frame buffer, write 2D stuff, unlock
+				EM_LOG("bGA0 before BltMovies\n");
 				SOUNDMANAGER->BltMovies();
+				EM_LOG("bGA0 after BltMovies\n");
 			}
 		EM_LOG("after slam2D\n");
 

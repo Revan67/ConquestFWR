@@ -2568,6 +2568,7 @@ BOOL32 Mission::Reload (void)
 			totalObjPercent=0.40-baseObjPercent;
 			MIS_LOG("Reload: OBJLIST->Load(terrainFile)\n");
 			OBJLIST->Load(terrainFile,true);
+			MIS_LOG("Reload: OBJLIST->Load done\n");
 
 			ipAnim->SetProgress(0.40f);
 			ipAnim->UpdateString(IDS_PROG_MATRIX);

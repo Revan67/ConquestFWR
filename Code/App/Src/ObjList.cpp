@@ -2473,6 +2473,33 @@ PARCHETYPE ObjectList::LoadArchetype (const C8 *name)
 		
 		if ((dataType = getArchDataType(name)) != 0)
 		{
+			// Wrapper log: dump raw bytes for large archetypes (ships >= 300B, platforms >= 300B)
+			// so we can cross-check VS6 binary layout vs VS2022 struct offsets.
+			if (dataType->dataSize >= 300) {
+				static bool bArchLogOpen = false;
+				FILE * fLog = fopen("archetype_raw.txt", bArchLogOpen ? "a" : "w");
+				bArchLogOpen = true;
+				if (fLog) {
+					const unsigned char *raw = reinterpret_cast<const unsigned char *>(dataType->objData);
+					U32 end = dataType->dataSize < 320 ? dataType->dataSize : 320;
+					fprintf(fLog, "=== '%s' dataSize=%u ===\n", name, dataType->dataSize);
+					fprintf(fLog, "off 000-031 (BASIC_DATA+type+fileName start):\n  ");
+					for (U32 i = 0; i < 32 && i < end; i++) fprintf(fLog, "%02x ", raw[i]);
+					fprintf(fLog, "\n  ASCII: ");
+					for (U32 i = 0; i < 32 && i < end; i++) fprintf(fLog, "%c", (raw[i]>=32&&raw[i]<127)?raw[i]:'.');
+					fprintf(fLog, "\noff 150-220 (around explosionType for ships):\n  ");
+					for (U32 i = 150; i < 220 && i < end; i++) fprintf(fLog, "%02x ", raw[i]);
+					fprintf(fLog, "\n  ASCII: ");
+					for (U32 i = 150; i < 220 && i < end; i++) fprintf(fLog, "%c", (raw[i]>=32&&raw[i]<127)?raw[i]:'.');
+					fprintf(fLog, "\noff 220-320 (around explosionType for platforms):\n  ");
+					for (U32 i = 220; i < end; i++) fprintf(fLog, "%02x ", raw[i]);
+					fprintf(fLog, "\n  ASCII: ");
+					for (U32 i = 220; i < end; i++) fprintf(fLog, "%c", (raw[i]>=32&&raw[i]<127)?raw[i]:'.');
+					fprintf(fLog, "\n\n");
+					fflush(fLog);
+					fclose(fLog);
+				}
+			}
 			CONNECTION_NODE<IObjectFactory> *node= point2.pClientList;
 			HANDLE handle=0;
 

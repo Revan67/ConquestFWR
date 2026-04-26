@@ -1795,13 +1795,44 @@ void __stdcall Start3DMode()
 	CQASSERT(prevExceptionHandler==0);
 	prevExceptionHandler = SetUnhandledExceptionFilter(cqExceptionHandler);
 
-	_SD_LOG("step E4: CQBATCH->Startup\n");
-	CQBATCH->Startup();
-	_SD_LOG("step E4 done\n");
+	// Open a Win32 trace file in %TEMP% (absolute path, no working-dir dependency)
+	// before CQBATCH->Startup() so we can tell if it crashes inside.
+	{
+		char _sd2path[MAX_PATH];
+		GetTempPathA(MAX_PATH, _sd2path);
+		lstrcatA(_sd2path, "cq_startup2.txt");
+		HANDLE _sd2pre = CreateFileA(_sd2path, GENERIC_WRITE, FILE_SHARE_READ,
+		                             NULL, CREATE_ALWAYS, FILE_FLAG_WRITE_THROUGH, NULL);
+		auto _wr2 = [&](const char* s){ if(_sd2pre!=INVALID_HANDLE_VALUE){DWORD _d;WriteFile(_sd2pre,s,lstrlenA(s),&_d,NULL);} };
+		_wr2("before CQBATCH->Startup\r\n");
+
+		_SD_LOG("step E4: CQBATCH->Startup\n");
+		CQBATCH->Startup();
+		_SD_LOG("step E4 done\n");
+
+		_wr2("after CQBATCH->Startup\r\n");
+		if(_sd2pre!=INVALID_HANDLE_VALUE) CloseHandle(_sd2pre);
+	}
 	/* Leave _sd_f open — fclose triggers _CrtCheckMemory which crashes on
 	 * COMHeap blocks in Debug builds. The OS reclaims it at process exit. */
 #undef _SD_LOG
 #undef _SD_LOGF
+
+// Extended startup trace — Win32 HANDLE in %TEMP%, avoids CRT heap and working-dir issues.
+	HANDLE _sd2;
+	{
+		char _sd2path[MAX_PATH];
+		GetTempPathA(MAX_PATH, _sd2path);
+		lstrcatA(_sd2path, "cq_startup3.txt");
+		_sd2 = CreateFileA(_sd2path, GENERIC_WRITE, FILE_SHARE_READ,
+		                   NULL, CREATE_ALWAYS, FILE_FLAG_WRITE_THROUGH, NULL);
+	}
+#define _SDE(s) do { \
+    const char* _sm = "step " s "\r\n"; \
+    OutputDebugStringA(_sm); \
+    if(_sd2 != INVALID_HANDLE_VALUE){ DWORD _dw; WriteFile(_sd2,_sm,lstrlenA(_sm),&_dw,NULL); } \
+} while(0)
+	_SDE("F1: set_sampler_state");
 	BATCH->set_sampler_state( 0, D3DSAMP_MINFILTER, D3DTEXF_LINEAR );
 	BATCH->set_sampler_state( 0, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR );
 	BATCH->set_sampler_state( 1, D3DSAMP_MINFILTER, D3DTEXF_LINEAR );
@@ -1908,12 +1939,14 @@ void __stdcall Start3DMode()
 
 	U32 modes[4];
 
+	_SDE("F2: BATCH set_state");
 	BATCH->set_state(RPR_BATCH,0);
 	BATCH->set_state(RPR_BATCH_TRANSLUCENT_POOL,262144);
 	BATCH->set_state(RPR_BATCH_TRANSLUCENT_NONZ_POOL,1024*1024);
 	PIPE->set_pipeline_state(RP_CLEAR_COLOR,0xff000000);  // a,r,g,b
 	PIPE->set_render_state(D3DRS_ZENABLE,TRUE);
 
+	_SDE("F3: set_gamma");
 	static bool bFirstTime = true;
 	if (bFirstTime && DEFAULTS->GetDefaults()->bWindowMode == false)
 	{
@@ -1925,11 +1958,14 @@ void __stdcall Start3DMode()
 		set_gamma(!DEFAULTS->GetDefaults()->bWindowMode);
 	}
 
+	_SDE("F4: init_debug_font");
 	BATCH->set_state(RPR_BATCH,1);
 
 	init_debug_font();
 
+	_SDE("F5: CQE_START3DMODE");
 	EVENTSYS->Send(CQE_START3DMODE, (void*)true);
+	_SDE("F5 done");
 
 	CQFLAGS.bNoToolbar = CQFLAGS.bMovieMode = 0;		// turn this back on by default
 	// might cuase chaos to comment this out
@@ -1955,10 +1991,15 @@ void __stdcall Start3DMode()
 	else
 		SetPriorityClass(GetCurrentProcess(), NORMAL_PRIORITY_CLASS);
 
+	_SDE("F6: SetCallback wndProc");
 	/* D3D device and all subsystems are now stable.  Re-enable the game
 	 * wndProc so the game loop receives input.  The thread guard inside
 	 * wndProc redirects DXVK background-thread messages to DefWindowProc. */
 	WM->SetCallback(wndProc);
+	_SDE("F6 done - Startup3DMode complete");
+	// _sd_f intentionally left open; OS reclaims at exit (fclose crashes debug CRT)
+	if(_sd2 != INVALID_HANDLE_VALUE) CloseHandle(_sd2);
+#undef _SDE
 }
 //---------------------------------------------------------------------
 //
