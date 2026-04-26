@@ -668,18 +668,19 @@ struct Menu_tb : public Frame, IToolbar
 				pNode->offset = varDesc.offset + baseOffset;
 				pNode->type = GBT_STATIC;
 
-				if (((STATIC_DATA *)(pBaseData+pNode->offset))->staticType[0] == 0)
 				{
 					static FILE* _tbf = nullptr;
-					if (!_tbf) { _tbf = fopen("toolbar_diag.txt", "a"); if (_tbf) { fprintf(_tbf, "sizeof(HOTBUTTON_DATA)=%zu sizeof(STATIC_DATA)=%zu sizeof(ICON_DATA)=%zu sizeof(EDIT_DATA)=%zu\n", sizeof(HOTBUTTON_DATA), sizeof(STATIC_DATA), sizeof(ICON_DATA), sizeof(EDIT_DATA)); fflush(_tbf); } }
+					if (!_tbf) { _tbf = fopen("toolbar_diag.txt", "a"); if (_tbf) { fprintf(_tbf, "sz: HOTBUTTON_DATA=%zu STATIC_DATA=%zu ICON_DATA=%zu EDIT_DATA=%zu\n", sizeof(HOTBUTTON_DATA), sizeof(STATIC_DATA), sizeof(ICON_DATA), sizeof(EDIT_DATA)); fflush(_tbf); } }
+					const STATIC_DATA* pSD = (const STATIC_DATA*)(pBaseData+pNode->offset);
 					if (_tbf) {
 						const unsigned char* bp = (const unsigned char*)pBaseData + pNode->offset;
-						fprintf(_tbf, "STATIC missing type @off=%u '%s': bytes:", (unsigned)(pNode->offset), varDesc.varName);
+						fprintf(_tbf, "STATIC @off=%u '%s' type='%s': bytes:", (unsigned)(pNode->offset), varDesc.varName, pSD->staticType);
 						for (int _i = 0; _i < 32; ++_i) fprintf(_tbf, " %02x", (int)bp[_i]);
 						fprintf(_tbf, "\n"); fflush(_tbf);
 					}
-					pList = pNode->pNext; delete pNode;
-					return TRUE;
+					// Skip: empty, non-ASCII garbage, or !! prefix (VS6 "not used" convention)
+					unsigned char _fc = (unsigned char)pSD->staticType[0];
+					if (_fc == 0 || _fc > 127 || _fc == '!') { pList = pNode->pNext; delete pNode; return TRUE; }
 				}
 
 				GENDATA->CreateInstance(((STATIC_DATA *)(pBaseData+pNode->offset))->staticType, pComp);
@@ -696,13 +697,9 @@ struct Menu_tb : public Frame, IToolbar
 				pNode->offset = varDesc.offset + baseOffset;
 				pNode->type = GBT_PROGRESS_STATIC;
 
-				if (((PROGRESS_STATIC_DATA *)(pBaseData+pNode->offset))->staticType[0] == 0)
 				{
-					static FILE* _tbf2 = nullptr;
-					if (!_tbf2) _tbf2 = fopen("toolbar_diag.txt", "a");
-					if (_tbf2) { fprintf(_tbf2, "PROGRESS_STATIC missing type @off=%u '%s'\n", (unsigned)(pNode->offset), varDesc.varName); fflush(_tbf2); }
-					pList = pNode->pNext; delete pNode;
-					return TRUE;
+					unsigned char _fc2 = (unsigned char)((PROGRESS_STATIC_DATA *)(pBaseData+pNode->offset))->staticType[0];
+					if (_fc2 == 0 || _fc2 > 127 || _fc2 == '!') { pList = pNode->pNext; delete pNode; return TRUE; }
 				}
 
 				GENDATA->CreateInstance(((PROGRESS_STATIC_DATA *)(pBaseData+pNode->offset))->staticType, pComp);
@@ -719,18 +716,9 @@ struct Menu_tb : public Frame, IToolbar
 				pNode->offset = varDesc.offset + baseOffset;
 				pNode->type = GBT_EDIT;
 
-				if (((EDIT_DATA *)(pBaseData+pNode->offset))->editType[0] == 0)
 				{
-					static FILE* _tbf3 = nullptr;
-					if (!_tbf3) _tbf3 = fopen("toolbar_diag.txt", "a");
-					if (_tbf3) {
-						const unsigned char* bp = (const unsigned char*)pBaseData + pNode->offset;
-						fprintf(_tbf3, "EDIT missing type @off=%u '%s': bytes:", (unsigned)(pNode->offset), varDesc.varName);
-						for (int _i = 0; _i < 32; ++_i) fprintf(_tbf3, " %02x", (int)bp[_i]);
-						fprintf(_tbf3, "\n"); fflush(_tbf3);
-					}
-					pList = pNode->pNext; delete pNode;
-					return TRUE;
+					unsigned char _fc3 = (unsigned char)((EDIT_DATA *)(pBaseData+pNode->offset))->editType[0];
+					if (_fc3 == 0 || _fc3 > 127 || _fc3 == '!') { pList = pNode->pNext; delete pNode; return TRUE; }
 				}
 
 				GENDATA->CreateInstance(((EDIT_DATA *)(pBaseData+pNode->offset))->editType, pComp);

@@ -2495,6 +2495,13 @@ PARCHETYPE ObjectList::LoadArchetype (const C8 *name)
 					for (U32 i = 220; i < end; i++) fprintf(fLog, "%02x ", raw[i]);
 					fprintf(fLog, "\n  ASCII: ");
 					for (U32 i = 220; i < end; i++) fprintf(fLog, "%c", (raw[i]>=32&&raw[i]<127)?raw[i]:'.');
+					if (dataType->dataSize >= 700) {
+						U32 end2 = dataType->dataSize < 720 ? dataType->dataSize : 720;
+						fprintf(fLog, "\noff 600-720 (around launcherType for GBOAT):\n  ");
+						for (U32 i = 600; i < end2; i++) fprintf(fLog, "%02x ", raw[i]);
+						fprintf(fLog, "\n  ASCII: ");
+						for (U32 i = 600; i < end2; i++) fprintf(fLog, "%c", (raw[i]>=32&&raw[i]<127)?raw[i]:'.');
+					}
 					fprintf(fLog, "\n\n");
 					fflush(fLog);
 					fclose(fLog);

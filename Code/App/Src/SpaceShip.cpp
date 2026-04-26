@@ -1330,8 +1330,8 @@ void SpaceShip<SaveStruct,InitStruct>::initSpaceShip (const InitStruct & data)
 	pExplosionType = data.pExplosionType;
 	hiliteTex = data.hiliteTex;
 	billboardTex = data.billboardTex;
-	billboardThreshhold = data.pData->billboard.billboardThreshhold;
-	billboardTextTwo = data.pData->billboard.bTex2;
+	billboardThreshhold = 0; // not in VS6 binary (disables threshold = always render as billboard when needed)
+	billboardTextTwo = false; // not in VS6 binary
 
 //	transform.rotate_about_i(90*MUL_DEG_TO_RAD);
 	if (data.pData->ambient_animation[0])

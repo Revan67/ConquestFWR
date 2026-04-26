@@ -91,8 +91,7 @@ struct CLOAK_DATA
 struct BILLBOARD_DATA
 {
 	char billboardTexName[GT_PATH];
-	U32 billboardThreshhold;
-	bool bTex2;
+	// billboardThreshhold and bTex2 not in VS6 binary; initialized from defaults in loadSpaceshipArchetype
 };
 
 #define SLICES 10
@@ -177,6 +176,7 @@ struct BASE_SPACESHIP_DATA : BASIC_DATA
 #endif
 	bool bLargeShip; // does this take up more than one grid square?
 };
+static_assert(sizeof(BASE_SPACESHIP_DATA) == 644, "BASE_SPACESHIP_DATA binary layout mismatch");
 
 //----------------------------------------------------------------
 //
@@ -253,7 +253,10 @@ struct BT_GUNBOAT_DATA : BASE_SPACESHIP_DATA
 	SINGLE optimalFacingAngle;	// in radians
 	bool bNoLineOfSight;		// true means we don't line of sight
 	char launcherType[MAX_GUNBOAT_LAUNCHERS][GT_PATH];
-};							
+};
+#ifndef _ADB
+static_assert(sizeof(BT_GUNBOAT_DATA) == 816, "BT_GUNBOAT_DATA binary layout mismatch");
+#endif
 //----------------------------------------------------------------
 //
 #ifndef _ADB

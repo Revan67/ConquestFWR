@@ -4742,8 +4742,6 @@ struct CLOAK_DATA
 struct BILLBOARD_DATA
 {
 	char billboardTexName[32];
-	U32 billboardThreshhold;
-	bool bTex2;
 };
 
 
