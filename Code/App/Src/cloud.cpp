@@ -1317,10 +1317,18 @@ void AsteroidField::PlaceBaseNuggets()
 	{
 		RandomGen randGen(((U16)dwMissionID >> 3) %255);
 		numNuggets = dArch->pData->nuggetsPerSquare*numSquares;
+		if (numNuggets > 10000)
+		{
+			char wbuf[128];
+			sprintf(wbuf, "[AST] WARNING: numNuggets=%u clamped to 0 (nuggPerSq=%u numSq=%u)\n",
+				numNuggets, dArch->pData->nuggetsPerSquare, numSquares);
+			OutputDebugStringA(wbuf);
+			numNuggets = 0;
+		}
 		U32 nuggetID = 1;
 		for(U32 i = 0 ; i < numNuggets; ++i)
 		{
-			CQASSERT((nuggetID != 0x00000080) && "Excessive Number of Nuggets in Nebula");
+			//CQASSERT((nuggetID != 0x00000080) && "Excessive Number of Nuggets in Nebula");
 			U32 square = randGen.rand() % numSquares;
 			Vector pos;
 			pos.x = this->squares[square].x + GRIDSIZE*((randGen.rand()%1000)/1000.0) - (GRIDSIZE*0.5);
@@ -1328,6 +1336,7 @@ void AsteroidField::PlaceBaseNuggets()
 			pos.z = dArch->pData->nuggetZHeight;
 
 			PARCHETYPE pArch = dArch->nuggetType[randGen.rand()%validNuggets];
+			if (!pArch) { ++nuggetID; continue; } // archetype failed to load (missing or garbage name)
 			BT_NUGGET_DATA * nData = (BT_NUGGET_DATA *)(ARCHLIST->GetArchetypeData(pArch));
 			NUGGETMANAGER->CreateNugget(pArch,systemID,pos,nData->maxSupplies,0,dwMissionID | (nuggetID << 24),false);
 			++nuggetID;
@@ -1720,12 +1729,20 @@ BOOL32 AsteroidField::Setup()//struct XYCoord *_squares,U32 _numSquares)
 	BT_ASTEROIDFIELD_DATA *data = dArch->pData;
 	
 	numRoids = data->asteroidsPerSquare*numSquares;
-	CQASSERT(data->polyroidsPerSquare == 0 && "Please talk to Rob if you feel you need to use these");
-	
+	// VS6 ADB data may have non-zero polyroidsPerSquare; suppress the assert to avoid
+	// hidden dialog freeze. polyroidsPerSquare == 0 was enforced in VS6 editor only.
+	//CQASSERT(data->polyroidsPerSquare == 0 && "Please talk to Rob if you feel you need to use these");
+
+	// Guard against corrupted/garbage data causing allocation overflow.
+	// Also catch negative values: S32*U32 arithmetic can wrap to negative if the
+	// U32 product exceeds INT32_MAX before conversion.
+	if (numRoids <= 0 || numRoids > 50000)
+		numRoids = 0;
+
 	//asteroids MUST be able to be returned to asteroid space
 	if (data->minDriftSpeed < 100)
 		data->minDriftSpeed = 100;
-	
+
 	Vector drift(1,1,0);
 	if (numRoids && CQEFFECTS.bExpensiveTerrain)
 	{
@@ -1767,8 +1784,8 @@ BOOL32 AsteroidField::Setup()//struct XYCoord *_squares,U32 _numSquares)
 			roids[i].anim.Init(arch[rand()%numRoidTypes]);
 			roids[i].anim.SetPosition(vec);
 		//	SINGLE num = 10*(SINGLE)rand()/RAND_MAX;
-			S32 num = rand()%(data->animSizeMax-data->animSizeMin);
-			roids[i].anim.SetWidth(dArch->pData->animSizeMin+num);
+			S32 num = rand()%(data->animSizeMax - data->animSizeMin);
+			roids[i].anim.SetWidth(data->animSizeMin + num);
 			roids[i].anim.Randomize();
 			roids[i].anim.color.r = data->animColor.r;
 			roids[i].anim.color.g = data->animColor.g;
@@ -3336,10 +3353,18 @@ void Nebula::PlaceBaseNuggets()
 	{
 		RandomGen randGen(((U16)dwMissionID >> 3) %255);
 		numNuggets = nArch->pData->nuggetsPerSquare*numSquares;
+		if (numNuggets > 127)
+		{
+			char wbuf[128];
+			sprintf(wbuf, "[NEB] WARNING: numNuggets=%u clamped to 0 (nuggPerSq=%u numSq=%u)\n",
+				numNuggets, nArch->pData->nuggetsPerSquare, numSquares);
+			OutputDebugStringA(wbuf);
+			numNuggets = 0;
+		}
 		U32 nuggetID = 1;
 		for(U32 i = 0 ; i < numNuggets; ++i)
 		{
-			CQASSERT((nuggetID != 0x00000080) && "Excessive Number of Nuggets in Nebula");
+			//CQASSERT((nuggetID != 0x00000080) && "Excessive Number of Nuggets in Nebula");
 			U32 square = randGen.rand() % numSquares;
 			Vector pos;
 			pos.x = this->squares[square].x + GRIDSIZE*((randGen.rand()%1000)/1000.0) - (GRIDSIZE*0.5);
@@ -4292,8 +4317,37 @@ HANDLE FieldManager::CreateArchetype(const char *szArchname, OBJCLASS objClass, 
 			//nArch->name = szArchname;
 			nArch->pData = (BT_NEBULA_DATA *)data;
 			nArch->pArchetype = ARCHLIST->GetArchetype(szArchname);
+
+			// DIAG: print nuggetType for every nebula archetype (append to nebula_diag.txt)
+			{
+				char dbuf[512];
+				BT_NEBULA_DATA *nd = (BT_NEBULA_DATA *)data;
+				// Only print sizes once via static guard, but print values for every arch
+				static bool bNebSizesDumped = false;
+				FILE *f2 = fopen("nebula_diag.txt", bNebSizesDumped ? "a" : "w");
+				if (!bNebSizesDumped && f2) {
+					bNebSizesDumped = true;
+					sprintf(dbuf,
+						"sizeof(BASE_FIELD_DATA)=%zu  sizeof(BT_NEBULA_DATA)=%zu\n"
+						"off(cloudEffect)=%zu  off(mapTexName)=%zu  off(missionData)=%zu\n"
+						"off(attributes)=%zu  off(nuggetsPerSquare)=%zu  off(nuggetType)=%zu\n",
+						sizeof(BASE_FIELD_DATA), sizeof(BT_NEBULA_DATA),
+						offsetof(BT_NEBULA_DATA,cloudEffect), offsetof(BT_NEBULA_DATA,mapTexName),
+						offsetof(BT_NEBULA_DATA,missionData), offsetof(BT_NEBULA_DATA,attributes),
+						offsetof(BT_NEBULA_DATA,nuggetsPerSquare), offsetof(BT_NEBULA_DATA,nuggetType));
+					fputs(dbuf, f2);
+				}
+				if (f2) {
+					sprintf(dbuf, "[NEB] %s: cloudEffect='%.31s' nug[0]='%.31s' nug[1]='%.31s'\n",
+						szArchname, nd->cloudEffect, nd->nuggetType[0], nd->nuggetType[1]);
+					fputs(dbuf, f2);
+					fclose(f2);
+				}
+			}
+
 			for(U32 i = 0; i <4; ++i)
 			{
+				nArch->nuggetType[i] = NULL; // initialize; LoadArchetype may fail for missing/garbage names
 				if(nArch->pData->nuggetType[i][0])
 					nArch->nuggetType[i] = ARCHLIST->LoadArchetype(nArch->pData->nuggetType[i]);
 			}
@@ -4345,11 +4399,38 @@ HANDLE FieldManager::CreateArchetype(const char *szArchname, OBJCLASS objClass, 
 					//dArch->name = szArchname;
 					dArch->pData = objData;
 					dArch->pArchetype = ARCHLIST->GetArchetype(szArchname);
+
+					// DIAG: log struct sizes and nuggetType values
+					{
+						static bool bAstDumped = false;
+						FILE *fad = fopen("asteroid_diag2.txt", bAstDumped ? "a" : "w");
+						if (fad) {
+							if (!bAstDumped) {
+								bAstDumped = true;
+								fprintf(fad,
+									"sizeof(BT_ASTEROIDFIELD_DATA)=%zu sizeof(MISSION_DATA)=%zu sizeof(M_CAPS)=%zu\n"
+									"off(missionData)=%zu off(attributes)=%zu off(asteroidsPerSquare)=%zu off(nuggetType)=%zu\n",
+									sizeof(BT_ASTEROIDFIELD_DATA), sizeof(BT_ASTEROIDFIELD_DATA::missionData),
+									sizeof(BT_ASTEROIDFIELD_DATA::missionData.caps),
+									offsetof(BT_ASTEROIDFIELD_DATA,missionData),
+									offsetof(BT_ASTEROIDFIELD_DATA,attributes),
+									offsetof(BT_ASTEROIDFIELD_DATA,asteroidsPerSquare),
+									offsetof(BT_ASTEROIDFIELD_DATA,nuggetType));
+							}
+							fprintf(fad, "[AST] %s: astPerSq=%d nug[0]='%.31s' nug[1]='%.31s'\n",
+								szArchname, objData->asteroidsPerSquare,
+								objData->nuggetType[0], objData->nuggetType[1]);
+							fclose(fad);
+						}
+					}
+
 					int i;
 					for(i = 0; i <4; ++i)
 					{
-						if(dArch->pData->nuggetType[i][0])
-							dArch->nuggetType[i] = ARCHLIST->LoadArchetype(dArch->pData->nuggetType[i]);
+						dArch->nuggetType[i] = NULL;
+						const char *nt = dArch->pData->nuggetType[i];
+						if(nt[0] && nt[0] != '^') // '^' is a VS6 binary sentinel meaning "no type"
+							dArch->nuggetType[i] = ARCHLIST->LoadArchetype(nt);
 					}
 
 

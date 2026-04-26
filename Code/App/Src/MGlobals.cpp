@@ -890,6 +890,7 @@ void MGlobals::SetAlly (U32 playerID1, U32 playerID2, bool bAlly)			// one-way a
 //
 bool MGlobals::AreAllies (U32 playerID1, U32 playerID2)
 {
+	if (playerID1 == 0 || playerID2 == 0) return false; // neutral/no-race units are never allied
 	CQASSERT2(playerID1-1 < MAX_PLAYERS && playerID2-1 < MAX_PLAYERS, "p1==%d, p2==%d", playerID1, playerID2);
 	//
 	// must be two way alliance
@@ -901,6 +902,7 @@ bool MGlobals::AreAllies (U32 playerID1, U32 playerID2)
 //
 U32 MGlobals::GetOneWayAllyMask (U32 playerID)
 {
+	if (playerID == 0) return 0; // neutral/no-race unit
 	CQASSERT(playerID && playerID <= MAX_PLAYERS);
 
 	return globalData.allyMask[playerID-1];
@@ -909,6 +911,7 @@ U32 MGlobals::GetOneWayAllyMask (U32 playerID)
 //
 U32 MGlobals::GetAllyMask (U32 playerID)
 {
+	if (playerID == 0) return 0; // neutral/no-race unit
 	CQASSERT(playerID && playerID <= MAX_PLAYERS);
 
 	return twoWayAllyMask[playerID-1];
@@ -1121,8 +1124,8 @@ static void initMissionData (const MPartNC & part, U32 dwMissionID)
 {
 	U32 playerID = MGlobals::GetPlayerFromPartID(dwMissionID);
 
-	part->mObjClass = part.pInit->mObjClass;
-	if ((part->race = part.pInit->race) == M_NO_RACE)
+	part->mObjClass = (M_OBJCLASS)part.pInit->mObjClass;
+	if ((part->race = (M_RACE)part.pInit->race) == M_NO_RACE)
 		playerID = 0;
 	part->dwMissionID = dwMissionID;
 	part->playerID = playerID;
@@ -1407,8 +1410,8 @@ U32 MGlobals::GetEffectiveDamage (U32 amount, struct IBaseObject * _shooter, str
 				OBJLIST->FindObject(shooter->fleetID,TOTALLYVOLATILEPTR,flagship,IAdmiralID);
 				if(flagship.Ptr())
 				{
-					result *= 1 + flagship->GetDamageBonus(shooter->mObjClass,shooter.pInit->armorData.myArmor,target.obj->objClass,target->race,target.pInit->armorData.myArmor);
-					CQTRACER1("*(admiral damage)%f",(1 + flagship->GetDamageBonus(shooter->mObjClass,shooter.pInit->armorData.myArmor,target.obj->objClass,target->race,target.pInit->armorData.myArmor)));
+					result *= 1 + flagship->GetDamageBonus(shooter->mObjClass,shooter.pInit->armorData.myArmor,target.obj->objClass,(M_RACE)target->race,target.pInit->armorData.myArmor);
+					CQTRACER1("*(admiral damage)%f",(1 + flagship->GetDamageBonus(shooter->mObjClass,shooter.pInit->armorData.myArmor,target.obj->objClass,(M_RACE)target->race,target.pInit->armorData.myArmor)));
 				}
 			}
 
@@ -1429,7 +1432,7 @@ U32 MGlobals::GetEffectiveDamage (U32 amount, struct IBaseObject * _shooter, str
 			result *= 1-SECTOR->GetSectorEffects(target->playerID,target->systemID)->getDefenceMod();
 			CQTRACER1("*(sector defence bonus)%f",1-SECTOR->GetSectorEffects(target->playerID,target->systemID)->getDefenceMod());
 
-			SINGLE targetShields = (target.pInit->baseShieldLevel + globalValues.techUpgrades[target->race].shields[target->techLevel.shields]);
+			SINGLE targetShields = (target.pInit->baseShieldLevel + globalValues.techUpgrades[(M_RACE)target->race].shields[target->techLevel.shields]);
 			if (_target->fieldFlags.shieldEnhance())
 				targetShields *= 2;
 			if (_target->fieldFlags.shieldsInoperable())
@@ -1484,7 +1487,7 @@ U32 MGlobals::GetEffectiveDamage (U32 amount, struct IBaseObject * _shooter, str
 					MPart fighterOwner = obj;
 					if(fighterOwner.isValid())
 					{
-						shooterRace  = fighterOwner->race;
+						shooterRace  = (M_RACE)fighterOwner->race;
 						//add fighter upgrade here
 //						result += fighterOwner->techLevel.classSpecific;
 //						CQTRACER1("+(fighter upgrade)%d )",(fighterOwner->techLevel.classSpecific));
@@ -1497,8 +1500,8 @@ U32 MGlobals::GetEffectiveDamage (U32 amount, struct IBaseObject * _shooter, str
 							OBJLIST->FindObject(fighterOwner->fleetID,TOTALLYVOLATILEPTR,flagship,IAdmiralID);
 							if(flagship.Ptr())
 							{
-								result *= 1 + flagship->GetDamageBonus(fighterOwner->mObjClass,fighterOwner.pInit->armorData.myArmor,target.obj->objClass,target->race,target.pInit->armorData.myArmor);
-								CQTRACER1("*(admiral damage)%f",(1 + flagship->GetDamageBonus(fighterOwner->mObjClass,fighterOwner.pInit->armorData.myArmor,target.obj->objClass,target->race,target.pInit->armorData.myArmor)));
+								result *= 1 + flagship->GetDamageBonus(fighterOwner->mObjClass,fighterOwner.pInit->armorData.myArmor,target.obj->objClass,(M_RACE)target->race,target.pInit->armorData.myArmor);
+								CQTRACER1("*(admiral damage)%f",(1 + flagship->GetDamageBonus(fighterOwner->mObjClass,fighterOwner.pInit->armorData.myArmor,target.obj->objClass,(M_RACE)target->race,target.pInit->armorData.myArmor)));
 								result *= 1 + flagship->GetFighterDamageBonus();
 								CQTRACER1("*(admiral fighter damage)%f",(1 + flagship->GetFighterDamageBonus()));
 							}
@@ -1517,7 +1520,7 @@ U32 MGlobals::GetEffectiveDamage (U32 amount, struct IBaseObject * _shooter, str
 					}
 				}
 
-				SINGLE targetShields = (target.pInit->baseShieldLevel + globalValues.techUpgrades[target->race].shields[target->techLevel.shields]);
+				SINGLE targetShields = (target.pInit->baseShieldLevel + globalValues.techUpgrades[(M_RACE)target->race].shields[target->techLevel.shields]);
 				if (_target->fieldFlags.shieldEnhance())
 					targetShields *= 2;
 				if (_target->fieldFlags.shieldsInoperable())
@@ -1548,7 +1551,7 @@ U32 MGlobals::GetEffectiveDamage (U32 amount, struct IBaseObject * _shooter, str
 							result);
 			}else
 			{
-				SINGLE targetShields = (target.pInit->baseShieldLevel + globalValues.techUpgrades[target->race].shields[target->techLevel.shields]);
+				SINGLE targetShields = (target.pInit->baseShieldLevel + globalValues.techUpgrades[(M_RACE)target->race].shields[target->techLevel.shields]);
 				if (_target->fieldFlags.shieldEnhance())
 					targetShields *= 2;
 				if (_target->fieldFlags.shieldsInoperable())

@@ -1070,6 +1070,7 @@ void SpaceShip<SaveStruct,InitStruct>::RevealFog (const U32 currentSystem)
 template <class SaveStruct, class InitStruct>
 void SpaceShip<SaveStruct,InitStruct>::CastVisibleArea (void)
 {
+	if (playerID == 0) return; // neutral/no-race unit: no player, no fog visibility
 	if ((systemID & HYPER_SYSTEM_MASK)==0)
 	{
 		const U32 mask = MGlobals::GetAllyMask(playerID);
@@ -1502,6 +1503,7 @@ bool arch_callback( ARCHETYPE_INDEX parent_arch_index, ARCHETYPE_INDEX child_arc
 
 	return true;
 }
+
 //---------------------------------------------------------------------------
 //------------------------End SpaceShip.cpp----------------------------------
 //---------------------------------------------------------------------------
