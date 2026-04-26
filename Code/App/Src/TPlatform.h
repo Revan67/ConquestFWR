@@ -1135,7 +1135,7 @@ void Platform<SaveStruct,InitStruct>::RevealFog (const U32 currentSystem)
 template <class SaveStruct, class InitStruct>
 void Platform<SaveStruct,InitStruct>::CastVisibleArea (void)
 {
-	if (playerID == 0) return; // neutral/no-race unit: no player, no fog visibility
+	if (playerID == 0 || playerID > MAX_PLAYERS) return;
 	const U32 mask = MGlobals::GetAllyMask(playerID);
 	SetVisibleToAllies(mask);
 

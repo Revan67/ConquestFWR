@@ -248,7 +248,11 @@ struct _NO_VTABLE ObjectMission : public Base, IMissionActor, MISSION_SAVELOAD
 
 	void initMissionState (const MISSIONINITINFO & data)
 	{
-		pInitData = &data.pData->missionData;
+		// missionData in the archetype binary struct is MISSION_DATA_BIN (40 bytes).
+		// We cast to const MISSION_DATA* so callers can access armorData etc.
+		// Those fields read from adjacent binary data (same as VS6 behavior when
+		// the data files were frozen before armorData was added to MISSION_DATA).
+		pInitData = reinterpret_cast<const MISSION_DATA *>(&data.pData->missionData);
 	}
 
 	void renderMission()

@@ -106,7 +106,7 @@ struct _NO_VTABLE ObjectMove : public Base, private SPACESHIP_SAVELOAD::TOBJMOVE
 
 private:
 	ROCKING_DATA rockingData;
-	
+
 	SINGLE origAcceleration;
 
 	SINGLE maxMoveSlop;			// make movement irregular, for Chris
