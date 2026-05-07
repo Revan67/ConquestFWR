@@ -329,23 +329,28 @@ bool SPACESHIP_INIT<BT_TYPE>::loadSpaceshipArchetype (BT_TYPE * _pData, PARCHETY
 	pArchetype = _pArchetype;
 
 	meshArch = MESHMAN->CreateMeshArch(_pData->fileName);
-	
+	if (meshArch)
+		archIndex = (S32)meshArch->GetEngineArchtype();
+
 	// ambientEffect field removed from BASE_SPACESHIP_DATA (not in VS6 binary); no ambient effect loaded from archetype data.
 	ambientEffect = NULL;
 
 	//try to determine the ship's footprint size for usage by ObjGen
-	if (ENGINE->is_archetype_compound(archIndex))
+	if (archIndex != -1)
 	{
-		ENGINE->enumerate_archetype_parts(archIndex,arch_callback,&fp_radius);
-	}
-	else
-	{
-		float local_box[6];
-		REND->get_archetype_bounding_box(archIndex,1.0,local_box);
-		fp_radius = __max(local_box[BBOX_MAX_X],-local_box[BBOX_MIN_X]);
-		fp_radius = __max(fp_radius,local_box[BBOX_MAX_Z]);
-		fp_radius = __max(fp_radius,-local_box[BBOX_MIN_Z]);
-		fp_radius *= 2;
+		if (ENGINE->is_archetype_compound(archIndex))
+		{
+			ENGINE->enumerate_archetype_parts(archIndex,arch_callback,&fp_radius);
+		}
+		else
+		{
+			float local_box[6];
+			REND->get_archetype_bounding_box(archIndex,1.0,local_box);
+			fp_radius = __max(local_box[BBOX_MAX_X],-local_box[BBOX_MIN_X]);
+			fp_radius = __max(fp_radius,local_box[BBOX_MAX_Z]);
+			fp_radius = __max(fp_radius,-local_box[BBOX_MIN_Z]);
+			fp_radius *= 2;
+		}
 	}
 	///
 

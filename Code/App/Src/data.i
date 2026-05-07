@@ -4544,10 +4544,8 @@ struct SINGLE_TECHNODE
 	TECHTREE::BUILDNODE		build;
 	TECHTREE::COMMON		common;
 	TECHTREE::COMMON_EXTRA	common_extra;
-	TECHTREE::CQ2_VARS_1	cq2Vars1;
-	TECHTREE::CQ2_VARS_2	cq2Vars2;
-
-
+	
+	
 
 
 
@@ -4572,22 +4570,7 @@ struct TECHNODE
 		TECHTREE::BUILDNODE		build;
 		TECHTREE::COMMON		common;
 		TECHTREE::COMMON_EXTRA	common_extra;
-		TECHTREE::CQ2_VARS_1	cq2Vars1;
-		TECHTREE::CQ2_VARS_2	cq2Vars2;
 	} race[4];
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -4827,7 +4810,7 @@ struct BASE_SPACESHIP_DATA : BASIC_DATA
 
 	bool bLargeShip; 
 };
-static_assert(sizeof(BASE_SPACESHIP_DATA) == 644, "BASE_SPACESHIP_DATA binary layout mismatch");
+static_assert(sizeof(BASE_SPACESHIP_DATA) == 636, "BASE_SPACESHIP_DATA binary layout mismatch");
 
 
 
@@ -5498,8 +5481,8 @@ struct BASE_PLATFORM_DATA : BASIC_DATA
 	U32 gasStorage;
 	U32 crewStorage;
 };
-static_assert(sizeof(BASE_PLATFORM_DATA) == 560, "BASE_PLATFORM_DATA binary layout mismatch");
-static_assert(offsetof(BASE_PLATFORM_DATA, slotsNeeded) == 476, "BASE_PLATFORM_DATA::slotsNeeded offset mismatch");
+static_assert(sizeof(BASE_PLATFORM_DATA) == 552, "BASE_PLATFORM_DATA binary layout mismatch");
+static_assert(offsetof(BASE_PLATFORM_DATA, slotsNeeded) == 468, "BASE_PLATFORM_DATA::slotsNeeded offset mismatch");
 
 
 
@@ -6612,6 +6595,10 @@ struct BT_FIGHTER_WING : BASE_LAUNCHER
 	char animation[32];	
 	char hardpoint[64];	
 };
+
+
+
+
 
 
 struct FIGHTERWING_SAVELOAD
@@ -11561,13 +11548,10 @@ struct TABCONTROL_DATA
 	int  iBaseImage;
 	int  numTabs;
 	TABTXT::TAB_TEXT textID[6];
-	
+	bool bUpperTabs;
 	int xpos;
 	int ypos;
 };
-
-
-
 
 
 
@@ -11741,10 +11725,13 @@ struct GT_EDIT : GENBASE_DATA
 struct EDIT_DATA
 {
 	char editType[32];
-	EDTXT::EDIT_TEXT editText;
+	EDTXT::EDIT_TEXT editText;         
 	S32 xOrigin, yOrigin;
-	char _vs6pad[24];
+	char _vs6pad[24]; 
 };
+
+
+
 
 
 
@@ -12793,7 +12780,8 @@ struct GT_TOOLBAR
 		ICON_DATA inSupply,notInSupply;
 		HOTBUTTON_DATA rally,stop;
 		STATIC_DATA hull,metalStorage,gasStorage,crewStorage,location,disabledText;
-		BUILDBUTTON_DATA build0,build1,build2,build3,build4,build5,build6,build7,build8,build9;
+		BUILDBUTTON_DATA build0,build1,build2,build3,build4,build5,build6,build7,build8,build9; 
+		QUEUECONTROL_DATA buildQueue;
 	} lindustrial,hq,hindustrial,
 		M_Cocoon,M_Niad,S_Acropolis,S_Pavilion,
 		S_Sanctum,S_GreaterPavilion,
@@ -12814,6 +12802,7 @@ struct GT_TOOLBAR
 		HOTBUTTON_DATA stop;
 		STATIC_DATA hull,supplies,metalStorage,gasStorage,crewStorage,location,disabledText;
 		RESEARCHBUTTON_DATA research0,research1,research2,research3,research4,research5,research6,research7,research8,research9;
+		QUEUECONTROL_DATA buildQueue;
 	} M_Plantation,proplab,ballistics,advHull,awsLab,lrsensor,
 		hanger,weapons,displacement,
 		M_BlastFurnace,M_ExplosivesRange,M_CarrionRoost,M_BioForge,
@@ -12829,7 +12818,8 @@ struct GT_TOOLBAR
 		HOTBUTTON_DATA stop,rally,noAuto,autoOre,autoGas;
 		STATIC_DATA hull,metalStorage,gasStorage,crewStorage,location,disabledText;
 		RESEARCHBUTTON_DATA research0,research1,research2,research3,research4,research5,research6,research7,research8,research9,research10,research11,research12,research13,research14,research15;
-		BUILDBUTTON_DATA build0,build1,build2,build3,build4,build5;
+		BUILDBUTTON_DATA build0,build1,build2,build3,build4,build5; 
+		QUEUECONTROL_DATA buildQueue;
 	}M_Thripid,academy,refinery,M_Collector,M_GreaterCollector,
 		M_WarlordTraining,S_SentinalTower,S_Citidel,T_HeavyRefinery,T_SuperHeavyRefinery,S_Oxidator,
 		V_Coalescer, V_Gudgeon, V_TempleOfVyrie, outpost;
@@ -12863,6 +12853,7 @@ struct GT_TOOLBAR
 			STATIC_DATA k_namearea,k_hull,k_kills;
 			MULTIHOTBUTTON_DATA kit0,kit1,kit2,kit3,kit4,kit5,kit6,kit7,kit8,kit9,kit10,kit11,kit12,kit13;
 			MULTIHOTBUTTON_DATA kitDisplay0,kitDisplay1;
+			QUEUECONTROL_DATA kitQueue;
 		}kitTab;
 	} fleet[4];
 	

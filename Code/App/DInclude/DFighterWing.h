@@ -40,6 +40,10 @@ struct BT_FIGHTER_WING : BASE_LAUNCHER
 	char animation[GT_PATH];	// bay doors opening (optional)
 	char hardpoint[HP_PATH];	// place where fighters appear
 };
+#ifndef _ADB
+static_assert(sizeof(BT_FIGHTER_WING) == 208, "BT_FIGHTER_WING binary layout mismatch");
+static_assert(offsetof(BT_FIGHTER_WING, hardpoint) == 144, "BT_FIGHTER_WING::hardpoint offset mismatch");
+#endif
 //--------------------------------------------------------------------------//
 //
 struct FIGHTERWING_SAVELOAD

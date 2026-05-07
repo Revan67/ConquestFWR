@@ -326,6 +326,20 @@ void Static::InitStatic (const STATIC_DATA & data, BaseHotRect * _parent, bool b
 	screenRect.bottom = screenRect.top + height - 1;
 	screenRect.right = screenRect.left + width - 1;
 
+	{
+		static FILE* _sf = nullptr;
+		if (!_sf) _sf = fopen("debug/static_pos_diag.txt", "w");
+		if (_sf) {
+			fprintf(_sf, "Static '%s': data.xOrigin=%d yOrigin=%d | parent.top=%ld parent.left=%ld parent.bottom=%ld | child: L=%ld T=%ld R=%ld B=%ld | SCREEN_HEIGHT=%d SCREENRESY=%d\n",
+				data.staticType,
+				(int)data.xOrigin, (int)data.yOrigin,
+				parent->screenRect.top, parent->screenRect.left, parent->screenRect.bottom,
+				screenRect.left, screenRect.top, screenRect.right, screenRect.bottom,
+				(int)SCREEN_HEIGHT, (int)SCREENRESY);
+			fflush(_sf);
+		}
+	}
+
 	//
 	// calculate text offset
 	//

@@ -16,7 +16,7 @@
 #include "pch.h"
 #include <globals.h>
 #include <stdio.h>
-#define IGM_LOG(s) do{FILE*_igf=fopen("ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
+#define IGM_LOG(s) do{FILE*_igf=fopen("debug/ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
 
 #include <stdio.h>
 
@@ -4324,7 +4324,7 @@ HANDLE FieldManager::CreateArchetype(const char *szArchname, OBJCLASS objClass, 
 				BT_NEBULA_DATA *nd = (BT_NEBULA_DATA *)data;
 				// Only print sizes once via static guard, but print values for every arch
 				static bool bNebSizesDumped = false;
-				FILE *f2 = fopen("nebula_diag.txt", bNebSizesDumped ? "a" : "w");
+				FILE *f2 = fopen("debug/nebula_diag.txt", bNebSizesDumped ? "a" : "w");
 				if (!bNebSizesDumped && f2) {
 					bNebSizesDumped = true;
 					sprintf(dbuf,
@@ -4403,7 +4403,7 @@ HANDLE FieldManager::CreateArchetype(const char *szArchname, OBJCLASS objClass, 
 					// DIAG: log struct sizes and nuggetType values
 					{
 						static bool bAstDumped = false;
-						FILE *fad = fopen("asteroid_diag2.txt", bAstDumped ? "a" : "w");
+						FILE *fad = fopen("debug/asteroid_diag2.txt", bAstDumped ? "a" : "w");
 						if (fad) {
 							if (!bAstDumped) {
 								bAstDumped = true;

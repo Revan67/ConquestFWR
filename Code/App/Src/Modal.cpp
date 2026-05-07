@@ -86,12 +86,12 @@ static S32 get_frame_time (void)
 
 static RPDEVICESTATS stats;
 static FILE *g_em_f = NULL;
-#define EM_LOG(s) do { if(!g_em_f) g_em_f=fopen("em_diag.txt","w"); if(g_em_f){fputs((s),g_em_f);fflush(g_em_f);} } while(0)
+#define EM_LOG(s) do { if(!g_em_f) g_em_f=fopen("debug/em_diag.txt","w"); if(g_em_f){fputs((s),g_em_f);fflush(g_em_f);} } while(0)
 
 //--------------------------------------------------------------------------
 //
 static FILE *g_slam_f = NULL;
-#define SLAM_LOG(s) do { if(!g_slam_f) g_slam_f=fopen("slam_diag.txt","w"); if(g_slam_f){fputs((s),g_slam_f);fflush(g_slam_f);} } while(0)
+#define SLAM_LOG(s) do { if(!g_slam_f) g_slam_f=fopen("debug/slam_diag.txt","w"); if(g_slam_f){fputs((s),g_slam_f);fflush(g_slam_f);} } while(0)
 
 static void slam2Dcomponents (S32 frame_time, bool bUseLocking)
 {

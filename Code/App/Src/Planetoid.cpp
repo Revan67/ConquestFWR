@@ -14,7 +14,7 @@
 #include "pch.h"
 #include <globals.h>
 #include <stdio.h>
-#define IGM_LOG(s) do{FILE*_igf=fopen("ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
+#define IGM_LOG(s) do{FILE*_igf=fopen("debug/ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
 
 #include "MGlobals.h"
 #include "FogofWar.h"
@@ -2611,7 +2611,7 @@ HANDLE PlanetFactory::CreateArchetype (const char *szArchname, OBJCLASS objClass
 			if (!bDumped) {
 				bDumped = true;
 				// Extended diagnostic: show all intermediate field offsets + raw bytes at key positions
-				FILE *f = fopen("planet_diag.txt","w");
+				FILE *f = fopen("debug/planet_diag.txt","w");
 				if (f) {
 					fprintf(f, "[PLANET_DIAG] arch=%s\n", szArchname);
 					fprintf(f, "  sizeof(BASIC_DATA)=%zu sizeof(MISSION_DATA)=%zu sizeof(BT_PLANET_DATA)=%zu\n",

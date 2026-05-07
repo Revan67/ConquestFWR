@@ -139,6 +139,7 @@ void HotStatic::InitHotStatic (const HOTSTATIC_DATA & data, BaseHotRect * _paren
 	loader->CreateDrawAgent(baseImage, fullShape);
 	loader->CreateDrawAgent(baseImage+1, emptyShape);
 
+	if (!fullShape) return;
 	fullShape->GetDimensions(barWidth,barHeight);
 	barWidth = barWidth;
 	barHeight = barHeight;

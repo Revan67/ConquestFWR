@@ -84,7 +84,7 @@ BEGIN
             VALUE "InternalName", "Conquest"
             VALUE "LegalCopyright", "Copyright � 2004"
             VALUE "OriginalFilename", "Conquest.exe"
-            VALUE "ProductName", "Conquest: Vyrium Uprising�"
+            VALUE "ProductName", "Conquest: Frontier Wars�"
             VALUE "ProductVersion", "1.00"
         END
     END

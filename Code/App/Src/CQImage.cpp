@@ -257,6 +257,42 @@ void CQImage::init (void)
 			LoadSymTable(GetModuleHandle("Trim.dll"));
 			LoadSymTable(GetModuleHandle("ZBatcher.dll"));
 			LoadSymTable(GetModuleHandle("DACOM.dll"));
+			LoadSymTable(GetModuleHandle("Globals.dll"));
+			// DLL/ folder DACOM components
+			LoadSymTable(GetModuleHandle("channel.dll"));
+			LoadSymTable(GetModuleHandle("dahotkey.dll"));
+			LoadSymTable(GetModuleHandle("docuview.dll"));
+			LoadSymTable(GetModuleHandle("dosfile.dll"));
+			LoadSymTable(GetModuleHandle("anim.dll"));
+			LoadSymTable(GetModuleHandle("engine.dll"));
+			LoadSymTable(GetModuleHandle("polymesh.dll"));
+			LoadSymTable(GetModuleHandle("rendermgr.dll"));
+			LoadSymTable(GetModuleHandle("TextureLibrary.dll"));
+			LoadSymTable(GetModuleHandle("TextureManager.dll"));
+			LoadSymTable(GetModuleHandle("x86math.dll"));
+			LoadSymTable(GetModuleHandle("optics.dll"));
+			LoadSymTable(GetModuleHandle("hardpoint.dll"));
+			LoadSymTable(GetModuleHandle("streamer.dll"));
+			LoadSymTable(GetModuleHandle("d3drenderpipe.dll"));
+			LoadSymTable(GetModuleHandle("lightmanager.dll"));
+			LoadSymTable(GetModuleHandle("vertexbuffermanager.dll"));
+			LoadSymTable(GetModuleHandle("StringTable.dll"));
+			LoadSymTable(GetModuleHandle("MaterialManager.dll"));
+			LoadSymTable(GetModuleHandle("VideoSystem.dll"));
+			LoadSymTable(GetModuleHandle("ParticleEffect.dll"));
+			LoadSymTable(GetModuleHandle("MeshManager.dll"));
+			LoadSymTable(GetModuleHandle("hexview.dll"));
+			LoadSymTable(GetModuleHandle("deformable.dll"));
+			LoadSymTable(GetModuleHandle("renderbatcher.dll"));
+			LoadSymTable(GetModuleHandle("SceneGraph.dll"));
+			LoadSymTable(GetModuleHandle("System.dll"));
+			LoadSymTable(GetModuleHandle("nurbmesh.dll"));
+			LoadSymTable(GetModuleHandle("vfxview.dll"));
+			LoadSymTable(GetModuleHandle("enginelights.dll"));
+			LoadSymTable(GetModuleHandle("enginecameras.dll"));
+			LoadSymTable(GetModuleHandle("dsstreamer.dll"));
+			LoadSymTable(GetModuleHandle("luaprofile.dll"));
+			LoadSymTable(GetModuleHandle("k62math.dll"));
 		}
 	}
 
@@ -582,7 +618,7 @@ bool ICQImage::Assert (const char *exp, void *file, unsigned line)
 		FDUMP(ErrorCode(ERR_GENERAL, SEV_TRACE_1), "-------------------------------------------------\r\nAssertion Failed: \r\n");
 		FDUMP(ErrorCode(ERR_GENERAL, SEV_TRACE_1), "%s", text.buffer);
 		{
-			FILE *_af = fopen("cq_bomb.txt", "a");
+			FILE *_af = fopen("debug/cq_bomb.txt", "a");
 			if (_af) {
 				fputs("=== ASSERT ===\r\n", _af);
 				fputs(text.buffer, _af);
@@ -730,7 +766,7 @@ bool __cdecl ICQImage::Bomb (const char *exp, ...)
 		// VS2022/Win11 compat: log Bomb text to a file before showing the dialog,
 		// since DialogBoxParam hides behind the DXVK window making it invisible.
 		{
-			FILE *_bf = fopen("cq_bomb.txt", "a");
+			FILE *_bf = fopen("debug/cq_bomb.txt", "a");
 			if (_bf) {
 				fputs("=== BOMB ===\r\n", _bf);
 				fputs(text.buffer, _bf);
@@ -1138,7 +1174,7 @@ int ICQImage::Exception (struct _EXCEPTION_POINTERS * exceptionInfo)
 		FDUMP(ErrorCode(ERR_GENERAL, SEV_TRACE_1), text.buffer);
 
 		{
-			FILE *_ef = fopen("cq_bomb.txt", "a");
+			FILE *_ef = fopen("debug/cq_bomb.txt", "a");
 			if (_ef) {
 				fputs("=== EXCEPTION ===\r\n", _ef);
 				fputs(text.buffer, _ef);

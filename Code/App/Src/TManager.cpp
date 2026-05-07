@@ -376,6 +376,10 @@ U32 TManager::GetPrevTexture(U32 textureID)
 //
 U32 TManager::CreateDrawAgentTexture (U32 resolution, bool bAlpha)
 {
+	{
+		FILE* _tf = fopen("debug/tmanager_diag.txt", "a");
+		if (_tf) { fprintf(_tf, "CreateDrawAgentTexture: resolution=%u bAlpha=%d PIPE=%p\n", resolution, (int)bAlpha, (void*)PIPE); fclose(_tf); }
+	}
 	U32 result=0;
 	PixelFormat desiredFormat(16, 5, 6-bAlpha, 5, bAlpha);		// GL_RGB5_A1
 	//DANODE * pInUseList, * pJustFreedList, *pFreedList;
@@ -412,7 +416,11 @@ U32 TManager::CreateDrawAgentTexture (U32 resolution, bool bAlpha)
 	// else we need to create a new texture
 	//
 	if (PIPE->create_texture(resolution, resolution, desiredFormat, 1, 0, result) != GR_OK)
+	{
+		FILE* _tf = fopen("debug/tmanager_diag.txt", "a");
+		if (_tf) { fprintf(_tf, "CreateDrawAgentTexture: create_texture FAILED resolution=%u\n", resolution); fclose(_tf); }
 		CQBOMB0("Couldn't create texture");
+	}
 
 	pNode = new DANODE;
 	pNode->pNext = pInUseList;

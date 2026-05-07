@@ -2477,7 +2477,7 @@ PARCHETYPE ObjectList::LoadArchetype (const C8 *name)
 			// so we can cross-check VS6 binary layout vs VS2022 struct offsets.
 			if (dataType->dataSize >= 300) {
 				static bool bArchLogOpen = false;
-				FILE * fLog = fopen("archetype_raw.txt", bArchLogOpen ? "a" : "w");
+				FILE * fLog = fopen("debug/archetype_raw.txt", bArchLogOpen ? "a" : "w");
 				bArchLogOpen = true;
 				if (fLog) {
 					const unsigned char *raw = reinterpret_cast<const unsigned char *>(dataType->objData);
@@ -3730,7 +3730,7 @@ BOOL32 ObjectList::Load (struct IFileSystem * inFile,bool bNoDynamics, bool bOnl
 			if ((node = LoadArchetype(data.cFileName)) != 0)
 			{
 				HANDLE handle;
-	
+
 				if ((handle = file->FindFirstFile("*.*", &data)) != INVALID_HANDLE_VALUE)
 				do
 				{
@@ -3745,7 +3745,7 @@ BOOL32 ObjectList::Load (struct IFileSystem * inFile,bool bNoDynamics, bool bOnl
 						{
 							//
 							// see if object has other data to load
-							// 
+							//
 							if (obj->QueryInterface(ISaveLoadID, pSaveLoad) != 0)
 							{
 								pSaveLoad->Load(file2);

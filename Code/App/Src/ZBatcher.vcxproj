@@ -156,6 +156,10 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <OutputFile>.\Debug/ZBatcher.bsc</OutputFile>
     </Bscmake>
+    <PostBuildEvent>
+      <Command>xcopy /Y "$(OutDir)ZBatcher.dll" "E:\Games\GOG\Conquest Frontier Wars\"
+xcopy /Y "$(OutDir)ZBatcher.pdb" "E:\Games\GOG\Conquest Frontier Wars\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">
     <Midl>

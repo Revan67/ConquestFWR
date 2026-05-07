@@ -497,7 +497,11 @@ struct DACOM_NO_VTABLE Cursor : public Resource<Cursor,ICursorResource>,
 			msg.message = WM_MOUSEWHEEL;
 			msg.wParam = mevent.dz << 16;
 			msg.lParam = 0;
+			static FILE *s_wheelLog = NULL;
+			if (!s_wheelLog) s_wheelLog = fopen("E:\\Games\\GOG\\Conquest Frontier Wars\\debug\\wheel_diag.txt", "w");
+			if (s_wheelLog) { fprintf(s_wheelLog, "Before Send WM_MOUSEWHEEL dz=%d wParam=0x%X\n", mevent.dz, (unsigned)msg.wParam); fflush(s_wheelLog); }
 			EVENTSYS->Send(WM_MOUSEWHEEL, &msg);
+			if (s_wheelLog) { fprintf(s_wheelLog, "After Send WM_MOUSEWHEEL\n"); fflush(s_wheelLog); }
 		}
 	}
 

@@ -3031,8 +3031,11 @@ DA_METHOD(	create_texture,(int width, int height, const PixelFormat &desiredform
 		out_htexture = 0;
 		return GR_GENERIC;
 	}
-	direct3d_device->CreateTexture(width, height, numTextureLevels, D3DUSAGE_DYNAMIC, texFmt, D3DPOOL_DEFAULT, (LPDIRECT3DTEXTURE9 *)(&out_htexture), NULL);
-
+	if (FAILED(direct3d_device->CreateTexture(width, height, numTextureLevels, D3DUSAGE_DYNAMIC, texFmt, D3DPOOL_DEFAULT, (LPDIRECT3DTEXTURE9 *)(&out_htexture), NULL)))
+	{
+		out_htexture = 0;
+		return GR_GENERIC;
+	}
 	return GR_OK;
 }
 
@@ -3318,8 +3321,10 @@ DA_METHOD(	set_texture_level_data,(U32 htexture, int subsurface, int srcWidth, i
 	IDirect3DTexture9 * tex = (IDirect3DTexture9*) htexture;
 	if (!tex) return GR_GENERIC;
 	D3DLOCKED_RECT rect;
-	tex->LockRect(subsurface, &rect,NULL,0);
+	if (FAILED(tex->LockRect(subsurface, &rect, NULL, D3DLOCK_DISCARD)))
+		return GR_GENERIC;
 	U8* pTextureBuffer = static_cast<byte *>(rect.pBits);
+	if (!pTextureBuffer) { tex->UnlockRect(subsurface); return GR_GENERIC; }
 	LONG lTexturePitch = rect.Pitch;
 	U8 * pSourceBuffer = (byte*) srcPixels;
 

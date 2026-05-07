@@ -668,7 +668,7 @@ IDR_PARSER1             PARSER                  "Data.i"
 
 STRINGTABLE 
 BEGIN
-    IDS_APP_NAME            "Conquest: Vyrium Uprising"
+    IDS_APP_NAME            "Conquest: Frontier Wars"
     IDS_VIEWMENU1           "Turn on the viewer for Menu #1."
     IDS_VIEWCONFIRM         "Turn on the viewer for the Confirm menu."
     IDS_VIEWPAUSE           "Turn on the viewer for the Pause menu."
@@ -1905,8 +1905,8 @@ BEGIN
     IDS_LEGAL_MAINSCREEN    "� 2001.  All rights reserved. This program is protected by U.S. and international copyright laws as described in About."
     IDS_LEGAL_ABOUTBOX      "� 2001. All rights reserved.. Warning: This computer program is protected by copyright law and international treaties. Unauthorized reproduction or distribution of this program, or any portion of it, may result in severe civil and criminal penalties, and will be prosecuted to the maximum extent of the law."
     IDS_VIEWCREDITS         "Turn on the viewer for the Credits screen."
-    IDS_APP_NAMETM          "Conquest: Vyrium Uprising�"
-    IDS_ALREADY_RUNNING     "Conquest: Vyrium Uprising is already running."
+    IDS_APP_NAMETM          "Conquest: Frontier Wars�"
+    IDS_ALREADY_RUNNING     "Conquest: Frontier Wars is already running."
     IDS_SPLASH_LOWRES       "00000409.016"
     IDS_SPLASH_HIGHRES      "00000409.256"
 END

@@ -158,6 +158,7 @@ void Icon::InitIcon (const ICON_DATA & data, BaseHotRect * _parent, IShapeLoader
 
 	tooltip = data.tooltip;
 
+	if (!shape) return;
 	U16 width,height;
 	shape->GetDimensions(width,height);
 

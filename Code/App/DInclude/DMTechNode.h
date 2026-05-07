@@ -463,8 +463,8 @@ struct SINGLE_TECHNODE
 	TECHTREE::BUILDNODE		build;
 	TECHTREE::COMMON		common;
 	TECHTREE::COMMON_EXTRA	common_extra;
-	TECHTREE::CQ2_VARS_1	cq2Vars1;
-	TECHTREE::CQ2_VARS_2	cq2Vars2;
+	// cq2Vars1/cq2Vars2 were added post-VS6 and are not in the compiled .db binaries;
+	// removing them restores the correct binary layout for all archetypes that embed SINGLE_TECHNODE.
 
 #ifndef _ADB
 	SINGLE_TECHNODE (void) {
@@ -473,8 +473,6 @@ struct SINGLE_TECHNODE
 		build = (TECHTREE::BUILDNODE)0;
 		common = (TECHTREE::COMMON)0;
 		common_extra = (TECHTREE::COMMON_EXTRA)0;
-		cq2Vars1 = (TECHTREE::CQ2_VARS_1)0;
-		cq2Vars2 = (TECHTREE::CQ2_VARS_2)0;
 	}
 #endif
 };
@@ -491,8 +489,6 @@ struct TECHNODE
 		TECHTREE::BUILDNODE		build;
 		TECHTREE::COMMON		common;
 		TECHTREE::COMMON_EXTRA	common_extra;
-		TECHTREE::CQ2_VARS_1	cq2Vars1;
-		TECHTREE::CQ2_VARS_2	cq2Vars2;
 	} race[NUM_RACES_TECH];
 
 #ifndef _ADB
@@ -504,17 +500,15 @@ struct TECHNODE
 			return false;
 		_races * racePtr = &(race[node.raceID-1]);
 		return (((node.tech & racePtr->tech)& NOCOMP_MASK) == (node.tech & NOCOMP_MASK)) && (((node.build & racePtr->build)& NOCOMP_MASK) == (node.build & NOCOMP_MASK)) &&
-			    (((node.cq2Vars1 & racePtr->cq2Vars1)& NOCOMP_MASK) == (node.cq2Vars1 & NOCOMP_MASK)) && (((node.cq2Vars2 & racePtr->cq2Vars2)& NOCOMP_MASK) == (node.cq2Vars2 & NOCOMP_MASK)) &&
 				((node.common & racePtr->common) == node.common) && ((node.common_extra & racePtr->common_extra) == node.common_extra);
 	}
 
-	bool HasTech(U8 raceID,S32 techValue, S32 buildValue,S32 commonValue, S32 commonExtraValue, S32 cq2Var1Value, S32 cq2Var2Value)
+	bool HasTech(U8 raceID, S32 techValue, S32 buildValue, S32 commonValue, S32 commonExtraValue, S32 cq2Var1Value = 0, S32 cq2Var2Value = 0)
 	{
 		if(raceID == M_NO_RACE)
 			return false;
 		_races * racePtr = &(race[raceID-1]);
 		return (((techValue & racePtr->tech)& NOCOMP_MASK) == (techValue& NOCOMP_MASK)) && (((buildValue & racePtr->build)& NOCOMP_MASK) == (buildValue& NOCOMP_MASK)) &&
-			    (((cq2Var1Value & racePtr->cq2Vars1)& NOCOMP_MASK) == (cq2Var1Value& NOCOMP_MASK)) && (((cq2Var2Value & racePtr->cq2Vars2)& NOCOMP_MASK) == (cq2Var2Value& NOCOMP_MASK)) &&
 				((commonValue & racePtr->common) == commonValue) && ((commonExtraValue & racePtr->common_extra) == commonExtraValue);
 	}
 
@@ -524,17 +518,15 @@ struct TECHNODE
 			return false;
 		_races * racePtr = &(race[node.raceID-1]);
 		return (node.tech & racePtr->tech & RACEMASK) || (node.build & racePtr->build & RACEMASK) ||
-			     (node.cq2Vars1 & racePtr->cq2Vars1 & RACEMASK) || (node.cq2Vars2 & racePtr->cq2Vars2 & RACEMASK) ||
-				 (node.common & racePtr->common) || (node.common_extra & racePtr->common_extra) ;
+				(node.common & racePtr->common) || (node.common_extra & racePtr->common_extra);
 	}
 
-	bool HasSomeTech(U8 raceID,S32 techValue, S32 buildValue,S32 commonValue, S32 commonExtraValue, S32 cq2Var1Value, S32 cq2Var2Value)
+	bool HasSomeTech(U8 raceID, S32 techValue, S32 buildValue, S32 commonValue, S32 commonExtraValue, S32 cq2Var1Value = 0, S32 cq2Var2Value = 0)
 	{
 		if(raceID == M_NO_RACE)
 			return false;
 		_races * racePtr = &(race[raceID-1]);
 		return (techValue & racePtr->tech & RACEMASK) || (buildValue & racePtr->build & RACEMASK) ||
-			    (cq2Var1Value & racePtr->cq2Vars1 & RACEMASK) || (cq2Var2Value & racePtr->cq2Vars2 & RACEMASK) ||
 				(commonValue & racePtr->common) || (commonExtraValue & racePtr->common_extra);
 	}
 
@@ -545,21 +537,15 @@ struct TECHNODE
 		race[node.raceID-1].build = (TECHTREE::BUILDNODE)(((U32)(race[node.raceID-1].build)) | ((U32)(node.build)));
 		race[node.raceID-1].common = (TECHTREE::COMMON)(((U32)(race[node.raceID-1].common)) | ((U32)(node.common)));
 		race[node.raceID-1].common_extra = (TECHTREE::COMMON_EXTRA)(((U32)(race[node.raceID-1].common_extra)) | ((U32)(node.common_extra)));
-		race[node.raceID-1].cq2Vars1 = (TECHTREE::CQ2_VARS_1)(((U32)(race[node.raceID-1].cq2Vars1)) | ((U32)(node.cq2Vars1)));
-		race[node.raceID-1].cq2Vars2 = (TECHTREE::CQ2_VARS_2)(((U32)(race[node.raceID-1].cq2Vars2)) | ((U32)(node.cq2Vars2)));
 	}
 
 	void RemoveFromNode(SINGLE_TECHNODE node)
 	{
-		// Struct layout mismatch during cleanup can produce M_NO_RACE; skip silently
-		// so the primary exception stays visible in cq_bomb.txt.
 		if (node.raceID == M_NO_RACE) return;
 		race[node.raceID-1].tech = (TECHTREE::TECHUPGRADE)(((U32)(race[node.raceID-1].tech)) & (~((U32)(node.tech))));
 		race[node.raceID-1].build = (TECHTREE::BUILDNODE)(((U32)(race[node.raceID-1].build)) & (~((U32)(node.build))));
 		race[node.raceID-1].common = (TECHTREE::COMMON)(((U32)(race[node.raceID-1].common)) & (~((U32)(node.common))));
 		race[node.raceID-1].common_extra = (TECHTREE::COMMON_EXTRA)(((U32)(race[node.raceID-1].common_extra)) & (~((U32)(node.common_extra))));
-		race[node.raceID-1].cq2Vars1 = (TECHTREE::CQ2_VARS_1)(((U32)(race[node.raceID-1].cq2Vars1)) & (~((U32)(node.cq2Vars1))));
-		race[node.raceID-1].cq2Vars2 = (TECHTREE::CQ2_VARS_2)(((U32)(race[node.raceID-1].cq2Vars2)) & (~((U32)(node.cq2Vars2))));
 	}
 
 	void InitLevel(TECHTREE::LEVEL_INIT level)
@@ -574,9 +560,7 @@ struct TECHNODE
 					race[i].build = (TECHTREE::BUILDNODE)0xFFFFFFFF;
 					race[i].common = (TECHTREE::COMMON)0x0FFFFFFF;
 					race[i].common_extra = (TECHTREE::COMMON_EXTRA)0xFFFFFFFF;
-					race[i].cq2Vars1 = (TECHTREE::CQ2_VARS_1)0xFFFFFFFF;
-					race[i].cq2Vars2 = (TECHTREE::CQ2_VARS_2)0xFFFFFFFF;
-				}
+					}
 				break;
 			}
 		}
@@ -587,7 +571,6 @@ struct TECHNODE
 		for(U32 i = 0; i <NUM_RACES_TECH;++i)
 		{
 			if((race[i].tech != node.race[i].tech) || (race[i].build != node.race[i].build) ||
-				(race[i].cq2Vars1 != node.race[i].cq2Vars1) || (race[i].cq2Vars2 != node.race[i].cq2Vars2) ||
 				(race[i].common != node.race[i].common) || (race[i].common_extra != node.race[i].common_extra))
 				return false;
 		}

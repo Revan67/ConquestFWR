@@ -620,10 +620,22 @@ void HotButtonFactory::init (void)
 //
 HANDLE HotButtonFactory::CreateArchetype (PGENTYPE _pArchetype, GENBASE_TYPE objClass, void *_data)
 {
+	{
+		const char* _n = GENDATA->GetArchName(_pArchetype);
+		if (_n && strstr(_n, "Tab"))
+		{
+			GT_HOTBUTTON * _d = (GT_HOTBUTTON *) _data;
+			FILE* _dbgf = fopen("debug/factory_debug.txt", "a");
+			if (_dbgf) {
+				fprintf(_dbgf, "HotButtonFactory::CreateArchetype name='%s' objClass=%d buttonType=%d\n",
+					_n, (int)objClass, (int)_d->buttonType);
+				fclose(_dbgf);
+			}
+		}
+	}
 	if (objClass == GBT_HOTBUTTON)
 	{
 		GT_HOTBUTTON * data = (GT_HOTBUTTON *) _data;
-	
 		if (data->buttonType == HOTBUTTONTYPE::HOTBUTTON)
 		{
 			CQASSERT(pArchetype == 0);

@@ -4,7 +4,7 @@
 #include "pch.h"
 #include <globals.h>
 #include <stdio.h>
-#define IGM_LOG(s) do{FILE*_igf=fopen("ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
+#define IGM_LOG(s) do{FILE*_igf=fopen("debug/ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
 
 #include "anim2d.h"
 #include "camera.h"

@@ -112,6 +112,19 @@ void FighterWing::InitLauncher (IBaseObject * _owner, S32 ownerIndex, S32 animAr
 	if (data->hardpoint[0])
 	{
 		FindHardpoint(data->hardpoint, bayDoorIndex, hardpointinfo, ownerIndex);
+		if (bayDoorIndex == -1)
+		{
+			static FILE* _fwf = nullptr;
+			if (!_fwf) _fwf = fopen("debug/fighter_diag.txt", "w");
+			if (_fwf) {
+				const unsigned char* hp = (const unsigned char*)data->hardpoint;
+				fprintf(_fwf, "hardpoint not found: '");
+				for (int _i = 0; _i < 16 && (hp[_i] >= 32 && hp[_i] < 128); ++_i) fputc(hp[_i], _fwf);
+				fprintf(_fwf, "' bytes:");
+				for (int _i = 0; _i < 16; ++_i) fprintf(_fwf, " %02x", hp[_i]);
+				fprintf(_fwf, "\n"); fflush(_fwf);
+			}
+		}
 		CQASSERT(bayDoorIndex!=-1 && "Hardpoint not found!");
 	}
 	else

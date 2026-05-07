@@ -19,8 +19,8 @@
 #include <stdio.h>
 
 static FILE *g_mc_f = NULL;
-#define MC_LOG(s) do { if(!g_mc_f) g_mc_f=fopen("campaign_diag.txt","w"); if(g_mc_f){fputs((s),g_mc_f);fflush(g_mc_f);} } while(0)
-#define MC_LOGF(fmt,...) do { if(!g_mc_f) g_mc_f=fopen("campaign_diag.txt","w"); if(g_mc_f){fprintf(g_mc_f,(fmt),__VA_ARGS__);fflush(g_mc_f);} } while(0)
+#define MC_LOG(s) do { if(!g_mc_f) g_mc_f=fopen("debug/campaign_diag.txt","w"); if(g_mc_f){fputs((s),g_mc_f);fflush(g_mc_f);} } while(0)
+#define MC_LOGF(fmt,...) do { if(!g_mc_f) g_mc_f=fopen("debug/campaign_diag.txt","w"); if(g_mc_f){fprintf(g_mc_f,(fmt),__VA_ARGS__);fflush(g_mc_f);} } while(0)
 
 #include <DMenu1.h>
 

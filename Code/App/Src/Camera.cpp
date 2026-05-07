@@ -61,6 +61,7 @@
 //--------------------------------------------------------------------------//
 //--------------------------------------------------------------------------//
 static char szRegKey[] = "Camera";
+static FILE *s_camLog = NULL;
 //--------------------------------------------------------------------------//
 //--------------------------------------------------------------------------//
 
@@ -739,9 +740,11 @@ BOOL32 Camera::SetOrientation (SINGLE _pitch, SINGLE _roll, SINGLE _yaw, BOOL32 
 		current.x = (ppane->x1 + ppane->x0 + 1) / 2;
 		current.y = (1*(ppane->y1 - ppane->y0 + 1) / 2) + ppane->y0;
 		current.z = 0;
-	
+
+		if (s_camLog) { fprintf(s_camLog, "  SetOrientation: calling ScreenToPoint\n"); fflush(s_camLog); }
 		ScreenToPoint(current.x, current.y, 0, 1);
-		
+		if (s_camLog) { fprintf(s_camLog, "  ScreenToPoint done\n"); fflush(s_camLog); }
+
 		data.lookAt = current;
 
 	//
@@ -764,10 +767,14 @@ BOOL32 Camera::SetOrientation (SINGLE _pitch, SINGLE _roll, SINGLE _yaw, BOOL32 
 			SINGLE xBound, yMid, disc;
 			RECT rect;
 			SINGLE d;
+			if (s_camLog) { fprintf(s_camLog, "  SetOrientation: calling GetSystemRect\n"); fflush(s_camLog); }
 			SECTOR->GetSystemRect(SECTOR->GetCurrentSystem(),&rect);
+			if (s_camLog) { fprintf(s_camLog, "  GetSystemRect done rect=[%ld,%ld,%ld,%ld]\n", rect.left, rect.top, rect.right, rect.bottom); fflush(s_camLog); }
 			diff.zero();
 
+			if (s_camLog) { fprintf(s_camLog, "  SetOrientation: calling PaneToPoints\n"); fflush(s_camLog); }
 			PaneToPoints(p0, p1, p2, p3);
+			if (s_camLog) { fprintf(s_camLog, "  PaneToPoints done\n"); fflush(s_camLog); }
 
 			if ((d = p0.y - rect.top - HALFGRID) > 0)
 			{
@@ -814,7 +821,9 @@ BOOL32 Camera::SetOrientation (SINGLE _pitch, SINGLE _roll, SINGLE _yaw, BOOL32 
 
 	if (update)
 	{
+		if (s_camLog) { fprintf(s_camLog, "  SetOrientation: calling UpdateViewer\n"); fflush(s_camLog); }
 		UpdateViewer();
+		if (s_camLog) { fprintf(s_camLog, "  UpdateViewer done\n"); fflush(s_camLog); }
 	}
 
 	return 1;
@@ -857,8 +866,11 @@ class Vector Camera::GetRotatedPosition (void) const
 //
 BOOL32 Camera::MoveForward (SINGLE distance, BOOL32 update)
 {
+	if (!s_camLog) s_camLog = fopen("E:\\Games\\GOG\\Conquest Frontier Wars\\debug\\camera_zoom_diag.txt", "w");
+	if (s_camLog) { fprintf(s_camLog, "MoveForward enter: dist=%.1f update=%d\n", distance, update); fflush(s_camLog); }
+
 	Vector newpos;
-	
+
 	newpos = transform.translation;
 
 #if 0
@@ -868,9 +880,13 @@ BOOL32 Camera::MoveForward (SINGLE distance, BOOL32 update)
 	Vector k;
 
 	WM->GetCursorPos(x, y);
+	if (s_camLog) { fprintf(s_camLog, "  GetCursorPos: x=%d y=%d pane=[%d,%d,%d,%d]\n", x, y, pane.x0, pane.y0, pane.x1, pane.y1); fflush(s_camLog); }
+
 	if (x>=pane.x0 && x<=pane.x1 && y>=pane.y0 && y<=pane.y1)	// if cursor with camera pane
 	{
+		if (s_camLog) { fprintf(s_camLog, "  calling screen_to_point\n"); fflush(s_camLog); }
 		screen_to_point(k, x, y);
+		if (s_camLog) { fprintf(s_camLog, "  screen_to_point done: k=(%.1f,%.1f,%.1f)\n", k.x, k.y, k.z); fflush(s_camLog); }
 		//k is screen position at znear
 		k *= (distance/znear);
 	}
@@ -878,6 +894,7 @@ BOOL32 Camera::MoveForward (SINGLE distance, BOOL32 update)
 	{
 		k = -transform.get_k();
 		k *= distance;
+		if (s_camLog) { fprintf(s_camLog, "  cursor outside pane, k=(%.1f,%.1f,%.1f)\n", k.x, k.y, k.z); fflush(s_camLog); }
 	}
 #endif
 
@@ -889,7 +906,10 @@ BOOL32 Camera::MoveForward (SINGLE distance, BOOL32 update)
 			k *= (z / distance);
 		}
 		else
+		{
+			if (s_camLog) { fprintf(s_camLog, "  early return: past maxZ\n"); fflush(s_camLog); }
 			return 0;
+		}
 	}
 	else
 	if (distance > 0 && newpos.z + k.z < minZ)
@@ -900,15 +920,21 @@ BOOL32 Camera::MoveForward (SINGLE distance, BOOL32 update)
 			k *= (z / distance);
 		}
 		else
+		{
+			if (s_camLog) { fprintf(s_camLog, "  early return: past minZ\n"); fflush(s_camLog); }
 			return 0;
+		}
 	}
-	
+
 	newpos += k;
 	transform.set_position(newpos);
 	cam2World.set_position(inverseWorldROT.rotate_translate(newpos));	// save pos in rotated coordinates
 	data.toggleZoomZ = 0;
 
-	return SetOrientation(pitch, roll, yaw, update);
+	if (s_camLog) { fprintf(s_camLog, "  calling SetOrientation pitch=%.1f roll=%.1f yaw=%.1f\n", pitch, roll, yaw); fflush(s_camLog); }
+	BOOL32 result = SetOrientation(pitch, roll, yaw, update);
+	if (s_camLog) { fprintf(s_camLog, "  SetOrientation returned %d\n", result); fflush(s_camLog); }
+	return result;
 }
 //--------------------------------------------------------------------------//
 //
@@ -1056,8 +1082,10 @@ GENRESULT Camera::Notify (U32 message, void *param)
 		break;
 
 	case WM_MOUSEWHEEL:
+		if (s_camLog) { fprintf(s_camLog, "Camera::Notify WM_MOUSEWHEEL bHasFocus=%d bGameActive=%d\n", bHasFocus, CQFLAGS.bGameActive); fflush(s_camLog); }
 		if (bHasFocus && CQFLAGS.bGameActive)
 			onMouseWheel(short(HIWORD(msg->wParam)));
+		if (s_camLog) { fprintf(s_camLog, "Camera::Notify WM_MOUSEWHEEL done\n"); fflush(s_camLog); }
 		break;
 
 	case CQE_UPDATE:

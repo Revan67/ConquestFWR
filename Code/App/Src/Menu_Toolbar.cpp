@@ -536,6 +536,22 @@ struct Menu_tb : public Frame, IToolbar
 			if (baseOffset==0 && varDesc.varName && strcmp(varDesc.varName, "vfxShapeType") == 0)
 			{
 				vfxShapeType = (const char *) (pBaseData + varDesc.offset);
+				{
+					static FILE* _vfxf = nullptr;
+					if (!_vfxf) _vfxf = fopen("debug/toolbar_vfx_diag.txt", "w");
+					if (_vfxf) {
+						fprintf(_vfxf, "vfxShapeType: varDesc.offset=%u, pBaseData=%p\n", (unsigned)varDesc.offset, (void*)pBaseData);
+						const unsigned char* bp = (const unsigned char*)vfxShapeType;
+						fprintf(_vfxf, "bytes at offset:");
+						for (int _i = 0; _i < 32; ++_i) fprintf(_vfxf, " %02x", (int)bp[_i]);
+						fprintf(_vfxf, "\nstring: '%s'\n", vfxShapeType);
+						// Also dump first 32 bytes of pBaseData (offset 0)
+						const unsigned char* base = (const unsigned char*)pBaseData;
+						fprintf(_vfxf, "pBaseData[0..31]:");
+						for (int _i = 0; _i < 32; ++_i) fprintf(_vfxf, " %02x", (int)base[_i]);
+						fprintf(_vfxf, "\n"); fflush(_vfxf);
+					}
+				}
 			}
 			else if(baseOffset==0 && varDesc.varName && strcmp(varDesc.varName, "vfxToolBar") == 0)
 			{
@@ -670,21 +686,29 @@ struct Menu_tb : public Frame, IToolbar
 
 				{
 					static FILE* _tbf = nullptr;
-					if (!_tbf) { _tbf = fopen("toolbar_diag.txt", "a"); if (_tbf) { fprintf(_tbf, "sz: HOTBUTTON_DATA=%zu STATIC_DATA=%zu ICON_DATA=%zu EDIT_DATA=%zu\n", sizeof(HOTBUTTON_DATA), sizeof(STATIC_DATA), sizeof(ICON_DATA), sizeof(EDIT_DATA)); fflush(_tbf); } }
+					if (!_tbf) { _tbf = fopen("debug/toolbar_diag.txt", "a"); if (_tbf) { fprintf(_tbf, "sz: HOTBUTTON_DATA=%zu STATIC_DATA=%zu ICON_DATA=%zu EDIT_DATA=%zu\n", sizeof(HOTBUTTON_DATA), sizeof(STATIC_DATA), sizeof(ICON_DATA), sizeof(EDIT_DATA)); fflush(_tbf); } }
 					const STATIC_DATA* pSD = (const STATIC_DATA*)(pBaseData+pNode->offset);
 					if (_tbf) {
 						const unsigned char* bp = (const unsigned char*)pBaseData + pNode->offset;
-						fprintf(_tbf, "STATIC @off=%u '%s' type='%s': bytes:", (unsigned)(pNode->offset), varDesc.varName, pSD->staticType);
-						for (int _i = 0; _i < 32; ++_i) fprintf(_tbf, " %02x", (int)bp[_i]);
+						fprintf(_tbf, "STATIC @off=%u '%s' type='%s': xOrigin=%d yOrigin=%d width=%d height=%d align=%d\n",
+							(unsigned)(pNode->offset), varDesc.varName, pSD->staticType,
+							(int)pSD->xOrigin, (int)pSD->yOrigin, (int)pSD->width, (int)pSD->height, (int)pSD->alignment);
+						fprintf(_tbf, "  bytes[0-63]:");
+						for (int _i = 0; _i < 64; ++_i) fprintf(_tbf, " %02x", (int)bp[_i]);
 						fprintf(_tbf, "\n"); fflush(_tbf);
 					}
-					// Skip: empty, control chars, non-ASCII, or !! prefix (VS6 "not used" convention)
-					unsigned char _fc = (unsigned char)pSD->staticType[0];
-					if (_fc == 0 || _fc < 32 || _fc > 127 || _fc == '!') { pList = pNode->pNext; delete pNode; return TRUE; }
+					// Skip: empty, !! prefix, or any non-printable ASCII in the type string
+					{
+						const char* _ts = pSD->staticType;
+						bool _bad = (_ts[0] == 0 || (unsigned char)_ts[0] < 32 || (unsigned char)_ts[0] > 127 || _ts[0] == '!');
+						for (const char* _p = _ts + 1; *_p && !_bad; ++_p) { unsigned char _c = (unsigned char)*_p; if (_c < 32 || _c > 127) _bad = true; }
+						if (_bad) { pList = pNode->pNext; delete pNode; return TRUE; }
+					}
 				}
 
 				GENDATA->CreateInstance(((STATIC_DATA *)(pBaseData+pNode->offset))->staticType, pComp);
 				if (pComp) pComp->QueryInterface("IStatic", pNode->pStatic);
+				if (!pNode->pStatic) { pList = pNode->pNext; delete pNode; return TRUE; }
 			}
 			else
 			if (varDesc.typeName && strcmp(varDesc.typeName, "PROGRESS_STATIC_DATA") == 0)
@@ -704,6 +728,7 @@ struct Menu_tb : public Frame, IToolbar
 
 				GENDATA->CreateInstance(((PROGRESS_STATIC_DATA *)(pBaseData+pNode->offset))->staticType, pComp);
 				if (pComp) pComp->QueryInterface("IProgressStatic", pNode->pProgressStatic);
+				if (!pNode->pProgressStatic) { pList = pNode->pNext; delete pNode; return TRUE; }
 			}
 			else
 			if (varDesc.typeName && strcmp(varDesc.typeName, "EDIT_DATA") == 0)
@@ -723,6 +748,7 @@ struct Menu_tb : public Frame, IToolbar
 
 				GENDATA->CreateInstance(((EDIT_DATA *)(pBaseData+pNode->offset))->editType, pComp);
 				if (pComp) pComp->QueryInterface("IEdit2", pNode->pEdit);
+				if (!pNode->pEdit) { pList = pNode->pNext; delete pNode; return TRUE; }
 			}
 			else
 			if (varDesc.typeName && strcmp(varDesc.typeName, "SHIPSILBUTTON_DATA") == 0)
@@ -748,6 +774,22 @@ struct Menu_tb : public Frame, IToolbar
 				pNode->name = varDesc.varName;
 				pNode->offset = varDesc.offset + baseOffset;
 				pNode->type = GBT_TABCONTROL;
+
+				{
+					static FILE* _tcf = nullptr;
+					if (!_tcf) _tcf = fopen("debug/toolbar_tab_diag.txt", "w");
+					if (_tcf) {
+						const unsigned char* bp = (const unsigned char*)pBaseData + pNode->offset;
+						const TABCONTROL_DATA* pTC = (const TABCONTROL_DATA*)bp;
+						fprintf(_tcf, "TABCONTROL @off=%u '%s': tabControlType='%s' numTabs=%d iBaseImage=%d\n",
+							(unsigned)(pNode->offset), varDesc.varName, pTC->tabControlType, pTC->numTabs, pTC->iBaseImage);
+						fprintf(_tcf, "  raw bytes[0..63]:");
+						for (int _i = 0; _i < 64; ++_i) fprintf(_tcf, " %02x", (int)bp[_i]);
+						fprintf(_tcf, "\n  raw bytes[64..107]:");
+						for (int _i = 64; _i < 108; ++_i) fprintf(_tcf, " %02x", (int)bp[_i]);
+						fprintf(_tcf, "\n"); fflush(_tcf);
+					}
+				}
 
 				GENDATA->CreateInstance(pTabType, pComp);
 				if (pComp) { pComp->QueryInterface("ITabControl", pNode->pTab); pLastTab = pNode->pTab; }
@@ -912,9 +954,10 @@ struct Menu_tb : public Frame, IToolbar
 	const SHAPENAMESTYPE * vfxBarShapeType;
 	const RECT * pContextRect;
 	U16 topBarX,topBarY,topWidth,topHeight;
+	void * m_pPaddedData;	// zero-padded copy of pData; kept alive while vfxShapeType etc. point into it
 
 	COMPTR<IHotButton> DEBUG_selectedButton;
-	
+
 	//
 	// instance methods
 	//
@@ -922,6 +965,7 @@ struct Menu_tb : public Frame, IToolbar
 	Menu_tb (void)
 	{
 		map = NULL;
+		m_pPaddedData = NULL;
 		eventPriority = EVENT_PRIORITY_TOOLBAR;
 	}
 
@@ -1161,6 +1205,7 @@ Menu_tb::~Menu_tb (void)
 	TOOLBAR = 0;
 	flushControlList();
 	flushMenuList();
+	if (m_pPaddedData) { HeapFree(GetProcessHeap(), 0, m_pPaddedData); m_pPaddedData = 0; }
 }
 //----------------------------------------------------------------------------------//
 //
@@ -1495,9 +1540,26 @@ void Menu_tb::setStateInfo (void)
 				menuNode->screenRect = rect;
 				node = menuNode->controlList;
 
+				// Count pTabMenu depth; binary numTabs is 0 in the development .db
+				int tabMenuCount = 0;
+				{ Menu_context * _tc = menuNode->pTabMenu; while (_tc) { ++tabMenuCount; _tc = _tc->pNext; } }
+
 				while (node)
 				{
-					node->initControl(pData, menuNode, pLoader, true);
+					if (node->type == GBT_TABCONTROL && node->pTab && tabMenuCount > 0)
+					{
+						TABCONTROL_DATA * hotdata = (TABCONTROL_DATA *)((char *)pData + node->offset);
+						if (hotdata->numTabs <= 0 || hotdata->numTabs > MAX_TABS)
+						{
+							TABCONTROL_DATA fixed = *hotdata;
+							fixed.numTabs = tabMenuCount;
+							node->pTab->InitTab(fixed, menuNode, pLoader);
+						}
+						else
+							node->initControl(pData, menuNode, pLoader, true);
+					}
+					else
+						node->initControl(pData, menuNode, pLoader, true);
 					node = node->pNext;
 				}
 
@@ -1515,14 +1577,17 @@ void Menu_tb::setStateInfo (void)
 						mNode->pTabControl->GetTabMenu(count, baseRect);
 						CQASSERT(baseRect!=0);
 
-						while (node)
+						if (baseRect)
 						{
-							node->initControl(pData, baseRect, pLoader, true);
-							node = node->pNext;
+							while (node)
+							{
+								node->initControl(pData, baseRect, pLoader, true);
+								node = node->pNext;
+							}
 						}
 
 						// if there is tabMenu stuff, handle it here!!
-						if (mNode->pTabMenu != 0)
+						if (baseRect && mNode->pTabMenu != 0)
 						{
 							Menu_context * nNode = mNode->pTabMenu;
 							U32 count=0;
@@ -1535,13 +1600,15 @@ void Menu_tb::setStateInfo (void)
 								nNode->pTabControl->GetTabMenu(count, baseRect);
 								CQASSERT(baseRect!=0);
 
-								while (node)
+								if (baseRect)
 								{
-									node->initControl(pData, baseRect, pLoader, true);
-									node = node->pNext;
+									while (node)
+									{
+										node->initControl(pData, baseRect, pLoader, true);
+										node = node->pNext;
+									}
+									nNode->pTabControl->SetCurrentTab(0);		// force control to initialize visibility of submenus
 								}
-
-								nNode->pTabControl->SetCurrentTab(0);		// force control to initialize visibility of submenus
 
 								nNode = nNode->pNext;
 								count++;
@@ -1552,7 +1619,8 @@ void Menu_tb::setStateInfo (void)
 						// end new code
 						//
 
-						mNode->pTabControl->SetCurrentTab(0);		// force control to initialize visibility of submenus
+						if (mNode->pTabControl->GetTabCount() > 0)
+							mNode->pTabControl->SetCurrentTab(0);		// force control to initialize visibility of submenus
 
 						mNode = mNode->pNext;
 						count++;
@@ -1628,8 +1696,18 @@ void Menu_tb::loadInterface (const enum M_RACE *pRace)
 							 (char *) pBaseData,
 							 race);
 	dataParser->Enumerate(&callback);
-	if (pPaddedData) { HeapFree(GetProcessHeap(), 0, pPaddedData); pPaddedData = 0; }
-	CQASSERT(controlList == 0 && menuList == 0);
+	// Transfer ownership: free the previous padded block, keep the new one alive
+	// so that vfxShapeType/vfxBarShapeType/pContextRect (which point into it) remain valid.
+	if (m_pPaddedData) { HeapFree(GetProcessHeap(), 0, m_pPaddedData); m_pPaddedData = 0; }
+	m_pPaddedData = pPaddedData;
+	pPaddedData = 0;
+	if (controlList || menuList)
+	{
+		// Re-entrant load while controls are already built: discard and return.
+		// Proper cleanup of callback.pList/menuList is skipped here; this path
+		// is a small, one-time leak from the duplicate load during Mission::Reload.
+		return;
+	}
 	controlList = callback.pList;
 	menuList = callback.menuList;
 	vfxShapeType = callback.vfxShapeType;
@@ -1644,9 +1722,11 @@ void Menu_tb::loadInterface (const enum M_RACE *pRace)
 	CQASSERT(pContextRect);
 
 	GENDATA->CreateInstance(vfxShapeType, pComp);
+	if (!pComp) { CQBOMB1("toolbar vfxShape archetype '%s' not found", vfxShapeType); return; }
 	pComp->QueryInterface("IShapeLoader", loader);
 
 	GENDATA->CreateInstance(vfxBarShapeType[race-1], pComp);
+	if (!pComp) { CQBOMB1("toolbar vfxBarShape archetype '%s' not found", vfxBarShapeType[race-1]); return; }
 	pComp->QueryInterface("IShapeLoader", barLoader);
 
 	if (barLoader==0 || barLoader->CreateImageReader(0, reader) != GR_OK)
@@ -1665,6 +1745,20 @@ void Menu_tb::loadInterface (const enum M_RACE *pRace)
 	screenRect.top		= SCREENRESY - height;
 	screenRect.right	= screenRect.left + width - 1;
 	screenRect.bottom	= screenRect.top + height - 1;
+
+	{
+		static FILE* _tbrf = nullptr;
+		if (!_tbrf) _tbrf = fopen("debug/toolbar_rect_diag.txt", "w");
+		if (_tbrf) {
+			fprintf(_tbrf, "toolbar bar '%s': imageW=%u imageH=%u | GetDims: w=%u h=%u | realW=%u realH=%u | screenRect: L=%d T=%d R=%d B=%d | SCREENRESY=%d SCREEN_HEIGHT=%d bHiRes=%d\n",
+				vfxBarShapeType[race-1], (unsigned)0, (unsigned)0,
+				(unsigned)width, (unsigned)height,
+				(unsigned)realWidth, (unsigned)realHeight,
+				screenRect.left, screenRect.top, screenRect.right, screenRect.bottom,
+				(int)SCREENRESY, (int)SCREEN_HEIGHT, (int)data->bHiRes);
+			fflush(_tbrf);
+		}
+	}
 
 	RECT rect = { 0, 0, realWidth-1, realHeight-1};
 	
@@ -1721,6 +1815,7 @@ void Menu_tb::unloadInterface (void)
 	flushControlList();
 	flushMenuList();
 	removeViewer();
+	if (m_pPaddedData) { HeapFree(GetProcessHeap(), 0, m_pPaddedData); m_pPaddedData = 0; }
 }
 //--------------------------------------------------------------------------//
 //

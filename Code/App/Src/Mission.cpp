@@ -17,9 +17,9 @@
 #include <stdio.h>
 
 static FILE *g_mis_f = NULL;
-#define IGM_LOG(s) do{FILE*_igf=fopen("ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
-#define MIS_LOG(s) do { if(!g_mis_f) g_mis_f=fopen("mission_diag.txt","w"); if(g_mis_f){fputs((s),g_mis_f);fflush(g_mis_f);} } while(0)
-#define MIS_LOGF(fmt,...) do { if(!g_mis_f) g_mis_f=fopen("mission_diag.txt","w"); if(g_mis_f){fprintf(g_mis_f,(fmt),__VA_ARGS__);fflush(g_mis_f);} } while(0)
+#define IGM_LOG(s) do{FILE*_igf=fopen("debug/ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
+#define MIS_LOG(s) do { if(!g_mis_f) g_mis_f=fopen("debug/mission_diag.txt","w"); if(g_mis_f){fputs((s),g_mis_f);fflush(g_mis_f);} } while(0)
+#define MIS_LOGF(fmt,...) do { if(!g_mis_f) g_mis_f=fopen("debug/mission_diag.txt","w"); if(g_mis_f){fprintf(g_mis_f,(fmt),__VA_ARGS__);fflush(g_mis_f);} } while(0)
 
 #include "Mission.h"
 #include "Resource.h"

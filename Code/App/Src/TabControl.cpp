@@ -218,6 +218,11 @@ struct DACOM_NO_VTABLE TabControl : BaseHotRect, ITabControl, IKeyboardFocus
 void TabControl::InitTab (const TABCONTROL_DATA & data, BaseHotRect * _parent, IShapeLoader * loader)
 {
 	CQASSERT(data.numTabs && "Need to set the data for a Tab Control, must have a non zero tab");
+	if (!loader) {
+		FILE* _f = fopen("debug/inittab_debug.txt", "a");
+		if (_f) { fprintf(_f, "InitTab: null loader, numTabs=%d\n", data.numTabs); fclose(_f); }
+		return;
+	}
 	if (parent == 0)
 	{
 		parent = _parent;
@@ -241,11 +246,11 @@ void TabControl::InitTab (const TABCONTROL_DATA & data, BaseHotRect * _parent, I
 	{
 		// load the base tab control image
 		loader->CreateImageReader(baseImage, reader);
-		controlWidth  = reader->GetWidth();
-		controlHeight = reader->GetHeight();
+		controlWidth  = reader ? reader->GetWidth() : 0;
+		controlHeight = reader ? reader->GetHeight() : 0;
 
 		loader->CreateDrawAgent(baseImage, borderDrawAgent, NULL);
-	} 
+	}
 
 	// set the screen rect
 	RECT rcParent;
@@ -256,11 +261,17 @@ void TabControl::InitTab (const TABCONTROL_DATA & data, BaseHotRect * _parent, I
 	screenRect.top = rcParent.top + IDEAL2REALY(data.ypos);
 	screenRect.bottom = rcParent.bottom + IDEAL2REALY(data.ypos + controlHeight);
 
+	{
+		FILE* _f = fopen("debug/inittab_debug.txt", "a");
+		if (_f) { fprintf(_f, "InitTab: numTabs=%d baseImage=%u bTabsLoaded=%d\n", data.numTabs, (unsigned)baseImage, (int)bTabsLoaded); fclose(_f); }
+	}
+
+	bool tabsComplete = true;
 	for (int i = 0; i < data.numTabs; i++)
 	{
 		loader->CreateImageReader(i*4 + 1 + baseImage, reader);
-		width = reader->GetWidth();
-		height = reader->GetHeight();
+		width  = reader ? reader->GetWidth()  : 50;
+		height = reader ? reader->GetHeight() : 20;
 
 		dumbData[i].baseImage = i*4 + 1 + baseImage;
 		dumbData[i].xOrigin = space;
@@ -270,19 +281,20 @@ void TabControl::InitTab (const TABCONTROL_DATA & data, BaseHotRect * _parent, I
 
 		if (tabs[i] == 0)
 		{
-			if (data.hotButtonType[0])
 			{
-				GENDATA->CreateInstance(data.hotButtonType, pBase);
+				unsigned char _fc = (unsigned char)data.hotButtonType[0];
+				bool _valid = (_fc >= 32 && _fc <= 127);
+				const char * _btnTypeName = _valid ? data.hotButtonType : "HotButton!!Tab";
+				GENDATA->CreateInstance(_btnTypeName, pBase);
 			}
-			else
-			{
-				GENDATA->CreateInstance("HotButton!!Tab", pBase);
-			}
+			if (!pBase) { nTabs = i; tabsComplete = false; break; }
 			pBase->QueryInterface("ITabButton", tabs[i]);
+			if (!tabs[i]) { nTabs = i; tabsComplete = false; break; }
 		}
 
+		if (!tabs[i]) { nTabs = i; tabsComplete = false; break; }
 		tabs[i]->InitTabButton(dumbData[i], this, loader);
-		
+
 		if (data.textID[i])
 		{
 			tabs[i]->SetTextID(data.textID[i]);
@@ -290,13 +302,20 @@ void TabControl::InitTab (const TABCONTROL_DATA & data, BaseHotRect * _parent, I
 			tabs[i]->SetTextColorHilite(tabType->hiliteColor);
 			tabs[i]->SetTextColorSelected(tabType->selectedColor);
 		}
-		
+
 		tabs[i]->SetControlID(i + TABS_ID_START);
 	}
 
-	nTabs = data.numTabs;
-	
-	onLeftHotbutton(iSelected + TABS_ID_START);
+	if (tabsComplete)
+		nTabs = data.numTabs;
+
+	{
+		FILE* _f = fopen("debug/inittab_debug.txt", "a");
+		if (_f) { fprintf(_f, "InitTab done: nTabs=%d tabsComplete=%d\n", nTabs, (int)tabsComplete); fclose(_f); }
+	}
+
+	if (nTabs > 0)
+		onLeftHotbutton(iSelected + TABS_ID_START);
 
 	bTabsLoaded = true;
 }
@@ -305,6 +324,7 @@ void TabControl::InitTab (const TABCONTROL_DATA & data, BaseHotRect * _parent, I
 GENRESULT __stdcall TabControl::GetTabMenu (U32 index, struct BaseHotRect ** ppMenu)
 {
 	CQASSERT(index < (U32)nTabs);
+	if ((int)index >= nTabs || !tabs[index]) { *ppMenu = 0; return GR_GENERIC; }
 	return tabs[index]->QueryInterface("BaseHotRect", (void **)ppMenu);
 }
 //--------------------------------------------------------------------------//

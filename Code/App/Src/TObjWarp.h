@@ -218,8 +218,11 @@ BOOL32 ObjectWarp< Base >::doWarp (SINGLE dt)
 			//MOVE SHIP TO "0 SPACE"
 			warpStage = WS_LIMBO;
 			U32 sysID = inTargetGate.Ptr()->GetSystemID();
-			SECTOR->RevealSystem(sysID,playerID);
-			FOGOFWAR->RevealBlackZone(playerID,sysID,inTargetGate.Ptr()->GetPosition(),5000.0/GRIDSIZE);
+			if (playerID >= 1 && playerID <= MAX_PLAYERS)
+			{
+				SECTOR->RevealSystem(sysID,playerID);
+				FOGOFWAR->RevealBlackZone(playerID,sysID,inTargetGate.Ptr()->GetPosition(),5000.0/GRIDSIZE);
+			}
 			SetSystemID(sysID | HYPER_SYSTEM_MASK);
 			// update the map with our latest location
 			COMPTR<ITerrainMap> map;

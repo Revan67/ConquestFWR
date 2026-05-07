@@ -295,8 +295,6 @@ void BuildButton::InitBuildButton (const BUILDBUTTON_DATA & data, BaseHotRect * 
 		activeTech.tech = (TECHTREE::TECHUPGRADE)0;
 		activeTech.raceID = (M_RACE)M_TERRAN;
 		activeTech.common = (TECHTREE::COMMON)0;
-		activeTech.cq2Vars1 = (TECHTREE::CQ2_VARS_1)0;
-		activeTech.cq2Vars2 = (TECHTREE::CQ2_VARS_2)0;
 
 		if(workData)
 		{

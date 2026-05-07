@@ -529,7 +529,17 @@ void FontDrawAgent16::updateStringData (const wchar_t * string, BOOL32 bCreateAg
 			stringWidth++;
 		drawToBitmap(string);
 
-		agent.free();
+		// The COMHeap block header for `agent` can be corrupted by adjacent
+		// allocations during map loading. Guard with SEH so a corrupt block
+		// header doesn't propagate as an unhandled AV; the old DrawAgent is
+		// leaked in that case rather than crashing.
+		if (agent.ptr)
+		{
+			IDrawAgent * old_agent = agent.ptr;
+			agent.ptr = nullptr;
+			__try { old_agent->Release(); }
+			__except (EXCEPTION_EXECUTE_HANDLER) {}
+		}
 		if (bCreateAgent)
 			CreateDrawAgentForFonts((FontDrawAgent16 *)this, agent);
 	}

@@ -251,7 +251,7 @@ int DumpView::STANDARD_DUMP (ErrorCode code, const C8 *fmt, ...)
 {
 	{
 		static FILE *_log = NULL;
-		if (!_log) _log = fopen("startup_log.txt", "w");
+		if (!_log) _log = fopen("debug/startup_log.txt", "w");
 		if (_log) {
 			va_list _a; va_start(_a, fmt);
 			fprintf(_log, "[%d,%d] ", code.kind, code.severity);

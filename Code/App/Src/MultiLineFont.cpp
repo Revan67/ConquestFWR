@@ -621,6 +621,13 @@ void MLFont::updateStringData (PANE * pane, const wchar_t * string)
 		createGDIObjects();
 		drawToBitmap();
 
+		if (agent.ptr)
+		{
+			IDrawAgent * old_agent = agent.ptr;
+			agent.ptr = nullptr;
+			__try { old_agent->Release(); }
+			__except (EXCEPTION_EXECUTE_HANDLER) {}
+		}
 		CreateDrawAgentForFonts(this, agent);
 	}
 }

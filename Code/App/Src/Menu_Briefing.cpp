@@ -29,7 +29,7 @@
 #include <stdio.h>
 
 static FILE *g_brf_f = NULL;
-#define BRF_LOG(s) do { if(!g_brf_f) g_brf_f=fopen("briefing_diag.txt","w"); if(g_brf_f){fputs((s),g_brf_f);fflush(g_brf_f);} } while(0)
+#define BRF_LOG(s) do { if(!g_brf_f) g_brf_f=fopen("debug/briefing_diag.txt","w"); if(g_brf_f){fputs((s),g_brf_f);fflush(g_brf_f);} } while(0)
 
 #define NUM_CELLS 12
 #define NUM_ANIM  4
@@ -58,6 +58,7 @@ struct MenuBriefing : public DAComponent<Frame>, IBriefing
 	const char * szFileName;
 	bool bLoaded;
 	bool bLowLatencyEnabled;			// true when we have adjusted the streamer for low latency
+	bool bStarted;						// guard against re-entrant IDS_START from sendPostedMessages
 
 	U32 animIndexArray[NUM_CELLS];
 	char szDefaultAnimationType[GT_PATH];
@@ -516,6 +517,8 @@ void MenuBriefing::onButtonPressed (U32 buttonID)
 	switch (buttonID)
 	{
 		case IDS_START:
+			if (bStarted) break;
+			bStarted = true;
 			// start the mission
 			BRF_LOG("IDS_START: before PlayMusic\n");
 			MUSICMANAGER->PlayMusic("Battle_loading.wav", false);

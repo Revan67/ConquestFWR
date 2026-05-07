@@ -301,7 +301,7 @@ static LONG CALLBACK wndProc (HWND hWindow, UINT message, WPARAM wParam, LPARAM 
 	/* Log the first 30 messages arriving at wndProc (on any thread) so we
 	 * can confirm (a) wndProc is being called at all, and (b) which messages
 	 * arrive vs. which are eaten before reaching here. */
-	{ static int s_wpc=0; if(s_wpc<30){s_wpc++;FILE*_wf=fopen("wndproc_trace.txt","a");if(_wf){fprintf(_wf,"wndProc msg=0x%04X wp=0x%08X lp=0x%08X tid=%u main=%u\n",message,(unsigned)wParam,(unsigned)lParam,(unsigned)GetCurrentThreadId(),(unsigned)s_wndProcThreadId);fclose(_wf);}} }
+	{ static int s_wpc=0; if(s_wpc<30){s_wpc++;FILE*_wf=fopen("debug/wndproc_trace.txt","a");if(_wf){fprintf(_wf,"wndProc msg=0x%04X wp=0x%08X lp=0x%08X tid=%u main=%u\n",message,(unsigned)wParam,(unsigned)lParam,(unsigned)GetCurrentThreadId(),(unsigned)s_wndProcThreadId);fclose(_wf);}} }
 
 	/* This WndProc uses static (non-thread-safe) state and calls EVENTSYS which
 	 * is also not thread-safe.  DXVK background threads send messages to the
@@ -442,7 +442,7 @@ static LONG CALLBACK wndProc (HWND hWindow, UINT message, WPARAM wParam, LPARAM 
 	case WM_MBUTTONUP:
 		if (bRecurse == 0)
 		{
-			{ FILE*_f=fopen("input_diag.txt","a");if(_f){fprintf(_f,"BTN msg=%u x=%d y=%d inactive=%d eventsys=%p\n",message,short(LOWORD(lParam)),short(HIWORD(lParam)),(int)bInactive,(void*)EVENTSYS);fclose(_f);} }
+			{ FILE*_f=fopen("debug/input_diag.txt","a");if(_f){fprintf(_f,"BTN msg=%u x=%d y=%d inactive=%d eventsys=%p\n",message,short(LOWORD(lParam)),short(HIWORD(lParam)),(int)bInactive,(void*)EVENTSYS);fclose(_f);} }
 			bRecurse++;
 			wndProc(hWindow, WM_MOUSEMOVE, wParam, lParam);	// send a fake mouse move
 			wndProc(hWindow, message, wParam, lParam);		// send the real message
@@ -1607,7 +1607,7 @@ InterfaceRes __stdcall GetCurrentInterfaceRes()
 void __stdcall ChangeInterfaceRes(enum InterfaceRes res)
 {
 	static FILE *_cir_f = NULL;
-	#define CIR_LOG(s) do { if(!_cir_f) _cir_f=fopen("changeires_diag.txt","w"); if(_cir_f){fputs((s),_cir_f);fflush(_cir_f);} } while(0)
+	#define CIR_LOG(s) do { if(!_cir_f) _cir_f=fopen("debug/changeires_diag.txt","w"); if(_cir_f){fputs((s),_cir_f);fflush(_cir_f);} } while(0)
 
 	if(lastRes == res)
 		return;
@@ -1632,7 +1632,7 @@ void __stdcall ChangeInterfaceRes(enum InterfaceRes res)
 		{
 			SCREEN_WIDTH = 640;
 			SCREEN_HEIGHT = 480;
-			{FILE *_igm_r=fopen("ingame_diag.txt","w");if(_igm_r)fclose(_igm_r);}
+			{FILE *_igm_r=fopen("debug/ingame_diag.txt","w");if(_igm_r)fclose(_igm_r);}
 			CIR_LOG("ChangeInterfaceRes: sending CQE_ENTERING_INGAMEMODE\n");
 			EVENTSYS->Send(CQE_ENTERING_INGAMEMODE);
 			CIR_LOG("ChangeInterfaceRes: CQE_ENTERING_INGAMEMODE done\n");
@@ -1682,7 +1682,7 @@ void __stdcall Start3DMode()
 	/* Single file handle kept open across all startup checkpoints — avoids
 	 * fclose->_CrtCheckMemory on every log entry (Debug CRT heap walk crashes
 	 * on COMHeap-allocated blocks that lack CRT debug headers). */
-	FILE *_sd_f = fopen("startup_diag.txt","w");
+	FILE *_sd_f = fopen("debug/startup_diag.txt","w");
 #define _SD_LOG(s)       do { if(_sd_f){fputs((s),_sd_f);fflush(_sd_f);} } while(0)
 /* Use wsprintfA (Win32, stack-only) instead of fprintf to avoid touching the
  * CRT heap — which can crash in Debug builds due to COMHeap block mismatches. */
@@ -2154,9 +2154,9 @@ void __stdcall Enable3DMode (bool bEnable)
 				}
 			}
 
-			{ FILE *_f2 = fopen("startup_diag.txt","a"); if(_f2){fprintf(_f2,"step E2: create_buffers hwnd=%p %dx%d\n",(void*)hMainWindow,SCREENRESX,SCREENRESY);fclose(_f2);} }
+			{ FILE *_f2 = fopen("debug/startup_diag.txt","a"); if(_f2){fprintf(_f2,"step E2: create_buffers hwnd=%p %dx%d\n",(void*)hMainWindow,SCREENRESX,SCREENRESY);fclose(_f2);} }
 			GENRESULT gr = PIPE->create_buffers(hMainWindow,SCREENRESX, SCREENRESY);
-			{ FILE *_f2 = fopen("startup_diag.txt","a"); if(_f2){fprintf(_f2,"step E2 done: gr=0x%08X\n",(unsigned)gr);fclose(_f2);} }
+			{ FILE *_f2 = fopen("debug/startup_diag.txt","a"); if(_f2){fprintf(_f2,"step E2 done: gr=0x%08X\n",(unsigned)gr);fclose(_f2);} }
 			//	U32 depth;
 			//	PIPE->get_pipeline_state(RP_BUFFERS_DEPTH_BPP,&depth);
 
