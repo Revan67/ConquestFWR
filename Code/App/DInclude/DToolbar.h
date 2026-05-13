@@ -72,7 +72,7 @@ struct GT_TOOLBAR
 
 	struct COMMON
 	{
-		HOTBUTTON_DATA rotateLeft, returnDefaultView, rotateRight, minimize, restore, options, chat, go, starMap, exitSysMap,  
+		HOTBUTTON_DATA rotateLeft, returnDefaultView, rotateRight, minimize, restore, options, chat, go, starMap, exitSysMap,
 			hpDiplomacy, hpResearch,hpFleetOfficer,hpIndustrial,hpIdleCivilian,missionObjectives;
 		STATIC_DATA gas,metal,crew;
 		STATIC_DATA commandPts,shipclass;
