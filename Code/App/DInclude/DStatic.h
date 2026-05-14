@@ -244,5 +244,8 @@ struct STATIC_DATA
     S32 xOrigin, yOrigin;
 	S32 width, height;				// if non-zero, override shape bounds
 };
+#ifndef _ADB
+static_assert(sizeof(STATIC_DATA) == 64, "STATIC_DATA binary layout mismatch");
+#endif
 
 #endif

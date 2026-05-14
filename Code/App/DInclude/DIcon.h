@@ -45,6 +45,9 @@ struct ICON_DATA
     S32 xOrigin, yOrigin;
 	ICONTXT::ICON_TOOLTIP tooltip;
 };
+#ifndef _ADB
+static_assert(sizeof(ICON_DATA) == 16, "ICON_DATA binary layout mismatch");
+#endif
 
 #define ICON_TYPE "Icon!!Default"
 

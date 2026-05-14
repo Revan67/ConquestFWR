@@ -14,6 +14,7 @@
 #include <globals.h>
 #include <MGlobals.h>
 
+
 #include <wchar.h>
 
 #include "Resource.h"
@@ -1125,6 +1126,21 @@ static void initMissionData (const MPartNC & part, U32 dwMissionID)
 		playerID = 0;
 	part->dwMissionID = dwMissionID;
 	part->playerID = playerID;
+
+	static int s_initCount = 0;
+	if (s_initCount < 50)
+	{
+		const char* mode = (s_initCount == 0) ? "w" : "a";
+		FILE* _mgf = fopen("debug/mglobals_diag.txt", mode);
+		if (_mgf)
+		{
+			fprintf(_mgf, "initMissionData[%d]: displayName=%u mObjClass=%d race=%d dwMissionID=0x%08X playerID=%u\n",
+				s_initCount, (unsigned)part.pInit->displayName, (int)part->mObjClass, (int)part->race,
+				dwMissionID, playerID);
+			fclose(_mgf);
+		}
+		++s_initCount;
+	}
 	part->caps = part.pInit->caps;
 	part->techLevel.damage    = __max(part->techLevel.damage,static_cast<MISSION_SAVELOAD::InstanceTechLevel::UPGRADE>(globalData.playerTechLevel[playerID][part->race].damage));
 	part->techLevel.engine    = __max(part->techLevel.engine,static_cast<MISSION_SAVELOAD::InstanceTechLevel::UPGRADE>(globalData.playerTechLevel[playerID][part->race].engine));

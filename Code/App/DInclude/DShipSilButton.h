@@ -35,5 +35,8 @@ struct SHIPSILBUTTON_DATA
 {
 	S32 xOrigin, yOrigin;
 };
+#ifndef _ADB
+static_assert(sizeof(SHIPSILBUTTON_DATA) == 8, "SHIPSILBUTTON_DATA binary layout mismatch");
+#endif
 
 #endif

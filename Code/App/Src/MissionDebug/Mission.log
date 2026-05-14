@@ -1,0 +1,9 @@
+﻿libucrtd.lib(debug_heap.obj) : warning LNK4006: __calloc_dbg already defined in comheap.lib(COMHeap.obj); second definition ignored
+libucrtd.lib(debug_heap.obj) : warning LNK4006: __free_dbg already defined in comheap.lib(COMHeap.obj); second definition ignored
+libucrtd.lib(debug_heap.obj) : warning LNK4006: __malloc_dbg already defined in comheap.lib(COMHeap.obj); second definition ignored
+libucrtd.lib(debug_heap.obj) : warning LNK4006: __msize_dbg already defined in comheap.lib(COMHeap.obj); second definition ignored
+libucrtd.lib(debug_heap.obj) : warning LNK4006: __realloc_dbg already defined in comheap.lib(COMHeap.obj); second definition ignored
+     Creating library .\Debug/Mission.lib and object .\Debug/Mission.exp
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+.\Debug\Mission.dll : warning LNK4088: image being generated due to /FORCE option; image may not run
+  Mission.vcxproj -> E:\GitHub\projects\ConquestFWR\Code\App\Src\Debug\Mission.dll

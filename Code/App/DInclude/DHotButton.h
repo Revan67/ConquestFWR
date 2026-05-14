@@ -44,13 +44,16 @@ struct GT_HOTBUTTON : GENBASE_DATA
 struct HOTBUTTON_DATA
 {
 	U32 baseImage;							// keep this in the same position as buildButton
+	S32 xOrigin, yOrigin;
 	HBTNTXT::BUTTON_TEXT buttonText;		// tooltip, can also be used for ID
 	HBTNTXT::HOTBUTTONINFO buttonInfo;		// statusbar text ID
 	HBTNTXT::HOTBUTTONHINT buttonHint;		// hitbox text
 	HOTKEYS::HOTKEY hotkey;
 	bool bDisabled;							// button is initially disabled if true
-	S32 xOrigin, yOrigin;
 };
+#ifndef _ADB
+static_assert(sizeof(HOTBUTTON_DATA) == 32, "HOTBUTTON_DATA binary layout mismatch");
+#endif
 //---------------------------------------------------------------------------
 //
 struct BUILDBUTTON_DATA
@@ -60,11 +63,14 @@ struct BUILDBUTTON_DATA
 	S32 xOrigin, yOrigin;
 	char rtArchetype[GT_PATH];
 	SINGLE_TECHNODE techDependency, techGreyed;
-	HBTNTXT::BUILD_TEXT greyedTooltip;	
+	HBTNTXT::BUILD_TEXT greyedTooltip;
 	HBTNTXT::BUILDINFO buildInfo;			// rollover help info
 	HOTKEYS::HOTKEY hotkey;					//for reference only
 	bool bDisabled;							// button is initially disabled if true
 };
+#ifndef _ADB
+static_assert(sizeof(BUILDBUTTON_DATA) == 104, "BUILDBUTTON_DATA binary layout mismatch");
+#endif
 //---------------------------------------------------------------------------
 //
 struct RESEARCHBUTTON_DATA
@@ -73,11 +79,14 @@ struct RESEARCHBUTTON_DATA
 	U32 noMoneyImage;
 	S32 xOrigin, yOrigin;
 	char rtArchetype[GT_PATH];
-	HBTNTXT::RESEARCH_TEXT tooltip;	
+	HBTNTXT::RESEARCH_TEXT tooltip;
 	HBTNTXT::RESEARCHINFO researchInfo;		// rollover help info
 	HOTKEYS::HOTKEY hotkey;					//for reference only
 	bool bDisabled;							// button is initially disabled if true
 };
+#ifndef _ADB
+static_assert(sizeof(RESEARCHBUTTON_DATA) == 64, "RESEARCHBUTTON_DATA binary layout mismatch");
+#endif
 //---------------------------------------------------------------------------
 //
 struct MULTIHOTBUTTON_DATA
@@ -87,5 +96,8 @@ struct MULTIHOTBUTTON_DATA
 	bool bSingleShape;
 	bool bDisabled;							// button is initially disabled if true
 };
+#ifndef _ADB
+static_assert(sizeof(MULTIHOTBUTTON_DATA) == 16, "MULTIHOTBUTTON_DATA binary layout mismatch");
+#endif
 
 #endif

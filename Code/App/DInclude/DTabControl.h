@@ -68,5 +68,8 @@ struct TABCONTROL_DATA
 	int xpos;
 	int ypos;
 };
+#ifndef _ADB
+static_assert(sizeof(TABCONTROL_DATA) == 108, "TABCONTROL_DATA binary layout mismatch");
+#endif
 
 #endif

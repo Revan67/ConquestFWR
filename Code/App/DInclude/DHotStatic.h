@@ -69,6 +69,9 @@ struct HOTSTATIC_DATA
 		U8 red,green,blue;
 	}textColor;
 };
+#ifndef _ADB
+static_assert(sizeof(HOTSTATIC_DATA) == 40, "HOTSTATIC_DATA binary layout mismatch");
+#endif
 
 
 #endif

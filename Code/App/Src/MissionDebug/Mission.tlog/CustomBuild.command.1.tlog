@@ -1,0 +1,2 @@
+^E:\GITHUB\PROJECTS\CONQUESTFWR\CODE\APP\SRC\SEARCH.ASM
+ml /Zi /c /Cx /coff /nologo /Fo.\MissionDebug\Search.obj E:\GitHub\projects\ConquestFWR\Code\App\Src\Search.asm
