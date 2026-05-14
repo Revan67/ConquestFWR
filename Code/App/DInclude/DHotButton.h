@@ -44,12 +44,12 @@ struct GT_HOTBUTTON : GENBASE_DATA
 struct HOTBUTTON_DATA
 {
 	U32 baseImage;							// keep this in the same position as buildButton
-	S32 xOrigin, yOrigin;
 	HBTNTXT::BUTTON_TEXT buttonText;		// tooltip, can also be used for ID
 	HBTNTXT::HOTBUTTONINFO buttonInfo;		// statusbar text ID
 	HBTNTXT::HOTBUTTONHINT buttonHint;		// hitbox text
 	HOTKEYS::HOTKEY hotkey;
 	bool bDisabled;							// button is initially disabled if true
+	S32 xOrigin, yOrigin;
 };
 //---------------------------------------------------------------------------
 //

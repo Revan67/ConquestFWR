@@ -2460,9 +2460,7 @@ void Sector::GetScreenCoords(S32 *mx,S32 *my,S32 wx,S32 wy)
 
 void Sector::Render()
 {
-	if (!CQFLAGS.bFullScreenMap)
-		return;
-
+	if (!CQFLAGS.bFullScreenMap) return;
 	BATCH->set_state(RPR_BATCH,false);
 	BATCH->set_render_state(D3DRS_CULLMODE,D3DCULL_NONE);
 	BATCH->set_render_state(D3DRS_ZWRITEENABLE,FALSE);

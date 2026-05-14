@@ -72,10 +72,9 @@ struct EDIT_DATA
 	char editType[GT_PATH];
 	EDTXT::EDIT_TEXT editText;         // initial value, can also be used for ID
 	S32 xOrigin, yOrigin;
-	char _vs6pad[24]; // VS6 binary had 24 additional bytes here; unused at runtime
 };
 #ifndef _ADB
-static_assert(sizeof(EDIT_DATA) == 68, "EDIT_DATA binary layout mismatch");
+static_assert(sizeof(EDIT_DATA) == 44, "EDIT_DATA binary layout mismatch");
 #endif
 
 

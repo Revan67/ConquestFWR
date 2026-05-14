@@ -48,7 +48,7 @@
 #include "DTabControl.h"
 #endif
 
-#define TB_RACES 4
+#define TB_RACES 3
 #define NUM_SPECIAL_ORDERS 12
 
 //---------------------------------------------------------------------------
