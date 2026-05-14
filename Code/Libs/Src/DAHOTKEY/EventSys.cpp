@@ -197,11 +197,6 @@ GENRESULT EventSystem::Send (U32 message, void *param)
 {
 	CONNECTION_NODE<IEventCallback> *pList = eventCallback.pClientList, *pNext;
 
-	static FILE *_evf = nullptr;
-	if (!_evf) _evf = fopen("eventsys_diag.txt", "w");
-
-	if (_evf) { fprintf(_evf, "Send msg=0x%04X pList=%p\n", message, (void*)pList); fflush(_evf); }
-
 	//------------------------------
 	// service all of the callbacks
 	//------------------------------
@@ -210,14 +205,10 @@ GENRESULT EventSystem::Send (U32 message, void *param)
 	while (pList)
 	{
 		pNext = pList->pNext;
-		if (_evf) { DWORD _vtbl = pList->client ? *(DWORD*)(void*)pList->client : 0; fprintf(_evf, "  [%d] client=%p vtbl=0x%08X pNext=%p\n", idx, (void*)pList->client, _vtbl, (void*)pNext); fflush(_evf); }
 		pList->client->Notify(message, param);
-		if (_evf) { fprintf(_evf, "  [%d] ok\n", idx); fflush(_evf); }
 		idx++;
 		pList = pNext;
 	}
-
-	if (_evf) { fprintf(_evf, "Send done\n"); fflush(_evf); }
 
 	return GR_OK;
 }

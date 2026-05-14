@@ -3667,6 +3667,12 @@ BOOL32 ObjectList::New (void)
 }
 //--------------------------------------------------------------------------//
 //
+static FILE *g_objload_f = NULL;
+#define OBJLOAD_LOG(name) do { \
+    if (!g_objload_f) g_objload_f = fopen("debug/objload_diag.txt","w"); \
+    if (g_objload_f) { fprintf(g_objload_f,"LoadArchetype: %s\n",(name)); fflush(g_objload_f); } \
+} while(0)
+
 BOOL32 ObjectList::Load (struct IFileSystem * inFile,bool bNoDynamics, bool bOnlyDynamics)
 {
 	BOOL32 result=0;
@@ -3727,6 +3733,7 @@ BOOL32 ObjectList::Load (struct IFileSystem * inFile,bool bNoDynamics, bool bOnl
 			if (inFile->CreateInstance(&fdesc, file) != GR_OK)
 				break;
 
+			OBJLOAD_LOG(data.cFileName);
 			if ((node = LoadArchetype(data.cFileName)) != 0)
 			{
 				HANDLE handle;
@@ -3784,6 +3791,7 @@ BOOL32 ObjectList::Load (struct IFileSystem * inFile,bool bNoDynamics, bool bOnl
 			if (inFile->CreateInstance(&fdesc, file) != GR_OK)
 				break;
 
+			OBJLOAD_LOG(data.cFileName);
 			if ((node = LoadArchetype(data.cFileName)) != 0)
 			{
 				bool bLoad = true;
@@ -3840,10 +3848,12 @@ BOOL32 ObjectList::Load (struct IFileSystem * inFile,bool bNoDynamics, bool bOnl
 										{
 											//
 											// see if object has other data to load
-											// 
+											//
 											if (obj->QueryInterface(IQuickSaveLoadID, pSaveLoad) != 0)
 											{
+												if (g_objload_f) { fprintf(g_objload_f,"  QuickLoad: %s/%s\n",szTypeName,data.cFileName); fflush(g_objload_f); }
 												pSaveLoad->QuickLoad(szTypeName, data.cFileName, rawData, dwSize);
+												if (g_objload_f) { fprintf(g_objload_f,"  QuickLoad done\n"); fflush(g_objload_f); }
 											}
 										}
 										AddObject(obj);

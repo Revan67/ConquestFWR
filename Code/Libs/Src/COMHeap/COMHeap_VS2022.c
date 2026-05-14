@@ -100,7 +100,15 @@ void * __stdcall early_heap_realloc(void *ptr, size_t size)
 int __stdcall is_early_heap_block(void *ptr)
 {
     if (!ptr) return 0;
-    return (((early_hdr *)ptr) - 1)->magic == EARLY_HEAP_MAGIC;
+    /* ptr-4 may be unmapped if the UCRT allocated the block via HeapAlloc
+     * without going through our malloc interception.  Use SEH to avoid the
+     * AV.  Return 1 on fault so the caller routes to early_heap_free, which
+     * uses HeapFree and fails gracefully on a wrong-heap pointer. */
+    __try {
+        return (((early_hdr *)ptr) - 1)->magic == EARLY_HEAP_MAGIC;
+    } __except(EXCEPTION_EXECUTE_HANDLER) {
+        return 1;
+    }
 }
 
 void __stdcall early_heap_free(void *ptr)
@@ -108,7 +116,13 @@ void __stdcall early_heap_free(void *ptr)
     early_hdr *h;
     if (!ptr || !g_early_heap) return;
     h = ((early_hdr *)ptr) - 1;
-    h->magic = 0;   /* poison before free to catch double-free */
+    /* The header write may fault if the block was not allocated through us
+     * (ptr-4 unmapped).  In that case skip the free — small leak is safe. */
+    __try {
+        h->magic = 0;   /* poison before free to catch double-free */
+    } __except(EXCEPTION_EXECUTE_HANDLER) {
+        return;
+    }
     HeapFree(g_early_heap, 0, h);
 }
 

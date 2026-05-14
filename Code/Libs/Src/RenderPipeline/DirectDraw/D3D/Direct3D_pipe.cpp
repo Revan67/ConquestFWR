@@ -461,51 +461,46 @@ protected:	// protected data
 
 ID3DXEffect * loadEffectHelper(char* filename,IComponentFactory * DIR)
 {
-		//ICOManager *DACOM = DACOM_Acquire();
-		bool tripAssertion = false;
 		LPD3DXEFFECT effect = 0;
-		while (effect == NULL)
+		DAFILEDESC fdesc = filename;
+		COMPTR<IFileSystem> file;
+		if (DIR->CreateInstance(&fdesc, file) != GR_OK)
 		{
-			if (tripAssertion) assert(false);
-			tripAssertion = true;
-			DAFILEDESC fdesc = filename;
-			COMPTR<IFileSystem> file;
-			if (DIR->CreateInstance(&fdesc, file) != GR_OK)
-			{
-				GENERAL_TRACE_1("Failed to find an effect file! ");
-				GENERAL_TRACE_1(filename);
-				GENERAL_TRACE_1("\n");
-				continue;
-			}
-			
-			U32 fileSize = file->GetFileSize();
-			char * data = new char[fileSize+1];
-			U32 dwRead = 0;
-			file->ReadFile(0, data, fileSize,&dwRead,0);
+			GENERAL_TRACE_1("Failed to find an effect file! ");
+			GENERAL_TRACE_1(filename);
+			GENERAL_TRACE_1("\n");
+			return NULL;
+		}
 
-			data[fileSize] = 0;
-			
-			LPD3DXBUFFER pBufferErrors = NULL;
-			if (FAILED(D3DXCreateEffect( direct3d_device, 
-				data, 
-				fileSize, 
-				NULL, 
-				NULL, 
-				NULL, 
-				NULL, 
-				&effect, 
-				&pBufferErrors )))
-				{
-				GENERAL_TRACE_1("Failed to create effect: ");
-				GENERAL_TRACE_1("\n");
-			}
-			if( pBufferErrors != NULL )
-			{
-				GENERAL_TRACE_1("\n");
-				GENERAL_TRACE_1((CHAR*)pBufferErrors->GetBufferPointer());
-				GENERAL_TRACE_1("\n");
-			}
-			if (effect == NULL)	continue;
+		U32 fileSize = file->GetFileSize();
+		char * data = new char[fileSize+1];
+		U32 dwRead = 0;
+		file->ReadFile(0, data, fileSize,&dwRead,0);
+		data[fileSize] = 0;
+
+		LPD3DXBUFFER pBufferErrors = NULL;
+		if (FAILED(D3DXCreateEffect( direct3d_device,
+			data,
+			fileSize,
+			NULL,
+			NULL,
+			NULL,
+			NULL,
+			&effect,
+			&pBufferErrors )))
+		{
+			GENERAL_TRACE_1("Failed to create effect: ");
+			GENERAL_TRACE_1("\n");
+		}
+		if( pBufferErrors != NULL )
+		{
+			GENERAL_TRACE_1("\n");
+			GENERAL_TRACE_1((CHAR*)pBufferErrors->GetBufferPointer());
+			GENERAL_TRACE_1("\n");
+		}
+		delete[] data;
+		if (effect != NULL)
+		{
 			D3DXHANDLE hTech = NULL;
 			switch (PixelShaderVersion)
 			{
@@ -520,7 +515,6 @@ ID3DXEffect * loadEffectHelper(char* filename,IComponentFactory * DIR)
 				break;
 			}
 			effect->SetTechnique(hTech);
-			delete data;
 		}
 		return effect;
 }
@@ -554,7 +548,8 @@ ID3DXEffect** Direct3D_RenderPipeline::load_effect(const char * filename, ICompo
 		if (strcmp(filename, tmp->fileName) == 0)
 		{
 #if _DEBUG
-			tmp->loadEffect();
+			if (tmp->effect)  /* only hot-reload if previous load succeeded */
+				tmp->loadEffect();
 #endif
 			return &tmp->effect;
 		}
@@ -2586,7 +2581,7 @@ DA_METHOD(	begin_scene,(void ) )
 	ASSERT( direct3d_device );	// assert after the create_buffers check
 
 	HRESULT hr_bs = direct3d_device->BeginScene();
-	if (!g_swap_f) g_swap_f = fopen("swap_diag.txt", "w");
+	if (!g_swap_f) g_swap_f = fopen("debug/swap_diag.txt", "w");
 	if (g_swap_f && g_swap_frame < 10) {
 		fprintf(g_swap_f, "frame %d: BeginScene hr=0x%08lX\n",
 		        g_swap_frame, (unsigned long)hr_bs);
@@ -3540,7 +3535,7 @@ DA_METHOD(	clear_buffers,(DWORD flag, RECT *rect ))
 
 DA_METHOD(	swap_buffers,(void ))
 {
-	if (!g_swap_f) g_swap_f = fopen("swap_diag.txt", "w");
+	if (!g_swap_f) g_swap_f = fopen("debug/swap_diag.txt", "w");
 	HRESULT hr_present = direct3d_device->Present(NULL,NULL,NULL,NULL);
 	if (g_swap_f && g_swap_frame < 10) {
 		fprintf(g_swap_f, "frame %d: Present hr=0x%08lX\n",
@@ -3660,7 +3655,7 @@ static HRESULT try_create_device_ex(IDirect3D9Ex *d3d, HWND hwnd,
 #define _CB_LOGF(fmt,...) do { if(_cb_f){fprintf(_cb_f,fmt,__VA_ARGS__);fflush(_cb_f);} } while(0)
 DA_METHOD(	create_buffers,(HWND hwnd, int hres, int vres ))
 {
-	FILE *_cb_f = fopen("d3d_diag.txt","w");
+	FILE *_cb_f = fopen("debug/d3d_diag.txt","w");
 	_CB_LOG("cb: entered\n");
 	_CB_LOG("cb-1: logging open\n");
 	CHECK_STARTUP(create_buffers);

@@ -591,6 +591,18 @@ struct Menu_tb : public Frame, IToolbar
 			if (varDesc.typeName && strcmp(varDesc.typeName, "HOTBUTTON_DATA") == 0)
 			{
 				HOTBUTTON_DATA * hotdata = (HOTBUTTON_DATA *)  (((char *)pBaseData) + varDesc.offset + baseOffset);
+				{
+					static FILE* _hbpf = nullptr;
+					if (!_hbpf) _hbpf = fopen("debug/hotbutton_parse_diag.txt", "w");
+					if (_hbpf) {
+						fprintf(_hbpf, "HOTBTN @off=%u '%s' baseOff=%u: baseImage=%u xOrig=%d yOrig=%d txt=%d\n",
+							(unsigned)(varDesc.offset+baseOffset), varDesc.varName ? varDesc.varName : "?",
+							(unsigned)baseOffset,
+							(unsigned)hotdata->baseImage, (int)hotdata->xOrigin, (int)hotdata->yOrigin,
+							(int)hotdata->buttonText);
+						fflush(_hbpf);
+					}
+				}
 				if(hotdata->baseImage)
 				{
 					CONTROL_NODE * pNode = new CONTROL_NODE;
@@ -1031,10 +1043,10 @@ struct Menu_tb : public Frame, IToolbar
 		//
 		// draw the box
 		//
-		DA::LineDraw(0, screenRect.left+contextRect.left, screenRect.top+contextRect.top, screenRect.left+contextRect.right, screenRect.top+contextRect.top, color);
-		DA::LineDraw(0, screenRect.left+contextRect.right, screenRect.top+contextRect.top, screenRect.left+contextRect.right, screenRect.top+contextRect.bottom, color);
-		DA::LineDraw(0, screenRect.left+contextRect.right, screenRect.top+contextRect.bottom, screenRect.left+contextRect.left, screenRect.top+contextRect.bottom, color);
-		DA::LineDraw(0, screenRect.left+contextRect.left, screenRect.top+contextRect.bottom, screenRect.left+contextRect.left, screenRect.top+contextRect.top, color);
+		DA::LineDraw(0, contextRect.left, contextRect.top, contextRect.right, contextRect.top, color);
+		DA::LineDraw(0, contextRect.right, contextRect.top, contextRect.right, contextRect.bottom, color);
+		DA::LineDraw(0, contextRect.right, contextRect.bottom, contextRect.left, contextRect.bottom, color);
+		DA::LineDraw(0, contextRect.left, contextRect.bottom, contextRect.left, contextRect.top, color);
 	}
 
 	/* Menu_tb methods */
@@ -1488,10 +1500,23 @@ void Menu_tb::setStateInfo (void)
 	COMPTR<IShapeLoader> pLoader;
 	CONTROL_NODE * node = 0;
 
-	contextRect.left   = IDEAL2REALX(pContextRect->left);	
-	contextRect.right  = IDEAL2REALX(pContextRect->right+1)-1;	
-	contextRect.top    = IDEAL2REALY(pContextRect->top);	
-	contextRect.bottom = IDEAL2REALY(pContextRect->bottom+1)-1;	
+	{
+		static FILE* _crf = nullptr;
+		if (!_crf) _crf = fopen("debug/context_rect_diag.txt", "w");
+		if (_crf) {
+			fprintf(_crf, "pContextRect raw: L=%d T=%d R=%d B=%d\n",
+				(int)pContextRect->left, (int)pContextRect->top,
+				(int)pContextRect->right, (int)pContextRect->bottom);
+			fprintf(_crf, "screenRect: L=%d T=%d R=%d B=%d\n",
+				(int)screenRect.left, (int)screenRect.top,
+				(int)screenRect.right, (int)screenRect.bottom);
+			fflush(_crf);
+		}
+	}
+	contextRect.left   = IDEAL2REALX(pContextRect->left);
+	contextRect.right  = IDEAL2REALX(pContextRect->right+1)-1;
+	contextRect.top    = IDEAL2REALY(pContextRect->top);
+	contextRect.bottom = IDEAL2REALY(pContextRect->bottom+1)-1;
 
 	if (vfxShapeType[0])
 	{
@@ -1502,10 +1527,12 @@ void Menu_tb::setStateInfo (void)
 	if (menuList)
 	{
 		Menu_context * menuNode = menuList;
-		RECT rect = { screenRect.left + contextRect.left,
-					  screenRect.top  + contextRect.top,
-					  screenRect.left + contextRect.right,
-					  screenRect.top  + contextRect.bottom };
+		// contextRect is in absolute real-pixel coords (pContextRect stores absolute ideal
+		// screen coords, not toolbar-relative). Do NOT add screenRect.left/top.
+		RECT rect = { contextRect.left,
+					  contextRect.top,
+					  contextRect.right,
+					  contextRect.bottom };
 
 		while (menuNode)
 		{
@@ -1717,6 +1744,27 @@ void Menu_tb::loadInterface (const enum M_RACE *pRace)
 	sectorMapRect = callback.sectorMapRect;
 	topBarX = IDEAL2REALX(callback.topBarX);
 	topBarY = IDEAL2REALY(callback.topBarY);
+	{
+		static FILE* _srf = nullptr;
+		if (!_srf) _srf = fopen("debug/sysmap_rect_diag.txt", "w");
+		if (_srf) {
+			fprintf(_srf, "sysmapRect raw (ideal): L=%d T=%d R=%d B=%d\n",
+				(int)callback.sysmapRect.left, (int)callback.sysmapRect.top,
+				(int)callback.sysmapRect.right, (int)callback.sysmapRect.bottom);
+			fprintf(_srf, "sectorMapRect raw (ideal): L=%d T=%d R=%d B=%d\n",
+				(int)callback.sectorMapRect.left, (int)callback.sectorMapRect.top,
+				(int)callback.sectorMapRect.right, (int)callback.sectorMapRect.bottom);
+			fprintf(_srf, "topBarX=%u topBarY=%u (ideal, pre-scale)\n",
+				(unsigned)callback.topBarX, (unsigned)callback.topBarY);
+			fprintf(_srf, "sysmapRect scaled: L=%d T=%d R=%d B=%d\n",
+				(int)IDEAL2REALX(sysmapRect.left), (int)IDEAL2REALY(sysmapRect.top),
+				(int)IDEAL2REALX(sysmapRect.right), (int)IDEAL2REALY(sysmapRect.bottom));
+			fprintf(_srf, "sectorMapRect scaled: L=%d T=%d R=%d B=%d\n",
+				(int)IDEAL2REALX(sectorMapRect.left), (int)IDEAL2REALY(sectorMapRect.top),
+				(int)IDEAL2REALX(sectorMapRect.right), (int)IDEAL2REALY(sectorMapRect.bottom));
+			fflush(_srf);
+		}
+	}
 
 	CQASSERT(vfxShapeType);
 	CQASSERT(pContextRect);
@@ -1734,7 +1782,9 @@ void Menu_tb::loadInterface (const enum M_RACE *pRace)
 
 	U16 width, height;
 	GT_VFXSHAPE * data = (GT_VFXSHAPE *)(GENDATA->GetArchetypeData(vfxBarShapeType[race-1]));
-	CreateDrawAgent(reader, shape,data->bHiRes);
+	// bHiRes in binary is 7 (garbage/wrong); toolbar art is always in IDEAL (640) space,
+	// so bHiRes=false makes GetDimensions return IDEAL2REALX(640)=1024 at 1024x768.
+	CreateDrawAgent(reader, shape, false);
 	shape->GetDimensions(width, height);
 
 	realWidth = reader->GetWidth();
@@ -1743,7 +1793,7 @@ void Menu_tb::loadInterface (const enum M_RACE *pRace)
 
 	screenRect.left		= 0;
 	screenRect.top		= SCREENRESY - height;
-	screenRect.right	= screenRect.left + width - 1;
+	screenRect.right	= SCREENRESX - 1;	// stretch to full screen width
 	screenRect.bottom	= screenRect.top + height - 1;
 
 	{

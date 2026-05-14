@@ -241,6 +241,21 @@ void HotButton::InitHotButton (const HOTBUTTON_DATA & data, BaseHotRect * _paren
 	screenRect.bottom = screenRect.top + height - 1;
 	screenRect.right = screenRect.left + width - 1;
 
+	{
+		static FILE* _hbf = nullptr;
+		if (!_hbf) _hbf = fopen("debug/hotbutton_diag.txt", "w");
+		if (_hbf) {
+			fprintf(_hbf, "HotButton: baseImage=%u xOrig=%d yOrig=%d w=%d h=%d parentL=%d parentT=%d -> L=%d T=%d R=%d B=%d txt=%d\n",
+				(unsigned)data.baseImage, (int)data.xOrigin, (int)data.yOrigin,
+				(int)width, (int)height,
+				(int)parent->screenRect.left, (int)parent->screenRect.top,
+				(int)screenRect.left, (int)screenRect.top,
+				(int)screenRect.right, (int)screenRect.bottom,
+				(int)data.buttonText);
+			fflush(_hbf);
+		}
+	}
+
 	//
 	// calculate text offset
 	//

@@ -653,7 +653,7 @@ void Python::reportError( IPythonEnum* _errorEnum, const char* _fmt, ... )
 		_errorEnum->EnumError( err );
 	}
 
-	FILE* hErrFile = fopen("pyerr.log", "w+t");
+	FILE* hErrFile = fopen("debug/pyerr.log", "w+t");
 	if( hErrFile )
 	{
 		PyObject* pPyStdErr = PyFile_FromFile(hErrFile, "<stderr>", "w", NULL);

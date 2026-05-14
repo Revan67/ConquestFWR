@@ -5,8 +5,8 @@
 #pragma warning( disable: 4018 4100 4201 4512 4530 4663 4688 4710 4786 )
 
 #define WIN32_LEAN_AND_MEAN
-#define TL_LOG(s) do{FILE*_tlf=fopen("texlib_diag.txt","a");if(_tlf){fputs((s),_tlf);fclose(_tlf);}}while(0)
-#define TL_LOGF(fmt,...) do{FILE*_tlf=fopen("texlib_diag.txt","a");if(_tlf){fprintf(_tlf,fmt,__VA_ARGS__);fclose(_tlf);}}while(0)
+#define TL_LOG(s) do{FILE*_tlf=fopen("debug/texlib_diag.txt","a");if(_tlf){fputs((s),_tlf);fclose(_tlf);}}while(0)
+#define TL_LOGF(fmt,...) do{FILE*_tlf=fopen("debug/texlib_diag.txt","a");if(_tlf){fprintf(_tlf,fmt,__VA_ARGS__);fclose(_tlf);}}while(0)
 //#define INITGUID
 #include <windows.h>
 #include <stdio.h>

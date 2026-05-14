@@ -14,6 +14,8 @@
 #include <globals.h>
 #include <stdio.h>
 #define IGM_LOG(s) do{FILE*_igf=fopen("debug/ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
+#define FOG_LOG(s) do{FILE*_ff=fopen("debug/fog_diag.txt","a");if(_ff){fputs((s),_ff);fclose(_ff);}}while(0)
+#define FOG_LOGF(fmt,...) do{FILE*_ff=fopen("debug/fog_diag.txt","a");if(_ff){fprintf(_ff,fmt,__VA_ARGS__);fclose(_ff);}}while(0)
 
 #include "Resource.h"
 #include "Startup.h"
@@ -671,6 +673,7 @@ void FogOfWar::loadTextures (bool bLoad)
 	{
 		CQASSERT(textureID==0);
 		textureID = TMANAGER->CreateTextureFromFile("fog_tile.tga", TEXTURESDIR,DA::TGA,PF_4CC_DAOT);
+		FOG_LOGF("loadTextures: fog_tile.tga textureID=%u (0=not found)\n", textureID);
 
 		//copy fog texture
 	/*	RPLOCKDATA rpLockData;
@@ -1310,7 +1313,10 @@ void FogOfWar::Render()
 	
 	static int counter=0;
 	counter++;
-	
+	if (counter == 1)
+		FOG_LOGF("Render#1: textureID=%u bNoPerVertexAlpha=%d bits[0]=0x%08X bits[512]=0x%08X\n",
+			textureID, (int)CQRENDERFLAGS.bNoPerVertexAlpha, bits[0], bits[512]);
+
 	if (CAMERA && DEFAULTS->GetDefaults()->fogMode != FOGOWAR_NONE)
 	{
 		const Transform & worldTrans = *CAMERA->GetWorldTransform();
@@ -1631,6 +1637,18 @@ void FogOfWar::UpdateFog (int sys)
 		const U32 mask = MGlobals::GetAllyMask(playerID) << 1;
 		ObjMapIterator it(sys, Vector(0,0,0), 500000, playerID);
 
+		static int _fogDiagCount = 0;
+		if (_fogDiagCount < 5) {
+			int total = 0, revealed = 0;
+			ObjMapIterator it2(sys, Vector(0,0,0), 500000, playerID);
+			while (it2) { total++; if ((mask & (1 << (it2->dwMissionID&PLAYERID_MASK))) != 0) revealed++; ++it2; }
+			char _buf[256];
+			snprintf(_buf, sizeof(_buf), "UpdateFog: sys=%d playerID=%u mask=0x%X total_objs=%d reveal_objs=%d numZones_after=%d\n",
+				sys, playerID, mask, total, revealed, numZones);
+			FOG_LOG(_buf);
+			_fogDiagCount++;
+		}
+
 		while (it)
 		{
 			if ((mask & (1 << (it->dwMissionID&PLAYERID_MASK))) != 0)
@@ -1639,6 +1657,14 @@ void FogOfWar::UpdateFog (int sys)
 			}
 
 			++it;
+		}
+
+		static int _fogDiagCount2 = 0;
+		if (_fogDiagCount2 < 5) {
+			char _buf2[128];
+			snprintf(_buf2, sizeof(_buf2), "UpdateFog post-reveal: sys=%d numZones=%d\n", sys, numZones);
+			FOG_LOG(_buf2);
+			_fogDiagCount2++;
 		}
 	}
 
@@ -2230,6 +2256,7 @@ void FogOfWar::MakeMapTextures(int numSystems)
 		
 		if (PIPE->create_texture(width,height,PF_4CC_DAA8,1,0,mapTexID[s]) != GR_OK)
 			CQBOMB2("create_texture() failed. Requested = %dx%d", width, height);
+		FOG_LOGF("MakeMapTextures: sys=%d mapTexID=%u size=%dx%d\n", s, mapTexID[s], width, height);
 		
 		PIPE->set_texture_level_data(mapTexID[s], 0, width, height, width*sizeof(COLORREF), 
 			PixelFormat(PF_RGBA),

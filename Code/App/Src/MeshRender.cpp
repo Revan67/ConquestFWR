@@ -1747,8 +1747,10 @@ void MeshRender::SetupMeshInfo(MeshInfo *mc,bool bMakeBuffers, const char* mater
 {
 	if (!emissiveEffect)
 		{
-			emissiveEffect = PIPE->load_effect("cq2\\shaders\\emissive.fx",(IComponentFactory *)TEXTURESDIR);
-			nonEmissiveEffect = PIPE->load_effect("cq2\\shaders\\noEmissive.fx",(IComponentFactory *)TEXTURESDIR);
+			// cq2 shaders were not shipped with the retail game — skip loading
+			static ID3DXEffect* s_nullEffect = nullptr;
+			emissiveEffect = &s_nullEffect;
+			nonEmissiveEffect = &s_nullEffect;
 		}
 
 	mc->mr = this;

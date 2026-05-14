@@ -320,7 +320,7 @@ void IPAnim::init (void)
 	InitializeCriticalSection(&criticalSection);
 	SetPipelineCriticalSection(&criticalSection);
 	SetWindowManagerCriticalSection(&criticalSection);
-	hThread = CreateThread(0,4096, (LPTHREAD_START_ROUTINE) threadMain, (LPVOID)this, 0, &threadID);
+	hThread = CreateThread(0,524288, (LPTHREAD_START_ROUTINE) threadMain, (LPVOID)this, 0, &threadID);
 	CQASSERT(hThread);
 
 
