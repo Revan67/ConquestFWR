@@ -4702,6 +4702,8 @@ struct SHIELD_DATA
 	char animName[32];
 	char fizzAnimName[32];
 	SFX::ID sfx;
+	SFX::ID fizzOut;
+	SFX::ID fizzIn;
 };
 
 
@@ -4810,7 +4812,7 @@ struct BASE_SPACESHIP_DATA : BASIC_DATA
 
 	bool bLargeShip; 
 };
-static_assert(sizeof(BASE_SPACESHIP_DATA) == 636, "BASE_SPACESHIP_DATA binary layout mismatch");
+static_assert(sizeof(BASE_SPACESHIP_DATA) == 644, "BASE_SPACESHIP_DATA binary layout mismatch");
 
 
 
@@ -5481,8 +5483,8 @@ struct BASE_PLATFORM_DATA : BASIC_DATA
 	U32 gasStorage;
 	U32 crewStorage;
 };
-static_assert(sizeof(BASE_PLATFORM_DATA) == 552, "BASE_PLATFORM_DATA binary layout mismatch");
-static_assert(offsetof(BASE_PLATFORM_DATA, slotsNeeded) == 468, "BASE_PLATFORM_DATA::slotsNeeded offset mismatch");
+static_assert(sizeof(BASE_PLATFORM_DATA) == 560, "BASE_PLATFORM_DATA binary layout mismatch");
+static_assert(offsetof(BASE_PLATFORM_DATA, slotsNeeded) == 476, "BASE_PLATFORM_DATA::slotsNeeded offset mismatch");
 
 
 
@@ -10090,6 +10092,9 @@ struct STATIC_DATA
 
 
 
+
+
+
 			    
 
 
@@ -11455,14 +11460,17 @@ struct GT_HOTBUTTON : GENBASE_DATA
 
 struct HOTBUTTON_DATA
 {
-	U32 baseImage;
+	U32 baseImage;							
 	S32 xOrigin, yOrigin;
-	HBTNTXT::BUTTON_TEXT buttonText;
-	HBTNTXT::HOTBUTTONINFO buttonInfo;
-	HBTNTXT::HOTBUTTONHINT buttonHint;
+	HBTNTXT::BUTTON_TEXT buttonText;		
+	HBTNTXT::HOTBUTTONINFO buttonInfo;		
+	HBTNTXT::HOTBUTTONHINT buttonHint;		
 	HOTKEYS::HOTKEY hotkey;
-	bool bDisabled;
+	bool bDisabled;							
 };
+
+
+
 
 
 struct BUILDBUTTON_DATA
@@ -11472,11 +11480,14 @@ struct BUILDBUTTON_DATA
 	S32 xOrigin, yOrigin;
 	char rtArchetype[32];
 	SINGLE_TECHNODE techDependency, techGreyed;
-	HBTNTXT::BUILD_TEXT greyedTooltip;	
+	HBTNTXT::BUILD_TEXT greyedTooltip;
 	HBTNTXT::BUILDINFO buildInfo;			
 	HOTKEYS::HOTKEY hotkey;					
 	bool bDisabled;							
 };
+
+
+
 
 
 struct RESEARCHBUTTON_DATA
@@ -11485,11 +11496,14 @@ struct RESEARCHBUTTON_DATA
 	U32 noMoneyImage;
 	S32 xOrigin, yOrigin;
 	char rtArchetype[32];
-	HBTNTXT::RESEARCH_TEXT tooltip;	
+	HBTNTXT::RESEARCH_TEXT tooltip;
 	HBTNTXT::RESEARCHINFO researchInfo;		
 	HOTKEYS::HOTKEY hotkey;					
 	bool bDisabled;							
 };
+
+
+
 
 
 struct MULTIHOTBUTTON_DATA
@@ -11499,6 +11513,9 @@ struct MULTIHOTBUTTON_DATA
 	bool bSingleShape;
 	bool bDisabled;							
 };
+
+
+
 
 
 
@@ -11552,6 +11569,9 @@ struct TABCONTROL_DATA
 	int xpos;
 	int ypos;
 };
+
+
+
 
 
 
@@ -11725,7 +11745,7 @@ struct GT_EDIT : GENBASE_DATA
 struct EDIT_DATA
 {
 	char editType[32];
-	EDTXT::EDIT_TEXT editText;
+	EDTXT::EDIT_TEXT editText;         
 	S32 xOrigin, yOrigin;
 };
 
@@ -12569,6 +12589,9 @@ struct HOTSTATIC_DATA
 
 
 
+
+
+
 			    
 
 
@@ -12595,6 +12618,9 @@ struct SHIPSILBUTTON_DATA
 {
 	S32 xOrigin, yOrigin;
 };
+
+
+
 
 
 
@@ -12649,6 +12675,9 @@ struct ICON_DATA
     S32 xOrigin, yOrigin;
 	ICONTXT::ICON_TOOLTIP tooltip;
 };
+
+
+
 
 
 
