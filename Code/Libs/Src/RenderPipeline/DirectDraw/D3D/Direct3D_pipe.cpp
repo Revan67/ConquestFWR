@@ -466,10 +466,7 @@ ID3DXEffect * loadEffectHelper(char* filename,IComponentFactory * DIR)
 		COMPTR<IFileSystem> file;
 		if (DIR->CreateInstance(&fdesc, file) != GR_OK)
 		{
-			GENERAL_TRACE_1("Failed to find an effect file! ");
-			GENERAL_TRACE_1(filename);
-			GENERAL_TRACE_1("\n");
-			return NULL;
+			return NULL;  // cq2 shader files not present in retail — silently skip
 		}
 
 		U32 fileSize = file->GetFileSize();
