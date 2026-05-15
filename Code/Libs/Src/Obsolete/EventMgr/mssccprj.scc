@@ -1,5 +1,0 @@
-SCC = This is a Source Code Control file
-
-[EventMgr.mak]
-SCC_Aux_Path = "\\NT\LIBS\Tools\libvss"
-SCC_Project_Name = "$/Libs/dalibs-1.6.x/Src/Obsolete/EventMgr", UCYAAAAA
