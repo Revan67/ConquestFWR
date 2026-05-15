@@ -11455,13 +11455,13 @@ struct GT_HOTBUTTON : GENBASE_DATA
 
 struct HOTBUTTON_DATA
 {
-	U32 baseImage;							
+	U32 baseImage;
 	S32 xOrigin, yOrigin;
-	HBTNTXT::BUTTON_TEXT buttonText;		
-	HBTNTXT::HOTBUTTONINFO buttonInfo;		
-	HBTNTXT::HOTBUTTONHINT buttonHint;		
+	HBTNTXT::BUTTON_TEXT buttonText;
+	HBTNTXT::HOTBUTTONINFO buttonInfo;
+	HBTNTXT::HOTBUTTONHINT buttonHint;
 	HOTKEYS::HOTKEY hotkey;
-	bool bDisabled;							
+	bool bDisabled;
 };
 
 
@@ -12717,11 +12717,11 @@ struct GT_TOOLBAR
 	
 	
 	char vfxShapeType[32];		
-	char vfxToolBar[4][32];
+	char vfxToolBar[3][32];
 
 	RECT contextRect;				
-	RECT sysmapRect[4];
-	RECT sectorMapRect[4];
+	RECT sysmapRect[3];
+	RECT sectorMapRect[3];
 	U32 topBarX,topBarY;
 
 	
@@ -12735,7 +12735,7 @@ struct GT_TOOLBAR
 		STATIC_DATA gas,metal,crew;
 		STATIC_DATA commandPts,shipclass;
 		ICON_DATA inSupply,notInSupply;
-	} common[4];
+	} common[3];
 
 
 
@@ -12855,7 +12855,7 @@ struct GT_TOOLBAR
 			MULTIHOTBUTTON_DATA kitDisplay0,kitDisplay1;
 			QUEUECONTROL_DATA kitQueue;
 		}kitTab;
-	} fleet[4];
+	} fleet[3];
 	
 	struct WARTURRET
 	{
@@ -12865,7 +12865,7 @@ struct GT_TOOLBAR
 		MULTIHOTBUTTON_DATA specialweapon;
 		HOTBUTTON_DATA fighterStanceNormal,fighterStancePatrol;
 		HOTSTATIC_DATA techarmor,techsupply,techsheild,techweapon,techsensors,techspecial;
-	}WarTurret[4];
+	}WarTurret[3];
 
 	struct INDIVIDUAL
 	{	
@@ -12877,7 +12877,7 @@ struct GT_TOOLBAR
 		EDIT_DATA namearea;
 		STATIC_DATA hull,supplies,kills,metal,gas;
 		HOTSTATIC_DATA techarmor,techsupply,techengine,techsheild,techweapon,techsensors,techspecial;
-	} individual[4];
+	} individual[3];
 
 	struct GROUP
 	{
@@ -12888,7 +12888,7 @@ struct GT_TOOLBAR
 			supplyStanceAuto,supplyStanceNoAuto,supplyStanceResupplyOnly;
 		HOTBUTTON_DATA fighterStanceNormal,fighterStancePatrol;
 		SHIPSILBUTTON_DATA ship0,ship1,ship2,ship3,ship4,ship5,ship6,ship7,ship8,ship9,ship10,ship11,ship12,ship13,ship14,ship15,ship16,ship17,ship18,ship19,ship20,ship21;
-	} group[4];
+	} group[3];
 	
 };
 

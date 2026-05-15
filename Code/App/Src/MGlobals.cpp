@@ -1126,20 +1126,28 @@ static void initMissionData (const MPartNC & part, U32 dwMissionID)
 	part->dwMissionID = dwMissionID;
 	part->playerID = playerID;
 
-	static int s_initCount = 0;
-	if (s_initCount < 50)
+	// Guard: non-mission archetypes (lights, nebulae) don't have MISSION_DATA_BIN
+	// at offset +44, so pInitData reads garbage. Race out of range signals bad pInitData;
+	// bail before the out-of-bounds playerTechLevel access.
+	if ((unsigned)part->race > (unsigned)M_VYRIUM)
+		return;
+
+	// Log only QuickLoad-path calls (low nibble of partID encodes playerID > 0).
+	// CreateInstance always allocates with playerID=0 in the low nibble.
+	if (dwMissionID & 0xF)
 	{
-		const char* mode = (s_initCount == 0) ? "w" : "a";
-		FILE* _mgf = fopen("debug/mglobals_diag.txt", mode);
+		static bool s_opened = false;
+		FILE* _mgf = fopen("debug/mglobals_diag.txt", s_opened ? "a" : "w");
+		s_opened = true;
 		if (_mgf)
 		{
-			fprintf(_mgf, "initMissionData[%d]: displayName=%u mObjClass=%d race=%d dwMissionID=0x%08X playerID=%u\n",
-				s_initCount, (unsigned)part.pInit->displayName, (int)part->mObjClass, (int)part->race,
+			fprintf(_mgf, "initMissionData: displayName=%u mObjClass=%d race=%d dwMissionID=0x%08X playerID=%u\n",
+				(unsigned)part.pInit->displayName, (int)part->mObjClass, (int)part->race,
 				dwMissionID, playerID);
 			fclose(_mgf);
 		}
-		++s_initCount;
 	}
+
 	part->caps = part.pInit->caps;
 	part->techLevel.damage    = __max(part->techLevel.damage,static_cast<MISSION_SAVELOAD::InstanceTechLevel::UPGRADE>(globalData.playerTechLevel[playerID][part->race].damage));
 	part->techLevel.engine    = __max(part->techLevel.engine,static_cast<MISSION_SAVELOAD::InstanceTechLevel::UPGRADE>(globalData.playerTechLevel[playerID][part->race].engine));
