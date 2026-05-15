@@ -53,7 +53,7 @@ struct BASE_PLATFORM_DATA : BASIC_DATA
 	char explosionType[GT_PATH];
 	char shieldHitType[GT_PATH];
 	char ambient_animation[GT_PATH];
-	// ambientEffect not in VS6 binary; size/bMoonPlatform not in binary (sizeof==560, slotsNeeded at 476)
+	// ambientEffect not in VS6 binary; size/bMoonPlatform not in binary
 	SINGLE mass;
 	SINGLE_TECHNODE techActive;
 	struct SHIELD_DATA shield;
@@ -64,8 +64,8 @@ struct BASE_PLATFORM_DATA : BASIC_DATA
 	U32 gasStorage;
 	U32 crewStorage;
 };
-static_assert(sizeof(BASE_PLATFORM_DATA) == 552, "BASE_PLATFORM_DATA binary layout mismatch");
-static_assert(offsetof(BASE_PLATFORM_DATA, slotsNeeded) == 468, "BASE_PLATFORM_DATA::slotsNeeded offset mismatch");
+static_assert(sizeof(BASE_PLATFORM_DATA) == 560, "BASE_PLATFORM_DATA binary layout mismatch");
+static_assert(offsetof(BASE_PLATFORM_DATA, slotsNeeded) == 476, "BASE_PLATFORM_DATA::slotsNeeded offset mismatch");
 //----------------------------------------------------------------
 //
 #ifndef _ADB

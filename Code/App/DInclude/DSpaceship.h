@@ -68,9 +68,11 @@ struct SHIELD_DATA
 	char animName[GT_PATH];
 	char fizzAnimName[GT_PATH];
 	SFX::ID sfx;
+	SFX::ID fizzOut;
+	SFX::ID fizzIn;
 };
 #ifndef _ADB
-static_assert(sizeof(SHIELD_DATA) == 100, "SHIELD_DATA binary layout mismatch");
+static_assert(sizeof(SHIELD_DATA) == 108, "SHIELD_DATA binary layout mismatch");
 #endif
 //----------------------------------------------------------------
 //
@@ -176,7 +178,7 @@ struct BASE_SPACESHIP_DATA : BASIC_DATA
 #endif
 	bool bLargeShip; // does this take up more than one grid square?
 };
-static_assert(sizeof(BASE_SPACESHIP_DATA) == 636, "BASE_SPACESHIP_DATA binary layout mismatch");
+static_assert(sizeof(BASE_SPACESHIP_DATA) == 644, "BASE_SPACESHIP_DATA binary layout mismatch");
 
 //----------------------------------------------------------------
 //
@@ -255,7 +257,7 @@ struct BT_GUNBOAT_DATA : BASE_SPACESHIP_DATA
 	char launcherType[MAX_GUNBOAT_LAUNCHERS][GT_PATH];
 };
 #ifndef _ADB
-static_assert(sizeof(BT_GUNBOAT_DATA) == 808, "BT_GUNBOAT_DATA binary layout mismatch");
+static_assert(sizeof(BT_GUNBOAT_DATA) == 816, "BT_GUNBOAT_DATA binary layout mismatch");
 #endif
 //----------------------------------------------------------------
 //
