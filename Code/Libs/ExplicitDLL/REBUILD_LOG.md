@@ -53,6 +53,18 @@ Commit this file alongside the DLL changes so the reason is always in the histor
 
 ---
 
+## 2026-05-15 — D3DRenderPipe.dll: re-rebuild (May 14 DLL was out of sync)
+
+- **Trigger:** The 2026-05-14 commit included a DLL built from the OLD source (before
+  the GENERAL_TRACE_1 removal). The source edit happened after the DLL was last built,
+  so the committed DLL still fired the __debugbreak() assert on every missing shader.
+  Rebuilt from current source to produce the correct DLL.
+- **MSVC toolset:** 14.44.35207 — cl.exe 19.44.35225 (VS2022 Enterprise)
+- **DLLs rebuilt:** D3DRenderPipe.dll only
+- **Source changes:** None (same source as 2026-05-14 entry — this is just the correct build)
+
+---
+
 ## Template for future entries
 
 ```
