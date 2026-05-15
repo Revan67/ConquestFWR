@@ -465,10 +465,8 @@ void CMenu_Ind::onUpdate (U32 dt)
 							namearea->SetVisible(false);
 					}
 
-					if(ship->caps.moveOk)
-						patrolCmd->SetVisible(true);
-					else
-						patrolCmd->SetVisible(false);
+					if(patrolCmd)
+						patrolCmd->SetVisible(ship->caps.moveOk);
 					if (MGlobals::IsGunboat(ship->mObjClass) || MGlobals::IsSupplyShip(ship->mObjClass))
 					{
 						escortCmd->SetVisible(true);
