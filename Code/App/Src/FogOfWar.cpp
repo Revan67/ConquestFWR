@@ -1637,18 +1637,6 @@ void FogOfWar::UpdateFog (int sys)
 		const U32 mask = MGlobals::GetAllyMask(playerID) << 1;
 		ObjMapIterator it(sys, Vector(0,0,0), 500000, playerID);
 
-		static int _fogDiagCount = 0;
-		if (_fogDiagCount < 5) {
-			int total = 0, revealed = 0;
-			ObjMapIterator it2(sys, Vector(0,0,0), 500000, playerID);
-			while (it2) { total++; if ((mask & (1 << (it2->dwMissionID&PLAYERID_MASK))) != 0) revealed++; ++it2; }
-			char _buf[256];
-			snprintf(_buf, sizeof(_buf), "UpdateFog: sys=%d playerID=%u mask=0x%X total_objs=%d reveal_objs=%d numZones_after=%d\n",
-				sys, playerID, mask, total, revealed, numZones);
-			FOG_LOG(_buf);
-			_fogDiagCount++;
-		}
-
 		while (it)
 		{
 			if ((mask & (1 << (it->dwMissionID&PLAYERID_MASK))) != 0)
@@ -1659,13 +1647,6 @@ void FogOfWar::UpdateFog (int sys)
 			++it;
 		}
 
-		static int _fogDiagCount2 = 0;
-		if (_fogDiagCount2 < 5) {
-			char _buf2[128];
-			snprintf(_buf2, sizeof(_buf2), "UpdateFog post-reveal: sys=%d numZones=%d\n", sys, numZones);
-			FOG_LOG(_buf2);
-			_fogDiagCount2++;
-		}
 	}
 
 	COLORREF *bits = bits_array[sys-1];

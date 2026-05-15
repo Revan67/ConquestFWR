@@ -438,29 +438,32 @@ void CMenu_Ind::onUpdate (U32 dt)
 				if(lastMissionID != ship->dwMissionID)
 				{
 					lastMissionID = ship->dwMissionID;
-					if(ship->bShowPartName)
+					if(namearea)
 					{
-						_localAnsiToWide(ship->partName,buffer,sizeof(buffer));
-						wchar_t * namePtr = buffer;
-						if(namePtr[0] == '#')
+						if(ship->bShowPartName)
 						{
-							++namePtr;
-							if ((namePtr = wcschr(namePtr,'#')) != 0)
+							_localAnsiToWide(ship->partName,buffer,sizeof(buffer));
+							wchar_t * namePtr = buffer;
+							if(namePtr[0] == '#')
+							{
 								++namePtr;
-							else
-								namePtr = buffer;
+								if ((namePtr = wcschr(namePtr,'#')) != 0)
+									++namePtr;
+								else
+									namePtr = buffer;
+							}
+							namearea->SetText(namePtr);
 						}
-						namearea->SetText(namePtr);
+						else
+						{
+							swprintf(buffer, _localLoadStringW(IDS_IND_SHIPCLASS), ptr);
+							namearea->SetText(buffer);
+						}
+						if(namearea->IsTextAllVisible())
+							namearea->SetVisible(true);
+						else
+							namearea->SetVisible(false);
 					}
-					else
-					{
-						swprintf(buffer, _localLoadStringW(IDS_IND_SHIPCLASS), ptr);
-						namearea->SetText(buffer);
-					}
-					if(namearea->IsTextAllVisible())
-						namearea->SetVisible(true);
-					else
-						namearea->SetVisible(false);
 
 					if(ship->caps.moveOk)
 						patrolCmd->SetVisible(true);

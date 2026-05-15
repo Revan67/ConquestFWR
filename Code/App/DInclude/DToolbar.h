@@ -74,8 +74,8 @@ struct GT_TOOLBAR
 	{
 		HOTBUTTON_DATA rotateLeft, returnDefaultView, rotateRight, minimize, restore, options, chat, go, starMap, exitSysMap,
 			hpDiplomacy, hpResearch,hpFleetOfficer,hpIndustrial,hpIdleCivilian,missionObjectives;
-		STATIC_DATA gas,metal,crew;
-		STATIC_DATA commandPts,shipclass;
+		STATIC_DATA shipclass,gas,metal,crew;
+		STATIC_DATA commandPts;
 		ICON_DATA inSupply,notInSupply;
 	} common[TB_RACES];
 
