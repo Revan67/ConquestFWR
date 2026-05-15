@@ -65,6 +65,24 @@ Commit this file alongside the DLL changes so the reason is always in the histor
 
 ---
 
+## 2026-05-15 — Mission.dll: three runtime fixes
+
+- **Trigger:** Three bugs found after first successful in-game run:
+  (1) FogOfWar::UpdateFog nested ObjMapIterator assert every frame,
+  (2) CMenu_Ind::onUpdate AV when selecting a ship (namearea null),
+  (3) GT_TOOLBAR COMMON STATIC_DATA field `shipclass` missing before `gas`
+  in data.i schema — caused DataParser to enumerate shipclass at ICON_DATA
+  boundary (blob offset 1080 = garbage) instead of blob offset 760.
+- **MSVC toolset:** 14.44.35207 — cl.exe 19.44.35225 (VS2022 Enterprise)
+- **DLLs rebuilt:** Mission.dll only
+- **Source changes:**
+  - `Code/App/Src/FogOfWar.cpp`: remove nested ObjMapIterator it2 diagnostic
+  - `Code/App/Src/CMenu_Ind.cpp`: guard namearea dereferences with if(namearea)
+  - `Code/App/Src/data.i` + `Code/App/DInclude/DToolbar.h`:
+    reorder COMMON STATICs: shipclass before gas,metal,crew
+
+---
+
 ## Template for future entries
 
 ```
