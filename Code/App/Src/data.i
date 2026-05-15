@@ -11725,9 +11725,8 @@ struct GT_EDIT : GENBASE_DATA
 struct EDIT_DATA
 {
 	char editType[32];
-	EDTXT::EDIT_TEXT editText;         
+	EDTXT::EDIT_TEXT editText;
 	S32 xOrigin, yOrigin;
-	char _vs6pad[24]; 
 };
 
 
