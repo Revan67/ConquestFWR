@@ -1122,8 +1122,7 @@ static void initMissionData (const MPartNC & part, U32 dwMissionID)
 	U32 playerID = MGlobals::GetPlayerFromPartID(dwMissionID);
 
 	part->mObjClass = (M_OBJCLASS)part.pInit->mObjClass;
-	if ((part->race = (M_RACE)part.pInit->race) == M_NO_RACE)
-		playerID = 0;
+	part->race = (M_RACE)part.pInit->race;
 	part->dwMissionID = dwMissionID;
 	part->playerID = playerID;
 
