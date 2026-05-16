@@ -12796,10 +12796,6 @@ struct GT_TOOLBAR
 		{
 			BUILDBUTTON_DATA plat48,plat49,plat50,plat51,plat52,plat53,plat54,plat55,plat56,plat57,plat58,plat59,plat60,plat61,plat62,plat63;
 		}moonTab;
-		struct TAB3
-		{
-			HOTSTATIC_DATA techarmor,techengine,techsheild,techsensors;
-		}statisticsTab;
 	} fabricator,M_Weaver,S_Forger,V_Shaper;
 
 	struct LINDUSTRIAL
@@ -12808,8 +12804,7 @@ struct GT_TOOLBAR
 		ICON_DATA inSupply,notInSupply;
 		HOTBUTTON_DATA rally,stop;
 		STATIC_DATA hull,metalStorage,gasStorage,crewStorage,location,disabledText;
-		BUILDBUTTON_DATA build0,build1,build2,build3,build4,build5,build6,build7,build8,build9; 
-		QUEUECONTROL_DATA buildQueue;
+		BUILDBUTTON_DATA build0,build1,build2,build3,build4,build5,build6,build7,build8,build9;
 	} lindustrial,hq,hindustrial,
 		M_Cocoon,M_Niad,S_Acropolis,S_Pavilion,
 		S_Sanctum,S_GreaterPavilion,
@@ -12830,7 +12825,6 @@ struct GT_TOOLBAR
 		HOTBUTTON_DATA stop;
 		STATIC_DATA hull,supplies,metalStorage,gasStorage,crewStorage,location,disabledText;
 		RESEARCHBUTTON_DATA research0,research1,research2,research3,research4,research5,research6,research7,research8,research9;
-		QUEUECONTROL_DATA buildQueue;
 	} M_Plantation,proplab,ballistics,advHull,awsLab,lrsensor,
 		hanger,weapons,displacement,
 		M_BlastFurnace,M_ExplosivesRange,M_CarrionRoost,M_BioForge,
@@ -12846,8 +12840,7 @@ struct GT_TOOLBAR
 		HOTBUTTON_DATA stop,rally,noAuto,autoOre,autoGas;
 		STATIC_DATA hull,metalStorage,gasStorage,crewStorage,location,disabledText;
 		RESEARCHBUTTON_DATA research0,research1,research2,research3,research4,research5,research6,research7,research8,research9,research10,research11,research12,research13,research14,research15;
-		BUILDBUTTON_DATA build0,build1,build2,build3,build4,build5; 
-		QUEUECONTROL_DATA buildQueue;
+		BUILDBUTTON_DATA build0,build1,build2,build3,build4,build5;
 	}M_Thripid,academy,refinery,M_Collector,M_GreaterCollector,
 		M_WarlordTraining,S_SentinalTower,S_Citidel,T_HeavyRefinery,T_SuperHeavyRefinery,S_Oxidator,
 		V_Coalescer, V_Gudgeon, V_TempleOfVyrie, outpost;
@@ -12881,7 +12874,6 @@ struct GT_TOOLBAR
 			STATIC_DATA k_namearea,k_hull,k_kills;
 			MULTIHOTBUTTON_DATA kit0,kit1,kit2,kit3,kit4,kit5,kit6,kit7,kit8,kit9,kit10,kit11,kit12,kit13;
 			MULTIHOTBUTTON_DATA kitDisplay0,kitDisplay1;
-			QUEUECONTROL_DATA kitQueue;
 		}kitTab;
 	} fleet[3];
 	
