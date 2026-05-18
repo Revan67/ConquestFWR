@@ -608,12 +608,6 @@ void CMenu_BuildInd::setPanelOwnership (bool bOwn)
 				strcpy(menuName,"S_GreaterPavilion");
 			else if(part->mObjClass == M_ACROPOLIS)
 				strcpy(menuName,"S_Acropolis");
-			else if(part->mObjClass == M_LOCUS)
-				strcpy(menuName,"V_Locus");
-			else if(part->mObjClass == M_COMPILER)
-				strcpy(menuName,"V_Compiler");
-			else if(part->mObjClass == M_FORMULATOR)
-				strcpy(menuName,"V_Formulator");
 			if (toolbar->GetToolbar(menuName, menu, (M_RACE)part->race) == GR_OK)
 			{
 				COMPTR<IDAComponent> pComp;

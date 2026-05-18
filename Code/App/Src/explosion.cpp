@@ -1503,8 +1503,6 @@ void IExplosion::CreateDebrisNuggets (IBaseObject * owner)
 					pArchetype = ARCHLIST->LoadArchetype("NUGGET!!M_Scrap");
 				else if(partObj->race == M_SOLARIAN)
 					pArchetype = ARCHLIST->LoadArchetype("NUGGET!!S_Scrap");
-				else if(partObj->race == M_VYRIUM)
-					pArchetype = ARCHLIST->LoadArchetype("NUGGET!!V_Scrap");
 				else
 					pArchetype = ARCHLIST->LoadArchetype("NUGGET!!Scrap");
 			}

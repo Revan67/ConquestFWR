@@ -81,8 +81,8 @@ struct DACOM_NO_VTABLE CMenu_MulMix : public IEventCallback, IHotControlEvent
 	COMPTR<IStatic> shipclass;
 	COMPTR<IHotButton> patrol,escort;
 	COMPTR<IHotButton> stanceAttack,stanceDefend,stanceStand,stanceStop,supplyStanceAuto,supplyStanceNoAuto,supplyStanceResupplyOnly, cloak,specialWpnCmd;
-	COMPTR<IHotButton> fighterStanceNormal,fighterStancePatrol;
 	COMPTR<IMultiHotButton> specialWpnMulti;
+	COMPTR<IHotButton> fighterStanceNormal,fighterStancePatrol;
 
 	CMenu_MulMix (void);
 
@@ -535,44 +535,34 @@ void CMenu_MulMix::onUpdate (U32 dt)
 			MISSION_DATA::M_CAPS caps = getCaps(OBJLIST->GetSelectedList());
 			cloak->SetVisible(caps.cloakOk);
 
-
 			obj = OBJLIST->GetSelectedList();
 			UNIT_SPECIAL_ABILITY spAbility = USA_NONE;
-			UNIT_SPECIAL_ABILITY spAbility1 = USA_NONE;
-			UNIT_SPECIAL_ABILITY spAbility2 = USA_NONE;
 			while(obj)
 			{
 				MPart part(obj);
 				if(part.isValid())
 				{
 					if(spAbility == USA_NONE)
-					{
 						spAbility = part.pInit->specialAbility;
-						spAbility1 = part.pInit->specialAbility1;
-						spAbility2 = part.pInit->specialAbility2;
-					}
-					else if(spAbility != part.pInit->specialAbility || spAbility1 != part.pInit->specialAbility1 || spAbility2 != part.pInit->specialAbility2)
+					else if(spAbility != part.pInit->specialAbility)
 					{
 						spAbility = USA_NONE;
-						spAbility1 = USA_NONE;
-						spAbility2 = USA_NONE;
 						break;
 					}
 				}
 				else
 				{
 					spAbility = USA_NONE;
-					spAbility1 = USA_NONE;
-					spAbility2 = USA_NONE;
 					break;
 				}
 				obj = obj->nextSelected;
 			}
+
 			const _GT_SPECIALABILITIES * specialAbilities = (const _GT_SPECIALABILITIES *) GENDATA->GetArchetypeData("SpecialAbilities");
 			CQASSERT(specialAbilities);
 			CQASSERT(sizeof(_GT_SPECIALABILITIES) == sizeof(GT_SPECIALABILITIES) && "Data definition error");
 			const SPECIALABILITYINFO * specialInfo = specialAbilities->info + spAbility;
-					
+
 			caps = getCapsExclusive(OBJLIST->GetSelectedList());
 
 			if(spAbility != USA_NONE && (caps.specialEOAOk || caps.specialAttackOk || caps.specialAttackShipOk || caps.specialAbilityOk ||
@@ -586,6 +576,7 @@ void CMenu_MulMix::onUpdate (U32 dt)
 				specialWpnCmd->SetVisible(false);
 				specialWpnMulti->NullState();
 			}
+
 		}
 	}
 	else

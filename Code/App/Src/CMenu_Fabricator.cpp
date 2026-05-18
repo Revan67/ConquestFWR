@@ -563,8 +563,6 @@ void CMenu_Fabricator::setPanelOwnership (bool bOwn)
 				strcpy(buffer,"M_Weaver");
 			else if(lastObjType == M_FORGER)
 				strcpy(buffer,"S_Forger");
-			else if(lastObjType == M_SHAPER)
-				strcpy(buffer,"V_Shaper");
 			if (toolbar->GetToolbar(buffer, menu,(M_RACE)part->race) == GR_OK)
 			{
 				COMPTR<IDAComponent> pComp;

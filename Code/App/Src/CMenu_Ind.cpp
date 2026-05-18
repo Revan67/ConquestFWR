@@ -264,12 +264,10 @@ struct DACOM_NO_VTABLE CMenu_Ind : public IEventCallback, IHotControlEvent
 		techspecial;
 	COMPTR<IEdit2> namearea;
 	COMPTR<IHotButton> stopCmd, sellCmd, specialWpnCmd, patrolCmd, escortCmd, cloak;
+	COMPTR<IMultiHotButton> specialWpnMulti;
 	COMPTR<IHotButton> stanceAttack,stanceDefend,stanceStand,stanceStop,
 			supplyStanceAuto,supplyStanceNoAuto,supplyStanceResupplyOnly;
 	COMPTR<IHotButton> fighterStanceNormal,fighterStancePatrol;
-	COMPTR<IMultiHotButton> specialWpnMulti;
-
-
 	CMenu_Ind (void);
 
 	~CMenu_Ind (void);
@@ -523,32 +521,6 @@ void CMenu_Ind::onUpdate (U32 dt)
 				{
 					specialWpnCmd->SetVisible(false);
 					specialWpnMulti->NullState();
-				}
-
-				specialInfo = specialAbilities->info + ship.pInit->specialAbility1;
-				if(ship.pInit->specialAbility1 != USA_NONE && (ship->caps.specialEOAOk || ship->caps.specialAttackOk || ship->caps.specialAttackShipOk || ship->caps.specialAbilityOk ||
-					ship->caps.probeOk || ship->caps.mimicOk || ship->caps.synthesisOk) ||ship->caps.specialTargetPlanetOk)
-				{
-					specialWpnCmd1->SetVisible(true);
-					specialWpnMulti1->SetState(specialInfo->baseSpecialWpnButton,specialInfo->specialWpnTooltip,specialInfo->specialWpnHelpBox,specialInfo->specialWpnHintBox);
-				}
-				else
-				{
-					specialWpnCmd1->SetVisible(false);
-					specialWpnMulti1->NullState();
-				}
-
-				specialInfo = specialAbilities->info + ship.pInit->specialAbility2;
-				if(ship.pInit->specialAbility2 != USA_NONE && (ship->caps.specialEOAOk || ship->caps.specialAttackOk || ship->caps.specialAttackShipOk || ship->caps.specialAbilityOk ||
-					ship->caps.probeOk || ship->caps.mimicOk || ship->caps.synthesisOk) ||ship->caps.specialTargetPlanetOk)
-				{
-					specialWpnCmd2->SetVisible(true);
-					specialWpnMulti2->SetState(specialInfo->baseSpecialWpnButton,specialInfo->specialWpnTooltip,specialInfo->specialWpnHelpBox,specialInfo->specialWpnHintBox);
-				}
-				else
-				{
-					specialWpnCmd2->SetVisible(false);
-					specialWpnMulti2->NullState();
 				}
 
 				swprintf(buffer, _localLoadStringW(IDS_IND_SHIPCLASS), ptr);

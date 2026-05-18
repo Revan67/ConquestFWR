@@ -730,16 +730,6 @@ void CMenu_Research::setPanelOwnership (bool bOwn)
 				strcpy(buffer,"S_TurbineDock");
 			else if(part->mObjClass == M_BUNKER)
 				strcpy(buffer,"S_Bunker");
-			else if(part->mObjClass == M_HATCHERY)
-				strcpy(buffer,"V_Hatchery");
-			else if(part->mObjClass == M_COCHLEA_DISH)
-				strcpy(buffer,"V_CochleaDish");
-			else if(part->mObjClass == M_CLAW_OF_VYRIE)
-				strcpy(buffer,"V_ClawOfVyrie");
-			else if(part->mObjClass == M_EYE_OF_VYRIE)
-				strcpy(buffer,"V_EyeOfVyrie");
-			else if(part->mObjClass == M_HAMMER_OF_VYRIE)
-				strcpy(buffer,"V_HammerOfVyrie");
 
 		if (toolbar->GetToolbar(buffer, menu, (M_RACE)part->race) == GR_OK)
 			{

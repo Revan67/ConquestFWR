@@ -73,11 +73,10 @@ struct DACOM_NO_VTABLE CMenu_WarPlat : public IEventCallback, IHotControlEvent
 
 	COMPTR<IToolbar> menu;
 	COMPTR<IStatic> shipclass,hull,supplies,location;
-	COMPTR<IHotButton> fighterStanceNormal,fighterStancePatrol,specialWpnCmd;
+	COMPTR<IHotButton> fighterStanceNormal,fighterStancePatrol;
 	COMPTR<IIcon> inSupply,notInSupply;
 	COMPTR<IHotStatic> techarmor,techsupply,techsheild,techweapon,techsensors,
 		techspecial;
-	COMPTR<IMultiHotButton> specialWpnMulti;
 
 	U32 lastMissionID;
 	S32 lastObjType;
@@ -341,22 +340,6 @@ void CMenu_WarPlat::onUpdate (U32 dt)
 				fighterStancePatrol->EnableButton(false);
 			}
 
-			const _GT_SPECIALABILITIES * specialAbilities = (const _GT_SPECIALABILITIES *) GENDATA->GetArchetypeData("SpecialAbilities");
-			CQASSERT(specialAbilities);
-			CQASSERT(sizeof(_GT_SPECIALABILITIES) == sizeof(GT_SPECIALABILITIES) && "Data definition error");
-			const SPECIALABILITYINFO * specialInfo = specialAbilities->info + platform.pInit->specialAbility;
-
-			if(platform.pInit->specialAbility != USA_NONE && (platform->caps.specialEOAOk || platform->caps.specialAttackOk || platform->caps.specialAttackShipOk || platform->caps.specialAbilityOk ||
-				platform->caps.probeOk || platform->caps.mimicOk || platform->caps.synthesisOk) ||platform->caps.specialTargetPlanetOk)
-			{
-				specialWpnCmd->SetVisible(true);
-				specialWpnMulti->SetState(specialInfo->baseSpecialWpnButton,specialInfo->specialWpnTooltip,specialInfo->specialWpnHelpBox,specialInfo->specialWpnHintBox);
-			}
-			else
-			{
-				specialWpnCmd->SetVisible(false);
-				specialWpnMulti->NullState();
-			}
 		}
 	}
 	else
@@ -425,13 +408,6 @@ void CMenu_WarPlat::setPanelOwnership (bool bOwn)
 					pComp->QueryInterface("IHotStatic", techsensors);
 				if (menu->GetControl("techspecial", pComp) == GR_OK)
 					pComp->QueryInterface("IHotStatic", techspecial);
-				if (menu->GetControl("specialweapon", pComp) == GR_OK)
-				{
-					pComp->QueryInterface("IHotButton", specialWpnCmd);
-					pComp->QueryInterface("IMultiHotButton",specialWpnMulti);
-				}
-
-
 				COMPTR<IDAConnectionPoint> connection;
 
 				if (menu->QueryOutgoingInterface("IHotControlEvent", connection) == GR_OK)
@@ -469,8 +445,6 @@ void CMenu_WarPlat::setPanelOwnership (bool bOwn)
 		techweapon.free();
 		techsensors.free();
 		techspecial.free();
-		specialWpnCmd.free();
-		specialWpnMulti.free();
 	}
 }
 

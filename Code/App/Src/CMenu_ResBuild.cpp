@@ -75,8 +75,6 @@ struct DACOM_NO_VTABLE CMenu_ResBuild : public IEventCallback, IHotControlEvent
 	COMPTR<IActiveButton> research[NUM_RESEARCH_BUTTONS];
 	COMPTR<IQueueControl> buildQueue;
 	COMPTR<IIcon> inSupply,notInSupply;
-	COMPTR<IHotButton> noAuto,autoOre,autoGas;
-
 	U32 lastMissionID;
 	S32 lastObjType;
 	bool bHasFocus;
@@ -688,48 +686,6 @@ void CMenu_ResBuild::onUpdate (U32 dt)
 				}
 			}
 
-			//if this is a refinery then show the harvest buttons
-
-			if(noAuto != 0 && autoOre != 0 && autoGas != 0)
-			{
-				if(platform->mObjClass == M_REFINERY || platform->mObjClass == M_GREATER_COLLECTOR ||
-					platform->mObjClass == M_COLLECTOR || platform->mObjClass == M_OXIDATOR ||
-					platform->mObjClass == M_COALESCER)
-				{
-					noAuto->SetVisible(true);
-					autoOre->SetVisible(true);
-					autoGas->SetVisible(true);
-					VOLPTR(IHarvestBuilder) harvest = obj;
-					if(harvest)
-					{
-						switch(harvest->GetHarvestStance())
-						{
-						case HS_NO_STANCE:
-							noAuto->SetHighlightState(true);
-							autoOre->SetHighlightState(false);
-							autoGas->SetHighlightState(false);					
-							break;
-						case HS_GAS_HARVEST:
-							noAuto->SetHighlightState(false);
-							autoOre->SetHighlightState(false);
-							autoGas->SetHighlightState(true);					
-							break;
-						case HS_ORE_HARVEST:
-							noAuto->SetHighlightState(false);
-							autoOre->SetHighlightState(true);
-							autoGas->SetHighlightState(false);					
-							break;
-						}
-					}
-				}
-				else
-				{
-					noAuto->SetVisible(false);
-					autoOre->SetVisible(false);
-					autoGas->SetVisible(false);
-				}
-			}
-
 			updateQueue();
 		}
 	}
@@ -810,12 +766,6 @@ void CMenu_ResBuild::setPanelOwnership (bool bOwn)
 				strcpy(menuName,"M_GreaterCollector");
 			else if(part->mObjClass == M_OXIDATOR)
 				strcpy(menuName,"S_Oxidator");
-			else if(part->mObjClass == M_COALESCER)
-				strcpy(menuName,"V_Coalescer");
-			else if(part->mObjClass == M_GUDGEON)
-				strcpy(menuName,"V_Gudgeon");
-			else if(part->mObjClass == M_TEMPLE_OF_VYRIE)
-				strcpy(menuName,"V_TempleOfVyrie");
 			else if(part->mObjClass == M_OUTPOST)
 				strcpy(menuName,"outpost");
 
@@ -843,13 +793,6 @@ void CMenu_ResBuild::setPanelOwnership (bool bOwn)
 					pComp->QueryInterface("IIcon", inSupply);
 				if (menu->GetControl("notInSupply", pComp) == GR_OK)
 					pComp->QueryInterface("IIcon", notInSupply);
-				if (menu->GetControl("noAuto", pComp) == GR_OK)
-					pComp->QueryInterface("IHotButton", noAuto);
-				if (menu->GetControl("autoOre", pComp) == GR_OK)
-					pComp->QueryInterface("IHotButton", autoOre);
-				if (menu->GetControl("autoGas", pComp) == GR_OK)
-					pComp->QueryInterface("IHotButton", autoGas);
-
 				lastNode = MGlobals::GetCurrentTechLevel(MGlobals::GetThisPlayer());
 				lastWorkingNode = MGlobals::GetWorkingTechLevel(MGlobals::GetThisPlayer());
 				//get the build buttons
@@ -911,9 +854,6 @@ void CMenu_ResBuild::setPanelOwnership (bool bOwn)
 		inSupply.free();
 		notInSupply.free();
 		disabledText.free();
-		autoGas.free();
-		autoOre.free();
-		noAuto.free();
 		for(U32 index = 0; index < NUM_IND_BUTTONS; ++index)
 		{
 			buildButton[index].free();

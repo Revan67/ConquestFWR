@@ -171,8 +171,6 @@ struct DACOM_NO_VTABLE CMenu_Fleet : public IEventCallback, IHotControlEvent, IF
 
 	bool findLowestAdmiral (IBaseObject * & admiral, U32 & admiralID);
 
-	void updateQueue (IBaseObject * obj);
-
 	void findSpecialPlats (void);
 };
 //--------------------------------------------------------------------------//
@@ -590,7 +588,6 @@ void CMenu_Fleet::onUpdate (U32 dt)
 
 			namearea->SetText(namePtr);
 			o_namearea->SetText(namePtr);
-			k_namearea->SetText(namePtr);
 
 			swprintf(buffer, _localLoadStringW(IDS_IND_HULL), (actor) ? actor->GetDisplayHullPoints() : admiralPart->hullPoints, admiralPart->hullPointsMax);
 			hull->SetText(buffer);
@@ -602,11 +599,9 @@ void CMenu_Fleet::onUpdate (U32 dt)
 				swprintf(buffer, _localLoadStringW(IDS_IND_HULL), (actor) ? actor->GetDisplayHullPoints() : dockPart->hullPoints, dockPart->hullPointsMax);
 			}
 			o_hull->SetText(buffer);
-			k_hull->SetText(buffer);
 
 			swprintf(buffer, _localLoadStringW(IDS_IND_KILLS),(U32)(admiralPart->numKills));
 			o_kills->SetText(buffer);
-			k_kills->SetText(buffer);
 			kills->SetText(buffer);
 
 			//sil tab
@@ -670,7 +665,6 @@ void CMenu_Fleet::onUpdate (U32 dt)
 				break;
 			}
 
-			updateQueue(admiral);
 		}
 		else
 		{
@@ -731,51 +725,6 @@ void CMenu_Fleet::findSpecialPlats (void)
 	// now enable or disable to proper hot buttons
 	hotResupply->EnableButton(bSupplyOk);
 	hotRepair->EnableButton(bRepairOk);
-}
-//--------------------------------------------------------------------------//
-//
-void CMenu_Fleet::updateQueue (IBaseObject * obj)
-{
-	kitQueue->ResetQueue();
-	if (obj)
-	{
-		MPart part = obj;
-		OBJPTR<IBuildQueue> fab;
-		obj->QueryInterface(IBuildQueueID,fab);
-		VOLPTR(IAdmiral) admiral = obj;
-		if(fab && admiral)
-		{
-			U32 queue[FAB_MAX_QUEUE_SIZE];
-			U32 slotIDs[FAB_MAX_QUEUE_SIZE];
-			U32 numInQueue = fab->GetQueue(queue,slotIDs);
-			if(numInQueue)
-			{
-				U32 stallType;
-				SINGLE progress = fab->FabGetDisplayProgress(stallType);
-				kitQueue->SetPercentage(progress,stallType);
-				for(U32 i = 0; i < numInQueue; ++i)
-				{
-					IDrawAgent * queueShape[GTHBSHP_MAX_SHAPES];
-					queueShape[0] = 0;
-					U32 j;
-					for(j = 0; j <MAX_COMMAND_KITS;++j)
-					{
-						if(kit[j])
-						{
-							if(queue[i] == admiral->GetAvailibleCommandKitID(j))
-							{
-								kit[j]->GetShape(queueShape);
-								break;
-							}
-						}
-					}
-
-					if(queueShape[0])
-						kitQueue->AddToQueue(queueShape,slotIDs[i]);
-				}
-			}
-		}
-	}
 }
 //----------------------------------------------------------------------------------//
 //
