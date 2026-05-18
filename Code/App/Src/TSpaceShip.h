@@ -548,6 +548,7 @@ bool SPACESHIP_INIT<BT_TYPE>::loadSpaceshipArchetype (BT_TYPE * _pData, PARCHETY
 	// preload some sound effectds
 
 	SFXMANAGER->Preload(pData->shield.sfx);
+	SFXMANAGER->Preload(pData->shield.fizzOut);
 
 	if(shipMapTex == -1)
 	{
