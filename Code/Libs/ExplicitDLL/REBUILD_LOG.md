@@ -83,6 +83,23 @@ Commit this file alongside the DLL changes so the reason is always in the histor
 
 ---
 
+## 2026-05-17 — Globals.dll: retail toolbar schema baseline
+
+- **Trigger:** Commit 41d1a3f restored retail GT_TOOLBAR schema in data.i/DToolbar.h
+  (verified against Toolbar!!Default blob, 100,244 bytes, delta=0). Nine nested structs
+  corrected: COMMON field order (gas first, shipclass last), FABRICATOR statisticsTab
+  (not moonTab), LINDUSTRIAL/RESEARCH/BUILD_RES with QUEUECONTROL_DATA present,
+  FLEET weaponTab nested in orderTab (no kitTab), WARTURRET (no specialweapon),
+  INDIVIDUAL (no attackPosition/ejectArtifact/specialweapon1-2), GROUP (no specialweapon1-2).
+- **MSVC toolset:** 14.44.35207 — cl.exe 19.44.35225 (VS2022 BuildTools)
+- **DLLs rebuilt:** Globals.dll only
+- **Source changes:** `Code/App/Src/data.i` + `Code/App/DInclude/DToolbar.h` —
+  GT_TOOLBAR corrected to retail baseline (73 insertions, 429 deletions).
+  `Code/App/Src/CMenu_Ind.cpp`, `CMenu_Fleet.cpp`, `CMenu_MulMix.cpp` —
+  CQ2 code paths removed (attackPosition, ejectArtifact, kitTab, formations, specialweapon1/2).
+
+---
+
 ## Template for future entries
 
 ```
