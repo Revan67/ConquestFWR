@@ -12,10 +12,6 @@
 
 #include "pch.h"
 #include <globals.h>
-#include <stdio.h>
-#define IGM_LOG(s) do{FILE*_igf=fopen("debug/ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
-#define FOG_LOG(s) do{FILE*_ff=fopen("debug/fog_diag.txt","a");if(_ff){fputs((s),_ff);fclose(_ff);}}while(0)
-#define FOG_LOGF(fmt,...) do{FILE*_ff=fopen("debug/fog_diag.txt","a");if(_ff){fprintf(_ff,fmt,__VA_ARGS__);fclose(_ff);}}while(0)
 
 #include "Resource.h"
 #include "Startup.h"
@@ -673,7 +669,7 @@ void FogOfWar::loadTextures (bool bLoad)
 	{
 		CQASSERT(textureID==0);
 		textureID = TMANAGER->CreateTextureFromFile("fog_tile.tga", TEXTURESDIR,DA::TGA,PF_4CC_DAOT);
-		FOG_LOGF("loadTextures: fog_tile.tga textureID=%u (0=not found)\n", textureID);
+
 
 		//copy fog texture
 	/*	RPLOCKDATA rpLockData;
@@ -1313,9 +1309,6 @@ void FogOfWar::Render()
 	
 	static int counter=0;
 	counter++;
-	if (counter == 1)
-		FOG_LOGF("Render#1: textureID=%u bNoPerVertexAlpha=%d bits[0]=0x%08X bits[512]=0x%08X\n",
-			textureID, (int)CQRENDERFLAGS.bNoPerVertexAlpha, bits[0], bits[512]);
 
 	if (CAMERA && DEFAULTS->GetDefaults()->fogMode != FOGOWAR_NONE)
 	{
@@ -2166,9 +2159,7 @@ GENRESULT FogOfWar::Notify (U32 message, void *param)
 		break;
 
 	case CQE_ENTERING_INGAMEMODE:
-		IGM_LOG("FogOfWar: entered\n");
 		loadTextures(true);
-		IGM_LOG("FogOfWar: after loadTextures\n");
 		RECT thumbRect;
 		thumbRect.left = IDEAL2REALX(134);  
 		thumbRect.right = IDEAL2REALX(213);
@@ -2177,9 +2168,7 @@ GENRESULT FogOfWar::Notify (U32 message, void *param)
 		mapX = TEXTURE_RES;//thumbRect.right-thumbRect.left;
 		mapY = TEXTURE_RES;//thumbRect.bottom-thumbRect.top;
 		//	mapGrid = new BOOL[mapX*mapY];
-		IGM_LOG("FogOfWar: before MakeMapTextures\n");
 		MakeMapTextures(1);
-		IGM_LOG("FogOfWar: after MakeMapTextures\n");
 		break;
 	case CQE_LEAVING_INGAMEMODE:
 		loadTextures(false);
@@ -2237,7 +2226,6 @@ void FogOfWar::MakeMapTextures(int numSystems)
 		
 		if (PIPE->create_texture(width,height,PF_4CC_DAA8,1,0,mapTexID[s]) != GR_OK)
 			CQBOMB2("create_texture() failed. Requested = %dx%d", width, height);
-		FOG_LOGF("MakeMapTextures: sys=%d mapTexID=%u size=%dx%d\n", s, mapTexID[s], width, height);
 		
 		PIPE->set_texture_level_data(mapTexID[s], 0, width, height, width*sizeof(COLORREF), 
 			PixelFormat(PF_RGBA),

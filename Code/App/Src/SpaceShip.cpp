@@ -1048,15 +1048,6 @@ void SpaceShip<SaveStruct,InitStruct>::QuickResolveAssociations (void)
 template <class SaveStruct, class InitStruct>
 void SpaceShip<SaveStruct,InitStruct>::RevealFog (const U32 currentSystem)
 {
-	static int _sfDiag = 0;
-	if (_sfDiag < 20) {
-		char _buf[256];
-		snprintf(_buf, sizeof(_buf), "SpaceShip::RevealFog: systemID=%d currentSystem=%d bReady=%d playerID=%d thisPlayer=%d allies=%d\n",
-			(int)systemID, (int)currentSystem, (int)bReady, (int)playerID,
-			(int)MGlobals::GetThisPlayer(), (int)MGlobals::AreAllies(playerID, MGlobals::GetThisPlayer()));
-		if (FILE* _ff = fopen("debug/fog_diag.txt","a")) { fputs(_buf,_ff); fclose(_ff); }
-		_sfDiag++;
-	}
 	if (systemID==currentSystem && bReady && MGlobals::AreAllies(playerID, MGlobals::GetThisPlayer()))
 	{
 		SINGLE admiralSensorMod = 1.0;

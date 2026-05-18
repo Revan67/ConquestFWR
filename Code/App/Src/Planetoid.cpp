@@ -13,8 +13,6 @@
 
 #include "pch.h"
 #include <globals.h>
-#include <stdio.h>
-#define IGM_LOG(s) do{FILE*_igf=fopen("debug/ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
 
 #include "MGlobals.h"
 #include "FogofWar.h"
@@ -2113,11 +2111,6 @@ U32 Planetoid::FindBestSlot(PARCHETYPE buildType, const Vector * preferedLoc)
 			}
 		}
 	}
-	{
-		char _diagbuf[256];
-		sprintf(_diagbuf, "FindBestSlot: ret=%u bMoon=%d\n", bestSlot, (int)renderArch1->bMoon);
-		IGM_LOG(_diagbuf);
-	}
 	return bestSlot;
 }
 //-------------------------------------------------------------------
@@ -2605,42 +2598,6 @@ HANDLE PlanetFactory::CreateArchetype (const char *szArchname, OBJCLASS objClass
 		int lastTexMem = TEXMEMORYUSED;
 		BT_PLANET_DATA * data = (BT_PLANET_DATA *) _data;
 
-		// DIAG: dump struct layout so we can catch VS6 vs VS2022 differences
-		{
-			static bool bDumped = false;
-			if (!bDumped) {
-				bDumped = true;
-				// Extended diagnostic: show all intermediate field offsets + raw bytes at key positions
-				FILE *f = fopen("debug/planet_diag.txt","w");
-				if (f) {
-					fprintf(f, "[PLANET_DIAG] arch=%s\n", szArchname);
-					fprintf(f, "  sizeof(BASIC_DATA)=%zu sizeof(MISSION_DATA)=%zu sizeof(BT_PLANET_DATA)=%zu\n",
-						sizeof(BASIC_DATA), sizeof(MISSION_DATA), sizeof(BT_PLANET_DATA));
-					fprintf(f, "  off(fileName)=%zu off(sysMapIcon)=%zu off(ambientEffect)=%zu off(missionData)=%zu\n",
-						offsetof(BT_PLANET_DATA, fileName), offsetof(BT_PLANET_DATA, sysMapIcon),
-						offsetof(BT_PLANET_DATA, ambientEffect), offsetof(BT_PLANET_DATA, missionData));
-					fprintf(f, "  off(maxMetal)=%zu off(metalRegen)=%zu off(planetType)=%zu off(teraParticle)=%zu off(teraExplosions)=%zu\n",
-						offsetof(BT_PLANET_DATA, maxMetal), offsetof(BT_PLANET_DATA, metalRegen),
-						offsetof(BT_PLANET_DATA, planetType), offsetof(BT_PLANET_DATA, teraParticle),
-						offsetof(BT_PLANET_DATA, teraExplosions));
-					fprintf(f, "  val(fileName)='%.31s' val(sysMapIcon)='%.31s'\n", data->fileName, data->sysMapIcon);
-					fprintf(f, "  val(maxMetal)=%u val(metalRegen)=%.4f val(planetType)=%d (struct offsets - expected wrong)\n",
-						data->maxMetal, data->metalRegen, (int)data->planetType);
-					{
-						const BT_PLANET_RESC * r = planet_resc(data);
-						fprintf(f, "  binary(+176): maxMetal=%u maxGas=%u maxCrew=%u metalRegen=%.6f gasRegen=%.6f crewRegen=%.6f planetType=%d\n",
-							r->maxMetal, r->maxGas, r->maxCrew, r->metalRegen, r->gasRegen, r->crewRegen, (int)r->planetType);
-					}
-					// Dump raw bytes around binary resource offset
-					const U8 * raw = (const U8*)data;
-					fprintf(f, "  raw[170..205]: ");
-					for (int i = 170; i < 205; i++) fprintf(f, "%02x ", raw[i]);
-					fprintf(f, "\n");
-					fclose(f);
-				}
-			}
-		}
-
 		result = new OBJTYPE;
 		result->pData = data;
 		result->bMoon = false; // not in 200-byte binary; defaults to false
@@ -2823,9 +2780,7 @@ GENRESULT PlanetFactory::Notify (U32 message, void *param)
 	switch (message)
 	{
 	case CQE_ENTERING_INGAMEMODE:
-		IGM_LOG("Planetoid: entered\n");
 		loadTextures(true);
-		IGM_LOG("Planetoid: after loadTextures\n");
 		break;
 	case CQE_LEAVING_INGAMEMODE:
 		loadTextures(false);
@@ -2851,22 +2806,13 @@ void PlanetFactory::loadTextures (bool bLoad)
 {
 	if (bLoad)
 	{
-		IGM_LOG("loadTextures: before CreateInstance(point.anm)\n");
 		DAFILEDESC fdesc = "point.anm";
 		COMPTR<IFileSystem> file;
 		if (OBJECTDIR->CreateInstance(&fdesc, file) == GR_OK)
 		{
-			IGM_LOG("loadTextures: before create_archetype\n");
 			pointAnimArch = ANIM2D->create_archetype(file);
-			IGM_LOG("loadTextures: after create_archetype\n");
 		}
-		else
-		{
-			IGM_LOG("loadTextures: CreateInstance(point.anm) failed\n");
-		}
-		IGM_LOG("loadTextures: before load_global_slots\n");
 		load_global_slots();
-		IGM_LOG("loadTextures: after load_global_slots\n");
 	}
 	else
 	{

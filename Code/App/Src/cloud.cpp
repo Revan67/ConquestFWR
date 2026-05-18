@@ -15,8 +15,6 @@
 
 #include "pch.h"
 #include <globals.h>
-#include <stdio.h>
-#define IGM_LOG(s) do{FILE*_igf=fopen("debug/ingame_diag.txt","a");if(_igf){fputs((s),_igf);fclose(_igf);}}while(0)
 
 #include <stdio.h>
 
@@ -4209,9 +4207,7 @@ GENRESULT FieldManager::Notify (U32 message, void *param)
 		loadTextures(false);
 		break;
 	case CQE_ENTERING_INGAMEMODE:
-		IGM_LOG("cloud: entered\n");
 		loadTextures(true);
-		IGM_LOG("cloud: after loadTextures\n");
 		break;
 
 /*	case WM_MOUSEMOVE:
@@ -4318,33 +4314,6 @@ HANDLE FieldManager::CreateArchetype(const char *szArchname, OBJCLASS objClass, 
 			nArch->pData = (BT_NEBULA_DATA *)data;
 			nArch->pArchetype = ARCHLIST->GetArchetype(szArchname);
 
-			// DIAG: print nuggetType for every nebula archetype (append to nebula_diag.txt)
-			{
-				char dbuf[512];
-				BT_NEBULA_DATA *nd = (BT_NEBULA_DATA *)data;
-				// Only print sizes once via static guard, but print values for every arch
-				static bool bNebSizesDumped = false;
-				FILE *f2 = fopen("debug/nebula_diag.txt", bNebSizesDumped ? "a" : "w");
-				if (!bNebSizesDumped && f2) {
-					bNebSizesDumped = true;
-					sprintf(dbuf,
-						"sizeof(BASE_FIELD_DATA)=%zu  sizeof(BT_NEBULA_DATA)=%zu\n"
-						"off(cloudEffect)=%zu  off(mapTexName)=%zu  off(missionData)=%zu\n"
-						"off(attributes)=%zu  off(nuggetsPerSquare)=%zu  off(nuggetType)=%zu\n",
-						sizeof(BASE_FIELD_DATA), sizeof(BT_NEBULA_DATA),
-						offsetof(BT_NEBULA_DATA,cloudEffect), offsetof(BT_NEBULA_DATA,mapTexName),
-						offsetof(BT_NEBULA_DATA,missionData), offsetof(BT_NEBULA_DATA,attributes),
-						offsetof(BT_NEBULA_DATA,nuggetsPerSquare), offsetof(BT_NEBULA_DATA,nuggetType));
-					fputs(dbuf, f2);
-				}
-				if (f2) {
-					sprintf(dbuf, "[NEB] %s: cloudEffect='%.31s' nug[0]='%.31s' nug[1]='%.31s'\n",
-						szArchname, nd->cloudEffect, nd->nuggetType[0], nd->nuggetType[1]);
-					fputs(dbuf, f2);
-					fclose(f2);
-				}
-			}
-
 			for(U32 i = 0; i <4; ++i)
 			{
 				nArch->nuggetType[i] = NULL; // initialize; LoadArchetype may fail for missing/garbage names
@@ -4399,30 +4368,6 @@ HANDLE FieldManager::CreateArchetype(const char *szArchname, OBJCLASS objClass, 
 					//dArch->name = szArchname;
 					dArch->pData = objData;
 					dArch->pArchetype = ARCHLIST->GetArchetype(szArchname);
-
-					// DIAG: log struct sizes and nuggetType values
-					{
-						static bool bAstDumped = false;
-						FILE *fad = fopen("debug/asteroid_diag2.txt", bAstDumped ? "a" : "w");
-						if (fad) {
-							if (!bAstDumped) {
-								bAstDumped = true;
-								fprintf(fad,
-									"sizeof(BT_ASTEROIDFIELD_DATA)=%zu sizeof(MISSION_DATA)=%zu sizeof(M_CAPS)=%zu\n"
-									"off(missionData)=%zu off(attributes)=%zu off(asteroidsPerSquare)=%zu off(nuggetType)=%zu\n",
-									sizeof(BT_ASTEROIDFIELD_DATA), sizeof(BT_ASTEROIDFIELD_DATA::missionData),
-									sizeof(BT_ASTEROIDFIELD_DATA::missionData.caps),
-									offsetof(BT_ASTEROIDFIELD_DATA,missionData),
-									offsetof(BT_ASTEROIDFIELD_DATA,attributes),
-									offsetof(BT_ASTEROIDFIELD_DATA,asteroidsPerSquare),
-									offsetof(BT_ASTEROIDFIELD_DATA,nuggetType));
-							}
-							fprintf(fad, "[AST] %s: astPerSq=%d nug[0]='%.31s' nug[1]='%.31s'\n",
-								szArchname, objData->asteroidsPerSquare,
-								objData->nuggetType[0], objData->nuggetType[1]);
-							fclose(fad);
-						}
-					}
 
 					int i;
 					for(i = 0; i <4; ++i)
