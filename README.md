@@ -9,10 +9,10 @@ A community effort to make **Conquest: Frontier Wars** (Fever Pitch Studios / Ub
 | Phase | Goal | Status |
 |-------|------|--------|
 | 1 | Build cleanly under VS2022 | **Complete** |
-| 2 | Run on Windows 11 — fix runtime crashes, binary layout, and heap/API compat | **In Progress** |
+| 2 | Run on Windows 11 — fix runtime crashes, binary layout, and heap/API compat | **Complete** |
 | 3 | Modernize — D3D11+, modern networking, widescreen | Future |
 
-**Phase 2 detail:** The game window opens, the front-end initializes, briefings play, and mission load is progressing. Active work is fixing VS6→VS2022 binary struct layout mismatches that cause crashes and garbled archetype reads during mission startup.
+**Phase 2 detail:** The retail source audit is complete. All six build projects (Conquest.exe, Mission.dll, Trim.dll, Globals.dll, D3DRenderPipe.dll, and all Libs) have been verified: VS6→VS2022 porting fixes retained, CQ2 (unshipped sequel) additions removed, and all archetype struct sizes locked with `static_assert` against the retail binary.
 
 ---
 
@@ -100,23 +100,70 @@ Code/
     Src/              — Engine library sources (DACOM, D3DRenderPipe, MeshManager, ...)
     Static/           — Static import libs
 
-Conquest Source License.txt   — Fever Pitch Studios Public License (must accompany all distributions)
-Conquest Source Readme.txt    — Original release notes from Fever Pitch Studios
+Tools/
+  read_gendata.py     — Python script for hex-dumping archetype blobs from .db files
+  retail_gametypes.h  — Struct layout reference extracted from the retail VS6 binary
+
+Conquest_Frontier_Wars_Manual.pdf   — Retail game manual (UI and gameplay reference)
+Conquest Source License.txt         — Fever Pitch Studios Public License
+Conquest Source Readme.txt          — Original release notes from Fever Pitch Studios
 ```
 
 ---
 
 ## What Has Been Changed
 
-All modifications are tracked in git with descriptive commit messages. Major changes from the original VS6/VS2008 source:
+All modifications are tracked in git with descriptive commit messages. The changes fall into two categories: **VS2022/Win11 porting fixes** (required for correct compilation and behavior) and **CQ2 removal** (reverting unshipped sequel additions back to the retail baseline).
+
+### VS2022 / Win11 Porting Fixes
 
 - **Compiler:** Retargeted all projects to VS2022 toolset (v143), Windows 10 SDK.
 - **CRT linkage:** All App projects use `/MT` (static CRT) to avoid COMHeap conflicts with the DACOM component model.
-- **Binary struct layout:** Fixed ~15 VS6→VS2022 layout mismatches in archetype structs (`SHIELD_DATA`, `ROCKING_DATA`, `MISSION_DATA_BIN`, `BASE_SPACESHIP_DATA`, `BASE_PLATFORM_DATA`, toolbar structs, etc.) where the VS2022 compiler packs bitfields and enums differently.
-- **Runtime guards:** Added null checks, playerID guards, and archetype-type guards that were unnecessary under VS6's looser undefined-behavior handling.
-- **Window title:** Restored "Conquest: Frontier Wars" (the sequel source had changed it).
+- **Early-heap routing (`COMHeap_VS2022.c`):** VS2022's CRT calls `malloc`/`free` during static initializers, before DACOM's `_HEAP` is set up. Added a `GetProcessHeap()`-backed early-heap layer (tagged with `EARLY_HEAP_MAGIC = 0xEA12EA12`) so these allocations succeed without corrupting the DACOM heap. `COMHeap.asm` routes all allocation calls through this layer when `_HEAP == NULL`.
+- **Binary struct layout — enum bitfields:** VS6 packed differently-typed enum bitfields into one `int` if they fit; VS2022 gives each distinct enum type its own storage unit. Fixed by changing affected bitfields to `unsigned int:N` in `MISSION_DATA`, `SLOT` (DCQGame.h), `BASE_FIGHTER_SAVELOAD` (DFighter.h), `MISSION_SAVELOAD` (DMBaseData.h), and others.
+- **Binary struct layout — `MISSION_DATA` split:** The runtime struct was split into `MISSION_DATA_BIN` (40 bytes — binary-stored fields read directly from `.db` files) and `MISSION_DATA : MISSION_DATA_BIN` (72 bytes — adds armor, silhouette, special ability, speech priority at runtime). All archetype headers updated accordingly.
+- **`MAX_EXTENSIONS` 4 → 5** in `DExtension.h`, confirmed by binary measurement of `BASE_PLATFORM_DATA` (560 bytes).
+- **DirectPlay / DirectInput8 stubs:** Added `Code/Libs/Include/Compat/dplay.h`, `dplobby.h`, and `ddrawex.h` since DirectPlay was removed from the modern Windows SDK.
+- **DACOM_MAP lazy-fill (`TComponent.h`):** Changed static array initializers to a lazy-fill pattern to avoid an MSVC 2022 internal compiler error (`toinil.c:899`).
+- **Miscellaneous porting:** Null guards, playerID guards, archetype-type guards, DirectInput8 migration, DirectPlay stubs, enum casts, thread guard, `bHiRes` fix, `afxres.h` → `winres.h` in resource files, `_FARQ` compat macro, C++ `bool` guards on math headers, and operator inlining in `matrix4.h`/`quat.h`/`vector.h`/`vector4.h`.
+- **Static asserts:** Added `static_assert` on all archetype struct sizes to catch future regressions:
 
-See the commit log for a full change history.
+  | Struct | Size |
+  |--------|------|
+  | `MISSION_DATA_BIN` | 40 B |
+  | `MISSION_DATA` | 72 B |
+  | `BT_PLANET_DATA` | 200 B |
+  | `BASE_SPACESHIP_DATA` | 644 B |
+  | `BT_GUNBOAT_DATA` | 816 B |
+  | `BASE_PLATFORM_DATA` | 560 B |
+  | `SHIELD_DATA` | 108 B |
+  | `HOTBUTTON_DATA` | 32 B |
+  | `BUILDBUTTON_DATA` | 104 B |
+  | `RESEARCHBUTTON_DATA` | 64 B |
+  | `TABCONTROL_DATA` | 108 B |
+  | `STATIC_DATA` | 64 B |
+  | `HOTSTATIC_DATA` | 40 B |
+  | `ICON_DATA` | 16 B |
+  | `MULTIHOTBUTTON_DATA` | 16 B |
+  | `SHIPSILBUTTON_DATA` | 8 B |
+  | `BT_FIGHTER_WING` | 208 B |
+
+### CQ2 (Unshipped Sequel) Removals
+
+The released source was a development snapshot of an unshipped sequel ("Conquest: Vyrium Uprising"). The following additions were not present in the retail binary and have been removed:
+
+- **`BT_PLANET_DATA`:** Removed `ambientEffect[GT_PATH]`, `teraParticle`, `TeraColor`, `teraExplosions`, `Halo`, `bMoon`, `bUncommon`. Restored correct field order: `maxCrew` follows `maxGas`. Fixed `MISSION_DATA_BIN` → `MISSION_DATA` for the embedded mission data block.
+- **`DMTechNode.h`:** Removed `cq2Vars1`/`cq2Vars2` from `SINGLE_TECHNODE` and `TECHNODE::_races`, and all related operations (`AddToNode`, `RemoveFromNode`, `HasTech`, `HasSomeTech`, `InitLevel`, `IsEqual`).
+- **`DBaseData.h`:** Removed `specialAbility1` and `specialAbility2` instance members (kept as `static const = USA_NONE` for source compatibility). `ResourceCost resourceCost` confirmed as a real retail instance member and restored to correct position.
+- **Toolbar schema (`data.i`):** Removed five CQ2-only toolbar control entries that were not present in the retail Globals.dll resource.
+- **`CMenu_*.cpp`, `explosion.cpp`:** Removed dead CQ2 code paths throughout.
+- **`ObjGen.cpp`:** Removed dead `bMoon` branch (retail had no moon archetype type and ran the planet-spawn path unconditionally).
+- **`Damage.cpp`:** Restored `fizzSoundID = data.pData->shield.fizzOut` (was incorrectly zeroed).
+- **`TSpaceShip.h`:** Restored `SFXMANAGER->Preload(pData->shield.fizzOut)` preload.
+- **`Menu_SPGame.cpp`:** Restored retail campaign-flow launch path (was hardcoded to a CQ2 demo mission).
+- **`BuildButton.cpp`:** Removed `cq2Vars1`/`cq2Vars2` initialization.
+- **`Direct3D_pipe.cpp`:** Removed `GENERAL_TRACE_1` spam on missing CQ2 shader files.
+- **Window title:** Restored "Conquest: Frontier Wars" throughout (sequel source had changed it to "Vyrium Uprising").
 
 ---
 
