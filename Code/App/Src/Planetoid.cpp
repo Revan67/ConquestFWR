@@ -69,26 +69,6 @@
 
 #include "TObjRender.h"
 
-// VS6 planet binary has MISSION_DATA = 40 bytes (4+4+8+4+20 = packed enums+M_CAPS+4xU16+ResourceCost+5xSINGLE).
-// The ARMOR_DATA, silhouetteImage, specialAbility, speechPriority fields were added post-release and are
-// NOT in gametypes.db planet entries.  Resource fields start at binary offset 176 =
-// BASIC_DATA(8) + 4xGT_PATH(128) + MISSION_DATA_40(40).
-struct BT_PLANET_RESC {
-	U16 maxMetal;
-	U16 maxGas;
-	U16 maxCrew;
-	U16 _align;
-	SINGLE metalRegen;
-	SINGLE gasRegen;
-	SINGLE crewRegen;
-	U32 planetType;
-};
-static const size_t BT_PLANET_RESC_OFF = 176;
-
-static inline const BT_PLANET_RESC * planet_resc(const BT_PLANET_DATA * p)
-{
-	return reinterpret_cast<const BT_PLANET_RESC *>((const U8 *)p + BT_PLANET_RESC_OFF);
-}
 
 //--------------------------------------------------------------------------//
 //--------------------------------------------------------------------------//
@@ -1316,7 +1296,7 @@ void Planetoid::DrawFleetMoniker (bool bAllShips)
 		_localAnsiToWide(partName, buffer, sizeof(buffer));
 		pPlanetFont7->StringDraw(CAMERA->GetPane(),screenX+IDEAL2REALX(10),screenY+IDEAL2REALY(4),buffer);
 
-		switch((BT_PLANET_DATA::_planetType)planet_resc(renderArch1->pData)->planetType)
+		switch(renderArch1->pData->planetType)
 		{
 		case BT_PLANET_DATA::M_CLASS:
 			{
@@ -2177,7 +2157,7 @@ void Planetoid::TeraformPlanet(const char * newArch, SINGLE changeTime, const Ve
 		teraRing.Init(500,changeTime,renderArch1->teraRingAnim,0,0,0,renderArch1->teraExplosion,systemID); // teraColor not in 200-byte binary
 
 		{
-			const BT_PLANET_RESC * r = planet_resc(renderArch1->pData);
+			const BT_PLANET_DATA * r = renderArch1->pData;
 			crew   = maxCrew  = r->maxCrew;
 			gas    = maxGas   = r->maxGas;
 			metal  = maxMetal = r->maxMetal;
@@ -2360,7 +2340,7 @@ inline struct IBaseObject * createPlanetoid (const PLANET_INIT & data)
 	obj->objClass = OC_PLANETOID;
 
 	{
-		const BT_PLANET_RESC * r = planet_resc(data.pData);
+		const BT_PLANET_DATA * r = data.pData;
 		obj->lastCrew = obj->crew = obj->maxCrew = r->maxCrew;
 		obj->lastGas  = obj->gas  = obj->maxGas  = r->maxGas;
 		obj->lastMetal = obj->metal = obj->maxMetal = r->maxMetal;
@@ -2618,12 +2598,7 @@ HANDLE PlanetFactory::CreateArchetype (const char *szArchname, OBJCLASS objClass
 		else
 			result->sysMapIconID = -1;
 
-		if(data->ambientEffect[0])
-		{
-			result->ambientEffect = EFFECTPLAYER->LoadEffect(data->ambientEffect);
-		}
-		else
-			result->ambientEffect = NULL;
+		result->ambientEffect = NULL;
 		
 		if(!pPlanetFont1)
 		{
@@ -2699,8 +2674,6 @@ HANDLE PlanetFactory::CreateArchetype (const char *szArchname, OBJCLASS objClass
 
 		PLANETTEXMEMUSED += (TEXMEMORYUSED-lastTexMem);
 
-		// teraParticle and teraExplosions are at VS2022 offsets 196 and 231,
-		// both past the 200-byte binary boundary — skip to avoid garbage reads.
 		result->teraRingAnim = NULL;
 		result->teraExplosion = NULL;
 

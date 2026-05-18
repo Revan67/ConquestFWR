@@ -337,53 +337,26 @@ void ObjGenerator::getObjectDropRect (struct tagRECT &rect,Vector &pos)
 		{
 		case OC_PLANETOID:
 			{
-				BT_PLANET_DATA * planetData = (BT_PLANET_DATA *) _data;
-				if(planetData->bMoon)
-				{
-					//snap to the closes grid center
-					i = floor(position.x/GRIDSIZE+1.0);
-					j = floor(position.y/GRIDSIZE+1.0);
-					
-					if (i > numGrids)
-						i = numGrids;
-					if (j > numGrids)
-						j = numGrids;
-					if (i < 1)
-						i = 1;
-					if (j < 1)
-						j = 1;
-					
-					pos.x = i*GRIDSIZE-HALFGRID;
-					pos.y = j*GRIDSIZE-HALFGRID;
-					
-					rect.left = pos.x-HALFGRID;
-					rect.top = pos.y-HALFGRID;
-					rect.right = pos.x+HALFGRID;
-					rect.bottom = pos.y+HALFGRID;
-				}
-				else
-				{
-					// correct the planet's position to snap to the closet grid apex
-					i = floor(position.x/GRIDSIZE+0.5);
-					j = floor(position.y/GRIDSIZE+0.5);
-					
-					if (i > numGrids-2)
-						i = numGrids-2;
-					if (j > numGrids-2)
-						j = numGrids-2;
-					if (i < 1)
-						i = 1;
-					if (j < 1)
-						j = 1;
-					
-					pos.x = i*GRIDSIZE;
-					pos.y = j*GRIDSIZE;
-					
-					rect.left = pos.x-GRIDSIZE;
-					rect.top = pos.y-GRIDSIZE;
-					rect.right = pos.x+GRIDSIZE;
-					rect.bottom = pos.y+GRIDSIZE;
-				}
+				// snap to the closest grid apex
+				i = floor(position.x/GRIDSIZE+0.5);
+				j = floor(position.y/GRIDSIZE+0.5);
+
+				if (i > numGrids-2)
+					i = numGrids-2;
+				if (j > numGrids-2)
+					j = numGrids-2;
+				if (i < 1)
+					i = 1;
+				if (j < 1)
+					j = 1;
+
+				pos.x = i*GRIDSIZE;
+				pos.y = j*GRIDSIZE;
+
+				rect.left = pos.x-GRIDSIZE;
+				rect.top = pos.y-GRIDSIZE;
+				rect.right = pos.x+GRIDSIZE;
+				rect.bottom = pos.y+GRIDSIZE;
 			}
 			break;
 

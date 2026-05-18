@@ -32,10 +32,10 @@ struct BT_PLANET_DATA : BASIC_DATA
     char fileName[GT_PATH];
 	char ambient_animation[GT_PATH];
 	char sysMapIcon[GT_PATH];
-	char ambientEffect[GT_PATH];
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;
 	U16 maxMetal;
 	U16 maxGas;
+	U16 maxCrew;
 	SINGLE metalRegen;
 	SINGLE gasRegen;
 	SINGLE crewRegen;
@@ -46,29 +46,10 @@ struct BT_PLANET_DATA : BASIC_DATA
 		GAS_PLANET,
 		OTHER_PLANET
 	}planetType;
-	char teraParticle[GT_PATH];
-	struct TeraColor
-	{
-		U8 red;
-		U8 green;
-		U8 blue;
-	}teraColor;
-	char teraExplosions[GT_PATH];
-	struct Halo
-	{
-		U8 red;
-		U8 green;
-		U8 blue;
-		SINGLE sizeInner;
-		SINGLE sizeOuter;
-	}halo;
-
-	bool bMoon:1;//if this is a moon planet then most of this data is useless, should this be made a separate class??
-	bool bUncommon:1;//if this planet type is an uncommon thing like a Pirate Planet, Dead Planet, or a special planet like Celaron home planet
-	// Fields added after binary data files were compiled; placed at end so all
-	// original fields read at correct binary offsets. Clamped in Setup().
-	U16 maxCrew;
 };
+#ifndef _ADB
+static_assert(sizeof(BT_PLANET_DATA) == 200, "BT_PLANET_DATA must match retail binary (200 bytes)");
+#endif
 
 //----------------------------------------------------------------
 //

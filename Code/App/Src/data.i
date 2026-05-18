@@ -5182,10 +5182,10 @@ struct BT_PLANET_DATA : BASIC_DATA
     char fileName[32];
 	char ambient_animation[32];
 	char sysMapIcon[32];
-	char ambientEffect[32];
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;
 	U16 maxMetal;
 	U16 maxGas;
+	U16 maxCrew;
 	SINGLE metalRegen;
 	SINGLE gasRegen;
 	SINGLE crewRegen;
@@ -5196,29 +5196,10 @@ struct BT_PLANET_DATA : BASIC_DATA
 		GAS_PLANET,
 		OTHER_PLANET
 	}planetType;
-	char teraParticle[32];
-	struct TeraColor
-	{
-		U8 red;
-		U8 green;
-		U8 blue;
-	}teraColor;
-	char teraExplosions[32];
-	struct Halo
-	{
-		U8 red;
-		U8 green;
-		U8 blue;
-		SINGLE sizeInner;
-		SINGLE sizeOuter;
-	}halo;
-
-	bool bMoon:1;
-	bool bUncommon:1;
-	
-	
-	U16 maxCrew;
 };
+
+
+
 
 
 
