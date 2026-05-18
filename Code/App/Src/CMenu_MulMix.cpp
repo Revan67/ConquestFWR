@@ -80,9 +80,9 @@ struct DACOM_NO_VTABLE CMenu_MulMix : public IEventCallback, IHotControlEvent
 	COMPTR<IShipSilButton> shipStatus[MAX_NUM_SEL_SHIPS];
 	COMPTR<IStatic> shipclass;
 	COMPTR<IHotButton> patrol,escort;
-	COMPTR<IHotButton> stanceAttack,stanceDefend,stanceStand,stanceStop,supplyStanceAuto,supplyStanceNoAuto,supplyStanceResupplyOnly, cloak,attackPosition,specialWpnCmd,specialWpnCmd1,specialWpnCmd2;
+	COMPTR<IHotButton> stanceAttack,stanceDefend,stanceStand,stanceStop,supplyStanceAuto,supplyStanceNoAuto,supplyStanceResupplyOnly, cloak,specialWpnCmd;
 	COMPTR<IHotButton> fighterStanceNormal,fighterStancePatrol;
-	COMPTR<IMultiHotButton> specialWpnMulti,specialWpnMulti1,specialWpnMulti2;
+	COMPTR<IMultiHotButton> specialWpnMulti;
 
 	CMenu_MulMix (void);
 
@@ -574,7 +574,6 @@ void CMenu_MulMix::onUpdate (U32 dt)
 			const SPECIALABILITYINFO * specialInfo = specialAbilities->info + spAbility;
 					
 			caps = getCapsExclusive(OBJLIST->GetSelectedList());
-			attackPosition->SetVisible(caps.targetPositionOk);
 
 			if(spAbility != USA_NONE && (caps.specialEOAOk || caps.specialAttackOk || caps.specialAttackShipOk || caps.specialAbilityOk ||
 				caps.probeOk || caps.mimicOk || caps.synthesisOk|| caps.specialTargetPlanetOk))
@@ -586,32 +585,6 @@ void CMenu_MulMix::onUpdate (U32 dt)
 			{
 				specialWpnCmd->SetVisible(false);
 				specialWpnMulti->NullState();
-			}
-
-			specialInfo = specialAbilities->info + spAbility1;
-			if(spAbility1 != USA_NONE && (caps.specialEOAOk || caps.specialAttackOk || caps.specialAttackShipOk || caps.specialAbilityOk ||
-				caps.probeOk || caps.mimicOk || caps.synthesisOk|| caps.specialTargetPlanetOk))
-			{
-				specialWpnCmd1->SetVisible(true);
-				specialWpnMulti1->SetState(specialInfo->baseSpecialWpnButton,specialInfo->specialWpnTooltip,specialInfo->specialWpnHelpBox,specialInfo->specialWpnHintBox);
-			}
-			else
-			{
-				specialWpnCmd1->SetVisible(false);
-				specialWpnMulti1->NullState();
-			}
-
-			specialInfo = specialAbilities->info + spAbility2;
-			if(spAbility2 != USA_NONE && (caps.specialEOAOk || caps.specialAttackOk || caps.specialAttackShipOk || caps.specialAbilityOk ||
-				caps.probeOk || caps.mimicOk || caps.synthesisOk|| caps.specialTargetPlanetOk))
-			{
-				specialWpnCmd2->SetVisible(true);
-				specialWpnMulti2->SetState(specialInfo->baseSpecialWpnButton,specialInfo->specialWpnTooltip,specialInfo->specialWpnHelpBox,specialInfo->specialWpnHintBox);
-			}
-			else
-			{
-				specialWpnCmd2->SetVisible(false);
-				specialWpnMulti2->NullState();
 			}
 		}
 	}
@@ -686,23 +659,11 @@ void CMenu_MulMix::setPanelOwnership (bool bOwn)
 				if (menu->GetControl("fighterStancePatrol", pComp) == GR_OK)
 					pComp->QueryInterface("IHotButton", fighterStancePatrol);
 				if (menu->GetControl("cloak", pComp) == GR_OK)
-					pComp->QueryInterface("IHotButton", cloak);			
-				if (menu->GetControl("attackPosition", pComp) == GR_OK)
-					pComp->QueryInterface("IHotButton", attackPosition);			
+					pComp->QueryInterface("IHotButton", cloak);
 				if (menu->GetControl("specialweapon", pComp) == GR_OK)
 				{
 					pComp->QueryInterface("IHotButton", specialWpnCmd);
 					pComp->QueryInterface("IMultiHotButton",specialWpnMulti);
-				}
-				if (menu->GetControl("specialweapon1", pComp) == GR_OK)
-				{
-					pComp->QueryInterface("IHotButton", specialWpnCmd1);
-					pComp->QueryInterface("IMultiHotButton",specialWpnMulti1);
-				}
-				if (menu->GetControl("specialweapon2", pComp) == GR_OK)
-				{
-					pComp->QueryInterface("IHotButton", specialWpnCmd2);
-					pComp->QueryInterface("IMultiHotButton",specialWpnMulti2);
 				}
 			}
 
@@ -747,13 +708,8 @@ void CMenu_MulMix::setPanelOwnership (bool bOwn)
 		supplyStanceNoAuto.free();		
 		supplyStanceResupplyOnly.free();
 		cloak.free();
-		attackPosition.free();
 		specialWpnMulti.free();
 		specialWpnCmd.free();
-		specialWpnMulti1.free();
-		specialWpnCmd1.free();
-		specialWpnMulti2.free();
-		specialWpnCmd2.free();
 	}
 }
 

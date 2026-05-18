@@ -111,17 +111,7 @@ struct DACOM_NO_VTABLE CMenu_Fleet : public IEventCallback, IHotControlEvent, IF
 	// stat tab
 	COMPTR<IStatic> hull,kills,namearea;
 	COMPTR<IHotStatic> techarmor,techsupply,techengine,techsheild,techweapon,techsensors,techspecial;
-	COMPTR<IHotButton> tacticPeace,tacticStandGround, tacticDefend, tacticSeek, attackPosition;
-	COMPTR<IMultiHotButton> formation1, formation2, formation3, formation4, formation5, formation6;
-	COMPTR<IHotButton> formation1BT, formation2BT, formation3BT, formation4BT, formation5BT, formation6BT;
-
-	// kit tab
-	COMPTR<IStatic> k_hull,k_kills,k_namearea;
-	COMPTR<IMultiHotButton> kit[MAX_COMMAND_KITS];
-	COMPTR<IHotButton> kitHB[MAX_COMMAND_KITS];
-	COMPTR<IMultiHotButton> kitDisplay[MAX_KNOWN_KITS];
-	COMPTR<IHotButton> kitDisplayHB[MAX_KNOWN_KITS];
-	COMPTR<IQueueControl> kitQueue;
+	COMPTR<IHotButton> tacticPeace,tacticStandGround, tacticDefend, tacticSeek;
 
 	U32 admiralKey;
 	U32 dwAdmiralID;
@@ -680,152 +670,7 @@ void CMenu_Fleet::onUpdate (U32 dt)
 				break;
 			}
 
-			MISSION_DATA::M_CAPS caps = getCaps(OBJLIST->GetSelectedList());
-			attackPosition->SetVisible(caps.targetPositionOk);
-
-			//kit tab
-			bool bCanResearch = admiralPtr->CanResearchKits();
-			TECHNODE currentTech = MGlobals::GetCurrentTechLevel(admiral->GetPlayerID());
-			U32 count;
-			for(count = 0; count < MAX_COMMAND_KITS; ++count)
-			{
-				bool bAvailible = false;
-				BT_COMMAND_KIT * comKit = admiralPtr->GetAvailibleCommandKit(count);
-				if(comKit)
-				{
-					kit[count]->SetBuildCost(comKit->cost);
-					kit[count]->SetState(comKit->buttonInfo.baseButton,comKit->buttonInfo.tooltip,comKit->buttonInfo.helpBox,comKit->buttonInfo.hintBox);
-					if(currentTech.HasTech(comKit->dependancy))
-					{
-						if(!(admiralPtr->IsKnownKit(comKit)))
-						{
-							VOLPTR(IBuildQueue) queue = admiral;
-							if(queue && (!(queue->IsInQueue(admiralPtr->GetAvailibleCommandKitID(count)))))
-							{
-								bAvailible = true;
-							}
-						}
-					}
-				}
-
-				kitHB[count]->EnableButton(bCanResearch);
-
-				kitHB[count]->SetVisible(bAvailible);
-			}
-			for(count = 0; count < MAX_KNOWN_KITS; ++count)
-			{
-				BT_COMMAND_KIT * comKit = admiralPtr->GetKnownCommandKit(count);
-				if(comKit)
-				{
-					kitDisplay[count]->SetState(comKit->buttonInfo.baseButton,comKit->buttonInfo.tooltip,comKit->buttonInfo.helpBox,comKit->buttonInfo.hintBox);
-					kitDisplayHB[count]->SetVisible(true);
-				}
-				else
-				{
-					kitDisplayHB[count]->SetVisible(false);
-				}
-				kitDisplayHB[count]->EnableButton(false);
-			}
-
 			updateQueue(admiral);
-
-			//update formations
-			//0
-			U32 formation = admiralPtr->GetKnownFormation(0);
-			if(formation)
-			{
-				formation1BT->SetVisible(true);
-				BT_FORMATION * pFormation = (BT_FORMATION *) (ARCHLIST->GetArchetypeData(formation));
-				formation1->SetState(pFormation->buttonInfo.baseButton,pFormation->buttonInfo.tooltip,pFormation->buttonInfo.helpBox,pFormation->buttonInfo.hintBox);
-				if(formation == admiralPtr->GetFormation())
-					formation1BT->SetHighlightState(true);
-				else
-					formation1BT->SetHighlightState(false);
-			}
-			else
-			{
-				formation1BT->SetVisible(false);
-			}
-			//1
-			formation = admiralPtr->GetKnownFormation(1);
-			if(formation)
-			{
-				formation2BT->SetVisible(true);
-				BT_FORMATION * pFormation = (BT_FORMATION *) (ARCHLIST->GetArchetypeData(formation));
-				formation2->SetState(pFormation->buttonInfo.baseButton,pFormation->buttonInfo.tooltip,pFormation->buttonInfo.helpBox,pFormation->buttonInfo.hintBox);
-				if(formation == admiralPtr->GetFormation())
-					formation2BT->SetHighlightState(true);
-				else
-					formation2BT->SetHighlightState(false);
-			}
-			else
-			{
-				formation2BT->SetVisible(false);
-			}
-			//2
-			formation = admiralPtr->GetKnownFormation(2);
-			if(formation)
-			{
-				formation3BT->SetVisible(true);
-				BT_FORMATION * pFormation = (BT_FORMATION *) (ARCHLIST->GetArchetypeData(formation));
-				formation3->SetState(pFormation->buttonInfo.baseButton,pFormation->buttonInfo.tooltip,pFormation->buttonInfo.helpBox,pFormation->buttonInfo.hintBox);
-				if(formation == admiralPtr->GetFormation())
-					formation3BT->SetHighlightState(true);
-				else
-					formation3BT->SetHighlightState(false);
-			}
-			else
-			{
-				formation3BT->SetVisible(false);
-			}
-			//3
-			formation = admiralPtr->GetKnownFormation(3);
-			if(formation)
-			{
-				formation4BT->SetVisible(true);
-				BT_FORMATION * pFormation = (BT_FORMATION *) (ARCHLIST->GetArchetypeData(formation));
-				formation4->SetState(pFormation->buttonInfo.baseButton,pFormation->buttonInfo.tooltip,pFormation->buttonInfo.helpBox,pFormation->buttonInfo.hintBox);
-				if(formation == admiralPtr->GetFormation())
-					formation4BT->SetHighlightState(true);
-				else
-					formation4BT->SetHighlightState(false);
-			}
-			else
-			{
-				formation4BT->SetVisible(false);
-			}
-			//4
-			formation = admiralPtr->GetKnownFormation(4);
-			if(formation)
-			{
-				formation5BT->SetVisible(true);
-				BT_FORMATION * pFormation = (BT_FORMATION *) (ARCHLIST->GetArchetypeData(formation));
-				formation5->SetState(pFormation->buttonInfo.baseButton,pFormation->buttonInfo.tooltip,pFormation->buttonInfo.helpBox,pFormation->buttonInfo.hintBox);
-				if(formation == admiralPtr->GetFormation())
-					formation5BT->SetHighlightState(true);
-				else
-					formation5BT->SetHighlightState(false);
-			}
-			else
-			{
-				formation5BT->SetVisible(false);
-			}
-			//5
-			formation = admiralPtr->GetKnownFormation(5);
-			if(formation)
-			{
-				formation6BT->SetVisible(true);
-				BT_FORMATION * pFormation = (BT_FORMATION *) (ARCHLIST->GetArchetypeData(formation));
-				formation6->SetState(pFormation->buttonInfo.baseButton,pFormation->buttonInfo.tooltip,pFormation->buttonInfo.helpBox,pFormation->buttonInfo.hintBox);
-				if(formation == admiralPtr->GetFormation())
-					formation6BT->SetHighlightState(true);
-				else
-					formation6BT->SetHighlightState(false);
-			}
-			else
-			{
-				formation6BT->SetVisible(false);
-			}
 		}
 		else
 		{
@@ -1099,74 +944,6 @@ void CMenu_Fleet::setPanelOwnership (bool bOwn)
 					pComp->QueryInterface("IHotButton", tacticDefend);
 				if (menu->GetControl("tacticSeek", pComp) == GR_OK)
 					pComp->QueryInterface("IHotButton", tacticSeek);
-				if (menu->GetControl("attackPosition", pComp) == GR_OK)
-					pComp->QueryInterface("IHotButton", attackPosition);
-
-				//kit tab
-				if (menu->GetControl("k_namearea", pComp) == GR_OK)
-					pComp->QueryInterface("IStatic", k_namearea);
-				if (menu->GetControl("k_hull", pComp) == GR_OK)
-					pComp->QueryInterface("IStatic", k_hull);
-				if (menu->GetControl("k_kills", pComp) == GR_OK)
-					pComp->QueryInterface("IStatic", k_kills);
-
-				for(U32 count = 0; count < MAX_COMMAND_KITS; ++count)
-				{
-					char kitName[32];
-					sprintf(kitName,"kit%d",count);
-					if (menu->GetControl(kitName, pComp) == GR_OK)
-					{
-						pComp->QueryInterface("IMultiHotButton", kit[count]);
-						pComp->QueryInterface("IHotButton", kitHB[count]);
-					}
-				}
-				for(U32 count = 0; count < MAX_KNOWN_KITS; ++count)
-				{
-					char kitName[32];
-					sprintf(kitName,"kitDisplay%d",count);
-					if (menu->GetControl(kitName, pComp) == GR_OK)
-					{
-						pComp->QueryInterface("IMultiHotButton", kitDisplay[count]);
-						pComp->QueryInterface("IHotButton", kitDisplayHB[count]);
-					}
-				}
-				
-				if (menu->GetControl("kitQueue", pComp) == GR_OK)
-				{
-					pComp->QueryInterface("IQueueControl", kitQueue);
-				}		
-
-				//fomrations
-				if (menu->GetControl("formation1", pComp) == GR_OK)
-				{
-					pComp->QueryInterface("IMultiHotButton", formation1);
-					pComp->QueryInterface("IHotButton", formation1BT);
-				}
-				if (menu->GetControl("formation2", pComp) == GR_OK)
-				{
-					pComp->QueryInterface("IMultiHotButton", formation2);
-					pComp->QueryInterface("IHotButton", formation2BT);
-				}
-				if (menu->GetControl("formation3", pComp) == GR_OK)
-				{
-					pComp->QueryInterface("IMultiHotButton", formation3);
-					pComp->QueryInterface("IHotButton", formation3BT);
-				}
-				if (menu->GetControl("formation4", pComp) == GR_OK)
-				{
-					pComp->QueryInterface("IMultiHotButton", formation4);
-					pComp->QueryInterface("IHotButton", formation4BT);
-				}
-				if (menu->GetControl("formation5", pComp) == GR_OK)
-				{
-					pComp->QueryInterface("IMultiHotButton", formation5);
-					pComp->QueryInterface("IHotButton", formation5BT);
-				}
-				if (menu->GetControl("formation6", pComp) == GR_OK)
-				{
-					pComp->QueryInterface("IMultiHotButton", formation6);
-					pComp->QueryInterface("IHotButton", formation6BT);
-				}
 			}
 
 		
@@ -1206,7 +983,6 @@ void CMenu_Fleet::setPanelOwnership (bool bOwn)
 		tacticStandGround.free();
 		tacticDefend.free();
 		tacticSeek.free();
-		attackPosition.free();
 		hotCreate.free();
 		hotRepair.free();
 		hotResupply.free();
@@ -1239,36 +1015,6 @@ void CMenu_Fleet::setPanelOwnership (bool bOwn)
 		kills.free();
 		namearea.free();
 
-		//kit tab
-		k_hull.free();
-		k_kills.free();
-		k_namearea.free();
-		U32 count;
-		for(count = 0; count < MAX_COMMAND_KITS; ++count)
-		{
-			kit[count].free();
-			kitHB[count].free();
-		}
-		for( count = 0; count < MAX_KNOWN_KITS; ++count)
-		{
-			kitDisplay[count].free();
-			kitDisplayHB[count].free();
-		}
-		kitQueue.free();
-
-		//formations
-		formation1.free();
-		formation2.free();
-		formation3.free();
-		formation4.free();
-		formation5.free();
-		formation6.free();
-		formation1BT.free();
-		formation2BT.free();
-		formation3BT.free();
-		formation4BT.free();
-		formation5BT.free();
-		formation6BT.free();
 	}
 }
 

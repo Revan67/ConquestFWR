@@ -263,11 +263,11 @@ struct DACOM_NO_VTABLE CMenu_Ind : public IEventCallback, IHotControlEvent
 	COMPTR<IHotStatic> techarmor,techsupply,techengine,techsheild,techweapon,techsensors,
 		techspecial;
 	COMPTR<IEdit2> namearea;
-	COMPTR<IHotButton> stopCmd, sellCmd, specialWpnCmd, patrolCmd, escortCmd, cloak, attackPosition,specialWpnCmd1,specialWpnCmd2;
+	COMPTR<IHotButton> stopCmd, sellCmd, specialWpnCmd, patrolCmd, escortCmd, cloak;
 	COMPTR<IHotButton> stanceAttack,stanceDefend,stanceStand,stanceStop,
-			supplyStanceAuto,supplyStanceNoAuto,supplyStanceResupplyOnly,ejectArtifact, useArtifactHB;
+			supplyStanceAuto,supplyStanceNoAuto,supplyStanceResupplyOnly;
 	COMPTR<IHotButton> fighterStanceNormal,fighterStancePatrol;
-	COMPTR<IMultiHotButton> specialWpnMulti,specialWpnMulti1,specialWpnMulti2, useArtifactMB;
+	COMPTR<IMultiHotButton> specialWpnMulti;
 
 
 	CMenu_Ind (void);
@@ -477,42 +477,6 @@ void CMenu_Ind::onUpdate (U32 dt)
 					}
 
 					cloak->SetVisible(ship->caps.cloakOk);
-
-					if (attackPosition)	// Was crashing here with attackPosition NULL	-ryan
-					{
-						attackPosition->SetVisible(ship->caps.targetPositionOk);
-					}
-
-					VOLPTR(IArtifactHolder) artHolder = obj;
-					if(artHolder)
-					{
-						VOLPTR(IArtifact) art = artHolder->GetArtifact();
-						if(art)
-						{
-							ArtifactButtonInfo * info = art->GetButtonInfo();
-							useArtifactMB->SetState(info->baseButton,info->tooltip,info->helpBox,info->hintBox);
-							ejectArtifact->SetVisible(true);
-							useArtifactHB->SetVisible(true);
-							if(art->IsUsable())
-							{
-								useArtifactHB->EnableButton(true);
-							}
-							else
-							{
-								useArtifactHB->EnableButton(false);
-							}
-						}
-						else
-						{
-							ejectArtifact->SetVisible(false);
-							useArtifactHB->SetVisible(false);
-						}
-					}
-					else
-					{
-						ejectArtifact->SetVisible(false);
-						useArtifactHB->SetVisible(false);
-					}
 
 					if((ship->mObjClass == M_SUPPLY) || (ship->mObjClass == M_ZORAP) || (ship->mObjClass == M_STRATUM))
 					{
@@ -915,25 +879,12 @@ void CMenu_Ind::setPanelOwnership (bool bOwn)
 					pComp->QueryInterface("IHotButton", specialWpnCmd);
 					pComp->QueryInterface("IMultiHotButton",specialWpnMulti);
 				}
-				if (menu->GetControl("specialweapon1", pComp) == GR_OK)
-				{
-					pComp->QueryInterface("IHotButton", specialWpnCmd1);
-					pComp->QueryInterface("IMultiHotButton",specialWpnMulti1);
-				}
-				if (menu->GetControl("specialweapon2", pComp) == GR_OK)
-				{
-					pComp->QueryInterface("IHotButton", specialWpnCmd2);
-					pComp->QueryInterface("IMultiHotButton",specialWpnMulti2);
-				}
 				if (menu->GetControl("patrol", pComp) == GR_OK)
 					pComp->QueryInterface("IHotButton", patrolCmd);
 				if (menu->GetControl("escort", pComp) == GR_OK)
 					pComp->QueryInterface("IHotButton", escortCmd);
 				if (menu->GetControl("cloak", pComp) == GR_OK)
 					pComp->QueryInterface("IHotButton", cloak);
-				if (menu->GetControl("attackPosition", pComp) == GR_OK)
-					pComp->QueryInterface("IHotButton", attackPosition);
-			
 				if (toolbar->GetControl("shipclass", pComp) == GR_OK)
 					pComp->QueryInterface("IStatic", shipclass);
 				if(namearea)
@@ -958,13 +909,6 @@ void CMenu_Ind::setPanelOwnership (bool bOwn)
 				if (menu->GetControl("fighterStancePatrol", pComp) == GR_OK)
 					pComp->QueryInterface("IHotButton", fighterStancePatrol);
 
-				if (menu->GetControl("ejectArtifact", pComp) == GR_OK)
-					pComp->QueryInterface("IHotButton", ejectArtifact);
-				if (menu->GetControl("artifact", pComp) == GR_OK)
-				{
-					pComp->QueryInterface("IHotButton", useArtifactHB);
-					pComp->QueryInterface("IMultiHotButton", useArtifactMB);
-				}
 			}
 
 		
@@ -1010,14 +954,9 @@ void CMenu_Ind::setPanelOwnership (bool bOwn)
 		stopCmd.free();
 		specialWpnCmd.free();
 		specialWpnMulti.free();
-		specialWpnCmd1.free();
-		specialWpnMulti1.free();
-		specialWpnCmd2.free();
-		specialWpnMulti2.free();
 		patrolCmd.free();
 		escortCmd.free();
 		cloak.free();
-		attackPosition.free();
 		stanceAttack.free();		
 		stanceDefend.free();		
 		stanceStand.free();		
@@ -1027,9 +966,6 @@ void CMenu_Ind::setPanelOwnership (bool bOwn)
 		supplyStanceAuto.free();		
 		supplyStanceNoAuto.free();		
 		supplyStanceResupplyOnly.free();
-		useArtifactHB.free();
-		useArtifactMB.free();
-		ejectArtifact.free();
 		lastMissionID = 0;
 	}
 }
