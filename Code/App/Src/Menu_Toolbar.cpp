@@ -1043,10 +1043,10 @@ struct Menu_tb : public Frame, IToolbar
 		//
 		// draw the box
 		//
-		DA::LineDraw(0, contextRect.left, contextRect.top, contextRect.right, contextRect.top, color);
-		DA::LineDraw(0, contextRect.right, contextRect.top, contextRect.right, contextRect.bottom, color);
-		DA::LineDraw(0, contextRect.right, contextRect.bottom, contextRect.left, contextRect.bottom, color);
-		DA::LineDraw(0, contextRect.left, contextRect.bottom, contextRect.left, contextRect.top, color);
+		DA::LineDraw(0, screenRect.left+contextRect.left, screenRect.top+contextRect.top, screenRect.left+contextRect.right, screenRect.top+contextRect.top, color);
+		DA::LineDraw(0, screenRect.left+contextRect.right, screenRect.top+contextRect.top, screenRect.left+contextRect.right, screenRect.top+contextRect.bottom, color);
+		DA::LineDraw(0, screenRect.left+contextRect.right, screenRect.top+contextRect.bottom, screenRect.left+contextRect.left, screenRect.top+contextRect.bottom, color);
+		DA::LineDraw(0, screenRect.left+contextRect.left, screenRect.top+contextRect.bottom, screenRect.left+contextRect.left, screenRect.top+contextRect.top, color);
 	}
 
 	/* Menu_tb methods */
@@ -1058,6 +1058,7 @@ struct Menu_tb : public Frame, IToolbar
 	// we are within the shape bounds, are we within the artwork?
 	void checkRect (S32 x, S32 y)
 	{
+		if (!map) { bAlert = false; return; }
 		x -= screenRect.left;
 		y -= screenRect.top;
 
@@ -1500,19 +1501,6 @@ void Menu_tb::setStateInfo (void)
 	COMPTR<IShapeLoader> pLoader;
 	CONTROL_NODE * node = 0;
 
-	{
-		static FILE* _crf = nullptr;
-		if (!_crf) _crf = fopen("debug/context_rect_diag.txt", "w");
-		if (_crf) {
-			fprintf(_crf, "pContextRect raw: L=%d T=%d R=%d B=%d\n",
-				(int)pContextRect->left, (int)pContextRect->top,
-				(int)pContextRect->right, (int)pContextRect->bottom);
-			fprintf(_crf, "screenRect: L=%d T=%d R=%d B=%d\n",
-				(int)screenRect.left, (int)screenRect.top,
-				(int)screenRect.right, (int)screenRect.bottom);
-			fflush(_crf);
-		}
-	}
 	contextRect.left   = IDEAL2REALX(pContextRect->left);
 	contextRect.right  = IDEAL2REALX(pContextRect->right+1)-1;
 	contextRect.top    = IDEAL2REALY(pContextRect->top);
@@ -1527,12 +1515,11 @@ void Menu_tb::setStateInfo (void)
 	if (menuList)
 	{
 		Menu_context * menuNode = menuList;
-		// contextRect is in absolute real-pixel coords (pContextRect stores absolute ideal
-		// screen coords, not toolbar-relative). Do NOT add screenRect.left/top.
-		RECT rect = { contextRect.left,
-					  contextRect.top,
-					  contextRect.right,
-					  contextRect.bottom };
+		// pContextRect is toolbar-relative ideal coords; add screenRect offset to place in screen space.
+		RECT rect = { screenRect.left + contextRect.left,
+					  screenRect.top  + contextRect.top,
+					  screenRect.left + contextRect.right,
+					  screenRect.top  + contextRect.bottom };
 
 		while (menuNode)
 		{

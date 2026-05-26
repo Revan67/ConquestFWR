@@ -911,6 +911,7 @@ int WINAPI WinMain(HINSTANCE _hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 		create_bogus_savedir();
 		CQFLAGS.bGameActive = 1;
 		EVENTSYS->Send(CQE_GAME_ACTIVE, (void*)1);
+		{ FILE* df = fopen("Debug\\mesh_diag.txt", "a"); if(df){ fprintf(df, "CQE_GAME_ACTIVE sent\n"); fflush(df); fclose(df); } }
 		MSCROLL->SetActive(1);
 		ShutdownSplash(hSplash);
 		hSplash = NULL;

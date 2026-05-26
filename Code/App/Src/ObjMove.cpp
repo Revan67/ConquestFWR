@@ -806,9 +806,18 @@ void ObjectMove<Base>::moveToPos (const GRIDVECTOR & pos, U32 agentID, bool bSlo
 //		CQBOMB1("Invalid call to moveToPos() for part=%s (Ignorable)", (char *)partName);	// should already be completed before this call
 #endif
 	SECTOR->GetTerrainMap(systemID, map);
+	{
+		static int diagN = 0;
+		if(diagN < 10 && agentID != 0)
+		{
+			++diagN;
+			FILE* df = fopen("Debug\\move_diag.txt", "a");
+			if(df) { fprintf(df, "moveToPos[%d] sysID=%u mapValid=%d agentID=%u\n", diagN, systemID, map?1:0, agentID); fflush(df); fclose(df); }
+		}
+	}
 	pathLength = 0;
 	goalPosition = pos;
-	U32 flags = bHalfSquare ? TERRAIN_FP_HALFSQUARE : TERRAIN_FP_FULLSQUARE; 
+	U32 flags = bHalfSquare ? TERRAIN_FP_HALFSQUARE : TERRAIN_FP_FULLSQUARE;
 	GRIDVECTOR from = GetGridPosition();
 
 	if (bHalfSquare==0)
@@ -822,8 +831,18 @@ void ObjectMove<Base>::moveToPos (const GRIDVECTOR & pos, U32 agentID, bool bSlo
 	bFinalMove = 0;
 	bMoveActive=1;
 
-	if (map->FindPath(from, goalPosition, dwMissionID, flags, this) == 0)
-	{	
+	int pathResult = map->FindPath(from, goalPosition, dwMissionID, flags, this);
+	{
+		static int diagN2 = 0;
+		if(diagN2 < 10 && agentID != 0)
+		{
+			++diagN2;
+			FILE* df = fopen("Debug\\move_diag.txt", "a");
+			if(df) { fprintf(df, "FindPath[%d] result=%d pathLength=%d bMoveActive=%d\n", diagN2, pathResult, (int)pathLength, (int)bMoveActive); fflush(df); fclose(df); }
+		}
+	}
+	if (pathResult == 0)
+	{
 #if (defined(_JASON) || defined(_SEAN))
 		if (bParked == false)
 			CQBOMB1("TerrainMap returned pathlength==0, but \"%s\" isn't parked there! (Ignorable)", (char *)partName);

@@ -251,9 +251,23 @@ void ObjectTransform< Base >::loadTransform (TRANSSAVEINFO & load)
 }
 //---------------------------------------------------------------------------
 //
-template <class Base> 
+template <class Base>
 void ObjectTransform< Base >::initTransform (const TRANSINITINFO & data)
 {
+	{
+		static int diagN = 0;
+		if(diagN < 30)
+		{
+			++diagN;
+			FILE* df = fopen("Debug\\mesh_diag.txt", "a");
+			if(df)
+			{
+				fprintf(df, "initTransform[%d] archIndex=%d meshArch=%s\n",
+					diagN, (int)data.archIndex, data.meshArch ? "non-null" : "NULL");
+				fflush(df); fclose(df);
+			}
+		}
+	}
 	if (data.archIndex != -1)
 	{
 		ENGINE->create_instance2(data.archIndex, this);

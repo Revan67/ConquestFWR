@@ -447,9 +447,10 @@ rc /l 0x409 /fo Final\Globals.res /dNDEBUG Globals.rc
     <None Include="Res\Trightscroll.cur" />
     <None Include="RuseKeys.utf" />
     <None Include="Sfxdata.dat" />
-    <!-- sfxdata.xmf was processed by XMIFF.EXE (16-bit tool, incompatible with Win64).
-         TODO: replace with xmiff2.py (Tools/xmiff2/xmiff2.py) -->
-    <None Include="sfxdata.xmf" />
+    <CustomBuild Include="sfxdata.xmf">
+      <Command>python ..\..\..\Tools\xmiff2\xmiff2.py sfxdata.xmf ..\dinclude\Sfxid.h sfxdata.dat</Command>
+      <Outputs>sfxdata.dat;%(Outputs)</Outputs>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Data.cpp">

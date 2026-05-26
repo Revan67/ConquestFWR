@@ -9,10 +9,12 @@ A community effort to make **Conquest: Frontier Wars** (Fever Pitch Studios / Ub
 | Phase | Goal | Status |
 |-------|------|--------|
 | 1 | Build cleanly under VS2022 | **Complete** |
-| 2 | Run on Windows 11 — fix runtime crashes, binary layout, and heap/API compat | **Complete** |
+| 2 | Run on Windows 11 — fix runtime crashes, binary layout, and heap/API compat | **In Progress** |
 | 3 | Modernize — D3D11+, modern networking, widescreen | Future |
 
-**Phase 2 detail:** The retail source audit is complete. All six build projects (Conquest.exe, Mission.dll, Trim.dll, Globals.dll, D3DRenderPipe.dll, and all Libs) have been verified: VS6→VS2022 porting fixes retained, CQ2 (unshipped sequel) additions removed, and all archetype struct sizes locked with `static_assert` against the retail binary.
+**Phase 2 — audit complete:** All six build projects (Conquest.exe, Mission.dll, Trim.dll, Globals.dll, D3DRenderPipe.dll, and all Libs) have been verified: VS6→VS2022 porting fixes retained, CQ2 (unshipped sequel) additions removed, and all archetype struct sizes locked with `static_assert` against the retail binary.
+
+**Phase 2 — runtime status:** The game launches, loads a mission, and ships are visible and respond to move orders. Open bugs: ship spawn orientation, resource bar position, overlay panels, sector map display.
 
 ---
 
@@ -61,6 +63,7 @@ You do **not** need a copy of the retail game to build from source. However, to 
 
 - **Visual Studio 2022** (Community or higher) with the Desktop C++ workload
 - **Windows 10 or 11** (32-bit target; build host must support WoW64)
+- **Python 3** on `PATH` — required for the `sfxdata.xmf → sfxdata.dat` build step in Globals.vcxproj
 - DirectX 9 runtime (included with Windows 10/11 via DirectX End-User Runtime)
 - A retail copy of Conquest: Frontier Wars for the runtime media assets
 
@@ -103,6 +106,8 @@ Code/
 Tools/
   read_gendata.py     — Python script for hex-dumping archetype blobs from .db files
   retail_gametypes.h  — Struct layout reference extracted from the retail VS6 binary
+  xmiff2/
+    xmiff2.py         — Replaces legacy 16-bit XMIFF.EXE; compiles sfxdata.xmf → sfxdata.dat
 
 Conquest_Frontier_Wars_Manual.pdf   — Retail game manual (UI and gameplay reference)
 Conquest Source License.txt         — Fever Pitch Studios Public License
@@ -147,6 +152,15 @@ All modifications are tracked in git with descriptive commit messages. The chang
   | `MULTIHOTBUTTON_DATA` | 16 B |
   | `SHIPSILBUTTON_DATA` | 8 B |
   | `BT_FIGHTER_WING` | 208 B |
+
+### Runtime Fixes (Phase 2)
+
+- **Ship rendering:** `SpaceShip::renderSpaceShip` now falls back to `ENGINE->render_instance` when `instanceMesh` is NULL, restoring ship visibility in-mission.
+- **MeshManager.dll deployment:** Added xcopy post-build step to `MeshManager.vcxproj`; the DLL was previously never auto-deployed to the game folder.
+- **Context window position:** `Menu_tb::setStateInfo` and `LineDraw` calls now add `screenRect.left/top` when converting toolbar-relative `pContextRect` values to screen-space coordinates.
+- **Null map guard:** `Menu_tb::checkRect` returns early if `map` is NULL, preventing an AV on mission load when mouse-move fires during toolbar teardown.
+- **sfxdata build step:** `Globals.vcxproj` now runs `Tools/xmiff2/xmiff2.py` as a `<CustomBuild>` step on `sfxdata.xmf`, replacing the legacy 16-bit XMIFF.EXE tool that was incompatible with Win64.
+- **Conquest.vcxproj post-build:** Replaced eight `xcopy` commands (which aborted on missing `.pdb` files) with a single PowerShell `Copy-Item` loop that silently skips files not yet present.
 
 ### CQ2 (Unshipped Sequel) Removals
 

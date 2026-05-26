@@ -84,7 +84,8 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command />
+      <Command>xcopy /Y "..\..\ExplicitDLL\$(OutDir)MeshManager.dll" "E:\Games\GOG\Conquest Frontier Wars\DLL\"
+xcopy /Y "..\..\ExplicitDLL\$(OutDir)MeshManager.pdb" "E:\Games\GOG\Conquest Frontier Wars\DLL\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

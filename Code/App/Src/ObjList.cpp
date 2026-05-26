@@ -1265,6 +1265,20 @@ void ObjectList::Render (void)
 	QueryPerformanceCounter((LARGE_INTEGER *)&firsttick);
 	const U32 currentSystem = SECTOR->GetCurrentSystem();
 	const U32 currentPlayer = MGlobals::GetThisPlayer();
+	{
+		static int diagN = 0;
+		if(diagN < 30)
+		{
+			++diagN;
+			FILE* df = fopen("Debug\\mesh_diag.txt", "a");
+			if(df)
+			{
+				fprintf(df, "ObjList::Render[%d] currentSystem=%u currentPlayer=%u\n",
+					diagN, (unsigned)currentSystem, (unsigned)currentPlayer);
+				fflush(df); fclose(df);
+			}
+		}
+	}
 	const USER_DEFAULTS & defaults = *DEFAULTS->GetDefaults();
 	const bool bPointRect = (selectionRect.top == selectionRect.bottom && selectionRect.right == selectionRect.left);
 
