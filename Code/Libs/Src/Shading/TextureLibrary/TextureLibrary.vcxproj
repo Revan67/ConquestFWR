@@ -290,7 +290,7 @@
       <AdditionalIncludeDirectories>.;.\..;.\..\..;..\..\include;..\..\..\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DATHREADSAFE;DA_ERROR_LEVEL=8;_WINDOWS;D3D_OVERLOADS;WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeaderOutputFile>.\DebugMT/TextureLibrary.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>.\DebugMT/</AssemblerListingLocation>
       <ObjectFileName>.\DebugMT/</ObjectFileName>
@@ -341,7 +341,7 @@
       <AdditionalIncludeDirectories>.;.\..;.\..\..;..\..\include;..\..\..\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DA_HEAP_ENABLED;DA_ERROR_LEVEL=8;_WINDOWS;D3D_OVERLOADS;WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeaderOutputFile>.\Debug/TextureLibrary.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
       <ObjectFileName>.\Debug/</ObjectFileName>
