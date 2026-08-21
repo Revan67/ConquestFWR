@@ -36,48 +36,6 @@ template ObjectControl<ObjectTransform
 						>;
 //---------------------------------------------------------------------------
 //
-//---------------------------------------------------------------------------
-// TEMP call-order diagnostic -- REMOVE once the drift cause is confirmed.
-// physUpdateControl() computes velocity (gated on bPositionValid, ~line 359)
-// then sets bPhysicalUpdateHappened. updateControl() skips when that flag is
-// set and clears BOTH flags. If updateControl runs BEFORE physUpdateControl
-// in a frame, bPositionValid is cleared first, physUpdateControl's gate is
-// false, and velocity is never updated -- the stale value is then integrated
-// forever, which is the observed drift.
-// TEMP: log the exact terms of the physUpdateControl early-out (line ~250).
-static void ctl_diag2(unsigned id, int vis, int cheap, int constRate, int speed)
-{
-	static int _n2 = 0;
-	if (_n2 >= 300) return;
-	++_n2;
-	{
-		FILE *_f = fopen("debug/defaults_diag.txt", _n2 == 1 ? "w" : "a");
-		if (_f)
-		{
-			fprintf(_f, "[%d] id=0x%08X bVisible=%d bCheapMovement=%d bConstUpdateRate=%d gameSpeed=%d",
-				_n2, id, vis, cheap, constRate, speed);
-			fputc(10, _f);
-			fclose(_f);
-		}
-	}
-}
-static void ctl_diag(char which, unsigned id, int vis, int posValid, int physDone)
-{
-	static int _n = 0;
-	if (_n >= 4000) return;
-	++_n;
-	{
-		FILE *_f = fopen("debug/ctlorder_diag.txt", _n == 1 ? "w" : "a");
-		if (_f)
-		{
-			fprintf(_f, "[%d] %c id=0x%08X posValid=%d physDone=%d\n",
-				_n, which, id, posValid, physDone);
-			fclose(_f);
-		}
-	}
-}
-//---------------------------------------------------------------------------
-//
 static bool bUpdateControl = true;
 template <class Base> 
 BOOL32 ObjectControl< Base >::updateControl (void)
@@ -86,7 +44,6 @@ BOOL32 ObjectControl< Base >::updateControl (void)
 		return 1;
 
 
-	ctl_diag('C', (unsigned)GetPartID(), (int)bVisible, (int)bPositionValid, (int)bPhysicalUpdateHappened);
 	if (bPhysicalUpdateHappened)
 		goto Done;
 
@@ -261,10 +218,8 @@ Done:
 template <class Base> 
 void ObjectControl< Base >::physUpdateControl (SINGLE dt)
 {
-	ctl_diag('P', (unsigned)GetPartID(), (int)bVisible, (int)bPositionValid, (int)bPhysicalUpdateHappened);
 	const USER_DEFAULTS * const pDefaults = DEFAULTS->GetDefaults();
 
-	ctl_diag2((unsigned)GetPartID(), (int)bVisible, (int)pDefaults->bCheapMovement, (int)pDefaults->bConstUpdateRate, (int)pDefaults->gameSpeed);
 	if (bVisible==0 || pDefaults->bCheapMovement || (pDefaults->bConstUpdateRate && pDefaults->gameSpeed!=0))
 		return;
 

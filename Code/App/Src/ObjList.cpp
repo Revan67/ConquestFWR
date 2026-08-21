@@ -1286,25 +1286,6 @@ void ObjectList::Render (void)
 
 	// don't check for highlight when cursor is over the toolbar
 	bCheckRect = (bHasFocus && (bPointRect==false || TOOLBAR->bAlert==0));
-	// TEMP: bCheckRect gates the TestVisible loops below. If it is 0, TestVisible never
-	// runs, bVisible stays 0 for every object, and physUpdateControl bails at its
-	// bVisible==0 early-out -- which is why ship velocity is never updated.
-	{
-		static int _fn = 0;
-		if (_fn < 400)
-		{
-			++_fn;
-			FILE *_ff = fopen("debug/focus_diag.txt", _fn == 1 ? "w" : "a");
-			if (_ff)
-			{
-				fprintf(_ff, "[%d] bHasFocus=%d bPointRect=%d toolbarAlert=%d bCheckRect=%d",
-					_fn, (int)bHasFocus, (int)bPointRect, (int)TOOLBAR->bAlert, (int)bCheckRect);
-				fputc(10, _ff);
-				fclose(_ff);
-			}
-		}
-	}
-
 	//clearHighlightBits(highlightedList);
 	FlushHighlightedList();
 

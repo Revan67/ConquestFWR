@@ -255,40 +255,6 @@ BOOL32 ObjectMove<Base>::updateMoveState (void)
 				SINGLE sectorMod = 1.0 + SECTOR->GetSectorEffects(playerID,systemID)->getSpeedMod();
 				setCruiseSpeed(maxV*completionModifier()*fieldFlags.getSpeedModifier()*effectFlags.getSpeedModifier()*fleetMod*sectorMod);
 
-				// TEMP drift diagnostic -- remove once the post-arrival drift is understood.
-				// Distinguishes: (a) move never completes -> moveActive stays 1;
-				// (b) completes but velocity survives -> moveActive 0 with vel != 0;
-				// (c) velocity is zero yet position still changes -> something else moves it.
-				{
-					static int _dn = 0;
-					if (_dn < 4000)
-					{
-						++_dn;
-						FILE* _df = fopen("debug/ctlorder_diag.txt", "a");
-						if (_df)
-						{
-							// box is maxx,minx,maxy,miny,maxz,minz. If ComputeCorners could not fill it
-							// (REND->get_archetype_bounding_box failed -> no mesh) it stays all zeros.
-							// Then boxRadius==0 and -box[5]==0, so BOTH the approach branch
-							// (goalMag < boxRadius) and the arrival test (goalMag < -box[5]) become
-							// unsatisfiable and the move can never end.
-							fprintf(_df,
-								"[%d] M id=0x%08X vis=%d mvActive=%d toJump=%d agent=%u pathLen=%d "
-								"vel=(%.4f,%.4f,%.4f) pos=(%.2f,%.2f,%.2f) "
-								"box=(%.1f,%.1f,%.1f,%.1f,%.1f,%.1f) boxR=%.2f inst=%d\n",
-								_dn, dwMissionID, (int)bVisible, (int)isMoveActive(), (int)isMovingToJump(),
-								(unsigned)moveAgentID, (int)pathLength,
-								(double)velocity.x, (double)velocity.y, (double)velocity.z,
-								(double)transform.translation.x, (double)transform.translation.y,
-								(double)transform.translation.z,
-								(double)box[0], (double)box[1], (double)box[2],
-								(double)box[3], (double)box[4], (double)box[5],
-								(double)boxRadius, (int)instanceIndex);
-							fclose(_df);
-						}
-					}
-				}
-
 				if (isMovingToJump())
 					doJumpPreparation();
 				else
