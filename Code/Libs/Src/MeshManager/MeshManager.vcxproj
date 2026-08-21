@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -84,8 +84,8 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y "..\..\ExplicitDLL\$(OutDir)MeshManager.dll" "E:\Games\GOG\Conquest Frontier Wars\DLL\"
-xcopy /Y "..\..\ExplicitDLL\$(OutDir)MeshManager.pdb" "E:\Games\GOG\Conquest Frontier Wars\DLL\"</Command>
+      <Command>xcopy /Y "..\..\ExplicitDLL\$(OutDir)MeshManager.dll" "D:\Games\GOG\Conquest Frontier Wars\DLL\"
+xcopy /Y "..\..\ExplicitDLL\$(OutDir)MeshManager.pdb" "D:\Games\GOG\Conquest Frontier Wars\DLL\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

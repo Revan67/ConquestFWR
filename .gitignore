@@ -54,3 +54,15 @@ buildmission.bat
 buildtrim.bat
 buildtrim_rebuild.bat
 dobuild.bat
+
+# ─── Editor / build scratch ──────────────────────────────────────────────────
+.vs_tmp/
+*.cpp.tmp
+vc143.pdb
+
+# ─── Stray logs from a malformed redirect (literal "C:" in the filename) ─────
+C*UsersJoel*.log
+
+# ─── Time Travel Debugging traces (multi-GB, see project-ttd-workflow) ───────
+*.run
+*.out

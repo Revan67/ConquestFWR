@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -208,8 +208,8 @@
       <OutputFile>.\Debug/Trim.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Command>xcopy /Y "$(OutDir)Trim.dll" "E:\Games\GOG\Conquest Frontier Wars\"
-xcopy /Y "$(OutDir)Trim.pdb" "E:\Games\GOG\Conquest Frontier Wars\"</Command>
+      <Command>xcopy /Y "$(OutDir)Trim.dll" "D:\Games\GOG\Conquest Frontier Wars\"
+xcopy /Y "$(OutDir)Trim.pdb" "D:\Games\GOG\Conquest Frontier Wars\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">

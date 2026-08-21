@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -308,8 +308,8 @@ rc /l 0x409 /fo Debug\Globals.res /d_DEBUG Globals.rc
       <OutputFile>.\Debug/Globals.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Command>xcopy /Y "$(OutDir)Globals.dll" "E:\Games\GOG\Conquest Frontier Wars\"
-xcopy /Y "$(OutDir)Globals.pdb" "E:\Games\GOG\Conquest Frontier Wars\"</Command>
+      <Command>xcopy /Y "$(OutDir)Globals.dll" "D:\Games\GOG\Conquest Frontier Wars\"
+xcopy /Y "$(OutDir)Globals.pdb" "D:\Games\GOG\Conquest Frontier Wars\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">
@@ -448,7 +448,7 @@ rc /l 0x409 /fo Final\Globals.res /dNDEBUG Globals.rc
     <None Include="RuseKeys.utf" />
     <None Include="Sfxdata.dat" />
     <CustomBuild Include="sfxdata.xmf">
-      <Command>python ..\..\..\Tools\xmiff2\xmiff2.py sfxdata.xmf ..\dinclude\Sfxid.h sfxdata.dat</Command>
+      <Command>py ..\..\..\Tools\xmiff2\xmiff2.py sfxdata.xmf ..\dinclude\Sfxid.h sfxdata.dat</Command>
       <Outputs>sfxdata.dat;%(Outputs)</Outputs>
     </CustomBuild>
   </ItemGroup>
