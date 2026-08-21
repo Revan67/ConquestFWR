@@ -88,24 +88,6 @@ void MeshInstance::Initialize(MeshArch * meshArch, struct IEngineInstance * engI
 			}
 		}
 	}
-	{
-		static int diagN = 0;
-		if(diagN < 20)
-		{
-			++diagN;
-			U32 matched = 0;
-			for(U32 i = 0; i < arch->GetNumFaceGroups(); ++i)
-				if(faceInstance[i] != INVALID_INSTANCE_INDEX) ++matched;
-			FILE* df = fopen("Debug\\mesh_diag.txt", "a");
-			if(df)
-			{
-				fprintf(df, "MeshInst::Init[%d] bDynamic=%d instanceIdx=%d(INVALID=%d) numFG=%d matched=%d\n",
-					diagN, (int)arch->bDynamic, (int)instanceIndex, (int)INVALID_INSTANCE_INDEX,
-					(int)arch->GetNumFaceGroups(), (int)matched);
-				fflush(df); fclose(df);
-			}
-		}
-	}
 }
 
 INSTANCE_INDEX MeshInstance::findInstanceFromArch(ARCHETYPE_INDEX baseArch)
@@ -182,27 +164,6 @@ void MeshInstance::Render()
 {
 	//this is just a sample
 	//  does not handle children and child transforms
-	{
-		static int diagN = 0;
-		if(diagN < 5)
-		{
-			++diagN;
-			FILE* df = fopen("Debug\\mesh_diag.txt", "a");
-			if(df)
-			{
-				fprintf(df, "MeshInst::Render[%d] numFG=%d\n", diagN, (int)arch->GetNumFaceGroups());
-				for(U32 dface = 0; dface < arch->GetNumFaceGroups(); ++dface)
-				{
-					IMaterial* dmat = arch->GetFaceArray()[dface].mat;
-					IMaterial* dfb = !dmat ? owner->GetMatManager()->FindMaterial("Default.txt") : (IMaterial*)0;
-					fprintf(df, "  fg[%d] mat=%s fallback=%s faceInst=%d numIdx=%d\n",
-						(int)dface, dmat ? "ok" : "NULL", dmat ? "n/a" : (dfb ? "ok" : "NULL"),
-						(int)faceInstance[dface], (int)arch->GetFaceArray()[dface].numIndex);
-				}
-				fflush(df); fclose(df);
-			}
-		}
-	}
 	for(U32 face = 0; face < arch->GetNumFaceGroups(); ++face)
 	{
 		IMaterial * mat = arch->GetFaceArray()[face].mat;

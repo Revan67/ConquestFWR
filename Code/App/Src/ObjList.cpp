@@ -1265,20 +1265,6 @@ void ObjectList::Render (void)
 	QueryPerformanceCounter((LARGE_INTEGER *)&firsttick);
 	const U32 currentSystem = SECTOR->GetCurrentSystem();
 	const U32 currentPlayer = MGlobals::GetThisPlayer();
-	{
-		static int diagN = 0;
-		if(diagN < 30)
-		{
-			++diagN;
-			FILE* df = fopen("Debug\\mesh_diag.txt", "a");
-			if(df)
-			{
-				fprintf(df, "ObjList::Render[%d] currentSystem=%u currentPlayer=%u\n",
-					diagN, (unsigned)currentSystem, (unsigned)currentPlayer);
-				fflush(df); fclose(df);
-			}
-		}
-	}
 	const USER_DEFAULTS & defaults = *DEFAULTS->GetDefaults();
 	const bool bPointRect = (selectionRect.top == selectionRect.bottom && selectionRect.right == selectionRect.left);
 
@@ -1300,6 +1286,24 @@ void ObjectList::Render (void)
 
 	// don't check for highlight when cursor is over the toolbar
 	bCheckRect = (bHasFocus && (bPointRect==false || TOOLBAR->bAlert==0));
+	// TEMP: bCheckRect gates the TestVisible loops below. If it is 0, TestVisible never
+	// runs, bVisible stays 0 for every object, and physUpdateControl bails at its
+	// bVisible==0 early-out -- which is why ship velocity is never updated.
+	{
+		static int _fn = 0;
+		if (_fn < 400)
+		{
+			++_fn;
+			FILE *_ff = fopen("debug/focus_diag.txt", _fn == 1 ? "w" : "a");
+			if (_ff)
+			{
+				fprintf(_ff, "[%d] bHasFocus=%d bPointRect=%d toolbarAlert=%d bCheckRect=%d",
+					_fn, (int)bHasFocus, (int)bPointRect, (int)TOOLBAR->bAlert, (int)bCheckRect);
+				fputc(10, _ff);
+				fclose(_ff);
+			}
+		}
+	}
 
 	//clearHighlightBits(highlightedList);
 	FlushHighlightedList();

@@ -1126,11 +1126,43 @@ static void initMissionData (const MPartNC & part, U32 dwMissionID)
 	part->dwMissionID = dwMissionID;
 	part->playerID = playerID;
 
-	// Guard: non-mission archetypes (lights, nebulae) don't have MISSION_DATA_BIN
-	// at offset +44, so pInitData reads garbage. Race out of range signals bad pInitData;
-	// bail before the out-of-bounds playerTechLevel access.
-	if ((unsigned)part->race > (unsigned)M_VYRIUM)
+	// Everything below indexes globalData.playerTechLevel[MAX_PLAYERS_PLUS_1][NUM_RACES_PLUS_1]
+	// (i.e. [9][5]) and globalData.techNode[playerID], so BOTH indices must be in range.
+	//
+	// playerID comes from dwMissionID & PLAYERID_MASK (0x0F), so it can legitimately arrive as
+	// 0..15 while the array only has 9 rows -- 9..15 reads off the end. That was previously
+	// unchecked.
+	//
+	// The race check is weaker than it looks and cannot be strengthened here: pInit->race and
+	// part->race are BOTH 4-bit bitfields, so a garbage pInit is already truncated to 0..15
+	// before we ever see it. Values landing in 0..4 are indistinguishable from valid ones.
+	// It bounds the array access, but it is not a reliable "is pInit sane" test.
+	const bool bBadRace   = ((unsigned)part->race > (unsigned)M_VYRIUM);
+	const bool bBadPlayer = (playerID > (U32)MAX_PLAYERS);
+	if (bBadRace || bBadPlayer)
+	{
+		// Identify what actually reaches here. obj->objClass is the engine-level class and is
+		// independent of pInit, so it still names the object when pInit is untrustworthy.
+		static int s_rejects = 0;
+		if (s_rejects < 50)
+		{
+			++s_rejects;
+			FILE* _rf = fopen("debug/archmismatch_diag.txt", s_rejects == 1 ? "w" : "a");
+			if (_rf)
+			{
+				fprintf(_rf, "REJECT[%d] reason=%s objClass=%d mObjClass=%d race=%u "
+					"displayName=%u dwMissionID=0x%08X playerID=%u pInit=%p obj=%p\n",
+					s_rejects,
+					bBadRace ? (bBadPlayer ? "race+player" : "race") : "player",
+					part.obj ? (int)part.obj->objClass : -1,
+					(int)part->mObjClass, (unsigned)part->race,
+					(unsigned)part.pInit->displayName, dwMissionID, playerID,
+					(const void*)part.pInit, (const void*)part.obj);
+				fclose(_rf);
+			}
+		}
 		return;
+	}
 
 	// Log only QuickLoad-path calls (low nibble of partID encodes playerID > 0).
 	// CreateInstance always allocates with playerID=0 in the low nibble.

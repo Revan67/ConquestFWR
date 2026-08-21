@@ -92,6 +92,66 @@ void * __stdcall early_heap_realloc(void *ptr, size_t size)
     return nh + 1;
 }
 
+/* ------------------------------------------------------------------------
+ * TEMP heap-ownership diagnostic.  REMOVE once the free-path bug is fixed.
+ *
+ * This runs inside the allocator, so it must not use the CRT: fprintf and
+ * friends allocate, which would recurse straight back into free().  Win32
+ * calls only, a re-entrancy guard, and a hard cap.
+ *
+ * Only blocks that get routed to DACOM (verdict 0) are logged -- those are
+ * the ones that reach HEAP->FreeMemory and can fault.  The tag value tells
+ * us which case it is:
+ *     t=00000000  -> magic was poisoned by a previous early_heap_free,
+ *                    i.e. a DOUBLE FREE being misrouted into DACOM's heap
+ *     t=<other>   -> a genuine DACOM-owned block (expected, harmless)
+ * ---------------------------------------------------------------------- */
+static LONG g_hdiag_count = 0;
+static LONG g_hdiag_busy  = 0;
+
+static void hdiag_hex8(char *out, DWORD v)
+{
+    static const char d[] = "0123456789ABCDEF";
+    int i;
+    for (i = 0; i < 8; ++i)
+        out[i] = d[(v >> ((7 - i) * 4)) & 0xF];
+}
+
+static void hdiag_log(void *ptr, DWORD tag)
+{
+    char   line[48];
+    int    n = 0;
+    HANDLE f;
+    DWORD  written;
+
+    if (InterlockedExchange(&g_hdiag_busy, 1) != 0)
+        return;                         /* already inside: do not recurse */
+
+    if (g_hdiag_count < 4000)
+    {
+        ++g_hdiag_count;
+
+        line[n++] = 'p'; line[n++] = '=';
+        hdiag_hex8(line + n, (DWORD)(ULONG_PTR)ptr); n += 8;
+        line[n++] = ' ';
+        line[n++] = 't'; line[n++] = '=';
+        hdiag_hex8(line + n, tag);                   n += 8;
+        line[n++] = '\r'; line[n++] = '\n';
+
+        f = CreateFileA("debug\\heap_diag.txt", FILE_APPEND_DATA,
+                        FILE_SHARE_READ | FILE_SHARE_WRITE, NULL,
+                        OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+        if (f != INVALID_HANDLE_VALUE)
+        {
+            SetFilePointer(f, 0, NULL, FILE_END);
+            WriteFile(f, line, (DWORD)n, &written, NULL);
+            CloseHandle(f);
+        }
+    }
+
+    InterlockedExchange(&g_hdiag_busy, 0);
+}
+
 /*
  * Returns non-zero if ptr was allocated from the early heap.
  * Reads the 4-byte magic stored immediately before the user pointer.
@@ -99,16 +159,24 @@ void * __stdcall early_heap_realloc(void *ptr, size_t size)
  */
 int __stdcall is_early_heap_block(void *ptr)
 {
+    DWORD tag;
+
     if (!ptr) return 0;
     /* ptr-4 may be unmapped if the UCRT allocated the block via HeapAlloc
      * without going through our malloc interception.  Use SEH to avoid the
      * AV.  Return 1 on fault so the caller routes to early_heap_free, which
      * uses HeapFree and fails gracefully on a wrong-heap pointer. */
     __try {
-        return (((early_hdr *)ptr) - 1)->magic == EARLY_HEAP_MAGIC;
+        tag = (((early_hdr *)ptr) - 1)->magic;
     } __except(EXCEPTION_EXECUTE_HANDLER) {
         return 1;
     }
+
+    if (tag == EARLY_HEAP_MAGIC)
+        return 1;
+
+    hdiag_log(ptr, tag);    /* TEMP: routed to DACOM -- record why */
+    return 0;
 }
 
 void __stdcall early_heap_free(void *ptr)

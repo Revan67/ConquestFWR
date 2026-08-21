@@ -376,20 +376,6 @@ void SpaceShip<SaveStruct,InitStruct>::PreRender (void)
 template <class SaveStruct, class InitStruct>
 void SpaceShip<SaveStruct,InitStruct>::Render (void)
 {
-	{
-		static int diagN = 0;
-		if(diagN < 20)
-		{
-			++diagN;
-			FILE* df = fopen("Debug\\mesh_diag.txt", "a");
-			if(df)
-			{
-				fprintf(df, "SpaceShip::Render[%d] bVisible=%d instanceMesh=%s\n",
-					diagN, (int)bVisible, instanceMesh ? "non-null" : "NULL");
-				fflush(df); fclose(df);
-			}
-		}
-	}
 	if (bVisible)
 	{
 		FRAME_preRender();
@@ -864,15 +850,6 @@ void SpaceShip<SaveStruct,InitStruct>::DEBUG_print (void) const
 template <class SaveStruct, class InitStruct>
 void SpaceShip<SaveStruct,InitStruct>::GotoPosition (const GRIDVECTOR & pos, U32 agentID, bool bSlowMove)
 {
-	{
-		static int diagN = 0;
-		if(diagN < 10)
-		{
-			++diagN;
-			FILE* df = fopen("Debug\\move_diag.txt", "a");
-			if(df) { fprintf(df, "GotoPosition[%d] agentID=%u sysID=%u isMoveActive=%d bAutoMove=%d bReady=%d\n", diagN, agentID, systemID, (int)isMoveActive(), (int)isAutoMovementEnabled(), (int)bReady); fflush(df); fclose(df); }
-		}
-	}
 	cancelWarp();
 	bRecallFighters = false;
 	moveToPos(pos, agentID, bSlowMove);		// start a move
@@ -1038,59 +1015,9 @@ void SpaceShip<SaveStruct,InitStruct>::QuickLoad (const char *szSaveLoadType, co
 {
 	MT_QSHIPLOAD qload;
 
-	{
-		static int diagN = 0;
-		if (diagN < 5 && buffer && bufferSize >= 4)
-		{
-			++diagN;
-			FILE* df = fopen("Debug\\orient_diag.txt", "a");
-			if (df)
-			{
-				const U8* b = (const U8*)buffer;
-				fprintf(df, "RawBuf[%d] name=%s size=%u bytes:", diagN, szInstanceName, bufferSize);
-				for (U32 k = 0; k < bufferSize && k < 16; ++k) fprintf(df, " %02X", b[k]);
-				fprintf(df, "\n");
-				fflush(df); fclose(df);
-			}
-		}
-	}
-
 	MISSION->CorrelateSymbol(szSaveLoadType, buffer, &qload);
 
-	{
-		static int diagN = 0;
-		if (diagN < 5)
-		{
-			++diagN;
-			FILE* df = fopen("Debug\\orient_diag.txt", "a");
-			if (df)
-			{
-				Vector i0 = transform.get_i(), j0 = transform.get_j(), k0 = transform.get_k();
-				float yawBefore = transform.get_yaw();
-				fprintf(df, "QuickLoad[%d] name=%s qload.yaw=%.3f yawBefore=%.3f\n", diagN, szInstanceName, qload.yaw, yawBefore);
-				fprintf(df, "  i=(%.3f,%.3f,%.3f) j=(%.3f,%.3f,%.3f) k=(%.3f,%.3f,%.3f)\n",
-					i0.x, i0.y, i0.z, j0.x, j0.y, j0.z, k0.x, k0.y, k0.z);
-				fflush(df); fclose(df);
-			}
-		}
-	}
 	transform.rotate_about_j(qload.yaw);
-	{
-		static int diagN2 = 0;
-		if (diagN2 < 20)
-		{
-			++diagN2;
-			FILE* df = fopen("Debug\\orient_diag.txt", "a");
-			if (df)
-			{
-				Vector i1 = transform.get_i(), j1 = transform.get_j(), k1 = transform.get_k();
-				float yawAfter = transform.get_yaw();
-				fprintf(df, "  -> yawAfter=%.3f i=(%.3f,%.3f,%.3f) j=(%.3f,%.3f,%.3f) k=(%.3f,%.3f,%.3f)\n",
-					yawAfter, i1.x, i1.y, i1.z, j1.x, j1.y, j1.z, k1.x, k1.y, k1.z);
-				fflush(df); fclose(df);
-			}
-		}
-	}
 	U32 newPartID = MGlobals::CreateNewPartID(MGlobals::GetPlayerFromPartID(qload.dwMissionID));
 	BASE_SPACESHIP_DATA	* data  = (BASE_SPACESHIP_DATA	*) ARCHLIST->GetArchetypeData(pArchetype);
 	if (data->objClass == OC_SPACESHIP && data->type == SSC_FLAGSHIP)
@@ -1143,20 +1070,6 @@ void SpaceShip<SaveStruct,InitStruct>::RevealFog (const U32 currentSystem)
 template <class SaveStruct, class InitStruct>
 void SpaceShip<SaveStruct,InitStruct>::CastVisibleArea (void)
 {
-	{
-		static int diagN = 0;
-		if(diagN < 30)
-		{
-			++diagN;
-			FILE* df = fopen("Debug\\mesh_diag.txt", "a");
-			if(df)
-			{
-				fprintf(df, "CastVisibleArea[%d] playerID=%u systemID=%u hyperMask=%d\n",
-					diagN, (unsigned)playerID, (unsigned)systemID, (int)(systemID & HYPER_SYSTEM_MASK));
-				fflush(df); fclose(df);
-			}
-		}
-	}
 	if (playerID == 0 || playerID > MAX_PLAYERS) return;
 	if ((systemID & HYPER_SYSTEM_MASK)==0)
 	{

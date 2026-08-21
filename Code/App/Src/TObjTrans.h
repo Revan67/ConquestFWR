@@ -210,6 +210,14 @@ ObjectTransform< Base >::ObjectTransform (void) :
 {
 	instanceMesh = 0;
 	instanceIndex = -1;
+	// Neither Vector has a zeroing default constructor, so without this a newly created
+	// object starts with whatever the heap allocation happened to contain. Under the
+	// VS2022 COMHeap that is routinely a dead object's leftovers, which physUpdatePhysics
+	// then integrates as real world-space motion -- ships drift with no order given, and
+	// ang_velocity garbage rotates them. Retail's allocator handed back memory that
+	// happened to be zero here, which is why the missing init never showed up.
+	velocity.zero();
+	ang_velocity.zero();
 }
 //---------------------------------------------------------------------------
 //
@@ -254,20 +262,6 @@ void ObjectTransform< Base >::loadTransform (TRANSSAVEINFO & load)
 template <class Base>
 void ObjectTransform< Base >::initTransform (const TRANSINITINFO & data)
 {
-	{
-		static int diagN = 0;
-		if(diagN < 30)
-		{
-			++diagN;
-			FILE* df = fopen("Debug\\mesh_diag.txt", "a");
-			if(df)
-			{
-				fprintf(df, "initTransform[%d] archIndex=%d meshArch=%s\n",
-					diagN, (int)data.archIndex, data.meshArch ? "non-null" : "NULL");
-				fflush(df); fclose(df);
-			}
-		}
-	}
 	if (data.archIndex != -1)
 	{
 		ENGINE->create_instance2(data.archIndex, this);

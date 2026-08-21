@@ -205,6 +205,17 @@ public:
 			currentPosition = transform.translation;
 			bMoveActive=0;
 		}
+		// This is a full stop, so clear the whole velocity vector.
+		//
+		// velocity is WORLD space: ObjectPhysics::physUpdatePhysics integrates it as
+		// translation += velocity * dt. Retail zeroed only z, which pairs with the
+		// cruiseDepth reset below (z is the depth axis) -- the move system drives x/y
+		// travel itself and never assigns linear velocity, so in retail x/y were expected
+		// to already be zero here. If they are not, something upstream deposited world
+		// velocity into this object; zeroing it here stops the drift but does not explain
+		// it. See the open post-arrival drift investigation.
+		velocity.x = 0;
+		velocity.y = 0;
 		velocity.z = 0;
 		setCruiseSpeed(0);		// set it back to default
 		setForwardAcceleration(0);	// set it back to default

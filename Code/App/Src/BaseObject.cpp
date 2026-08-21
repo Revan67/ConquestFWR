@@ -389,6 +389,26 @@ void IBaseObject::TestVisible (const USER_DEFAULTS & defaults, const U32 current
 			   (IsVisibleToPlayer(currentPlayer) ||
 			     defaults.bVisibilityRulesOff ||
 			     defaults.bEditorMode) );
+
+	// TEMP: which term fails? Strip once bVisible==0 is explained.
+	{
+		static int _tv = 0;
+		if (_tv < 400 && GetSystemID() == currentSystem)
+		{
+			++_tv;
+			FILE *_tf = fopen("debug/testvis_diag.txt", _tv == 1 ? "w" : "a");
+			if (_tf)
+			{
+				fprintf(_tf, "[%d] id=0x%08X sys=%u cur=%u visFlags=0x%08X curPlayer=%u visToPlayer=%d rulesOff=%d editor=%d -> vis=%d",
+					_tv, (unsigned)GetPartID(), (unsigned)GetSystemID(), (unsigned)currentSystem,
+					(unsigned)visibilityFlags, (unsigned)currentPlayer,
+					(int)IsVisibleToPlayer(currentPlayer), (int)defaults.bVisibilityRulesOff,
+					(int)defaults.bEditorMode, (int)bVisible);
+				fputc(10, _tf);
+				fclose(_tf);
+			}
+		}
+	}
 }
 //-------------------------------------------------------------------
 // call the FogOfWar manager, if appropriate
