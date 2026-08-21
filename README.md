@@ -63,9 +63,20 @@ You do **not** need a copy of the retail game to build from source. However, to 
 
 - **Visual Studio 2022** (Community or higher) with the Desktop C++ workload
 - **Windows 10 or 11** (32-bit target; build host must support WoW64)
-- **Python 3** on `PATH` — required for the `sfxdata.xmf → sfxdata.dat` build step in Globals.vcxproj
+- **Python 3** — required for the `sfxdata.xmf → sfxdata.dat` step in `Globals.vcxproj`. The step invokes `py` (the launcher), not bare `python`, because on a default Windows install `python` resolves to the Microsoft Store alias stub and fails.
+- **DirectX SDK (June 2010)** — `Conquest.exe` uses `ID3DXEffect`/`D3DXMATRIX` directly and links `d3dx9d.lib`. See below.
 - DirectX 9 runtime (included with Windows 10/11 via DirectX End-User Runtime)
 - A retail copy of Conquest: Frontier Wars for the runtime media assets
+
+### DirectX SDK — extract, do not install
+
+`DXSDK_Jun10.exe` fails with **error S1023** on any machine carrying a modern VC++ 2010 redistributable, which is essentially all of them. Rather than uninstalling and reinstating system redistributables, extract the archive — it is a plain self-extractor:
+
+```
+7z x DXSDK_Jun10.exe -o"<repo-parent>" "DXSDK/Include/*" "DXSDK/Lib/*"
+```
+
+`Directory.Build.props` resolves the SDK repo-relatively (`$(MSBuildThisFileDirectory)..\DXSDK`), so placing `DXSDK/` beside the repo is all that is required. No install, no admin, no redistributable downgrade. Only four files actually matter: `Include\d3dx9.h`, `Lib\x86\d3dx9.lib`, `d3dx9d.lib`, and `DxGuid.lib` (`dinput8.lib` comes from the Windows SDK).
 
 The original source targeted VS6 / Windows XP / DirectX 8–9. This project retargets to VS2022 while keeping the 32-bit Win32 ABI.
 
@@ -84,7 +95,41 @@ The original source targeted VS6 / Windows XP / DirectX 8–9. This project reta
 
 5. Copy the outputs to your Conquest installation directory.
 
+**Build the solution, not a single project.** `Conquest.vcxproj` does *not* build Mission/Globals/Trim/ZBatcher — they are not project references, they are consumed as prebuilt `.lib` files from the shared `.\Debug\` directory. Building the project alone silently produces a fresh `Conquest.exe` linked against stale sibling DLLs, which is exactly the exe/DLL ABI mismatch this codebase is sensitive to. Use `Code\App\Src\Conquest.sln` with `/t:Rebuild`.
+
+`Conquest.vcxproj`'s post-build reports `Skip (not found): Globals.pdb / Trim.pdb / ZBatcher.pdb` — harmless, as each of those projects deploys its own PDB from its own post-build step.
+
 **Note:** The engine library DLLs under `Code/Libs/` are prebuilt. Only the App projects (Conquest, Mission, Trim, ZBatcher, Globals) are rebuilt from source.
+
+---
+
+## Debugging
+
+Symbols are deployed alongside the binaries, so the debugger is far more effective than print statements for this codebase.
+
+**Time Travel Debugging** is the highest-leverage tool available. `tttracer.exe` ships with Windows; replay needs WinDbg (`winget install Microsoft.WinDbg`).
+
+```
+cd "<game install>"
+tttracer.exe -out <trace dir> -launch "<game install>\Conquest.Exe"
+```
+
+The `cd` is required — the traced process inherits the working directory, and the game exits within a second if it cannot find its data. Traces run about **300 MB/sec**, so keep sessions short or attach to an already-running process with `-attach <PID>` to skip the load.
+
+Replay is scriptable and headless:
+
+```
+WinDbgX.exe -y "<sympath>" -z "<trace>.run" -logo "<out>.txt" -c "$$><script.txt"
+```
+
+Set symbols with the `-y` flag; `.sympath` inside `-c` swallows the rest of the command line. Put commands in a script file — inline quoting of `dx` expressions does not survive the shell. Begin scripts with `.prefer_dml 0` so DML markup does not corrupt the log.
+
+The decisive feature is querying every call to a function across an entire recorded run:
+
+```
+dx @$cursession.TTD.Calls("Conquest!IBaseObject::TestVisible").Count()
+dx -r1 @$cursession.TTD.Calls("Mission!MGlobals::GetAllyMask").Select(c => c.ReturnValue).Take(20)
+```
 
 ---
 
@@ -153,6 +198,30 @@ All modifications are tracked in git with descriptive commit messages. The chang
   | `SHIPSILBUTTON_DATA` | 8 B |
   | `BT_FIGHTER_WING` | 208 B |
 
+### Mission-Script ABI
+
+The retail mission scripts — `Scripts\script01`–`script16.dll`, `Mantis_T.dll`, `Sol_T.dll`, all dated Oct 2012 — are prebuilt binaries that can never be recompiled. They bind to our `Mission.dll` by **decorated C++ export name**, which makes it a frozen ABI: any change to an `MScript`/`MGlobals` signature, parameter type, or calling convention breaks script binding outright.
+
+Verified by three-way `dumpbin` set arithmetic (script imports vs. retail `mission.dll` exports vs. ours): **153 symbols demanded from `Mission.dll` and 2 from `Trim.dll`, all satisfied.** Since MSVC mangling encodes calling convention, this also confirms `__cdecl`/`__stdcall` alignment. Re-runnable checks live in `Tools/abicheck/`; re-run them after touching any exported signature.
+
+Matching symbol names prove nothing about **struct layout** — `OrderTeleportTo(const MPartRef&, ...)` mangles identically whether `MPartRef` is 16 or 20 bytes. Nine types cross that boundary and none previously had a size assertion:
+
+  | Struct | Size | Notes |
+  |--------|------|-------|
+  | `MPartRef` | 16 B | passed to 82 exported functions |
+  | `UNIT_STANCE` | 4 B | enum, passed by value |
+  | `MGroupRef` | 92 B | |
+  | `TECHNODE` | 64 B | returned by value |
+  | `CQBRIEFINGITEM` | 80 B | stamps its own `sizeof` for run-time checks |
+  | `CQSCRIPTDATADESC` | 28 B | |
+  | `AIPersonality` | 40 B | stamps its own `sizeof`; `U32` bitfields |
+  | `MISSION_SAVELOAD` | 104 B | `U32` bitfields |
+  | `CQSCRIPTENTRY` | 24 B | |
+
+All are guarded by `#ifndef _ADB` so the ADB schema compiler does not see them. `AIPersonality` and `CQBRIEFINGITEM` write their own `sizeof` into a `size` member for runtime verification, so a size change there fails at *runtime* rather than at link time — worth remembering when editing either.
+
+Two pieces of known, benign drift remain: four symbols differ only in `wchar_t` mangling (VS6 typedef'd it as `unsigned short`, VS2022 treats it as native), none of which any script imports; and 28 exports exist that retail lacks, all present in the original source release as unshipped sequel API surface.
+
 ### Runtime Fixes (Phase 2)
 
 - **Ship rendering:** `SpaceShip::renderSpaceShip` now falls back to `ENGINE->render_instance` when `instanceMesh` is NULL, restoring ship visibility in-mission.
@@ -161,6 +230,15 @@ All modifications are tracked in git with descriptive commit messages. The chang
 - **Null map guard:** `Menu_tb::checkRect` returns early if `map` is NULL, preventing an AV on mission load when mouse-move fires during toolbar teardown.
 - **sfxdata build step:** `Globals.vcxproj` now runs `Tools/xmiff2/xmiff2.py` as a `<CustomBuild>` step on `sfxdata.xmf`, replacing the legacy 16-bit XMIFF.EXE tool that was incompatible with Win64.
 - **Conquest.vcxproj post-build:** Replaced eight `xcopy` commands (which aborted on missing `.pdb` files) with a single PowerShell `Copy-Item` loop that silently skips files not yet present.
+- **Uninitialised `velocity` / `ang_velocity`:** The `ObjectTransform` constructor set only `instanceMesh` and `instanceIndex`. Both `Vector` members lack a zeroing default constructor, so a newly created object inherited whatever the heap block contained and `ObjectPhysics::physUpdatePhysics` then integrated it as genuine world motion — objects drifting with no order given, and spurious rotation from garbage angular velocity. Invisible under VS6, whose allocator returned zeroed memory here; our COMHeap/MSHeap rerouting reuses blocks with stale contents. Same class as the earlier `teraParticle`/`halo` fix.
+- **`initMissionData` bounds check:** `playerID` derives from `dwMissionID & PLAYERID_MASK` (`0x0F`) and so can legitimately arrive as 0–15, while `globalData.playerTechLevel` is `[9][5]` — values 9–15 read past the end across roughly eight subsequent accesses. Previously unchecked; only `race` was validated.
+
+### Known Open Issues
+
+- **Post-arrival drift.** Ships do not stop on reaching their destination. Traced as far as: velocity is never recomputed because `physUpdateControl` returns early on `bVisible == 0`, and `bVisible` measured 0 for every object across 2787 samples — yet `TestVisible` demonstrably runs (6205 calls) and `MGlobals::GetAllyMask` returns valid masks (23601 calls). Cause still open.
+- **Access violations in `_free()`.** 65 identical stacks through DACOM's `HEAP->FreeMemory` into `RtlFreeHeap`, the signature of a corrupted or foreign heap block. Not memory exhaustion — the faults occur during *release*, no allocation failures appear in any log, and the process sits at ~426 MB. Note that debug CRT DLLs (`ucrtbased`, `VCRUNTIME140D`, `MSVCP140D`) are present in the process, so more than one CRT heap is live.
+- **`USER_DEFAULTS` layout drift.** Ours serialises as 104 bytes at version 11; retail wrote 100 bytes at version 10. It is persisted to and reloaded from the registry, so the divergence round-trips.
+- **UI layout.** Resource values render in the toolbar rather than the top strip; the single-unit context window omits the six upgrade bars and shows a system name instead of the unit name; the sector-map circle renders empty.
 
 ### CQ2 (Unshipped Sequel) Removals
 
