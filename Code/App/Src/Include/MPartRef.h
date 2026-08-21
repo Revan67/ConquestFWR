@@ -75,6 +75,11 @@ public:
 	friend struct MGroupRef;
 };
 
+// MPartRef crosses the mission-script ABI boundary: the retail script DLLs
+// (Scripts\script01-16.dll, Mantis_T.dll, Sol_T.dll) pass it by reference to 82
+// exported MScript functions and can never be recompiled. Its layout is frozen.
+static_assert(sizeof(MPartRef) == 16, "MPartRef must be 16 bytes to match the retail script ABI");
+
 #else
 
 struct MPartRef

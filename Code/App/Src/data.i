@@ -3662,6 +3662,11 @@ enum UNIT_STANCE
 };
 
 
+
+
+
+
+
 enum HARVEST_STANCE 
 {
 	HS_NO_STANCE = 0,
@@ -4673,6 +4678,12 @@ struct TECHNODE
 
 
 
+
+
+
+
+
+
 struct ROCKING_DATA : DYNAMICS_DATA
 {
 	SINGLE rockLinearMax, rockAngMax;			
@@ -5171,6 +5182,13 @@ struct MISSION_SAVELOAD
 	__readonly U32 lastOpCompleted;
 	__readonly U32 pendingOp;		
 };
+
+
+
+
+
+
+
 
 
 

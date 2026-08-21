@@ -87,6 +87,7 @@ struct CQSCRIPTENTRY
 	U32   eventFlags;			// See eventFlag documentation, above
 	CQPROGFACTORY factory;
 };
+static_assert(sizeof(CQSCRIPTENTRY) == 24, "CQSCRIPTENTRY must be 24 bytes to match the retail script ABI");
 
 //---------------------------------------------------------------------------
 //
@@ -100,6 +101,7 @@ struct CQSCRIPTDATADESC
 	U32 typeSize;				// size of the save struct
 	struct HINSTANCE__ * hLocal;				// handle to the localization module
 };
+static_assert(sizeof(CQSCRIPTDATADESC) == 28, "CQSCRIPTDATADESC must be 28 bytes to match the retail script ABI");
 
 //---------------------------------------------------------------------------
 //
@@ -119,6 +121,8 @@ struct CQBRIEFINGITEM
 	bool bContinueAnimating;
 	bool bLoopAnimation;
 };
+// Also stamps its own size into the 'size' field, so retail scripts can compare against it.
+static_assert(sizeof(CQBRIEFINGITEM) == 80, "CQBRIEFINGITEM must be 80 bytes to match the retail script ABI");
 
 //---------------------------------------------------------------------------
 //
@@ -217,6 +221,10 @@ struct AIPersonality
 	S8				nShipyardPatience;			// 0-20  0 is most patient, 20 builds whatever it can
 	S32				nPanicThreshold;
 };
+// Crosses the retail script ABI and stamps its own 'size' for run-time verification.
+// The buildMask bitfields must all stay U32: mixed underlying types repack under VS2022
+// and silently change the layout (see 836a0c2).
+static_assert(sizeof(AIPersonality) == 40, "AIPersonality must be 40 bytes to match the retail script ABI");
 //-------------------------------------------------------------
 //
 inline AIPersonality::AIPersonality (void)

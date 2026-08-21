@@ -579,5 +579,11 @@ struct TECHNODE
 #endif
 };
 
+#ifndef _ADB
+// Returned BY VALUE from MGlobals::GetCurrentTechLevel / GetWorkingTechLevel /
+// GetTechAvailable and MScript::GetPlayerTech, all called by the retail script DLLs.
+static_assert(sizeof(TECHNODE) == 64, "TECHNODE must be 64 bytes to match the retail script ABI");
+#endif
+
 
 #endif

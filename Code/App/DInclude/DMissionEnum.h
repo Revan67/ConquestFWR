@@ -266,6 +266,11 @@ enum UNIT_STANCE
 	US_STAND,
 	US_STOP
 };
+#ifndef _ADB
+// Passed BY VALUE across the retail mission-script ABI, so its width is frozen at
+// the VS6 default of int. Never give this an explicit narrow underlying type.
+static_assert(sizeof(UNIT_STANCE) == 4, "UNIT_STANCE must be 4 bytes to match the retail script ABI");
+#endif
 //--------------------------------------------------------------------------//
 //
 enum HARVEST_STANCE 

@@ -93,5 +93,12 @@ struct MISSION_SAVELOAD
 	__readonly U32 pendingOp;		// operation now active, or queued for this unit
 };
 
+#ifndef _ADB
+// Reached through MPartRef::operator-> by the retail script DLLs, so its layout is
+// frozen. The systemID/race/playerID bitfields must stay U32 (see the note above):
+// mixing underlying types repacks them under VS2022 and shifts every later field.
+static_assert(sizeof(MISSION_SAVELOAD) == 104, "MISSION_SAVELOAD must be 104 bytes to match the retail script ABI");
+#endif
+
 
 #endif

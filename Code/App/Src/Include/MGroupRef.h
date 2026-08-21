@@ -77,6 +77,9 @@ public:
 
 	friend struct MScript;
 };
+
+// Frozen by the retail mission-script ABI - see the note on MPartRef.
+static_assert(sizeof(MGroupRef) == 92, "MGroupRef must be 92 bytes to match the retail script ABI");
 #endif  // end !_ADB
 
 //---------------------------------------------------------------------------
