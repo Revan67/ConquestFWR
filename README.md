@@ -235,7 +235,11 @@ Two pieces of known, benign drift remain: four symbols differ only in `wchar_t` 
 
 ### Known Open Issues
 
-- **Post-arrival drift.** Ships do not stop on reaching their destination. Traced as far as: velocity is never recomputed because `physUpdateControl` returns early on `bVisible == 0`, and `bVisible` measured 0 for every object across 2787 samples — yet `TestVisible` demonstrably runs (6205 calls) and `MGlobals::GetAllyMask` returns valid masks (23601 calls). Cause still open.
+- **Post-arrival drift.** Ships do not stop on reaching their destination. Observed directly: a moving ship holds an identical velocity every frame while its position advances, and `bMoveActive` never clears. The cause is **not** yet known.
+
+  A previous explanation — that `physUpdateControl` returns early on `bVisible == 0` — has been **disproved** by Time Travel Debugging. Player-owned ships do get `visibilityFlags = 0x1` and `bVisible = 1` (verified on `TNS Seattle`); Mantis units correctly carry `0x2` and are invisible to player 1 as fog of war intends. The visibility system is working.
+
+  That wrong conclusion came from printf diagnostics with sample caps (`_n < 300`, `_tv < 400`). A cap retains the *first* N calls, and the first few hundred occur during mission load when nothing is visible yet — so the measurement described the loading screen, not gameplay. Any future instrumentation here must sample steady-state gameplay, or preferably use a TTD query over the whole run instead.
 - **Access violations in `_free()`.** 65 identical stacks through DACOM's `HEAP->FreeMemory` into `RtlFreeHeap`, the signature of a corrupted or foreign heap block. Not memory exhaustion — the faults occur during *release*, no allocation failures appear in any log, and the process sits at ~426 MB. Note that debug CRT DLLs (`ucrtbased`, `VCRUNTIME140D`, `MSVCP140D`) are present in the process, so more than one CRT heap is live.
 - **`USER_DEFAULTS` layout drift.** Ours serialises as 104 bytes at version 11; retail wrote 100 bytes at version 10. It is persisted to and reloaded from the registry, so the divergence round-trips.
 - **UI layout.** Resource values render in the toolbar rather than the top strip; the single-unit context window omits the six upgrade bars and shows a system name instead of the unit name; the sector-map circle renders empty.
