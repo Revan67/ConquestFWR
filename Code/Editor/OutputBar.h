@@ -6,7 +6,7 @@
 struct COutputBar : public CSidebar
 {
 	virtual ~COutputBar();
-	virtual DoPaint( CPaintDC& );
+	virtual int DoPaint( CPaintDC& );
 };
 
 #endif  // OUTPUT_BAR_H

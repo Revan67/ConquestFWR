@@ -36,7 +36,7 @@ public:
 	virtual ~CSidebar();
 
 public:
-	virtual DoPaint( CPaintDC& ) = 0;
+	virtual int DoPaint( CPaintDC& ) = 0;
 
 	// Generated message map functions
 protected:

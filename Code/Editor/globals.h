@@ -281,7 +281,7 @@ CQEXTERN void __stdcall AddToGlobalStartupList (struct GlobalComponent & compone
 // free floating globals
 namespace Editor
 {
-	const MAX_PLAYERS = 16;
+	const int MAX_PLAYERS = 16;
 
 	extern U8 playerID;
 

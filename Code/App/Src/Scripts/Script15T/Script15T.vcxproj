@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32"><Configuration>Debug</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32"><Configuration>Release</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{61CF8A53-60EC-5258-9A5B-5D243A38E0BA}</ProjectGuid>
+    <RootNamespace>Script15T</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseDebugLibraries Condition="'$(Configuration)'=='Debug'">true</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup>
+    <!-- Build only. NOT deployed: the game loads the retail Oct-2012 script DLLs from
+         Scripts\. Outputs go to Scripts\Build\ until Tools/abicheck validates them. -->
+    <OutDir>$(MSBuildThisFileDirectory)..\Build\</OutDir>
+    <IntDir>$(MSBuildThisFileDirectory)$(Configuration)\</IntDir>
+    <TargetName>SCRIPT15</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\include;..\include;..\..\..\DInclude;..\..\..\src;..\..\..\..\Libs\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;BUILD_SCRIPTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)'=='Debug'">_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)'=='Release'">NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <!-- VS2003 RuntimeLibrary="4" was /ML (single-threaded static), removed from modern
+           MSVC. Mapped to /MT to match Mission.vcxproj and the COMHeap requirement. -->
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <!-- VS6 leaked the for-init variable into the enclosing scope, and several scripts
+           rely on it (for (int x=0;...) followed by for (x=0;...)). /Zc:forScope- restores
+           that behaviour rather than rewriting dozens of loops. -->
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <!-- DMTechNode.h uses CQASSERT but includes only DBaseData.h; the game picks up
+           CQTrace.h earlier in its include chains, the scripts do not. -->
+      <ForcedIncludeFiles>windows.h;CQTrace.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/FS %(AdditionalOptions)</AdditionalOptions>
+      <Optimization Condition="'$(Configuration)'=='Debug'">Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>dacom.lib;..\..\Debug\Mission.lib;..\..\Debug\Trim.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\Libs\Static\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="DataDef.cpp" />
+    <ClCompile Include="Script15T.cpp" />
+    <ClCompile Include="..\Helper\helper.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Script15T.rc" />
+  </ItemGroup>
+  <ItemDefinitionGroup>
+    <PreBuildEvent>
+      <!-- Each script embeds its own parser schema: SCRIPTnn.rc has
+           IDR_PARSER_1 PARSER "DataDef.i", the same pattern Globals.dll uses for data.i.
+           DataDef.i is the C preprocessor run over DataDef.cpp with _ADB defined. -->
+      <Command>cl /P /EP /nologo /I..\include /I..\..\include /D_ADB DataDef.cpp</Command>
+      <Message>Preprocessing Data Definitions -> DataDef.i</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

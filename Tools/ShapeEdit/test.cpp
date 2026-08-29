@@ -1,7 +1,8 @@
 
 #include <io.h>
 #include <stdio.h>
-#include <iostream.h>
+#include <iostream>
+using namespace std;
 #include <windows.h>
 #include "resource.h"
 

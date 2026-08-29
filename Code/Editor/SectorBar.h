@@ -8,7 +8,7 @@ class CSectorBar : public CSidebar
 public:
 	CSectorBar();
 	virtual ~CSectorBar();
-	virtual DoPaint( CPaintDC& );
+	virtual int DoPaint( CPaintDC& );
 
 private:
 	CBitmap m_bitmap;

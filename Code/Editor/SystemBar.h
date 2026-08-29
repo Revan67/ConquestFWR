@@ -6,7 +6,7 @@
 struct CSystemBar : public CSidebar
 {
 	virtual ~CSystemBar();
-	virtual DoPaint( CPaintDC& );
+	virtual int DoPaint( CPaintDC& );
 };
 
 #endif  // SYSTEM_BAR_H

@@ -66,3 +66,14 @@ C*UsersJoel*.log
 # ─── Time Travel Debugging traces (multi-GB, see project-ttd-workflow) ───────
 *.run
 *.out
+
+# Build outputs from the converted script / tool projects (2026-08-28)
+Code/App/Src/Scripts/Build/
+Code/App/Src/Scripts/*/Debug/
+Code/App/Src/Scripts/*/Release/
+Code/App/Src/Scripts/*/DataDef.i
+Code/App/Src/Scripts/*/*.obj
+Tools/ShapeEdit/Debug/
+Tools/ShapeEdit/Release/
+Code/Editor/Debug/
+Code/Editor/Release/

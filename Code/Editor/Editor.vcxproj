@@ -43,6 +43,15 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
+    <!-- MFC's afxwin.h pulls in wincodec.h. The June-2010 DXSDK ships an old copy, and
+         AdditionalIncludeDirectories is searched BEFORE IncludePath, so the stale header
+         shadowed the Windows SDK one (error C2061 on DXGI_JPEG_AC_HUFFMAN_TABLE).
+         Blank the shared DXSDK entry for this project and append it to IncludePath instead,
+         so the modern SDK wins. -->
+    <DXSDK_IncludeDir></DXSDK_IncludeDir>
+    <IncludePath>$(IncludePath);$(MSBuildThisFileDirectory)..\..\..\DXSDK\Include</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup>
     <_ProjectFileVersion>17.0.33205.214</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -58,7 +67,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\Libs\Inclue;..\App\Src\Include;..\App\Src;..\App\DInclude;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Libs\Include;..\App\Src\Include;..\App\Src;..\App\DInclude;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -95,7 +104,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\treelist;Z:\CQ2\Code\App\DInclude;..\Libs\Inclue;..\App\Src\Include;..\App\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\treelist;..\App\DInclude;..\Libs\Include;..\App\Src\Include;..\App\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;EDITOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -109,7 +118,8 @@
       <BrowseInformation>true</BrowseInformation>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/FS %(AdditionalOptions)</AdditionalOptions>
       <CompileAs>Default</CompileAs>
     </ClCompile>
     <Link>
@@ -127,7 +137,7 @@
     </Link>
     <Midl>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Z:\CQ2\Code\App\DInclude;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\App\DInclude;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetEnvironment>Win32</TargetEnvironment>

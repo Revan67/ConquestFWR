@@ -12,7 +12,7 @@ class CEntityBar : public CSidebar
 {
 public:
 	virtual ~CEntityBar();
-	virtual DoPaint( CPaintDC& );
+	virtual int DoPaint( CPaintDC& );
 
 	virtual bool Update();
 
