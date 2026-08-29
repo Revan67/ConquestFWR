@@ -67,6 +67,12 @@ struct _NO_VTABLE ObjectExtent : public Base, IWeaponTarget, IExplosionOwner, IE
 	BOOL32 bZ;*/
 	const struct EXTENT_DATA *extentData;
 
+	// Mesh structure -- restored to ObjectExtent 2026-08-29 (CQ2 split it out into an orphaned
+	// ObjectRender mixin and dropped the accessors from IExtent). Read-only mesh tree used for
+	// extent slicing and explosion debris; the render pass itself is separate (instanceMesh).
+	IMeshInfoTree *mesh_info;
+	MeshChain      mc;
+
 	//S32 numChildren;
 
 	typename typedef Base::INITINFO EXTENTINITINFO;
@@ -88,6 +94,16 @@ struct _NO_VTABLE ObjectExtent : public Base, IWeaponTarget, IExplosionOwner, IE
 	virtual BOOL32 GetModelCollisionPosition (Vector &collide_point,Vector &dir,const Vector &start,const Vector &direction);
 
 	virtual BOOL32 GetCollisionPosition (Vector &collide_point,Vector &dir,const Vector &start,const Vector &direction);
+
+	// IExtent mesh accessors (restored from ObjectRender).
+	virtual MeshChain & GetMeshChain () { return mc; }
+	virtual IMeshInfoTree * GetMeshInfoTree () { return mesh_info; }
+	virtual void SetMeshInfoTree (IMeshInfoTree *_mesh_info)
+	{
+		mesh_info = _mesh_info;
+		if (_mesh_info)
+			mc.numChildren = mesh_info->ListChildren(mc.mi);
+	}
 
 
 	//IExtent
@@ -189,6 +205,10 @@ void ObjectExtent< Base >::initExtents (const EXTENTINITINFO & data)
 	EXTENT_DATA *extentDataRW;
 	extentDataRW = (EXTENT_DATA *)&data.extent;
 	extentData = extentDataRW;
+
+	// build the mesh info tree (was ObjectRender::initRender; restored here)
+	mesh_info = CreateMeshInfoTree(instanceIndex);
+	mc.numChildren = mesh_info->ListChildren(mc.mi);
 
 	if (extentData->_step == 0.0f)
 	{

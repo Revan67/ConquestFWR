@@ -66,6 +66,7 @@ struct _NO_VTABLE IDebris : IObject
 };
 //--------------------------------------------------------------------------//
 //
+struct IMeshInfoTree;
 struct _NO_VTABLE IExtent : IObject
 {
 	virtual void GetExtentInfo (const RECT *&extents,SINGLE *z_step,SINGLE *z_min,U8 *slices) = 0;
@@ -79,6 +80,11 @@ struct _NO_VTABLE IExtent : IObject
 	virtual const RECT *GetExtentRect (SINGLE z_val) = 0; 
 
 	virtual void AddChildBlast (IBaseObject *blast) = 0;
+
+	// Restored 2026-08-29: CQ2 dropped these from IExtent and orphaned ObjectRender.
+	virtual MeshChain & GetMeshChain () = 0;
+	virtual IMeshInfoTree * GetMeshInfoTree () = 0;
+	virtual void SetMeshInfoTree (IMeshInfoTree *_mesh_info) = 0;
 };
 //---------------------------------------------------------------------------
 //-----------------------END IExplosion.h------------------------------------
