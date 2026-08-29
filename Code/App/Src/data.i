@@ -18432,16 +18432,9 @@ struct OBJECT_GENERATOR_VIEW
 struct BT_TRIGGER : BASIC_DATA
 {
 	char fileName[32];
-	MISSION_DATA missionData;		
-
-	enum Type
-	{
-		SPHERE,
-		REGION,
-		LINE
-	};
-	Type type;
-	float size;
+	MISSION_DATA missionData;
+	
+	
 };
 
 

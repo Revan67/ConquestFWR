@@ -22,16 +22,9 @@
 struct BT_TRIGGER : BASIC_DATA
 {
 	char fileName[GT_PATH];
-	MISSION_DATA missionData;		// retail schema: full 72-byte MISSION_DATA
-
-	enum Type
-	{
-		SPHERE,
-		REGION,
-		LINE
-	};
-	Type type;
-	float size;
+	MISSION_DATA missionData;
+	// enum Type / Type type / float size were CQ2 additions absent from retail and never
+	// read by Trigger.cpp. They made every trigger record 8 bytes too long. Removed 2026-08-28.
 };
 //----------------------------------------------------------------
 //
