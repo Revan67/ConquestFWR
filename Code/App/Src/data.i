@@ -4755,7 +4755,7 @@ struct EXTENT_DATA
 	SINGLE _step;
 	SINGLE _min;
 	SINGLE min_slice,max_slice;
-	BOOL32 bX;
+	BOOL32 bZ;	
 };
 
 
@@ -6174,7 +6174,7 @@ struct BASE_LAUNCHER : BASIC_DATA
 	S32 supplyCost;
 	SINGLE refirePeriod;
 
-	U32 launcherSpecialID;
+	SINGLE slowRefirePeriod;	
 };
 
 
@@ -18186,8 +18186,8 @@ struct BT_MAP_GEN
 		char gasPlanets[6][32];
 		char habitablePlanets[6][32];
 		char otherPlanets[6][32];
-
-		char moonTypes[6][32];
+		
+		
 
 		MAP_GEN_ENUM::SECTOR_SIZE sizeOk;
 		U32 minSize;
@@ -18198,10 +18198,7 @@ struct BT_MAP_GEN
 		U32 numMetalPlanets[3];
 		U32 numGasPlanets[3];
 		U32 numOtherPlanets[3];
-
-		U32 minMoonsPerPlanet;
-		U32 maxMoonsPerPlanet;
-		MAP_GEN_ENUM::DMAP_FUNC moonNumberFunc;
+		
 
 		U32 numNuggetPatchesMetal[3];
 		U32 numNuggetPatchesGas[3];

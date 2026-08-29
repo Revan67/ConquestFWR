@@ -251,7 +251,7 @@ void ObjectDamage< Base >::initDamage (const DAMAGEINITINFO & data)
 		
 	}*/
 
-	if (extentData->bX)
+	if (extentData->bZ)
 		sizeFactor = (box[BBOX_MAX_X]-box[BBOX_MIN_X])*0.00025;
 	else
 		sizeFactor = (box[BBOX_MAX_Y]-box[BBOX_MIN_Y])*0.00025;
@@ -430,7 +430,7 @@ BOOL32 ObjectDamage< Base >::updateDamage (void)
 			
 
 			Vector src = damageSave[choice].pos;
-			if (extentData->bX)
+			if (extentData->bZ)
 			{
 			//	pos = (src.z-_min)/(box[BBOX_MAX_Z]-_min);
 				pos = src.x;
@@ -442,7 +442,7 @@ BOOL32 ObjectDamage< Base >::updateDamage (void)
 			}
 
 			const RECT *rect = GetExtentRect(pos);
-			if (extentData->bX)
+			if (extentData->bZ)
 			{
 				fire[slot].trans.translation.x = pos;
 				if (src.y < 0.8*rect->left)
@@ -499,7 +499,7 @@ BOOL32 ObjectDamage< Base >::updateDamage (void)
 			
 
 			Vector src = damageSave[choice].pos;
-			if (extentData->bX)
+			if (extentData->bZ)
 			{
 		//		pos = (src.z-_min)/(box[BBOX_MAX_Z]-_min);
 				pos = src.x;
@@ -511,7 +511,7 @@ BOOL32 ObjectDamage< Base >::updateDamage (void)
 			}
 
 			const RECT *rect = GetExtentRect(pos);
-			if (extentData->bX)
+			if (extentData->bZ)
 			{
 				trans.translation.x = pos;
 				if (src.y < 0.8*rect->left)
@@ -1730,7 +1730,7 @@ void ObjectDamage< Base >::RegisterDamage(Vector pos,U32 amount)
 	bool bApplied = 0;
 	Vector pos2 = pos;//transform.inverse_rotate_translate(pos);
 
-	if (extentData->bX)
+	if (extentData->bZ)
 	{
 		if (pos2.x < box[BBOX_MIN_X])
 			pos2.x = box[BBOX_MIN_X];

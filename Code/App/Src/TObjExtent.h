@@ -145,7 +145,7 @@ struct _NO_VTABLE ObjectExtent : public Base, IWeaponTarget, IExplosionOwner, IE
 
 	virtual const RECT *GetExtentRect (SINGLE _val);
 
-	virtual BOOL32 IsX () {return extentData->bX;}
+	virtual BOOL32 IsX () {return extentData->bZ;}
 
 /*	virtual void ListChildren (INSTANCE_INDEX parentIdx);
 
@@ -223,13 +223,13 @@ void ObjectExtent< Base >::initExtents (const EXTENTINITINFO & data)
 		{
 			extentDataRW->_step = dx/SLICES;
 			extentDataRW->_min = local_box[BBOX_MIN_X];
-			extentDataRW->bX = TRUE;
+			extentDataRW->bZ = TRUE;
 		}
 		else
 		{
 			extentDataRW->_step = dy/SLICES;
 			extentDataRW->_min = local_box[BBOX_MIN_Y];
-			extentDataRW->bX = FALSE;
+			extentDataRW->bZ = FALSE;
 		}
 		
 		FaceGroup *fg = mesh->face_groups;
@@ -262,7 +262,7 @@ void ObjectExtent< Base >::initExtents (const EXTENTINITINFO & data)
 					vA = v[i];
 					vB = v[(i+1)%3];
 					int sliceA,sliceB;
-					if (extentDataRW->bX)
+					if (extentDataRW->bZ)
 					{
 						sliceA=floor(SLICES*(vA.x-local_box[BBOX_MIN_X])/dx);
 						sliceB=floor(SLICES*(vB.x-local_box[BBOX_MIN_X])/dx);
@@ -287,7 +287,7 @@ void ObjectExtent< Base >::initExtents (const EXTENTINITINFO & data)
 						else
 							vv = (vA*abs(sliceB-slice)+vB*abs(sliceA-slice))/abs(sliceB-sliceA);
 						
-						if (extentDataRW->bX)
+						if (extentDataRW->bZ)
 						{
 							CQASSERT(slice>=0 && slice<SLICES);
 							if (vv.y < extentDataRW->extents[slice].left)

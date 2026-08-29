@@ -34,7 +34,7 @@ struct BASE_LAUNCHER : BASIC_DATA
 	S32 supplyCost;
 	SINGLE refirePeriod;
 
-	U32 launcherSpecialID;//
+	SINGLE slowRefirePeriod;	// retail schema (was a CQ2 U32 launcherSpecialID)
 };
 
 #endif

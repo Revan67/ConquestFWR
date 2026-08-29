@@ -86,8 +86,8 @@ struct BT_MAP_GEN
 		char gasPlanets[MAX_TYPES][GT_PATH];
 		char habitablePlanets[MAX_TYPES][GT_PATH];
 		char otherPlanets[MAX_TYPES][GT_PATH];
-
-		char moonTypes[MAX_TYPES][GT_PATH];
+		// moonTypes[MAX_TYPES][GT_PATH] was a CQ2 addition absent from retail -- 192 bytes
+		// MID-STRUCT, which displaced every field below it. Removed 2026-08-28.
 
 		MAP_GEN_ENUM::SECTOR_SIZE sizeOk;//dependant on size setting
 		U32 minSize;
@@ -98,10 +98,7 @@ struct BT_MAP_GEN
 		U32 numMetalPlanets[3];//dependant on resource setting
 		U32 numGasPlanets[3];//dependant on resource setting
 		U32 numOtherPlanets[3];//dependant on resource setting
-
-		U32 minMoonsPerPlanet;
-		U32 maxMoonsPerPlanet;
-		MAP_GEN_ENUM::DMAP_FUNC moonNumberFunc;
+		// min/maxMoonsPerPlanet and moonNumberFunc were CQ2 additions. Removed 2026-08-28.
 
 		U32 numNuggetPatchesMetal[3];//dependant on resource setting
 		U32 numNuggetPatchesGas[3];//dependant on resource setting

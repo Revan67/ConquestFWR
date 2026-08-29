@@ -312,7 +312,6 @@ struct DACOM_NO_VTABLE MapGen : public IMapGen
 
 	void PopulateSystem(GenStruct & map,GenSystem * system);
 
-		void placePlanetsMoons(GenStruct & map, GenSystem * system,U32 planetPosX,U32 planetPosY);
 
 	bool SpaceEmpty(GenSystem * system,U32 xPos,U32 yPos,MAP_GEN_ENUM::OVERLAP overlap,U32 size);
 
@@ -2400,7 +2399,6 @@ void MapGen::PopulateSystem(GenStruct & map,GenSystem * system)
 			}
 			U32 planetID = GetRand(0,maxPlanetIndex-1,MAP_GEN_ENUM::LINEAR);
 			insertObject(system->theme->habitablePlanets[planetID],Vector((posX+2)*GRIDSIZE,(posY+2)*GRIDSIZE,0),0,system->systemID,system);
-			placePlanetsMoons(map,system,posX+2,posY+2);
 			FillPosition(system,posX,posY,4,MAP_GEN_ENUM::NO_OVERLAP);
 		}
 	}
@@ -2430,7 +2428,6 @@ void MapGen::PopulateSystem(GenStruct & map,GenSystem * system)
 			}
 			U32 planetID = GetRand(0,maxPlanetIndex-1,MAP_GEN_ENUM::LINEAR);
 			insertObject(system->theme->metalPlanets[planetID],Vector((posX+2)*GRIDSIZE,(posY+2)*GRIDSIZE,0),0,system->systemID,system);
-			placePlanetsMoons(map,system,posX+2,posY+2);
 			FillPosition(system,posX,posY,4,MAP_GEN_ENUM::NO_OVERLAP);
 		}
 	}
@@ -2460,7 +2457,6 @@ void MapGen::PopulateSystem(GenStruct & map,GenSystem * system)
 			}
 			U32 planetID = GetRand(0,maxPlanetIndex-1,MAP_GEN_ENUM::LINEAR);
 			insertObject(system->theme->gasPlanets[planetID],Vector((posX+2)*GRIDSIZE,(posY+2)*GRIDSIZE,0),0,system->systemID,system);
-			placePlanetsMoons(map,system,posX+2,posY+2);
 			FillPosition(system,posX,posY,4,MAP_GEN_ENUM::NO_OVERLAP);
 		}
 	}
@@ -2490,7 +2486,6 @@ void MapGen::PopulateSystem(GenStruct & map,GenSystem * system)
 			}
 			U32 planetID = GetRand(0,maxPlanetIndex-1,MAP_GEN_ENUM::LINEAR);
 			insertObject(system->theme->otherPlanets[planetID],Vector((posX+2)*GRIDSIZE,(posY+2)*GRIDSIZE,0),0,system->systemID,system);
-			placePlanetsMoons(map,system,posX+2,posY+2);
 			FillPosition(system,posX,posY,4,MAP_GEN_ENUM::NO_OVERLAP);
 		}
 	}
@@ -2500,59 +2495,8 @@ void MapGen::PopulateSystem(GenStruct & map,GenSystem * system)
 }
 //--------------------------------------------------------------------------//
 //
-#define NUM_MOON_POINTS 16
-
-POINT moonPlaces[] = {{-3,-2},{-3,-1},{-3,0},{-3,1},
-						{2,-2},{2,-1},{2,0},{2,1},
-						{-2,-3},{-1,-3},{0,-3},{1,-3},
-						{-2,2},{-1,2},{0,2},{1,2}};
-
-void MapGen::placePlanetsMoons(GenStruct & map, GenSystem * system,U32 planetPosX,U32 planetPosY)
-{
-	U32 maxMoonIndex = 0;
-	for(U32 i = 0; i < MAX_TYPES;++i)
-	{
-		if(system->theme->moonTypes[i][0])
-			++maxMoonIndex;
-		else
-			break;
-	}
-	U32 numMoons = GetRand(system->theme->minMoonsPerPlanet,system->theme->maxMoonsPerPlanet,system->theme->moonNumberFunc);
-	while(numMoons)
-	{
-		//find a good place near our planet
-		U32 numPos = 0;
-		U32 index;
-		for(index = 0; index< NUM_MOON_POINTS;++index)
-		{
-			if(SpaceEmpty(system,planetPosX+moonPlaces[index].x-1,planetPosY+moonPlaces[index].y-1,MAP_GEN_ENUM::NO_OVERLAP,3))
-				++numPos;
-		}
-		if(!numPos)
-			return;
-		U32 t = GetRand(0,numPos-1,MAP_GEN_ENUM::LINEAR);
-		for(index = 0; index< NUM_MOON_POINTS;++index)
-		{
-			if(SpaceEmpty(system,planetPosX+moonPlaces[index].x-1,planetPosY+moonPlaces[index].y-1,MAP_GEN_ENUM::NO_OVERLAP,3))
-			{
-				if(!t)
-				{
-					//place the moon
-					FillPosition(system,planetPosX+moonPlaces[index].x-1,planetPosY+moonPlaces[index].y-1,3,MAP_GEN_ENUM::NO_OVERLAP);
-					U32 xPos = planetPosX+moonPlaces[index].x;
-					U32 yPos = planetPosY+moonPlaces[index].y;
-					U32 moonID = GetRand(0,maxMoonIndex-1,MAP_GEN_ENUM::LINEAR);
-					insertObject(system->theme->moonTypes[moonID],Vector(((xPos)*GRIDSIZE)+(0.5*GRIDSIZE),((yPos)*GRIDSIZE)+(0.5*GRIDSIZE),0),0,system->systemID,system);
-
-					break;
-				}
-				--t;
-			}
-		}
-		--numMoons;
-	}
-
-}
+// placePlanetsMoons and its moonPlaces table were CQ2 moon generation, absent from
+// retail (which has no moon archetype). Removed 2026-08-28.
 //--------------------------------------------------------------------------//
 //
 bool MapGen::FindPosition(GenSystem * system,U32 width,MAP_GEN_ENUM::OVERLAP overlap, U32 & xPos, U32 & yPos)

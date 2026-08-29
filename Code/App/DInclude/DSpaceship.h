@@ -110,7 +110,7 @@ struct EXTENT_DATA
 	SINGLE _step;
 	SINGLE _min;
 	SINGLE min_slice,max_slice;
-	BOOL32 bX;
+	BOOL32 bZ;	// retail schema name (was bX)
 };
 //----------------------------------------------------------------
 //

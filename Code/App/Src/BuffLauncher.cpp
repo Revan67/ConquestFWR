@@ -313,7 +313,7 @@ void BuffLauncher::DoSpecialAbility (U32 specialID)
 		}
 		else
 		{
-			if(specialID == pData->launcherSpecialID)
+			if(false)	// CQ2 launcherSpecialID removed; retail has SINGLE slowRefirePeriod in that slot
 			{
 				MPart part(owner.Ptr()); 
 				if(part->supplies > 0)
