@@ -1217,6 +1217,35 @@ void Explosion::CastVisibleArea (void)
 //
 BOOL32 Explosion::InitExplosion (IBaseObject * _owner,U32 _playerID,U16 _sensorRadius,BOOL32 _minimal,BOOL32 _notOnObjlist)
 {
+	// --- Owner initialization restored 2026-08-29 ---
+	// The entire body below was commented out in the CQ2 source, leaving `owner` NULL (calloc),
+	// so Explosion::Update dereferenced it and crashed on the first explosion in combat.
+	// These lines are retail's owner setup and use no removed API. The full retail visual body
+	// (blasts/shrapnel/nuggets) depends on the IExtent mesh API (owner->GetMeshChain /
+	// GetMeshInfoTree) that a CQ2 engine refactor deleted engine-wide -- see the commented body.
+	// Restoring those visuals is a port to the current instance-index render path (modernize
+	// branch). Until then, minimal=1 skips the mesh-dependent paths (all guarded by !minimal).
+	CQASSERT(_owner);
+	notOnObjlist = (_notOnObjlist == 1);
+	if (!notOnObjlist)
+		OBJLIST->RemoveObject(_owner);
+	_owner->QueryInterface(IExplosionOwnerID, owner, LAUNCHVOLATILEPTR);
+	CQASSERT(owner != 0);
+	systemID    = _owner->GetSystemID();
+	ownerIdx    = _owner->GetObjectIndex();
+	playerID    = _playerID;
+	sensorRadius= _sensorRadius;
+	fieldFlags  = owner.Ptr()->fieldFlags;
+	SetVisibilityFlags(owner.Ptr()->GetVisibilityFlags());
+	dwMissionID = owner->GetFirstNuggetID();
+	fall_vel    = owner.Ptr()->GetVelocity();
+	minimal     = 1;   // mesh-dependent visuals disabled until ported off the removed IExtent mesh API
+
+	TRANSFORM trans = _owner->GetTransform();
+	objMapSquare   = OBJMAP->GetMapSquare(systemID, trans.translation);
+	objMapSystemID = systemID;
+	objMapNode     = OBJMAP->AddObjectToMap(this, objMapSystemID, objMapSquare, OM_EXPLOSION);
+
 /*	CQASSERT(_owner);
 	notOnObjlist = (_notOnObjlist==1);
 	if(!notOnObjlist)
