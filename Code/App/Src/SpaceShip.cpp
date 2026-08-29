@@ -1105,11 +1105,10 @@ void SpaceShip<SaveStruct,InitStruct>::SetReady(bool _bReady)
 }
 //---------------------------------------------------------------------------
 //
-template <class SaveStruct, class InitStruct>
-bool SpaceShip<SaveStruct,InitStruct>::MatchesSomeFilter(DWORD filter)
-{
-	return (frameInitInfo->pData->formationFilterBits & filter) != 0;
-}
+// MatchesSomeFilter override removed 2026-08-28: it read the CQ2-only
+// formationFilterBits, which retail's BASE_SPACESHIP_DATA does not have.
+// IBaseObject::MatchesSomeFilter returns false, which is correct for a build
+// with no formation system.
 //---------------------------------------------------------------------------
 //
 template <class SaveStruct, class InitStruct>

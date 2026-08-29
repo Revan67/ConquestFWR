@@ -171,7 +171,6 @@ struct _NO_VTABLE SpaceShip : public ObjectEffectTarget
 
 	virtual void SetReady(bool _bReady);
 
-	virtual bool MatchesSomeFilter(DWORD filter);
 
 	/* IGotoPos methods */
 

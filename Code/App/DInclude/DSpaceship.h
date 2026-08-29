@@ -94,8 +94,12 @@ struct CLOAK_DATA
 struct BILLBOARD_DATA
 {
 	char billboardTexName[GT_PATH];
-	// billboardThreshhold and bTex2 not in VS6 binary; initialized from defaults in loadSpaceshipArchetype
+	U32  billboardThreshhold;
+	bool bTex2;
 };
+#ifndef _ADB
+static_assert(sizeof(BILLBOARD_DATA) == 40, "BILLBOARD_DATA must be 40 bytes (retail schema)");
+#endif
 
 #define SLICES 10
 //----------------------------------------------------------------
@@ -168,16 +172,9 @@ struct BASE_SPACESHIP_DATA : BASIC_DATA
 	CLOAK_DATA cloak;
 	BILLBOARD_DATA billboard;
 	SINGLE_TECHNODE techActive;
-#ifndef _ADB //we need to be able to use the FormationFilter as a bit mask
-	union
-	{
-#endif
-		FORMATION_FILTER formationFilter;
-#ifndef _ADB
-		DWORD formationFilterBits;
-	};
-#endif
-	bool bLargeShip; // does this take up more than one grid square?
+	// formationFilter / bLargeShip were CQ2 additions absent from retail; removed 2026-08-28.
+	// They masked an 8-byte BILLBOARD_DATA deficit, so sizeof stayed 644 while techActive
+	// sat 8 bytes early.
 };
 static_assert(sizeof(BASE_SPACESHIP_DATA) == 644, "BASE_SPACESHIP_DATA binary layout mismatch");
 // Offset asserts: the -32/+32 MISSION_DATA_BIN / ROCKING_DATA errors CANCELLED in sizeof,
@@ -185,6 +182,17 @@ static_assert(sizeof(BASE_SPACESHIP_DATA) == 644, "BASE_SPACESHIP_DATA binary la
 static_assert(offsetof(BASE_SPACESHIP_DATA, missionData)   ==  44, "missionData offset");
 static_assert(offsetof(BASE_SPACESHIP_DATA, dynamicsData)  == 116, "dynamicsData offset");
 static_assert(offsetof(BASE_SPACESHIP_DATA, rockingData)   == 132, "rockingData offset");
+// Relational asserts for the tail. Retail's schema ends BASE_SPACESHIP_DATA at techActive,
+// with billboard immediately before it. Expressed as relations rather than magic numbers so
+// they stay correct if an earlier field legitimately changes -- and so they FAIL if anyone
+// appends a field (as the CQ2 formationFilter/bLargeShip did) or shortens BILLBOARD_DATA
+// again. A size-only assert cannot catch either, because those two errors cancel.
+static_assert(offsetof(BASE_SPACESHIP_DATA, techActive) + sizeof(SINGLE_TECHNODE)
+              == sizeof(BASE_SPACESHIP_DATA),
+              "techActive must be the FINAL member of BASE_SPACESHIP_DATA (retail schema)");
+static_assert(offsetof(BASE_SPACESHIP_DATA, billboard) + sizeof(BILLBOARD_DATA)
+              == offsetof(BASE_SPACESHIP_DATA, techActive),
+              "billboard must sit immediately before techActive (retail schema)");
 
 //----------------------------------------------------------------
 //

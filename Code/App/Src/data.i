@@ -4739,8 +4739,12 @@ struct CLOAK_DATA
 struct BILLBOARD_DATA
 {
 	char billboardTexName[32];
-	
+	U32  billboardThreshhold;
+	bool bTex2;
 };
+
+
+
 
 
 
@@ -4813,16 +4817,9 @@ struct BASE_SPACESHIP_DATA : BASIC_DATA
 	CLOAK_DATA cloak;
 	BILLBOARD_DATA billboard;
 	SINGLE_TECHNODE techActive;
-
-
-
-
-		FORMATION_FILTER formationFilter;
-
-
-
-
-	bool bLargeShip; 
+	
+	
+	
 };
 static_assert(sizeof(BASE_SPACESHIP_DATA) == 644, "BASE_SPACESHIP_DATA binary layout mismatch");
 
@@ -4830,6 +4827,17 @@ static_assert(sizeof(BASE_SPACESHIP_DATA) == 644, "BASE_SPACESHIP_DATA binary la
 static_assert(offsetof(BASE_SPACESHIP_DATA, missionData)   ==  44, "missionData offset");
 static_assert(offsetof(BASE_SPACESHIP_DATA, dynamicsData)  == 116, "dynamicsData offset");
 static_assert(offsetof(BASE_SPACESHIP_DATA, rockingData)   == 132, "rockingData offset");
+
+
+
+
+
+static_assert(offsetof(BASE_SPACESHIP_DATA, techActive) + sizeof(SINGLE_TECHNODE)
+              == sizeof(BASE_SPACESHIP_DATA),
+              "techActive must be the FINAL member of BASE_SPACESHIP_DATA (retail schema)");
+static_assert(offsetof(BASE_SPACESHIP_DATA, billboard) + sizeof(BILLBOARD_DATA)
+              == offsetof(BASE_SPACESHIP_DATA, techActive),
+              "billboard must sit immediately before techActive (retail schema)");
 
 
 

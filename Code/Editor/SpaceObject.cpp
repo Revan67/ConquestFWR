@@ -746,10 +746,7 @@ bool SpaceObject::createShip( BASE_SPACESHIP_DATA* _spaceShipData, const char* _
 		scriptHandle.LoadString( hStringTable, _spaceShipData->missionData.displayName, 1033 );
 		createName( scriptHandle );
 
-		if( _spaceShipData->bLargeShip )
-		{
-			gridSize.SetPoint(2,2);
-		}
+		// bLargeShip was a CQ2 addition absent from retail; removed 2026-08-28.
 		meshInstIndex = ENGINE->create_instance2( data->meshIndex, NULL );
 		return( meshInstIndex != INVALID_INSTANCE_INDEX );
 	}
