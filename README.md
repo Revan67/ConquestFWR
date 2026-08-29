@@ -69,6 +69,7 @@ You do **not** need a copy of the retail game to build from source. However, to 
 - **DirectX SDK (June 2010)** — `Conquest.exe` uses `ID3DXEffect`/`D3DXMATRIX` directly and links `d3dx9d.lib`. See below.
 - DirectX 9 runtime (included with Windows 10/11 via DirectX End-User Runtime)
 - A retail copy of Conquest: Frontier Wars for the runtime media assets
+- **MFC (optional)** — only the map Editor (`Code/Editor/`) needs it. Without it that project fails with `MSB8041: MFC libraries are required`. Install *C++ MFC for v143 build tools* from the Visual Studio Installer's Individual Components tab. The game itself does not use MFC.
 
 ### DirectX SDK — extract, do not install
 
@@ -87,17 +88,21 @@ The original source targeted VS6 / Windows XP / DirectX 8–9. This project reta
 ## Building
 
 1. Clone this repository.
-2. Open `Code/App/Src/` in Visual Studio 2022 (or open a `.vcxproj` directly).
+2. Open **`Code/App/Src/Conquest.sln`** in Visual Studio 2022.
 3. Select the **Debug | Win32** configuration.
-4. Build `Mission.vcxproj`, `Trim.vcxproj`, and `Conquest.vcxproj` using **Rebuild** (not incremental Build) due to a precompiled-header issue with `PlayerMenu.cpp`:
+4. **Rebuild the solution** — not an incremental Build, and not a single project:
 
    ```
-   MSBuild Code\App\Src\Mission.vcxproj /t:Rebuild /m:1 /p:Configuration=Debug /p:Platform=Win32
+   MSBuild Code\App\Src\Conquest.sln /t:Rebuild /m:1 /p:Configuration=Debug /p:Platform=Win32
    ```
 
-5. Copy the outputs to your Conquest installation directory.
+Outputs deploy themselves: each project has a post-build step that copies its DLL/EXE and PDB into the game folder, so no manual copy is needed.
 
-**Build the solution, not a single project.** `Conquest.vcxproj` does *not* build Mission/Globals/Trim/ZBatcher — they are not project references, they are consumed as prebuilt `.lib` files from the shared `.\Debug\` directory. Building the project alone silently produces a fresh `Conquest.exe` linked against stale sibling DLLs, which is exactly the exe/DLL ABI mismatch this codebase is sensitive to. Use `Code\App\Src\Conquest.sln` with `/t:Rebuild`.
+**Why the solution and not a project.** `Conquest.vcxproj` does *not* build Mission/Globals/Trim/ZBatcher — they are not project references, they are consumed as prebuilt `.lib` files from the shared `.\Debug\` directory. Building the project alone silently produces a fresh `Conquest.exe` linked against stale sibling DLLs, which is exactly the exe/DLL ABI mismatch this codebase is sensitive to.
+
+**Why Rebuild and not Build.** Incremental builds skip work they should not: a precompiled-header issue with `PlayerMenu.cpp`, git-tracked `.obj` files that make MSBuild think compilation is current, and `.res` resource steps that silently do not re-run — the last of which matters because `data.i` (the parser schema) is embedded in `Globals.dll` as a resource.
+
+> **A failed rebuild leaves the game unrunnable.** `/t:Rebuild` cleans the deployed DLLs *before* the post-build copy replaces them, so a build that fails partway leaves the install missing `Globals.dll`, `Mission.dll`, `Trim.dll` and `ZBatcher.dll`. Fix the build and rebuild, or copy them back from `Code/App/Src/Debug/`. A common cause of a partway failure is a file lock — an orphaned `DbgX.Shell` process from a TTD replay holds the deployed DLLs open, and the post-build `xcopy` then fails with exit code 4.
 
 `Conquest.vcxproj`'s post-build reports `Skip (not found): Globals.pdb / Trim.pdb / ZBatcher.pdb` — harmless, as each of those projects deploys its own PDB from its own post-build step.
 
@@ -156,18 +161,28 @@ Extract it by walking the PE resource directory for the `PARSER` entry and dumpi
 Code/
   App/
     DB/               — Game data files (GenData.db, GameTypes.db, StringPack.db)
-    DInclude/         — Shared headers for archetype/game-data structs
+    DInclude/         — Shared headers for archetype/game-data structs.
+                        SOURCE OF TRUTH for the parser schema: data.i is generated from these.
     Src/              — Main game source (Conquest.exe, Mission.dll, Trim.dll, ...)
+      Scripts/        — Mission-script source for all 18 shipped scripts (Script01T–Script16T,
+                        Mantis_T, Sol_T) plus Helper/Include. Project files are legacy
+                        .vcproj/.dsp and do not build under MSBuild — see Mission-Script ABI.
+  Editor/             — Map editor (MFC). Separate solution; needs the MFC component installed.
+  EffectEd/           — Effects editor.
   Libs/
     ExplicitDLL/      — Prebuilt engine DLLs (loaded explicitly at runtime)
     ImplicitDLL/      — Prebuilt DACOM DLL (component object model)
     Include/          — Shared engine headers
-    Src/              — Engine library sources (DACOM, D3DRenderPipe, MeshManager, ...)
+    Src/              — Engine library sources (DACOM, D3DRenderPipe, MeshManager, ...).
+                        Prebuilt: NOT built by Conquest.sln.
     Static/           — Static import libs
 
 Tools/
+  abicheck/           — Re-runnable dumpbin set-arithmetic checks for the mission-script ABI
   read_gendata.py     — Python script for hex-dumping archetype blobs from .db files
   retail_gametypes.h  — Struct layout reference extracted from the retail VS6 binary
+  CQ2Material/        — Sequel-era material tooling
+  ShapeEdit/          — Shape editing tool
   xmiff2/
     xmiff2.py         — Replaces legacy 16-bit XMIFF.EXE; compiles sfxdata.xmf → sfxdata.dat
 
@@ -187,13 +202,13 @@ All modifications are tracked in git with descriptive commit messages. The chang
 - **Compiler:** Retargeted all projects to VS2022 toolset (v143), Windows 10 SDK.
 - **CRT linkage:** All App projects use `/MT` (static CRT) to avoid COMHeap conflicts with the DACOM component model.
 - **Early-heap routing (`COMHeap_VS2022.c`):** VS2022's CRT calls `malloc`/`free` during static initializers, before DACOM's `_HEAP` is set up. Added a `GetProcessHeap()`-backed early-heap layer (tagged with `EARLY_HEAP_MAGIC = 0xEA12EA12`) so these allocations succeed without corrupting the DACOM heap. `COMHeap.asm` routes all allocation calls through this layer when `_HEAP == NULL`.
-- **Binary struct layout — enum bitfields:** VS6 packed differently-typed enum bitfields into one `int` if they fit; VS2022 gives each distinct enum type its own storage unit. Fixed by changing affected bitfields to `unsigned int:N` in `MISSION_DATA`, `SLOT` (DCQGame.h), `BASE_FIGHTER_SAVELOAD` (DFighter.h), `MISSION_SAVELOAD` (DMBaseData.h), and others.
-- **Binary struct layout — `MISSION_DATA` split:** The runtime struct was split into `MISSION_DATA_BIN` (40 bytes — binary-stored fields read directly from `.db` files) and `MISSION_DATA : MISSION_DATA_BIN` (72 bytes — adds armor, silhouette, special ability, speech priority at runtime). All archetype headers updated accordingly.
-- **`MAX_EXTENSIONS` 4 → 5** in `DExtension.h`, confirmed by binary measurement of `BASE_PLATFORM_DATA` (560 bytes).
+- **Binary struct layout — enum bitfields:** VS6 packed differently-typed enum bitfields into one `int` if they fit; VS2022 gives each distinct enum type its own storage unit. Fixed by changing affected bitfields to `unsigned int:N` in `MISSION_DATA`, `SLOT` (DCQGame.h), `BASE_FIGHTER_SAVELOAD` (DFighter.h), `MISSION_SAVELOAD` (DMBaseData.h), and others. Note this deliberately diverges from retail's schema *text*, which names the real enum types (`M_RACE`, `FighterState`, …) — the goal is to reproduce VS6's *packing*, not its spelling. Retail's field widths still apply: `MISSION_DATA` is `mObjClass:8, race:4, displayName:18` with 22 caps bools, where this source currently has `9/4/17` and 24.
+- **~~Binary struct layout — `MISSION_DATA` split~~ — REVERTED, this was itself a bug.** The runtime struct had been split into `MISSION_DATA_BIN` (40 bytes, believed to be the binary-stored subset) and `MISSION_DATA : MISSION_DATA_BIN` (72 bytes). Retail's own parser schema has **no such split** — archetypes store the full 72-byte `MISSION_DATA`. The 40-byte substitution left every field after `missionData` 32 bytes early in each struct that used it, which is what broke ship movement. Being reverted; see *Ship Archetype Layout* below.
+- **~~`MAX_EXTENSIONS` 4 → 5~~ — REVERTED, and instructive.** `DExtension.h` was changed to 5 "confirmed by binary measurement of `BASE_PLATFORM_DATA` (560 bytes)". Retail has `extension[4]`. The measurement appeared to confirm 5 only because the extra 32-byte array element exactly cancelled the 32-byte `MISSION_DATA_BIN` deficit in the same struct — so the total came out right while the middle was displaced. **This is a worked example of why a size measurement cannot validate a layout.**
 - **DirectPlay / DirectInput8 stubs:** Added `Code/Libs/Include/Compat/dplay.h`, `dplobby.h`, and `ddrawex.h` since DirectPlay was removed from the modern Windows SDK.
 - **DACOM_MAP lazy-fill (`TComponent.h`):** Changed static array initializers to a lazy-fill pattern to avoid an MSVC 2022 internal compiler error (`toinil.c:899`).
 - **Miscellaneous porting:** Null guards, playerID guards, archetype-type guards, DirectInput8 migration, DirectPlay stubs, enum casts, thread guard, `bHiRes` fix, `afxres.h` → `winres.h` in resource files, `_FARQ` compat macro, C++ `bool` guards on math headers, and operator inlining in `matrix4.h`/`quat.h`/`vector.h`/`vector4.h`.
-- **Static asserts:** Added `static_assert` on all archetype struct sizes to catch future regressions:
+- **Static asserts:** Added `static_assert` on archetype struct **sizes**. These catch a struct that changes size, but — as the two reverted entries above demonstrate — they cannot catch two opposite errors that cancel. Newer asserts state retail's invariants as relations instead (`offsetof(x, last) + sizeof(LastType) == sizeof(x)`), which fail on exactly that case:
 
   | Struct | Size |
   |--------|------|
@@ -217,7 +232,9 @@ All modifications are tracked in git with descriptive commit messages. The chang
 
 ### Mission-Script ABI
 
-The retail mission scripts — `Scripts\script01`–`script16.dll`, `Mantis_T.dll`, `Sol_T.dll`, all dated Oct 2012 — are prebuilt binaries that can never be recompiled. They bind to our `Mission.dll` by **decorated C++ export name**, which makes it a frozen ABI: any change to an `MScript`/`MGlobals` signature, parameter type, or calling convention breaks script binding outright.
+The game ships 18 mission scripts — `Scripts\script01`–`script16.dll`, `Mantis_T.dll`, `Sol_T.dll`, all dated Oct 2012 — and the running game loads those prebuilt binaries. They bind to our `Mission.dll` by **decorated C++ export name**, which makes it a frozen ABI in practice: any change to an `MScript`/`MGlobals` signature, parameter type, or calling convention breaks script binding outright.
+
+**Source for all 18 is present** under `Code/App/Src/Scripts/` (`Script01T`–`Script16T`, `Mantis_T`, `Sol_T`, plus `Demo2`, `DemoScript`, `ScriptTest` and a shared `Helper`/`Include`). What blocks rebuilding them is not the absence of source but the **project format**: all 39 project files are legacy `.vcproj` / `.dsp` that MSBuild cannot load (`MSB4025: Root element is missing`). Converting them to `.vcxproj` — as was done for the engine projects — would make the scripts buildable and relax this constraint. Until then, treat the exported ABI as frozen.
 
 Verified by three-way `dumpbin` set arithmetic (script imports vs. retail `mission.dll` exports vs. ours): **153 symbols demanded from `Mission.dll` and 2 from `Trim.dll`, all satisfied.** Since MSVC mangling encodes calling convention, this also confirms `__cdecl`/`__stdcall` alignment. Re-runnable checks live in `Tools/abicheck/`; re-run them after touching any exported signature.
 
