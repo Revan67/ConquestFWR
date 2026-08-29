@@ -4321,10 +4321,9 @@ HANDLE FieldManager::CreateArchetype(const char *szArchname, OBJCLASS objClass, 
 					nArch->nuggetType[i] = ARCHLIST->LoadArchetype(nArch->pData->nuggetType[i]);
 			}
 
-			if(nArch->pData->cloudEffect[0])
-				nArch->cloudEffect = EFFECTPLAYER->LoadEffect(nArch->pData->cloudEffect);
-			else
-				nArch->cloudEffect = NULL;
+			// cloudEffect was a CQ2 addition; retail's BT_NEBULA_DATA has no such field.
+			// The archetype-side effect is gone, so no cloud effect is loaded.
+			nArch->cloudEffect = NULL;
 	
 			nArch->pData->mapTexName;
 			if (nArch->pData->mapTexName[0])

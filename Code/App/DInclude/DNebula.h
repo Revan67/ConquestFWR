@@ -89,19 +89,36 @@ struct LIGHTNING_DATA
 
 //----------------------------------------------------------------
 //
+// Restored to retail's schema 2026-08-28. Nebula rendering was rewritten for CQ2 to use a
+// particle effect (cloudEffect) in place of retail's texture-based path, dropping ~130 bytes
+// of fields. That put every field after them -- including nuggetType -- at the wrong offset,
+// so FieldManager::CreateArchetype read garbage archetype names and raised a recoverable
+// error at mission load.
 struct BT_NEBULA_DATA : BASE_FIELD_DATA
 {
-	char cloudEffect[GT_PATH];
+	char textureName[GT_PATH];
+	char modTextureName[GT_PATH];
 	char mapTexName[GT_PATH];
+	char softwareTexClearName[GT_PATH];
+	char softwareTexFogName[GT_PATH];
 
-	MISSION_DATA missionData;		// retail schema: full 72-byte MISSION_DATA
+	MISSION_DATA missionData;
 	FIELD_ATTRIBUTES attributes;
+
+	U8 amb_r,amb_g,amb_b;
+	U8 alpha;
 
 	struct AMBIENT_NEBULA_LIGHT
 	{
 		U8 r,g,b;
 		SINGLE pulse_frequency;
 	} ambient;
+
+	LIGHTNING_DATA lightning;
+
+	SINGLE bottomSpeedScaleMin,bottomSpeedScaleMax;
+	SINGLE topSpeedScaleMin,topSpeedScaleMax;
+	SINGLE top_layer_alpha_scale;
 
 	SFX::ID ambientSFX;
 	NEBTYPE nebType;

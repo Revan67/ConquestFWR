@@ -7209,19 +7209,36 @@ struct LIGHTNING_DATA
 
 
 
+
+
+
+
+
 struct BT_NEBULA_DATA : BASE_FIELD_DATA
 {
-	char cloudEffect[32];
+	char textureName[32];
+	char modTextureName[32];
 	char mapTexName[32];
+	char softwareTexClearName[32];
+	char softwareTexFogName[32];
 
-	MISSION_DATA missionData;		
+	MISSION_DATA missionData;
 	FIELD_ATTRIBUTES attributes;
+
+	U8 amb_r,amb_g,amb_b;
+	U8 alpha;
 
 	struct AMBIENT_NEBULA_LIGHT
 	{
 		U8 r,g,b;
 		SINGLE pulse_frequency;
 	} ambient;
+
+	LIGHTNING_DATA lightning;
+
+	SINGLE bottomSpeedScaleMin,bottomSpeedScaleMax;
+	SINGLE topSpeedScaleMin,topSpeedScaleMax;
+	SINGLE top_layer_alpha_scale;
 
 	SFX::ID ambientSFX;
 	NEBTYPE nebType;
