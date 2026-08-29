@@ -4687,9 +4687,10 @@ struct TECHNODE
 struct ROCKING_DATA : DYNAMICS_DATA
 {
 	SINGLE rockLinearMax, rockAngMax;			
-	SINGLE rockLinearAccel, rockAngAccel;		
-	SINGLE _rock_vs6[6];						
 };
+
+
+
 
 
 struct ENGINE_GLOW_DATA
@@ -4798,7 +4799,7 @@ struct BASE_SPACESHIP_DATA : BASIC_DATA
 {
 	SPACESHIPCLASS type;
     char fileName[32];
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		
     DYNAMICS_DATA dynamicsData;
 	ROCKING_DATA rockingData;
 	char explosionType[32];
@@ -4824,6 +4825,11 @@ struct BASE_SPACESHIP_DATA : BASIC_DATA
 	bool bLargeShip; 
 };
 static_assert(sizeof(BASE_SPACESHIP_DATA) == 644, "BASE_SPACESHIP_DATA binary layout mismatch");
+
+
+static_assert(offsetof(BASE_SPACESHIP_DATA, missionData)   ==  44, "missionData offset");
+static_assert(offsetof(BASE_SPACESHIP_DATA, dynamicsData)  == 116, "dynamicsData offset");
+static_assert(offsetof(BASE_SPACESHIP_DATA, rockingData)   == 132, "rockingData offset");
 
 
 

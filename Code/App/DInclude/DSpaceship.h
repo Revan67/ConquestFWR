@@ -42,9 +42,10 @@
 struct ROCKING_DATA : DYNAMICS_DATA
 {
 	SINGLE rockLinearMax, rockAngMax;			// max distance to rock (meters, radians)
-	SINGLE rockLinearAccel, rockAngAccel;		// VS6 binary layout; used in rocking physics
-	SINGLE _rock_vs6[6];						// VS6 binary: 56 bytes total (DYNAMICS_DATA=16 + own=40)
 };
+#ifndef _ADB
+static_assert(sizeof(ROCKING_DATA) == 24, "ROCKING_DATA must be 24 bytes (DYNAMICS_DATA 16 + 8)");
+#endif
 //----------------------------------------------------------------
 //
 struct ENGINE_GLOW_DATA
@@ -153,7 +154,7 @@ struct BASE_SPACESHIP_DATA : BASIC_DATA
 {
 	SPACESHIPCLASS type;
     char fileName[GT_PATH];
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		// retail schema: full 72-byte MISSION_DATA, not the 40-byte _BIN
     DYNAMICS_DATA dynamicsData;
 	ROCKING_DATA rockingData;
 	char explosionType[GT_PATH];
@@ -179,6 +180,11 @@ struct BASE_SPACESHIP_DATA : BASIC_DATA
 	bool bLargeShip; // does this take up more than one grid square?
 };
 static_assert(sizeof(BASE_SPACESHIP_DATA) == 644, "BASE_SPACESHIP_DATA binary layout mismatch");
+// Offset asserts: the -32/+32 MISSION_DATA_BIN / ROCKING_DATA errors CANCELLED in sizeof,
+// so a size-only assert passed for months while every field here was displaced.
+static_assert(offsetof(BASE_SPACESHIP_DATA, missionData)   ==  44, "missionData offset");
+static_assert(offsetof(BASE_SPACESHIP_DATA, dynamicsData)  == 116, "dynamicsData offset");
+static_assert(offsetof(BASE_SPACESHIP_DATA, rockingData)   == 132, "rockingData offset");
 
 //----------------------------------------------------------------
 //
