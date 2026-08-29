@@ -12,9 +12,11 @@ A community effort to make **Conquest: Frontier Wars** (Fever Pitch Studios / Ub
 | 2 | Run on Windows 11 — fix runtime crashes, binary layout, and heap/API compat | **In Progress** |
 | 3 | Modernize — D3D11+, modern networking, widescreen | Future |
 
-**Phase 2 — audit complete:** All six build projects (Conquest.exe, Mission.dll, Trim.dll, Globals.dll, D3DRenderPipe.dll, and all Libs) have been verified: VS6→VS2022 porting fixes retained, CQ2 (unshipped sequel) additions removed, and all archetype struct sizes locked with `static_assert` against the retail binary.
+**Phase 2 — audit:** All six build projects (Conquest.exe, Mission.dll, Trim.dll, Globals.dll, D3DRenderPipe.dll, and all Libs) have been verified: VS6→VS2022 porting fixes retained, CQ2 (unshipped sequel) additions removed, and archetype struct **sizes** locked with `static_assert` against the retail binary.
 
-**Phase 2 — runtime status:** The game launches, loads a mission, and ships are visible and respond to move orders. Open bugs: ship spawn orientation, resource bar position, overlay panels, sector map display.
+> **A size assert is not a layout assert.** Two opposite errors in the same struct cancel in `sizeof`, and the assert still passes while every field between them is displaced. This is not hypothetical — it is what hid the bug described under *Ship movement* below, and three such cancelling pairs have now been found. Use `offsetof` asserts on fields that straddle the suspect region.
+
+**Phase 2 — runtime status:** The game launches, loads a mission, and **ships move, take orders, and engage**. Remaining bugs are no longer movement-related: ship models render rotated ~90°, enemy units are invisible on contact, and an assert fires in `Explosion::Update` on first combat.
 
 ---
 
@@ -131,6 +133,21 @@ dx @$cursession.TTD.Calls("Conquest!IBaseObject::TestVisible").Count()
 dx -r1 @$cursession.TTD.Calls("Mission!MGlobals::GetAllyMask").Select(c => c.ReturnValue).Take(20)
 ```
 
+Practical notes, each learned the hard way:
+
+- **`TTD.Events` does not exist** in current WinDbg builds — the surface is `Calls`, `Memory`, `Data`, `Utility`, `Bookmarks`. To find a crash, query the exception dispatcher instead: `dx @$cursession.TTD.Calls("ntdll!KiUserExceptionDispatcher").Last().TimeStart.SeekTo()`. Most dispatches are ordinary handled C++ exceptions; check the position is near 100% of the trace before assuming you have the fatal one.
+- **`!tt` cannot be used inside a `$$><` script.** It seeks correctly, then raises *"Non-primary client caused an implicit wait"* and silently aborts every remaining command.
+- **`L<n>` counts are hexadecimal.** `dd addr L12` returns **18** dwords, not 12. Write `L0n12` for decimal — otherwise every field after the first is silently misaligned.
+- **Prefer `dt Type @ecx fieldName` to raw offsets.** Offsets move whenever a struct changes; field names do not.
+- **Indexing a large trace takes far longer than any scripted timeout.** A 50 GB trace builds a ~13 GB index. Launch the debugger detached and poll for a completion marker in its log — killing it mid-index leaves a corrupt `.idx` that must be deleted and rebuilt from scratch.
+- **Rebuilding orphans existing traces** — symbol queries fail against a trace whose PDBs have been replaced. Archive PDBs alongside each trace you intend to keep.
+
+### Retail's own schema is inside retail Globals.dll
+
+The most authoritative reference for any struct question is not the disassembly — it is the parser schema the shipped game carries as a resource. Retail `Globals.dll` holds a ~164 KB **`PARSER`** resource containing the full `data.i` text: every archetype struct, exactly as shipped.
+
+Extract it by walking the PE resource directory for the `PARSER` entry and dumping the blob to a file, then diff it against `Code/App/Src/data.i`. Doing this across all 375 shared structs is what located the movement bug and two further cancelling pairs; guessing from byte patterns produced two wrong conclusions before it.
+
 ---
 
 ## Repository Layout
@@ -233,13 +250,37 @@ Two pieces of known, benign drift remain: four symbols differ only in `wchar_t` 
 - **Uninitialised `velocity` / `ang_velocity`:** The `ObjectTransform` constructor set only `instanceMesh` and `instanceIndex`. Both `Vector` members lack a zeroing default constructor, so a newly created object inherited whatever the heap block contained and `ObjectPhysics::physUpdatePhysics` then integrated it as genuine world motion — objects drifting with no order given, and spurious rotation from garbage angular velocity. Invisible under VS6, whose allocator returned zeroed memory here; our COMHeap/MSHeap rerouting reuses blocks with stale contents. Same class as the earlier `teraParticle`/`halo` fix.
 - **`initMissionData` bounds check:** `playerID` derives from `dwMissionID & PLAYERID_MASK` (`0x0F`) and so can legitimately arrive as 0–15, while `globalData.playerTechLevel` is `[9][5]` — values 9–15 read past the end across roughly eight subsequent accesses. Previously unchecked; only `race` was validated.
 
+### Ship Archetype Layout — the movement bug
+
+`BASE_SPACESHIP_DATA` declared a 40-byte `MISSION_DATA_BIN` where retail's shipped schema has the full 72-byte `MISSION_DATA`, and `ROCKING_DATA` carried 32 bytes of fabricated padding (`rockLinearAccel`, `rockAngAccel`, `_rock_vs6[6]`) that retail does not have.
+
+The two errors were equal and opposite, so `sizeof(BASE_SPACESHIP_DATA) == 644` kept passing while every field between them sat 32 bytes early. `dynamicsData` was read at `record+84` instead of `record+116`, and `maxAngVelocity` picked up a neighbouring negative float.
+
+That inverts the symmetric clamp in `ObjectControl`:
+
+```cpp
+if (vel >  maxAngVelocity) vel =  maxAngVelocity;   // 0 > -0.2  ->  vel = -0.2
+```
+
+`vel = 0` means "nothing to correct", but it satisfies `0 > -0.2` and is forced to a constant nonzero rate **every frame**. Ships accumulated pitch until `|j_xy|` collapsed; `get_yaw()` — computed from that horizontal projection — became meaningless; `relYaw` never fell below the 20° gate in `doPathMove`; `onPathComplete()` was never reached and `bMoveActive` never cleared. Ships could be ordered to move but never did.
+
+Verified after the fix: `maxAngVelocity` positive on 16/16 sampled ships across all classes, `linearAcceleration` a real float rather than a raw-integer denormal, every ship level, and `onPathComplete` going from **0 to 11** calls in a comparable session.
+
+`offsetof` asserts were added for `missionData`, `dynamicsData`, and `rockingData`.
+
+**Two more cancelling pairs remain open**, found by diffing the whole schema against retail: `BILLBOARD_DATA` is 8 bytes short in `BASE_SPACESHIP_DATA` (masked by the CQ2 `formationFilter`/`bLargeShip` fields, displacing `techActive`), and `BASE_PLATFORM_DATA` pairs the same `MISSION_DATA_BIN` deficit against an extra `extension[5]` array element.
+
 ### Known Open Issues
 
-- **Post-arrival drift.** Ships do not stop on reaching their destination. Observed directly: a moving ship holds an identical velocity every frame while its position advances, and `bMoveActive` never clears. The cause is **not** yet known.
+- **Ship movement — SOLVED.** See *Ship archetype layout* under What Has Been Changed. Ships now move, complete paths, and stop.
 
-  A previous explanation — that `physUpdateControl` returns early on `bVisible == 0` — has been **disproved** by Time Travel Debugging. Player-owned ships do get `visibilityFlags = 0x1` and `bVisible = 1` (verified on `TNS Seattle`); Mantis units correctly carry `0x2` and are invisible to player 1 as fog of war intends. The visibility system is working.
+  Two earlier explanations were disproved along the way and are recorded here because both were confidently wrong. First, that `physUpdateControl` returns early on `bVisible == 0`: Time Travel Debugging showed player ships do get `visibilityFlags = 0x1` and `bVisible = 1`, and the visibility system works. That came from printf diagnostics with sample caps (`_n < 300`), and a cap keeps the *first* N calls — which all occur during mission load, so the measurement described the loading screen, not gameplay. Second, that the pitch sign in `ObjectControl` was inverted: decompiling retail's `get_angle` (`0x005845fd`) proved `get_angle(x,y) == atan2(x,y)`, and the existing sign is correct. **Sample steady-state, and prefer a TTD query over the whole run to any printf cap.**
 
-  That wrong conclusion came from printf diagnostics with sample caps (`_n < 300`, `_tv < 400`). A cap retains the *first* N calls, and the first few hundred occur during mission load when nothing is visible yet — so the measurement described the loading screen, not gameplay. Any future instrumentation here must sample steady-state gameplay, or preferably use a TTD query over the whole run instead.
+- **Ship models render ~90° nose-down.** Engines up, dorsal surface leading. This is *not* engine state: TTD shows every sampled ship with `pitch 0.00`, `roll 0.00`, `|j_xy| 1.000` and `targetPitch 0`. The transform is correct, so the model is being drawn rotated against it — a mesh/render convention issue. Note the engine's nose is `-J`, so a model authored nose-along `+Z` would render exactly this way.
+
+- **Enemy units invisible on contact.** Appears when hostiles arrive in mission 1. Not caused by the archetype fix — `sensorRadius` sits inside the 40 bytes both struct versions share, so it never moved.
+
+- **Assert in `Explosion::Update`.** `explosion.cpp:297` (`owner.Ptr()->Update()`) raises `0x80000003` at 99.99% of a recorded session; `Explosion::Update` had been called exactly once. `owner` is an `OBJPTR<IExplosionOwner>`, a watched pointer nulled when its target dies. Note `CQASSERT`/`CQBOMB` are **live** in the Debug configuration — `FINAL_RELEASE` is defined only in Release — so in-game asserts really do `__asm int 3` and kill the process.
 - **Access violations in `_free()`.** 65 identical stacks through DACOM's `HEAP->FreeMemory` into `RtlFreeHeap`, the signature of a corrupted or foreign heap block. Not memory exhaustion — the faults occur during *release*, no allocation failures appear in any log, and the process sits at ~426 MB. Note that debug CRT DLLs (`ucrtbased`, `VCRUNTIME140D`, `MSVCP140D`) are present in the process, so more than one CRT heap is live.
 - **`USER_DEFAULTS` layout drift.** Ours serialises as 104 bytes at version 11; retail wrote 100 bytes at version 10. It is persisted to and reloaded from the registry, so the divergence round-trips.
 - **UI layout.** Resource values render in the toolbar rather than the top strip; the single-unit context window omits the six upgrade bars and shows a system name instead of the unit name; the sector-map circle renders empty.
@@ -260,6 +301,12 @@ The released source was a development snapshot of an unshipped sequel ("Conquest
 - **`BuildButton.cpp`:** Removed `cq2Vars1`/`cq2Vars2` initialization.
 - **`Direct3D_pipe.cpp`:** Removed `GENERAL_TRACE_1` spam on missing CQ2 shader files.
 - **Window title:** Restored "Conquest: Frontier Wars" throughout (sequel source had changed it to "Vyrium Uprising").
+
+**Still outstanding.** A full diff against retail's shipped schema shows 46 structs in this source that retail does not have, and 37 of the 375 shared structs still differ. Most of the 46 are harmless — standalone sequel types (artifact, formation, buff and nova launchers, command kits) that no retail struct embeds, so the parser never reaches them and no retail data can be corrupted by them.
+
+Four are not harmless, because a retail struct embeds them and they therefore displace real parsed fields: `MISSION_DATA_BIN`, `FORMATION_FILTER`, `AdmiralBonuses`, and `BUILDQUEUE_SAVELOAD`.
+
+`MISSION_DATA_BIN` deserves particular note: it does not exist in retail at all. It is an invention of this source, substituted for the real 72-byte `MISSION_DATA` in **19** archetype structs. One has been corrected (`BASE_SPACESHIP_DATA`); **18 remain**, each reading its mission data 32 bytes short. Seventeen of those have no size assert of any kind.
 
 ---
 
