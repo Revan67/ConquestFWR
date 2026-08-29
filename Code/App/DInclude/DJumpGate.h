@@ -51,7 +51,7 @@ struct BT_JUMPGATE_DATA : BASIC_DATA
 	SFX::ID enter1,enter2;
 	SFX::ID arrive1,arrive2;
 	SFX::ID ambience;
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		// retail schema: full 72-byte MISSION_DATA
 	SINGLE min_hold_time;
 	SINGLE min_stagger_time;
 };

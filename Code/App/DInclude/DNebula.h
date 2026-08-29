@@ -94,7 +94,7 @@ struct BT_NEBULA_DATA : BASE_FIELD_DATA
 	char cloudEffect[GT_PATH];
 	char mapTexName[GT_PATH];
 
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		// retail schema: full 72-byte MISSION_DATA
 	FIELD_ATTRIBUTES attributes;
 
 	struct AMBIENT_NEBULA_LIGHT

@@ -88,7 +88,7 @@ struct BT_ASTEROIDFIELD_DATA : BASE_FIELD_DATA
 	char softwareTexClearName[GT_PATH];
 	char softwareTexFogName[GT_PATH];
 
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		// retail schema: full 72-byte MISSION_DATA
 	FIELD_ATTRIBUTES attributes;
 	S32 asteroidsPerSquare;
 	S32 polyroidsPerSquare;
@@ -141,7 +141,7 @@ struct BT_ANTIMATTER_DATA : BASE_FIELD_DATA
 	S32 segment_width;
 	S32 spacing;
 
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		// retail schema: full 72-byte MISSION_DATA
 };
 
 struct ANTIMATTER_SAVELOAD

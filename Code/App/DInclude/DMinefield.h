@@ -32,7 +32,7 @@ enum MINETYPE
 //
 struct BT_MINEFIELD_DATA : BASIC_DATA
 {
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		// retail schema: full 72-byte MISSION_DATA
 	U32 maxMineNumber;
 	U32 damagePerHit;
 	U32 supplyDamagePerHit;

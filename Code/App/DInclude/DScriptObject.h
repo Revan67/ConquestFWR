@@ -26,7 +26,7 @@
 struct BT_SCRIPTOBJECT : BASIC_DATA
 {
 	char fileName[GT_PATH];
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		// retail schema: full 72-byte MISSION_DATA
 	SFX::ID ambientSound;
 	struct BLINKER_DATA blinkers;
 	char ambient_animation[GT_PATH];

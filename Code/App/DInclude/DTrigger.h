@@ -22,7 +22,7 @@
 struct BT_TRIGGER : BASIC_DATA
 {
 	char fileName[GT_PATH];
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		// retail schema: full 72-byte MISSION_DATA
 
 	enum Type
 	{

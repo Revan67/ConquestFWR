@@ -5947,7 +5947,7 @@ struct BT_JUMPGATE_DATA : BASIC_DATA
 	SFX::ID enter1,enter2;
 	SFX::ID arrive1,arrive2;
 	SFX::ID ambience;
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		
 	SINGLE min_hold_time;
 	SINGLE min_stagger_time;
 };
@@ -6340,7 +6340,7 @@ struct VLAUNCH_SAVELOAD
 struct BT_WAYPOINT : BASIC_DATA
 {
 	char fileName[32];
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		
 };
 
 
@@ -6408,7 +6408,7 @@ enum MINETYPE
 
 struct BT_MINEFIELD_DATA : BASIC_DATA
 {
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		
 	U32 maxMineNumber;
 	U32 damagePerHit;
 	U32 supplyDamagePerHit;
@@ -7004,7 +7004,7 @@ struct BT_ASTEROIDFIELD_DATA : BASE_FIELD_DATA
 	char softwareTexClearName[32];
 	char softwareTexFogName[32];
 
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		
 	FIELD_ATTRIBUTES attributes;
 	S32 asteroidsPerSquare;
 	S32 polyroidsPerSquare;
@@ -7057,7 +7057,7 @@ struct BT_ANTIMATTER_DATA : BASE_FIELD_DATA
 	S32 segment_width;
 	S32 spacing;
 
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		
 };
 
 struct ANTIMATTER_SAVELOAD
@@ -7214,7 +7214,7 @@ struct BT_NEBULA_DATA : BASE_FIELD_DATA
 	char cloudEffect[32];
 	char mapTexName[32];
 
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		
 	FIELD_ATTRIBUTES attributes;
 
 	struct AMBIENT_NEBULA_LIGHT
@@ -15570,7 +15570,7 @@ struct BT_BLACKHOLE_DATA : BASIC_DATA
 	BILLBOARD_MESH billboardMesh[3];
 	char ringObjectName[32];
 	char sysMapIcon[32];
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		
 	U16 damage;
 };
 
@@ -17444,7 +17444,7 @@ struct BT_PLAYERBOMB_DATA : BASIC_DATA
 	char playerBomb_anim2D[32];
 	S32 animSize;
 
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		
 
 	char filename[32];
 };
@@ -17653,7 +17653,7 @@ struct BT_STASISBOLT_DATA : BASE_WEAPON_DATA
 	SINGLE maxVelocity;	
 	SINGLE explosionRange;							
 	SINGLE duration;
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		
 };
 
 
@@ -17694,7 +17694,7 @@ struct BT_REPELLENTCLOUD_DATA : BASE_WEAPON_DATA
 	char explosionEffect[32];
 	SFX::ID launchSfx;
 	SINGLE duration;
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		
 	U32 damagePerSec;
 	SINGLE centerRange;
 };
@@ -17741,7 +17741,7 @@ struct BT_REPULSORWAVE_DATA : BASE_WEAPON_DATA
 	SINGLE range;
 	SINGLE ringTime;
 	SINGLE interRingTime;
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		
 };
 
 
@@ -17979,7 +17979,7 @@ struct BT_DESTABILIZER_DATA : BASE_WEAPON_DATA
 	SINGLE maxVelocity;	
 	SINGLE explosionRange;							
 	SINGLE duration;
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		
 };
 
 
@@ -18017,7 +18017,7 @@ struct BT_DUMBRECONPROBE_DATA : BASE_WEAPON_DATA
 	SFX::ID launchSfx;
 	SINGLE maxVelocity;	
 	SINGLE duration;
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		
 };
 
 struct BASE_DUMBRECONPROBE_SAVELOAD
@@ -18294,7 +18294,7 @@ struct MOVIE_CAMERA_SAVELOAD
 struct BT_MOVIE_CAMERA_DATA : BASIC_DATA
 {
 	char fileName[32];
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		
 };
 
 struct MOVIE_CAMERA_VIEW
@@ -18335,7 +18335,7 @@ struct MOVIE_CAMERA_VIEW
 struct BT_OBJECT_GENERATOR : BASIC_DATA
 {
 	char fileName[32];
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		
 	SINGLE mean;
 	SINGLE minDiff;
 	char generateType[32];
@@ -18418,7 +18418,7 @@ struct OBJECT_GENERATOR_VIEW
 struct BT_TRIGGER : BASIC_DATA
 {
 	char fileName[32];
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		
 
 	enum Type
 	{
@@ -18513,7 +18513,7 @@ struct TRIGGER_VIEW
 struct BT_SCRIPTOBJECT : BASIC_DATA
 {
 	char fileName[32];
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		
 	SFX::ID ambientSound;
 	struct BLINKER_DATA blinkers;
 	char ambient_animation[32];
