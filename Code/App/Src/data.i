@@ -3889,7 +3889,7 @@ struct GENBASE_DATA
 struct GT_VFXSHAPE : GENBASE_DATA
 {
 	char filename[32];
-	bool bHiRes;
+	
 };
 
 
@@ -6867,7 +6867,7 @@ struct MT_PLAYERBOMB_QLOAD
 {
 	__hexview U32 dwMissionID;
 	NETGRIDVECTOR position;
-	bool          bNoExplode;
+	
 };
 
 struct MT_LIGHT_QLOAD
@@ -17462,8 +17462,7 @@ struct BT_PLAYERBOMB_DATA : BASIC_DATA
 	S32 animSize;
 
 	MISSION_DATA missionData;		
-
-	char filename[32];
+	
 };
 
 

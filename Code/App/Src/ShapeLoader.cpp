@@ -150,7 +150,7 @@ GENRESULT ShapeLoader::CreateDrawAgent (U32 subImage, struct IDrawAgent ** drawA
 	if (pShpType->fileType == DA::VFX)
 	{
 		GT_VFXSHAPE * data = (GT_VFXSHAPE *)(GENDATA->GetArchetypeData(pShpType->pArchetype));
-		::CreateDrawAgent((const VFX_SHAPETABLE *)pShpType->pImage, subImage, drawAgent, data->bHiRes,pRect);
+		::CreateDrawAgent((const VFX_SHAPETABLE *)pShpType->pImage, subImage, drawAgent, FALSE/*bHiRes: CQ2 per-shape flag removed, retail=standard res*/, pRect);
 	}
 	else
 	if (subImage == 0)	// other formats only have one image
@@ -160,7 +160,7 @@ GENRESULT ShapeLoader::CreateDrawAgent (U32 subImage, struct IDrawAgent ** drawA
 		CreateImageReader(subImage, imageReader);
 
 		if (imageReader)
-			::CreateDrawAgent(imageReader, drawAgent, data->bHiRes, pRect);
+			::CreateDrawAgent(imageReader, drawAgent, FALSE/*bHiRes removed*/, pRect);
 	}
 
 	return (*drawAgent!=0) ? GR_OK : GR_GENERIC;

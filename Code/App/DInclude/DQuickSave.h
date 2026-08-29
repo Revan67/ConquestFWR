@@ -97,7 +97,7 @@ struct MT_PLAYERBOMB_QLOAD
 {
 	__hexview U32 dwMissionID;
 	NETGRIDVECTOR position;
-	bool          bNoExplode;
+	// bNoExplode was a CQ2 addition absent from retail. Removed 2026-08-29.
 };
 
 struct MT_LIGHT_QLOAD

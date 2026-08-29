@@ -213,7 +213,7 @@ struct GENBASE_DATA		// every non-game type must inherit from this
 struct GT_VFXSHAPE : GENBASE_DATA
 {
 	char filename[GT_PATH];
-	bool bHiRes;
+	// bHiRes was a CQ2 addition absent from retail. Removed 2026-08-29.
 };
 //----------------------------------------------------------------
 //

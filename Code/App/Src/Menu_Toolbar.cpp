@@ -1792,7 +1792,7 @@ void Menu_tb::loadInterface (const enum M_RACE *pRace)
 				(unsigned)width, (unsigned)height,
 				(unsigned)realWidth, (unsigned)realHeight,
 				screenRect.left, screenRect.top, screenRect.right, screenRect.bottom,
-				(int)SCREENRESY, (int)SCREEN_HEIGHT, (int)data->bHiRes);
+				(int)SCREENRESY, (int)SCREEN_HEIGHT);
 			fflush(_tbrf);
 		}
 	}

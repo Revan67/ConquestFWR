@@ -742,7 +742,7 @@ void PlayerBomb::QuickSave (struct IFileSystem * file)
 		
 		qload.dwMissionID = dwMissionID;
 		qload.position.init(GetGridPosition(),systemID);
-		qload.bNoExplode = true;
+		// qload.bNoExplode removed (CQ2 field absent from retail); no-explode state not persisted
 
 		file->WriteFile(hFile, &qload, sizeof(qload), &dwWritten, 0);
 		file->CloseHandle(hFile);
@@ -762,7 +762,7 @@ void PlayerBomb::QuickLoad (const char *szSaveLoadType, const char *szInstanceNa
 
 	OBJLIST->AddPartID(this, dwMissionID);
 
-	bNoExplode = qload.bNoExplode;
+	bNoExplode = false;	// was qload.bNoExplode (CQ2 field removed)
 }
 //--------------------------------------------------------------------------------------
 //

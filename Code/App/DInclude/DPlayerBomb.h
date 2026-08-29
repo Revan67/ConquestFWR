@@ -62,8 +62,7 @@ struct BT_PLAYERBOMB_DATA : BASIC_DATA
 	S32 animSize;
 
 	MISSION_DATA missionData;		// retail schema: full 72-byte MISSION_DATA
-
-	char filename[GT_PATH];
+	// filename[GT_PATH] was a CQ2 addition absent from retail. Removed 2026-08-29.
 };
 
 
