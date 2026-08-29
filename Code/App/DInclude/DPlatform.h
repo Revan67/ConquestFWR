@@ -46,7 +46,7 @@ struct BASE_PLATFORM_DATA : BASIC_DATA
 {
 	PLATFORMCLASS type;
     char fileName[GT_PATH];
-	MISSION_DATA_BIN missionData;
+	MISSION_DATA missionData;		// retail schema: full 72-byte MISSION_DATA
 	EXTENSION_DATA extension[MAX_EXTENSIONS];
 	U8 extensionBits;
 	S8 extensionLevel;
@@ -66,6 +66,15 @@ struct BASE_PLATFORM_DATA : BASIC_DATA
 };
 static_assert(sizeof(BASE_PLATFORM_DATA) == 560, "BASE_PLATFORM_DATA binary layout mismatch");
 static_assert(offsetof(BASE_PLATFORM_DATA, slotsNeeded) == 476, "BASE_PLATFORM_DATA::slotsNeeded offset mismatch");
+// The two asserts above BOTH passed while this struct was wrong: MISSION_DATA_BIN was 32 bytes
+// short and extension[5] was 32 bytes long, so sizeof stayed 560 and slotsNeeded -- which sits
+// after the extension array -- stayed at 476. Guards must STRADDLE the divergent region:
+static_assert(offsetof(BASE_PLATFORM_DATA, extension)
+              == offsetof(BASE_PLATFORM_DATA, missionData) + sizeof(MISSION_DATA),
+              "extension[] must begin immediately after a full MISSION_DATA (retail schema)");
+static_assert(offsetof(BASE_PLATFORM_DATA, extensionBits)
+              == offsetof(BASE_PLATFORM_DATA, extension) + sizeof(EXTENSION_DATA) * 4,
+              "extension[] must hold exactly 4 entries (retail schema)");
 //----------------------------------------------------------------
 //
 #ifndef _ADB

@@ -5452,6 +5452,9 @@ struct BT_FABRICATOR_DATA : BASE_SPACESHIP_DATA
 
 
 
+							
+							
+							
 
 struct EXTENSION_DATA
 {
@@ -5478,8 +5481,8 @@ struct BASE_PLATFORM_DATA : BASIC_DATA
 {
 	PLATFORMCLASS type;
     char fileName[32];
-	MISSION_DATA_BIN missionData;
-	EXTENSION_DATA extension[5];
+	MISSION_DATA missionData;		
+	EXTENSION_DATA extension[4];
 	U8 extensionBits;
 	S8 extensionLevel;
 	char explosionType[32];
@@ -5498,6 +5501,15 @@ struct BASE_PLATFORM_DATA : BASIC_DATA
 };
 static_assert(sizeof(BASE_PLATFORM_DATA) == 560, "BASE_PLATFORM_DATA binary layout mismatch");
 static_assert(offsetof(BASE_PLATFORM_DATA, slotsNeeded) == 476, "BASE_PLATFORM_DATA::slotsNeeded offset mismatch");
+
+
+
+static_assert(offsetof(BASE_PLATFORM_DATA, extension)
+              == offsetof(BASE_PLATFORM_DATA, missionData) + sizeof(MISSION_DATA),
+              "extension[] must begin immediately after a full MISSION_DATA (retail schema)");
+static_assert(offsetof(BASE_PLATFORM_DATA, extensionBits)
+              == offsetof(BASE_PLATFORM_DATA, extension) + sizeof(EXTENSION_DATA) * 4,
+              "extension[] must hold exactly 4 entries (retail schema)");
 
 
 

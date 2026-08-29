@@ -27,7 +27,10 @@
 //----------------------------------------------------------------
 //
 
-#define MAX_EXTENSIONS 5	// VS6 binary: 5 slots; sizeof(BASE_PLATFORM_DATA)=560, slotsNeeded at 476
+#define MAX_EXTENSIONS 4	// retail schema: EXTENSION_DATA extension[4].
+							// Previously 5, "confirmed" by sizeof(BASE_PLATFORM_DATA)==560 --
+							// but that only balanced because MISSION_DATA_BIN was 32 bytes
+							// short in the same struct. Both are fixed together.
 
 struct EXTENSION_DATA
 {
