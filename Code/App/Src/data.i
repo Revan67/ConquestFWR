@@ -3911,9 +3911,9 @@ struct MISSION_DATA_BIN
 	
 	
 	
-	unsigned int mObjClass:9;	
+	unsigned int mObjClass:8;	
 	unsigned int race:4;		
-	unsigned int displayName:17;	
+	unsigned int displayName:18;	
 
 	struct M_CAPS
 	{
@@ -3943,8 +3943,8 @@ struct MISSION_DATA_BIN
 		bool synthesisOk:1;
 		bool cloakOk:1;
 		bool specialAttackShipOk:1;  
-		bool targetPositionOk:1;
-		bool specialTargetPlanetOk:1;
+		bool targetPositionOk:1;		
+		bool specialTargetPlanetOk:1;	
 
 
 

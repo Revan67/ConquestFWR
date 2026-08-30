@@ -235,9 +235,9 @@ struct MISSION_DATA_BIN
 	// int-typed.  VS2022 gives each different type its own storage unit →
 	// 3×4 = 12 bytes instead of 4.  Use unsigned int to force packing and
 	// match the VS6 binary layout.
-	unsigned int mObjClass:9;	// was M_OBJCLASS
+	unsigned int mObjClass:8;	// was M_OBJCLASS (retail width; CQ2 widened to 9 for more classes)
 	unsigned int race:4;		// was M_RACE
-	unsigned int displayName:17;	// was OBJNAMES::M_DISPLAY_NAME
+	unsigned int displayName:18;	// was M_DISPLAY_NAME (retail width; CQ2 narrowed to 17)
 
 	struct M_CAPS
 	{
@@ -267,8 +267,8 @@ struct MISSION_DATA_BIN
 		bool synthesisOk:1;
 		bool cloakOk:1;
 		bool specialAttackShipOk:1;  //repulsor and tractor
-		bool targetPositionOk:1;
-		bool specialTargetPlanetOk:1;
+		bool targetPositionOk:1;		// CQ2 cap, kept (used by ObjComm; layout-harmless spare bit)
+		bool specialTargetPlanetOk:1;	// CQ2 cap, kept (used by ObjComm/MScript)
 
 #ifndef _ADB
 		M_CAPS & operator |= (const M_CAPS & other);
