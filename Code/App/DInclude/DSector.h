@@ -62,7 +62,8 @@ struct SYSTEM_DATA
 	U32 alertState[MAX_PLAYERS_PLUS_1];
 	CAMERA_DATA cameraBuffer;
 	U32 inSupply;
-	U32 inRootSupply;
+	// inRootSupply removed 2026-08-29: CQ2 addition. Retail has only inSupply;
+	// CQ2 renamed HQ-supply to inRootSupply and repurposed inSupply for TempHQ.
 };
 
 struct MT_SECTOR_SAVELOAD

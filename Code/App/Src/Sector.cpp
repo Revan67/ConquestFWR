@@ -292,13 +292,13 @@ public:
 	bool isInSupply (U32 playerID, U32 allyMask)
 	{
 		// d.inSupply is shifted up one!?
-		return (((d.inSupply >> 1) & allyMask) != 0) || (((d.inRootSupply >> 1) & allyMask) != 0);
+		return ((d.inSupply >> 1) & allyMask) != 0;
 	}
 
 	bool isInRootSupply (U32 playerID, U32 allyMask)
 	{
-		// d.inSupply is shifted up one!?
-		return ((d.inRootSupply >> 1) & allyMask) != 0;
+		// inRootSupply removed (CQ2); root supply == supply in retail.
+		return ((d.inSupply >> 1) & allyMask) != 0;
 	}
 
 private:
@@ -622,7 +622,6 @@ struct DACOM_NO_VTABLE Sector : public ISector,
 
 	void setSystemInSupply(System * system,U32 playerID);
 
-	void setSystemInRootSupply(System * system,U32 playerID);
 
 	void sendSightingWarning (U32 systemID, U32 playerMask);
 
@@ -1443,43 +1442,7 @@ void Sector::setSystemInSupply(System * system,U32 playerID)
 		obj = obj->nextTarget;
 	}
 }
-//--------------------------------------------------------------------------//
-//
-void Sector::setSystemInRootSupply(System * system,U32 playerID)
-{
-	system->d.inRootSupply |= (0x00000001 << playerID);
-
-	IBaseObject * obj = OBJLIST->GetTargetList();
-	while(obj)
-	{
-		if(obj->GetPlayerID() && MGlobals::AreAllies(obj->GetPlayerID(),playerID) && obj->objClass == OC_PLATFORM && obj->GetSystemID() == system->d.id)
-		{
-			MPart part(obj);
-			if(part->bReady)
-			{
-				OBJPTR<IJumpPlat> jumpPlat;
-				obj->QueryInterface(IJumpPlatID,jumpPlat);
-				if(jumpPlat)
-				{
-					OBJPTR<IPlatform> platform;
-					obj->QueryInterface(IPlatformID,platform);
-					if (!platform->IsReallyDead())
-					{
-						IBaseObject * sibling = jumpPlat->GetSibling();
-						
-						if (sibling)
-						{
-							System * system = GetSystemHandle(sibling->GetSystemID());
-							if(!((system->d.inRootSupply >> playerID) & 0x00000001))
-								setSystemInRootSupply(system,playerID);				
-						}
-					}
-				}
-			}
-		}
-		obj = obj->nextTarget;
-	}
-}
+// setSystemInRootSupply removed 2026-08-29 (CQ2 inRootSupply gone; use setSystemInSupply)
 //--------------------------------------------------------------------------//
 //
 void Sector::ComputeSupplyForPlayer(U32 playerID)
@@ -1489,9 +1452,8 @@ void Sector::ComputeSupplyForPlayer(U32 playerID)
 	System *sysPos = firstSystem;
 	while(sysPos)
 	{
-		testSupply[count] = sysPos->d.inRootSupply & (0x00000001 << playerID);
+		testSupply[count] = sysPos->d.inSupply & (0x00000001 << playerID);
 		sysPos->d.inSupply &= (~(0x00000001 << playerID));
-		sysPos->d.inRootSupply &= (~(0x00000001 << playerID));
 		sysPos = sysPos->next;
 		++count;
 	}
@@ -1506,13 +1468,9 @@ void Sector::ComputeSupplyForPlayer(U32 playerID)
 			{
 				OBJPTR<IPlatform> platform;
 				obj->QueryInterface(IPlatformID,platform);
+				// retail: a supply source (IsRootSupply) puts the system in supply.
+				// The CQ2 IsTempSupply/TempHQ path was removed here 2026-08-29.
 				if(platform->IsRootSupply() && (!platform->IsReallyDead()))
-				{
-					System * system = GetSystemHandle(obj->GetSystemID());
-					if(!((system->d.inRootSupply >> playerID) & 0x00000001))
-						setSystemInRootSupply(system,playerID);
-				}
-				if(platform->IsTempSupply() && (!platform->IsReallyDead()))
 				{
 					System * system = GetSystemHandle(obj->GetSystemID());
 					if(!((system->d.inSupply >> playerID) & 0x00000001))
@@ -1531,7 +1489,7 @@ void Sector::ComputeSupplyForPlayer(U32 playerID)
 		{
 			if(sysPos->isVisibleToPlayer(MGlobals::GetThisPlayer()))
 			{
-				if((sysPos->d.inRootSupply & (0x00000001 << playerID)) && (!testSupply[count]))
+				if((sysPos->d.inSupply & (0x00000001 << playerID)) && (!testSupply[count]))
 				{
 					M_RACE race = MGlobals::GetPlayerRace(playerID);
 					if(race == M_TERRAN)
@@ -1543,7 +1501,7 @@ void Sector::ComputeSupplyForPlayer(U32 playerID)
 					SECTOR->ZoneOn(sysPos->d.id);
 					return;//only want one sound
 				}
-				else if((!(sysPos->d.inRootSupply & (0x00000001 << playerID))) && testSupply[count])
+				else if((!(sysPos->d.inSupply & (0x00000001 << playerID))) && testSupply[count])
 				{
 					M_RACE race = MGlobals::GetPlayerRace(playerID);
 					if(race == M_TERRAN)

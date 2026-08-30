@@ -15565,7 +15565,8 @@ struct SYSTEM_DATA
 	U32 alertState[9];
 	CAMERA_DATA cameraBuffer;
 	U32 inSupply;
-	U32 inRootSupply;
+	
+	
 };
 
 struct MT_SECTOR_SAVELOAD
