@@ -319,6 +319,7 @@ struct IMeshRender
 //void AllocateMeshRenders(IMeshRender **imr,int num);
 IMeshRender * CreateMeshRender();
 //I hereby define split_n to point in the direction of out1
+BOOL32 CanSplitMesh(const MeshInfo &src);
 void SplitMesh(const MeshInfo &src,MeshInfo &out0,MeshInfo &out1,SINGLE split_d,const Vector &split_n);
 void CopyMesh(IMeshRender *src,IMeshRender *dest,bool bCopyBuffers=true);
 void TreeRender(MeshInfo **mi,int num_children);

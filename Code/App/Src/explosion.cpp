@@ -475,12 +475,18 @@ void Explosion::RationalSpeed(INSTANCE_INDEX id)
 	{
 		vel *= 2000.0 / speed;
 		ENGINE->set_velocity(id, vel);
-		Vector ang = ENGINE->get_angular_velocity(id);
-		// NOTE: don't use normalize here, because ang may be 0 vector
-	/*	SINGLE mag = ang.magnitude();
-		if (mag)
-			ang *= (10 / mag);
-		ENGINE->set_angular_velocity(id, ang);*/
+	}
+
+	// The original limiter was commented out and was incorrectly nested under
+	// the linear-speed check.  Keep debris rotation finite independently of its
+	// travel speed; this also avoids unstable quaternion integration at extreme
+	// angular velocities.
+	Vector ang = ENGINE->get_angular_velocity(id);
+	SINGLE angSpeed = ang.magnitude();
+	if (angSpeed > 10.0f)
+	{
+		ang *= 10.0f / angSpeed;
+		ENGINE->set_angular_velocity(id, ang);
 	}
 }
 

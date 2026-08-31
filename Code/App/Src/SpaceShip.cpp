@@ -400,6 +400,11 @@ void SpaceShip<SaveStruct,InitStruct>::PostRender (void)
 template <class SaveStruct, class InitStruct>
 void SpaceShip<SaveStruct,InitStruct>::renderSpaceShip (void)
 {
+	Transform modelAxisCorrection;
+	modelAxisCorrection.set_identity();
+	modelAxisCorrection.rotate_about_i(90*MUL_DEG_TO_RAD);
+	modelAxisCorrection.rotate_about_j(180*MUL_DEG_TO_RAD);
+
 	if (admiralID)
 	{
 		VOLPTR(IAdmiral) admiral = OBJLIST->FindObject(admiralID);
@@ -418,21 +423,23 @@ void SpaceShip<SaveStruct,InitStruct>::renderSpaceShip (void)
 			Vector test_i = trans.get_orientation().get_i();
 			if (test_i.x != 0 || test_i.y != 0 || test_i.z != 0)
 			{
-				if(instanceMesh)
+				if(instanceMesh && CQEFFECTS.bFastRender != 0)
 				{
 					instanceMesh->SetTransform(trans);
 					instanceMesh->Render();
 				}
 				else if (instanceIndex != -1)
-					ENGINE->render_instance(MAINCAM, instanceIndex, 0, LODPERCENT, 0, NULL);
+					ENGINE->render_instance(MAINCAM, instanceIndex, 0, LODPERCENT,
+											RF_TRANSFORM_LOCAL, &modelAxisCorrection);
 			}
 		}
 		else
 		{
-			if(instanceMesh)
+			if(instanceMesh && CQEFFECTS.bFastRender != 0)
 				instanceMesh->Render();
 			else if (instanceIndex != -1)
-				ENGINE->render_instance(MAINCAM, instanceIndex, 0, LODPERCENT, 0, NULL);
+				ENGINE->render_instance(MAINCAM, instanceIndex, 0, LODPERCENT,
+										RF_TRANSFORM_LOCAL, &modelAxisCorrection);
 		}
 	}
 
@@ -1332,7 +1339,8 @@ void SpaceShip<SaveStruct,InitStruct>::initSpaceShip (const InitStruct & data)
 	billboardThreshhold = 0; // not in VS6 binary (disables threshold = always render as billboard when needed)
 	billboardTextTwo = false; // not in VS6 binary
 
-//	transform.rotate_about_i(90*MUL_DEG_TO_RAD);
+	// Do not rotate the gameplay transform here: mission placement replaces it after
+	// initialization, and retaining it would also rotate ship physics out of plane.
 	if (data.pData->ambient_animation[0])
 	{
 		ambientAnimIndex = ANIM->create_script_inst(data.animArchetype, instanceIndex, data.pData->ambient_animation);

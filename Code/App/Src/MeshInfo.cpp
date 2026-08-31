@@ -275,10 +275,24 @@ MeshChain::~MeshChain()
 {
 	if (bOwnsChildren)
 	{
-		ENGINE->destroy_instance(mi[0]->instanceIndex);
+		// Destroying the root engine instance also destroys its attached child
+		// instances.  MeshInfo objects in exploded chains additionally have
+		// bOwnsInstance set, which used to make their destructors destroy those
+		// same instance IDs a second time.  Debris expiry then corrupted engine/
+		// heap state several seconds after combat had apparently completed.
 		for (int i=0;i<numChildren;i++)
 		{
-			delete mi[i];
+			if (mi[i])
+				mi[i]->bOwnsInstance = false;
+		}
+
+		if (numChildren && mi[0] && mi[0]->instanceIndex != INVALID_INSTANCE_INDEX)
+			ENGINE->destroy_instance(mi[0]->instanceIndex);
+
+		for (int i=0;i<numChildren;i++)
+		{
+			if (mi[i])
+				delete mi[i];
 			mi[i] = 0;
 		}
 	}
@@ -421,7 +435,8 @@ void MeshInfo::CalculateSphere()
 	radius = 10;
 	sphere_center.set(0,0,0);
 
-	if (mr->face_cnt == 0 || bHasMesh == 0)
+	if (bHasMesh == 0 || mr == 0 || mr->face_cnt == 0 ||
+		mr->pos_cnt == 0 || mr->pos_list == 0)
 		return;
 	
 	SINGLE max_x,max_y,max_z;
@@ -458,7 +473,13 @@ void MeshInfo::CalculateSphere()
 
 void MeshInfo::GetBoundingBox(float *box)
 {
-	if (mr->face_cnt == 0 || bHasMesh == 0)
+	if (box == 0)
+		return;
+
+	memset(box,0,sizeof(float)*6);
+
+	if (bHasMesh == 0 || mr == 0 || mr->face_cnt == 0 ||
+		mr->pos_cnt == 0 || mr->pos_list == 0)
 		return;
 	
 	SINGLE max_x,max_y,max_z;

@@ -1568,6 +1568,13 @@ bool TM1_MantisAttack::Update (void)
 	{
 	case Begin:
 
+		// Construction-triggered waves and the final attack share mantis_ships.
+		// The final attack resets that counter while older ships may still be
+		// alive, so later destruction events can leave it stale or underflow it.
+		// Tau Ceti is secured based on the ships that actually remain there.
+		data.mantis_ships = (U16)(CountObjects(M_SCOUTCARRIER, MANTIS_ID, TAU_CETI) +
+			CountObjects(M_FRIGATE, MANTIS_ID, TAU_CETI));
+
 		if (data.mantis_ships == 0)
 		{
             MScript::MarkObjectiveCompleted( IDS_TM1_OBJECTIVE2_11 );
@@ -1793,7 +1800,6 @@ void TM1_UnderAttack::Initialize (U32 eventFlags, const MPartRef & part)
 
 		    break;
 	}
-	
 }
 
 bool TM1_UnderAttack::Update (void)
@@ -1931,7 +1937,10 @@ void TM1_ShipDestroyed::Initialize (U32 eventFlags, const MPartRef & part)
 
 		    //If we kill a Mantis frigate decrement the counter...
 
-		    data.mantis_ships--;
+		    if (data.mantis_ships)
+		    {
+			    data.mantis_ships--;
+		    }
 
 		    break;
 
@@ -2002,7 +2011,6 @@ void TM1_ShipDestroyed::Initialize (U32 eventFlags, const MPartRef & part)
 
 		    break;
 	}
-	
 }
 
 bool TM1_ShipDestroyed::Update (void)

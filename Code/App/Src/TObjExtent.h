@@ -210,6 +210,46 @@ void ObjectExtent< Base >::initExtents (const EXTENTINITINFO & data)
 	mesh_info = CreateMeshInfoTree(instanceIndex);
 	mc.numChildren = mesh_info->ListChildren(mc.mi);
 
+	// ObjectRender used to bind the archetype's shared MeshRender objects to
+	// every MeshInfo after constructing this tree.  Explosion splitting relies
+	// on that binding for vertex data (bounds, center of mass, and face splits).
+	// Restoring only the tree left MeshInfo::mr null until the first ship died.
+	IMeshRender **meshRenders = data.mr;
+	if (meshRenders == 0 || data.numChildren < mc.numChildren)
+	{
+		// A construction shadow can initialize this shared archetype array before
+		// the real platform exists.  The shadow may contain fewer mesh children
+		// than the completed object (the Mission 1 HQ has one versus three).  Do
+		// not index that shorter array with the completed object's child count.
+		// Existing MeshInfo trees hold their own references to these renderers, so
+		// dropping the archetype's references here does not invalidate the shadow.
+		if (meshRenders)
+		{
+			for (int i=0;i<data.numChildren;i++)
+				meshRenders[i]->Release();
+			delete [] meshRenders;
+		}
+
+		typedef IMeshRender * MeshRenderPtr;
+		meshRenders = new MeshRenderPtr[mc.numChildren];
+		for (int i=0;i<mc.numChildren;i++)
+		{
+			meshRenders[i] = CreateMeshRender();
+			meshRenders[i]->AddRef();
+			meshRenders[i]->Init(mc.mi[i]);
+		}
+
+		// The init/archetype record owns and shares this array between instances,
+		// matching the original ObjectRender initialization path.
+		IMeshRender ***pmr = (IMeshRender ***)(void *)&data.mr;
+		int *numMeshRenders = (int *)(void *)&data.numChildren;
+		*numMeshRenders = mc.numChildren;
+		*pmr = meshRenders;
+	}
+
+	for (int i=0;i<mc.numChildren;i++)
+		meshRenders[i]->SetupMeshInfo(mc.mi[i]);
+
 	if (extentData->_step == 0.0f)
 	{
 	//	SINGLE box[6];

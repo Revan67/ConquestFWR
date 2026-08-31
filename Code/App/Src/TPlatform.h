@@ -1857,7 +1857,14 @@ void Platform<SaveStruct,InitStruct>::Render (void)
 			}
 			if (!bSpecialRender)
 			{
-				if(instanceMesh)
+				// Retail rendered completed platforms through the engine instance.
+				// The CQ2 MeshManager path misinterprets several retail platform
+				// materials (black/white faces and unrelated striped textures).
+				// Keep instanceMesh alive for animation, effects, hardpoints, and
+				// team modifiers, but use the retail renderer for the visible mesh.
+				if(instanceIndex != INVALID_INSTANCE_INDEX)
+					ENGINE->render_instance(MAINCAM, instanceIndex,0,LODPERCENT,0,0);
+				else if(instanceMesh)
 					instanceMesh->Render();
 			}
 			if(bNoAutoTarget)
@@ -1893,7 +1900,9 @@ void Platform<SaveStruct,InitStruct>::Render (void)
 				{*/
 				if (!bSpecialRender)
 				{
-					if(instanceMesh)
+					if(instanceIndex != INVALID_INSTANCE_INDEX)
+						ENGINE->render_instance(MAINCAM, instanceIndex,0,LODPERCENT,0,0);
+					else if(instanceMesh)
 						instanceMesh->Render();
 				}
 				

@@ -1757,7 +1757,8 @@ void MeshRender::SetupMeshInfo(MeshInfo *mc,bool bMakeBuffers, const char* mater
 					mc->fgi[pos->fg_idx].colorTex = TMANAGER->CreateTextureFromFile(texName, (IComponentFactory *)TEXTURESDIR, DA::TGA, PF_4CC_DAA8);
 					sprintf(tmp, "_bump.tga");
 					mc->fgi[pos->fg_idx].bumpTex = TMANAGER->CreateTextureFromFile(texName, (IComponentFactory *)TEXTURESDIR, DA::TGA, PF_4CC_DAA8);
-					if (mc->fgi[pos->fg_idx].colorTex && mc->fgi[pos->fg_idx].bumpTex)
+					if (mc->fgi[pos->fg_idx].colorTex && mc->fgi[pos->fg_idx].bumpTex
+						&& emissiveEffect && *emissiveEffect && nonEmissiveEffect && *nonEmissiveEffect)
 					{
 						mc->fgi[pos->fg_idx].bCQ2Mat = true;
 					}

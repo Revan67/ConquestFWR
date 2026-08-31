@@ -4536,6 +4536,47 @@ void CopyMesh(IMeshRender *src,IMeshRender *dest,bool bCopyBuffers)
 }
 
 //I hereby define split_n to point in the direction of out1
+BOOL32 CanSplitMesh(const MeshInfo &src)
+{
+	// SplitMesh uses shared fixed-size scratch buffers.  The original code only
+	// asserted after writing to them, so a sufficiently complex (or malformed)
+	// mesh corrupts memory and the failure is later reported inside DACOM's heap.
+	// Use worst-case split growth here and reject unsafe meshes before the caller
+	// detaches joints or creates replacement instances.
+	if (src.mr == 0 || src.faceRenders == 0 || src.mr->pos_list == 0 ||
+		src.mr->face_cnt <= 0 || src.mr->pos_cnt <= 0 ||
+		src.mr->face_cnt > HUGE/2 || src.mr->pos_cnt > HUGE/2)
+		return FALSE;
+
+	const MeshRender *mesh = static_cast<const MeshRender *>(src.mr);
+	const RenderMaterial *material = mesh->fgr;
+	U32 sourceFaces = 0;
+	U32 worstVertices = 0;
+
+	while (material)
+	{
+		if (material->vert_cnt)
+		{
+			if (material->vert_cnt > HUGE/2 || material->new_face_cnt < 0 ||
+				material->new_face_cnt > (HUGE/2)/6 ||
+				material->face_offset < 0 ||
+				(U32)material->face_offset + (U32)material->new_face_cnt > (U32)src.mr->face_cnt)
+				return FALSE;
+
+			// A triangle crossing the plane becomes two triangles and introduces
+			// two vertices on each output side.
+			sourceFaces += material->new_face_cnt;
+			worstVertices += material->vert_cnt + 2 * material->new_face_cnt;
+			if (sourceFaces * 2 > HUGE/2 || worstVertices > HUGE/2)
+				return FALSE;
+		}
+		material = material->next;
+	}
+
+	return sourceFaces != 0;
+}
+
+//I hereby define split_n to point in the direction of out1
 void SplitMesh(const MeshInfo &src,MeshInfo &out0,MeshInfo &out1,SINGLE split_d,const Vector &split_n)
 {
 	MeshSplit meshSplit;

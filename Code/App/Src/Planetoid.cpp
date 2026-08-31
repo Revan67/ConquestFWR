@@ -1558,7 +1558,13 @@ void Planetoid::Render (void)
 		
 		const bool bEditorMode = DEFAULTS->GetDefaults()->bEditorMode;
 
-		if(instanceMesh)
+		// Planets use retail .3db materials.  CQ2's MeshManager path treats some
+		// of them as sequel materials, producing solid-black planets.  Render the
+		// underlying engine instance as retail did while retaining instanceMesh
+		// for updates, callbacks, and any sequel-era effect plumbing.
+		if(instanceIndex != INVALID_INSTANCE_INDEX)
+			ENGINE->render_instance(MAINCAM, instanceIndex,0,LODPERCENT,0,0);
+		else if(instanceMesh)
 			instanceMesh->Render();
 
 		//draw particle ring

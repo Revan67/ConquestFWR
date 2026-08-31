@@ -651,7 +651,11 @@ int WINAPI WinMain(HINSTANCE _hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 
 	InitRendSections(cmd_line_ini);
 
-	DWORD messages = DAHEAPFLAG_DEBUGFILL_SNAN|DAHEAPFLAG_GROWHEAP|DAHEAPFLAG_NOHEAPEXPANDMSG;
+	// Modern Direct3D wrappers create worker threads while engine DLLs are loaded.
+	// Their DLL_THREAD_ATTACH CRT bookkeeping allocates through DACOM's shared heap,
+	// so the public game heap must use the allocator's existing synchronized path.
+	DWORD messages = DAHEAPFLAG_DEBUGFILL_SNAN|DAHEAPFLAG_GROWHEAP|
+		DAHEAPFLAG_NOHEAPEXPANDMSG|DAHEAPFLAG_MULTITHREADED;
 	// VS2022/Win11 compat: DACOM's block-list verifier (verifyBlock) sees false
 	// HEAP_CORRUPTED errors due to CRT/heap layout differences. NOVERIFYPTR skips
 	// the linked-list walk entirely; SNAN fill above still catches use-after-free.

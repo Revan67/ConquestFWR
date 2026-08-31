@@ -782,7 +782,17 @@ BOOL32 SplitInstance( INSTANCE_INDEX inst_index, const Vector& normal, SINGLE d,
 #if 1
 BOOL32 SplitInstance( INSTANCE_INDEX index,IMeshInfoTree *tree, const Vector& normal, SINGLE d, IMeshInfoTree **out_tree0, IMeshInfoTree **out_tree1, PHYS_CHUNK *phys0,PHYS_CHUNK *phys1)
 {
+	if (tree == 0 || out_tree0 == 0 || out_tree1 == 0 || phys0 == 0 || phys1 == 0)
+		return FALSE;
+
 	MeshInfo *mi = tree->GetMeshInfo();
+	// Splitting consumes MeshRender vertex/face data.  Meshless nodes are valid
+	// elsewhere in a compound instance, but an incomplete root cannot be split.
+	// Reject it before detaching joints or allocating replacement instances.
+	if (mi == 0 || mi->bHasMesh == 0 || mi->mr == 0 ||
+		mi->mr->face_cnt == 0 || mi->mr->pos_cnt == 0 || mi->mr->pos_list == 0 ||
+		!CanSplitMesh(*mi))
+		return FALSE;
 //	BOOL32 result = 0;
 	JointInfo joints[16];
 	INSTANCE_INDEX child_indices[16];

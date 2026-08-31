@@ -87,6 +87,33 @@
 
 static DWORD lastExtended;
 
+// Temporary retail-parity diagnostic.  Mission scripts run in separate DLLs,
+// so log the object as seen by Mission.dll before it crosses that ABI boundary.
+static void logScriptObjectEvent(U32 eventType, U32 missionID, const MPartRef & part,
+	const char * programName)
+{
+	if (eventType != CQPROGFLAG_OBJECTDESTROYED)
+		return;
+
+	FILE * file = fopen("debug/script_events_diag.txt", "a");
+	if (file)
+	{
+		if (part.isValid())
+		{
+			fprintf(file, "destroy id=0x%08X class=%d player=%u program=%s\n",
+				missionID, (int)part->mObjClass, (unsigned)part->playerID,
+				programName ? programName : "<dispatch>");
+		}
+		else
+		{
+			fprintf(file, "destroy id=0x%08X INVALID program=%s\n",
+				missionID, programName ? programName : "<dispatch>");
+		}
+		fflush(file);
+		fclose(file);
+	}
+}
+
 //--------------------------------------------------------------------------//
 //
 struct MCachedPart
@@ -1200,12 +1227,15 @@ MPartRef MScript::GetExtendedEventPartRef (void)
 void MScript::RunProgramsWithEvent(U32 eventType, const MPartRef & part, DWORD extendendInfo)
 {
 	const CQSCRIPTENTRY * node = g_pScripts;
+	U32 missionID = part.dwMissionID;
 
 	lastExtended = extendendInfo;
+	logScriptObjectEvent(eventType, missionID, part, 0);
 	while (node)
 	{
 		if(node->eventFlags & eventType)
 		{
+			logScriptObjectEvent(eventType, missionID, part, node->progName);
 			CQBaseProgram * program = node->factory();
 			CQASSERT(program);
 
@@ -1221,6 +1251,8 @@ void MScript::RunProgramsWithEvent(U32 eventType, U32 dwMissionID, DWORD extende
 {
 	if(OBJLIST->FindObject(dwMissionID))
 		MScript::RunProgramsWithEvent(eventType, MScript::GetPartByID(dwMissionID), extendendInfo);
+	else if (eventType == CQPROGFLAG_OBJECTDESTROYED)
+		logScriptObjectEvent(eventType, dwMissionID, MPartRef(), "<object-not-found>");
 }
 //--------------------------------------------------------------------------//
 //

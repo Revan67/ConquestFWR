@@ -593,8 +593,14 @@ GENRESULT COMAPI Direct3D_RenderPipeline::set_default_constants( const Transform
 
 #define MAXLIGHTSFOUND 4
 
-	int lightsNeeded = min(enabledLightCount,MAXLIGHTSFOUND);
-	lightsNeeded = min(lightsNeeded, lightCount-1);
+	int lightsNeeded = min((int)enabledLightCount,MAXLIGHTSFOUND);
+	// One shader slot is reserved by the caller.  Avoid unsigned underflow
+	// when no slots are supplied, and never select more lights than the local
+	// lightData/Atten arrays can hold.
+	if (lightCount == 0)
+		lightsNeeded = 0;
+	else
+		lightsNeeded = min(lightsNeeded, (int)(lightCount-1));
 
 	D3DLIGHT9 lightData[MAXLIGHTSFOUND];
 	memset(&lightData,0,sizeof(D3DLIGHT9) * MAXLIGHTSFOUND);
@@ -605,6 +611,8 @@ GENRESULT COMAPI Direct3D_RenderPipeline::set_default_constants( const Transform
 	{
 		D3DLIGHT9 tmp;
 		get_light(enabledLightIndices[i],&tmp);
+		if (lightsNeeded == 0)
+			continue;
 		if ((tmp.Type == D3DLIGHT_POINT) && (tmp.Diffuse.r > 0 || tmp.Diffuse.g > 0 || tmp.Diffuse.b > 0))
 		{
 			Vector lightWorldPos(tmp.Position.x, tmp.Position.y, tmp.Position.z);
@@ -621,7 +629,7 @@ GENRESULT COMAPI Direct3D_RenderPipeline::set_default_constants( const Transform
 					worstIndex = j;
 				}
 			}
-			if (newAtten > Atten[j])
+			if (newAtten > worstAtten)
 			{
 				Atten[worstIndex] = newAtten;
 				lightData[worstIndex] = tmp;
@@ -641,7 +649,7 @@ GENRESULT COMAPI Direct3D_RenderPipeline::set_default_constants( const Transform
 					worstIndex = j;
 				}
 			}
-			if (newAtten > Atten[j])
+			if (newAtten > worstAtten)
 			{
 				Atten[worstIndex] = newAtten;
 				lightData[worstIndex] = tmp;
@@ -651,10 +659,11 @@ GENRESULT COMAPI Direct3D_RenderPipeline::set_default_constants( const Transform
 
 	float bestAtten = 0; // choose the best key-light
 	int bestKey = 0;
-	for (int i = 0; i < enabledLightCount; i++)
+	// Only the selected entries are initialized.  Iterating enabledLightCount
+	// here used to read beyond Atten[4], choose an out-of-range bestKey, and
+	// copy a D3DLIGHT9 over this function's stack frame during busy scenes.
+	for (int i = 0; i < lightsNeeded; i++)
 	{
-		D3DLIGHT9 tmp;
-		get_light(enabledLightIndices[i],&tmp);
 		if (Atten[i] > bestAtten)
 		{
 			bestAtten = Atten[i];
@@ -2468,9 +2477,13 @@ DA_METHOD(	set_light_enable,( U32 light_index, U32 enable ))
 	if (!enable) enabledLightCount = 0;
 	else
 	{
-		ASSERT(enabledLightCount < 8);
-		enabledLightIndices[enabledLightCount] = light_index;
-		enabledLightCount++;
+		const U32 maxEnabledLights = sizeof(enabledLightIndices) / sizeof(enabledLightIndices[0]);
+		ASSERT(enabledLightCount < maxEnabledLights);
+		if (enabledLightCount < maxEnabledLights)
+		{
+			enabledLightIndices[enabledLightCount] = light_index;
+			enabledLightCount++;
+		}
 	}
 
 	if( FAILED( direct3d_device->LightEnable( light_index, enable ) ) ) { 

@@ -145,7 +145,9 @@ inline void rpsi_build_render_state_info( RenderStateArray &rsa )
 	RSA_SET( FOGEND, 0 );
 	RSA_SET( FOGDENSITY, 0 );
 //	RSA_SET( EDGEANTIALIAS, FALSE );
-//	RSA_SET( ZBIAS, 0 );
+	// D3D9 renamed the old ZBIAS state to DEPTHBIAS. Damage effects still
+	// use it, so register it instead of rejecting state 195 every frame.
+	RSA_SET( DEPTHBIAS, 0 );
 	RSA_SET( RANGEFOGENABLE, FALSE );
 	RSA_SET( STENCILENABLE, FALSE );
 	RSA_SET( STENCILFAIL, D3DSTENCILOP_KEEP );

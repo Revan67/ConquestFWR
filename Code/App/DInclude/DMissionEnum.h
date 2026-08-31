@@ -43,7 +43,6 @@ enum M_OBJCLASS
 	//
 	M_FABRICATOR=1,
 	M_SUPPLY,
-	M_REPAIR_SHIP,
 
 	M_CORVETTE,				//Beginning of Terran gunboat classification
 	M_MISSILECRUISER,
@@ -52,9 +51,6 @@ enum M_OBJCLASS
 	M_CARRIER,
 	M_LANCER,
 	M_INFILTRATOR,			//End of Terran gunboat classification
-
-	//hybrid ships
-	M_ESPIONAGE,
 
 	M_HARVEST,				//
 	M_RECONPROBE,
@@ -72,20 +68,6 @@ enum M_OBJCLASS
 	M_ADVHULL,
 	M_HEAVYREFINERY,
 	M_SUPERHEAVYREFINERY,
-	M_REMOTE_HQ,
-
-	//moon platforms
-	M_NOVA_BOMB,
-	M_INTEL_CENTER,
-	M_T_RESOURCE_FACTORY,
-	M_T_RESEARCH_LAB,
-	M_T_IND_FACILITY,
-
-	//custom tech
-
-	M_LISTENING_DEVICE,
-	M_BLOCKADE_RUNNER,
-	M_EARTH_GENESIS_DEVICE,
 
 	// floating platforms
 	M_LSAT,					//
@@ -139,14 +121,6 @@ enum M_OBJCLASS
 	M_DISSECTIONCHAMBER,
 	M_HYBRIDCENTER,
 	M_PLASMAHIVE,			//
-	M_FRONTIER_HIVE,
-
-	//moon platforms
-	M_M_RESOURCE_FACTORY,
-	M_M_RESEARCH_LAB,
-	M_M_IND_FACILITY,
-	M_HEAL_CLOUD,
-	M_HIVE,
 
 	M_WEAVER,			// m fabricator				
 	M_SPINELAYER,		// m minelayer						
@@ -179,14 +153,7 @@ enum M_OBJCLASS
 	M_MUNITIONSANNEX,
 	M_TURBINEDOCK,			//
 	M_TALOREANMATRIX,			
-	M_BUNKER,			
-	M_PARTHENON,
-
-	//moon platforms
-	M_S_RESOURCE_FACTORY,
-	M_S_RESEARCH_LAB,
-	M_S_IND_FACILITY,
-	M_CLOAK_PLATFORM,
+	M_BUNKER,
 
 	// floating platforms
 	M_PROTEUS,
@@ -207,6 +174,37 @@ enum M_OBJCLASS
 	M_TRIREME,			// s more amazing, perhaps battleship
 	M_MONOLITH,			// s big kick-ass thing				//End of Solarian gunboat classification
 	M_HIGHCOUNSEL,		// s admiral
+
+	// Retail data and mission scripts use the numeric range above verbatim.
+	// Keep this sentinel at retail's value (110); sequel-only classes follow it
+	// so they remain available to compile dead CQ2 paths without shifting retail IDs.
+	M_ENDOBJCLASS,
+
+	//
+	// Unshipped sequel-only additions
+	//
+	M_REPAIR_SHIP,
+	M_ESPIONAGE,
+	M_REMOTE_HQ,
+	M_NOVA_BOMB,
+	M_INTEL_CENTER,
+	M_T_RESOURCE_FACTORY,
+	M_T_RESEARCH_LAB,
+	M_T_IND_FACILITY,
+	M_LISTENING_DEVICE,
+	M_BLOCKADE_RUNNER,
+	M_EARTH_GENESIS_DEVICE,
+	M_FRONTIER_HIVE,
+	M_M_RESOURCE_FACTORY,
+	M_M_RESEARCH_LAB,
+	M_M_IND_FACILITY,
+	M_HEAL_CLOUD,
+	M_HIVE,
+	M_PARTHENON,
+	M_S_RESOURCE_FACTORY,
+	M_S_RESEARCH_LAB,
+	M_S_IND_FACILITY,
+	M_CLOAK_PLATFORM,
 
 	//
 	// Vyrium Stuff
@@ -253,10 +251,14 @@ enum M_OBJCLASS
 	M_COBRA,
 	M_CROTAL,
 	M_BASILISK,
-	M_LEVIATHIN,
-
-	M_ENDOBJCLASS			// this must be at the end!
+	M_LEVIATHIN
 };
+#ifndef _ADB
+static_assert(M_CORVETTE == 3, "M_OBJCLASS must retain retail numeric IDs");
+static_assert(M_FRIGATE == 73, "M_OBJCLASS must retain retail numeric IDs");
+static_assert(M_HIGHCOUNSEL == 109, "M_OBJCLASS must retain retail numeric IDs");
+static_assert(M_ENDOBJCLASS == 110, "M_OBJCLASS retail sentinel must remain 110");
+#endif
 //--------------------------------------------------------------------------//
 //--------------------------------------------------------------------------//
 enum UNIT_STANCE

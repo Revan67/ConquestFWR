@@ -58,6 +58,7 @@ ObjectPhysics< Base >::ObjectPhysics (void) :
 					physUpdateNode(this, PhysUpdateProc(&ObjectPhysics::physUpdatePhysics))
 {
 	bEnablePhysics = true;
+	pArm = 0;
 }
 //---------------------------------------------------------------------------
 //
@@ -66,6 +67,8 @@ void ObjectPhysics< Base >::initPhysics (const PHYSICSINITINFO & data)
 {
 	if (data.rigidBodyArm.x!=0 && data.rigidBodyArm.y!=0 && data.rigidBodyArm.z!=0)
 		pArm = &data.rigidBodyArm;
+	else
+		pArm = 0;
 }
 //---------------------------------------------------------------------------
 //
