@@ -9,7 +9,8 @@ Debug and Final builds with the retail reference and record evidence, not impres
 |---|---:|---:|
 | Full `Win32` solution rebuild | PASS (2026-08-30) | PASS (2026-08-30) |
 | Required EXE/DLL outputs present | PASS | PASS |
-| Deployed binaries match build SHA-256 | PASS | PASS |
+| All 18 retail campaign DLLs rebuild | PASS | PASS |
+| Deployed binaries match build SHA-256 | PASS | NOT DEPLOYED IN LATEST CHECK |
 | Isolated deployment directory | PASS | PASS |
 
 Warnings are not a passing fidelity signal. In particular, the linker still reports `/FORCE`,
@@ -21,11 +22,13 @@ runtime-library conflicts, and shared intermediate directories.
 |---|---|---:|---:|---|
 | Startup | Intro/menu reaches stable idle | TODO | TODO | |
 | Mission | Start a known retail mission | TODO | TODO | |
-| Rendering | Player ships use correct authored orientation | FAIL (known) | TODO | Ships appear ~90 degrees nose-down |
-| Visibility | Enemy units become visible under retail conditions | FAIL (known) | TODO | Invisible-enemy issue remains open |
-| Combat | Weapons, impacts, damage and destruction complete | TODO | TODO | |
-| Explosion | Mesh shatter completes without access violation | FAIL (known) | FAIL (known) | `SplitInstance` / `GetBoundingBox` path |
-| UI | Selection, orders, build menus and HUD behave | TODO | TODO | |
+| Rendering | Player ships use correct authored orientation | PASS | TODO | Level and forward in Mission 1 |
+| Visibility | Enemy units become visible under retail conditions | PASS | TODO | Earlier report was a unit-identification mistake |
+| Combat | Weapons, impacts, damage and destruction complete | PARTIAL | TODO | Combat completes; projectile visual axis remains wrong |
+| Explosion | Mesh shatter completes without access violation | PARTIAL | TODO | Representative combat passed; broader soak required |
+| Construction | HQ and available orbital structures complete | PASS | TODO | Includes ship production; sentry slot unavailable in test |
+| Campaign | Opening combat advances to Fabricator | PASS | TODO | Final-wave/beacon transition still pending retest |
+| UI | Selection, orders, build menus and HUD behave | PARTIAL | TODO | Several layout/parity defects remain |
 | Save/load | Save and reload the same mission state | TODO | TODO | |
 | Audio/video | Music, SFX and cinematics use retail assets | TODO | TODO | |
 | Campaign | Complete representative mission from each campaign | TODO | TODO | |
@@ -36,14 +39,11 @@ heading, zoom and mission in retail and rebuilt versions.
 
 ## Immediate investigation order
 
-1. Inspect an authored retail ship mesh to establish its forward/up axes.
-2. A/B test the current CQ2 `instanceMesh` path against the surviving retail
-   `ENGINE->render_instance(instanceIndex)` path with a reversible change.
-3. Resolve ship orientation from evidence; do not bake a corrective rotation until the mesh-axis
-   convention is known.
-4. Re-test visibility after orientation/render-path selection because both symptoms may share the
-   renderer boundary.
-5. Diagnose the explosion shatter access violation independently.
+1. Retest the Mission 1 final-wave live-count fix through the beacon-recovery transition.
+2. Trace the shared hardpoint/effect transform used by projectiles and engine lights.
+3. Restore planet diffuse material and depth/occlusion behavior.
+4. Broaden startup and explosion/debris soak coverage.
+5. Repeat the same acceptance path in the Final configuration.
 
 ### Ship-axis evidence and A/B switch (2026-08-30)
 
