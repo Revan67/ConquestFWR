@@ -13,40 +13,98 @@ separate branch.
 
 | Area | State |
 |------|-------|
-| Build (VS2022 / Win11, 32-bit) | ✅ Full solution builds, 0 errors (Debug + Final/Release configs) |
-| Game launch + mission load | ✅ Launches, loads Mission 1 |
+| Build (VS2022 / Win11, 32-bit) | ✅ Game + all 18 retail campaign DLLs build in Debug and Final/Release |
+| Game launch + mission load | 🧪 Startup allocator race fixed; one full Mission 1 run passed, repeated-launch test pending |
 | Ship movement / pathing | ✅ SOLVED (archetype struct-layout root cause) |
-| Combat loop | ✅ Runs; explosions play |
+| Ship model orientation/facing | ✅ SOLVED (movement and combat facing runtime-confirmed) |
+| Combat loop | 🧪 Auto-attack/facing work; projectile direction wrong; final-wave progression fix pending retest |
+| Ship hardpoints/effects | ⚠️ Engine lights misplaced on every player ship; likely same axis mismatch as projectiles |
 | Struct schema vs retail | ⚠️ ~11 divergences left (was 37); see remediation plan |
-| **Ship models render ~90° nose-down** | ❌ OPEN — render path mapped, **paused for a design decision** |
-| **Enemy units invisible on contact** | ❌ OPEN — same mesh/render layer |
-| **Explosion mesh-shatter AV** | ❌ OPEN — real bug in Debug + Final (SplitInstance/GetBoundingBox) |
+| Explosion mesh-shatter AV | 🧪 MeshInfo binding fix survived full opening combat; needs broader soak |
+| Combat renderer lighting AV | ✅ SOLVED (full construction-wave combat completed; normal exit) |
+| **HQ/platform construction AV** | ✅ SOLVED (all structures available in Mission 1 built; normal exit) |
+| Platform textures | ✅ SOLVED (HQ and all completed structures runtime-confirmed) |
+| Planet rendering | ⚠️ Geometry visible; diffuse texture and depth occlusion still wrong |
+| CQ2 transient/ship materials | ⚠️ Refinery ship and shipyard construction preview sample wrong textures |
 | UI layout bugs | ⚠️ Several minor (resource bar, context window, sector map) |
 
-**Biggest blocker: the mesh/render layer.** Three symptoms (90° pitch, invisible enemies,
-explosion AV) all cluster in the prebuilt `MeshManager.dll` / `D3DRenderPipe.dll` render path.
+### Intermittent startup crash — fix deployed, verification pending
+The 2026-08-30 minidump resolved to `DACOM.dll!HeapInstance::malloc` during
+`hardpoint.dll`'s CRT `DLL_THREAD_ATTACH`. DXVK was creating worker threads which allocated
+concurrently through Conquest's single-threaded main DACOM heap, corrupting its free list.
+`Conquest.cpp` now enables DACOM's existing `DAHEAPFLAG_MULTITHREADED` implementation for the
+main heap. The Debug build completed with zero errors and was deployed; launch it repeatedly to
+verify that the long-standing intermittent startup failure is gone.
 
-### The mesh 90° blocker — decision needed
-Fully mapped this session (details in memory `project_ship_orientation.md`, 2026-08-30 section):
-- The ship hands the mesh a **level** transform (physics is correct: pitch 0, |j_xy| = 1).
-- The ~90° is applied **inside the CQ2 `instanceMesh` / MeshManager path**, which uses a
-  different model-to-world axis convention than retail's `ENGINE->render_instance(instanceIndex)`
-  path (still in the code but dead for ships).
-- **Three options, none chosen — this is a restore-vs-fix-forward call for the user:**
-  1. Fix-forward: bake a −90° correction into the transform or mesh archetype (cheap; verify it
-     doesn't also rotate hardpoints/effects).
-  2. Restore retail: route ships back through `ENGINE->render_instance(instanceIndex)` (faithful;
-     but MeshManager may be required by shatter/slice effects — check first).
-  3. Inspect the authored retail mesh orientation to learn the correct convention, then pick 1/2.
+### Mission 1 combat progression — root cause fixed and runtime-confirmed
+Destruction diagnostics proved events reached `TM1_ShipDestroyed`, but retail Mantis frigates
+arrived with `mObjClass == 73` while the sequel enum had compiled `M_FRIGATE == 90`. Sequel-only
+classes had been inserted throughout `M_OBJCLASS`, shifting every later retail ID. The enum now
+matches the complete retail sequence exactly (`0..110`), keeps CQ2-only names after the retail
+sentinel, and has compile-time guards for critical IDs. The engine and `SCRIPT01.dll` were rebuilt
+and deployed together.
+
+The 2026-08-30 retest completed the battle, automatically acquired/attacked targets, advanced
+the quest, and spawned the Fabricator. Ship facing and projectile direction remain separate
+render/weapon-orientation defects.
+
+### Mission 1 HQ construction crash — fixed and runtime-confirmed
+The full dump `CrashDumps/Conquest.exe_260830_210620.dmp` showed
+`ObjectExtent::initExtents` indexing element 1 of an archetype renderer array that contained only
+one element. The HQ placement shadow initialized the shared array with one mesh child, while the
+completed HQ instance contained three. `TObjExtent.h` now grows undersized shared arrays before
+binding the completed object's `MeshInfo` entries. Existing shadows keep the old renderers alive
+through their own references. The 2026-08-30 retest built the HQ and every other structure the
+mission allowed, across the available ring locations, without a crash. The sentry alone was not
+tested because every build location was occupied. The game then exited normally.
+Ship production was also exercised during this run without an error.
+
+### Combat renderer lighting crash — fixed and runtime-confirmed
+The full dump `CrashDumps/Conquest.exe_260830_220036.dmp` mapped the recurring
+`d3drenderpipe.dll+0x1E14` signature to the return path of
+`Direct3D_RenderPipeline::set_default_constants`. The routine allocated four `D3DLIGHT9` and
+attenuation entries, but searched for its key light using `enabledLightCount` (up to eight).
+An out-of-bounds attenuation read could select index 4–7; swapping that `D3DLIGHT9` then copied
+104 bytes over the function's stack frame. The dump contained the resulting light fields in the
+saved frame/arguments, matching this failure exactly. Selection and key-light loops are now
+bounded to the shader/local-array capacity, the replacement comparison uses `worstAtten`, zero
+light capacity cannot underflow, and the global enabled-light list is release-build bounded.
+The full Debug build completed and the deployed `D3DRenderPipe.dll` matches its output by SHA-256.
+The following run completed the opening battle and all later construction-triggered waves,
+including multiple explosions, then exited normally without the old renderer crash.
+
+### Mission 1 post-combat stall — exact counter defect fixed, verification pending
+The harvesting objective is a persistent tutorial reminder: `SCRIPT01` contains no resource
+threshold, simultaneous-harvest condition, or completion call for it. The actual post-combat gate
+is `data.mantis_ships == 0`. Construction waves add to this `U16` counter, the final attack resets
+it to five even if an older wave overlaps, and destruction events previously decremented it at
+zero. It could therefore become stale or wrap to 65,535 while no enemy remained. The final Tau
+Ceti attack now synchronizes the counter from live Mantis frigates/scout carriers actually in Tau
+Ceti, and the destruction handler cannot underflow. `SCRIPT01.dll` was rebuilt explicitly,
+deployed, and verified by SHA-256; runtime verification is pending.
+
+### Completed-platform and planet texture corruption — platforms fixed, planet partial
+Mission 1 showed a solid-black planet, black/white platform surfaces, and unrelated striped
+textures on completed structures. Ships and UI textures were largely correct, pointing to the
+CQ2 `instanceMesh` material path rather than missing texture files. Completed platforms and
+planets now use the retained retail `ENGINE->render_instance` path, with `instanceMesh` kept for
+animation, callbacks, hardpoints, effects, and construction shadows. A full Debug rebuild was
+deployed and its SHA-256 matches the build output. Runtime testing confirmed correct HQ and
+completed-structure textures. The planet is now visible instead of solid black, but appears as a
+bare white/gray lit mesh with no diffuse texture and does not occlude the far side of its orbital
+ring. Its material/depth state remains open. The refinery ship and shipyard's active ship-build
+preview also still sample unrelated textures on the CQ2 mesh/material path.
 
 ---
 
 ## 2. Uncommitted / working-tree state
 
-Tree is clean of source changes — everything committed. Two **untracked build outputs** remain
-and are intentionally NOT committed (candidates for `.gitignore`):
-- `Code/App/Src/Final/` — Final-config obj/exe output
-- `Code/Libs/ExplicitDLL/release/x86Math.dll` — build product
+The working tree contains the active restoration fixes, rebuilt tracked engine binaries, tools,
+and documentation accumulated during the current takeover. **Do not clean, reset, or discard it.**
+The campaign-build addition consists of `ConquestCampaign.sln`, `Directory.Build.targets`, the
+campaign stages in `Build-Conquest.ps1`, the RPUL stale Release post-build removal, and related
+README/HANDOFF updates. Script Debug/Release intermediates and the shared `Scripts/Build/` output
+are ignored; the deployed campaign DLLs live in the separate test installation.
 
 Latest commits (all authored `Revan67 <revan67@users.noreply.github.com>`):
 - `cd74a3c` Rebuild engine libs (DACOM/ComHeap/MathLib/RPUL) against current source
@@ -57,18 +115,31 @@ Latest commits (all authored `Revan67 <revan67@users.noreply.github.com>`):
 
 ## 3. Open work queue (priority order)
 
-1. **Mesh 90° / invisible enemies / explosion AV** — the render-layer cluster (see §1). Start
-   from the mapped render path; get the user's decision on the 90° approach before coding.
-2. **Remaining struct divergences** (`project_remediation_plan.md`): `BT_FLAGSHIP_DATA` is the
+1. **Verify Mission 1 final-wave live-count fix** — replay through the post-construction attack.
+   After the last Tau Ceti Mantis dies, Halsey should introduce the beacon-recovery objective;
+   the harvesting reminder itself is intentionally non-completing.
+2. **Ship hardpoint/effect transform + projectile direction** — auto-attack and combat facing now
+   work, but bolts travel toward the bottom of the map and engine lights are misplaced on every
+   player ship. Treat these two
+   as likely consumers of the same uncorrected CQ2-to-retail model-axis transform. Start from
+   hardpoint world-transform generation and `Bolt::InitWeapon` in `Projectile.cpp`, which
+   corrects pitch but not yaw; do not add separate visual offsets before tracing the shared path.
+3. **Planet material/depth state** — retain the now-working geometry draw while restoring its
+   diffuse texture, depth writes/test, and far-side ring occlusion. Then address the refinery ship
+   and shipyard construction-preview material binding on the CQ2 path.
+4. **Verify startup allocator fix** — perform repeated launches/exits. One complete opening combat
+   run has passed since the fix, but repeated-launch coverage is still pending.
+5. **Explosion mesh-shatter soak** — the restored MeshInfo binding survived the latest full combat
+   with several destroyed ships; broaden coverage before declaring it closed.
+6. **Remaining struct divergences** (`project_remediation_plan.md`): `BT_FLAGSHIP_DATA` is the
    one big restructure; `MISSION_DATA` flatten is cosmetic (layout-identical); **leave** the
    documented enum-bitfield-packing SAVELOAD structs (`BASE_FIGHTER_SAVELOAD`, `SLOT`,
    `MISSION_SAVELOAD`). Re-run the script-ABI check after any SAVELOAD change.
-3. **Dead-code sweep follow-up** (`project_deadcode_sweep.md`): verify/restore
+7. **Dead-code sweep follow-up** (`project_deadcode_sweep.md`): verify/restore
    `SoundMan::PlayMovie` + `MovieCamera::Render` (likely the cinematic bug) — verify each vs
    retail, do NOT bulk-uncomment.
-4. **Deploy rebuilt scripts to the Final install** (only the Debug install got them).
-5. **Delete orphaned `ObjectRender` (`TObjRender.h`)** once confirmed unreferenced.
-6. Minor: `USER_DEFAULTS` 104B/v11 vs retail 100B/v10; UI layout bugs.
+8. **Delete orphaned `ObjectRender` (`TObjRender.h`)** once confirmed unreferenced.
+9. Minor: `USER_DEFAULTS` 104B/v11 vs retail 100B/v10; UI layout bugs.
 
 ---
 
@@ -76,10 +147,21 @@ Latest commits (all authored `Revan67 <revan67@users.noreply.github.com>`):
 
 - **Solution:** `Code/App/Src/Conquest.sln` (VS2022). Always **full rebuild** (`/t:Rebuild`) —
   git-tracked `.obj`/`.res` cause MSBuild to skip recompiles (see `feedback_build_no_cache`).
+- **Campaign solution:** `Code/App/Src/Scripts/ConquestCampaign.sln` contains exactly the 18
+  retail modules (`SCRIPT01`–`SCRIPT16`, `Mantis_T`, `Sol_T`). Its `Debug` configuration links
+  against the Debug app/engine libraries; `Release` links against Final/release libraries.
+- **Supported entry points:** `build-debug.cmd` and `build-final.cmd`. Both call
+  `Build-Conquest.ps1`, rebuild the game, engine modules, and full retail campaign set, verify
+  every required output, deploy all 18 campaign DLLs to `Scripts/`, and SHA-256-check deployment.
+  Use `-NoDeploy` for a compile-only run.
 - **Configs are NOT branches:** *Debug* (asserts live: `CQASSERT`/`CQBOMB` do `__asm int 3`)
   vs *Final*/*Release* (`FINAL_RELEASE` → asserts compiled out; retail-parity test build).
-- **Working game install:** `D:\Games\GOG\Conquest Frontier Wars\` — a post-build xcopy
-  auto-deploys; no manual copy needed. (The `E:\Games\GOG` copy is a stock decoy.)
+- **Debug install:** `D:\Games\GOG\Conquest Frontier Wars\`.
+- **Final install:** `D:\Games\GOG-Final\Conquest Frontier Wars\` (isolated parity testing).
+- **Verified 2026-08-30:** full Debug and Final rebuilds completed with zero errors; all 18
+  campaign DLLs were verified in both configurations. The Debug game, engine modules, and
+  campaign set were deployed and matched their build outputs by SHA-256. Warnings remain
+  baseline debt.
 - **App projects stay on `/MT`** — switching to `/MDd` breaks COMHeap → DACOM `exit(255)`.
 - **Retail reference install:** `D:\Games\RetailRef` (launches but renders nothing; use for
   binary/behavior reference, not runtime).
@@ -92,7 +174,8 @@ Latest commits (all authored `Revan67 <revan67@users.noreply.github.com>`):
   extracted from retail `Globals.dll` (`PARSER/156/1033`). This is ground truth for struct
   layout. `Code/App/Src/data.i` is a **build output** (generated from the DInclude headers) —
   edit the headers, not `data.i`.
-- **Ghidra:** `D:\Dev\ghidra-proj` (retail `Conquest.exe` map; `callgraph.tsv`;
+- **Ghidra install:** `C:\Utilities\ghidra_12.1.3_PUBLIC`.
+- **Ghidra project:** `D:\Dev\ghidra-proj` (retail `Conquest.exe` map; `callgraph.tsv`;
   get_yaw/get_pitch/get_roll/get_angle/doMove located with offsets).
 - **TTD (Time Travel Debugging):** `tttracer` records, headless WinDbgX replays; query with
   `TTD.Calls(...)`. Traces in `D:\Dev\traces\` (e.g. `path.run` + symbols in
@@ -102,7 +185,7 @@ Latest commits (all authored `Revan67 <revan67@users.noreply.github.com>`):
 
 ## 6. Project memory (persistent, loaded each session)
 
-Location: `C:\Users\Joel\.claude\projects\D--Dev-ConquestFWR\memory\`
+Location: `%USERPROFILE%\.claude\projects\D--Dev-ConquestFWR\memory\`
 Index (one line per memory, loaded automatically): `memory\MEMORY.md`
 
 **Read first, in order:**

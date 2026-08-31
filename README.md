@@ -87,26 +87,52 @@ The original source targeted VS6 / Windows XP / DirectX 8–9. This project reta
 
 ## Building
 
-1. Clone this repository.
-2. Open **`Code/App/Src/Conquest.sln`** in Visual Studio 2022.
-3. Select the **Debug | Win32** configuration.
-4. **Rebuild the solution** — not an incremental Build, and not a single project:
+The supported command-line entry points rebuild the complete Win32 game and the 18 retail
+campaign modules, then verify every required runtime binary after deployment:
 
-   ```
-   MSBuild Code\App\Src\Conquest.sln /t:Rebuild /m:1 /p:Configuration=Debug /p:Platform=Win32
-   ```
+```bat
+build-debug.cmd
+build-final.cmd
+```
 
-Outputs deploy themselves: each project has a post-build step that copies its DLL/EXE and PDB into the game folder, so no manual copy is needed.
+Debug deploys to `D:\Games\GOG\Conquest Frontier Wars`; Final deploys to the isolated
+`D:\Games\GOG-Final\Conquest Frontier Wars`. Override the destination with
+`-DeployDirectory`, or build without deployment with `-NoDeploy`:
+
+```powershell
+.\Build-Conquest.ps1 -Configuration Debug -NoDeploy
+.\Build-Conquest.ps1 -Configuration Final -DeployDirectory 'D:\Games\Another CFW Test'
+```
+
+Launch deployed builds through `run-debug.cmd` or `run-final.cmd`. The wrappers set the
+installation directory as the process working directory, which is required for relative
+runtime files such as `Conquest.ini`.
+
+The destination directory must already contain a retail installation; the build supplies code,
+not the retail media assets. In Visual Studio 2022, open `Code/App/Src/Conquest.sln`, choose
+`Debug | Win32` or `Final | Win32`, and use **Rebuild Solution**.
+
+Campaign work has its own solution at `Code/App/Src/Scripts/ConquestCampaign.sln`. It contains
+only the modules shipped by retail (`SCRIPT01`–`SCRIPT16`, `Mantis_T`, and `Sol_T`), excluding
+demo/test projects. Use `Debug | Win32` alongside the Debug game or `Release | Win32` alongside
+the Final game. `Build-Conquest.ps1` handles that mapping and deploys all 18 DLLs to `Scripts\`.
+
+Debug keeps `CQASSERT`/`CQBOMB` active. Final defines `FINAL_RELEASE`, compiles those traps out,
+and is the configuration for retail-parity testing. They are configurations, not branches.
 
 **Why the solution and not a project.** `Conquest.vcxproj` does *not* build Mission/Globals/Trim/ZBatcher — they are not project references, they are consumed as prebuilt `.lib` files from the shared `.\Debug\` directory. Building the project alone silently produces a fresh `Conquest.exe` linked against stale sibling DLLs, which is exactly the exe/DLL ABI mismatch this codebase is sensitive to.
 
 **Why Rebuild and not Build.** Incremental builds skip work they should not: a precompiled-header issue with `PlayerMenu.cpp`, git-tracked `.obj` files that make MSBuild think compilation is current, and `.res` resource steps that silently do not re-run — the last of which matters because `data.i` (the parser schema) is embedded in `Globals.dll` as a resource.
 
-> **A failed rebuild leaves the game unrunnable.** `/t:Rebuild` cleans the deployed DLLs *before* the post-build copy replaces them, so a build that fails partway leaves the install missing `Globals.dll`, `Mission.dll`, `Trim.dll` and `ZBatcher.dll`. Fix the build and rebuild, or copy them back from `Code/App/Src/Debug/`. A common cause of a partway failure is a file lock — an orphaned `DbgX.Shell` process from a TTD replay holds the deployed DLLs open, and the post-build `xcopy` then fails with exit code 4.
+> **A failed Debug rebuild can leave the Debug installation unrunnable.** Its legacy project
+> post-builds replace deployed files as projects complete. Fix the build and rebuild, or restore
+> the binaries from `Code/App/Src/Debug/`. The Final wrapper copies only after MSBuild succeeds.
+> A common failure is a file lock from an orphaned `DbgX.Shell` process.
 
 `Conquest.vcxproj`'s post-build reports `Skip (not found): Globals.pdb / Trim.pdb / ZBatcher.pdb` — harmless, as each of those projects deploys its own PDB from its own post-build step.
 
-**Note:** The engine library DLLs under `Code/Libs/` are prebuilt. Only the App projects (Conquest, Mission, Trim, ZBatcher, Globals) are rebuilt from source.
+The build wrapper also rebuilds the selected engine renderer modules and their dependencies, so
+the executable, engine DLLs, application DLLs, and campaign DLLs remain configuration-matched.
 
 ---
 
@@ -232,9 +258,13 @@ All modifications are tracked in git with descriptive commit messages. The chang
 
 ### Mission-Script ABI
 
-The game ships 18 mission scripts — `Scripts\script01`–`script16.dll`, `Mantis_T.dll`, `Sol_T.dll`, all dated Oct 2012 — and the running game loads those prebuilt binaries. They bind to our `Mission.dll` by **decorated C++ export name**, which makes it a frozen ABI in practice: any change to an `MScript`/`MGlobals` signature, parameter type, or calling convention breaks script binding outright.
+The game ships 18 mission scripts — `Scripts\script01`–`script16.dll`, `Mantis_T.dll`, and `Sol_T.dll`. They bind to `Mission.dll` by **decorated C++ export name**, so any change to an `MScript`/`MGlobals` signature, parameter type, or calling convention must be made and deployed with the complete campaign set.
 
-**Source for all 18 is present** under `Code/App/Src/Scripts/` (`Script01T`–`Script16T`, `Mantis_T`, `Sol_T`, plus `Demo2`, `DemoScript`, `ScriptTest` and a shared `Helper`/`Include`). What blocks rebuilding them is not the absence of source but the **project format**: all 39 project files are legacy `.vcproj` / `.dsp` that MSBuild cannot load (`MSB4025: Root element is missing`). Converting them to `.vcxproj` — as was done for the engine projects — would make the scripts buildable and relax this constraint. Until then, treat the exported ABI as frozen.
+**Source for all 18 is present and buildable** under `Code/App/Src/Scripts/`. The retail-only
+`ConquestCampaign.sln` uses the converted VS2022 projects and deliberately leaves the demo/test
+projects out. A shared build target links Debug scripts to Debug `Mission`/`Trim` libraries and
+Release scripts to Final libraries, preventing mixed-configuration campaign DLLs. The normal
+build wrapper rebuilds, verifies, and deploys the full set atomically after the game build.
 
 Verified by three-way `dumpbin` set arithmetic (script imports vs. retail `mission.dll` exports vs. ours): **153 symbols demanded from `Mission.dll` and 2 from `Trim.dll`, all satisfied.** Since MSVC mangling encodes calling convention, this also confirms `__cdecl`/`__stdcall` alignment. Re-runnable checks live in `Tools/abicheck/`; re-run them after touching any exported signature.
 
