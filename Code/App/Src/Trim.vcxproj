@@ -207,9 +207,9 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <OutputFile>.\Debug/Trim.bsc</OutputFile>
     </Bscmake>
-    <PostBuildEvent>
-      <Command>xcopy /Y "$(OutDir)Trim.dll" "D:\Games\GOG\Conquest Frontier Wars\"
-xcopy /Y "$(OutDir)Trim.pdb" "D:\Games\GOG\Conquest Frontier Wars\"</Command>
+    <PostBuildEvent Condition="'$(ConquestEnableDeploy)'!='false'">
+      <Command>xcopy /Y "$(OutDir)Trim.dll" "$(ConquestDebugDeployDir)\"
+xcopy /Y "$(OutDir)Trim.pdb" "$(ConquestDebugDeployDir)\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">

@@ -4,6 +4,8 @@ Code/App/Src/debug/
 Code/App/Src/Debug/
 Code/App/Src/Release/
 Code/App/Src/release/
+Code/App/Src/Final/
+Code/App/Src/final/
 Code/App/Src/MissionDebug/
 Code/App/Src/TrimDebug/
 Code/App/Src/ZBatcherDebug/
@@ -78,4 +80,17 @@ Tools/ShapeEdit/Release/
 Code/Editor/Debug/
 Code/Editor/Release/
 Code/App/Src/Scripts/*/*/Debug/
+Code/App/Src/Scripts/*/*/Release/
 Code/App/Src/Scripts/*/*/DataDef.i
+Code/Libs/ExplicitDLL/release/x86Math.dll
+
+# ─── Local investigation data and downloaded utilities ──────────────────────
+# Kept on disk for debugging, but not suitable for source control.
+/.claude/
+/CrashDumps/
+/Tools/ProcDump/
+/Tools/image-inspection/
+/codex-build.log
+
+# Rebuilt runtime modules are reproducible through Build-Conquest.ps1.
+Code/Libs/ExplicitDLL/release/*.dll

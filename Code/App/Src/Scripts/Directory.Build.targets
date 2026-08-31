@@ -1,0 +1,24 @@
+<Project>
+  <!--
+    Campaign DLLs must link against the same application and engine flavor that
+    they are deployed with.  The converted legacy projects all carried Debug
+    paths in both configurations; centralize the correction here so individual
+    mission projects remain mechanically identical to their source versions.
+  -->
+  <PropertyGroup>
+    <ConquestCampaignAppConfiguration Condition="'$(Configuration)' == 'Debug'">Debug</ConquestCampaignAppConfiguration>
+    <ConquestCampaignAppConfiguration Condition="'$(Configuration)' == 'Release'">Final</ConquestCampaignAppConfiguration>
+    <ConquestCampaignEngineConfiguration Condition="'$(Configuration)' == 'Debug'">debug</ConquestCampaignEngineConfiguration>
+    <ConquestCampaignEngineConfiguration Condition="'$(Configuration)' == 'Release'">release</ConquestCampaignEngineConfiguration>
+    <ConquestCampaignRepoRoot>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..\..\..\'))</ConquestCampaignRepoRoot>
+    <ConquestCampaignAppOutput>$(ConquestCampaignRepoRoot)Code\App\Src\$(ConquestCampaignAppConfiguration)</ConquestCampaignAppOutput>
+    <ConquestCampaignStaticLibraries>$(ConquestCampaignRepoRoot)Code\Libs\Static\$(ConquestCampaignEngineConfiguration)</ConquestCampaignStaticLibraries>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup Condition="'$(ConquestCampaignAppConfiguration)' != ''">
+    <Link>
+      <AdditionalDependencies>dacom.lib;$(ConquestCampaignAppOutput)\Mission.lib;$(ConquestCampaignAppOutput)\Trim.lib;odbc32.lib;odbccp32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ConquestCampaignStaticLibraries);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+</Project>

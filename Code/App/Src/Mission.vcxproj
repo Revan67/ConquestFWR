@@ -635,9 +635,9 @@
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <PostBuildEvent>
-      <Command>xcopy /Y "$(OutDir)Mission.dll" "D:\Games\GOG\Conquest Frontier Wars\"
-xcopy /Y "$(OutDir)Mission.pdb" "D:\Games\GOG\Conquest Frontier Wars\"</Command>
+    <PostBuildEvent Condition="'$(ConquestEnableDeploy)'!='false'">
+      <Command>xcopy /Y "$(OutDir)Mission.dll" "$(ConquestDebugDeployDir)\"
+xcopy /Y "$(OutDir)Mission.pdb" "$(ConquestDebugDeployDir)\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
 </Project>

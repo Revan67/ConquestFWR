@@ -18,6 +18,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <!-- Debug auto-deploy remains convenient, but the path can now be overridden
+         with /p:ConquestDebugDeployDir=... or by Build-Conquest.ps1. -->
+    <ConquestDebugDeployDir Condition="'$(ConquestDebugDeployDir)' == ''">D:\Games\GOG\Conquest Frontier Wars</ConquestDebugDeployDir>
+    <ConquestEnableDeploy Condition="'$(ConquestEnableDeploy)' == ''">true</ConquestEnableDeploy>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <!-- BSCMAKE browse-info generation is not needed with VS2022 IntelliSense
          and fails when .sbr files are missing after a partial clean. -->
     <GenerateBrowseInformation>false</GenerateBrowseInformation>

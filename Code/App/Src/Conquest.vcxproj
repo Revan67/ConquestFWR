@@ -1240,8 +1240,8 @@
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <PostBuildEvent>
-      <Command>powershell -NoProfile -Command "foreach ($f in @('Conquest.exe','Conquest.pdb','Globals.dll','Globals.pdb','Trim.dll','Trim.pdb','ZBatcher.dll','ZBatcher.pdb')) { $src = '$(OutDir)' + $f; if (Test-Path $src) { Copy-Item $src 'D:\Games\GOG\Conquest Frontier Wars\' -Force; Write-Host ('Deployed ' + $f) } else { Write-Host ('Skip (not found): ' + $f) } }"</Command>
+    <PostBuildEvent Condition="'$(ConquestEnableDeploy)'!='false'">
+      <Command>powershell -NoProfile -Command "foreach ($f in @('Conquest.exe','Conquest.pdb','Globals.dll','Globals.pdb','Trim.dll','Trim.pdb','ZBatcher.dll','ZBatcher.pdb')) { $src = '$(OutDir)' + $f; if (Test-Path $src) { Copy-Item $src '$(ConquestDebugDeployDir)' -Force; Write-Host ('Deployed ' + $f) } else { Write-Host ('Skip (not found): ' + $f) } }"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
 </Project>

@@ -307,9 +307,9 @@ rc /l 0x409 /fo Debug\Globals.res /d_DEBUG Globals.rc
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <OutputFile>.\Debug/Globals.bsc</OutputFile>
     </Bscmake>
-    <PostBuildEvent>
-      <Command>xcopy /Y "$(OutDir)Globals.dll" "D:\Games\GOG\Conquest Frontier Wars\"
-xcopy /Y "$(OutDir)Globals.pdb" "D:\Games\GOG\Conquest Frontier Wars\"</Command>
+    <PostBuildEvent Condition="'$(ConquestEnableDeploy)'!='false'">
+      <Command>xcopy /Y "$(OutDir)Globals.dll" "$(ConquestDebugDeployDir)\"
+xcopy /Y "$(OutDir)Globals.pdb" "$(ConquestDebugDeployDir)\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">
