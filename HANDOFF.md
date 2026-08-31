@@ -99,14 +99,15 @@ preview also still sample unrelated textures on the CQ2 mesh/material path.
 
 ## 2. Uncommitted / working-tree state
 
-The working tree contains the active restoration fixes, rebuilt tracked engine binaries, tools,
-and documentation accumulated during the current takeover. **Do not clean, reset, or discard it.**
-The campaign-build addition consists of `ConquestCampaign.sln`, `Directory.Build.targets`, the
-campaign stages in `Build-Conquest.ps1`, the RPUL stale Release post-build removal, and related
-README/HANDOFF updates. Script Debug/Release intermediates and the shared `Scripts/Build/` output
-are ignored; the deployed campaign DLLs live in the separate test installation.
+The current restoration, crash, Mission 1, and campaign-build work is committed. Large local
+investigation artifacts remain on disk but are ignored: crash dumps, downloaded ProcDump files,
+image-inspection scratch assets, local Claude settings, logs, and reproducible build outputs.
+Do not delete those local artifacts unless their diagnostic value has been reviewed first.
 
 Latest commits (all authored `Revan67 <revan67@users.noreply.github.com>`):
+- `11a0d85` Document restoration status and crash workflow
+- `244b613` Add reproducible game and campaign build workflow
+- `2ed123e` Restore retail mission behavior and stabilize combat
 - `cd74a3c` Rebuild engine libs (DACOM/ComHeap/MathLib/RPUL) against current source
 - `9e90c1f` MISSION_DATA_BIN: revert CQ2 bitfield widths to retail (8/4/18)
 - `c6e1901` Revert CQ2 inRootSupply to retail's single inSupply; fix copy_release_static.bat
