@@ -177,6 +177,19 @@ if ($missingCampaign.Count -ne 0) {
     throw "Campaign build succeeded but required outputs are missing: $($missingCampaign -join ', ')"
 }
 if (-not $NoDeploy) {
+    $legalNotices = @(
+        'Conquest Source License.txt',
+        'LEGAL.md',
+        'MODIFICATIONS.md'
+    )
+    foreach ($name in $legalNotices) {
+        $source = Join-Path $repoRoot $name
+        if (-not (Test-Path -LiteralPath $source -PathType Leaf)) {
+            throw "Required legal notice is missing: $source"
+        }
+        Copy-Item -LiteralPath $source -Destination (Join-Path $DeployDirectory $name) -Force
+    }
+
     if ($Configuration -eq 'Final') {
         foreach ($name in $requiredBinaries + $optionalSymbols) {
             $source = Join-Path $outputDirectory $name
@@ -236,6 +249,13 @@ if (-not $NoDeploy) {
         }
         if ((Get-Sha256 $source) -ne (Get-Sha256 $deployed)) {
             throw "Deployed campaign module does not match the build output: $name"
+        }
+    }
+    foreach ($name in $legalNotices) {
+        $source = Join-Path $repoRoot $name
+        $deployed = Join-Path $DeployDirectory $name
+        if ((Get-Sha256 $source) -ne (Get-Sha256 $deployed)) {
+            throw "Deployed legal notice does not match the repository copy: $name"
         }
     }
 }

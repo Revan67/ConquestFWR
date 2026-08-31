@@ -14,9 +14,12 @@ The project has two ordered goals:
 2. Modernize the renderer, platform code, and supporting systems only after the retail baseline is
    stable and measurable.
 
-Modification notice: the modern build conversion, retail-restoration work, diagnostics, and
-documentation in this repository are community modifications released under the same terms as the
-Fever Pitch Studios source release.
+Modification notice: this is a modified version of the Program. The modern build conversion,
+retail-restoration work, diagnostics, and documentation are community modifications by Revan67,
+principally dated 2022-12-25 and 2026-03-25 through 2026-08-30. The entire Program Derivative is
+released solely under the exact terms of the Fever Pitch Studios source license. See
+[MODIFICATIONS.md](MODIFICATIONS.md) for the prominent modification record and
+[LEGAL.md](LEGAL.md) for the repository's compliance and interoperability policy.
 
 ## Current status
 
@@ -319,27 +322,32 @@ HANDOFF.md              Detailed current engineering state
 RETAIL_TEST_MATRIX.md   Retail-parity acceptance ledger
 ```
 
-## Legal
+## Legal and compliance
 
-### Source license
+The controlling license is the unmodified
+[Public License for Conquest: Frontier Wars Program and Source Code](Conquest%20Source%20License.txt),
+copyright Fever Pitch Studios, December 2013. This repository is a **Program Derivative**, is
+non-commercial, and is conveyed as a whole solely under that license's exact terms. The license is
+revocable and prohibits payment, donations, expenses, gratuities, usage fees, or any other
+consideration in exchange for the Program, a Program Derivative, warranty, or support.
 
-The source was officially released by Fever Pitch Studios under the license in
-[Conquest Source License.txt](Conquest%20Source%20License.txt). Important terms include:
+Every source or binary distribution must include, conspicuously and intact:
 
-- non-commercial use only;
-- redistribution is permitted only with the complete license;
-- modifications must be identified and attributed;
-- the software is provided without warranty or support obligation.
+- `Conquest Source License.txt`, including its warranty and liability notices;
+- [MODIFICATIONS.md](MODIFICATIONS.md), identifying the date and author of modifications; and
+- a prominent statement that the entire Program Derivative and every recipient are subject to the
+  exact same license terms.
 
-Anyone distributing a modified version must include the license unmodified, identify their
-changes and date, and state that the modifications are released under the same license.
+[LEGAL.md](LEGAL.md) contains the full release checklist, third-party-material policy, and the
+narrow rules for compatibility research. In short, retail comparison is limited to functional
+facts needed for interoperability with a lawfully obtained copy. Do not commit or distribute retail
+executables, extracted retail media, disassembly/decompiler output, access-control keys, or
+circumvention tools. The project neither authorizes nor requires bypassing copy protection.
 
-Original game copyright belongs to its respective original developers and publishers. Source
-release copyright belongs to Fever Pitch Studios. Community modifications belong to their
-respective contributors under the source-release license.
-
-This repository does not include retail media extracted from a purchased copy and does not bypass
-copy protection. Runtime media must come from a legitimate retail installation.
+`LEGAL.md`, this summary, and the modification record are notices and project procedures only. They
+do not amend, replace, or add terms to the Fever Pitch Studios license. If any summary conflicts
+with the license, the license controls. This is a good-faith compliance policy, not legal advice or
+a guarantee that every historical file has sufficient third-party redistribution rights.
 
 ## Contributing
 
@@ -350,7 +358,9 @@ Contributions are welcome when they follow the project order of operations:
 - add or update a reproducible test where practical;
 - rebuild Debug and Final plus the complete retail campaign set;
 - do not add retail media, crash dumps, local tool installations, or other large generated files;
-- keep all work non-commercial and comply with the source license.
+- identify the author and date of modifications in [MODIFICATIONS.md](MODIFICATIONS.md);
+- document the provenance and license of every new third-party dependency or binary; and
+- keep all work non-commercial and follow [LEGAL.md](LEGAL.md) and the controlling source license.
 
 ## Acknowledgements
 
