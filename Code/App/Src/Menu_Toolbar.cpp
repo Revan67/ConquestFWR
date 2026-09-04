@@ -1532,7 +1532,24 @@ void Menu_tb::setStateInfo (void)
 
 				while (node)
 				{
-					if (node->name && ((strcmp(node->name, "restore") == 0) || (strcmp(node->name, "exitSysMap") == 0)))
+					const bool isTopResourceValue = node->type == GBT_STATIC && node->name &&
+						((strcmp(node->name, "gas") == 0) ||
+						 (strcmp(node->name, "metal") == 0) ||
+						 (strcmp(node->name, "crew") == 0) ||
+						 (strcmp(node->name, "commandPts") == 0));
+
+					if (isTopResourceValue && (SCREENRESX > SCREEN_WIDTH || SCREENRESY > SCREEN_HEIGHT))
+					{
+						STATIC_DATA topResourceData = *((STATIC_DATA *)(((char *)pData) + node->offset));
+						// Retail's 640x480 baseline is exact. At scaled resolutions the font sits
+						// slightly low, so offset one ideal-coordinate unit (2.5 pixels at 1600x1200).
+						// One extra ideal unit of centered control height then lowers the glyphs by
+						// one physical pixel without changing the shared font or the control's top edge.
+						topResourceData.yOrigin -= 1;
+						topResourceData.height += 1;
+						node->pStatic->InitStatic(topResourceData, this);
+					}
+					else if (node->name && ((strcmp(node->name, "restore") == 0) || (strcmp(node->name, "exitSysMap") == 0)))
 					{
 						parent->resPriority += 12;//this 12 is so that the extitSysMap has a higher priority than the systemMap.
 						node->initControl(pData, parent, pLoader, false);
