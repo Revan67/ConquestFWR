@@ -1,6 +1,8 @@
 # ConquestFWR — Project Handoff
 
-_Last updated: 2026-08-30_
+> **Historical documentation — provenance only.** This document is not current project authority. See [PROJECT_BIBLE.md](../../../PROJECT_BIBLE.md) for canonical status; preserved for provenance.
+
+_Last updated: 2026-09-12_
 
 Restoration + modernization of **Conquest: Frontier Wars**. The released source is an
 unshipped-sequel development snapshot ("Conquest: Vyrium Uprising" / "CQ2"); the goal is to make
@@ -15,8 +17,8 @@ separate branch.
 |------|-------|
 | Build (VS2022 / Win11, 32-bit) | ✅ Game + all 18 retail campaign DLLs build in Debug and Final/Release |
 | Game launch + mission load | 🧪 Startup allocator race fixed; one full Mission 1 run passed, repeated-launch test pending |
-| Ship movement / pathing | ✅ SOLVED (archetype struct-layout root cause) |
-| Ship model orientation/facing | ✅ SOLVED (movement and combat facing runtime-confirmed) |
+| Ship movement / pathing | ⚠️ Ordinary combat movement works; harvester movement can freeze with an active goal |
+| Ship model orientation/facing | ⚠️ Ordinary Skirmish spawn works; scripted jump arrivals begin inverted/nose-down and correct later |
 | Combat loop | 🧪 Auto-attack/facing work; projectile direction wrong; final-wave progression fix pending retest |
 | Ship hardpoints/effects | ⚠️ Engine lights misplaced on every player ship; likely same axis mismatch as projectiles |
 | Struct schema vs retail | ⚠️ ~11 divergences left (was 37); see remediation plan |
@@ -24,9 +26,9 @@ separate branch.
 | Combat renderer lighting AV | ✅ SOLVED (full construction-wave combat completed; normal exit) |
 | **HQ/platform construction AV** | ✅ SOLVED (all structures available in Mission 1 built; normal exit) |
 | Platform textures | ✅ SOLVED (HQ and all completed structures runtime-confirmed) |
-| Planet rendering | ⚠️ Geometry visible; diffuse texture and depth occlusion still wrong |
-| CQ2 transient/ship materials | ⚠️ Refinery ship and shipyard construction preview sample wrong textures |
-| UI layout bugs | ⚠️ Several minor (resource bar, context window, sector map) |
+| Planet rendering | ⚠️ Texture-state and depth failures repaired; initial delay, surface/cloud transition and smearing remain |
+| Construction/transient materials | ⚠️ Lifecycle works; active-build and placement-ghost materials remain corrupt or absent |
+| UI layout bugs | 🧪 Resource bar and top-right actions pass; escape-menu title localization remains |
 
 ### Intermittent startup crash — fix deployed, verification pending
 The 2026-08-30 minidump resolved to `DACOM.dll!HeapInstance::malloc` during
@@ -83,7 +85,29 @@ Ceti attack now synchronizes the counter from live Mantis frigates/scout carrier
 Ceti, and the destruction handler cannot underflow. `SCRIPT01.dll` was rebuilt explicitly,
 deployed, and verified by SHA-256; runtime verification is pending.
 
-### Completed-platform and planet texture corruption — platforms fixed, planet partial
+### Planet diffuse state leak — fixed and twice runtime-confirmed
+
+Working/failed A/B traces proved the apparent planet “loading delay” was not asset streaming.
+PolyMesh had valid Earth geometry and a valid texture handle, but the failed run retained global
+`RP_TEXTURE` as disabled and therefore set `RWM_DONT_TEXTURE` on every draw. In a working run, an
+incidental later path re-enabled the same state, explaining delays ranging from seconds to more
+than a minute. `ObjectList::Render()` now establishes `RP_TEXTURE` from the configured
+`CQEFFECTS.bTextures` value at the beginning of every world frame. Two consecutive Mission 1 runs
+showed the texture immediately; both logged `rwm=0`, successful binds, and matching readback from
+the first Earth draw. See `Evidence/Milestone-1/PLANET_TEXTURE_STATE_LEAK.md`. Narrow diagnostics
+remain until Final and additional-mission regression testing. Ring occlusion/depth, cloud motion,
+and smearing remain separate defects.
+
+Renderer direction is now explicit: retain the original
+`Engine -> RenderMgr -> PolyMesh -> ZBatcher -> CQPipeline -> D3D9` route as authoritative for
+retail CFW assets. CQ2/manual rendering is an exceptional path only for proven shipped consumers,
+and every retained exception must restore shared state and synchronize ZBatcher before returning.
+The immediate renderer priority is the confirmed missing/incoherent D3D9 depth-buffer lifecycle,
+followed by state-boundary hardening, consumer inventory, duplicate MeshRender consolidation, and
+removal of demonstrably unused CQ2 components. Full rationale and ordered work are recorded in
+`Evidence/Milestone-1/RENDER_PIPELINE_AUDIT.md`.
+
+### Completed-platform and earlier planet texture corruption — platforms fixed
 Mission 1 showed a solid-black planet, black/white platform surfaces, and unrelated striped
 textures on completed structures. Ships and UI textures were largely correct, pointing to the
 CQ2 `instanceMesh` material path rather than missing texture files. Completed platforms and
@@ -92,17 +116,19 @@ animation, callbacks, hardpoints, effects, and construction shadows. A full Debu
 deployed and its SHA-256 matches the build output. Runtime testing confirmed correct HQ and
 completed-structure textures. The planet is now visible instead of solid black, but appears as a
 bare white/gray lit mesh with no diffuse texture and does not occlude the far side of its orbital
-ring. Its material/depth state remains open. The refinery ship and shipyard's active ship-build
+ring. The later `RP_TEXTURE` frame-boundary correction resolved the diffuse portion; depth/ring
+occlusion remains open. The refinery ship and shipyard's active ship-build
 preview also still sample unrelated textures on the CQ2 mesh/material path.
 
 ---
 
 ## 2. Uncommitted / working-tree state
 
-The current restoration, crash, Mission 1, and campaign-build work is committed. Large local
-investigation artifacts remain on disk but are ignored: crash dumps, downloaded ProcDump files,
-image-inspection scratch assets, local Claude settings, logs, and reproducible build outputs.
-Do not delete those local artifacts unless their diagnostic value has been reviewed first.
+The current renderer, construction, mining, build, diagnostic, and documentation work is a large
+mixed working batch and is **not committed** on the branch. Do not treat a successful build as
+acceptance of this batch. The complete pre-remediation state is recoverable from
+`refs/checkpoints/stable-baseline-pre-remediation-20260912`; classification and staging are tracked
+in `Evidence/Stable-Baseline/README.md`.
 
 Latest commits (all authored `Revan67 <revan67@users.noreply.github.com>`):
 - `11a0d85` Document restoration status and crash workflow
@@ -224,3 +250,65 @@ Index (one line per memory, loaded automatically): `memory\MEMORY.md`
   rebuilding `Globals.vcxproj`.
 - Method lesson that cost real time: verify by derivation/measurement BEFORE editing — 11+
   hypotheses were refuted this investigation; the cheap ones caught were the ones checked first.
+
+---
+
+## 8. Overnight test build — 2026-09-01
+
+The latest Debug deployment rebuilt cleanly with **0 errors** and includes three deliberately
+narrow fixes that still require runtime confirmation:
+
+- **Planet material path:** Mission 1 and the retail archives were verified unchanged. Tau Ceti
+  Prime resolves to `Planets\earth1_LG.cmp`, whose surface uses the legacy
+  `earth1_128.bmp`. MeshManager had been classifying every filename with an extension as a CQ2
+  color/bump material, rewriting the BMP name to `_color.tga`/`_bump.tga`; that explains the
+  black compound planet. Legacy BMPs now remain on the retail material path and Planetoid again
+  renders the compound instance so its surface/cloud children are present. This is a test fix,
+  not yet a runtime PASS.
+- **Refinery attachments:** the mining-beam hardpoint and all four cargo-tank hardpoints now use
+  the same local +90-degree X / 180-degree Y authored-mesh correction already proven for ship
+  geometry and engine glows. This should move the beam onto the ship and may correct the displaced
+  refinery cargo panels. It intentionally does not alter shared world transforms.
+- **Refinery state machine:** fixed `sizeof(&buffer)` packet truncation for nugget-assist joins;
+  added bounded recovery from a permanently locked refinery dock; cleared stale targets after
+  depletion; inserted a short settling delay before selecting the next node; and forced prompt AI
+  reconsideration after completion. Full-load unload already passed before this build; automatic
+  next-node selection and partial-final-load return remain unverified.
+
+**First morning test (Debug, avoid Alt-Tab):** confirm the planet has its retail gray-blue diffuse
+surface and hides far-side ring sections; send two refinery ships through several nodes into one
+refinery; verify both join mining, automatically select subsequent nodes, unload a partial final
+load, and recover from dock contention. Also check that the mining beam originates on the hull and
+the cargo panels remain attached. If the planet is still black, revert only the Planetoid draw to
+the last visible-gray baseline and continue tracing material realization rather than adding more
+asset substitutions.
+
+**UI follow-up build (01:20):** corrected the red under-ship talking/target marker animation. The
+source explicitly rotated it by `sin(theta)`, producing the reported left/right seesaw; it now
+performs a bounded continuous rotation. The construction-placement preview path is present and is
+reached through both deep-space and planet-slot placement. Its remaining failure is downstream in
+the shared translucent unborn-mesh draw/material path, not a missing build-button or command path;
+do not add a substitute UI marker before testing the current material-path changes.
+
+---
+
+## 9. 2026-09-06 overnight renderer follow-up
+
+- Restored and verified an actual D3D9 depth attachment in `create_buffers()`. The
+  prior path advertised depth without creating/binding a surface. Debug and Final
+  full rebuilds each completed with 22 engine modules and 18 campaign modules, and
+  both runtime `DLL/D3DRenderPipe.dll` files hash-match their configuration outputs.
+- Runtime planet/ring acceptance is still pending. Use
+  `Evidence/Milestone-1/DEPTH_LIFECYCLE_REPAIR.md`; do not claim occlusion fixed from
+  compilation alone.
+- The root-level `D3DRenderPipe.dll` in each install is stale but not loaded.
+  `Conquest.ini` explicitly loads `DLL/D3DRenderPipe.dll`.
+- Renderer ownership and direct-state consumers are recorded in
+  `Evidence/Milestone-1/RENDERER_CONSUMER_INVENTORY.md`. Do not remove CQ2 modules
+  until live consumers are proven, and do not install blanket per-object defaults.
+- Construction preview and assembly call paths are present. Jump-in gameplay
+  transforms are planar. Blackwell has a distinct authored turret archetype. These
+  findings and their focused tests are in
+  `Evidence/Milestone-1/CONSTRUCTION_AND_SHIP_FINDINGS.md`.
+- The device Reset/teardown lifecycle remains deliberately deferred because its
+  default-pool resource ownership has not yet been traced.

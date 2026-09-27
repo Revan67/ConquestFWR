@@ -1,5 +1,7 @@
 # Engine DLL Rebuild Log
 
+> **Technical evidence retained for provenance.** Historical status statements here may be superseded. See [PROJECT_BIBLE.md](../../../PROJECT_BIBLE.md) for current project status.
+
 Records every rebuild of `Code/Libs/ExplicitDLL/debug/` DLLs: date, toolset, trigger, and which DLLs changed.
 Commit this file alongside the DLL changes so the reason is always in the history.
 

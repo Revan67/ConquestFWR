@@ -23,35 +23,9 @@ released solely under the exact terms of the Fever Pitch Studios source license.
 
 ## Current status
 
-Last verified: **2026-08-30**
-
-| Area | Status |
-|---|---|
-| VS2022 Win32 build | **Working** — Debug and Final rebuild successfully |
-| Retail campaign DLLs | **Working** — all 18 build, verify, and deploy together |
-| Startup and mission loading | **Working**, with repeated-launch soak still required |
-| Ship movement and path completion | **Fixed and runtime-confirmed** |
-| Ship model orientation and combat facing | **Fixed and runtime-confirmed** |
-| Opening Mission 1 combat progression | **Fixed and runtime-confirmed** |
-| HQ/platform construction crash | **Fixed and runtime-confirmed** |
-| Combat renderer lighting crash | **Fixed and runtime-confirmed** |
-| Completed platform textures | **Fixed and runtime-confirmed** |
-| Explosion mesh splitting | **Stabilized**, broader combat soak required |
-| Mission 1 final-wave progression | **Fix deployed**, runtime retest pending |
-| Projectile and engine-light transforms | **Open** — effects are offset or fire along the wrong axis |
-| Planet rendering | **Partial** — geometry works; diffuse/depth behavior remains wrong |
-| Refinery/shipyard transient materials | **Open** — some active construction meshes sample wrong textures |
-| Remaining retail schema differences | **Approximately 11**, down from 37 |
-| UI parity | **Partial** — several layout and information-panel differences remain |
-| Modern renderer/codebase | **Not started as the primary line of work** |
-
-Mission 1 currently reaches and survives combat, advances to the Fabricator, constructs the HQ and
-other available orbital structures, builds ships, and survives later combat waves. The immediate
-test target is the final Tau Ceti wave: after its last Mantis ship dies, the mission should advance
-to the beacon-recovery objective.
-
-For a detailed working-state handoff, see [HANDOFF.md](HANDOFF.md). For acceptance testing, see
-[RETAIL_TEST_MATRIX.md](RETAIL_TEST_MATRIX.md).
+See [PROJECT_BIBLE.md](PROJECT_BIBLE.md) for the current restoration state, evidence,
+milestone order, and acceptance matrix. Older handoffs and test matrices are historical
+records, not current status.
 
 ## What the source release does and does not provide
 
@@ -317,9 +291,9 @@ Tools/
   retail_gametypes.h    Retail structure-layout reference
   xmiff2/               Python replacement for the legacy XMIFF data compiler
 
-Build-Conquest.ps1      Supported full build, verification, and deployment wrapper
-HANDOFF.md              Detailed current engineering state
-RETAIL_TEST_MATRIX.md   Retail-parity acceptance ledger
+Build-Conquest.ps1      Supported full build and verification wrapper
+PROJECT_BIBLE.md       Canonical restoration state and acceptance matrix
+Evidence/Historical/  Superseded narrative documents kept for provenance
 ```
 
 ## Legal and compliance
