@@ -71,6 +71,7 @@ C*UsersJoel*.log
 
 # Build outputs from the converted script / tool projects (2026-08-28)
 Code/App/Src/Scripts/Build/
+/Build-Manifests/
 Code/App/Src/Scripts/*/Debug/
 Code/App/Src/Scripts/*/Release/
 Code/App/Src/Scripts/*/DataDef.i
@@ -91,6 +92,8 @@ Code/Libs/ExplicitDLL/release/x86Math.dll
 /Tools/ProcDump/
 /Tools/image-inspection/
 /codex-build.log
+**/__pycache__/
+*.pyc
 
 # Rebuilt runtime modules are reproducible through Build-Conquest.ps1.
 Code/Libs/ExplicitDLL/release/*.dll

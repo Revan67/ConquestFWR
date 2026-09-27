@@ -12,13 +12,65 @@ param(
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
+# PowerShell 7 can preserve both `Path` and `PATH` from its parent process.
+# Windows itself accepts that environment block, but MSBuild's legacy tool task
+# imports it into a case-insensitive dictionary and fails before launching CL.
+# Collapse duplicate spellings to one canonical key so the build is reproducible
+# regardless of which shell launched this wrapper.
+$processEnvironment = [Environment]::GetEnvironmentVariables('Process')
+$pathKeys = @($processEnvironment.Keys | Where-Object {
+    [string]::Equals([string]$_, 'Path', [StringComparison]::OrdinalIgnoreCase)
+})
+if ($pathKeys.Count -gt 1) {
+    $pathValue = [string]$processEnvironment[$pathKeys[0]]
+    foreach ($pathKey in $pathKeys) {
+        Remove-Item -LiteralPath "Env:$pathKey" -ErrorAction SilentlyContinue
+    }
+    [Environment]::SetEnvironmentVariable('Path', $pathValue, 'Process')
+}
+
 $repoRoot = $PSScriptRoot
+$commonIncludeDirectory = Join-Path $repoRoot 'Code\Libs\Include'
+$existingIncludePath = [Environment]::GetEnvironmentVariable('INCLUDE', 'Process')
+$env:INCLUDE = if ([string]::IsNullOrWhiteSpace($existingIncludePath)) {
+    $commonIncludeDirectory
+}
+else {
+    "$commonIncludeDirectory;$existingIncludePath"
+}
 $solution = Join-Path $repoRoot 'Code\App\Src\Conquest.sln'
 $outputDirectory = Join-Path $repoRoot "Code\App\Src\$Configuration"
 $campaignSolution = Join-Path $repoRoot 'Code\App\Src\Scripts\ConquestCampaign.sln'
-$campaignOutputDirectory = Join-Path $repoRoot 'Code\App\Src\Scripts\Build'
+$campaignOutputDirectory = Join-Path $repoRoot "Code\App\Src\Scripts\Build\$Configuration"
+$manifestDirectory = Join-Path $repoRoot 'Build-Manifests'
+$foundationProjects = @(
+    (Join-Path $repoRoot 'Code\Libs\Src\COMHeap\COMHeap.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\x86Math\MathLib.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\RenderPipeline\RPUL\RPUL.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\DACOM\DACOM.vcxproj')
+)
 $engineProjects = @(
+    (Join-Path $repoRoot 'Code\Libs\Src\Channel\Channel.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\DAHOTKEY\Hotkey.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\Viewer\DOCUVIEW\DataViewer.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\DOSFile\DOSFile.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\Anim\Anim.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\Engine\Engine.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\RendComp\PolyMesh\PolyMesh.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\EngComps\RenderMgr\RenderMgr.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\Shading\TextureLibrary\TextureLibrary.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\TextureManager\TextureManager.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\x86Math\x86math.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\RendComp\Optics\Optics.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\EngComps\Hardpoint\HardPoint.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\Streamer\streamer.vcxproj'),
     (Join-Path $repoRoot 'Code\Libs\Src\RenderPipeline\D3DRenderPipe.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\LightManager\LightManager.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\VertexBufferManager\VertexBufferManager.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\StringTable\StringTable.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\MaterialManager\MaterialManager.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\VideoSystem\VideoSystem.vcxproj'),
+    (Join-Path $repoRoot 'Code\Libs\Src\ParticleEffect\ParticleEffect.vcxproj'),
     (Join-Path $repoRoot 'Code\Libs\Src\MeshManager\MeshManager.vcxproj')
 )
 if ([string]::IsNullOrWhiteSpace($DeployDirectory)) {
@@ -61,6 +113,61 @@ function Get-Sha256([string]$Path) {
     }
 }
 
+function Get-BuildInputFingerprint {
+    $excludedExtensions = @(
+        '.dll', '.exe', '.lib', '.exp', '.pdb', '.obj', '.res', '.ilk',
+        '.idb', '.ipdb', '.iobj', '.tlog', '.lastbuildstate', '.log'
+    )
+    $paths = @(& git -C $repoRoot ls-files -co --exclude-standard) |
+        ForEach-Object { ([string]$_).Replace('\', '/') } |
+        Where-Object {
+            $_ -and
+            $_ -notmatch '^Build-Manifests/' -and
+            $_ -notmatch '^Evidence/' -and
+            $_ -notmatch '^Code/Libs/(ExplicitDLL|ImplicitDLL|Static)/' -and
+            $excludedExtensions -notcontains [IO.Path]::GetExtension($_).ToLowerInvariant()
+        } |
+        Sort-Object -Unique
+
+    $sha256 = [System.Security.Cryptography.SHA256]::Create()
+    try {
+        $builder = New-Object System.Text.StringBuilder
+        foreach ($relativePath in $paths) {
+            $absolutePath = Join-Path $repoRoot ($relativePath.Replace('/', '\'))
+            if (Test-Path -LiteralPath $absolutePath -PathType Leaf) {
+                [void]$builder.Append($relativePath)
+                [void]$builder.Append('|')
+                [void]$builder.Append((Get-Sha256 $absolutePath))
+                [void]$builder.Append("`n")
+            }
+        }
+        $bytes = [Text.Encoding]::UTF8.GetBytes($builder.ToString())
+        return ([BitConverter]::ToString($sha256.ComputeHash($bytes))).Replace('-', '')
+    }
+    finally {
+        $sha256.Dispose()
+    }
+}
+
+function Invoke-Rebuild([string]$Project, [string]$BuildConfiguration) {
+    $projectArguments = @(
+        $Project,
+        '/t:Rebuild',
+        '/m:1',
+        "/p:Configuration=$BuildConfiguration",
+        '/p:Platform=Win32',
+        # Foundation dependencies are rebuilt explicitly above engine consumers.
+        # Do not let project-reference configuration fallback rebuild Debug
+        # foundations during a Release engine build.
+        '/p:BuildProjectReferences=false',
+        '/v:minimal'
+    )
+    & $msbuild @projectArguments
+    if ($LASTEXITCODE -ne 0) {
+        throw "Build failed for $Project with exit code $LASTEXITCODE."
+    }
+}
+
 $msbuild = Find-MSBuild
 $requiredBinaries = @('Conquest.exe', 'Globals.dll', 'Mission.dll', 'Trim.dll', 'ZBatcher.dll')
 $optionalSymbols = @('Conquest.pdb', 'Globals.pdb', 'Mission.pdb', 'Trim.pdb', 'ZBatcher.pdb')
@@ -88,10 +195,40 @@ $engineConfiguration = if ($Configuration -eq 'Debug') { 'debug' } else { 'relea
 $campaignConfiguration = if ($Configuration -eq 'Debug') { 'Debug' } else { 'Release' }
 $dacomSource = Join-Path $repoRoot "Code\Libs\ImplicitDLL\$engineConfiguration\DACOM.dll"
 $engineOutputDirectory = Join-Path $repoRoot "Code\Libs\ExplicitDLL\$engineConfiguration"
-$engineBinaries = @('D3DRenderPipe.dll', 'MeshManager.dll')
+$staticOutputDirectory = Join-Path $repoRoot "Code\Libs\Static\$engineConfiguration"
+$engineBinaries = @(
+    'Channel.dll',
+    'DAHotkey.dll',
+    'Docuview.dll',
+    'DOSFile.dll',
+    'Anim.dll',
+    'Engine.dll',
+    'PolyMesh.dll',
+    'RenderMgr.dll',
+    'TextureLibrary.dll',
+    'TextureManager.dll',
+    'x86math.dll',
+    'optics.dll',
+    'Hardpoint.dll',
+    'Streamer.dll',
+    'D3DRenderPipe.dll',
+    'LightManager.dll',
+    'VertexBufferManager.dll',
+    'StringTable.dll',
+    'MaterialManager.dll',
+    'VideoSystem.dll',
+    'ParticleEffect.dll',
+    'MeshManager.dll'
+)
 if (-not $NoDeploy -and -not (Test-Path -LiteralPath $DeployDirectory -PathType Container)) {
     throw "Deployment directory does not exist: $DeployDirectory"
 }
+
+$buildStartedUtc = [DateTime]::UtcNow
+$sourceRevision = (& git -C $repoRoot rev-parse HEAD).Trim()
+$workingTreeFingerprint = (& git -C $repoRoot diff --binary | & git -C $repoRoot hash-object --stdin).Trim()
+$workingTreeEntries = @(& git -C $repoRoot status --porcelain=v1).Count
+$buildInputFingerprint = Get-BuildInputFingerprint
 
 $arguments = @(
     $solution,
@@ -99,6 +236,7 @@ $arguments = @(
     '/m:1',
     "/p:Configuration=$Configuration",
     '/p:Platform=Win32',
+    '/p:BuildProjectReferences=false',
     '/v:minimal'
 )
 
@@ -118,19 +256,13 @@ else {
     Write-Host "Deployment: $DeployDirectory"
 }
 
+Write-Host "Building foundational runtime libraries: $engineConfiguration | Win32"
+foreach ($foundationProject in $foundationProjects) {
+    Invoke-Rebuild $foundationProject $engineConfiguration
+}
+
 foreach ($engineProject in $engineProjects) {
-    $engineArguments = @(
-        $engineProject,
-        '/t:Rebuild',
-        '/m:1',
-        "/p:Configuration=$engineConfiguration",
-        '/p:Platform=Win32',
-        '/v:minimal'
-    )
-    & $msbuild @engineArguments
-    if ($LASTEXITCODE -ne 0) {
-        throw "Engine build failed for $engineProject with exit code $LASTEXITCODE."
-    }
+    Invoke-Rebuild $engineProject $engineConfiguration
 }
 
 Write-Host "Building Conquest: $Configuration | Win32"
@@ -145,7 +277,9 @@ $campaignArguments = @(
     '/t:Rebuild',
     '/m:1',
     "/p:Configuration=$campaignConfiguration",
+    "/p:ConquestCampaignOutputDirectory=$campaignOutputDirectory\",
     '/p:Platform=Win32',
+    '/p:BuildProjectReferences=false',
     '/v:minimal'
 )
 Write-Host "Building retail campaign modules: $campaignConfiguration | Win32"
@@ -176,6 +310,62 @@ $missingCampaign = @($campaignBinaries | Where-Object {
 if ($missingCampaign.Count -ne 0) {
     throw "Campaign build succeeded but required outputs are missing: $($missingCampaign -join ', ')"
 }
+
+$foundationArtifacts = @(
+    (Join-Path $staticOutputDirectory 'COMHeap.lib'),
+    (Join-Path $staticOutputDirectory 'MathLib.lib'),
+    (Join-Path $staticOutputDirectory 'RPUL.lib'),
+    (Join-Path $staticOutputDirectory 'DACOM.lib'),
+    $dacomSource
+)
+$missingFoundation = @($foundationArtifacts | Where-Object { -not (Test-Path -LiteralPath $_ -PathType Leaf) })
+if ($missingFoundation.Count -ne 0) {
+    throw "Build succeeded but foundational outputs are missing: $($missingFoundation -join ', ')"
+}
+
+$artifactPaths = @(
+    $foundationArtifacts
+    ($engineBinaries | ForEach-Object { Join-Path $engineOutputDirectory $_ })
+    ($requiredBinaries | ForEach-Object { Join-Path $outputDirectory $_ })
+    ($optionalSymbols | ForEach-Object {
+        $path = Join-Path $outputDirectory $_
+        if (Test-Path -LiteralPath $path -PathType Leaf) { $path }
+    })
+    ($campaignBinaries | ForEach-Object { Join-Path $campaignOutputDirectory $_ })
+)
+$freshnessFloor = $buildStartedUtc.AddSeconds(-5)
+$staleArtifacts = @($artifactPaths | Where-Object { (Get-Item -LiteralPath $_).LastWriteTimeUtc -lt $freshnessFloor })
+if ($staleArtifacts.Count -ne 0) {
+    throw "Outputs were not refreshed by this rebuild: $($staleArtifacts -join ', ')"
+}
+
+$manifest = [ordered]@{
+    schemaVersion = 2
+    configuration = $Configuration
+    engineConfiguration = $engineConfiguration
+    campaignConfiguration = $campaignConfiguration
+    sourceRevision = $sourceRevision
+    workingTreeFingerprint = $workingTreeFingerprint
+    workingTreeEntryCount = $workingTreeEntries
+    buildInputFingerprint = $buildInputFingerprint
+    buildStartedUtc = $buildStartedUtc.ToString('o')
+    buildCompletedUtc = [DateTime]::UtcNow.ToString('o')
+    msbuild = $msbuild
+    artifacts = @($artifactPaths | ForEach-Object {
+        $item = Get-Item -LiteralPath $_
+        [ordered]@{
+            path = $item.FullName.Substring($repoRoot.Length).TrimStart('\')
+            bytes = $item.Length
+            lastWriteUtc = $item.LastWriteTimeUtc.ToString('o')
+            sha256 = Get-Sha256 $item.FullName
+        }
+    })
+}
+if (-not (Test-Path -LiteralPath $manifestDirectory -PathType Container)) {
+    New-Item -ItemType Directory -Path $manifestDirectory -Force | Out-Null
+}
+$manifestPath = Join-Path $manifestDirectory "$Configuration-latest.json"
+$manifest | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $manifestPath -Encoding utf8
 if (-not $NoDeploy) {
     $legalNotices = @(
         'Conquest Source License.txt',
@@ -189,13 +379,15 @@ if (-not $NoDeploy) {
         }
         Copy-Item -LiteralPath $source -Destination (Join-Path $DeployDirectory $name) -Force
     }
+    Copy-Item -LiteralPath $manifestPath -Destination (Join-Path $DeployDirectory 'build-manifest.json') -Force
 
-    if ($Configuration -eq 'Final') {
-        foreach ($name in $requiredBinaries + $optionalSymbols) {
-            $source = Join-Path $outputDirectory $name
-            if (Test-Path -LiteralPath $source -PathType Leaf) {
-                Copy-Item -LiteralPath $source -Destination (Join-Path $DeployDirectory $name) -Force
-            }
+    # Deploy core runtime outputs explicitly for both configurations. Debug
+    # projects retain historical post-build copy events, but correctness must
+    # not depend on those project-local side effects.
+    foreach ($name in $requiredBinaries + $optionalSymbols) {
+        $source = Join-Path $outputDirectory $name
+        if (Test-Path -LiteralPath $source -PathType Leaf) {
+            Copy-Item -LiteralPath $source -Destination (Join-Path $DeployDirectory $name) -Force
         }
     }
 
@@ -265,7 +457,9 @@ Write-Host "Successful $Configuration build:"
 Get-Item ($requiredBinaries | ForEach-Object { Join-Path $outputDirectory $_ }) |
     Select-Object Name, Length, LastWriteTime |
     Format-Table -AutoSize
+Write-Host "Engine modules: $($engineBinaries.Count) rebuilt and verified"
 Write-Host "Campaign modules: $($campaignBinaries.Count) built and verified"
+Write-Host "Build manifest: $manifestPath"
 if (-not $NoDeploy) {
     Write-Host "Campaign deployment: $(Join-Path $DeployDirectory 'Scripts')"
 }

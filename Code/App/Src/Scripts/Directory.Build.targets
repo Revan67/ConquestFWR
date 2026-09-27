@@ -13,6 +13,7 @@
     <ConquestCampaignRepoRoot>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..\..\..\'))</ConquestCampaignRepoRoot>
     <ConquestCampaignAppOutput>$(ConquestCampaignRepoRoot)Code\App\Src\$(ConquestCampaignAppConfiguration)</ConquestCampaignAppOutput>
     <ConquestCampaignStaticLibraries>$(ConquestCampaignRepoRoot)Code\Libs\Static\$(ConquestCampaignEngineConfiguration)</ConquestCampaignStaticLibraries>
+    <OutDir Condition="'$(ConquestCampaignOutputDirectory)' != ''">$(ConquestCampaignOutputDirectory)</OutDir>
   </PropertyGroup>
 
   <ItemDefinitionGroup Condition="'$(ConquestCampaignAppConfiguration)' != ''">

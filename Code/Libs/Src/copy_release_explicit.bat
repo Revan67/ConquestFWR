@@ -1,4 +1,6 @@
-call Z:\CQ2\Code\Libs\Src\CQ_FullBuild\prebuild_tasks.bat
-
-copy Release\*.dll Z:\CQ2\Code\Libs\ExplicitDLL
-copy Release\*.pdb Z:\CQ2\Code\Libs\ExplicitDLL
+@echo off
+rem Modern project files link release DLLs and PDBs directly into
+rem Code\Libs\ExplicitDLL\Release.  The original CQ2 post-build step copied
+rem through a developer-specific Z: drive and now only causes otherwise
+rem successful local builds to fail.
+exit /b 0
