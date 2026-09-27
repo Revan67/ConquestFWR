@@ -502,10 +502,9 @@ void SpaceShip<SaveStruct,InitStruct>::renderSpaceShip (void)
 	SINGLE radius = dif.fast_magnitude();
 	
 	TRANSFORM tf = transform;
-	static SINGLE theta = 0;
-	SINGLE osc = sin(theta+=0.05f);	
 
-	tf.rotate_about_j(osc);
+	// Keep the talking/target marker stable beneath the ship. The development
+	// branch animated this transform, which makes the tilted ring seesaw.
 
 	Vector v[4];
 	v[0].x = ctr.x - radius;	v[0].y = ctr.y + radius;

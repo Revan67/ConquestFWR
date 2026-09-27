@@ -18,5 +18,6 @@ detailed file-level record.
 | 2026-09-27 | Revan67 | Consolidated restoration knowledge into `PROJECT_BIBLE.md`, archived historical notes, and updated documentation links and project guidance. |
 | 2026-09-27 | Revan67 | Stabilized the Debug and Final full-build workflow, configuration-specific outputs, build manifests, deployment verification, and project build paths. |
 | 2026-09-27 | Revan67 | Audited source-license, Conquest manual, and Bink provenance; clarified the legal checklist and excluded the manual and three Bink DLLs from current Git tracking while retaining local copies. |
+| 2026-09-27 | Revan67 / ConquestFWR | Isolated previously runtime-accepted retail-restoration corrections for projectile direction, harvester packet and attachment coordinates, toolbar actions, world-frame texture state, sector visibility, construction effects, ship glows and marker, and D3D9 depth attachment. This does not establish universal retail parity. |
 
 Future material modifications must add a dated and attributed entry here before distribution.

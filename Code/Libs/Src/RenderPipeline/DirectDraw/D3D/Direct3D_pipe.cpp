@@ -3676,8 +3676,8 @@ DA_METHOD(	create_buffers,(HWND hwnd, int hres, int vres ))
 
 	devWindow = hwnd;
 	direct3d_device = NULL ;
-	d3drp_f_flags |= D3DRP_F_BUFFERS_CREATED;
-	d3drp_f_flags |= D3DRP_F_DEPTH_CREATED;
+	d3drp_f_flags &= ~(D3DRP_F_BUFFERS_CREATED | D3DRP_F_DEPTH_CREATED |
+		D3DRP_F_STENCIL_CREATED);
 
 	/* Use Direct3DCreate9Ex (Vista+ / WDDM-aware) — avoids TerminateProcess
 	 * inside CreateDevice seen with legacy Direct3DCreate9 on Windows 11 NVIDIA. */
@@ -3707,8 +3707,12 @@ DA_METHOD(	create_buffers,(HWND hwnd, int hres, int vres ))
 	params.SwapEffect                 = D3DSWAPEFFECT_DISCARD;
 	params.hDeviceWindow              = hwnd;
 	params.Windowed                   = TRUE;
-	params.EnableAutoDepthStencil     = FALSE;   /* create depth buffer manually */
-	params.AutoDepthStencilFormat     = D3DFMT_UNKNOWN;
+	// The D3D9 port previously selected a depth format but never created or
+	// bound a matching surface, while still advertising D3DRP_F_DEPTH_CREATED.
+	// Let the device own one depth-stencil surface whose lifetime matches the
+	// swap chain. This also gives Reset one authoritative recreation contract.
+	params.EnableAutoDepthStencil     = TRUE;
+	params.AutoDepthStencilFormat     = depthFmt;
 	params.Flags                      = 0;
 	params.FullScreen_RefreshRateInHz = 0;
 	/* D3DPRESENT_INTERVAL_DEFAULT causes DXVK 2.7+ to select
@@ -3762,6 +3766,38 @@ DA_METHOD(	create_buffers,(HWND hwnd, int hres, int vres ))
 	}
 	_CB_LOGF("cb-6: after CreateDeviceEx hr=0x%08lX device=%p\n",
 	         (unsigned long)hr_cd, (void*)direct3d_device);
+	if (!direct3d_device) {
+		_CB_LOG("cb-6x: device creation failed\n");
+		return GR_GENERIC;
+	}
+
+	// Verify the device actually attached the requested surface before exposing
+	// it through the legacy capability flags. A successful CreateDevice alone is
+	// not sufficient evidence for callers that later request depth clears.
+	IDirect3DSurface9 *depth_surface = NULL;
+	D3DSURFACE_DESC depth_desc;
+	memset(&depth_desc, 0, sizeof(depth_desc));
+	HRESULT depth_result = direct3d_device->GetDepthStencilSurface(&depth_surface);
+	if (FAILED(depth_result) || !depth_surface ||
+		FAILED(depth_surface->GetDesc(&depth_desc))) {
+		_CB_LOGF("cb-6d: depth verification failed hr=0x%08lX surface=%p\n",
+			(unsigned long)depth_result, (void*)depth_surface);
+		if (depth_surface)
+			depth_surface->Release();
+		direct3d_device->Release();
+		direct3d_device = NULL;
+		return GR_GENERIC;
+	}
+	_CB_LOGF("cb-6d: depth attached format=%d width=%lu height=%lu msaa=%d\n",
+		(int)depth_desc.Format, (unsigned long)depth_desc.Width,
+		(unsigned long)depth_desc.Height, (int)depth_desc.MultiSampleType);
+	depth_surface->Release();
+
+	// These flags describe verified resources, rather than desired presentation
+	// parameters. D24S8 supplies both depth and stencil; D16 only supplies depth.
+	d3drp_f_flags |= D3DRP_F_BUFFERS_CREATED | D3DRP_F_DEPTH_CREATED;
+	if (depth_desc.Format == D3DFMT_D24S8)
+		d3drp_f_flags |= D3DRP_F_STENCIL_CREATED;
 
 	LPD3DXBUFFER pBufferErrors = NULL;
 	ID3DXEffect* effect = 0;

@@ -237,8 +237,7 @@ void AutoCannon::Render (void)
 //
 void AutoCannon::InitWeapon (IBaseObject * owner, const class TRANSFORM & orientation, IBaseObject * _target, U32 flags, const class Vector * pos)
 {
-	//Correct AutoCannon to fire at target regardless of gun barrel
-	SINGLE curPitch, desiredPitch, relPitch;
+	// Aim collision and streak travel with a world-space target delta.
 	Vector goal = (_target)? _target->GetPosition() : *pos;
 
 	systemID = owner->GetSystemID();
@@ -253,19 +252,13 @@ void AutoCannon::InitWeapon (IBaseObject * owner, const class TRANSFORM & orient
 		owner->SetVisibleToAllies(1 << (_target->GetPlayerID()-1));
 	}
 	SetVisibilityFlags(visFlags);
-	curPitch = orientation.get_pitch();
 	goal -= orientation.get_position();
 
-	desiredPitch = sqrt(goal.x * goal.x  + goal.y * goal.y);
-	desiredPitch = get_angle(goal.z, desiredPitch);
-
-	relPitch = desiredPitch - curPitch;
-
 	transform = orientation;
-	transform.rotate_about_i(relPitch);
 
 	start = orientation.get_position();
-	direction = -transform.get_k();
+	direction = goal;
+	direction.normalize();
 	//transform.set_k(direction);
 
 	hSound = SFXMANAGER->Open(data->launchSfx);

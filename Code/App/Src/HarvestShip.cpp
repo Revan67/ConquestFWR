@@ -851,7 +851,11 @@ void HarvestShip::renderNuggeting (void)
 			v0 = v1 = v4 = obj->GetPosition();
 			v0 += (20+80*(1-deltaTime))*dir2;
 			v1 -= (20+80*(1-deltaTime))*dir2;
-			v2 = v3 = v5 = transform*beamPointInfo.point;
+			Transform modelAxisCorrection;
+			modelAxisCorrection.set_identity();
+			modelAxisCorrection.rotate_about_i(90*MUL_DEG_TO_RAD);
+			modelAxisCorrection.rotate_about_j(180*MUL_DEG_TO_RAD);
+			v2 = v3 = v5 = transform*(modelAxisCorrection*beamPointInfo.point);
 			v2 -= 20*dir2;
 			v3 += 20*dir2;
 
@@ -923,6 +927,11 @@ void HarvestShip::renderHarvestShip (void)
 //			renderNuggeting();
 		if(hArch->gasTankArch != -1 && hArch->metalTankArch != -1)
 		{
+			Transform modelAxisCorrection;
+			modelAxisCorrection.set_identity();
+			modelAxisCorrection.rotate_about_i(90*MUL_DEG_TO_RAD);
+			modelAxisCorrection.rotate_about_j(180*MUL_DEG_TO_RAD);
+
 			S32 totalSup = gas+metal;
 			if(totalSup)
 			{
@@ -939,7 +948,7 @@ void HarvestShip::renderHarvestShip (void)
 						TRANSFORM trans;
 						trans.set_orientation(tankPoint[tank].orientation);
 						trans.translation = tankPoint[tank].point;
-						trans = transform*trans;
+					trans = transform*modelAxisCorrection*trans;
 						BATCH->set_state(RPR_BATCH,TRUE);
 						BATCH->set_render_state(D3DRS_ZWRITEENABLE,TRUE);
 						BATCH->set_render_state(D3DRS_ZENABLE,TRUE);
@@ -955,7 +964,7 @@ void HarvestShip::renderHarvestShip (void)
 						TRANSFORM trans;
 						trans.set_orientation(tankPoint[tank].orientation);
 						trans.translation = tankPoint[tank].point;
-						trans = transform*trans;
+					trans = transform*modelAxisCorrection*trans;
 						BATCH->set_state(RPR_BATCH,TRUE);
 						BATCH->set_render_state(D3DRS_ZWRITEENABLE,TRUE);
 						BATCH->set_render_state(D3DRS_ZENABLE,TRUE);
@@ -971,7 +980,7 @@ void HarvestShip::renderHarvestShip (void)
 						TRANSFORM trans;
 						trans.set_orientation(tankPoint[tank].orientation);
 						trans.translation = tankPoint[tank].point;
-						trans = transform*trans;
+					trans = transform*modelAxisCorrection*trans;
 						BATCH->set_state(RPR_BATCH,TRUE);
 						BATCH->set_render_state(D3DRS_ZWRITEENABLE,TRUE);
 						BATCH->set_render_state(D3DRS_ZENABLE,TRUE);
@@ -986,7 +995,7 @@ void HarvestShip::renderHarvestShip (void)
 						TRANSFORM trans;
 						trans.set_orientation(tankPoint[tank].orientation);
 						trans.translation = tankPoint[tank].point;
-						trans = transform*trans;
+					trans = transform*modelAxisCorrection*trans;
 						BATCH->set_state(RPR_BATCH,TRUE);
 						BATCH->set_render_state(D3DRS_ZWRITEENABLE,TRUE);
 						BATCH->set_render_state(D3DRS_ZENABLE,TRUE);
@@ -1618,7 +1627,7 @@ void HarvestShip::OnMasterChange (bool bIsMaster)
 							THEMATRIX->AddObjectToOperation(workingID,dwMissionID);
 							buffer.command = HAR_C_NUGGET_ASSIST_BEGIN;
 							NET_METRIC(sizeof(buffer));
-							THEMATRIX->SendOperationData(workingID,dwMissionID,&buffer,sizeof(&buffer));
+							THEMATRIX->SendOperationData(workingID,dwMissionID,&buffer,sizeof(buffer));
 							nugget->IncHarvestCount();
 							mode = HAR_NUGGETING;
 							Vector vect = transform.translation;

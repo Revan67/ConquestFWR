@@ -284,30 +284,20 @@ void Bolt::InitWeapon (IBaseObject * owner, const class TRANSFORM & orientation,
 
 	start = orientation.get_position();
 
-	//Correct bolt to fire at target regardless of gun barrel
-	SINGLE curPitch, desiredPitch, relPitch;
+	// Fire toward the target in world space.  Reconstructing pitch/yaw from the
+	// corrected CQ2 ship transform applies the model-axis conversion twice.
 	Vector goal = (pos)? *pos : _target->GetPosition();
-
-	curPitch = orient.get_pitch();
-	//goal -= ENGINE->get_position(barrelIndex);
 	goal -= orient.get_position();
 
 	range = goal.magnitude() + 1000;
-	
-	desiredPitch = sqrt(goal.x * goal.x  + goal.y * goal.y);
-	desiredPitch = get_angle(goal.z, desiredPitch);
-
-	relPitch = desiredPitch - curPitch;
-
-	orient.rotate_about_i(relPitch);
-////------------------------
 	transform = orient;
 	initialPos = orientation.get_position();
 	//shouldn't be necessary
 //	if (initialPos.z == 0)
 //		initialPos.z += 1;	// prevent later div by 0
 	
-	vel = -orient.get_k();
+	vel = goal;
+	vel.normalize();
 	vel *= data->maxVelocity;
 	velocity = vel;
 	direction = vel;

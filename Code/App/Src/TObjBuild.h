@@ -256,7 +256,7 @@ void ObjectBuild< Base >::Build (IFabricator *_fab)
 	_fab->QueryInterface(IFabricatorID,fab);
 	fabID = fab.Ptr()->GetPartID();
 
-/*	IBaseObject * obj = _fab->GetBuildEffectObj();
+	IBaseObject * obj = _fab->GetBuildEffectObj();
 	if (obj && obj->QueryInterface(IBuildEffectID,buildEffectObj,NONSYSVOLATILEPTR))
 	{
 		if (buildEffectObj)
@@ -268,7 +268,7 @@ void ObjectBuild< Base >::Build (IFabricator *_fab)
 			buildEffectObj->SetBuildRate(buildTime?1.0/buildTime:1.0);
 		}
 	}
-*/
+
 	SetVisibilityFlags(fab.Ptr()->GetVisibilityFlags());
 	emissiveMask = true;
 }
@@ -284,7 +284,7 @@ void ObjectBuild< Base >::AddFabToBuild (IFabricator * _fab)
 	fabID = fab.Ptr()->GetPartID();
 	
 	//kind of hacky, this code should only run on load
-/*	IBaseObject * obj = _fab->GetBuildEffectObj();
+	IBaseObject * obj = _fab->GetBuildEffectObj();
 	if (obj && obj->QueryInterface(IBuildEffectID,buildEffectObj,NONSYSVOLATILEPTR))
 	{
 		if (buildEffectObj)
@@ -295,7 +295,7 @@ void ObjectBuild< Base >::AddFabToBuild (IFabricator * _fab)
 			buildEffectObj->SetBuildPercent(buildTime?((SINGLE)timeSpent)/buildTime:1.0);
 		}
 	}
-*/	
+
 	if (buildEffectObj)
 	{
 		buildEffectObj->AddFabricator(_fab);
@@ -544,7 +544,7 @@ void ObjectBuild< Base>::BeginDismantle(IBaseObject * _fab)
 	}
 	else
 	{
-/*		IBaseObject * obj = fab->GetBuildEffectObj();
+		IBaseObject * obj = fab->GetBuildEffectObj();
 		if (obj && obj->QueryInterface(IBuildEffectID,buildEffectObj,NONSYSVOLATILEPTR))
 		{
 			if (buildEffectObj)
@@ -556,7 +556,7 @@ void ObjectBuild< Base>::BeginDismantle(IBaseObject * _fab)
 				buildEffectObj->SetBuildPercent(1.0);
 			}
 		}
-*/	}
+	}
 	
 //	SetupMesh(buildRate/(pInitData->buildCost*REALTIME_FRAMERATE));
 //	ReBuild();

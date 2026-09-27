@@ -290,27 +290,17 @@ void PlasmaBolt::InitWeapon (IBaseObject * owner, const class TRANSFORM & orient
 
 	start = orientation.get_position();
 
-	//Correct bolt to fire at target regardless of gun barrel
-	SINGLE curPitch, desiredPitch, relPitch;
+	// Use the target delta directly; the ship render-axis correction must not be
+	// folded back into projectile movement.
 	Vector goal = (pos)? *pos : _target->GetPosition();
-
-	curPitch = orient.get_pitch();
 	goal -= orient.get_position();
 
 	range = goal.magnitude() + 1000;
-
-
-	desiredPitch = sqrt(goal.x * goal.x  + goal.y * goal.y);
-	desiredPitch = get_angle(goal.z, desiredPitch);
-
-	relPitch = desiredPitch - curPitch;
-
-	orient.rotate_about_i(relPitch);
-////------------------------
 	transform = orient;
 	initialPos = orientation.get_position();
 	
-	vel = -orient.get_k();
+	vel = goal;
+	vel.normalize();
 	vel *= data->maxVelocity;
 	velocity = vel;
 	direction = vel;

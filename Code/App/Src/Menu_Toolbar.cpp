@@ -152,6 +152,28 @@ struct CONTROL_NODE
 		if (type == GBT_HOTBUTTON)
 		{
 			HOTBUTTON_DATA * hotdata = (HOTBUTTON_DATA *)  (((char *)data) + offset);
+			// Toolbar!!Default in the shipped GenData database was authored against
+			// an older hotkey table than the CQ2-era Hotkeys.h in this source tree.
+			// Keep the database geometry/art intact, but bind the two common toolbar
+			// actions by their stable control names so their clicks reach the current
+			// event dispatcher.  Do not translate the numeric table globally: those
+			// values are also used by unrelated contextual controls.
+			HOTBUTTON_DATA compatibleHotdata;
+			if (buttonType == HOTBUTTONTYPE::HOTBUTTON && name)
+			{
+				HOTKEYS::HOTKEY currentHotkey = HOTKEYS::NONE;
+				if (strcmp(name, "options") == 0)
+					currentHotkey = (HOTKEYS::HOTKEY)IDH_GAME_OPTIONS;
+				else if (strcmp(name, "missionObjectives") == 0)
+					currentHotkey = (HOTKEYS::HOTKEY)IDH_MISSION_OBJ;
+
+				if (currentHotkey)
+				{
+					compatibleHotdata = *hotdata;
+					compatibleHotdata.hotkey = currentHotkey;
+					hotdata = &compatibleHotdata;
+				}
+			}
 			if (buttonType==HOTBUTTONTYPE::HOTBUTTON)
 				pButton->InitHotButton(*hotdata, parent, loader); 
 			else if(buttonType==HOTBUTTONTYPE::BUILD)

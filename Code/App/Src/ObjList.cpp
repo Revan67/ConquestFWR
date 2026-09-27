@@ -1293,6 +1293,12 @@ void ObjectList::Render (void)
 
 	CAMERA->SetPerspective();
 
+	// RP_TEXTURE is global pipeline state. Several legacy object/highlight paths
+	// change it without reliably restoring it, which can leave every subsequent
+	// PolyMesh draw untextured until another incidental path enables it. Establish
+	// the configured world-rendering state at the start of every frame.
+	PIPE->set_pipeline_state(RP_TEXTURE, CQEFFECTS.bTextures != 0);
+
 	if (CQEFFECTS.bExpensiveTerrain==0)
 	{
 		BATCH->set_state(RPR_BATCH,FALSE);

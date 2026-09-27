@@ -270,6 +270,14 @@ void ObjectGlow< Base >::glowPostRender (void)
 		
 		if (glow >0.01)
 		{
+			// Ship geometry is drawn with this retail model-axis correction while the
+			// gameplay transform remains level. Apply the same local correction to
+			// model-authored engine hardpoints before converting them to world space.
+			Transform modelAxisCorrection;
+			modelAxisCorrection.set_identity();
+			modelAxisCorrection.rotate_about_i(90*MUL_DEG_TO_RAD);
+			modelAxisCorrection.rotate_about_j(180*MUL_DEG_TO_RAD);
+
 			//	BATCH->set_render_state(D3DRS_TEXTUREMAPBLEND,D3DTBLEND_MODULATEALPHA);
 			//BATCH->set_texture_stage_texture( 0,engineTex);
 			BATCH->set_state(RPR_BATCH,TRUE);
@@ -292,11 +300,13 @@ void ObjectGlow< Base >::glowPostRender (void)
 				if (glowSize[c])
 				{
 					Vector cpos (CAMERA->GetPosition());
+					Vector correctedGlowPt = modelAxisCorrection * glowPt[c];
+					Vector correctedGlowDir = modelAxisCorrection.rotate(glowDir[c]);
 					
-					Vector look (transform*glowPt[c] - cpos);
+					Vector look (transform*correctedGlowPt - cpos);
 					
 					Vector worldDir;// (look.y, -look.x, 0);
-					worldDir = transform.rotate(glowDir[c]);
+					worldDir = transform.rotate(correctedGlowDir);
 					
 					/*#define TOLERANCE 1e-5
 					if (fabs (i.x) < TOLERANCE && fabs (i.y) < TOLERANCE)
@@ -327,7 +337,7 @@ void ObjectGlow< Base >::glowPostRender (void)
 					v0 = 0;
 					v1 = 1;
 					
-					trans.translation = transform*glowPt[c];
+					trans.translation = transform*correctedGlowPt;
 					
 					//long part
 					p[0].set(0,-size,0);
