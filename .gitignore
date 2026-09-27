@@ -72,6 +72,10 @@ C*UsersJoel*.log
 # Build outputs from the converted script / tool projects (2026-08-28)
 Code/App/Src/Scripts/Build/
 /Build-Manifests/
+/binkw32.dll
+/Code/Libs/ImplicitDLL/binkw32.dll
+/Code/Libs/ImplicitDLL/debug/binkw32.dll
+/Conquest_Frontier_Wars_Manual.pdf
 Code/App/Src/Scripts/*/Debug/
 Code/App/Src/Scripts/*/Release/
 Code/App/Src/Scripts/*/DataDef.i

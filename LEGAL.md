@@ -6,25 +6,16 @@ If this document conflicts with the license, the license controls.
 
 ## Controlling license
 
-The Program is provided under the unmodified [Public License for Conquest: Frontier Wars Program
-and Source Code](Conquest%20Source%20License.txt), copyright Fever Pitch Studios, December 2013.
-The license defines the Program broadly to include the source and accompanying assets, files, data,
-executables, object code, machine-readable derivatives, libraries, and utilities within or relating
-to *Conquest: Frontier Wars*.
+The controlling text is the repository's [Public License for Conquest: Frontier Wars Program and
+Source Code](Conquest%20Source%20License.txt), copyright © December 2013, Fever Pitch Studios.
+Read that file for its terms, including the non-commercial restriction, warranty disclaimer, and
+limitation of liability. This policy does not restate or modify those terms.
 
-This repository is a modified **Program Derivative**. The entire Program Derivative, as a whole,
-is released solely under the exact same terms as the controlling license. Each recipient
-automatically receives that identical license. Nothing in this repository may modify its terms or
-attach additional license terms to the Program.
-
-The license is revocable and permits **non-commercial use only**. No money, property, services, or
-other consideration may be given or received in exchange for use or conveyance of the Program or a
-Program Derivative, or for warranty or support. The prohibition expressly includes payments,
-royalties, expenses, donations, gratuities, usage fees, and transmission fees.
-
-Fever Pitch Studios supplies the Program **as is**, without warranty or a support obligation, and
-limits its liability as stated in sections 7 and 8 of the controlling license. Those notices must
-remain intact. The license selects Texas law.
+ConquestFWR is a modified **Program Derivative** conveyed under that same license. Preserve the
+license and the prominent modification notice when distributing it. The repository copy of the
+license remains subject to a completeness concern: section 6 ends mid-sentence in both the local
+source-package copy and an independent source mirror. Do not invent an ending or claim the text is
+complete without stronger original evidence or permission from the rights holder.
 
 ## Required notice for every distribution
 
@@ -51,8 +42,8 @@ package.
 
 [MODIFICATIONS.md](MODIFICATIONS.md) is the repository's prominent modification record. Git history
 provides the detailed file-level record, but Git history alone must not be relied on when distributing
-a source archive or compiled build. Contributors must add a dated, attributed entry for material
-changes before those changes are conveyed.
+a source archive or compiled build. Check and update the dated, attributed ledger before each commit
+intended for the public repository, as well as before distribution.
 
 The public author identity for project modifications is **Revan67**. Do not place a contributor's
 private name, address, account path, crash dump, or other personal information into a public notice.
@@ -60,8 +51,10 @@ private name, address, account path, crash dump, or other personal information i
 ## Retail material and third-party components
 
 Development-source files that accompanied the official source release are treated as Program
-material under the controlling license. A retail installation is operational input used for testing;
-it is not a source of files for this repository or public release packages.
+material under the controlling license, subject to any separately owned rights. A retail installation
+is operational input used for testing; it is not a source of files for this repository or public release
+packages. Original Conquest documentation is not Bink middleware, but its origin as game material
+does not override an express notice from another rights holder.
 
 Do not commit or redistribute:
 
@@ -73,10 +66,17 @@ Do not commit or redistribute:
 
 The repository contains historical binaries and tools from the development-source tree. Their
 presence must not be taken as proof that every third-party component may be redistributed outside
-that source release. In particular, the separately added `binkw32.dll` and
-`Conquest_Frontier_Wars_Manual.pdf` need documented provenance and redistribution permission before
-they are included in any new public release package. Until that review is complete, release tooling
-must exclude them and maintainers should not represent them as covered by the source license.
+that source release. The two `Code/Libs/ImplicitDLL/` Bink DLLs were in the initial source import;
+the repository-root Bink DLL was added later and matches a local retail installation. All three carry
+RAD Game Tools copyright notices, and no accompanying redistribution grant was found. They are
+excluded from current Git tracking while local copies remain available for lawful local use.
+
+`Conquest_Frontier_Wars_Manual.pdf` is a Conquest game field manual, not Bink documentation. It was
+added to Git in May 2026, not with the initial source import, and differs from the manual in the local
+retail installation. Its copyright page names Digital Anvil and Microsoft and requires Microsoft's
+express written permission for reproduction. It is excluded from current Git tracking pending a
+documented right to convey this edition. These index removals do not erase earlier Git history or
+recall prior distributions.
 
 ## Reverse engineering for interoperability
 
@@ -85,18 +85,11 @@ interoperate with the data, campaign modules, and observable behavior of a lawfu
 copy on modern Windows.
 
 In the United States, [17 U.S.C. section 1201(f)](https://uscode.house.gov/view.xhtml?edition=prelim&num=0&req=granuleid%3AUSC-prelim-title17-section1201)
-provides a conditional interoperability exception. Among other requirements, the person must have
-lawfully obtained the right to use a copy; the work must be limited to identifying and analyzing
-elements necessary for interoperability of an independently created program; those elements must
-not previously have been readily available; and the acts must not otherwise infringe copyright.
-Information or means may be shared only as the statute permits and solely to enable interoperability.
-The statute defines interoperability as computer programs exchanging information and mutually using
-the information exchanged.
-
-That exception is not a blanket authorization to reverse engineer, copy, publish decompiled code,
-or bypass technological protection measures. Laws and contract terms vary by jurisdiction. A person
-performing analysis is responsible for having a lawful copy and for complying with applicable law
-and enforceable agreements.
+addresses certain interoperability research. Whether it applies to a particular act depends on its
+facts and all statutory conditions; this project policy is not a determination of eligibility. It is
+not automatic clearance to copy or publish decompiled code or to bypass an access control. Laws and
+contract terms vary by jurisdiction. Researchers must use lawfully obtained material and seek
+specific permission or qualified advice where the legal basis is uncertain.
 
 Permitted project evidence should normally be limited to independently recorded functional facts,
 such as:
@@ -108,9 +101,9 @@ such as:
 - original tests, tables, documentation, and clean-room code expressing those facts.
 
 Researchers must not add copied retail implementation text or substantial expression. Keep raw
-retail binaries, disassembly databases, decompiler projects, traces, and dumps outside the repository.
-Published notes should contain only the minimum functional facts and independently written analysis
-needed to reproduce compatibility.
+retail binaries, disassembly databases, decompiler projects, traces, and dumps out of the publicly
+tracked repository. They may remain in local/private evidence storage. Published notes should contain
+only the minimum functional facts and independently written analysis needed for compatibility.
 
 The project does not authorize or require circumvention of copy protection. If work would require
 defeating an effective access control, distributing circumvention technology, using material whose
@@ -122,9 +115,10 @@ circumvention while containing statutory and periodically adopted exemptions:
 [Section 1201 study](https://www.copyright.gov/policy/1201/) and
 [2024 rulemaking](https://www.copyright.gov/1201/2024/).
 
-## Contribution and release checklist
+## Pre-commit and release checklist
 
-Before accepting or releasing a change, confirm that:
+Before staging or committing material intended for the public repository, and again before releasing
+a copy, confirm that:
 
 - the work is non-commercial and no prohibited consideration is involved;
 - the contributor has authority to provide the change under the controlling license;
@@ -135,4 +129,8 @@ Before accepting or releasing a change, confirm that:
 - the complete, unmodified controlling license and all required notices accompany the copy; and
 - the package does not add terms or obligations that conflict with the controlling license.
 
-If any item cannot be confirmed, do not distribute the affected material until it is resolved.
+Do not stage unreviewed third-party material, generated binaries unrelated to the change, or raw
+retail evidence. Check that the staged set contains only the intended files and no gameplay source
+when the task is documentation-only. If any item cannot be confirmed, do not commit or distribute the
+affected material until it is resolved. The source-package license truncation remains an explicit
+public-conveyance question, not something this checklist silently clears.

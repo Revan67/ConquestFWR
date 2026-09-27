@@ -14,5 +14,9 @@ detailed file-level record.
 | 2026-03-25 through 2026-05-26 | Revan67 | Ported the Windows and DirectX-era build to current Visual Studio tooling; added compatibility shims, reproducible data-generation support, diagnostics, and initial runtime restoration fixes. |
 | 2026-08-20 through 2026-08-30 | Revan67 | Restored retail ABI and data layouts; repaired renderer, movement, combat, explosion, construction, and mission behavior; rebuilt engine components; added campaign projects, verified build/deploy tooling, crash analysis, tests, and project documentation. |
 | 2026-08-30 | Revan67 | Added the legal-compliance policy, distribution checklist, interoperability-research boundaries, third-party provenance warnings, and automatic deployment of required legal notices. |
+| 2026-09-04 | Revan67 | Corrected resource-bar alignment at scaled resolutions and recorded the change in restoration evidence. |
+| 2026-09-27 | Revan67 | Consolidated restoration knowledge into `PROJECT_BIBLE.md`, archived historical notes, and updated documentation links and project guidance. |
+| 2026-09-27 | Revan67 | Stabilized the Debug and Final full-build workflow, configuration-specific outputs, build manifests, deployment verification, and project build paths. |
+| 2026-09-27 | Revan67 | Audited source-license, Conquest manual, and Bink provenance; clarified the legal checklist and excluded the manual and three Bink DLLs from current Git tracking while retaining local copies. |
 
 Future material modifications must add a dated and attributed entry here before distribution.
