@@ -19,5 +19,6 @@ detailed file-level record.
 | 2026-09-27 | Revan67 | Stabilized the Debug and Final full-build workflow, configuration-specific outputs, build manifests, deployment verification, and project build paths. |
 | 2026-09-27 | Revan67 | Audited source-license, Conquest manual, and Bink provenance; clarified the legal checklist and excluded the manual and three Bink DLLs from current Git tracking while retaining local copies. |
 | 2026-09-27 | Revan67 / ConquestFWR | Isolated previously runtime-accepted retail-restoration corrections for projectile direction, harvester packet and attachment coordinates, toolbar actions, world-frame texture state, sector visibility, construction effects, ship glows and marker, and D3D9 depth attachment. This does not establish universal retail parity. |
+| 2026-09-27 | Revan67 / ConquestFWR | Removed completed, previously uncommitted renderer-route measurement hooks and default launcher opt-ins from the live working tree; retained the historical captures and verification tools. No renderer behavior change is claimed. |
 
 Future material modifications must add a dated and attributed entry here before distribution.
