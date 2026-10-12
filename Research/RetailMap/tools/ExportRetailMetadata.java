@@ -195,14 +195,25 @@ public class ExportRetailMetadata extends GhidraScript {
 
     @Override public void run() throws Exception {
         String[] args = getScriptArgs();
-        if (args.length != 1 && !(args.length >= 3 && args[1].equals("--seeds")))
-            throw new IllegalArgumentException("Expected new JSONL path [--seeds <VA> ...]");
+        boolean seedMode = args.length >= 3 && args[1].equals("--seeds");
+        boolean recoveredMode = args.length >= 3 && args[1].equals("--ephemeral-recovered");
+        if (args.length != 1 && !seedMode && !recoveredMode)
+            throw new IllegalArgumentException("Expected new JSONL path [--seeds|--ephemeral-recovered <VA> ...]");
         // Verify the imported program itself, not merely the similarly named disk file.
         String importedHash = currentProgram.getExecutableSHA256();
         if (importedHash == null || !CANONICAL.equalsIgnoreCase(importedHash))
             throw new IllegalStateException("Imported program SHA-256 is not the canonical retail image: " + importedHash);
         Path output = Paths.get(args[0]).toAbsolutePath().normalize();
-        if (args.length > 1) { seedProbes(output, args); return; }
+        if (seedMode) { seedProbes(output, args); return; }
+        Set<Address> recoveredEntries = new HashSet<>();
+        if (recoveredMode) {
+            for (int i = 2; i < args.length; i++) {
+                Address entry = toAddr(args[i]);
+                if (currentProgram.getFunctionManager().getFunctionAt(entry) == null)
+                    throw new IllegalStateException("Declared ephemeral function was not created: " + entry);
+                recoveredEntries.add(entry);
+            }
+        }
         try (BufferedWriter out = Files.newBufferedWriter(output, StandardCharsets.UTF_8,
                 StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE)) {
             line(out, record("record", "header", "schema", "cfw.retail-metadata.v1",
@@ -211,7 +222,10 @@ public class ExportRetailMetadata extends GhidraScript {
                 "language", currentProgram.getLanguageID().toString(),
                 "compiler_spec", currentProgram.getCompilerSpec().getCompilerSpecID().toString(),
                 "ghidra_version", Application.getApplicationVersion(),
-                "analysis_policy", "existing saved analysis; no reanalysis or project changes",
+                "analysis_policy", recoveredMode ?
+                    "saved analysis plus explicitly listed ephemeral functions; headless read-only discards changes" :
+                    "existing saved analysis; no reanalysis or project changes",
+                "ephemeral_function_entries", recoveredEntries.size(),
                 "byte_hash_policy", "SHA-256 of body address ranges in increasing address order, without gaps",
                 "instruction_hash_policy", "mnemonic plus ordered Ghidra operand-type integers; no operand values",
                 "call_symbol_policy", "saved target symbols; external names resolved from external/thunk function or IAT external reference",
@@ -285,6 +299,8 @@ public class ExportRetailMetadata extends GhidraScript {
                 }
                 line(out, record("record", "function", "retail_id", currentProgram.getName() + ":" + function.getEntryPoint(),
                     "entry", function.getEntryPoint().toString(),
+                    "function_provenance", recoveredEntries.contains(function.getEntryPoint()) ?
+                        "EPHEMERAL_RECOVERED_CANDIDATE" : "SAVED_ANALYSIS_FUNCTION",
                     "name", function.getName(), "name_source", function.getSymbol().getSource().toString(),
                     "signature_sha256", hash(function.getPrototypeString(false, false)),
                     "body_ranges", ranges, "body_size", function.getBody().getNumAddresses(),

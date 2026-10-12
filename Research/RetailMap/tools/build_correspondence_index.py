@@ -127,6 +127,9 @@ def import_retail(connection, path: Path) -> tuple[str, int]:
             if address < base:
                 raise ValueError(f"Function below image base: {address:X}")
             fid = f"{image_hash[:16]}:{address:X}"
+            provenance = row.get("function_provenance", "SAVED_ANALYSIS_FUNCTION")
+            if provenance not in {"SAVED_ANALYSIS_FUNCTION", "EPHEMERAL_RECOVERED_CANDIDATE"}:
+                raise ValueError(f"Unknown retail function provenance at {address:X}: {provenance}")
             source_name = str(row.get("name_source", ""))
             name = str(row.get("name", ""))
             recovered = name if source_name and source_name.upper() not in {"DEFAULT", "ANALYSIS"} else None
@@ -138,7 +141,7 @@ def import_retail(connection, path: Path) -> tuple[str, int]:
                  row.get("block_count"), row.get("instruction_count"),
                  row.get("cyclomatic_complexity"), row.get("body_sha256"),
                  row.get("instruction_shape_sha256"), row.get("pseudocode_fingerprint"),
-                 "UNREVIEWED"),
+                 provenance),
             )
             if recovered:
                 feature(connection, "retail", fid, "symbol", recovered)
@@ -361,7 +364,13 @@ def stats(connection, matcher_run: str | None = None) -> dict:
     ).fetchone()[0]
     multi_filter = (" WHERE matcher_run_id=? AND" if matcher_run else " WHERE") + " signal_groups>=2"
     return {
-        "retail_saved_analysis_functions": scalar("SELECT count(*) FROM retail_functions"),
+        "retail_function_records_total": scalar("SELECT count(*) FROM retail_functions"),
+        "retail_saved_analysis_functions": scalar(
+            "SELECT count(*) FROM retail_functions WHERE evidence_status='SAVED_ANALYSIS_FUNCTION'"
+        ),
+        "retail_ephemeral_recovered_candidates": scalar(
+            "SELECT count(*) FROM retail_functions WHERE evidence_status='EPHEMERAL_RECOVERED_CANDIDATE'"
+        ),
         "bounded_code_leads_not_functions": scalar("SELECT count(*) FROM retail_code_leads WHERE defined_function_at=0"),
         "source_lexical_function_candidates": scalar("SELECT count(*) FROM source_functions"),
         "source_rows_from_dirty_translation_units": scalar("SELECT count(*) FROM source_functions WHERE worktree_dirty=1"),
