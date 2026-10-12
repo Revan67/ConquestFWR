@@ -55,7 +55,7 @@ struct MISSION_SAVELOAD
 	U8	 groupIndex;			// which member (0 to num_ships-1) of the group am I?
 
 #ifdef _ADB
-	U32 caps;		// M_CAPS is 4 bytes; parser can't handle MISSION_DATA::M_CAPS
+	MISSION_DATA_BIN::M_CAPS caps; // Resolve the declaring scope; preserve record conversion.
 #else
 	MISSION_DATA::M_CAPS caps;
 #endif

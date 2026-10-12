@@ -176,6 +176,7 @@ struct BASE_SPACESHIP_DATA : BASIC_DATA
 	// They masked an 8-byte BILLBOARD_DATA deficit, so sizeof stayed 644 while techActive
 	// sat 8 bytes early.
 };
+#ifndef _ADB
 static_assert(sizeof(BASE_SPACESHIP_DATA) == 644, "BASE_SPACESHIP_DATA binary layout mismatch");
 // Offset asserts: the -32/+32 MISSION_DATA_BIN / ROCKING_DATA errors CANCELLED in sizeof,
 // so a size-only assert passed for months while every field here was displaced.
@@ -193,6 +194,7 @@ static_assert(offsetof(BASE_SPACESHIP_DATA, techActive) + sizeof(SINGLE_TECHNODE
 static_assert(offsetof(BASE_SPACESHIP_DATA, billboard) + sizeof(BILLBOARD_DATA)
               == offsetof(BASE_SPACESHIP_DATA, techActive),
               "billboard must sit immediately before techActive (retail schema)");
+#endif
 
 //----------------------------------------------------------------
 //

@@ -64,6 +64,7 @@ struct BASE_PLATFORM_DATA : BASIC_DATA
 	U32 gasStorage;
 	U32 crewStorage;
 };
+#ifndef _ADB
 static_assert(sizeof(BASE_PLATFORM_DATA) == 560, "BASE_PLATFORM_DATA binary layout mismatch");
 static_assert(offsetof(BASE_PLATFORM_DATA, slotsNeeded) == 476, "BASE_PLATFORM_DATA::slotsNeeded offset mismatch");
 // The two asserts above BOTH passed while this struct was wrong: MISSION_DATA_BIN was 32 bytes
@@ -75,6 +76,7 @@ static_assert(offsetof(BASE_PLATFORM_DATA, extension)
 static_assert(offsetof(BASE_PLATFORM_DATA, extensionBits)
               == offsetof(BASE_PLATFORM_DATA, extension) + sizeof(EXTENSION_DATA) * 4,
               "extension[] must hold exactly 4 entries (retail schema)");
+#endif
 //----------------------------------------------------------------
 //
 #ifndef _ADB

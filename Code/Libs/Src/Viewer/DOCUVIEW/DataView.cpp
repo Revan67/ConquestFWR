@@ -2110,6 +2110,28 @@ BOOL32 DataViewer::CopySymValue (SYMBOL _src, U32 srcModifiers, const char *srcD
 		{
 			char value[80];
 
+			// Compiler-compatible schemas may replace enum bitfields with integer
+			// bitfields. Preserve their numeric value: passing an enum label such
+			// as MANTIS to the integer parser silently produces zero.
+			if (dst->kind == BASICTYPE && dst->basicdt != REAL && dst->basicdt != STRINGTYPE)
+			{
+				S32 numericValue;
+				if (bit_count)
+					numericValue = GetBitField32(srcData, bit_offset, bit_count);
+				else
+				{
+					switch (src->size)
+					{
+					case 1: numericValue = *((const signed char *)srcData); break;
+					case 2: numericValue = *((const short *)srcData); break;
+					case 4: memcpy(&numericValue, srcData, sizeof(numericValue)); break;
+					default: return 0;
+					}
+				}
+				wsprintfA(value, "%ld", (long)numericValue);
+				return SetSymValue(_dst, dstData, value, _dst->size);
+			}
+
 			if (GetSymValue(_src, srcModifiers, srcData, value, _src->size,NULL))
 				result &= SetSymValue(_dst, dstData, value, _dst->size);
 			else

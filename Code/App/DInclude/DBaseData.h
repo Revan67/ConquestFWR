@@ -224,10 +224,9 @@ struct GT_VFXSHAPE : GENBASE_DATA
 //---------------------Mission definitions------------------------
 //----------------------------------------------------------------
 //
-// Binary layout of MISSION_DATA as stored in gametypes.db (VS6-compiled, 40 bytes).
-// armorData/silhouetteImage/specialAbility/speechPriority were added to the source
-// after the binary data files were compiled and are NOT present in the binary.
-// Use MISSION_DATA_BIN for archetype binary structs; use MISSION_DATA for runtime objects.
+// First 40 bytes of the retail MISSION_DATA layout.  This named prefix exists to
+// preserve VS6 bitfield packing under the current compiler; retail archetype
+// records contain the complete 72-byte MISSION_DATA, including the derived fields.
 struct MISSION_DATA_BIN
 {
 	// VS6 packed these three differently-typed enum bitfields into one int
@@ -292,13 +291,11 @@ struct MISSION_DATA_BIN
 };
 
 #ifndef _ADB
-static_assert(sizeof(MISSION_DATA_BIN) == 40, "MISSION_DATA_BIN must be 40 bytes to match VS6 binary");
+static_assert(sizeof(MISSION_DATA_BIN) == 40, "MISSION_DATA_BIN prefix must match the first 40 retail bytes");
 #endif
 
-// Runtime MISSION_DATA extends the binary portion with fields that were added
-// to the source after gametypes.db was compiled.  These are NOT read from the
-// binary; they are zero-initialised and then populated via MISSION_DATA_OVERRIDE
-// scripts at mission load time.
+// Complete retail archetype/runtime record.  The inheritance is a compiler-
+// compatibility representation; it does not imply a separate on-disk record.
 struct MISSION_DATA : MISSION_DATA_BIN
 {
 	ARMOR_DATA  armorData;
@@ -307,8 +304,7 @@ struct MISSION_DATA : MISSION_DATA_BIN
 	UNITSOUNDS::PRIORITY speechPriority;
 
 #ifndef _ADB
-	// specialAbility1/2 were added post-VS6 and are NOT in the binary archetype
-	// files.  Static const so existing call sites compile without changing layout.
+	// CQ2 compatibility aliases. Static const so they do not change the record.
 	static const UNIT_SPECIAL_ABILITY specialAbility1 = USA_NONE;
 	static const UNIT_SPECIAL_ABILITY specialAbility2 = USA_NONE;
 #endif
