@@ -24,5 +24,6 @@ detailed file-level record.
 | 2026-10-12 | Revan67 / ConquestFWR | Removed completed one-off toolbar and texture-construction logging from normal execution; retained separate active harvester diagnostics and raw investigation evidence. No gameplay or renderer parity is claimed. |
 | 2026-10-12 | Revan67 / ConquestFWR | Recorded Phase A worktree classification, recovery-checkpoint identity, candidate and diagnostic isolation, and remaining baseline gate in the canonical project Bible. No new restoration behavior is claimed. |
 | 2026-10-12 | Revan67 / ConquestFWR | Isolated the HQ placement-preview instance/ownership repair from unaccepted renderer experiments. Debug and Final full builds passed; repeated placement, cancellation, reload, and shutdown acceptance remains pending. |
+| 2026-10-12 | Revan67 / ConquestFWR | Reconciled the Phase A source baseline by restoring unaccepted renderer, D3D9 texture, and speculative warp experiments from the live checkout; retained their recovery archive, disabled harvesting diagnostics in ordinary builds, and recorded fresh isolated Debug/Final build provenance. No additional gameplay fix or runtime parity is claimed. |
 
 Future material modifications must add a dated and attributed entry here before distribution.
