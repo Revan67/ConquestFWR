@@ -22,5 +22,6 @@ detailed file-level record.
 | 2026-09-27 | Revan67 / ConquestFWR | Removed completed, previously uncommitted renderer-route measurement hooks and default launcher opt-ins from the live working tree; retained the historical captures and verification tools. No renderer behavior change is claimed. |
 | 2026-10-12 | Revan67 / ConquestFWR | Isolated the DocuView parser/schema compatibility candidate for mission/save conversion, with measured layout guards; synthetic conversion probes pass, but retail save compatibility remains unverified. |
 | 2026-10-12 | Revan67 / ConquestFWR | Removed completed one-off toolbar and texture-construction logging from normal execution; retained separate active harvester diagnostics and raw investigation evidence. No gameplay or renderer parity is claimed. |
+| 2026-10-12 | Revan67 / ConquestFWR | Recorded Phase A worktree classification, recovery-checkpoint identity, candidate and diagnostic isolation, and remaining baseline gate in the canonical project Bible. No new restoration behavior is claimed. |
 
 Future material modifications must add a dated and attributed entry here before distribution.
