@@ -1,0 +1,26 @@
+{
+  "schema": "cfw-correspondence-validation-v1",
+  "scope": "Function identity only; no behavioral-parity claim",
+  "source_commit": "b853f2c8650de376fa277487985f3cb2166f365d",
+  "reviewed_samples": [
+    {"module": "Conquest_retail.exe", "module_sha256": "ED8741C0CB727A43B7DE7BE0E73566B04FBC1CBD58B54A62D538E3F39DCB3F52", "va": "0x004f3c70", "source_id": "Code/App/Src/ObjList.cpp:4041:ObjectList::loadTypesData", "relationship": "FUNCTION_IDENTITY", "confidence": 99, "evidence_type": "Retail binary and current source", "evidence_ref": "PROJECT_BIBLE.md §6: GameTypes loader; canonical retail binary; source function boundary", "reviewer": "independent M2.5 binary/source review", "review_date": "2026-10-12"},
+    {"module": "Conquest_retail.exe", "module_sha256": "ED8741C0CB727A43B7DE7BE0E73566B04FBC1CBD58B54A62D538E3F39DCB3F52", "va": "0x00483bf0", "source_id": "Code/App/Src/FlagShip.cpp:6225:FlagshipFactory::CreateArchetype", "relationship": "FUNCTION_IDENTITY", "confidence": 98, "evidence_type": "Retail binary and current source", "evidence_ref": "PROJECT_BIBLE.md §6: flagship factory allocation and raw-pointer handoff", "reviewer": "independent M2.5 binary/source review", "review_date": "2026-10-12"},
+    {"module": "Trim.dll", "module_sha256": "AC13625FEF6DA8D553196C894351E93F842BD8FB5344B97FEBA1FD6835E830F0", "va": "0x10061240", "source_id": "Code/App/Src/Menu_Toolbar.cpp:1685:Menu_tb::loadInterface", "relationship": "FUNCTION_IDENTITY", "confidence": 97, "evidence_type": "Retail binary and current source", "evidence_ref": "Trim.dll 0x10061240..0x10061b04; toolbar parser/control sequence; Trim.vcxproj compiled source", "reviewer": "independent M2.5 binary/source review", "review_date": "2026-10-12"}
+  ],
+  "controls": [
+    {"role": "calibration", "module": "Conquest_retail.exe", "va": "0x004f3c70", "source_id": "Code/App/Src/ObjList.cpp:4041:ObjectList::loadTypesData", "family": "object-loader", "basis": "retail GameTypes.db loader and source raw database loader"},
+    {"role": "holdout", "module": "Conquest_retail.exe", "va": "0x004f41e0", "source_id": "Code/App/Src/ObjList.cpp:4077:ObjectList::getArchDataType", "family": "object-lookup", "basis": "name comparison across counted 44-byte descriptors"},
+    {"role": "holdout", "module": "Conquest_retail.exe", "va": "0x004f1370", "source_id": "Code/App/Src/ObjList.cpp:2378:ObjectList::GetArchetypeData", "family": "object-accessor", "basis": "pointer overload returns descriptor raw-data pointer at +0x20"},
+    {"role": "holdout", "module": "Conquest_retail.exe", "va": "0x00483bf0", "source_id": "Code/App/Src/FlagShip.cpp:6225:FlagshipFactory::CreateArchetype", "family": "flagship-factory", "basis": "class/subtype, allocation, and raw-data handoff"},
+    {"role": "holdout", "module": "Conquest_retail.exe", "va": "0x00480b30", "source_id": "Code/App/Src/FlagShip.cpp:3769:Flagship::GetToolbarImage", "family": "flagship-toolbar-getters", "basis": "retail raw offset 728"},
+    {"role": "holdout", "module": "Conquest_retail.exe", "va": "0x00480b50", "source_id": "Code/App/Src/FlagShip.cpp:3776:Flagship::GetToolbarText", "family": "flagship-toolbar-getters", "basis": "retail raw offset 732"},
+    {"role": "holdout", "module": "Conquest_retail.exe", "va": "0x00480b70", "source_id": "Code/App/Src/FlagShip.cpp:3783:Flagship::GetToolbarStatusText", "family": "flagship-toolbar-getters", "basis": "retail raw offset 736"},
+    {"role": "holdout", "module": "Conquest_retail.exe", "va": "0x00480b90", "source_id": "Code/App/Src/FlagShip.cpp:3790:Flagship::GetToolbarHintbox", "family": "flagship-toolbar-getters", "basis": "retail raw offset 740"},
+    {"role": "independent-module-holdout", "module": "Trim.dll", "module_sha256": "AC13625FEF6DA8D553196C894351E93F842BD8FB5344B97FEBA1FD6835E830F0", "va": "0x10061240", "source_id": "Code/App/Src/Menu_Toolbar.cpp:1685:Menu_tb::loadInterface", "family": "ui-toolbar", "basis": "retail interface/parser/control-archetype sequence; current Trim target builds source file"}
+  ],
+  "hard_negatives": [
+    {"module": "Conquest_retail.exe", "va": "0x004f1330", "wrong_source_id": "Code/App/Src/ObjList.cpp:2378:ObjectList::GetArchetypeData", "reason": "returns name/descriptor address, not raw data"},
+    {"module": "Conquest_retail.exe", "va": "0x004f1390", "wrong_source_id": "Code/App/Src/ObjList.cpp:2378:ObjectList::GetArchetypeData", "reason": "name overload, not pointer overload"},
+    {"module": "Conquest_retail.exe", "va": "0x00483cb0", "wrong_source_id": "Code/App/Src/FlagShip.cpp:6225:FlagshipFactory::CreateArchetype", "reason": "live instance creation, not archetype creation"}
+  ]
+}

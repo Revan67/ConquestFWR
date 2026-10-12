@@ -72,6 +72,9 @@ C*UsersJoel*.log
 # Build outputs from the converted script / tool projects (2026-08-28)
 Code/App/Src/Scripts/Build/
 /Build-Manifests/
+# Private, generated retail/source correspondence exports and SQLite index.
+# Research/RetailMap contains independently authored tooling and metadata only.
+/Evidence/RetailMap/local/
 /binkw32.dll
 /Code/Libs/ImplicitDLL/binkw32.dll
 /Code/Libs/ImplicitDLL/debug/binkw32.dll
