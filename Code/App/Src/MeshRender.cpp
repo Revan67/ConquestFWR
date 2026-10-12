@@ -840,8 +840,18 @@ BOOL MungeFPCW( WORD *pwOldCW )
 
 void MeshRender::Render(MeshInfo *mc,const Transform &world_to_view)
 {
+	if (!mc || mc->instanceIndex == INVALID_INSTANCE_INDEX)
+		return;
+	if (!mc->bHasMesh)
+	{
+		ENGINE->render_instance(MAINCAM,mc->instanceIndex,0,LODPERCENT,0,0);
+		return;
+	}
 //	WORD wOldCW;
 //	BOOL bChangedFPCW = MungeFPCW( &wOldCW );
+	Mesh *mesh = REND->get_instance_mesh(mc->instanceIndex);
+	if (!mesh)
+		return;
 
 
 	unique = 0;//mc->unique;

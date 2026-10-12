@@ -1763,11 +1763,16 @@ void Platform<SaveStruct,InitStruct>::Render (void)
 					}
 					shadowPlayer = 0;
 				}
+				InitStruct * initSt = ((InitStruct *) (ARCHLIST->GetArchetypeHandle(pArchetype)));
+				const S32 engineArch = initSt->meshArch ?
+					(S32)initSt->meshArch->GetEngineArchtype() : initSt->archIndex;
+				if (engineArch == -1)
+					return;
+				instIndexShadowList = ENGINE->create_instance2(engineArch,NULL);
+				if (instIndexShadowList == INVALID_INSTANCE_INDEX)
+					return;
 				shadowPlayer = newShadowPlayer;
 				U32 playerIndex = shadowPlayer-1;
-
-				InitStruct * initSt = ((InitStruct *) (ARCHLIST->GetArchetypeHandle(pArchetype)));
-				instIndexShadowList = ENGINE->create_instance2(initSt->archIndex,NULL);
 				ENGINE->set_transform(instIndexShadowList,GetTransform());
 				ENGINE->update_instance(instIndexShadowList,0,0);
 				meshShadow = CreateMeshInfoTree(instIndexShadowList);
@@ -3098,7 +3103,8 @@ bool PLATFORM_INIT<BT_TYPE>::loadPlatformArchetype (BT_TYPE * data, PARCHETYPE _
 	{
 		const char *blink_ext = strrchr(data->blinkers.light_script, '.');
 		if (blink_ext && (_stricmp(blink_ext, ".ini") == 0 || _stricmp(blink_ext, ".lsc") == 0))
-			blink_arch = CreateBlinkersArchetype(data->blinkers.light_script, archIndex);
+			blink_arch = CreateBlinkersArchetype(data->blinkers.light_script,
+				meshArch ? (S32)meshArch->GetEngineArchtype() : archIndex);
 		fname = data->blinkers.textureName;
 		if (fname && fname[0])
 			blinkTex = TMANAGER->CreateTextureFromFile(fname, TEXTURESDIR, DA::TGA, PF_4CC_DAA4);

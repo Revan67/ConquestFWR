@@ -36,6 +36,7 @@
 #include <TSmartPointer.h>
 #include <DPlatform.h>
 #include <renderer.h>
+#include <IMeshManager.h>
 
 #define MAX_MATS 30
 
@@ -55,14 +56,21 @@ struct MeshEntry
 
 	MeshEntry * next;
 
-	MeshEntry()
+	MeshEntry() : archID(0), pArchetype(NULL), lastPlayer(0),
+		instanceIndex(INVALID_INSTANCE_INDEX), mesh_info(NULL), next(NULL)
 	{};
 
 	~MeshEntry()
 	{
-		ENGINE->destroy_instance(instanceIndex);
-		DestroyMeshInfoTree(mesh_info);
-		ARCHLIST->Release(pArchetype, OBJREFNAME);
+		// The entry owns the Engine tree; its MeshInfo nodes are only views.
+		for (U32 i = 0; i < mc.numChildren; ++i)
+			mc.mi[i]->bOwnsInstance = false;
+		if (mesh_info)
+			DestroyMeshInfoTree(mesh_info);
+		if (instanceIndex != INVALID_INSTANCE_INDEX)
+			ENGINE->destroy_instance(instanceIndex);
+		if (pArchetype)
+			ARCHLIST->Release(pArchetype, OBJREFNAME);
 	}
 };
 
@@ -215,7 +223,8 @@ void UnbornMeshList::RenderMeshAt(TRANSFORM trans,U32 archID,U32 playerID,U8 red
 	{
 		mesh = createMesh(archID);
 	}
-	CQASSERT(mesh);
+	if (!mesh)
+		return;
 	if(mesh->lastPlayer != playerID)
 	{
 		setMeshColor(mesh,playerID,red,green,blue,alpha);
@@ -245,6 +254,11 @@ MeshEntry * UnbornMeshList::createMesh(U32 archID)
 {
 	MeshEntry * mesh = new MeshEntry;
 	mesh->pArchetype = ARCHLIST->LoadArchetype(archID);
+	if (!mesh->pArchetype)
+	{
+		delete mesh;
+		return NULL;
+	}
 	ARCHLIST->AddRef(mesh->pArchetype, OBJREFNAME);
 	mesh->archID = archID;
 	mesh->lastPlayer = 0;
@@ -252,15 +266,37 @@ MeshEntry * UnbornMeshList::createMesh(U32 archID)
 	IMeshRender **mr;
 	
 	BASIC_DATA *data = (BASIC_DATA *)ARCHLIST->GetArchetypeData(mesh->pArchetype);
+	if (!data || !ARCHLIST->GetArchetypeHandle(mesh->pArchetype))
+	{
+		delete mesh;
+		return NULL;
+	}
 	if (data->objClass == OC_PLATFORM)
 	{
 		BASEPLATINIT * initSt = ((BASEPLATINIT *) (ARCHLIST->GetArchetypeHandle(mesh->pArchetype)));
-		mesh->instanceIndex = ENGINE->create_instance2(initSt->archIndex,NULL);
+		// Borrow the wrapper's handle; create_instance2 retains the archetype
+		// for the new instance. Do not write a second owning legacy archIndex.
+		const S32 engineArch = initSt->meshArch ?
+			(S32)initSt->meshArch->GetEngineArchtype() : initSt->archIndex;
+		if (engineArch != -1)
+			mesh->instanceIndex = ENGINE->create_instance2(engineArch,NULL);
+		if (mesh->instanceIndex == INVALID_INSTANCE_INDEX)
+		{
+			CQTRACE11("Preview instance creation failed for archetype %u", archID);
+			delete mesh;
+			return NULL;
+		}
 		mr = initSt->mr;
 		
 		
 		mesh->mesh_info = CreateMeshInfoTree(mesh->instanceIndex);
 		mesh->mc.numChildren = mesh->mesh_info->ListChildren(mesh->mc.mi);
+		if (mr && initSt->numChildren != mesh->mc.numChildren)
+		{
+			CQTRACE11("Preview renderer tree mismatch for archetype %u", archID);
+			delete mesh;
+			return NULL;
+		}
 		
 		if (mr == 0)
 		{
@@ -284,12 +320,27 @@ MeshEntry * UnbornMeshList::createMesh(U32 archID)
 	else
 	{
 		SPACESHIP_INIT<BASE_SPACESHIP_DATA> * initSt = ((SPACESHIP_INIT<BASE_SPACESHIP_DATA> *) (ARCHLIST->GetArchetypeHandle(mesh->pArchetype)));
-		mesh->instanceIndex = ENGINE->create_instance2(initSt->archIndex,NULL);
+		const S32 engineArch = initSt->meshArch ?
+			(S32)initSt->meshArch->GetEngineArchtype() : initSt->archIndex;
+		if (engineArch != -1)
+			mesh->instanceIndex = ENGINE->create_instance2(engineArch,NULL);
+		if (mesh->instanceIndex == INVALID_INSTANCE_INDEX)
+		{
+			CQTRACE11("Preview instance creation failed for archetype %u", archID);
+			delete mesh;
+			return NULL;
+		}
 		mr = initSt->mr;
 		
 		
 		mesh->mesh_info = CreateMeshInfoTree(mesh->instanceIndex);
 		mesh->mc.numChildren = mesh->mesh_info->ListChildren(mesh->mc.mi);
+		if (mr && initSt->numChildren != mesh->mc.numChildren)
+		{
+			CQTRACE11("Preview renderer tree mismatch for archetype %u", archID);
+			delete mesh;
+			return NULL;
+		}
 		
 		if (mr == 0)
 		{
