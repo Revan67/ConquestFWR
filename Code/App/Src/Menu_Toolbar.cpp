@@ -719,18 +719,7 @@ struct Menu_tb : public Frame, IToolbar
 				pNode->type = GBT_STATIC;
 
 				{
-					static FILE* _tbf = nullptr;
-					if (!_tbf) { _tbf = fopen("debug/toolbar_diag.txt", "a"); if (_tbf) { fprintf(_tbf, "sz: HOTBUTTON_DATA=%zu STATIC_DATA=%zu ICON_DATA=%zu EDIT_DATA=%zu\n", sizeof(HOTBUTTON_DATA), sizeof(STATIC_DATA), sizeof(ICON_DATA), sizeof(EDIT_DATA)); fflush(_tbf); } }
 					const STATIC_DATA* pSD = (const STATIC_DATA*)(pBaseData+pNode->offset);
-					if (_tbf) {
-						const unsigned char* bp = (const unsigned char*)pBaseData + pNode->offset;
-						fprintf(_tbf, "STATIC @off=%u '%s' type='%s': xOrigin=%d yOrigin=%d width=%d height=%d align=%d\n",
-							(unsigned)(pNode->offset), varDesc.varName, pSD->staticType,
-							(int)pSD->xOrigin, (int)pSD->yOrigin, (int)pSD->width, (int)pSD->height, (int)pSD->alignment);
-						fprintf(_tbf, "  bytes[0-63]:");
-						for (int _i = 0; _i < 64; ++_i) fprintf(_tbf, " %02x", (int)bp[_i]);
-						fprintf(_tbf, "\n"); fflush(_tbf);
-					}
 					// Skip: empty, !! prefix, or any non-printable ASCII in the type string
 					{
 						const char* _ts = pSD->staticType;

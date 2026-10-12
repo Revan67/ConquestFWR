@@ -615,11 +615,6 @@ BOOL32 DrawAgent::init (struct IImageReader * reader, BOOL32 bScaleData, BOOL32 
 	CQASSERT(maxSize == nearestPower(maxSize));
 	const int TMAX = __min(maxSize, nearestPower(__min(width, height)));
 
-	{
-		FILE* _df = fopen("debug/drawagent_init_diag.txt", "a");
-		if (_df) { fprintf(_df, "DrawAgent::init: w=%u h=%u maxW=%u maxH=%u TMAX=%d PIPE=%p\n", width, height, maxWidth, maxHeight, TMAX, (void*)PIPE); fclose(_df); }
-	}
-
 	//
 	// calculate the number of textures we'll need
 	//

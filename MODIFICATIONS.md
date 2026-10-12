@@ -21,5 +21,6 @@ detailed file-level record.
 | 2026-09-27 | Revan67 / ConquestFWR | Isolated previously runtime-accepted retail-restoration corrections for projectile direction, harvester packet and attachment coordinates, toolbar actions, world-frame texture state, sector visibility, construction effects, ship glows and marker, and D3D9 depth attachment. This does not establish universal retail parity. |
 | 2026-09-27 | Revan67 / ConquestFWR | Removed completed, previously uncommitted renderer-route measurement hooks and default launcher opt-ins from the live working tree; retained the historical captures and verification tools. No renderer behavior change is claimed. |
 | 2026-10-12 | Revan67 / ConquestFWR | Isolated the DocuView parser/schema compatibility candidate for mission/save conversion, with measured layout guards; synthetic conversion probes pass, but retail save compatibility remains unverified. |
+| 2026-10-12 | Revan67 / ConquestFWR | Removed completed one-off toolbar and texture-construction logging from normal execution; retained separate active harvester diagnostics and raw investigation evidence. No gameplay or renderer parity is claimed. |
 
 Future material modifications must add a dated and attributed entry here before distribution.

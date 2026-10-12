@@ -5,8 +5,13 @@
 #pragma warning( disable: 4018 4100 4201 4512 4530 4663 4688 4710 4786 )
 
 #define WIN32_LEAN_AND_MEAN
-#define TL_LOG(s) do{FILE*_tlf=fopen("debug/texlib_diag.txt","a");if(_tlf){fputs((s),_tlf);fclose(_tlf);}}while(0)
-#define TL_LOGF(fmt,...) do{FILE*_tlf=fopen("debug/texlib_diag.txt","a");if(_tlf){fprintf(_tlf,fmt,__VA_ARGS__);fclose(_tlf);}}while(0)
+// Texture loading is synchronous and occurs on the mission-start path.  The
+// temporary per-step trace used while diagnosing D3D9Ex texture publication
+// opened and closed a file for every message, materially delaying asset
+// realization.  Keep the call sites compile-time inert so they can be restored
+// deliberately if another focused capture is ever required.
+#define TL_LOG(s) ((void)0)
+#define TL_LOGF(fmt,...) ((void)0)
 //#define INITGUID
 #include <windows.h>
 #include <stdio.h>
@@ -2689,7 +2694,6 @@ GENRESULT TextureLibrary::load_texture( IFileSystem *_IFS, const char *full_text
 		return GR_GENERIC;
 	}
 
-	
 	return GR_OK;
 }
 
