@@ -348,3 +348,100 @@ CREATE TABLE IF NOT EXISTS reviewed_machine_correspondences (
     PRIMARY KEY (retail_module_sha256, retail_rva,
                  current_module_sha256, current_rva)
 );
+
+-- Matcher v3 research is deliberately additive. The independently reviewed
+-- anchors below are not matcher output, and holdout identities are never
+-- graph-propagation seeds while those controls are being evaluated.
+CREATE TABLE IF NOT EXISTS correspondence_anchors (
+    anchor_id TEXT PRIMARY KEY,
+    retail_module_sha256 TEXT NOT NULL,
+    retail_rva INTEGER NOT NULL,
+    current_module_sha256 TEXT NOT NULL,
+    current_rva INTEGER NOT NULL,
+    source_id TEXT,
+    evidence_ref TEXT NOT NULL,
+    confidence INTEGER NOT NULL CHECK (confidence BETWEEN 0 AND 100),
+    independent_status TEXT NOT NULL CHECK (independent_status IN
+        ('VERIFIED', 'REVIEWED_HIGH_CONFIDENCE')),
+    graph_propagation INTEGER NOT NULL CHECK (graph_propagation IN (0,1)),
+    validation_role TEXT NOT NULL CHECK (validation_role IN
+        ('CALIBRATION', 'HOLDOUT', 'NONCONTROL')),
+    provenance TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS machine_call_edges_v3 (
+    module_sha256 TEXT NOT NULL,
+    owner_rva INTEGER NOT NULL,
+    site_rva INTEGER NOT NULL,
+    edge_kind TEXT NOT NULL,
+    target_rva INTEGER,
+    import_name TEXT,
+    evidence_ref TEXT NOT NULL,
+    PRIMARY KEY (module_sha256, owner_rva, site_rva, edge_kind)
+);
+CREATE INDEX IF NOT EXISTS machine_call_edges_v3_target
+    ON machine_call_edges_v3(module_sha256, target_rva);
+
+-- Pointer-table candidates do not become vtables by inference. These rows
+-- require explicit constructor/class evidence and retain each slot's basis.
+CREATE TABLE IF NOT EXISTS machine_vtable_slots_v3 (
+    module_sha256 TEXT NOT NULL,
+    table_rva INTEGER NOT NULL,
+    slot INTEGER NOT NULL,
+    target_rva INTEGER NOT NULL,
+    ownership_evidence TEXT NOT NULL,
+    slot_evidence TEXT NOT NULL,
+    PRIMARY KEY (module_sha256, table_rva, slot)
+);
+CREATE TABLE IF NOT EXISTS vtable_relationships_v3 (
+    retail_module_sha256 TEXT NOT NULL,
+    retail_table_rva INTEGER NOT NULL,
+    current_module_sha256 TEXT NOT NULL,
+    current_table_rva INTEGER NOT NULL,
+    class_relationship TEXT NOT NULL,
+    slot_alignment TEXT NOT NULL,
+    alignment_evidence TEXT NOT NULL,
+    confidence INTEGER NOT NULL CHECK (confidence BETWEEN 0 AND 100),
+    PRIMARY KEY (retail_module_sha256, retail_table_rva,
+                 current_module_sha256, current_table_rva)
+);
+
+CREATE TABLE IF NOT EXISTS matcher_v3_runs (
+    run_id TEXT PRIMARY KEY,
+    parent_v2_run_id TEXT NOT NULL REFERENCES matcher_v2_runs(run_id),
+    implementation_sha256 TEXT NOT NULL,
+    controls_sha256 TEXT NOT NULL,
+    contextual_inputs_json TEXT NOT NULL,
+    scoring_json TEXT NOT NULL,
+    validation_state TEXT NOT NULL,
+    promotion_count INTEGER NOT NULL DEFAULT 0 CHECK (promotion_count=0),
+    notes TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS matcher_v3_control_results (
+    run_id TEXT NOT NULL REFERENCES matcher_v3_runs(run_id),
+    control_id TEXT NOT NULL,
+    ablation TEXT NOT NULL,
+    true_counterpart_rank INTEGER,
+    equivalence_set_json TEXT NOT NULL,
+    best_score REAL,
+    second_score REAL,
+    margin REAL,
+    contextual_evidence_count INTEGER NOT NULL,
+    outcome TEXT NOT NULL,
+    evidence_json TEXT NOT NULL,
+    PRIMARY KEY (run_id, control_id, ablation)
+);
+CREATE TABLE IF NOT EXISTS matcher_v3_candidate_leads (
+    run_id TEXT NOT NULL REFERENCES matcher_v3_runs(run_id),
+    control_id TEXT NOT NULL,
+    ablation TEXT NOT NULL,
+    current_module_sha256 TEXT NOT NULL,
+    current_rva INTEGER NOT NULL,
+    rank INTEGER,
+    score REAL NOT NULL,
+    body_score REAL NOT NULL,
+    context_json TEXT NOT NULL,
+    disposition TEXT NOT NULL,
+    PRIMARY KEY (run_id, control_id, ablation, current_module_sha256,
+                 current_rva)
+);

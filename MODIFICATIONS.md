@@ -28,5 +28,6 @@ detailed file-level record.
 | 2026-10-12 | Revan67 / ConquestFWR | Added independently written, metadata-only retail/source correspondence research tooling, an initial private index and held-out identity controls; recorded the incomplete function coverage and unvalidated bulk matcher. No game behavior or retail-parity acceptance is claimed. |
 | 2026-10-12 | Revan67 / ConquestFWR | Added a read-only, no-save Ghidra probe for explicitly chosen address-taken function candidates and preserved their provenance separately from saved-analysis functions; matcher bulk validation remains open. |
 | 2026-10-12 | Revan67 / ConquestFWR | Added research-only Debug/Final machine-to-source provenance bridging, independent retail UI metadata indexing, normalized binary-feature extraction, and a control-only correspondence-matcher experiment. The matcher did not pass validation; no gameplay behavior or retail parity is claimed. |
+| 2026-10-13 | Revan67 / ConquestFWR | Added research-only contextual correspondence probes and a fail-closed fixed-control validator for machine callgraph, bounded vtable/field identity, factory subtype, and rare-string evidence. Its bounded development controls pass; broad matching and gameplay parity remain unverified. |
 
 Future material modifications must add a dated and attributed entry here before distribution.
