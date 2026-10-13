@@ -21,6 +21,18 @@
   "hard_negatives": [
     {"module": "Conquest_retail.exe", "va": "0x004f1330", "wrong_source_id": "Code/App/Src/ObjList.cpp:2378:ObjectList::GetArchetypeData", "reason": "returns name/descriptor address, not raw data"},
     {"module": "Conquest_retail.exe", "va": "0x004f1390", "wrong_source_id": "Code/App/Src/ObjList.cpp:2378:ObjectList::GetArchetypeData", "reason": "name overload, not pointer overload"},
-    {"module": "Conquest_retail.exe", "va": "0x00483cb0", "wrong_source_id": "Code/App/Src/FlagShip.cpp:6225:FlagshipFactory::CreateArchetype", "reason": "live instance creation, not archetype creation"}
+    {"module": "Conquest_retail.exe", "va": "0x00483cb0", "wrong_source_id": "Code/App/Src/FlagShip.cpp:6225:FlagshipFactory::CreateArchetype", "reason": "live instance creation, not archetype creation"},
+    {"module": "Conquest_retail.exe", "va": "0x00480b30", "wrong_source_id": "Code/App/Src/FlagShip.cpp:3776:Flagship::GetToolbarText", "reason": "Image getter is not Text getter"},
+    {"module": "Conquest_retail.exe", "va": "0x00480b30", "wrong_source_id": "Code/App/Src/FlagShip.cpp:3783:Flagship::GetToolbarStatusText", "reason": "Image getter is not StatusText getter"},
+    {"module": "Conquest_retail.exe", "va": "0x00480b30", "wrong_source_id": "Code/App/Src/FlagShip.cpp:3790:Flagship::GetToolbarHintbox", "reason": "Image getter is not Hintbox getter"},
+    {"module": "Conquest_retail.exe", "va": "0x00480b50", "wrong_source_id": "Code/App/Src/FlagShip.cpp:3769:Flagship::GetToolbarImage", "reason": "Text getter is not Image getter"},
+    {"module": "Conquest_retail.exe", "va": "0x00480b50", "wrong_source_id": "Code/App/Src/FlagShip.cpp:3783:Flagship::GetToolbarStatusText", "reason": "Text getter is not StatusText getter"},
+    {"module": "Conquest_retail.exe", "va": "0x00480b50", "wrong_source_id": "Code/App/Src/FlagShip.cpp:3790:Flagship::GetToolbarHintbox", "reason": "Text getter is not Hintbox getter"},
+    {"module": "Conquest_retail.exe", "va": "0x00480b70", "wrong_source_id": "Code/App/Src/FlagShip.cpp:3769:Flagship::GetToolbarImage", "reason": "StatusText getter is not Image getter"},
+    {"module": "Conquest_retail.exe", "va": "0x00480b70", "wrong_source_id": "Code/App/Src/FlagShip.cpp:3776:Flagship::GetToolbarText", "reason": "StatusText getter is not Text getter"},
+    {"module": "Conquest_retail.exe", "va": "0x00480b70", "wrong_source_id": "Code/App/Src/FlagShip.cpp:3790:Flagship::GetToolbarHintbox", "reason": "StatusText getter is not Hintbox getter"},
+    {"module": "Conquest_retail.exe", "va": "0x00480b90", "wrong_source_id": "Code/App/Src/FlagShip.cpp:3769:Flagship::GetToolbarImage", "reason": "Hintbox getter is not Image getter"},
+    {"module": "Conquest_retail.exe", "va": "0x00480b90", "wrong_source_id": "Code/App/Src/FlagShip.cpp:3776:Flagship::GetToolbarText", "reason": "Hintbox getter is not Text getter"},
+    {"module": "Conquest_retail.exe", "va": "0x00480b90", "wrong_source_id": "Code/App/Src/FlagShip.cpp:3783:Flagship::GetToolbarStatusText", "reason": "Hintbox getter is not StatusText getter"}
   ]
 }
