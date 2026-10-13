@@ -1,0 +1,50 @@
+{
+  "schema": "cfw-retail-map-v3-blind-pilot-freeze-1",
+  "frozen_at_commit": "9b4923e20244945e139cdb58e2462732e4f1bcc8",
+  "status": "COMMITTED_METHOD_PREDATES_BLIND_SAMPLE; MANIFEST_RECORDED_AFTER_SELECTION_BEFORE_RANKING",
+  "scope": "Function-identity research only; no bulk promotion or gameplay inference",
+  "method": {
+    "validator": "Research/RetailMap/tools/validate_contextual_matcher_v3.py",
+    "validator_sha256": "C70B4BE714BAC0B0D6A8865CD352E56B0D8F4F2DF848E238495DDD2AB0B23FA9",
+    "v2_scorer_sha256": "AABDB1A4AEE68227678671B15942C1DF4F3D011BC526FEBFA0CEFA9510439963",
+    "feature_extractor_sha256": "5C5011A4703512B22F66BF41DFCA8E6A81DA6F77B007CBC9B17BE8AC86790CE6",
+    "normalization": "normalized-x86-v2-development",
+    "schema_sha256": "149ECD23E0C84ED5FB976CA1801C01209CD05C549BFCD59C5DE2C27D1E925B96",
+    "v2_body_weights": {
+      "shape_trigram": 0.5,
+      "shape_bigram": 0.18,
+      "mnemonic_trigram": 0.12,
+      "mnemonic_bag": 0.1,
+      "flow": 0.07,
+      "length": 0.03
+    },
+    "v3_context_weights": {
+      "vtable_slot": 0.65,
+      "source_class": 0.08,
+      "factory_subtype": 0.3,
+      "rare_string": 0.42
+    },
+    "candidate_generation": "Same-module normalized current candidates; instruction count from max(2, retail_count//4) through retail_count*4; at least one shared comparable feature; no class prefilter; no fixed Top-K truncation before scoring",
+    "tie_handling": "Absolute score difference <0.005 groups near-equal candidates; each member receives rank interval [first,last], and evaluation uses the last rank; never address-order tie-break",
+    "graph_scoring": "No graph feature is added by the committed validator; body+callgraph equals body",
+    "context_scope": "Committed pair_context is keyed to the four known retail Flagship toolbar getter RVAs, known Flagship factory RVA 0x83BF0, and known Trim toolbar RVA 0x61240; unseen functions receive no contextual bonus under unchanged scoring"
+  },
+  "frozen_inputs_sha256": {
+    "v2_database": "9F71BA4B6FA050245D336EB64D25780E1D0D4CE37953D14FC592E0C3EA0BA82E",
+    "development_controls": "6457A9AC83508BE937DB725BA9D0461C0DC71722D7A1919FDE5E9A0F8A472ABC",
+    "callgraph_capture": "81ECD851B7F79BF90AD45912A9BC6E4302A9E4B578EA9C0FEC303114005A4DA1",
+    "vtable_capture": "A41E2D5C47B7395B78580D95851B51B2B32B2F09BE30CA11C2B2909FCC21708E",
+    "factory_trim_capture": "D0D40DDA698688CF39DCCA3D4829316273C483325DBFA151395AADFC7FBAB8D5",
+    "retail_exe": "ED8741C0CB727A43B7DE7BE0E73566B04FBC1CBD58B54A62D538E3F39DCB3F52",
+    "retail_trim": "AC13625FEF6DA8D553196C894351E93F842BD8FB5344B97FEBA1FD6835E830F0",
+    "current_final_exe": "88ACFDE07FCBD120C1436492B4CAB6D9791C1DD772A830071C15C99E1BC09F8C",
+    "current_debug_trim": "BB9D7017902A9C6B338EC27D61B46C9D4E5A75B5EA8972E989F57E78225051D9"
+  },
+  "verified_anchors": {
+    "independently_reviewed_count": 3,
+    "graph_propagation_allowed": ["Conquest_retail.exe:0x004F3C70"],
+    "graph_propagation_forbidden": ["Conquest_retail.exe:0x00483BF0", "Trim.dll:0x10061240"],
+    "new_pilot_ground_truth_usable_as_anchor_during_frozen_run": false
+  },
+  "pilot_input_boundary": "The committed v3 validator enforces nine controls and fifteen negatives and cannot run unseen functions directly. A separate input adapter may extract selected saved retail Function boundaries with the unchanged extractor and replay unchanged v2/v3 scoring, but must not add contextual rules or alter weights. Such a replay is the frozen-v3 transfer test, not a generic v3 matcher."
+}
