@@ -445,3 +445,74 @@ CREATE TABLE IF NOT EXISTS matcher_v3_candidate_leads (
     PRIMARY KEY (run_id, control_id, ablation, current_module_sha256,
                  current_rva)
 );
+
+-- Cross-experiment provenance. These tables are additive to the frozen
+-- matcher-specific runs above. A sidecar may stage an observation, but must
+-- never insert it directly into reviewed correspondence/anchor tables.
+CREATE TABLE IF NOT EXISTS research_artifacts (
+    artifact_id TEXT PRIMARY KEY,
+    path TEXT NOT NULL,
+    sha256 TEXT NOT NULL CHECK (length(sha256)=64),
+    byte_size INTEGER NOT NULL CHECK (byte_size >= 0),
+    kind TEXT NOT NULL CHECK (kind IN
+        ('PRIMARY', 'DERIVED', 'TOOL', 'MANIFEST', 'OTHER')),
+    origin TEXT NOT NULL,
+    architecture TEXT,
+    provenance_json TEXT NOT NULL DEFAULT '{}',
+    UNIQUE (sha256, byte_size, path)
+);
+
+CREATE TABLE IF NOT EXISTS research_runs (
+    run_id TEXT PRIMARY KEY,
+    sidecar_name TEXT NOT NULL,
+    sidecar_version TEXT NOT NULL,
+    implementation_sha256 TEXT NOT NULL CHECK (length(implementation_sha256)=64),
+    started_utc TEXT NOT NULL,
+    completed_utc TEXT,
+    configuration_json TEXT NOT NULL,
+    environment_json TEXT NOT NULL,
+    exit_status INTEGER,
+    validation_state TEXT NOT NULL CHECK (validation_state IN
+        ('UNVALIDATED', 'VALIDATED_BOUNDED', 'FAILED', 'SUPERSEDED')),
+    warnings_json TEXT NOT NULL DEFAULT '[]',
+    supersedes_run_id TEXT REFERENCES research_runs(run_id)
+);
+CREATE TABLE IF NOT EXISTS research_run_artifacts (
+    run_id TEXT NOT NULL REFERENCES research_runs(run_id),
+    artifact_id TEXT NOT NULL REFERENCES research_artifacts(artifact_id),
+    role TEXT NOT NULL CHECK (role IN ('INPUT', 'OUTPUT', 'TOOL', 'CONFIG')),
+    PRIMARY KEY (run_id, artifact_id, role)
+);
+
+-- Generated claims default to STAGED even when a deterministic extractor
+-- succeeds. Review state and evidence character are orthogonal to the
+-- project's VERIFIED/CANDIDATE/OPEN/CONTRADICTED/SUPERSEDED truth status.
+CREATE TABLE IF NOT EXISTS research_observations (
+    observation_id TEXT PRIMARY KEY,
+    run_id TEXT NOT NULL REFERENCES research_runs(run_id),
+    subject TEXT NOT NULL,
+    predicate TEXT NOT NULL,
+    value_json TEXT NOT NULL,
+    evidence_character TEXT NOT NULL CHECK (evidence_character IN
+        ('OBSERVED', 'DERIVED', 'CORRELATED', 'INFERRED',
+         'HYPOTHESIZED', 'UNKNOWN')),
+    review_state TEXT NOT NULL DEFAULT 'STAGED' CHECK (review_state IN
+        ('STAGED', 'REVIEWED', 'REJECTED', 'SUPERSEDED')),
+    reviewer TEXT,
+    reviewed_utc TEXT,
+    evidence_ref TEXT NOT NULL,
+    supersedes_observation_id TEXT REFERENCES research_observations(observation_id),
+    CHECK (review_state != 'REVIEWED' OR (reviewer IS NOT NULL AND reviewed_utc IS NOT NULL))
+);
+CREATE INDEX IF NOT EXISTS research_observations_subject
+    ON research_observations(subject, predicate, review_state);
+
+CREATE TABLE IF NOT EXISTS research_conflicts (
+    conflict_id TEXT PRIMARY KEY,
+    left_observation_id TEXT NOT NULL REFERENCES research_observations(observation_id),
+    right_observation_id TEXT NOT NULL REFERENCES research_observations(observation_id),
+    disposition TEXT NOT NULL CHECK (disposition IN
+        ('OPEN', 'RESOLVED', 'BOTH_LIMITED', 'SUPERSEDED')),
+    resolution_evidence_ref TEXT NOT NULL DEFAULT '',
+    CHECK (left_observation_id != right_observation_id)
+);

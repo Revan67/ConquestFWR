@@ -372,6 +372,20 @@ After consolidation, old narrative files must not be consulted as current implem
 
 ---
 
+# Research tooling and sidecar protocol
+
+ConquestFWR uses an evidence-first, sidecar-first research model. The primary agent owns research direction, evidence adjudication, status changes, and the decision to move from research to implementation. Deterministic extraction, indexing, tracing, measurement, comparison, and repeatable experiments belong in bounded, versioned sidecars when practical. Use subagents for ambiguous interpretation, architectural reasoning, historical reconstruction, experiment design, or skeptical review—not as the default workers for bulk mechanical extraction.
+
+The primary host is Windows, with project work under `D:\Dev\CFW`. Before creating or installing research tooling, inspect the project tools, `C:\Utilities\TOOLS.md`, and relevant existing utilities. The known shared installations are `C:\Utilities\ghidra_12.1.3_PUBLIC` and `C:\Utilities\x32dbg`; verify their identity and the target architecture before relying on them. Keep CFW-specific offsets, binary identities, schemas, and matchers in the project. A genuinely cross-project tool belongs under `C:\Utilities` only after project assumptions are removed and independent validation, provenance, versioning, dependent-project review, and registry update are complete. Do not overwrite a stable shared tool for an experiment or install a duplicate without checking the registry. Changes outside this repository require their own authorization and filesystem permission.
+
+Consequential sidecars must be read-only against authoritative retail inputs, offline where practical, deterministic where possible, and explicit about input hashes, configuration, tool/version identity, environment dependencies, output hash, warnings, and validation status. Prefer structured JSON/JSONL/SQLite output and meaningful failure exit codes. Preserve failed methods and negative results. Generated evidence is staged/unreviewed until the primary agent reviews it; a sidecar score or pointer-table candidate is never automatically a `VERIFIED` correspondence. Do not use reviewed development identities as matcher features, seeds, or same-run validation data.
+
+Use `Research/RetailMap/` and its SQLite schema as the managed M2.5 correspondence-evidence layer when relationships must persist and correlate. Keep raw captures, generated databases, tool runs, hypotheses, reviewed decisions, contradictions, and provenance distinguishable. Record durable project conclusions and open questions in `PROJECT_BIBLE.md`; it also holds this project's toolchain/dependency manifest. Do not create the generic protocol's suggested `TOOLCHAIN.md`, `RESEARCH_STATUS.md`, agent-report, or other narrative Markdown files: the canonical-document rule above takes precedence for ConquestFWR. Project-specific machine-readable manifests and raw evidence remain permitted in appropriate evidence locations.
+
+For significant claims, distinguish the project status (`VERIFIED`, `CANDIDATE`, `OPEN`, `CONTRADICTED`, `SUPERSEDED`) from evidence character (`OBSERVED`, `DERIVED`, `CORRELATED`, `INFERRED`, `HYPOTHESIZED`, `UNKNOWN`). Preserve artifact SHA-256, size/architecture/build identity where relevant. A failed research or generalization gate is a valid result; do not weaken it after seeing outcomes or silently replace unknown retail behavior with an approximation.
+
+---
+
 # Stop condition
 
 If evidence contradicts itself and the conflict cannot be resolved cheaply, stop the implementation change.
