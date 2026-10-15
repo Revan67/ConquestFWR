@@ -34,5 +34,6 @@ detailed file-level record.
 | 2026-10-14 | Revan67 / ConquestFWR | Added research-only sidecars to audit Matcher V4 graph-score availability and bounded Trim export-neighborhood overlap against the exposed development set. Preserved separate label-free captures and posthoc reviews; the V4 transfer gate remains failed and no game behavior or correspondence was accepted. |
 | 2026-10-14 | Revan67 / ConquestFWR | Added research-only Menu_tb machine/source ownership capture and a separately evaluated, non-pruning soft-domain development probe. Recorded the bounded class-family evidence and continued V4 transfer-gate failure; no game behavior, matcher promotion, or retail-parity claim was made. |
 | 2026-10-14 | Revan67 / ConquestFWR | Added independently authored, research-only archive catalog and read-only query tooling, with deterministic content hashes and explicit extraction provenance. No third-party payload or game behavior was added to the repository. |
+| 2026-10-15 | Revan67 / ConquestFWR | Added a bounded, catalog-identity-checked archive metadata lookup and recorded versioned data, flagship-document, and Trim/UI provenance leads. No archive payload, game behavior, matcher identity, or retail-parity claim was added. |
 
 Future material modifications must add a dated and attributed entry here before distribution.
