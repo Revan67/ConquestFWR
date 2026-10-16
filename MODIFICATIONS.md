@@ -37,5 +37,6 @@ detailed file-level record.
 | 2026-10-15 | Revan67 / ConquestFWR | Added a bounded, catalog-identity-checked archive metadata lookup and recorded versioned data, flagship-document, and Trim/UI provenance leads. No archive payload, game behavior, matcher identity, or retail-parity claim was added. |
 | 2026-10-15 | Revan67 / ConquestFWR | Added read-only historical Trim/source-continuity and retail/current context sidecars, recorded their reproducible private results and the failed V4 transfer gate. No historical payload, restoration behavior, matcher feature, or correspondence was accepted. |
 | 2026-10-15 | Revan67 / ConquestFWR | Added bounded, read-only Trim patch-window ownership and resource-call argument research tools; recorded a missed function, a candidate map-menu source bridge, and limits of resource-based correspondence. No game behavior, historical binary, matcher feature, or bulk correspondence was changed or accepted. |
+| 2026-10-15 | Revan67 / ConquestFWR | Adopted subsystem-local evidence gates for staged retail restoration, suspended Matcher V4 as a universal prerequisite, and selected a narrowly scoped resource-text stage after read-only retail/current comparison. No game behavior or resource file was changed in this governance pass. |
 
 Future material modifications must add a dated and attributed entry here before distribution.
