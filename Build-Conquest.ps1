@@ -126,13 +126,14 @@ function Get-BuildInputFingerprint {
             $_ -notmatch '^Evidence/' -and
             $_ -notmatch '^Code/Libs/(ExplicitDLL|ImplicitDLL|Static)/' -and
             $excludedExtensions -notcontains [IO.Path]::GetExtension($_).ToLowerInvariant()
-        } |
-        Sort-Object -Unique
+        }
+    $orderedPaths = [System.Collections.Generic.SortedSet[string]]::new([StringComparer]::Ordinal)
+    foreach ($path in $paths) { [void]$orderedPaths.Add($path) }
 
     $sha256 = [System.Security.Cryptography.SHA256]::Create()
     try {
         $builder = New-Object System.Text.StringBuilder
-        foreach ($relativePath in $paths) {
+        foreach ($relativePath in $orderedPaths) {
             $absolutePath = Join-Path $repoRoot ($relativePath.Replace('/', '\'))
             if (Test-Path -LiteralPath $absolutePath -PathType Leaf) {
                 [void]$builder.Append($relativePath)

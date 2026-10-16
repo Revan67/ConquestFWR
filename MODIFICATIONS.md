@@ -39,5 +39,6 @@ detailed file-level record.
 | 2026-10-15 | Revan67 / ConquestFWR | Added bounded, read-only Trim patch-window ownership and resource-call argument research tools; recorded a missed function, a candidate map-menu source bridge, and limits of resource-based correspondence. No game behavior, historical binary, matcher feature, or bulk correspondence was changed or accepted. |
 | 2026-10-15 | Revan67 / ConquestFWR | Adopted subsystem-local evidence gates for staged retail restoration, suspended Matcher V4 as a universal prerequisite, and selected a narrowly scoped resource-text stage after read-only retail/current comparison. No game behavior or resource file was changed in this governance pass. |
 | 2026-10-16 | Revan67 / ConquestFWR | Corrected the EN-US `IDS_APP_NAMETM` resource-string encoding to reproduce the retail trademark character in separately rebuilt Debug and Final `Globals.dll` files. This is scoped resource-byte parity; in-game message-box behavior and wider localization remain unverified. |
+| 2026-10-16 | Revan67 / ConquestFWR | Made build-input fingerprint ordering ordinal and consistent between the Debug/Final build and guarded deployment scripts. This corrects build provenance comparison only; no gameplay or runtime parity is claimed. |
 
 Future material modifications must add a dated and attributed entry here before distribution.
