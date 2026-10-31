@@ -31,6 +31,7 @@
 #include "IAttack.h"
 #include <DSpecialData.h>
 #include "GenData.h"
+#include "SpecialAbilityData.h"
 #include "ISupplier.h"
 #include "IHarvest.h"
 #include "IMissionActor.h"
@@ -506,13 +507,10 @@ void CMenu_Ind::onUpdate (U32 dt)
 					}
 				}
 
-				const _GT_SPECIALABILITIES * specialAbilities = (const _GT_SPECIALABILITIES *) GENDATA->GetArchetypeData("SpecialAbilities");
-				CQASSERT(specialAbilities);
-				CQASSERT(sizeof(_GT_SPECIALABILITIES) == sizeof(GT_SPECIALABILITIES) && "Data definition error");
-				const SPECIALABILITYINFO * specialInfo = specialAbilities->info + ship.pInit->specialAbility;
+				const SPECIALABILITYINFO * specialInfo = GetSpecialAbilityData(GENDATA, ship.pInit->specialAbility);
 
-				if(ship.pInit->specialAbility != USA_NONE && (ship->caps.specialEOAOk || ship->caps.specialAttackOk || ship->caps.specialAttackShipOk || ship->caps.specialAbilityOk ||
-					ship->caps.probeOk || ship->caps.mimicOk || ship->caps.synthesisOk) ||ship->caps.specialTargetPlanetOk)
+				if(specialInfo && ((ship.pInit->specialAbility != USA_NONE && (ship->caps.specialEOAOk || ship->caps.specialAttackOk || ship->caps.specialAttackShipOk || ship->caps.specialAbilityOk ||
+					ship->caps.probeOk || ship->caps.mimicOk || ship->caps.synthesisOk)) || ship->caps.specialTargetPlanetOk))
 				{
 					specialWpnCmd->SetVisible(true);
 					specialWpnMulti->SetState(specialInfo->baseSpecialWpnButton,specialInfo->specialWpnTooltip,specialInfo->specialWpnHelpBox,specialInfo->specialWpnHintBox);

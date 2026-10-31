@@ -41,6 +41,7 @@
 #include <DFlagship.h>
 #include <DToolbar.h>
 #include <DSpecialData.h>
+#include "SpecialAbilityData.h"
 
 #include <TComponent.h>
 #include <IConnection.h>
@@ -403,13 +404,12 @@ void CMenu_Fleet::findSpecialsEnabled (void)
 	{
 		if(nSpecialEnabled[count])
 		{
-			nSpecialAssigned[lastOrderIndex] = count;
 			UNIT_SPECIAL_ABILITY usa = findSpecialForOrder((SpecialAttack)count);
-			const _GT_SPECIALABILITIES * specialAbilities = (const _GT_SPECIALABILITIES *) GENDATA->GetArchetypeData("SpecialAbilities");
-			CQASSERT(specialAbilities);
-			CQASSERT(sizeof(_GT_SPECIALABILITIES) == sizeof(GT_SPECIALABILITIES) && "Data definition error");
-			const SPECIALABILITYINFO * specialInfo = specialAbilities->info + usa;
+			const SPECIALABILITYINFO * specialInfo = GetSpecialAbilityData(GENDATA, usa);
+			if (!specialInfo)
+				continue;
 
+			nSpecialAssigned[lastOrderIndex] = count;
 			specialOrders[lastOrderIndex]->SetState(specialInfo->baseSpecialWpnButton,specialInfo->specialWpnTooltip,specialInfo->specialWpnHelpBox,specialInfo->specialWpnHintBox);
 			specialOrdersHB[lastOrderIndex]->SetVisible(true);
 			++lastOrderIndex;

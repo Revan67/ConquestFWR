@@ -31,6 +31,7 @@
 #include <DMBaseData.h>
 #include <DSupplyShipSave.h>
 #include <DSpecialData.h>
+#include "SpecialAbilityData.h"
 
 #include <TComponent.h>
 #include <IConnection.h>
@@ -558,14 +559,11 @@ void CMenu_MulMix::onUpdate (U32 dt)
 				obj = obj->nextSelected;
 			}
 
-			const _GT_SPECIALABILITIES * specialAbilities = (const _GT_SPECIALABILITIES *) GENDATA->GetArchetypeData("SpecialAbilities");
-			CQASSERT(specialAbilities);
-			CQASSERT(sizeof(_GT_SPECIALABILITIES) == sizeof(GT_SPECIALABILITIES) && "Data definition error");
-			const SPECIALABILITYINFO * specialInfo = specialAbilities->info + spAbility;
+			const SPECIALABILITYINFO * specialInfo = GetSpecialAbilityData(GENDATA, spAbility);
 
 			caps = getCapsExclusive(OBJLIST->GetSelectedList());
 
-			if(spAbility != USA_NONE && (caps.specialEOAOk || caps.specialAttackOk || caps.specialAttackShipOk || caps.specialAbilityOk ||
+			if(specialInfo && spAbility != USA_NONE && (caps.specialEOAOk || caps.specialAttackOk || caps.specialAttackShipOk || caps.specialAbilityOk ||
 				caps.probeOk || caps.mimicOk || caps.synthesisOk|| caps.specialTargetPlanetOk))
 			{
 				specialWpnCmd->SetVisible(true);
