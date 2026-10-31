@@ -1,6 +1,6 @@
 // Independently written compatibility metadata extractor. No retail code is exported.
-// Separate, hash-pinned Trim.dll export. Use a private independent project.
-// Run with analyzeHeadless -process trim.dll -readOnly -noanalysis
+// Hash-pinned retail module export. Use a private independent project.
+// Run with analyzeHeadless -process <module> -readOnly -noanalysis
 //   -scriptPath <this directory> -postScript ExportRetailModuleMetadata.java <new-output.jsonl>
 // @category CFW.RetailMap
 
@@ -22,8 +22,9 @@ import java.security.MessageDigest;
 import java.util.*;
 
 public class ExportRetailModuleMetadata extends GhidraScript {
-    private static final String CANONICAL =
-        "AC13625FEF6DA8D553196C894351E93F842BD8FB5344B97FEBA1FD6835E830F0";
+    private static final Map<String, String> CANONICAL = Map.of(
+        "trim.dll", "AC13625FEF6DA8D553196C894351E93F842BD8FB5344B97FEBA1FD6835E830F0",
+        "mission.dll", "06D40AC043B2A2F72E10C4435EAD28B146CAE6409CB58EBE5BB5F952CA7562A8");
     private final Gson gson = new Gson();
 
     private String rva(Address address) {
@@ -31,7 +32,7 @@ public class ExportRetailModuleMetadata extends GhidraScript {
     }
 
     private String moduleIdentity(Address address) {
-        return CANONICAL.toLowerCase(Locale.ROOT) + ":" + rva(address);
+        return currentProgram.getExecutableSHA256().toLowerCase(Locale.ROOT) + ":" + rva(address);
     }
 
     private static Map<String, Object> record(Object... pairs) {
@@ -210,10 +211,9 @@ public class ExportRetailModuleMetadata extends GhidraScript {
             throw new IllegalArgumentException("Expected new JSONL path [--seeds|--ephemeral-recovered <VA> ...]");
         // Verify the imported program itself, not merely the similarly named disk file.
         String importedHash = currentProgram.getExecutableSHA256();
-        if (importedHash == null || !CANONICAL.equalsIgnoreCase(importedHash))
+        String expectedHash = CANONICAL.get(currentProgram.getName().toLowerCase(Locale.ROOT));
+        if (importedHash == null || expectedHash == null || !expectedHash.equalsIgnoreCase(importedHash))
             throw new IllegalStateException("Imported program SHA-256 is not the canonical retail image: " + importedHash);
-        if (!currentProgram.getName().equalsIgnoreCase("trim.dll"))
-            throw new IllegalStateException("Unexpected module filename: " + currentProgram.getName());
         Path output = Paths.get(args[0]).toAbsolutePath().normalize();
         if (seedMode) { seedProbes(output, args); return; }
         Set<Address> recoveredEntries = new HashSet<>();
